@@ -29,50 +29,59 @@
     font-family: 'Rubik', sans-serif;
     background: var(--cream);
     color: var(--text);
-    line-height: 1.6;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
   }
 
   /* ===== NAV ===== */
   nav {
     position: fixed;
-    top: 0; width: 100%;
-    z-index: 100;
-    background: rgba(253,248,242,0.96);
+    top: 0; width: 100%; z-index: 100;
+    background: rgba(253,248,242,0.97);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 0 60px;
-    height: 68px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
   }
 
-  .logo { font-size: 1.15rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+  .logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
   .logo span { color: var(--orange-deep); }
 
-  .nav-links { display: flex; gap: 30px; list-style: none; align-items: center; }
-  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--navy); }
-
-  .nav-cta {
-    background: var(--orange-deep); color: #fff !important;
-    padding: 9px 22px; border-radius: 50px;
-    font-weight: 700 !important; font-size: 0.85rem !important;
-    transition: background 0.2s, transform 0.2s !important;
+  .nav-mobile-cta {
+    background: var(--orange-deep); color: #fff;
+    padding: 8px 18px; border-radius: 50px;
+    font-weight: 700; font-size: 0.82rem;
+    text-decoration: none;
+    transition: background 0.2s;
   }
-  .nav-cta:hover { background: var(--navy) !important; transform: translateY(-1px); }
+  .nav-mobile-cta:hover { background: var(--navy); }
+
+  .nav-links { display: none; }
+
+  /* ===== BTN ===== */
+  .btn {
+    display: inline-block;
+    padding: 15px 32px;
+    border-radius: 50px;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700; font-size: 1rem;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--orange-deep); color: #fff; }
+  .btn-primary:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,74,107,0.2); }
+  .btn-secondary { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+  .btn-secondary:hover { background: var(--navy); color: #fff; }
+  .btn-full { width: 100%; text-align: center; display: block; }
 
   /* ===== HERO ===== */
   .hero {
-    padding: 110px 60px 80px;
+    padding: 80px 20px 56px;
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 70px;
-    align-items: center;
-    min-height: 100vh;
   }
 
   .hero-eyebrow {
@@ -80,8 +89,8 @@
     background: var(--orange-light);
     color: var(--orange-deep);
     padding: 7px 16px; border-radius: 50px;
-    font-size: 0.82rem; font-weight: 700;
-    margin-bottom: 26px;
+    font-size: 0.8rem; font-weight: 700;
+    margin-bottom: 24px;
   }
 
   .hero-eyebrow::before {
@@ -90,37 +99,35 @@
     animation: blink 2s infinite;
   }
 
-  @keyframes blink {
-    0%,100% { opacity:1; } 50% { opacity:0.3; }
-  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
   .hero h1 {
-    font-size: clamp(2.1rem, 3.8vw, 3.3rem);
+    font-size: clamp(2rem, 7vw, 3.4rem);
     font-weight: 900;
     line-height: 1.15;
     letter-spacing: -1px;
     color: var(--navy);
-    margin-bottom: 22px;
+    margin-bottom: 24px;
   }
 
   .hero h1 em { font-style: normal; color: var(--orange-deep); }
 
   .hero-lead {
-    font-size: 1.08rem;
+    font-size: 1rem;
     color: var(--text-mid);
-    line-height: 1.8;
-    margin-bottom: 16px;
-    max-width: 500px;
+    line-height: 2;
+    margin-bottom: 24px;
   }
 
-  /* Big quote from client */
+  .hero-lead p { margin-bottom: 0; }
+
   .hero-client-quote {
     background: var(--navy-light);
     border-right: 4px solid var(--orange-deep);
     border-radius: 0 12px 12px 0;
-    padding: 18px 22px;
+    padding: 16px 20px;
     margin: 28px 0;
-    font-size: 1rem;
+    font-size: 0.97rem;
     color: var(--navy);
     font-style: italic;
     line-height: 1.65;
@@ -130,433 +137,331 @@
     display: block;
     margin-top: 8px;
     font-style: normal;
-    font-size: 0.78rem;
+    font-size: 0.75rem;
     color: var(--text-light);
     font-weight: 600;
   }
 
-  .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 32px; }
+  .hero-actions {
+    display: flex; flex-direction: column; gap: 12px; margin-top: 32px;
+  }
 
-  .btn { display: inline-block; padding: 14px 30px; border-radius: 50px; font-family: 'Rubik', sans-serif; font-weight: 700; font-size: 0.95rem; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; }
-  .btn-primary { background: var(--orange-deep); color: #fff; }
-  .btn-primary:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,74,107,0.2); }
-  .btn-secondary { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
-  .btn-secondary:hover { background: var(--navy); color: #fff; }
-
-  /* Hero visual */
-  .hero-visual { position: relative; }
-
+  /* Profile card — full width on mobile */
   .profile-card {
     background: var(--white);
-    border-radius: 24px;
-    padding: 36px;
-    box-shadow: 0 20px 60px var(--shadow);
+    border-radius: 22px;
+    padding: 28px;
+    box-shadow: 0 12px 40px var(--shadow);
     border: 1px solid var(--border);
     position: relative;
+    margin-top: 40px;
   }
-
-  .profile-top {
-    display: flex; align-items: center; gap: 18px; margin-bottom: 24px;
-  }
-
-  .profile-avatar {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid var(--white);
-    box-shadow: 0 4px 16px rgba(232,133,74,0.25);
-    flex-shrink: 0;
-  }
-  .profile-avatar img { width:100%; height:100%; object-fit:cover; object-position:center top; }
-
-  /* About image */
-  .about-img-wrap {
-    border-radius: 24px; overflow: hidden;
-    box-shadow: 0 16px 48px var(--shadow);
-    aspect-ratio: 3/4;
-  }
-  .about-img-wrap img { width:100%; height:100%; object-fit:cover; object-position:center top; }
-
-  /* Testimonial photo */
-  .testi-photo {
-    width: 52px; height: 52px;
-    border-radius: 50%; overflow: hidden;
-    border: 2px solid var(--orange-light);
-    flex-shrink: 0;
-  }
-  .testi-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
-  .testi-card-top { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
-
-  /* Lecture photo */
-  .lecture-photo {
-    width: 220px; height: 220px;
-    border-radius: 50%; overflow: hidden;
-    border: 4px solid rgba(255,255,255,0.15);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-    flex-shrink: 0;
-  }
-  .lecture-photo img { width:100%; height:100%; object-fit:cover; object-position:center top; }
-
-  .profile-name { font-size: 1.2rem; font-weight: 800; color: var(--navy); }
-  .profile-title { font-size: 0.8rem; color: var(--text-light); margin-top: 2px; }
-
-  .profile-tags {
-    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px;
-  }
-
-  .tag {
-    background: var(--navy-light);
-    color: var(--navy-mid);
-    padding: 5px 13px; border-radius: 50px;
-    font-size: 0.72rem; font-weight: 600;
-  }
-
-  .profile-stats {
-    display: grid; grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-
-  .pstat { text-align: center; }
-  .pstat-n { font-size: 1.4rem; font-weight: 900; color: var(--navy); }
-  .pstat-l { font-size: 0.68rem; color: var(--text-light); line-height: 1.3; margin-top: 2px; }
 
   .float-sticker {
     position: absolute;
-    top: -18px; left: -18px;
+    top: -16px; left: 16px;
     background: var(--orange-deep);
     color: #fff;
-    padding: 10px 16px;
+    padding: 8px 16px;
     border-radius: 50px;
-    font-size: 0.75rem; font-weight: 700;
+    font-size: 0.72rem; font-weight: 700;
     box-shadow: 0 6px 20px rgba(232,133,74,0.4);
     white-space: nowrap;
     display: flex; align-items: center; gap: 6px;
   }
 
-  /* ===== PAIN SECTION ===== */
-  .pain-section {
-    background: var(--navy);
-    padding: 90px 60px;
+  .profile-top {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 20px; margin-top: 8px;
   }
 
-  .pain-inner {
-    max-width: 1100px; margin: 0 auto;
+  .profile-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%; overflow: hidden;
+    border: 3px solid var(--white);
+    box-shadow: 0 4px 16px rgba(232,133,74,0.25);
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #fde8d8, #f6c9a4);
+    display: flex; align-items: center; justify-content: center;
   }
+  .profile-avatar img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+
+  .profile-name { font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+  .profile-title { font-size: 0.75rem; color: var(--text-light); margin-top: 2px; }
+
+  .profile-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+  .tag {
+    background: var(--navy-light); color: var(--navy-mid);
+    padding: 5px 12px; border-radius: 50px;
+    font-size: 0.7rem; font-weight: 600;
+  }
+
+  .profile-stats {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px; padding-top: 18px; border-top: 1px solid var(--border);
+  }
+  .pstat { text-align: center; }
+  .pstat-n { font-size: 1.3rem; font-weight: 900; color: var(--navy); }
+  .pstat-l { font-size: 0.65rem; color: var(--text-light); line-height: 1.3; margin-top: 2px; }
+
+  /* ===== PAIN ===== */
+  .pain-section { background: var(--navy); padding: 64px 20px; }
+  .pain-inner { max-width: 1100px; margin: 0 auto; }
 
   .section-eyebrow {
-    font-size: 0.72rem; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; margin-bottom: 14px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 12px; display: block;
   }
-
-  .pain-section .section-eyebrow { color: var(--orange); }
+  .eyebrow-orange { color: var(--orange); }
+  .eyebrow-orange-deep { color: var(--orange-deep); }
 
   .pain-title {
-    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-size: clamp(1.7rem, 6vw, 2.6rem);
     font-weight: 900; color: #fff;
-    letter-spacing: -0.5px; line-height: 1.2;
-    margin-bottom: 48px;
-    max-width: 600px;
+    line-height: 1.2; margin-bottom: 40px;
   }
 
   .pain-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
   }
 
   .pain-card {
     background: rgba(255,255,255,0.06);
     border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 18px;
-    padding: 28px;
+    border-radius: 16px; padding: 22px;
     transition: background 0.2s, border-color 0.2s;
   }
+  .pain-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(246,166,126,0.4); }
 
-  .pain-card:hover {
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(246,166,126,0.4);
-  }
-
-  .pain-emoji { font-size: 1.8rem; margin-bottom: 14px; display: block; }
   .pain-icon {
     display: flex; align-items: center; justify-content: center;
-    width: 48px; height: 48px;
+    width: 42px; height: 42px;
     background: rgba(246,166,126,0.12);
-    border-radius: 14px;
-    margin-bottom: 16px;
+    border-radius: 12px; margin-bottom: 14px;
   }
 
-  .pain-card-title {
-    font-size: 0.95rem; font-weight: 700; color: #fff;
-    margin-bottom: 8px; line-height: 1.35;
-  }
+  .pain-card-title { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.35; }
+  .pain-card-desc { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
 
-  .pain-card-desc {
-    font-size: 0.82rem; color: rgba(255,255,255,0.6); line-height: 1.65;
-  }
-
-  /* client quotes in pain section */
   .pain-quote {
-    margin-top: 48px;
+    margin-top: 40px;
     background: rgba(246,166,126,0.1);
     border: 1px solid rgba(246,166,126,0.25);
-    border-radius: 18px;
-    padding: 32px 36px;
-    display: flex; flex-direction: column; gap: 14px;
+    border-radius: 16px; padding: 28px;
   }
-
-  .pain-quote-text {
-    font-size: 1.15rem; color: rgba(255,255,255,0.9);
-    font-style: italic; line-height: 1.7;
-  }
-
-  .pain-quote-attr { font-size: 0.78rem; color: var(--orange); font-weight: 600; }
+  .pain-quote-text { font-size: 1.05rem; color: rgba(255,255,255,0.92); font-style: italic; line-height: 1.75; margin-bottom: 12px; }
+  .pain-quote-attr { font-size: 0.75rem; color: var(--orange); font-weight: 600; }
 
   /* ===== WORKSHOPS ===== */
   .workshops-section { background: var(--white); }
-
-  .section-wrap { max-width: 1200px; margin: 0 auto; padding: 90px 60px; }
-  .section-header { margin-bottom: 50px; }
+  .section-wrap { max-width: 1200px; margin: 0 auto; padding: 64px 20px; }
+  .section-header { margin-bottom: 36px; }
 
   .section-title {
-    font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+    font-size: clamp(1.7rem, 6vw, 2.4rem);
     font-weight: 900; color: var(--navy);
-    letter-spacing: -0.5px; line-height: 1.2;
-    margin-bottom: 12px;
+    line-height: 1.2; margin-bottom: 10px;
   }
+  .section-sub { color: var(--text-mid); font-size: 0.93rem; line-height: 1.75; }
 
-  .section-sub { color: var(--text-mid); font-size: 0.97rem; max-width: 500px; }
-
-  .ws-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: 22px;
-  }
+  .ws-grid { display: flex; flex-direction: column; gap: 16px; }
 
   .ws-card {
     border: 1.5px solid var(--border);
-    border-radius: 20px;
-    padding: 28px;
-    transition: all 0.25s;
-    cursor: pointer;
+    border-radius: 18px; padding: 24px;
     background: var(--cream);
+    transition: all 0.25s;
   }
-
-  .ws-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 18px 40px var(--shadow);
-    border-color: var(--orange-deep);
-    background: var(--white);
-  }
+  .ws-card:hover { box-shadow: 0 12px 32px var(--shadow); border-color: var(--orange-deep); background: var(--white); }
 
   .ws-icon {
     display: flex; align-items: center; justify-content: center;
-    width: 48px; height: 48px;
+    width: 44px; height: 44px;
     background: var(--orange-light);
-    border-radius: 14px;
-    margin-bottom: 16px;
+    border-radius: 12px; margin-bottom: 14px;
   }
-  .ws-title { font-size: 0.97rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; line-height: 1.4; }
-  .ws-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 22px; }
+
+  .ws-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.4; }
+  .ws-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
 
   .ws-footer { display: flex; align-items: center; justify-content: space-between; }
-  .ws-price { font-size: 1.15rem; font-weight: 800; color: var(--orange-deep); }
-  .ws-price span { font-size: 0.72rem; color: var(--text-light); font-weight: 400; }
+  .ws-price { font-size: 1.1rem; font-weight: 800; color: var(--orange-deep); }
+  .ws-price span { font-size: 0.7rem; color: var(--text-light); font-weight: 400; }
 
   .ws-btn {
     background: var(--orange-deep); color: #fff;
-    border: none; padding: 8px 18px; border-radius: 50px;
-    font-size: 0.78rem; font-weight: 700;
+    border: none; padding: 9px 20px; border-radius: 50px;
+    font-size: 0.8rem; font-weight: 700;
     cursor: pointer; font-family: 'Rubik', sans-serif;
-    transition: background 0.2s, transform 0.2s;
+    transition: background 0.2s;
   }
-  .ws-btn:hover { background: var(--navy); transform: scale(1.05); }
+  .ws-btn:hover { background: var(--navy); }
 
   /* ===== ABOUT ===== */
   .about-section { background: var(--cream); }
 
-  .about-inner {
-    display: grid; grid-template-columns: 1.2fr 1fr;
-    gap: 80px; align-items: center;
+  .about-img-wrap {
+    border-radius: 20px; overflow: hidden;
+    box-shadow: 0 12px 40px var(--shadow);
+    margin-bottom: 36px;
+    aspect-ratio: 4/3;
+    background: var(--navy-light);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-img-wrap img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
+  .about-img-placeholder {
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+    color: var(--text-light); font-size: 0.8rem; text-align: center; padding: 20px;
   }
 
   .about-eyebrow { color: var(--orange-deep); }
 
   .about-title {
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-size: clamp(1.7rem, 6vw, 2.5rem);
     font-weight: 900; color: var(--navy);
-    letter-spacing: -0.5px; line-height: 1.2;
-    margin-bottom: 20px;
+    line-height: 1.2; margin-bottom: 20px;
   }
 
   .about-body p {
-    color: var(--text-mid); font-size: 0.97rem;
-    line-height: 1.85; margin-bottom: 16px;
+    color: var(--text-mid); font-size: 0.95rem;
+    line-height: 2; margin-bottom: 18px;
   }
-
   .about-body strong { color: var(--navy); }
 
   .about-card {
     background: var(--white);
     border: 1px solid var(--border);
-    border-radius: 22px;
-    padding: 36px;
-    box-shadow: 0 12px 40px var(--shadow);
+    border-radius: 20px; padding: 28px;
+    box-shadow: 0 8px 32px var(--shadow);
+    margin-top: 32px;
   }
 
   .about-card-quote {
-    font-size: 1rem; color: var(--text-mid);
-    line-height: 1.75; font-style: italic;
+    font-size: 0.97rem; color: var(--text-mid);
+    line-height: 1.8; font-style: italic;
     border-right: 3px solid var(--orange-deep);
-    padding-right: 18px; margin-bottom: 24px;
+    padding-right: 16px; margin-bottom: 22px;
   }
 
-  .about-credentials {
-    display: flex; flex-direction: column; gap: 10px;
-    padding-top: 20px; border-top: 1px solid var(--border);
-  }
+  .about-credentials { display: flex; flex-direction: column; gap: 10px; padding-top: 18px; border-top: 1px solid var(--border); }
 
   .credential {
     display: flex; align-items: center; gap: 10px;
-    font-size: 0.83rem; color: var(--text-mid);
+    font-size: 0.82rem; color: var(--text-mid);
   }
-
-  .credential::before {
-    content: '✓';
+  .cred-check {
     background: var(--orange-light); color: var(--orange-deep);
     width: 22px; height: 22px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem; font-weight: 700; flex-shrink: 0;
-    text-align: center; line-height: 22px;
+    flex-shrink: 0;
   }
 
   /* ===== LECTURE ===== */
   .lecture-section { background: var(--white); }
 
   .lecture-box {
-    background: linear-gradient(130deg, var(--navy) 0%, var(--navy-mid) 100%);
-    border-radius: 26px; padding: 60px;
-    display: flex; align-items: center;
-    justify-content: space-between; gap: 40px;
-    flex-wrap: wrap; color: #fff;
-    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    border-radius: 22px; padding: 36px 28px;
+    color: #fff; position: relative; overflow: hidden;
   }
 
-  .lecture-box::before {
-    content: '🎤';
-    position: absolute; font-size: 10rem;
-    opacity: 0.05; left: 20px; top: -15px;
-    pointer-events: none;
+  .lecture-photo-wrap {
+    width: 100%; aspect-ratio: 16/9;
+    border-radius: 14px; overflow: hidden;
+    margin-bottom: 28px;
+    background: rgba(255,255,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lecture-photo-wrap img { width:100%; height:100%; object-fit:cover; display:block; }
+  .lecture-photo-placeholder {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.4); font-size: 0.78rem; text-align: center; padding: 20px;
   }
 
   .lecture-badge {
-    display: inline-block;
+    display: inline-flex; align-items: center; gap: 6px;
     background: rgba(246,166,126,0.18);
     border: 1px solid rgba(246,166,126,0.4);
     color: var(--orange);
-    padding: 6px 16px; border-radius: 50px;
-    font-size: 0.78rem; font-weight: 700; margin-bottom: 18px;
+    padding: 6px 14px; border-radius: 50px;
+    font-size: 0.75rem; font-weight: 700; margin-bottom: 16px;
   }
 
   .lecture-title {
-    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-size: clamp(1.4rem, 5vw, 2rem);
     font-weight: 900; line-height: 1.25;
-    letter-spacing: -0.5px; margin-bottom: 12px;
+    margin-bottom: 12px;
   }
 
-  .lecture-desc { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.65; max-width: 440px; }
+  .lecture-desc {
+    color: rgba(255,255,255,0.72); font-size: 0.92rem; line-height: 1.8;
+    margin-bottom: 28px;
+  }
 
-  .lecture-action { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-  .lecture-price { font-size: 0.82rem; color: rgba(255,255,255,0.6); }
+  .lecture-price { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
   .lecture-price strong { color: #fff; font-size: 1.05rem; }
 
   /* ===== TESTIMONIALS ===== */
   .testi-section { background: var(--orange-light); }
 
-  .testi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
+  .featured-quote-wrap {
+    background: var(--navy); border-radius: 18px; padding: 32px; margin-bottom: 24px;
   }
+  .featured-quote-text {
+    font-size: 1.1rem; color: #fff;
+    font-style: italic; line-height: 1.75; margin-bottom: 12px;
+  }
+  .featured-quote-attr { font-size: 0.75rem; color: var(--orange); font-weight: 600; }
+
+  .testi-grid { display: flex; flex-direction: column; gap: 14px; }
 
   .testi-card {
-    background: var(--white);
-    border-radius: 18px; padding: 28px;
+    background: var(--white); border-radius: 16px; padding: 24px;
     border: 1px solid rgba(232,133,74,0.15);
     box-shadow: 0 4px 16px rgba(232,133,74,0.08);
   }
-
-  .testi-stars { color: var(--orange-deep); margin-bottom: 12px; font-size: 0.85rem; }
-  .testi-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 18px; font-style: italic; }
-  .testi-name { font-size: 0.8rem; font-weight: 700; color: var(--navy); }
-
-  /* Big featured quote */
-  .featured-quote-wrap {
-    background: var(--navy);
-    border-radius: 20px; padding: 40px;
-    margin-bottom: 28px;
-  }
-
-  .featured-quote-text {
-    font-size: 1.3rem; color: #fff;
-    font-style: italic; line-height: 1.65;
-    margin-bottom: 14px;
-  }
-
-  .featured-quote-attr { font-size: 0.8rem; color: var(--orange); font-weight: 600; }
+  .testi-stars { color: var(--orange-deep); margin-bottom: 10px; font-size: 0.82rem; }
+  .testi-text { font-size: 0.88rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; font-style: italic; }
+  .testi-name { font-size: 0.78rem; font-weight: 700; color: var(--navy); }
 
   /* ===== BLOG ===== */
   .blog-section { background: var(--cream); }
-
-  .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-    gap: 22px;
-  }
+  .blog-grid { display: flex; flex-direction: column; gap: 14px; }
 
   .blog-card {
     background: var(--white); border: 1px solid var(--border);
-    border-radius: 18px; padding: 26px;
+    border-radius: 16px; padding: 22px;
     text-decoration: none; color: inherit; display: block;
-    transition: transform 0.25s, box-shadow 0.25s;
+    transition: box-shadow 0.2s;
   }
-
-  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow); }
+  .blog-card:hover { box-shadow: 0 8px 24px var(--shadow); }
 
   .blog-tag {
     display: inline-block;
     background: var(--navy-light); color: var(--navy-mid);
-    padding: 4px 12px; border-radius: 50px;
-    font-size: 0.7rem; font-weight: 700;
-    margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.5px;
+    padding: 4px 11px; border-radius: 50px;
+    font-size: 0.67rem; font-weight: 700;
+    margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;
   }
-
-  .blog-title { font-size: 0.97rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 10px; }
-  .blog-excerpt { font-size: 0.82rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 18px; }
-  .blog-meta { font-size: 0.72rem; color: var(--text-light); }
+  .blog-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
+  .blog-excerpt { font-size: 0.8rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+  .blog-meta { font-size: 0.7rem; color: var(--text-light); }
 
   /* ===== NEWSLETTER ===== */
-  .newsletter-section {
-    background: var(--navy); padding: 80px 60px;
-  }
-
+  .newsletter-section { background: var(--navy); padding: 64px 20px; }
   .newsletter-inner { max-width: 560px; margin: 0 auto; text-align: center; }
-  .newsletter-inner .section-eyebrow { color: var(--orange); }
-  .nl-title { font-size: clamp(1.6rem, 2.5vw, 2.1rem); font-weight: 900; color: #fff; letter-spacing: -0.5px; margin-bottom: 12px; }
-  .nl-sub { color: rgba(255,255,255,0.6); font-size: 0.93rem; margin-bottom: 34px; }
+  .nl-title { font-size: clamp(1.5rem, 6vw, 2rem); font-weight: 900; color: #fff; margin-bottom: 12px; }
+  .nl-sub { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.8; margin-bottom: 32px; }
 
-  .nl-form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-
+  .nl-form { display: flex; flex-direction: column; gap: 12px; }
   .nl-input {
-    flex: 1; min-width: 210px;
     background: rgba(255,255,255,0.08);
     border: 1.5px solid rgba(255,255,255,0.18);
-    color: #fff; padding: 13px 20px;
+    color: #fff; padding: 14px 20px;
     border-radius: 50px; font-family: 'Rubik', sans-serif;
     font-size: 0.9rem; outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s; width: 100%;
   }
   .nl-input:focus { border-color: var(--orange); }
   .nl-input::placeholder { color: rgba(255,255,255,0.38); }
@@ -565,41 +470,173 @@
   footer {
     background: var(--white);
     border-top: 1px solid var(--border);
-    padding: 34px 60px;
-    display: flex; align-items: center;
-    justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    padding: 28px 20px;
+    display: flex; flex-direction: column; gap: 14px;
   }
-
-  footer .logo { font-size: 0.97rem; }
-  .footer-copy { font-size: 0.75rem; color: var(--text-light); }
-  .footer-links { display: flex; gap: 22px; }
-  .footer-links a { color: var(--text-light); font-size: 0.78rem; text-decoration: none; transition: color 0.2s; }
+  .footer-logo { font-size: 0.97rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+  .footer-logo span { color: var(--orange-deep); }
+  .footer-copy { font-size: 0.72rem; color: var(--text-light); }
+  .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .footer-links a { color: var(--text-light); font-size: 0.75rem; text-decoration: none; }
   .footer-links a:hover { color: var(--navy); }
 
-  /* ===== ANIMATIONS ===== */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* ===== ACCESSIBILITY BAR ===== */
+  .a11y-bar {
+    position: fixed;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    background: rgba(26,74,107,0.97);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(246,166,126,0.5);
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 22px;
+    direction: rtl;
+    box-shadow: 0 6px 32px rgba(0,0,0,0.2), 0 0 0 1px rgba(246,166,126,0.1);
+    white-space: nowrap;
   }
 
-  .hero-text { animation: fadeUp 0.7s ease both; }
-  .hero-visual { animation: fadeUp 0.7s 0.12s ease both; }
+  .a11y-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 1px;
+    font-family: 'Rubik', sans-serif;
+    margin-left: 4px;
+  }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 900px) {
-    nav { padding: 0 20px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; padding: 96px 22px 60px; min-height: auto; gap: 36px; }
-    .about-inner { grid-template-columns: 1fr; gap: 36px; }
-    .section-wrap { padding: 70px 22px; }
-    .pain-section { padding: 70px 22px; }
-    .lecture-box { padding: 36px 24px; }
-    .newsletter-section { padding: 60px 22px; }
-    footer { padding: 28px 22px; flex-direction: column; align-items: flex-start; }
+  .a11y-btn {
+    background: rgba(246,166,126,0.1);
+    border: 1px solid rgba(246,166,126,0.5);
+    color: var(--orange);
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.1s;
+    display: flex; align-items: center; justify-content: center;
+    line-height: 1;
+  }
+
+  .a11y-btn:hover {
+    background: rgba(246,166,126,0.25);
+    border-color: var(--orange);
+    transform: scale(1.1);
+  }
+
+  .a11y-btn:active { transform: scale(0.95); }
+
+  .a11y-btn.reset {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    border-color: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.05);
+  }
+
+  .a11y-btn.reset:hover {
+    color: var(--orange);
+    border-color: rgba(246,166,126,0.5);
+    background: rgba(246,166,126,0.1);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
+  .hero { animation: fadeUp 0.6s ease both; }
+
+  /* ===== TABLET (600px+) ===== */
+  @media (min-width: 600px) {
+    nav { padding: 0 32px; }
+    .hero { padding: 88px 32px 60px; }
+    .pain-section { padding: 72px 32px; }
+    .section-wrap { padding: 72px 32px; }
+    .newsletter-section { padding: 72px 32px; }
+    footer { padding: 32px; flex-direction: row; align-items: center; justify-content: space-between; }
+
+    .hero-actions { flex-direction: row; }
+    .btn-full { width: auto; display: inline-block; }
+    .nl-form { flex-direction: row; }
+    .nl-input { flex: 1; }
+
+    .ws-grid { grid-template-columns: 1fr 1fr; display: grid; }
+    .testi-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .blog-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ===== DESKTOP (960px+) ===== */
+  @media (min-width: 960px) {
+    nav { padding: 0 60px; height: 68px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-cta {
+      background: var(--orange-deep); color: #fff !important;
+      padding: 9px 22px; border-radius: 50px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--navy) !important; }
+    .nav-mobile-cta { display: none; }
+
+    .hero {
+      padding: 110px 60px 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 70px; align-items: center;
+      min-height: 100vh;
+    }
+    .profile-card { margin-top: 0; }
+    .float-sticker { top: -18px; left: -18px; right: auto; }
+
+    .profile-avatar { width: 72px; height: 72px; }
+
+    .pain-section { padding: 90px 60px; }
+    .pain-grid { grid-template-columns: repeat(4, 1fr); }
+
+    .section-wrap { padding: 90px 60px; }
+    .ws-grid { grid-template-columns: repeat(4, 1fr); }
+
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 72px; align-items: start;
+    }
+    .about-img-wrap { margin-bottom: 0; aspect-ratio: 3/4; }
+    .about-card { margin-top: 0; }
+
+    .lecture-box {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 48px; align-items: center; padding: 60px;
+    }
+    .lecture-photo-wrap {
+      width: 240px; height: 240px;
+      border-radius: 50%; aspect-ratio: 1;
+      margin-bottom: 0;
+    }
+
+    .testi-grid { grid-template-columns: repeat(3, 1fr); }
+    .blog-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .newsletter-section { padding: 80px 60px; }
+    footer { padding: 34px 60px; }
   }
 </style>
 </head>
 <body>
+
+<!-- ACCESSIBILITY BAR -->
+<div class="a11y-bar" role="toolbar" aria-label="נגישות">
+  <span class="a11y-label">גודל טקסט</span>
+  <button class="a11y-btn" id="txt-down" aria-label="הקטן טקסט">א−</button>
+  <button class="a11y-btn reset" id="txt-reset" aria-label="איפוס">א</button>
+  <button class="a11y-btn" id="txt-up" aria-label="הגדל טקסט">א+</button>
+</div>
+
+<div id="page-content">
 
 <!-- NAV -->
 <nav>
@@ -611,6 +648,7 @@
     <li><a href="#about">אודות</a></li>
     <li><a href="#workshops" class="nav-cta">לחנות ←</a></li>
   </ul>
+  <a href="#workshops" class="nav-mobile-cta">לחנות ←</a>
 </nav>
 
 <!-- HERO -->
@@ -622,35 +660,36 @@
       יש מי שירפא לך<br>
       את <em>הפצע</em> הטכנולוגי
     </h1>
-    <p class="hero-lead">
-      המחשב שלך הוא לא סתם מכשיר.<br>
-      זה המקום שבו נמצאים כל החיים שלך.<br>
-      תמונות, מסמכים, עבודה, פרנסה.
-    </p>
-    <p class="hero-lead">
-      אני עומר, בוגר יחידת מחשבים של חיל האוויר.<br>
-      25 שנה בתחום, וכל יום אני עדיין אוהב מה שאני עושה.<br>
-      אני כאן כדי שתדע שיש מי לפנות אליו.
-    </p>
+    <div class="hero-lead">
+      <p>המחשב שלך הוא לא סתם מכשיר.</p>
+      <p>זה המקום שבו נמצאים כל החיים שלך.</p>
+      <p>תמונות, מסמכים, עבודה, פרנסה.</p>
+    </div>
+    <div class="hero-lead">
+      <p>אני עומר, בוגר יחידת מחשבים של חיל האוויר.</p>
+      <p>25 שנה בתחום, וכל יום אני עדיין אוהב מה שאני עושה.</p>
+      <p>אני כאן כדי שתדע שיש מי לפנות אליו.</p>
+    </div>
     <div class="hero-client-quote">
-      "עומר, אתה הדוקטור של חיי היום. באמת."
+      "עומר, אתה הדוקטור של חיי היום.
+      <br>באמת."
       <span class="hero-client-name">לקוחה, עורכת דין</span>
     </div>
     <div class="hero-actions">
-      <a href="#workshops" class="btn btn-primary">לכל ההדרכות ←</a>
-      <a href="#about" class="btn btn-secondary">קצת עליי</a>
+      <a href="#workshops" class="btn btn-primary btn-full">לכל ההדרכות ←</a>
+      <a href="#about" class="btn btn-secondary btn-full">קצת עליי</a>
     </div>
   </div>
 
   <div class="hero-visual">
     <div class="profile-card">
       <div class="float-sticker">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         זמין לתמיכה מרחוק
       </div>
       <div class="profile-top">
         <div class="profile-avatar">
-          <img src="img_hero.png" alt="עומר טייכר">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         </div>
         <div>
           <div class="profile-name">עומר טייכר</div>
@@ -667,7 +706,7 @@
       <div class="profile-stats">
         <div class="pstat">
           <div class="pstat-n">50+</div>
-          <div class="pstat-l">הרצאות שנתתי</div>
+          <div class="pstat-l">הרצאות</div>
         </div>
         <div class="pstat">
           <div class="pstat-n">25</div>
@@ -683,40 +722,40 @@
 </div>
 </div>
 
-<!-- PAIN SECTION — מדבר ישר לכאב -->
+<!-- PAIN -->
 <section class="pain-section">
   <div class="pain-inner">
-    <div class="section-eyebrow">אם זה מוכר לך, המקום שלך כאן</div>
+    <span class="section-eyebrow eyebrow-orange">אם זה מוכר לך, המקום שלך כאן</span>
     <h2 class="pain-title">המחשב לא עובד.<br>ואתה מרגיש שלקחו לך את הידיים.</h2>
 
     <div class="pain-grid">
       <div class="pain-card">
-        <span class="pain-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        </span>
+        <div class="pain-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
         <div class="pain-card-title">פחד ללחוץ על הכפתור הלא נכון</div>
         <div class="pain-card-desc">כל עדכון, כל חלון קופץ.<br>המחשבה "ומה אם אני אמחק משהו" מוכרת לך מדי יום.</div>
       </div>
       <div class="pain-card">
-        <span class="pain-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-        </span>
+        <div class="pain-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
         <div class="pain-card-title">כל החיים שלך במחשב</div>
         <div class="pain-card-desc">תמונות, מסמכים, אנשי קשר.<br>הפחד שמשהו ייעלם שמור שם בפנים, כל הזמן.</div>
       </div>
       <div class="pain-card">
-        <span class="pain-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </span>
+        <div class="pain-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
         <div class="pain-card-title">מנצלים את חוסר הידע שלך</div>
         <div class="pain-card-desc">חנויות שדוחפות ציוד מיותר.<br>טכנאים שמסבירים בשפה זרה ועוזבים אותך לא מבין.</div>
       </div>
       <div class="pain-card">
-        <span class="pain-icon">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
-        </span>
+        <div class="pain-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
         <div class="pain-card-title">שיתוק מוחלט כשהמחשב נתקע</div>
-        <div class="pain-card-desc">"זה כאילו פתאום המקרר לא עובד.<br>אבל זה יותר חמור, כי כל החיים במחשב, לא במקרר."</div>
+        <div class="pain-card-desc">"זה כאילו פתאום המקרר לא עובד.<br>אבל זה יותר חמור, כי כל החיים במחשב."</div>
       </div>
     </div>
 
@@ -731,18 +770,25 @@
 <section class="workshops-section" id="workshops">
   <div class="section-wrap">
     <div class="section-header">
-      <div class="section-eyebrow" style="color:var(--orange-deep);">הדרכות אינטראקטיביות</div>
+      <span class="section-eyebrow eyebrow-orange-deep">הדרכות אינטראקטיביות</span>
       <h2 class="section-title">לומדים עושים, לא צופים</h2>
-      <p class="section-sub">כל הדרכה היא חוויה שתוכל ליישם מיד.<br>לא PDF, לא סרטונים. אתה עושה בעצמך.</p>
+      <div class="section-sub">
+        <p>כל הדרכה היא חוויה שתוכל ליישם מיד.</p>
+        <p>לא PDF, לא סרטונים.</p>
+        <p>אתה עושה בעצמך.</p>
+      </div>
     </div>
 
     <div class="ws-grid">
       <div class="ws-card">
-        <span class="ws-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        </span>
+        <div class="ws-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
         <div class="ws-title">AI לכולם, ChatGPT, Claude וגוגל בשפה שלך</div>
-        <div class="ws-desc">הדרכה אינטראקטיבית שתלמד אותך להשתמש בכלי בינה מלאכותית.<br>בצורה פשוטה, בקצב שלך.</div>
+        <div class="ws-desc">
+          <p>הדרכה אינטראקטיבית שתלמד אותך להשתמש בכלי בינה מלאכותית.</p>
+          <p>בצורה פשוטה, בקצב שלך.</p>
+        </div>
         <div class="ws-footer">
           <div class="ws-price">₪47 <span>חד פעמי</span></div>
           <button class="ws-btn">לרכישה ←</button>
@@ -750,11 +796,14 @@
       </div>
 
       <div class="ws-card">
-        <span class="ws-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-        </span>
+        <div class="ws-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        </div>
         <div class="ws-title">לסדר את המחשב, ארגון קבצים, תיקיות וענן</div>
-        <div class="ws-desc">כל מה שצריך כדי למצוא כל קובץ תוך שניות.<br>ולעולם לא לאבד מסמך חשוב שוב.</div>
+        <div class="ws-desc">
+          <p>כל מה שצריך כדי למצוא כל קובץ תוך שניות.</p>
+          <p>ולעולם לא לאבד מסמך חשוב שוב.</p>
+        </div>
         <div class="ws-footer">
           <div class="ws-price">₪47 <span>חד פעמי</span></div>
           <button class="ws-btn">לרכישה ←</button>
@@ -762,11 +811,14 @@
       </div>
 
       <div class="ws-card">
-        <span class="ws-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </span>
+        <div class="ws-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
         <div class="ws-title">גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ</div>
-        <div class="ws-desc">איך לגלוש בלי פחד, לנהל סיסמאות נכון.<br>ולזהות הונאות לפני שהן פוגעות בך.</div>
+        <div class="ws-desc">
+          <p>איך לגלוש בלי פחד, לנהל סיסמאות נכון.</p>
+          <p>ולזהות הונאות לפני שהן פוגעות בך.</p>
+        </div>
         <div class="ws-footer">
           <div class="ws-price">₪47 <span>חד פעמי</span></div>
           <button class="ws-btn">לרכישה ←</button>
@@ -774,11 +826,14 @@
       </div>
 
       <div class="ws-card">
-        <span class="ws-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </span>
+        <div class="ws-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
         <div class="ws-title">גוגל מאלף עד תיו, Docs, Drive, Gmail ו-Slides</div>
-        <div class="ws-desc">כל כלי גוגל שאתה משתמש בו, במקום אחד.<br>בקצב שלך, עם תרגול מעשי.</div>
+        <div class="ws-desc">
+          <p>כל כלי גוגל שאתה משתמש בו, במקום אחד.</p>
+          <p>בקצב שלך, עם תרגול מעשי.</p>
+        </div>
         <div class="ws-footer">
           <div class="ws-price">₪97 <span>חד פעמי</span></div>
           <button class="ws-btn">לרכישה ←</button>
@@ -792,31 +847,73 @@
 <section class="about-section" id="about">
   <div class="section-wrap">
     <div class="about-inner">
+      <div class="about-img-wrap">
+        <div class="about-img-placeholder">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#a8c5d6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          התמונה שלך כאן
+        </div>
+      </div>
+
       <div class="about-body">
-        <div class="section-eyebrow about-eyebrow">אודות</div>
-        <h2 class="about-title">מגיל 16 אני מתקן מחשבים. עדיין אוהב כל רגע.</h2>
-        <p>אני בן 40 מראשון לציון.<br>התחלתי להתעסק במחשבים עוד כשזה היה נחלת החנונים בלבד.</p>
-        <p>בוגר בית הספר למקצועות המחשב בצה"ל.<br>שירתי ביחידת המחשבים של חיל האוויר.<br>מעל שני עשורים אני מלמד ומתקן מחשבים.</p>
-        <p>הקמתי את קבוצת הפייסבוק <strong>"תשאל טכנאי מחשבים"</strong>, אחת הגדולות בישראל בתחום.<br>עשיתי 50 הרצאות בזום ועוד.</p>
-        <p>הסוד שלי פשוט.<br><strong>סבלנות אינסופית, בלי שיפוטיות, בשפה שלך.</strong><br>לילדים שלהם אין סבלנות להסביר, אז מישהו צריך.</p>
+        <span class="section-eyebrow about-eyebrow eyebrow-orange-deep">אודות</span>
+        <h2 class="about-title">מגיל 16 אני מתקן מחשבים.</h2>
+        <p>אני בן 40 מראשון לציון.</p>
+        <p>התחלתי להתעסק במחשבים עוד כשזה היה נחלת החנונים בלבד.</p>
+        <p>בוגר בית הספר למקצועות המחשב בצה"ל.</p>
+        <p>שירתי ביחידת המחשבים של חיל האוויר.</p>
+        <p>מעל שני עשורים אני מלמד ומתקן מחשבים.</p>
+        <p>הקמתי את קבוצת הפייסבוק <strong>"תשאל טכנאי מחשבים"</strong>, אחת הגדולות בישראל בתחום.</p>
+        <p>הסוד שלי פשוט.</p>
+        <p><strong>סבלנות אינסופית, בלי שיפוטיות, בשפה שלך.</strong></p>
+        <p>לילדים שלהם אין סבלנות להסביר, אז מישהו צריך.</p>
         <br>
         <a href="#workshops" class="btn btn-primary">לכל ההדרכות שלי ←</a>
-      </div>
 
-      <div class="about-img-wrap">
-        <img src="img_about.png" alt="עומר טייכר בפארק">
+        <div class="about-card">
+          <div class="about-card-quote">
+            "עומר הוא לא רק טכנאי מחשבים תותח, הוא גם בן אדם זהב.
+            <br>תוך שניות הוא קלט בעיה שלא שמתי לב אליה בכלל."
+          </div>
+          <div class="about-credentials">
+            <div class="credential">
+              <div class="cred-check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              בוגר יחידת מחשבים, חיל האוויר
+            </div>
+            <div class="credential">
+              <div class="cred-check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              25 שנות ניסיון בטכנאות ובהדרכה
+            </div>
+            <div class="credential">
+              <div class="cred-check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              מייסד "תשאל טכנאי מחשבים"
+            </div>
+            <div class="credential">
+              <div class="cred-check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              50 הרצאות בפלטפורמת ביז ומעלה
+            </div>
+            <div class="credential">
+              <div class="cred-check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              תמיכה מרחוק, TeamViewer ו-AnyDesk
+            </div>
+            <div class="credential">
+              <div class="cred-check">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              ייעוץ אובייקטיבי, לא מוכר חומרה
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <!-- credentials strip -->
-    <div style="margin-top:48px; display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:14px;">
-      <div class="credential">בוגר יחידת מחשבים, חיל האוויר</div>
-      <div class="credential">25 שנות ניסיון בטכנאות ובהדרכה</div>
-      <div class="credential">מייסד "תשאל טכנאי מחשבים"</div>
-      <div class="credential">50 הרצאות בפלטפורמת ביז ומעלה</div>
-      <div class="credential">תמיכה מרחוק, TeamViewer ו-AnyDesk</div>
-      <div class="credential">ייעוץ אובייקטיבי, לא מוכר חומרה</div>
-    </div>
     </div>
   </div>
 </section>
@@ -826,20 +923,23 @@
   <div class="section-wrap">
     <div class="lecture-box">
       <div>
+        <div class="lecture-photo-wrap">
+          <div class="lecture-photo-placeholder">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            תמונה מההרצאה
+          </div>
+        </div>
         <div class="lecture-badge">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-left:4px;"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           ההרצאה הבאה שלי
         </div>
         <div class="lecture-title">מה AI יכול לעשות בשבילך,<br>ומה לעולם לא</div>
-        <p class="lecture-desc">הרצאה חיה שתסביר בפשטות מה הבינה המלאכותית יכולה לעשות עבורך היום.<br>בלי מילים מסובכות, בלי ידע טכני מוקדם.</p>
-      </div>
-      <div class="lecture-photo">
-        <img src="img_laptop.png" alt="עומר טייכר">
-      </div>
-      <div class="lecture-action">
+        <div class="lecture-desc">
+          <p>הרצאה חיה שתסביר בפשטות מה הבינה המלאכותית יכולה לעשות עבורך היום.</p>
+          <p>בלי מילים מסובכות, בלי ידע טכני מוקדם.</p>
+        </div>
         <div class="lecture-price">כרטיס: <strong>₪150</strong></div>
-        <a href="#" class="btn btn-primary">לשמירת מקום ←</a>
-        <span style="font-size:0.76rem;color:rgba(255,255,255,0.45);">כמות מקומות מוגבלת</span>
+        <a href="#" class="btn btn-primary btn-full">לשמירת מקום ←</a>
       </div>
     </div>
   </div>
@@ -849,45 +949,30 @@
 <section class="testi-section">
   <div class="section-wrap">
     <div class="section-header">
-      <div class="section-eyebrow" style="color:var(--orange-deep);">מה אומרים</div>
+      <span class="section-eyebrow eyebrow-orange-deep">מה אומרים</span>
       <h2 class="section-title">בשפה שלהם</h2>
     </div>
 
     <div class="featured-quote-wrap">
-      <div class="featured-quote-text">"בגלל שאני כל כך תמימה לכולם, מנצלים אותי. בגלל זה אני מאוד סומכת עליך, ואלוהים שלח אותך."</div>
+      <div class="featured-quote-text">"בגלל שאני כל כך תמימה לכולם, מנצלים אותי.<br>בגלל זה אני מאוד סומכת עליך, ואלוהים שלח אותך."</div>
       <div class="featured-quote-attr">לקוחה קבועה</div>
     </div>
 
     <div class="testi-grid">
       <div class="testi-card">
-        <div class="testi-card-top">
-          <div class="testi-photo"><img src="img_client1.png" alt="לקוחה"></div>
-          <div>
-            <div class="testi-stars">★★★★★</div>
-            <div class="testi-name">רותי, מעצבת פנים</div>
-          </div>
-        </div>
-        <div class="testi-text">"עומר מקצוען ורהוט, מסביר עד שמבינים. לא גרם לי להרגיש טיפשה אפילו פעם אחת."</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"עומר מקצוען ורהוט, מסביר עד שמבינים.<br>לא גרם לי להרגיש טיפשה אפילו פעם אחת."</div>
+        <div class="testi-name">רותי, מעצבת פנים</div>
       </div>
       <div class="testi-card">
-        <div class="testi-card-top">
-          <div class="testi-photo"><img src="img_client2.png" alt="לקוחה"></div>
-          <div>
-            <div class="testi-stars">★★★★★</div>
-            <div class="testi-name">מרים, גמלאית</div>
-          </div>
-        </div>
-        <div class="testi-text">"השתתפתי בהרצאה הרביעית שלי אצל עומר. מסודר, מאורגן, ונותן טיפים פרקטיים שלא הכרתי."</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"ממליץ בחום.<br>פניתי עם מספר בעיות במחשב, טיפל בכל הנושאים במהירות, מקצועיות ויעילות."</div>
+        <div class="testi-name">יוסי, יועץ עסקי</div>
       </div>
       <div class="testi-card">
-        <div class="testi-card-top">
-          <div class="testi-photo"><img src="img_hero.png" alt="לקוח"></div>
-          <div>
-            <div class="testi-stars">★★★★★</div>
-            <div class="testi-name">יוסי, יועץ עסקי</div>
-          </div>
-        </div>
-        <div class="testi-text">"ממליץ בחום. פניתי עם מספר בעיות במחשב, טיפל בכל הנושאים במהירות, מקצועיות ויעילות."</div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"השתתפתי בהרצאה הרביעית שלי אצל עומר.<br>מסודר, מאורגן, ונותן טיפים פרקטיים שלא הכרתי."</div>
+        <div class="testi-name">מרים, גמלאית</div>
       </div>
     </div>
   </div>
@@ -897,27 +982,36 @@
 <section class="blog-section" id="blog">
   <div class="section-wrap">
     <div class="section-header">
-      <div class="section-eyebrow" style="color:var(--orange-deep);">הבלוג שלי</div>
+      <span class="section-eyebrow eyebrow-orange-deep">הבלוג שלי</span>
       <h2 class="section-title">טיפים שאני כותב בשבילך</h2>
-      <p class="section-sub">דברים שלמדתי מ25 שנה בשטח.<br>כתובים בפשטות, בלי מילים מסובכות.</p>
+      <div class="section-sub">
+        <p>דברים שלמדתי מ25 שנה בשטח.</p>
+        <p>כתובים בפשטות, בלי מילים מסובכות.</p>
+      </div>
     </div>
     <div class="blog-grid">
       <a class="blog-card" href="#">
         <div class="blog-tag">אבטחה</div>
         <div class="blog-title">5 דברים שצריך לסדר במחשב שלך עכשיו, לפני שמשהו ייעלם</div>
-        <div class="blog-excerpt">אם המחשב שלך איטי, מבולגן או מלא בתוספות שלא התקנת, אחד מהדברים האלה הוא הסיבה.</div>
+        <div class="blog-excerpt">
+          <p>אם המחשב שלך איטי, מבולגן או מלא בתוספות שלא התקנת, אחד מהדברים האלה הוא הסיבה.</p>
+        </div>
         <div class="blog-meta">4 דקות קריאה, 3 בינואר</div>
       </a>
       <a class="blog-card" href="#">
         <div class="blog-tag">AI</div>
         <div class="blog-title">ChatGPT לא נועד רק לצעירים, 3 דברים שאפשר לעשות איתו היום</div>
-        <div class="blog-excerpt">שלושה שימושים פשוטים שאנשים בכל גיל כבר מיישמים, וגם אתה יכול להתחיל עוד היום.</div>
+        <div class="blog-excerpt">
+          <p>שלושה שימושים פשוטים שאנשים בכל גיל כבר מיישמים, וגם אתה יכול להתחיל עוד היום.</p>
+        </div>
         <div class="blog-meta">5 דקות קריאה, 28 דצמבר</div>
       </a>
       <a class="blog-card" href="#">
         <div class="blog-tag">טיפ מהיר</div>
         <div class="blog-title">למה הסיסמה שלך מסכנת אותך, וכיצד לתקן את זה ב5 דקות</div>
-        <div class="blog-excerpt">טיפ אחד קטן שיכול לחסוך לך הרבה כאב ראש ולהגן על כל המידע שלך.</div>
+        <div class="blog-excerpt">
+          <p>טיפ אחד קטן שיכול לחסוך לך הרבה כאב ראש ולהגן על כל המידע שלך.</p>
+        </div>
         <div class="blog-meta">3 דקות קריאה, 21 דצמבר</div>
       </a>
     </div>
@@ -927,9 +1021,13 @@
 <!-- NEWSLETTER -->
 <section class="newsletter-section">
   <div class="newsletter-inner">
-    <div class="section-eyebrow">ניוזלטר</div>
+    <span class="section-eyebrow eyebrow-orange">ניוזלטר</span>
     <h2 class="nl-title">טיפ שבועי שמגיע ישר למייל</h2>
-    <p class="nl-sub">בלי ספאם. טיפ אחד, כל שבוע.<br>דברים שאני בעצמי מיישם ומלמד.</p>
+    <div class="nl-sub">
+      <p>בלי ספאם.</p>
+      <p>טיפ אחד, כל שבוע.</p>
+      <p>דברים שאני בעצמי מיישם ומלמד.</p>
+    </div>
     <div class="nl-form">
       <input class="nl-input" type="email" placeholder="המייל שלך" />
       <button class="btn btn-primary">הירשם ←</button>
@@ -939,7 +1037,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <a class="logo" href="#">עומר <span>טייכר</span></a>
+  <a class="footer-logo" href="#">עומר <span>טייכר</span></a>
   <div class="footer-copy">© 2025 כל הזכויות שמורות</div>
   <div class="footer-links">
     <a href="#">מדיניות פרטיות</a>
@@ -947,6 +1045,22 @@
     <a href="#">צור קשר</a>
   </div>
 </footer>
+
+</div><!-- end page-content -->
+
+<script>
+  const content = document.getElementById('page-content');
+  let scale = 1;
+
+  function applyScale(s) {
+    scale = Math.min(1.5, Math.max(0.8, parseFloat(s.toFixed(1))));
+    content.style.zoom = scale;
+  }
+
+  document.getElementById('txt-up').addEventListener('click', () => applyScale(scale + 0.1));
+  document.getElementById('txt-down').addEventListener('click', () => applyScale(scale - 0.1));
+  document.getElementById('txt-reset').addEventListener('click', () => applyScale(1));
+</script>
 
 </body>
 </html>
