@@ -208,7 +208,7 @@
   .pain-inner { max-width: 1100px; margin: 0 auto; }
 
   .section-eyebrow {
-    font-size: 0.68rem; font-weight: 700; letter-spacing: 2px;
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.8px;
     text-transform: uppercase; margin-bottom: 12px; display: block;
   }
   .eyebrow-orange { color: var(--orange); }
@@ -272,8 +272,11 @@
     border-radius: 18px; padding: 24px;
     background: var(--cream);
     transition: all 0.25s;
+    display: flex; flex-direction: column;
   }
   .ws-card:hover { box-shadow: 0 12px 32px var(--shadow); border-color: var(--orange-deep); background: var(--white); }
+  .ws-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 0; flex: 1; }
+  .ws-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
 
   .ws-icon {
     display: flex; align-items: center; justify-content: center;
@@ -283,9 +286,6 @@
   }
 
   .ws-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.4; }
-  .ws-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 20px; }
-
-  .ws-footer { display: flex; align-items: center; justify-content: space-between; }
   .ws-price { font-size: 1.1rem; font-weight: 800; color: var(--orange-deep); }
   .ws-price span { font-size: 0.7rem; color: var(--text-light); font-weight: 400; }
 
@@ -546,7 +546,45 @@
     background: rgba(246,166,126,0.1);
   }
 
-  /* ===== ANIMATIONS ===== */
+  /* SVG arrow in buttons */
+  .btn-arrow { display:inline-flex; align-items:center; gap:10px; }
+  .btn-arrow svg { transition: transform 0.2s; }
+  .btn-primary:hover .btn-arrow svg,
+  .btn-secondary:hover .btn-arrow svg { transform: translateX(4px); }
+
+  /* Eyebrow larger for older audience */
+  .section-eyebrow {
+    font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; margin-bottom: 14px; display: block;
+  }
+
+  /* Demo box */
+  .demo-box {
+    margin-top: 32px;
+    border: 2px dashed var(--orange);
+    border-radius: 18px;
+    padding: 24px;
+    background: var(--orange-light);
+  }
+  .demo-box-title {
+    font-size: 0.82rem; font-weight: 700; color: var(--orange-deep);
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .demo-question {
+    background: var(--white); border-radius: 12px; padding: 16px 18px;
+    font-size: 0.95rem; color: var(--navy); font-weight: 500;
+    margin-bottom: 10px; border: 1px solid var(--border);
+    cursor: pointer; transition: border-color 0.2s;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .demo-question:hover { border-color: var(--orange-deep); }
+  .demo-answer {
+    background: var(--navy-light); border-radius: 12px; padding: 14px 18px;
+    font-size: 0.88rem; color: var(--navy); line-height: 1.8;
+    display: none; margin-bottom: 10px;
+  }
+  .demo-answer.open { display: block; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
   .hero { animation: fadeUp 0.6s ease both; }
 
@@ -646,9 +684,9 @@
     <li><a href="#lecture">הרצאה הבאה</a></li>
     <li><a href="#blog">טיפים</a></li>
     <li><a href="#about">אודות</a></li>
-    <li><a href="#workshops" class="nav-cta">לחנות ←</a></li>
+    <li><a href="#workshops" class="nav-cta"><span class="btn-arrow">לחנות <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a></li>
   </ul>
-  <a href="#workshops" class="nav-mobile-cta">לחנות ←</a>
+  <a href="#workshops" class="nav-mobile-cta"><span class="btn-arrow">לחנות <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
 </nav>
 
 <!-- HERO -->
@@ -657,26 +695,31 @@
   <div class="hero-text">
     <div class="hero-eyebrow">טכנאי ומדריך מחשבים, ראשון לציון</div>
     <h1>
-      יש מי שירפא לך<br>
-      את <em>הפצע</em> הטכנולוגי
+      יש מי שירפא<br>
+      את <em>הפצע הטכנולוגי</em> שלכם
     </h1>
     <div class="hero-lead">
-      <p>המחשב שלך הוא לא סתם מכשיר.</p>
-      <p>זה המקום שבו נמצאים כל החיים שלך.</p>
+      <p>המחשב שלכם הוא לא סתם מכשיר.</p>
+      <p>זה המקום שבו נמצאים כל החיים שלכם.</p>
       <p>תמונות, מסמכים, עבודה, פרנסה.</p>
     </div>
     <div class="hero-lead">
       <p>אני עומר, בוגר יחידת מחשבים של חיל האוויר.</p>
       <p>25 שנה בתחום, וכל יום אני עדיין אוהב מה שאני עושה.</p>
-      <p>אני כאן כדי שתדע שיש מי לפנות אליו.</p>
+      <p>אני כאן כדי שתדעו שיש למי לפנות.</p>
     </div>
     <div class="hero-client-quote">
-      "עומר, אתה הדוקטור של חיי היום.
+      "עומר, אתה הדוקטור של המחשב שלי.
       <br>באמת."
       <span class="hero-client-name">לקוחה, עורכת דין</span>
     </div>
     <div class="hero-actions">
-      <a href="#workshops" class="btn btn-primary btn-full">לכל ההדרכות ←</a>
+      <a href="#workshops" class="btn btn-primary btn-full">
+        <span class="btn-arrow">
+          לכל ההדרכות
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
+        </span>
+      </a>
       <a href="#about" class="btn btn-secondary btn-full">קצת עליי</a>
     </div>
   </div>
@@ -701,7 +744,7 @@
         <span class="tag">25 שנות ניסיון</span>
         <span class="tag">מדריך AI</span>
         <span class="tag">תמיכה מרחוק</span>
-        <span class="tag">קהילת תשאל טכנאי</span>
+        <span class="tag">מייסד קהילת "תשאל טכנאי מחשבים" בפייסבוק</span>
       </div>
       <div class="profile-stats">
         <div class="pstat">
@@ -709,7 +752,7 @@
           <div class="pstat-l">הרצאות</div>
         </div>
         <div class="pstat">
-          <div class="pstat-n">25</div>
+          <div class="pstat-n">25+</div>
           <div class="pstat-l">שנות ניסיון</div>
         </div>
         <div class="pstat">
@@ -725,8 +768,8 @@
 <!-- PAIN -->
 <section class="pain-section">
   <div class="pain-inner">
-    <span class="section-eyebrow eyebrow-orange">אם זה מוכר לך, המקום שלך כאן</span>
-    <h2 class="pain-title">המחשב לא עובד.<br>ואתה מרגיש שלקחו לך את הידיים.</h2>
+    <span class="section-eyebrow eyebrow-orange" style="font-size:1rem;">אם זה מוכר לכם, המקום שלכם כאן</span>
+    <h2 class="pain-title">המחשב לא עובד.<br>ואתם מרגישים שלקחו לכם את הידיים.</h2>
 
     <div class="pain-grid">
       <div class="pain-card">
@@ -734,21 +777,21 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         </div>
         <div class="pain-card-title">פחד ללחוץ על הכפתור הלא נכון</div>
-        <div class="pain-card-desc">כל עדכון, כל חלון קופץ.<br>המחשבה "ומה אם אני אמחק משהו" מוכרת לך מדי יום.</div>
+        <div class="pain-card-desc">כל עדכון, כל חלון קופץ.<br>המחשבה "ומה אם נמחק משהו" מוכרת לכם מדי יום.</div>
       </div>
       <div class="pain-card">
         <div class="pain-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <div class="pain-card-title">כל החיים שלך במחשב</div>
+        <div class="pain-card-title">כל החיים שלכם במחשב</div>
         <div class="pain-card-desc">תמונות, מסמכים, אנשי קשר.<br>הפחד שמשהו ייעלם שמור שם בפנים, כל הזמן.</div>
       </div>
       <div class="pain-card">
         <div class="pain-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <div class="pain-card-title">מנצלים את חוסר הידע שלך</div>
-        <div class="pain-card-desc">חנויות שדוחפות ציוד מיותר.<br>טכנאים שמסבירים בשפה זרה ועוזבים אותך לא מבין.</div>
+        <div class="pain-card-title">מנצלים את חוסר הידע שלכם</div>
+        <div class="pain-card-desc">חנויות שדוחפות ציוד מיותר.<br>טכנאים שמדברים טכנולוגית ומשאירים אתכם עם יותר שאלות מתשובות.</div>
       </div>
       <div class="pain-card">
         <div class="pain-icon">
@@ -760,7 +803,7 @@
     </div>
 
     <div class="pain-quote">
-      <div class="pain-quote-text">"יש לי כזה ביטחון היום שכל מה שיקרה לי במחשב או בטלפון, יש מי שירפה לי את הפצע."</div>
+      <div class="pain-quote-text">"יש לי ביטחון מלא שכל מה שיקרה לי במחשב או בטלפון, יש מי שירפא לי את הפצע."</div>
       <div class="pain-quote-attr">לקוחה קבועה, מעצבת פנים</div>
     </div>
   </div>
@@ -770,12 +813,12 @@
 <section class="workshops-section" id="workshops">
   <div class="section-wrap">
     <div class="section-header">
-      <span class="section-eyebrow eyebrow-orange-deep">הדרכות אינטראקטיביות</span>
-      <h2 class="section-title">לומדים עושים, לא צופים</h2>
+      <span class="section-eyebrow eyebrow-orange-deep">הדרכות</span>
+      <h2 class="section-title">הדרכות אינטראקטיביות קצרות</h2>
       <div class="section-sub">
-        <p>כל הדרכה היא חוויה שתוכל ליישם מיד.</p>
-        <p>לא PDF, לא סרטונים.</p>
-        <p>אתה עושה בעצמך.</p>
+        <p>לומדים דרך עשייה, לא צפייה.</p>
+        <p>בכל הדרכה אתם עושים בעצמכם, צעד אחרי צעד.</p>
+        <p>חוויה שאפשר ליישם מיד.</p>
       </div>
     </div>
 
@@ -784,14 +827,16 @@
         <div class="ws-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         </div>
-        <div class="ws-title">AI לכולם, ChatGPT, Claude וגוגל בשפה שלך</div>
+        <div class="ws-title">AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם</div>
         <div class="ws-desc">
-          <p>הדרכה אינטראקטיבית שתלמד אותך להשתמש בכלי בינה מלאכותית.</p>
-          <p>בצורה פשוטה, בקצב שלך.</p>
+          <p>הדרכה שתלמד אתכם להשתמש בכלי בינה מלאכותית.</p>
+          <p>בצורה פשוטה, בקצב שלכם.</p>
         </div>
         <div class="ws-footer">
           <div class="ws-price">₪47 <span>חד פעמי</span></div>
-          <button class="ws-btn">לרכישה ←</button>
+          <button class="ws-btn">
+            <span class="btn-arrow">להצטרפות להדרכה <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+          </button>
         </div>
       </div>
 
@@ -806,7 +851,9 @@
         </div>
         <div class="ws-footer">
           <div class="ws-price">₪47 <span>חד פעמי</span></div>
-          <button class="ws-btn">לרכישה ←</button>
+          <button class="ws-btn">
+            <span class="btn-arrow">להצטרפות להדרכה <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+          </button>
         </div>
       </div>
 
@@ -817,11 +864,13 @@
         <div class="ws-title">גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ</div>
         <div class="ws-desc">
           <p>איך לגלוש בלי פחד, לנהל סיסמאות נכון.</p>
-          <p>ולזהות הונאות לפני שהן פוגעות בך.</p>
+          <p>ולזהות הונאות לפני שהן פוגעות בכם.</p>
         </div>
         <div class="ws-footer">
           <div class="ws-price">₪47 <span>חד פעמי</span></div>
-          <button class="ws-btn">לרכישה ←</button>
+          <button class="ws-btn">
+            <span class="btn-arrow">להצטרפות להדרכה <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+          </button>
         </div>
       </div>
 
@@ -829,14 +878,16 @@
         <div class="ws-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <div class="ws-title">גוגל מאלף עד תיו, Docs, Drive, Gmail ו-Slides</div>
+        <div class="ws-title">גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides</div>
         <div class="ws-desc">
-          <p>כל כלי גוגל שאתה משתמש בו, במקום אחד.</p>
-          <p>בקצב שלך, עם תרגול מעשי.</p>
+          <p>כל כלי גוגל שאתם משתמשים בו, במקום אחד.</p>
+          <p>בקצב שלכם, עם תרגול מעשי.</p>
         </div>
         <div class="ws-footer">
           <div class="ws-price">₪97 <span>חד פעמי</span></div>
-          <button class="ws-btn">לרכישה ←</button>
+          <button class="ws-btn">
+            <span class="btn-arrow">להצטרפות להדרכה <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+          </button>
         </div>
       </div>
     </div>
@@ -854,17 +905,18 @@
       <div class="about-body">
         <span class="section-eyebrow about-eyebrow eyebrow-orange-deep">אודות</span>
         <h2 class="about-title">מגיל 16 אני מתקן מחשבים.</h2>
-        <p>אני בן 40 מראשון לציון.</p>
-        <p>התחלתי להתעסק במחשבים עוד כשזה היה נחלת החנונים בלבד.</p>
-        <p>בוגר בית הספר למקצועות המחשב בצה"ל.</p>
-        <p>שירתי ביחידת המחשבים של חיל האוויר.</p>
-        <p>מעל שני עשורים אני מלמד ומתקן מחשבים.</p>
-        <p>הקמתי את קבוצת הפייסבוק <strong>"תשאל טכנאי מחשבים"</strong>, אחת הגדולות בישראל בתחום.</p>
-        <p>הסוד שלי פשוט.</p>
-        <p><strong>סבלנות אינסופית, בלי שיפוטיות, בשפה שלך.</strong></p>
-        <p>לילדים שלהם אין סבלנות להסביר, אז מישהו צריך.</p>
+        <p>אני בן 40 מראשון לציון.
+        התחלתי להתעסק במחשבים עוד כשזה היה נחלת החנונים בלבד.
+        בוגר בית הספר למקצועות המחשב בצה"ל, ושירתי ביחידת המחשבים של חיל האוויר.</p>
+        <p>מעל שני עשורים אני מלמד ומתקן מחשבים.
+        הקמתי את קבוצת הפייסבוק <strong>"תשאל טכנאי מחשבים"</strong>, אחת הגדולות בישראל בתחום.</p>
+        <p>הסוד שלי פשוט.<br>
+        <strong>סבלנות אינסופית, בלי שיפוטיות, בשפה שלכם.</strong><br>
+        לילדים שלהם אין סבלנות להסביר, אז מישהו צריך.</p>
         <br>
-        <a href="#workshops" class="btn btn-primary">לכל ההדרכות שלי ←</a>
+        <a href="#workshops" class="btn btn-primary">
+          <span class="btn-arrow">לכל ההדרכות שלי <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+        </a>
 
         <div class="about-card">
           <div class="about-card-quote">
@@ -920,20 +972,19 @@
   <div class="section-wrap">
     <div class="lecture-box">
       <div>
-        <div class="lecture-photo-wrap">
-          <img src="images/client-session.webp" alt="עומר טייכר בהרצאה">
-        </div>
         <div class="lecture-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           ההרצאה הבאה שלי
         </div>
-        <div class="lecture-title">מה AI יכול לעשות בשבילך,<br>ומה לעולם לא</div>
+        <div class="lecture-title">מה AI יכול לעשות בשבילכם,<br>ומה לעולם לא</div>
         <div class="lecture-desc">
-          <p>הרצאה חיה שתסביר בפשטות מה הבינה המלאכותית יכולה לעשות עבורך היום.</p>
+          <p>הרצאה חיה שתסביר בפשטות מה הבינה המלאכותית יכולה לעשות עבורכם היום.</p>
           <p>בלי מילים מסובכות, בלי ידע טכני מוקדם.</p>
         </div>
         <div class="lecture-price">כרטיס: <strong>₪150</strong></div>
-        <a href="#" class="btn btn-primary btn-full">לשמירת מקום ←</a>
+        <a href="#" class="btn btn-primary btn-full">
+          <span class="btn-arrow">לשמירת מקום <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+        </a>
       </div>
     </div>
   </div>
@@ -948,7 +999,7 @@
     </div>
 
     <div class="featured-quote-wrap">
-      <img src="images/remote.webp" alt="תמיכה מרחוק" style="width:100%;border-radius:12px;margin-bottom:24px;object-fit:cover;max-height:260px;">
+      <img src="images/remote.webp" alt="תמיכה מרחוק" style="width:100%;border-radius:12px;margin-bottom:24px;object-fit:contain;background:#0f2a3a;">
       <div class="featured-quote-text">"בגלל שאני כל כך תמימה לכולם, מנצלים אותי.<br>בגלל זה אני מאוד סומכת עליך, ואלוהים שלח אותך."</div>
       <div class="featured-quote-attr">לקוחה קבועה</div>
     </div>
@@ -978,18 +1029,18 @@
   <div class="section-wrap">
     <div class="section-header">
       <span class="section-eyebrow eyebrow-orange-deep">הבלוג שלי</span>
-      <h2 class="section-title">טיפים שאני כותב בשבילך</h2>
+      <h2 class="section-title">טיפים שאני כותב בשבילכם</h2>
       <div class="section-sub">
-        <p>דברים שלמדתי מ25 שנה בשטח.</p>
+        <p>דברים שלמדתי מ-25 שנה בשטח.</p>
         <p>כתובים בפשטות, בלי מילים מסובכות.</p>
       </div>
     </div>
     <div class="blog-grid">
       <a class="blog-card" href="#">
         <div class="blog-tag">אבטחה</div>
-        <div class="blog-title">5 דברים שצריך לסדר במחשב שלך עכשיו, לפני שמשהו ייעלם</div>
+        <div class="blog-title">עזרה ראשונה למחשב, 5 פעולות שיצילו לכם את המידע</div>
         <div class="blog-excerpt">
-          <p>אם המחשב שלך איטי, מבולגן או מלא בתוספות שלא התקנת, אחד מהדברים האלה הוא הסיבה.</p>
+          <p>אם המחשב שלכם איטי, מבולגן או מלא בתוספות שלא התקנתם, אחד מהדברים האלה הוא הסיבה.</p>
         </div>
         <div class="blog-meta">4 דקות קריאה, 3 בינואר</div>
       </a>
@@ -997,15 +1048,15 @@
         <div class="blog-tag">AI</div>
         <div class="blog-title">ChatGPT לא נועד רק לצעירים, 3 דברים שאפשר לעשות איתו היום</div>
         <div class="blog-excerpt">
-          <p>שלושה שימושים פשוטים שאנשים בכל גיל כבר מיישמים, וגם אתה יכול להתחיל עוד היום.</p>
+          <p>שלושה שימושים פשוטים שאנשים בכל גיל כבר מיישמים, וגם אתם יכולים להתחיל עוד היום.</p>
         </div>
         <div class="blog-meta">5 דקות קריאה, 28 דצמבר</div>
       </a>
       <a class="blog-card" href="#">
         <div class="blog-tag">טיפ מהיר</div>
-        <div class="blog-title">למה הסיסמה שלך מסכנת אותך, וכיצד לתקן את זה ב5 דקות</div>
+        <div class="blog-title">למה הסיסמה שלכם מסכנת אתכם, וכיצד לתקן את זה ב-5 דקות</div>
         <div class="blog-excerpt">
-          <p>טיפ אחד קטן שיכול לחסוך לך הרבה כאב ראש ולהגן על כל המידע שלך.</p>
+          <p>טיפ אחד קטן שיכול לחסוך לכם הרבה כאב ראש ולהגן על כל המידע שלכם.</p>
         </div>
         <div class="blog-meta">3 דקות קריאה, 21 דצמבר</div>
       </a>
@@ -1013,27 +1064,10 @@
   </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter-section">
-  <div class="newsletter-inner">
-    <span class="section-eyebrow eyebrow-orange">ניוזלטר</span>
-    <h2 class="nl-title">טיפ שבועי שמגיע ישר למייל</h2>
-    <div class="nl-sub">
-      <p>בלי ספאם.</p>
-      <p>טיפ אחד, כל שבוע.</p>
-      <p>דברים שאני בעצמי מיישם ומלמד.</p>
-    </div>
-    <div class="nl-form">
-      <input class="nl-input" type="email" placeholder="המייל שלך" />
-      <button class="btn btn-primary">הירשם ←</button>
-    </div>
-  </div>
-</section>
-
 <!-- FOOTER -->
 <footer>
   <a class="footer-logo" href="#">עומר <span>טייכר</span></a>
-  <div class="footer-copy">© 2025 כל הזכויות שמורות</div>
+  <div class="footer-copy">© 2026 כל הזכויות שמורות</div>
   <div class="footer-links">
     <a href="#">מדיניות פרטיות</a>
     <a href="#">תנאי שימוש</a>
@@ -1049,12 +1083,17 @@
 
   function applyScale(s) {
     scale = Math.min(1.5, Math.max(0.8, parseFloat(s.toFixed(1))));
-    content.style.zoom = scale;
+    document.documentElement.style.fontSize = (scale * 16) + 'px';
   }
 
   document.getElementById('txt-up').addEventListener('click', () => applyScale(scale + 0.1));
   document.getElementById('txt-down').addEventListener('click', () => applyScale(scale - 0.1));
   document.getElementById('txt-reset').addEventListener('click', () => applyScale(1));
+
+  function toggleDemo(el) {
+    const answer = el.nextElementSibling;
+    answer.classList.toggle('open');
+  }
 </script>
 
 </body>
