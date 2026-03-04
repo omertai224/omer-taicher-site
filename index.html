@@ -604,35 +604,8 @@
     border-color: rgba(255,255,255,0.2);
     background: rgba(255,255,255,0.05);
   }
-  /* On desktop: a11y bar sits inside the nav, centered */
-  @media (min-width: 960px) {
-    .a11y-bar {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      padding: 7px 18px;
-      gap: 8px;
-      box-shadow: none;
-      border-color: rgba(246,166,126,0.3);
-      background: rgba(26,74,107,0.08);
-      backdrop-filter: none;
-    }
-    .a11y-bar .a11y-label { color: var(--navy-mid); }
-    .a11y-btn {
-      width: 30px; height: 30px;
-      font-size: 12px;
-      background: transparent;
-      border-color: rgba(26,74,107,0.2);
-      color: var(--navy);
-    }
-    .a11y-btn:hover {
-      background: var(--orange-light);
-      border-color: var(--orange-deep);
-      color: var(--orange-deep);
-    }
-    .a11y-btn.reset { color: var(--text-light); }
-  }
+  /* On desktop: hide a11y bar */
+  @media (min-width: 960px) { .a11y-bar { display: none; } }
 
   /* SVG arrow in buttons */
   .btn-arrow { display:inline-flex; align-items:center; gap:10px; }
@@ -691,7 +664,6 @@
     .nl-input { flex: 1; }
 
     .ws-grid { grid-template-columns: 1fr 1fr; display: grid; }
-    .a11y-bar { top: 12px; }
     .testi-grid { display: grid; grid-template-columns: 1fr 1fr; }
     .blog-grid { display: grid; grid-template-columns: 1fr 1fr; }
   }
