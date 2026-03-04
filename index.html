@@ -61,6 +61,74 @@
 
   .nav-links { display: none; }
 
+
+  /* ===== HAMBURGER MENU ===== */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 6px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .hamburger:hover { background: var(--navy-light); }
+  .hamburger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: var(--navy);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 0; left: 0;
+    background: rgba(253,248,242,0.98);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px 24px;
+    z-index: 99;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: 0 8px 32px rgba(26,74,107,0.1);
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    display: block;
+    padding: 14px 16px;
+    color: var(--navy);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: background 0.2s;
+  }
+  .mobile-menu a:hover { background: var(--navy-light); }
+  .mobile-menu .mobile-menu-cta {
+    margin-top: 8px;
+    background: var(--orange-deep);
+    color: #fff;
+    text-align: center;
+    border-radius: 50px;
+    padding: 15px;
+    font-size: 1rem;
+  }
+  .mobile-menu .mobile-menu-cta:hover { background: var(--navy); }
+
+  /* Hide hamburger on desktop */
+  @media (min-width: 960px) {
+    .hamburger { display: none; }
+    .mobile-menu { display: none !important; }
+  }
+
   /* ===== BTN ===== */
   .btn {
     display: inline-block;
@@ -701,8 +769,20 @@
     <li><a href="#workshops" class="nav-cta"><span class="btn-arrow">לחנות <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a></li>
   </ul>
 
+  <button class="hamburger" id="hamburger" aria-label="תפריט">
+    <span></span><span></span><span></span>
+  </button>
   <a href="#workshops" class="nav-mobile-cta"><span class="btn-arrow">לחנות <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#workshops" onclick="closeMenu()">הדרכות</a>
+  <a href="#lecture" onclick="closeMenu()">הרצאה הבאה</a>
+  <a href="#blog" onclick="closeMenu()">טיפים</a>
+  <a href="#about" onclick="closeMenu()">אודות</a>
+  <a href="#workshops" class="mobile-menu-cta" onclick="closeMenu()">לחנות</a>
+</div>
 
 <!-- HERO -->
 <div style="max-width:1200px;margin:0 auto;">
@@ -1119,6 +1199,19 @@
     document.documentElement.style.fontSize = (scale * 16) + 'px';
   }
 
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
   document.getElementById('txt-up').addEventListener('click', () => applyScale(scale + 0.1));
   document.getElementById('txt-down').addEventListener('click', () => applyScale(scale - 0.1));
   document.getElementById('txt-reset').addEventListener('click', () => applyScale(1));
