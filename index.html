@@ -136,6 +136,25 @@
     .mobile-menu { display: none !important; }
   }
 
+
+  /* ===== LECTURE 2-COL & FEATURED 2-COL (desktop) ===== */
+  .lecture-box { display: flex; flex-direction: column; gap: 28px; }
+  .lecture-img-col img { width: 100%; border-radius: 20px; display: block; }
+  .lecture-content-col { flex: 1; }
+
+  .featured-quote-wrap { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
+  .featured-img-col { width: 100%; }
+  .featured-text-col { display: flex; flex-direction: column; justify-content: center; }
+
+  @media (min-width: 960px) {
+    .lecture-box { flex-direction: row; align-items: flex-start; gap: 56px; }
+    .lecture-img-col { width: 420px; flex-shrink: 0; }
+
+    .featured-quote-wrap { flex-direction: row; align-items: center; gap: 56px; }
+    .featured-img-col { width: 420px; flex-shrink: 0; }
+    .featured-text-col { flex: 1; }
+  }
+
   /* ===== BTN ===== */
   .btn {
     display: inline-block;
@@ -1045,10 +1064,10 @@
 <section class="lecture-section" id="lecture">
   <div class="section-wrap">
     <div class="lecture-box">
-      <div>
-        <div class="lecture-img-wrap" style="border-radius:20px; overflow:hidden; margin-bottom:24px;">
-          <img src="images/lecture.webp" alt="מיומנו של טכנאי מחשבים, החשוד העיקרי" style="width:100%; display:block; border-radius:20px;">
-        </div>
+      <div class="lecture-img-col">
+        <img src="images/lecture.webp" alt="מיומנו של טכנאי מחשבים, החשוד העיקרי" style="width:100%; display:block; border-radius:20px;">
+      </div>
+      <div class="lecture-content-col">
         <div class="lecture-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           מיומנו של טכנאי מחשבים, פרק 6
@@ -1094,9 +1113,13 @@
     </div>
 
     <div class="featured-quote-wrap">
-      <img src="images/remote.webp" alt="תמיכה מרחוק" style="width:100%;border-radius:12px;margin-bottom:24px;object-fit:contain;background:#0f2a3a;">
+      <div class="featured-img-col">
+        <img src="images/remote.webp" alt="תמיכה מרחוק" style="width:100%;border-radius:12px;object-fit:contain;background:#0f2a3a;display:block;">
+      </div>
+      <div class="featured-text-col">
       <div class="featured-quote-text">"בגלל שאני כל כך תמימה לכולם, מנצלים אותי.<br>בגלל זה אני מאוד סומכת עליך, ואלוהים שלח אותך."</div>
       <div class="featured-quote-attr">לקוחה קבועה</div>
+      </div>
     </div>
 
     <div class="testi-grid">
