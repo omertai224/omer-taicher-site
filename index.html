@@ -79,7 +79,7 @@
 
   /* ===== HERO ===== */
   .hero {
-    padding: 80px 20px 56px;
+    padding: 140px 20px 56px;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -483,7 +483,7 @@
   /* ===== ACCESSIBILITY BAR ===== */
   .a11y-bar {
     position: fixed;
-    top: 14px;
+    top: 68px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
@@ -591,7 +591,7 @@
   /* ===== TABLET (600px+) ===== */
   @media (min-width: 600px) {
     nav { padding: 0 32px; }
-    .hero { padding: 88px 32px 60px; }
+    .hero { padding: 148px 32px 60px; }
     .pain-section { padding: 72px 32px; }
     .section-wrap { padding: 72px 32px; }
     .newsletter-section { padding: 72px 32px; }
@@ -603,6 +603,7 @@
     .nl-input { flex: 1; }
 
     .ws-grid { grid-template-columns: 1fr 1fr; display: grid; }
+    .a11y-bar { top: 12px; }
     .testi-grid { display: grid; grid-template-columns: 1fr 1fr; }
     .blog-grid { display: grid; grid-template-columns: 1fr 1fr; }
   }
@@ -898,8 +899,8 @@
 <section class="about-section" id="about">
   <div class="section-wrap">
     <div class="about-inner">
-      <div class="about-img-wrap">
-        <img src="images/working.webp" alt="עומר טייכר עובד">
+      <div class="about-img-wrap" style="border-radius:20px; overflow:hidden; background:#fff;">
+        <img src="images/working.webp" alt="עומר טייכר" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
       </div>
 
       <div class="about-body">
@@ -974,14 +975,32 @@
       <div>
         <div class="lecture-badge">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          ההרצאה הבאה שלי
+          מיומנו של טכנאי מחשבים, פרק 6
         </div>
-        <div class="lecture-title">מה AI יכול לעשות בשבילכם,<br>ומה לעולם לא</div>
+        <div class="lecture-title">החשוד העיקרי</div>
         <div class="lecture-desc">
-          <p>הרצאה חיה שתסביר בפשטות מה הבינה המלאכותית יכולה לעשות עבורכם היום.</p>
-          <p>בלי מילים מסובכות, בלי ידע טכני מוקדם.</p>
+          <p>המחשב לא נדלק, ושום דבר לא קורה.</p>
+          <p>ביחד נהפוך לחוקרי תקלות, נכיר את הרכיבים מבפנים, ונבדוק מחשב אמיתי על השולחן.</p>
+          <p>בסוף תדעו לא רק לזהות את החשוד, אלא גם להבין למה.</p>
         </div>
-        <div class="lecture-price">כרטיס: <strong>₪150</strong></div>
+        <div class="lecture-details" style="display:flex; gap:16px; margin:16px 0; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:6px; font-size:0.82rem; color:var(--navy-mid);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            שעתיים של חקירה חיה
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:0.82rem; color:var(--navy-mid);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            מחשב אמיתי על המסך
+          </div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:0.82rem; color:var(--navy-mid);">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+            שאלות בשידור חי
+          </div>
+        </div>
+        <div class="lecture-prize" style="background:var(--orange-light); border-radius:12px; padding:12px 16px; margin-bottom:20px; font-size:0.82rem; color:var(--orange-deep); font-weight:600;">
+          🏆 הבלש החד ביותר זוכה בקורס דיגיטלי מתנה
+        </div>
+        <div class="lecture-price">כרטיס: <strong>חינמי</strong></div>
         <a href="#" class="btn btn-primary btn-full">
           <span class="btn-arrow">לשמירת מקום <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
         </a>
