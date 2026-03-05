@@ -39,6 +39,7 @@
           <div class="repo-option" onclick="selectRepo('omer-taicher-tutorials','🎓 הדרכות')">🎓 הדרכות</div>
         </div>
       </div>
+      <button class="save-btn" onclick="copyAll()" style="background:#eef4f8;color:#1a4a6b;margin-left:8px;">📋 העתק הכל</button>
       <button class="save-btn" id="save-content-btn" onclick="saveContent()" disabled>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
         שמור ופרסם
@@ -53,7 +54,7 @@
       <div class="status-text" id="status-text-content">טוען תוכן...</div>
     </div>
     <div class="section-block open" id="block-hero">
-      <div class="section-head" onclick="toggleBlock('hero')"><div class="section-head-left"><div class="section-icon">🏠</div><div><div class="section-name">הירו</div><div class="section-count">כותרת, טקסט, ציטוט</div></div></div><div class="chevron">▼</div></div>
+      <div class="section-head" onclick="toggleBlock('hero')"><div class="section-head-left"><div class="section-icon">🏠</div><div><div class="section-name">הירו</div><div class="section-count">כותרת, טקסט, ציטוט</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
       <div class="section-body">
         <div class="fields-row"><div class="field"><label class="field-label">כותרת שורה 1</label><textarea id="hero.title_1"></textarea></div><div class="field"><label class="field-label">כותרת שורה 2</label><textarea id="hero.title_2"></textarea></div></div>
         <div class="field"><label class="field-label">תגים (כל תג בשורה נפרדת)</label><textarea id="hero.tags" rows="6" placeholder="בוגר יחידת המחשבים של חיל האוויר&#10;25 שנות ניסיון&#10;מדריך AI&#10;תמיכה מרחוק"></textarea></div>
@@ -63,7 +64,7 @@
       </div>
     </div>
     <div class="section-block" id="block-pain">
-      <div class="section-head" onclick="toggleBlock('pain')"><div class="section-head-left"><div class="section-icon">😟</div><div><div class="section-name">כאבים</div><div class="section-count">כותרת, 4 כרטיסים, ציטוט</div></div></div><div class="chevron">▼</div></div>
+      <div class="section-head" onclick="toggleBlock('pain')"><div class="section-head-left"><div class="section-icon">😟</div><div><div class="section-name">כאבים</div><div class="section-count">כותרת, 4 כרטיסים, ציטוט</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
       <div class="section-body">
         <div class="field"><label class="field-label">כותרת ראשית</label><textarea id="pain.title"></textarea></div>
         <div class="fields-divider">כרטיס 1</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.0.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.0.desc"></textarea></div></div>
@@ -74,7 +75,7 @@
       </div>
     </div>
     <div class="section-block" id="block-ws">
-      <div class="section-head" onclick="toggleBlock('ws')"><div class="section-head-left"><div class="section-icon">🎓</div><div><div class="section-name">הדרכות</div><div class="section-count">4 הדרכות — כותרות ומחירים</div></div></div><div class="chevron">▼</div></div>
+      <div class="section-head" onclick="toggleBlock('ws')"><div class="section-head-left"><div class="section-icon">🎓</div><div><div class="section-name">הדרכות</div><div class="section-count">4 הדרכות — כותרות ומחירים</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
       <div class="section-body">
         <div class="fields-divider">הדרכה 1 — AI</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.0.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.0.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.0.price_label"></textarea></div></div>
         <div class="fields-divider">הדרכה 2 — קבצים</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.1.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.1.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.1.price_label"></textarea></div></div>
@@ -83,7 +84,7 @@
       </div>
     </div>
     <div class="section-block" id="block-lecture">
-      <div class="section-head" onclick="toggleBlock('lecture')"><div class="section-head-left"><div class="section-icon">🎤</div><div><div class="section-name">ההרצאה הבאה</div><div class="section-count">כותרת, תיאור, קישור, מחיר</div></div></div><div class="chevron">▼</div></div>
+      <div class="section-head" onclick="toggleBlock('lecture')"><div class="section-head-left"><div class="section-icon">🎤</div><div><div class="section-name">ההרצאה הבאה</div><div class="section-count">כותרת, תיאור, קישור, מחיר</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
       <div class="section-body">
         <div class="fields-row"><div class="field"><label class="field-label">שם (badge)</label><textarea id="lecture.badge"></textarea></div><div class="field"><label class="field-label">כותרת ראשית</label><textarea id="lecture.title"></textarea></div></div>
         <div class="field"><label class="field-label">תיאור</label><textarea id="lecture.desc"></textarea></div>
@@ -92,7 +93,7 @@
       </div>
     </div>
     <div class="section-block" id="block-testi">
-      <div class="section-head" onclick="toggleBlock('testi')"><div class="section-head-left"><div class="section-icon">💬</div><div><div class="section-name">המלצות</div><div class="section-count">ציטוט ראשי + 3 המלצות</div></div></div><div class="chevron">▼</div></div>
+      <div class="section-head" onclick="toggleBlock('testi')"><div class="section-head-left"><div class="section-icon">💬</div><div><div class="section-name">המלצות</div><div class="section-count">ציטוט ראשי + 3 המלצות</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
       <div class="section-body">
         <div class="fields-divider">ציטוט ראשי</div><div class="fields-row"><div class="field quote-field"><label class="field-label">❝ ציטוט</label><textarea id="testimonials.featured_text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.featured_attr"></textarea></div></div>
         <div class="fields-divider">המלצה 1</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.0.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.0.name"></textarea></div></div>
@@ -101,7 +102,7 @@
       </div>
     </div>
     <div class="section-block" id="block-about">
-      <div class="section-head" onclick="toggleBlock('about')"><div class="section-head-left"><div class="section-icon">👤</div><div><div class="section-name">מי אני</div><div class="section-count">כותרת, פסקאות, ציטוט</div></div></div><div class="chevron">▼</div></div>
+      <div class="section-head" onclick="toggleBlock('about')"><div class="section-head-left"><div class="section-icon">👤</div><div><div class="section-name">מי אני</div><div class="section-count">כותרת, פסקאות, ציטוט</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
       <div class="section-body">
         <div class="field"><label class="field-label">כותרת</label><textarea id="about.title"></textarea></div>
         <div class="field"><label class="field-label">פסקה 1</label><textarea id="about.p1"></textarea></div>

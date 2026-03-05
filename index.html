@@ -340,7 +340,14 @@
           return isNaN(key) ? obj[key] : obj[parseInt(key)];
         }, c) || '';
       }
-      document.querySelectorAll('[data-content]').forEach(el => { el.textContent = get(el.dataset.content); });
+      document.querySelectorAll('[data-content]').forEach(el => {
+        const val = get(el.dataset.content);
+        if (val.includes('\n')) {
+          el.innerHTML = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+        } else {
+          el.textContent = val;
+        }
+      });
       document.querySelectorAll('[data-content-multiline]').forEach(el => {
         const text = get(el.dataset.contentMultiline);
         el.innerHTML = text.split('\n').map(line => `<p>${line}</p>`).join('');
