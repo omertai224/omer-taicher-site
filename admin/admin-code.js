@@ -58,7 +58,12 @@ function renderTree(items, currentPath) {
     } else if (isEditable) {
       html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}" onclick="loadFile('${item.path}')"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}</div>`;
     } else {
-      html += `<div class="file-item" style="opacity:0.4;cursor:default"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}</div>`;
+      const isImage = ['webp','png','jpg','jpeg','gif','svg'].includes(ext);
+      if (isImage) {
+        html += `<div class="file-item"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}<button class="delete-img-btn" onclick="deleteImage('${item.path}','${item.sha}')" title="מחק">🗑</button></div>`;
+      } else {
+        html += `<div class="file-item" style="opacity:0.4;cursor:default"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}</div>`;
+      }
     }
   });
   container.innerHTML = html;
@@ -215,6 +220,29 @@ async function deleteFile() {
   }
 }
 
+// ===== DELETE IMAGE =====
+async function deleteImage(path, sha) {
+  const name = path.split('/').pop();
+  if (!confirm('למחוק את ' + name + '?')) return;
+  setStatus('code', 'loading', 'מוחק ' + name + '...');
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
+      method: 'DELETE',
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'מחיקת ' + path, sha: sha, branch: GITHUB_BRANCH })
+    });
+    if (res.ok) {
+      setStatus('code', 'ok', '✓ ' + name + ' נמחק');
+      loadFileTree(currentTreePath || '');
+    } else {
+      const err = await res.json();
+      setStatus('code', 'error', 'שגיאה: ' + (err.message || 'לא ידוע'));
+    }
+  } catch(e) {
+    setStatus('code', 'error', 'שגיאה: ' + e.message);
+  }
+}
+
 // ===== DROPZONE UPLOAD =====
 function handleDrop(event) {
   event.preventDefault();
@@ -237,22 +265,8 @@ async function uploadFile(file) {
       reader.readAsDataURL(file);
     });
     // בדוק אם קובץ קיים (לקבל SHA)
-    let sha = null;
-    try {
-      // קבל SHA דרך Trees API — עובד גם עם קבצים בינאריים גדולים
-      const dir = path.includes('/') ? path.split('/').slice(0,-1).join('/') : '';
-      const treeUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`;
-      const treeRes = await fetch(treeUrl, {
-        headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
-      });
-      if (treeRes.ok) {
-        const treeData = await treeRes.json();
-        const found = (treeData.tree || []).find(f => f.path === path);
-        if (found) sha = found.sha;
-      }
-    } catch(e) { /* קובץ חדש */ }
+    // העלאה בלבד — ללא החלפה
     const body = { message: 'העלאת קובץ: ' + path, content: base64, branch: GITHUB_BRANCH };
-    if (sha) body.sha = sha;
     const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
       method: 'PUT',
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
