@@ -321,7 +321,83 @@
   .footer-copy { font-size: 0.75rem; color: var(--text-light); }
   .footer-links { display: flex; gap: 16px; }
   .footer-links a { font-size: 0.75rem; color: var(--text-light); text-decoration: none; }
-  .footer-links a:hover { color: var(--orange-deep); }
+  /* CART */
+  .cart-bar {
+    position: fixed; bottom: 0; right: 0; left: 0; z-index: 200;
+    background: var(--navy);
+    border-top: 2px solid var(--orange-deep);
+    padding: 14px 20px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    box-shadow: 0 -8px 32px rgba(0,0,0,0.25);
+  }
+  .cart-bar.visible { transform: translateY(0); }
+  .cart-bar-right { display: flex; align-items: center; gap: 14px; }
+  .cart-icon-wrap {
+    position: relative;
+    width: 40px; height: 40px;
+    background: rgba(246,166,126,0.15);
+    border: 1px solid rgba(246,166,126,0.3);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .cart-count {
+    position: absolute; top: -5px; left: -5px;
+    width: 18px; height: 18px;
+    background: var(--orange-deep); color: #fff;
+    border-radius: 50%; font-size: 0.65rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cart-summary { color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600; }
+  .cart-summary strong { color: #fff; font-size: 1rem; }
+  .cart-bar-left { display: flex; align-items: center; gap: 10px; }
+  .cart-clear-btn {
+    background: none; border: none; cursor: pointer;
+    color: rgba(255,255,255,0.4); font-size: 0.75rem; font-weight: 600;
+    font-family: 'Rubik', sans-serif;
+    padding: 6px 10px; border-radius: 50px;
+    transition: color 0.2s;
+  }
+  .cart-clear-btn:hover { color: rgba(255,255,255,0.8); }
+  .cart-checkout-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--orange-deep); color: #fff;
+    padding: 11px 22px; border-radius: 50px;
+    font-family: 'Rubik', sans-serif; font-size: 0.88rem; font-weight: 800;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    text-decoration: none; white-space: nowrap;
+  }
+  .cart-checkout-btn:hover { background: #d4733a; transform: translateY(-1px); }
+
+  /* PRODUCT BUTTONS */
+  .prod-actions { display: flex; flex-direction: column; gap: 8px; }
+  .btn-add-cart {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    background: var(--orange-deep); color: #fff;
+    padding: 10px 16px; border-radius: 50px;
+    font-family: 'Rubik', sans-serif; font-size: 0.8rem; font-weight: 700;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    white-space: nowrap; width: 100%;
+  }
+  .btn-add-cart:hover { background: #d4733a; transform: translateY(-1px); }
+  .btn-add-cart.added { background: #16a34a; }
+
+  .btn-quick-buy {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    padding: 8px 16px; border-radius: 50px;
+    font-family: 'Rubik', sans-serif; font-size: 0.75rem; font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.15); cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap; width: 100%;
+    text-decoration: none;
+  }
+  .btn-quick-buy:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
 </style>
 </head>
 <body>
@@ -447,7 +523,7 @@
         </div>
         <div class="prod-body">
           <div class="prod-category">AI · תמלול · Windows</div>
-          <div class="prod-title">כלי AI שממיר כל הקלטה לטקסט, בעברית, בחינם</div>
+          <div class="prod-title">כלי AI שממיר כל סרטון והקלטה לטקסט, בקלות, בעברית, בחינם</div>
           <div class="prod-desc">לומדים להתקין, להגדיר ולהשתמש בכלי שממיר הקלטות, ישיבות, שיעורים וסרטוני יוטיוב לטקסט. בעברית מלאה, בלי לשלוח קבצים לאינטרנט, ובלי לשלם מנוי.</div>
           <div class="prod-includes">
             <div class="prod-include-item">
@@ -474,10 +550,16 @@
               97 &#8362;
               <span>תשלום חד פעמי</span>
             </div>
-            <a href="#" class="prod-buy-btn">
-              קנה והדרכה תגיע למייל
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </a>
+            <div class="prod-actions">
+              <button class="btn-add-cart" onclick="addToCart(this, 'כלי AI לתמלול', 97)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+                הוספה לסל
+              </button>
+              <a href="#" class="btn-quick-buy">
+                קנייה מהירה
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -573,6 +655,24 @@
   </div>
 </section>
 
+<!-- CART BAR -->
+<div class="cart-bar" id="cart-bar">
+  <div class="cart-bar-right">
+    <div class="cart-icon-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+      <div class="cart-count" id="cart-count">0</div>
+    </div>
+    <div class="cart-summary" id="cart-summary">הסל שלך ריק</div>
+  </div>
+  <div class="cart-bar-left">
+    <button class="cart-clear-btn" onclick="clearCart()">ריקון סל</button>
+    <a href="#" class="cart-checkout-btn" id="cart-checkout">
+      לתשלום
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+  </div>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <a class="footer-logo" href="index.html">עומר <span>טייכר</span></a>
@@ -585,6 +685,7 @@
 </footer>
 
 <script>
+  // Fade in cards
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
@@ -592,8 +693,48 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.prod-card').forEach(el => observer.observe(el));
 
-  function toggleFaq(el) {
-    el.parentElement.classList.toggle('open');
+  // FAQ
+  function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+  // CART
+  let cart = [];
+
+  function addToCart(btn, name, price) {
+    const exists = cart.find(i => i.name === name);
+    if (exists) {
+      btn.textContent = '✓ כבר בסל';
+      btn.classList.add('added');
+      setTimeout(() => {
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> הוספה לסל';
+        btn.classList.remove('added');
+      }, 1500);
+      return;
+    }
+    cart.push({ name, price });
+    btn.innerHTML = '✓ נוסף לסל';
+    btn.classList.add('added');
+    setTimeout(() => {
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg> הוספה לסל';
+      btn.classList.remove('added');
+    }, 1500);
+    updateCart();
+  }
+
+  function updateCart() {
+    const total = cart.reduce((s, i) => s + i.price, 0);
+    const count = cart.length;
+    document.getElementById('cart-count').textContent = count;
+    document.getElementById('cart-summary').innerHTML =
+      count === 1
+        ? `<strong>${total} ₪</strong> · הדרכה אחת בסל`
+        : `<strong>${total} ₪</strong> · ${count} הדרכות בסל`;
+    document.getElementById('cart-bar').classList.toggle('visible', count > 0);
+  }
+
+  function clearCart() {
+    cart = [];
+    updateCart();
+    document.getElementById('cart-bar').classList.remove('visible');
   }
 </script>
 </body>
