@@ -85,7 +85,7 @@
   .fields-divider { margin:18px 0 0; padding-top:16px; border-top:1px dashed var(--border); font-size:0.7rem; font-weight:700; color:var(--text-light); text-transform:uppercase; letter-spacing:0.5px; }
 
   /* ===== TAB 2: CODE EDITOR ===== */
-  .code-layout { display:grid; grid-template-columns:200px 1fr; gap:16px; height: calc(100vh - 200px); }
+  .code-layout { display:grid; grid-template-columns:320px 1fr; gap:16px; height: calc(100vh - 200px); }
   .file-list { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; }
   .file-list-title { padding:14px 16px; font-size:0.72rem; font-weight:700; color:var(--text-light); text-transform:uppercase; letter-spacing:0.5px; border-bottom:1px solid var(--border); }
   .file-item { padding:12px 16px; cursor:pointer; display:flex; align-items:center; gap:10px; transition:background 0.15s; border-bottom:1px solid var(--border); font-size:0.85rem; color:var(--text-mid); font-weight:500; }
@@ -301,13 +301,14 @@
     <div class="code-layout">
       <div class="file-list">
         <div class="file-list-title">קבצים ותיקיות</div>
-        <div id="file-items" style="overflow-y:auto; max-height:calc(100vh - 260px);"></div>
+        <div id="file-items"></div>
       </div>
       <div class="editor-wrap">
         <div class="editor-topbar">
           <div class="editor-filename" id="editor-filename">— בחר קובץ —</div>
           <div class="editor-actions">
             <button class="editor-btn" id="delete-file-btn" onclick="deleteFile()" style="background:#fee2e2;color:var(--red);display:none;">מחק</button>
+            <button class="editor-btn" id="paste-publish-btn" onclick="pasteAndPublish()" disabled style="background:var(--navy);color:#fff;">📋 הדבק ופרסם</button>
             <button class="editor-btn editor-btn-save" id="code-save-btn" onclick="saveCode()" disabled>שמור ופרסם</button>
           </div>
         </div>
@@ -650,13 +651,27 @@ async function loadFile(filepath) {
     document.getElementById('code-editor').value = decode(data.content);
     setStatus('code', 'ok', filepath + ' — מוכן לעריכה');
     document.getElementById('code-save-btn').disabled = false;
+    document.getElementById('paste-publish-btn').disabled = false;
     document.getElementById('delete-file-btn').style.display = 'inline-block';
   } catch(e) {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
   }
 }
 
-async function saveCode() {
+async function pasteAndPublish() {
+  if (!currentCodeFile) return;
+  try {
+    const text = await navigator.clipboard.readText();
+    if (!text || !text.trim()) {
+      setStatus('code', 'error', 'הלוח ריק — העתק קוד קודם');
+      return;
+    }
+    document.getElementById('code-editor').value = text;
+    await saveCode();
+  } catch(e) {
+    setStatus('code', 'error', 'לא ניתן לגשת ללוח — נסה להדביק ידנית ולחץ שמור');
+  }
+}
   if (!currentCodeFile) return;
   const filename = currentCodeFile.split('/').pop();
 
