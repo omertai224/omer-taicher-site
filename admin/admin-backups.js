@@ -1,4 +1,6 @@
 // ===== TAB: BACKUPS =====
+const MAX_BACKUPS = 10;
+
 function backupPath(filename) {
   const now = new Date();
   const stamp = now.getFullYear() + '-' +
@@ -19,7 +21,54 @@ async function autoBackup(filename) {
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: 'גיבוי אוטומטי: ' + filename, content: btoa(unescape(encodeURIComponent(content))), branch: GITHUB_BRANCH })
     });
+    await pruneBackups(filename);
   } catch(e) { /* fail silently */ }
+}
+
+async function pruneBackups(filename) {
+  try {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/backups?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) return;
+    const files = await res.json();
+    const prefix = filename.replace(/\//g,'--');
+    const relevant = files.filter(f => f.name.startsWith(prefix)).sort((a,b) => a.name.localeCompare(b.name));
+    const toDelete = relevant.slice(0, Math.max(0, relevant.length - MAX_BACKUPS));
+    for (const f of toDelete) {
+      await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${f.path}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'מחיקת גיבוי ישן', sha: f.sha, branch: GITHUB_BRANCH })
+      });
+    }
+  } catch(e) { /* fail silently */ }
+}
+
+async function deleteBackup(path, sha, name) {
+  confirmDelete(path, sha, 'file', name);
+}
+
+async function deleteSelectedBackups() {
+  const checked = document.querySelectorAll('.backup-checkbox:checked');
+  if (!checked.length) return;
+  if (!confirm(`למחוק ${checked.length} גיבויים?`)) return;
+  setStatus('backup', 'loading', 'מוחק...');
+  for (const cb of checked) {
+    try {
+      await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${cb.dataset.path}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'מחיקת גיבוי', sha: cb.dataset.sha, branch: GITHUB_BRANCH })
+      });
+    } catch(e) {}
+  }
+  setStatus('backup', 'ok', '✓ נמחקו');
+  loadBackups();
+}
+
+function toggleAllBackups(checked) {
+  document.querySelectorAll('.backup-checkbox').forEach(cb => cb.checked = checked);
 }
 
 async function createBackup() {
@@ -60,15 +109,24 @@ async function loadBackups() {
       return;
     }
     const sorted = files.sort((a, b) => b.name.localeCompare(a.name));
-    document.getElementById('backup-list').innerHTML = sorted.map(f => {
-      const parts = f.name.split('__');
-      const origFile = parts[0];
-      const stamp = parts[1] ? parts[1].replace('_',' ').replace(/-/g,'/').replace(/(\d{4}\/\d{2}\/\d{2}) (\d{2})\/(\d{2})/,'$1 $2:$3') : '';
-      return `<div class="backup-item">
-        <div class="backup-info"><div class="backup-name">${origFile}</div><div class="backup-date">${stamp}</div></div>
-        <div class="backup-actions"><button class="restore-btn" onclick="restoreBackup('${f.path}','${origFile}')">שחזר</button></div>
-      </div>`;
-    }).join('');
+    document.getElementById('backup-list').innerHTML = `
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 4px;margin-bottom:8px;border-bottom:1px solid var(--border);">
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:0.8rem;color:var(--navy-light);">
+          <input type="checkbox" onchange="toggleAllBackups(this.checked)"> סמן הכל
+        </label>
+        <button onclick="deleteSelectedBackups()" style="background:#fee2e2;color:#dc2626;border:none;padding:5px 12px;border-radius:20px;cursor:pointer;font-size:0.75rem;font-weight:600;font-family:inherit;">🗑 מחק מסומנים</button>
+      </div>
+      ${sorted.map(f => {
+        const parts = f.name.split('__');
+        const origFile = parts[0];
+        const stamp = parts[1] ? parts[1].replace('_',' ').replace(/-/g,'/').replace(/(\d{4}\/\d{2}\/\d{2}) (\d{2})\/(\d{2})/,'$1 $2:$3') : '';
+        return `<div class="backup-item">
+          <input type="checkbox" class="backup-checkbox" data-path="${f.path}" data-sha="${f.sha}" style="margin-left:8px;cursor:pointer;flex-shrink:0;">
+          <div class="backup-info"><div class="backup-name">${origFile}</div><div class="backup-date">${stamp}</div></div>
+          <div class="backup-actions"><button class="restore-btn" onclick="restoreBackup('${f.path}','${origFile}')">שחזר</button></div>
+        </div>`;
+      }).join('')}
+    `;
     setStatus('backup', 'ok', `${files.length} גיבויים`);
   } catch(e) {
     setStatus('backup', 'error', 'שגיאה: ' + e.message);
