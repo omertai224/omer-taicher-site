@@ -1,53 +1,80 @@
-{
-  "hero": {
-    "title_1": "המחשב שלכם בידיים טובות.",
-    "title_2": "סוף סוף יש על מי לסמוך.",
-    "lead_1": "המחשב שלכם הוא לא סתם מכשיר.\nזה המקום שבו נמצאים כל החיים שלכם –\nתמונות, מסמכים, עבודה, פרנסה.",
-    "lead_2": "אני עומר, בוגר יחידת מחשבים של חיל האוויר.\nמעל 25 שנה בתחום וכל יום נהנה מחדש ממה שאני עושה.\nאני כאן כדי שתדעו שיש למי לפנות.",
-    "quote": "עומר, אתה הדוקטור של המחשב שלי. באמת.",
-    "quote_attr": "לקוחה, עורכת דין"
-  },
-  "pain": {
-    "title": "המחשב לא עובד, ואתם מרגישים שלקחו לכם את הידיים.",
-    "cards": [
-      { "title": "פחד ללחוץ על הכפתור הלא נכון", "desc": "כל עדכון, כל חלון קופץ. המחשבה \"ומה אם נמחק משהו\" מוכרת לכם מדי." },
-      { "title": "כל החיים שלכם במחשב", "desc": "תמונות, מסמכים, אנשי קשר. הפחד שמשהו ייעלם שמור שם בפנים, כל הזמן." },
-      { "title": "מנצלים את חוסר הידע שלכם", "desc": "חנויות שדוחפות ציוד מיותר. טכנאים שמדברים טכנולוגית ומשאירים אתכם עם יותר שאלות מתשובות." },
-      { "title": "שיתוק מוחלט כשהמחשב נתקע", "desc": "\"זה כאילו פתאום המקרר לא עובד. אבל זה יותר חמור, כי כל החיים במחשב.\"" }
-    ],
-    "quote": "יש לי ביטחון מלא שכל מה שיקרה לי במחשב או בטלפון - יש לי כתובת.",
-    "quote_attr": "לקוחה קבועה, מעצבת פנים"
-  },
-  "workshops": [
-    { "title": "AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם", "desc_1": "הדרכה שתלמד אתכם להשתמש בכלי בינה מלאכותית.", "desc_2": "בצורה פשוטה, בקצב שלכם.", "price": "₪47", "price_label": "חד פעמי" },
-    { "title": "לסדר את המחשב, ארגון קבצים, תיקיות וענן", "desc_1": "כל מה שצריך כדי למצוא כל קובץ תוך שניות.", "desc_2": "ולעולם לא לאבד מסמך חשוב שוב.", "price": "₪47", "price_label": "חד פעמי" },
-    { "title": "גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ", "desc_1": "איך לגלוש בלי פחד, לנהל סיסמאות נכון.", "desc_2": "ולזהות הונאות לפני שהן פוגעות בכם.", "price": "₪47", "price_label": "חד פעמי" },
-    { "title": "גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides", "desc_1": "כל כלי גוגל שאתם משתמשים בו, במקום אחד.", "desc_2": "בקצב שלכם, עם תרגול מעשי.", "price": "₪97", "price_label": "חד פעמי" }
-  ],
-  "lecture": {
-    "badge": "מיומנו של טכנאי מחשבים",
-    "title": "החשוד העיקרי",
-    "desc": "המחשב לא נדלק, ושום דבר לא קורה.\nביחד נהפוך לחוקרי תקלות, נכיר את הרכיבים מבפנים, ונבדוק מחשב אמיתי על השולחן.\nבסוף תדעו לא רק לזהות את החשוד, אלא גם להבין למה.",
-    "prize": "🏆 הבלש החד ביותר זוכה בהדרכה אינטראקטיבית מתנה",
-    "price": "חינמי",
-    "url": "https://bizlive.co.il/event/?eventid=85989"
-  },
-  "testimonials": {
-    "featured_text": "בגלל שאני כל כך תמימה, מנצלים אותי. בגלל זה אני מאוד סומכת עליך. אלוהים שלח אותך.",
-    "featured_attr": "לקוחה קבועה",
-    "cards": [
-      { "text": "עומר מקצוען ורהוט, מסביר עד שמבינים. לא גרם לי להרגיש טיפשה אפילו פעם אחת.", "name": "רותי, מעצבת פנים" },
-      { "text": "ממליץ בחום. פניתי עם מספר בעיות במחשב, טיפל בכל הנושאים במהירות, מקצועיות ויעילות.", "name": "יוסי, יועץ עסקי" },
-      { "text": "השתתפתי בהרצאה הרביעית שלי אצל עומר. מסודר, מאורגן, ונותן טיפים פרקטיים שלא הכרתי.", "name": "מרים, גמלאית" }
-    ]
-  },
-  "about": {
-    "title": "מגיל 16 אני מתקן מחשבים.",
-    "p1": "אני בן 40 מראשון לציון. התחלתי להתעסק במחשבים עוד לפני שכולם ידעו מה זה אינטרנט.",
-    "p2": "בוגר בית הספר למקצועות המחשב בצה\"ל ושירתתי ביחידת המחשבים של חיל האוויר.",
-    "p3": "מעל שני עשורים אני מלמד ומתקן מחשבים.",
-    "p4": "הקמתי את קבוצת הפייסבוק \"תשאל טכנאי מחשבים\", אחת הקהילות הגדולות בישראל בתחום.",
-    "p5": "הסוד שלי פשוט. סבלנות אינסופית, בלי שיפוטיות, בשפה שלכם. לילדים שלכם אין סבלנות להסביר, אז מישהו צריך.",
-    "quote": "עומר פתר לי תקלה שטכנאים אחרים לא הצליחו. הוא לא רק מקצוען, הוא גם בן אדם זהב."
+// ===== TAB: CONTENT =====
+async function loadContent() {
+  setStatus('content', 'loading', 'טוען תוכן...');
+  try {
+    const data = await ghGet('content.json');
+    contentSha = data.sha;
+    currentData = JSON.parse(decode(data.content));
+    populateFields(currentData);
+    setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך ולשמור');
+    document.getElementById('save-content-btn').disabled = false;
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
   }
+}
+
+function flatten(obj, prefix) {
+  const result = {};
+  for (const key in obj) {
+    const fullKey = prefix ? prefix + '.' + key : key;
+    const val = obj[key];
+    if (Array.isArray(val)) {
+      val.forEach((item, i) => {
+        if (typeof item === 'object') Object.assign(result, flatten(item, fullKey + '.' + i));
+        else result[fullKey + '.' + i] = item;
+      });
+    } else if (typeof val === 'object' && val !== null) {
+      Object.assign(result, flatten(val, fullKey));
+    } else {
+      result[fullKey] = val;
+    }
+  }
+  return result;
+}
+
+function setByPath(obj, path, value) {
+  const parts = path.split('.');
+  let cur = obj;
+  for (let i = 0; i < parts.length - 1; i++) {
+    const key = isNaN(parts[i]) ? parts[i] : parseInt(parts[i]);
+    if (cur[key] === undefined) cur[key] = isNaN(parts[i+1]) ? {} : [];
+    cur = cur[key];
+  }
+  const last = isNaN(parts[parts.length-1]) ? parts[parts.length-1] : parseInt(parts[parts.length-1]);
+  cur[last] = value;
+}
+
+function populateFields(data) {
+  const flat = flatten(data, '');
+  for (const path in flat) {
+    const el = document.getElementById(path);
+    if (el) el.value = flat[path];
+  }
+}
+
+function toggleBlock(id) {
+  document.getElementById('block-' + id).classList.toggle('open');
+}
+
+async function saveContent() {
+  setStatus('content', 'loading', 'שומר...');
+  document.getElementById('save-content-btn').disabled = true;
+  try {
+    await autoBackup('content.json');
+    const newData = JSON.parse(JSON.stringify(currentData));
+    document.querySelectorAll('[id*="."]').forEach(el => {
+      if (el.value !== undefined && el.closest('#tab-content')) setByPath(newData, el.id, el.value);
+    });
+    const result = await ghPut('content.json', JSON.stringify(newData, null, 2), contentSha, 'עדכון תוכן דף הבית');
+    if (result.content) {
+      contentSha = result.content.sha;
+      currentData = newData;
+      setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
+    } else {
+      setStatus('content', 'error', 'שגיאה: ' + (result.message || 'לא ידוע'));
+    }
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+  }
+  document.getElementById('save-content-btn').disabled = false;
 }
