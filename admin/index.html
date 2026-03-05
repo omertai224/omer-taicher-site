@@ -164,10 +164,9 @@
         <div class="editor-topbar">
           <div class="editor-filename" id="editor-filename">— בחר קובץ —</div>
           <div class="editor-actions">
-            <button class="editor-btn" id="delete-file-btn" onclick="deleteFile()" style="background:#fee2e2;color:var(--red);display:none;">מחק</button>
-            <button class="editor-btn" id="copy-editor-btn" onclick="copyEditorContent()" disabled style="background:var(--cream);color:var(--text-mid);">📋 העתק ללוח</button>
-            <button class="editor-btn" id="save-code-btn" onclick="saveCode()" disabled style="background:var(--orange-deep);color:#fff;">💾 שמור ופרסם</button>
-            <button class="editor-btn" id="paste-publish-btn" onclick="pasteAndPublish()" disabled style="background:var(--navy);color:#fff;">📋 הדבק מהלוח ופרסם</button>
+            <button class="editor-btn" id="copy-editor-btn" onclick="copyEditorContent()" disabled style="background:var(--cream);color:var(--text-mid);border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;">📋 העתק ללוח</button>
+            <button class="editor-btn" id="paste-publish-btn" onclick="pasteAndPublish()" disabled style="background:var(--navy);color:#fff;border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;">📋 הדבק מהלוח ופרסם</button>
+            <button class="editor-btn" id="save-code-btn" onclick="saveCode()" disabled style="background:var(--orange-deep);color:#fff;border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;">💾 שמור ופרסם</button>
           </div>
         </div>
         <textarea id="code-editor" placeholder="בחר קובץ מהרשימה משמאל..."></textarea>
