@@ -123,12 +123,7 @@
   }
   .mobile-menu .mobile-menu-cta:hover { background: var(--navy); }
 
-  /* When mobile menu is open, push a11y bar below it */
-  .mobile-menu.open ~ * .a11y-bar,
-  .a11y-bar.menu-open {
-    top: auto;
-    bottom: 20px;
-  }
+  /* When mobile menu is open, push content below it */
 
   /* Hide hamburger on desktop */
   @media (min-width: 960px) {
@@ -571,54 +566,7 @@
   
 
 
-  /* ===== ACCESSIBILITY BAR ===== */
-  .a11y-bar {
-    position: fixed;
-    top: 68px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-    background: rgba(26,74,107,0.97);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(246,166,126,0.5);
-    border-radius: 100px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 22px;
-    direction: rtl;
-    box-shadow: 0 6px 32px rgba(0,0,0,0.2);
-    white-space: nowrap;
-  }
-  .a11y-label {
-    font-size: 12px; font-weight: 600;
-    color: rgba(255,255,255,0.8);
-    letter-spacing: 1px;
-    font-family: 'Rubik', sans-serif;
-    margin-left: 4px;
-  }
-  .a11y-btn {
-    background: rgba(246,166,126,0.1);
-    border: 1px solid rgba(246,166,126,0.5);
-    color: var(--orange);
-    font-family: 'Rubik', sans-serif;
-    font-size: 14px; font-weight: 800;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.15s, transform 0.1s;
-    display: flex; align-items: center; justify-content: center;
-    line-height: 1; padding: 0;
-  }
-  .a11y-btn:hover { background: rgba(246,166,126,0.25); transform: scale(1.1); }
-  .a11y-btn:active { transform: scale(0.95); }
-  .a11y-btn.reset {
-    font-size: 12px; color: rgba(255,255,255,0.6);
-    border-color: rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.05);
-  }
-  /* On desktop: hide a11y bar */
-  @media (min-width: 960px) { .a11y-bar { display: none; } }
+
 
   /* SVG arrow in buttons */
   .btn-arrow { display:inline-flex; align-items:center; gap:10px; }
@@ -738,14 +686,6 @@
 <body>
 
 <div id="page-content">
-
-<!-- ACCESSIBILITY BAR -->
-<div class="a11y-bar" role="toolbar" aria-label="נגישות">
-  <span class="a11y-label">גודל טקסט</span>
-  <button class="a11y-btn" id="txt-down" aria-label="הקטן טקסט">א−</button>
-  <button class="a11y-btn reset" id="txt-reset" aria-label="איפוס">א</button>
-  <button class="a11y-btn" id="txt-up" aria-label="הגדל טקסט">א+</button>
-</div>
 
 <!-- NAV -->
 <nav>
@@ -1189,15 +1129,6 @@
     window.scrollTo(0, 0);
   }
 
-  const content = document.getElementById('page-content');
-  let scale = 1;
-
-  function applyScale(s) {
-    scale = Math.min(1.5, Math.max(0.8, parseFloat(s.toFixed(1))));
-    document.documentElement.style.fontSize = (scale * 16) + 'px';
-  }
-
-
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
 
@@ -1216,15 +1147,14 @@
     if (a11yBar) a11yBar.classList.remove('menu-open');
     document.body.style.overflow = '';
   }
-  document.getElementById('txt-up').addEventListener('click', () => applyScale(scale + 0.1));
-  document.getElementById('txt-down').addEventListener('click', () => applyScale(scale - 0.1));
-  document.getElementById('txt-reset').addEventListener('click', () => applyScale(1));
 
   function toggleDemo(el) {
     const answer = el.nextElementSibling;
     answer.classList.toggle('open');
   }
 </script>
+
+<script src="toolbar.js"></script>
 
 </body>
 </html>
