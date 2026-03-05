@@ -31,11 +31,17 @@ function renderTree(items, currentPath) {
     if (a.type === b.type) return a.name.localeCompare(b.name);
     return a.type === 'dir' ? -1 : 1;
   });
-  let html = '';
+  // Breadcrumb
+  let breadcrumb = '<div class="breadcrumb"><span class="bc-part" onclick="loadFileTree(\'\')">🏠 שורש</span>';
   if (currentPath) {
-    const parent = currentPath.split('/').slice(0,-1).join('/');
-    html += `<div class="file-item" onclick="loadFileTree('${parent}')"><span class="file-item-icon">⬆️</span><span class="file-item-name">חזרה</span></div>`;
+    const parts = currentPath.split('/');
+    parts.forEach((part, i) => {
+      const partPath = parts.slice(0, i+1).join('/');
+      breadcrumb += `<span class="bc-sep"> / </span><span class="bc-part" onclick="loadFileTree('${partPath}')">${part}</span>`;
+    });
   }
+  breadcrumb += '</div>';
+  let html = breadcrumb;
   items.forEach(item => {
     if (item.name === '.git') return;
     const ext = item.name.split('.').pop().toLowerCase();
