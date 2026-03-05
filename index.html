@@ -3,179 +3,373 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>פאנל ניהול | עומר טייכר</title>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/admin/admin-style.css">
+<title>עומר טייכר | טכנאי ומדריך מחשבים</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
-<div id="token-gate">
-  <div style="font-size:1.3rem;font-weight:800;color:#fff;font-family:'Rubik',sans-serif;">עומר <span style="color:var(--orange)">טייכר</span> — פאנל ניהול</div>
-  <div class="token-box">
-    <h2>הכנס GitHub Token</h2>
-    <p>נשמר אצלך במכשיר בלבד</p>
-    <input type="text" name="username" autocomplete="username" value="admin" style="display:none;">
-    <input class="token-input" id="token-input" type="password" placeholder="ghp_..." autocomplete="current-password" onkeydown="if(event.key==='Enter')saveToken()">
-    <button class="token-btn" onclick="saveToken()">כניסה</button>
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#">עומר <span>טייכר</span></a>
+  <ul class="nav-links">
+    <li><a href="tutorials.html" style="background:var(--orange-deep); color:#fff !important; font-weight:700; padding:7px 16px; border-radius:50px; display:inline-flex; align-items:center; gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>הדרכות</a></li>
+    <li><a href="#lecture"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>ההרצאה הבאה</a></li>
+    <li><a href="#blog"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>טיפים חינם</a></li>
+    <li><a href="#about"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>מי אני</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="תפריט">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="tutorials.html" class="nav-mobile-cta"><span class="btn-arrow">הדרכות <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="tutorials.html" onclick="closeMenu()" style="color:var(--orange-deep); font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:10px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>הדרכות</a>
+  <a href="#lecture" onclick="closeMenu()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:10px;"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>ההרצאה הבאה</a>
+  <a href="#blog" onclick="closeMenu()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:10px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>טיפים חינם</a>
+  <a href="#about" onclick="closeMenu()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:10px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>מי אני</a>
+  <a href="tutorials.html" class="mobile-menu-cta" onclick="closeMenu()">הדרכות</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-eyebrow">טכנאי ומדריך מחשבים, ראשון לציון</div>
+    <h1>
+      <span style="white-space:nowrap" data-content="hero.title_1">המחשב שלכם בידיים טובות.</span><br>
+      <span style="color:var(--orange-deep)" data-content="hero.title_2">סוף סוף יש על מי לסמוך.</span>
+    </h1>
+    <div class="hero-lead" data-content-multiline="hero.lead_1"></div>
+    <div class="hero-lead" data-content-multiline="hero.lead_2"></div>
+    <div class="hero-client-quote">
+      "<span data-content="hero.quote">עומר, אתה הדוקטור של המחשב שלי. באמת.</span>"
+      <span class="hero-client-name" data-content="hero.quote_attr">לקוחה, עורכת דין</span>
+    </div>
+    <div class="hero-actions">
+      <a href="tutorials.html" class="btn btn-primary btn-full">
+        <span class="btn-arrow">לכל ההדרכות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+      </a>
+      <a href="#about" class="btn btn-secondary btn-full">קצת עליי</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="profile-card">
+      <div class="float-sticker">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        זמין לתמיכה מרחוק
+      </div>
+      <div class="profile-top">
+        <div class="profile-avatar">
+          <img src="assets/images/hero.webp" alt="עומר טייכר">
+        </div>
+        <div>
+          <div class="profile-name">עומר טייכר</div>
+          <div class="profile-title">טכנאי ומדריך מחשבים, ראשון לציון</div>
+        </div>
+      </div>
+      <div class="profile-tags" id="hero-tags"></div>
+      <div class="profile-stats">
+        <div class="pstat"><div class="pstat-n">50+</div><div class="pstat-l">הרצאות</div></div>
+        <div class="pstat"><div class="pstat-n">+25</div><div class="pstat-l">שנות ניסיון</div></div>
+        <div class="pstat"><div class="pstat-n">100%</div><div class="pstat-l">סבלנות</div></div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div id="main-content">
-  <div class="header">
-    <div class="header-logo">עומר <span>טייכר</span></div>
-    <div class="header-right">
-      <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('content')">📝 תוכן</button>
-        <button class="tab-btn" onclick="switchTab('code')">💻 קוד</button>
-        <button class="tab-btn" onclick="switchTab('backups')">🔄 גיבויים</button>
+<!-- PAIN -->
+<section class="pain-section">
+  <div class="pain-inner">
+    <span class="section-eyebrow eyebrow-orange">אם זה מוכר לכם, המקום שלכם כאן</span>
+    <h2 class="pain-title" data-content="pain.title">המחשב לא עובד, ואתם מרגישים שלקחו לכם את הידיים.</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+        <div class="pain-card-title" data-content="pain.cards.0.title">פחד ללחוץ על הכפתור הלא נכון</div>
+        <div class="pain-card-desc" data-content="pain.cards.0.desc">כל עדכון, כל חלון קופץ. המחשבה "ומה אם נמחק משהו" מוכרת לכם מדי.</div>
       </div>
-      <div class="repo-switcher" id="repo-switcher">
-        <div class="repo-current" onclick="toggleRepoDropdown()">
-          <span id="repo-label">🌐 אתר ראשי</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-        </div>
-        <div class="repo-dropdown" id="repo-dropdown">
-          <div class="repo-option active" onclick="selectRepo('omer-taicher-site','🌐 אתר ראשי')">🌐 אתר ראשי</div>
-          <div class="repo-option" onclick="selectRepo('omer-taicher-tutorials','🎓 הדרכות')">🎓 הדרכות</div>
-        </div>
+      <div class="pain-card">
+        <div class="pain-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="pain-card-title" data-content="pain.cards.1.title">כל החיים שלכם במחשב</div>
+        <div class="pain-card-desc" data-content="pain.cards.1.desc">תמונות, מסמכים, אנשי קשר. הפחד שמשהו ייעלם שמור שם בפנים, כל הזמן.</div>
       </div>
-      <button class="save-btn" onclick="copyAll()" style="background:#eef4f8;color:#1a4a6b;margin-left:8px;">📋 העתק הכל</button>
-      <button class="save-btn" id="save-content-btn" onclick="saveContent()" disabled>
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-        שמור ופרסם
-      </button>
+      <div class="pain-card">
+        <div class="pain-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="pain-card-title" data-content="pain.cards.2.title">מנצלים את חוסר הידע שלכם</div>
+        <div class="pain-card-desc" data-content="pain.cards.2.desc">חנויות שדוחפות ציוד מיותר. טכנאים שמדברים טכנולוגית ומשאירים אתכם עם יותר שאלות מתשובות.</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+        <div class="pain-card-title" data-content="pain.cards.3.title">שיתוק מוחלט כשהמחשב נתקע</div>
+        <div class="pain-card-desc" data-content="pain.cards.3.desc">"זה כאילו פתאום המקרר לא עובד. אבל זה יותר חמור, כי כל החיים במחשב."</div>
+      </div>
+    </div>
+    <div class="pain-quote">
+      <div class="pain-quote-text" data-content="pain.quote">"יש לי ביטחון מלא שכל מה שיקרה לי במחשב או בטלפון - יש לי כתובת."</div>
+      <div class="pain-quote-attr" data-content="pain.quote_attr">לקוחה קבועה, מעצבת פנים</div>
     </div>
   </div>
+</section>
 
-  <!-- TAB: CONTENT -->
-  <div class="tab-panel active" id="tab-content">
-    <div class="status-bar">
-      <div class="status-dot loading" id="status-dot-content"></div>
-      <div class="status-text" id="status-text-content">טוען תוכן...</div>
-    </div>
-    <div class="section-block open" id="block-hero">
-      <div class="section-head" onclick="toggleBlock('hero')"><div class="section-head-left"><div class="section-icon">🏠</div><div><div class="section-name">הירו</div><div class="section-count">כותרת, טקסט, ציטוט</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
-      <div class="section-body">
-        <div class="fields-row"><div class="field"><label class="field-label">כותרת שורה 1</label><textarea id="hero.title_1"></textarea></div><div class="field"><label class="field-label">כותרת שורה 2</label><textarea id="hero.title_2"></textarea></div></div>
-        <div class="field"><label class="field-label">תגים (כל תג בשורה נפרדת)</label><textarea id="hero.tags" rows="6" placeholder="בוגר יחידת המחשבים של חיל האוויר&#10;25 שנות ניסיון&#10;מדריך AI&#10;תמיכה מרחוק"></textarea></div>
-        <div class="field"><label class="field-label">טקסט פתיחה</label><textarea id="hero.lead_1"></textarea></div>
-        <div class="field"><label class="field-label">טקסט היכרות</label><textarea id="hero.lead_2"></textarea></div>
-        <div class="fields-row"><div class="field quote-field"><label class="field-label">❝ ציטוט לקוח</label><textarea id="hero.quote"></textarea></div><div class="field"><label class="field-label">שם המצטט</label><textarea id="hero.quote_attr"></textarea></div></div>
+<!-- WORKSHOPS -->
+<section class="workshops-section" id="workshops">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-eyebrow eyebrow-orange-deep">הדרכות</span>
+      <h2 class="section-title">הדרכות אינטראקטיביות קצרות</h2>
+      <div class="section-sub">
+        <p>לומדים דרך עשייה, לא צפייה.</p>
+        <p>בכל הדרכה אתם עושים בעצמכם, צעד אחרי צעד.</p>
+        <p>חוויה שאפשר ליישם מיד.</p>
       </div>
     </div>
-    <div class="section-block" id="block-pain">
-      <div class="section-head" onclick="toggleBlock('pain')"><div class="section-head-left"><div class="section-icon">😟</div><div><div class="section-name">כאבים</div><div class="section-count">כותרת, 4 כרטיסים, ציטוט</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
-      <div class="section-body">
-        <div class="field"><label class="field-label">כותרת ראשית</label><textarea id="pain.title"></textarea></div>
-        <div class="fields-divider">כרטיס 1</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.0.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.0.desc"></textarea></div></div>
-        <div class="fields-divider">כרטיס 2</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.1.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.1.desc"></textarea></div></div>
-        <div class="fields-divider">כרטיס 3</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.2.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.2.desc"></textarea></div></div>
-        <div class="fields-divider">כרטיס 4</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.3.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.3.desc"></textarea></div></div>
-        <div class="fields-divider">ציטוט תחתון</div><div class="fields-row"><div class="field quote-field"><label class="field-label">❝ ציטוט</label><textarea id="pain.quote"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="pain.quote_attr"></textarea></div></div>
+    <div class="ws-grid">
+      <div class="ws-card">
+        <div class="ws-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="ws-title" data-content="workshops.0.title">AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם</div>
+        <div class="ws-desc"><p data-content="workshops.0.desc_1">הדרכה שתלמד אתכם להשתמש בכלי בינה מלאכותית.</p><p data-content="workshops.0.desc_2">בצורה פשוטה, בקצב שלכם.</p></div>
+        <div class="ws-footer">
+          <div class="ws-price"><span data-content="workshops.0.price">₪47</span> <span data-content="workshops.0.price_label">חד פעמי</span></div>
+          <a href="tutorials.html" class="ws-btn"><span class="btn-arrow">להצטרפות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
+        </div>
       </div>
-    </div>
-    <div class="section-block" id="block-ws">
-      <div class="section-head" onclick="toggleBlock('ws')"><div class="section-head-left"><div class="section-icon">🎓</div><div><div class="section-name">הדרכות</div><div class="section-count">4 הדרכות — כותרות ומחירים</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
-      <div class="section-body">
-        <div class="fields-divider">הדרכה 1 — AI</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.0.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.0.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.0.price_label"></textarea></div></div>
-        <div class="fields-divider">הדרכה 2 — קבצים</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.1.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.1.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.1.price_label"></textarea></div></div>
-        <div class="fields-divider">הדרכה 3 — אבטחה</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.2.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.2.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.2.price_label"></textarea></div></div>
-        <div class="fields-divider">הדרכה 4 — גוגל</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.3.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.3.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.3.price_label"></textarea></div></div>
+      <div class="ws-card">
+        <div class="ws-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="ws-title" data-content="workshops.1.title">לסדר את המחשב, ארגון קבצים, תיקיות וענן</div>
+        <div class="ws-desc"><p data-content="workshops.1.desc_1">כל מה שצריך כדי למצוא כל קובץ תוך שניות.</p><p data-content="workshops.1.desc_2">ולעולם לא לאבד מסמך חשוב שוב.</p></div>
+        <div class="ws-footer">
+          <div class="ws-price"><span data-content="workshops.1.price">₪47</span> <span data-content="workshops.1.price_label">חד פעמי</span></div>
+          <a href="tutorials.html" class="ws-btn"><span class="btn-arrow">להצטרפות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
+        </div>
       </div>
-    </div>
-    <div class="section-block" id="block-lecture">
-      <div class="section-head" onclick="toggleBlock('lecture')"><div class="section-head-left"><div class="section-icon">🎤</div><div><div class="section-name">ההרצאה הבאה</div><div class="section-count">כותרת, תיאור, קישור, מחיר</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
-      <div class="section-body">
-        <div class="fields-row"><div class="field"><label class="field-label">שם (badge)</label><textarea id="lecture.badge"></textarea></div><div class="field"><label class="field-label">כותרת ראשית</label><textarea id="lecture.title"></textarea></div></div>
-        <div class="field"><label class="field-label">תיאור</label><textarea id="lecture.desc"></textarea></div>
-        <div class="field"><label class="field-label">פרס / הטבה</label><textarea id="lecture.prize"></textarea></div>
-        <div class="fields-row"><div class="field"><label class="field-label">מחיר כרטיס</label><textarea id="lecture.price"></textarea></div><div class="field"><label class="field-label">קישור לרישום</label><textarea id="lecture.url"></textarea></div></div>
+      <div class="ws-card">
+        <div class="ws-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div class="ws-title" data-content="workshops.2.title">גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ</div>
+        <div class="ws-desc"><p data-content="workshops.2.desc_1">איך לגלוש בלי פחד, לנהל סיסמאות נכון.</p><p data-content="workshops.2.desc_2">ולזהות הונאות לפני שהן פוגעות בכם.</p></div>
+        <div class="ws-footer">
+          <div class="ws-price"><span data-content="workshops.2.price">₪47</span> <span data-content="workshops.2.price_label">חד פעמי</span></div>
+          <a href="tutorials.html" class="ws-btn"><span class="btn-arrow">להצטרפות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
+        </div>
       </div>
-    </div>
-    <div class="section-block" id="block-testi">
-      <div class="section-head" onclick="toggleBlock('testi')"><div class="section-head-left"><div class="section-icon">💬</div><div><div class="section-name">המלצות</div><div class="section-count">ציטוט ראשי + 3 המלצות</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
-      <div class="section-body">
-        <div class="fields-divider">ציטוט ראשי</div><div class="fields-row"><div class="field quote-field"><label class="field-label">❝ ציטוט</label><textarea id="testimonials.featured_text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.featured_attr"></textarea></div></div>
-        <div class="fields-divider">המלצה 1</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.0.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.0.name"></textarea></div></div>
-        <div class="fields-divider">המלצה 2</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.1.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.1.name"></textarea></div></div>
-        <div class="fields-divider">המלצה 3</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.2.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.2.name"></textarea></div></div>
-      </div>
-    </div>
-    <div class="section-block" id="block-about">
-      <div class="section-head" onclick="toggleBlock('about')"><div class="section-head-left"><div class="section-icon">👤</div><div><div class="section-name">מי אני</div><div class="section-count">כותרת, פסקאות, ציטוט</div></div></div><div class="chevron">▼</div><button onclick="event.stopPropagation();copySection(this.closest(\'.section-block\').id.replace(\'block-\',\'\'))" style="background:none;border:none;cursor:pointer;font-size:0.9rem;padding:4px 8px;opacity:0.5;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.5" title="העתק סקשן">📋</button></div>
-      <div class="section-body">
-        <div class="field"><label class="field-label">כותרת</label><textarea id="about.title"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 1</label><textarea id="about.p1"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 2</label><textarea id="about.p2"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 3</label><textarea id="about.p3"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 4</label><textarea id="about.p4"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 5</label><textarea id="about.p5"></textarea></div>
-        <div class="field quote-field"><label class="field-label">❝ ציטוט בכרטיס</label><textarea id="about.quote"></textarea></div>
+      <div class="ws-card">
+        <div class="ws-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="ws-title" data-content="workshops.3.title">גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides</div>
+        <div class="ws-desc"><p data-content="workshops.3.desc_1">כל כלי גוגל שאתם משתמשים בו, במקום אחד.</p><p data-content="workshops.3.desc_2">בקצב שלכם, עם תרגול מעשי.</p></div>
+        <div class="ws-footer">
+          <div class="ws-price"><span data-content="workshops.3.price">₪97</span> <span data-content="workshops.3.price_label">חד פעמי</span></div>
+          <a href="tutorials.html" class="ws-btn"><span class="btn-arrow">להצטרפות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
+        </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- TAB: CODE -->
-  <div class="tab-panel" id="tab-code">
-    <div class="status-bar">
-      <div class="status-dot" id="status-dot-code"></div>
-      <div class="status-text" id="status-text-code">טוען קבצים...</div>
-      <button class="editor-btn" onclick="newFilePrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📄 קובץ חדש</button>
-      <button class="editor-btn" onclick="newFolderPrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📁 תיקייה חדשה</button>
-      <button class="editor-btn" onclick="loadFileTree(currentTreePath||'')" style="background:var(--cream);color:var(--text-mid);font-size:0.75rem;padding:5px 14px;">↻ רענן</button>
-    </div>
-    <div class="code-layout">
-      <div class="file-list">
-        <div class="file-list-title">קבצים ותיקיות</div>
-        <div id="file-items"></div>
-        <div id="dropzone" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleDrop(event)" style="margin:12px;border:2px dashed var(--border);border-radius:10px;padding:16px;text-align:center;font-size:0.75rem;color:var(--text-light);cursor:pointer;transition:all 0.2s;">
-          📁 גרור קובץ לכאן להעלאה<br><span style="font-size:0.65rem;">מחליף קובץ קיים באותו שם</span>
-        </div>
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-wrap">
+    <div class="about-inner">
+      <div class="about-img-wrap" style="background:#fff;">
+        <img src="assets/images/working.webp" alt="עומר טייכר">
       </div>
-      <div class="editor-wrap">
-        <div class="editor-topbar">
-          <div class="editor-filename" id="editor-filename">— בחר קובץ —</div>
-          <div class="editor-actions">
-            <button class="editor-btn" id="delete-file-btn" onclick="deleteFile()" style="background:#fee2e2;color:var(--red);display:none;">מחק</button>
-            <button class="editor-btn" id="paste-publish-btn" onclick="pasteAndPublish()" disabled style="background:var(--navy);color:#fff;">📋 הדבק מהלוח ופרסם</button>
+      <div class="about-body">
+        <span class="section-eyebrow eyebrow-orange-deep">מי אני</span>
+        <h2 class="about-title" data-content="about.title">מגיל 16 אני מתקן מחשבים.</h2>
+        <p data-content="about.p1">אני בן 40 מראשון לציון. התחלתי להתעסק במחשבים עוד לפני שכולם ידעו מה זה אינטרנט.</p>
+        <p data-content="about.p2">בוגר בית הספר למקצועות המחשב בצה"ל ושירתתי ביחידת המחשבים של חיל האוויר.</p>
+        <p data-content="about.p3">מעל שני עשורים אני מלמד ומתקן מחשבים.</p>
+        <p data-content="about.p4">הקמתי את קבוצת הפייסבוק <strong>"תשאל טכנאי מחשבים"</strong>, אחת הקהילות הגדולות בישראל בתחום.</p>
+        <p data-content="about.p5">הסוד שלי פשוט. <strong>סבלנות אינסופית, בלי שיפוטיות, בשפה שלכם.</strong> לילדים שלכם אין סבלנות להסביר, אז מישהו צריך.</p>
+        <br>
+        <a href="tutorials.html" class="btn btn-primary">
+          <span class="btn-arrow">לכל ההדרכות שלי <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+        </a>
+        <div class="about-card">
+          <div class="about-card-quote" data-content="about.quote">"עומר פתר לי תקלה שטכנאים אחרים לא הצליחו. הוא לא רק מקצוען, הוא גם בן אדם זהב."</div>
+          <div class="about-credentials">
+            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>בוגר יחידת המחשבים של חיל האוויר</div>
+            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>מעל 25 שנות ניסיון בהדרכה וטכנאות</div>
+            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>מייסד קהילת תשאל טכנאי מחשבים בפייסבוק</div>
+            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>מעל 50 הרצאות בפלטפורמת ביז</div>
+            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>תמיכה מרחוק</div>
+            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>ייעוץ אובייקטיבי, לא מוכר חומרה</div>
           </div>
         </div>
-        <textarea id="code-editor" placeholder="בחר קובץ מהרשימה משמאל..."></textarea>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- TAB: BACKUPS -->
-  <div class="tab-panel" id="tab-backups">
-    <div class="backups-header">
-      <div class="backups-title">גיבויים</div>
-
+<!-- LECTURE -->
+<section class="lecture-section" id="lecture">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-eyebrow eyebrow-orange-deep">ההרצאה הבאה</span>
     </div>
-    <div class="status-bar">
-      <div class="status-dot" id="status-dot-backup"></div>
-      <div class="status-text" id="status-text-backup">טוען גיבויים...</div>
+    <div class="lecture-box">
+      <div class="lecture-img-col">
+        <img src="assets/images/lecture.webp" alt="מיומנו של טכנאי מחשבים, החשוד העיקרי">
+      </div>
+      <div class="lecture-content-col">
+        <div class="lecture-badge" data-content="lecture.badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          מיומנו של טכנאי מחשבים
+        </div>
+        <div class="lecture-title" data-content="lecture.title">החשוד העיקרי</div>
+        <div class="lecture-desc" data-content-multiline="lecture.desc"></div>
+        <div style="display:flex; gap:16px; margin:16px 0; flex-wrap:wrap;">
+          <div style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#ffffff; font-weight:500;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>שעתיים של חקירה חיה</div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#ffffff; font-weight:500;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>מחשב אמיתי על המסך</div>
+          <div style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#ffffff; font-weight:500;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>שאלות בשידור חי</div>
+        </div>
+        <div data-content="lecture.prize" style="background:var(--orange-light); border:1.5px solid var(--orange); border-radius:12px; padding:14px 18px; margin-bottom:20px; font-size:0.9rem; color:var(--orange-deep); font-weight:700;">🏆 הבלש החד ביותר זוכה בהדרכה אינטראקטיבית מתנה</div>
+        <div class="lecture-price">כרטיס: <strong data-content="lecture.price">חינמי</strong></div>
+        <a id="lecture-link" href="https://bizlive.co.il/event/?eventid=85989" target="_blank" rel="noopener" class="btn btn-primary btn-full">
+          <span class="btn-arrow">לשמירת מקום <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
+        </a>
+      </div>
     </div>
-    <div class="backup-list" id="backup-list"><div class="backup-empty">טוען...</div></div>
   </div>
+</section>
 
-</div>
-
-<script src="/admin/admin-core.js"></script>
-<script src="/admin/admin-content.js"></script>
-<script src="/admin/admin-code.js"></script>
-<script src="/admin/admin-backups.js"></script>
-<script>checkToken();</script>
-
-<!-- CONFIRM MODAL -->
-<div id="confirm-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:18px;padding:36px 40px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.2);max-width:340px;width:90%;">
-    <div style="font-size:2rem;margin-bottom:12px;">🗑</div>
-    <div id="confirm-modal-text" style="font-size:1rem;font-weight:700;color:#1a4a6b;margin-bottom:28px;"></div>
-    <div style="display:flex;gap:12px;justify-content:center;">
-      <button id="confirm-modal-yes" style="background:#ef4444;color:#fff;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
-      <button id="confirm-modal-no" style="background:#eef4f8;color:#1a4a6b;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">ביטול</button>
+<!-- TESTIMONIALS -->
+<section class="testi-section">
+  <div class="section-wrap">
+    <div class="section-header">
+      <h2 class="section-title">לקוחות מספרים</h2>
+    </div>
+    <div class="featured-quote-wrap">
+      <div class="featured-img-col">
+        <img src="assets/images/remote.webp" alt="תמיכה מרחוק" style="width:100%;border-radius:12px;object-fit:contain;background:#0f2a3a;display:block;">
+      </div>
+      <div class="featured-text-col">
+        <div class="featured-quote-text" data-content="testimonials.featured_text">"בגלל שאני כל כך תמימה, מנצלים אותי. בגלל זה אני מאוד סומכת עליך. אלוהים שלח אותך."</div>
+        <div class="featured-quote-attr" data-content="testimonials.featured_attr">לקוחה קבועה</div>
+      </div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text" data-content="testimonials.cards.0.text">"עומר מקצוען ורהוט, מסביר עד שמבינים. לא גרם לי להרגיש טיפשה אפילו פעם אחת."</div>
+        <div class="testi-name" data-content="testimonials.cards.0.name">רותי, מעצבת פנים</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text" data-content="testimonials.cards.1.text">"ממליץ בחום. פניתי עם מספר בעיות במחשב, טיפל בכל הנושאים במהירות, מקצועיות ויעילות."</div>
+        <div class="testi-name" data-content="testimonials.cards.1.name">יוסי, יועץ עסקי</div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text" data-content="testimonials.cards.2.text">"השתתפתי בהרצאה הרביעית שלי אצל עומר. מסודר, מאורגן, ונותן טיפים פרקטיים שלא הכרתי."</div>
+        <div class="testi-name" data-content="testimonials.cards.2.name">מרים, גמלאית</div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section" id="blog">
+  <div class="section-wrap">
+    <div class="section-header">
+      <span class="section-eyebrow eyebrow-orange-deep">הבלוג שלי</span>
+      <h2 class="section-title">טיפים שאני כותב בשבילכם</h2>
+      <div class="section-sub">
+        <p>דברים שלמדתי מ-25 שנה בשטח.</p>
+        <p>כתובים בפשטות, בלי מילים מסובכות.</p>
+      </div>
+    </div>
+    <div class="blog-grid">
+      <a class="blog-card" href="#">
+        <div class="blog-tag">אבטחה</div>
+        <div class="blog-title">עזרה ראשונה למחשב, 5 פעולות שיצילו לכם את המידע</div>
+        <div class="blog-excerpt"><p>אם המחשב שלכם איטי, מבולגן או מלא בתוספות שלא התקנתם, אחד מהדברים האלה הוא הסיבה.</p></div>
+        <div class="blog-meta">4 דקות קריאה, 3 בינואר</div>
+      </a>
+      <a class="blog-card" href="#">
+        <div class="blog-tag">AI</div>
+        <div class="blog-title">ChatGPT לא נועד רק לצעירים, 3 דברים שאפשר לעשות איתו היום</div>
+        <div class="blog-excerpt"><p>שלושה שימושים פשוטים שאנשים בכל גיל כבר מיישמים, וגם אתם יכולים להתחיל עוד היום.</p></div>
+        <div class="blog-meta">5 דקות קריאה, 28 דצמבר</div>
+      </a>
+      <a class="blog-card" href="#">
+        <div class="blog-tag">טיפ מהיר</div>
+        <div class="blog-title">למה הסיסמה שלכם מסכנת אתכם, וכיצד לתקן את זה ב-5 דקות</div>
+        <div class="blog-excerpt"><p>טיפ אחד קטן שיכול לחסוך לכם הרבה כאב ראש ולהגן על כל המידע שלכם.</p></div>
+        <div class="blog-meta">3 דקות קריאה, 21 דצמבר</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="#">עומר <span>טייכר</span></a>
+  <div class="footer-copy">© 2026 כל הזכויות שמורות</div>
+  <div class="footer-links">
+    <a href="#">מדיניות פרטיות</a>
+    <a href="#">תנאי שימוש</a>
+    <a href="#">צור קשר</a>
+  </div>
+</footer>
+
+<script>
+  if (window.location.hash) { history.replaceState(null, '', window.location.pathname); window.scrollTo(0, 0); }
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+<script>
+(function() {
+  fetch('content.json?v=' + Date.now())
+    .then(r => r.json())
+    .then(c => {
+      function get(path) {
+        return path.split('.').reduce((obj, key) => {
+          if (obj === undefined || obj === null) return '';
+          return isNaN(key) ? obj[key] : obj[parseInt(key)];
+        }, c) || '';
+      }
+      document.querySelectorAll('[data-content]').forEach(el => {
+        const val = get(el.dataset.content);
+        if (val.includes('\n')) {
+          el.innerHTML = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+        } else {
+          el.textContent = val;
+        }
+      });
+      document.querySelectorAll('[data-content-multiline]').forEach(el => {
+        const text = get(el.dataset.contentMultiline);
+        el.innerHTML = text.split('\n').map(line => `<p>${line}</p>`).join('');
+      });
+      // שדות רגילים עם שבירת שורות
+      document.querySelectorAll('[data-content-br]').forEach(el => {
+        const text = get(el.dataset.contentBr);
+        el.innerHTML = text.replace(/\n/g, '<br>');
+      });
+      // תגים דינמיים
+      if (c.hero && c.hero.tags && Array.isArray(c.hero.tags)) {
+        const tagsEl = document.getElementById('hero-tags');
+        if (tagsEl) tagsEl.innerHTML = c.hero.tags.map(t => `<span class="tag">${t}</span>`).join('');
+      }
+      const lectureLink = document.getElementById('lecture-link');
+      if (lectureLink) lectureLink.href = get('lecture.url');
+    })
+    .catch(() => {});
+})();
+</script>
+
+<script src="assets/js/toolbar.js"></script>
+
 </body>
 </html>
