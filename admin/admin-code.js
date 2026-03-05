@@ -239,12 +239,16 @@ async function uploadFile(file) {
     // בדוק אם קובץ קיים (לקבל SHA)
     let sha = null;
     try {
-      const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}`, {
+      // קבל SHA דרך Trees API — עובד גם עם קבצים בינאריים גדולים
+      const dir = path.includes('/') ? path.split('/').slice(0,-1).join('/') : '';
+      const treeUrl = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/git/trees/${GITHUB_BRANCH}?recursive=1`;
+      const treeRes = await fetch(treeUrl, {
         headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
       });
-      if (res.ok) {
-        const data = await res.json();
-        sha = data.sha;
+      if (treeRes.ok) {
+        const treeData = await treeRes.json();
+        const found = (treeData.tree || []).find(f => f.path === path);
+        if (found) sha = found.sha;
       }
     } catch(e) { /* קובץ חדש */ }
     const body = { message: 'העלאת קובץ: ' + path, content: base64, branch: GITHUB_BRANCH };
