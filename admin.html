@@ -666,6 +666,20 @@ async function pasteAndPublish() {
       setStatus('code', 'error', 'הלוח ריק — העתק קוד קודם');
       return;
     }
+    // הורד גיבוי למחשב לפני החלפה
+    const currentContent = document.getElementById('code-editor').value;
+    if (currentContent.trim()) {
+      const filename = currentCodeFile.split('/').pop();
+      const ext = filename.split('.').pop();
+      const stamp = new Date().toISOString().slice(0,16).replace('T','_').replace(/:/g,'-');
+      const backupName = filename.replace('.' + ext, '') + '__backup_' + stamp + '.' + ext;
+      const blob = new Blob([currentContent], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = backupName.replace('.' + ext, '.txt');
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
     document.getElementById('code-editor').value = text;
     await saveCode();
   } catch(e) {
