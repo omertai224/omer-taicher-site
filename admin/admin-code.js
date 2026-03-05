@@ -204,3 +204,49 @@ async function deleteFile() {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
   }
 }
+
+// ===== DROPZONE UPLOAD =====
+function handleDrop(event) {
+  event.preventDefault();
+  const dropzone = document.getElementById('dropzone');
+  dropzone.classList.remove('drag-over');
+  const files = event.dataTransfer.files;
+  if (!files.length) return;
+  Array.from(files).forEach(file => uploadFile(file));
+}
+
+async function uploadFile(file) {
+  const path = currentTreePath ? currentTreePath + '/' + file.name : file.name;
+  setStatus('code', 'loading', 'מעלה ' + file.name + '...');
+  try {
+    // קרא את הקובץ כ-base64
+    const base64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+    // בדוק אם קובץ קיים (לקבל SHA)
+    let sha = null;
+    try {
+      const existing = await ghGet(path);
+      sha = existing.sha;
+    } catch(e) { /* קובץ חדש */ }
+    const body = { message: 'העלאת קובץ: ' + path, content: base64, branch: GITHUB_BRANCH };
+    if (sha) body.sha = sha;
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
+      method: 'PUT',
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const result = await res.json();
+    if (result.content) {
+      setStatus('code', 'ok', '✓ ' + file.name + ' הועלה בהצלחה!');
+      loadFileTree(currentTreePath || '');
+    } else {
+      setStatus('code', 'error', 'שגיאה: ' + (result.message || 'לא ידוע'));
+    }
+  } catch(e) {
+    setStatus('code', 'error', 'שגיאה: ' + e.message);
+  }
+}
