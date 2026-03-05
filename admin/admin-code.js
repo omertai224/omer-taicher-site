@@ -32,11 +32,6 @@ function renderTree(items, currentPath) {
     return a.type === 'dir' ? -1 : 1;
   });
   // Breadcrumb
-  let backBtn = '';
-  if (currentPath) {
-    const parent = currentPath.split('/').slice(0,-1).join('/');
-    backBtn = `<span class="bc-back" onclick="loadFileTree('${parent}')">⬅️ חזרה</span><span class="bc-divider">|</span>`;
-  }
   let crumbs = `<span class="bc-part" onclick="loadFileTree('')">🏠</span>`;
   if (currentPath) {
     const parts = currentPath.split('/');
@@ -45,7 +40,7 @@ function renderTree(items, currentPath) {
       crumbs += ` <span class="bc-sep">/</span> <span class="bc-part" onclick="loadFileTree('${partPath}')">${part}</span>`;
     });
   }
-  let html = `<div class="breadcrumb">${backBtn}${crumbs}</div>`;
+  let html = `<div class="breadcrumb">${crumbs}</div>`;
   items.forEach(item => {
     if (item.name === '.git') return;
     const ext = item.name.split('.').pop().toLowerCase();
@@ -60,7 +55,7 @@ function renderTree(items, currentPath) {
     } else {
       const isImage = ['webp','png','jpg','jpeg','gif','svg'].includes(ext);
       if (isImage) {
-        html += `<div class="file-item"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}<button class="delete-img-btn" onclick="deleteImage('${item.path}','${item.sha}')" title="מחק">🗑</button></div>`;
+        html += `<div class="file-item"><button class="delete-img-btn" onclick="deleteImage('${item.path}','${item.sha}')" title="מחק">🗑</button><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}</div>`;
       } else {
         html += `<div class="file-item" style="opacity:0.4;cursor:default"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}</div>`;
       }
