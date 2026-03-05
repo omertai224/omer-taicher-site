@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>עומר טייכר — פאנל ניהול</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/admin/admin-style.css">
+</head>
+<body>
+
+<!-- TOKEN GATE -->
+<div id="token-gate">
+  <div style="font-size:1.3rem;font-weight:800;color:#fff;font-family:'Rubik',sans-serif;">עומר <span style="color:var(--orange)">טייכר</span> — פאנל ניהול</div>
+  <div class="token-box">
+    <h2>הכנס GitHub Token</h2>
+    <p>נשמר אצלך במכשיר בלבד</p>
+    <input type="text" name="username" autocomplete="username" value="admin" style="display:none;">
+    <input class="token-input" id="token-input" type="password" placeholder="ghp_..." autocomplete="current-password" onkeydown="if(event.key='Enter')saveToken()">
+    <button class="token-btn" onclick="saveToken()">כניסה</button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main-content">
+
+  <!-- HEADER — קבוע, לא זז -->
+  <div class="header">
+    <div class="header-logo">עומר <span>טייכר</span> <span style="font-weight:400;font-size:0.78rem;color:var(--text-light);margin-right:6px">— פאנל ניהול</span></div>
+    <div class="header-right">
+
+      <!-- REPO BUTTONS — תמיד אותם 3, זהים -->
+      <div style="display:flex;gap:6px;align-items:center">
+        <button class="repo-btn active" id="repo-btn-site"    onclick="selectRepo('omer-taicher-site',      this)">🌐 אתר ראשי</button>
+        <button class="repo-btn"        id="repo-btn-tutorials" onclick="selectRepo('omer-taicher-tutorials', this)">🎓 הדרכות</button>
+        <button class="repo-btn"        id="repo-btn-blog"    onclick="selectRepo('omer-taicher-blog',      this)">✍️ בלוג</button>
+      </div>
+
+      <!-- TABS — תמיד אותם 3 -->
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('content', this)">📝 תוכן</button>
+        <button class="tab-btn"        onclick="switchTab('code',    this)">💻 קוד</button>
+        <button class="tab-btn"        onclick="switchTab('backups', this)">🔄 גיבויים</button>
+      </div>
+
+      <!-- שמור ופרסם — תמיד אותו מקום, נעלם/מופיע בלי להזיז כלום -->
+      <button class="save-btn" id="save-content-btn" onclick="saveContent()" disabled style="visibility:hidden">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+        שמור ופרסם
+      </button>
+
+    </div>
+  </div>
+
+  <!-- TAB: CONTENT -->
+  <div class="tab-panel active" id="tab-content">
+    <div class="status-bar">
+      <div class="status-dot loading" id="status-dot-content"></div>
+      <div class="status-text" id="status-text-content">טוען...</div>
+    </div>
+
+    <!-- תוכן אתר ראשי — section blocks -->
+    <div id="site-content-blocks">
+      <div class="section-block open" id="block-hero">
+        <div class="section-head" onclick="toggleBlock('hero')"><div class="section-head-left"><div class="section-icon">🏠</div><div><div class="section-name">הירו</div><div class="section-count">כותרת, טקסט, ציטוט</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('hero','הירו')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+        <div class="section-body">
+          <div class="fields-row"><div class="field"><label class="field-label">כותרת שורה 1</label><textarea id="hero.title_1"></textarea></div><div class="field"><label class="field-label">כותרת שורה 2</label><textarea id="hero.title_2"></textarea></div></div>
+          <div class="field"><label class="field-label">תגים (כל תג בשורה נפרדת)</label><textarea id="hero.tags" rows="6" placeholder="בוגר יחידת המחשבים של חיל האוויר&#10;25 שנות ניסיון&#10;מדריך AI&#10;תמיכה מרחוק"></textarea></div>
+          <div class="field"><label class="field-label">טקסט פתיחה</label><textarea id="hero.lead_1"></textarea></div>
+          <div class="field"><label class="field-label">טקסט היכרות</label><textarea id="hero.lead_2"></textarea></div>
+          <div class="fields-row"><div class="field quote-field"><label class="field-label">❝ ציטוט לקוח</label><textarea id="hero.quote"></textarea></div><div class="field"><label class="field-label">שם המצטט</label><textarea id="hero.quote_attr"></textarea></div></div>
+        </div>
+      </div>
+      <div class="section-block" id="block-pain">
+        <div class="section-head" onclick="toggleBlock('pain')"><div class="section-head-left"><div class="section-icon">😟</div><div><div class="section-name">כאבים</div><div class="section-count">כותרת, 4 כרטיסים, ציטוט</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('pain','כאבים')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+        <div class="section-body">
+          <div class="field"><label class="field-label">כותרת ראשית</label><textarea id="pain.title"></textarea></div>
+          <div class="fields-divider">כרטיס 1</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.0.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.0.desc"></textarea></div></div>
+          <div class="fields-divider">כרטיס 2</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.1.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.1.desc"></textarea></div></div>
+          <div class="fields-divider">כרטיס 3</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.2.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.2.desc"></textarea></div></div>
+          <div class="fields-divider">כרטיס 4</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.3.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.3.desc"></textarea></div></div>
+          <div class="fields-divider">ציטוט תחתון</div><div class="fields-row"><div class="field quote-field"><label class="field-label">❝ ציטוט</label><textarea id="pain.quote"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="pain.quote_attr"></textarea></div></div>
+        </div>
+      </div>
+      <div class="section-block" id="block-ws">
+        <div class="section-head" onclick="toggleBlock('ws')"><div class="section-head-left"><div class="section-icon">🎓</div><div><div class="section-name">הדרכות</div><div class="section-count">4 הדרכות — כותרות ומחירים</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('ws','הדרכות')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+        <div class="section-body">
+          <div class="field"><label class="field-label">כותרת הסקשן</label><textarea id="ws.title"></textarea></div>
+          <div class="field"><label class="field-label">תת-כותרת</label><textarea id="ws.sub" rows="3"></textarea></div>
+          <div class="fields-divider">הדרכה 1 — AI</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.0.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.0.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.0.price_label"></textarea></div></div>
+          <div class="fields-divider">הדרכה 2 — קבצים</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.1.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.1.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.1.price_label"></textarea></div></div>
+          <div class="fields-divider">הדרכה 3 — אבטחה</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.2.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.2.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.2.price_label"></textarea></div></div>
+          <div class="fields-divider">הדרכה 4 — גוגל</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.3.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.3.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.3.price_label"></textarea></div></div>
+        </div>
+      </div>
+      <div class="section-block" id="block-about">
+        <div class="section-head" onclick="toggleBlock('about')"><div class="section-head-left"><div class="section-icon">👤</div><div><div class="section-name">מי אני</div><div class="section-count">כותרת, פסקאות, ציטוט</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('about','מי אני')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+        <div class="section-body">
+          <div class="field"><label class="field-label">כותרת</label><textarea id="about.title"></textarea></div>
+          <div class="field"><label class="field-label">פסקה 1</label><textarea id="about.p1"></textarea></div>
+          <div class="field"><label class="field-label">פסקה 2</label><textarea id="about.p2"></textarea></div>
+          <div class="field"><label class="field-label">פסקה 3</label><textarea id="about.p3"></textarea></div>
+          <div class="field"><label class="field-label">פסקה 4</label><textarea id="about.p4"></textarea></div>
+          <div class="field"><label class="field-label">פסקה 5</label><textarea id="about.p5"></textarea></div>
+          <div class="field quote-field"><label class="field-label">❝ ציטוט בכרטיס</label><textarea id="about.quote"></textarea></div>
+          <div class="field"><label class="field-label">✓ כישור 1</label><textarea id="about.cred1"></textarea></div>
+          <div class="field"><label class="field-label">✓ כישור 2</label><textarea id="about.cred2"></textarea></div>
+          <div class="field"><label class="field-label">✓ כישור 3</label><textarea id="about.cred3"></textarea></div>
+          <div class="field"><label class="field-label">✓ כישור 4</label><textarea id="about.cred4"></textarea></div>
+          <div class="field"><label class="field-label">✓ כישור 5</label><textarea id="about.cred5"></textarea></div>
+          <div class="field"><label class="field-label">✓ כישור 6</label><textarea id="about.cred6"></textarea></div>
+        </div>
+      </div>
+      <div class="section-block" id="block-lecture">
+        <div class="section-head" onclick="toggleBlock('lecture')"><div class="section-head-left"><div class="section-icon">🎤</div><div><div class="section-name">ההרצאה הבאה</div><div class="section-count">כותרת, תיאור, קישור, מחיר</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('lecture','ההרצאה הבאה')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+        <div class="section-body">
+          <div class="fields-row"><div class="field"><label class="field-label">שם (badge)</label><textarea id="lecture.badge"></textarea></div><div class="field"><label class="field-label">כותרת ראשית</label><textarea id="lecture.title"></textarea></div></div>
+          <div class="field"><label class="field-label">תיאור</label><textarea id="lecture.desc"></textarea></div>
+          <div class="field"><label class="field-label">פרס / הטבה</label><textarea id="lecture.prize"></textarea></div>
+          <div class="fields-row"><div class="field"><label class="field-label">מחיר כרטיס</label><textarea id="lecture.price"></textarea></div><div class="field"><label class="field-label">קישור לרישום</label><textarea id="lecture.url"></textarea></div></div>
+        </div>
+      </div>
+      <div class="section-block" id="block-testi">
+        <div class="section-head" onclick="toggleBlock('testi')"><div class="section-head-left"><div class="section-icon">💬</div><div><div class="section-name">המלצות</div><div class="section-count">ציטוט ראשי + 3 המלצות</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('testi','המלצות')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+        <div class="section-body">
+          <div class="fields-divider">ציטוט ראשי</div><div class="fields-row"><div class="field quote-field"><label class="field-label">❝ ציטוט</label><textarea id="testimonials.featured_text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.featured_attr"></textarea></div></div>
+          <div class="fields-divider">המלצה 1</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.0.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.0.name"></textarea></div></div>
+          <div class="fields-divider">המלצה 2</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.1.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.1.name"></textarea></div></div>
+          <div class="fields-divider">המלצה 3</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.2.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.2.name"></textarea></div></div>
+        </div>
+      </div>
+      <div class="section-block" id="block-blog">
+        <div class="section-head" onclick="toggleBlock('blog')"><div class="section-head-left"><div class="section-icon">✍️</div><div><div class="section-name">בלוג</div><div class="section-count">כותרת + 3 כתבות</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('blog','בלוג')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+        <div class="section-body">
+          <div class="field"><label class="field-label">כותרת הסקשן</label><textarea id="blog.title"></textarea></div>
+          <div class="field"><label class="field-label">תת-כותרת</label><textarea id="blog.sub" rows="2"></textarea></div>
+          <div class="fields-divider">כתבה 1</div>
+          <div class="fields-row"><div class="field"><label class="field-label">תגית</label><textarea id="blog.cards.0.tag"></textarea></div><div class="field"><label class="field-label">מטא</label><textarea id="blog.cards.0.meta"></textarea></div></div>
+          <div class="field"><label class="field-label">כותרת</label><textarea id="blog.cards.0.title"></textarea></div>
+          <div class="field"><label class="field-label">תקציר</label><textarea id="blog.cards.0.excerpt"></textarea></div>
+          <div class="fields-divider">כתבה 2</div>
+          <div class="fields-row"><div class="field"><label class="field-label">תגית</label><textarea id="blog.cards.1.tag"></textarea></div><div class="field"><label class="field-label">מטא</label><textarea id="blog.cards.1.meta"></textarea></div></div>
+          <div class="field"><label class="field-label">כותרת</label><textarea id="blog.cards.1.title"></textarea></div>
+          <div class="field"><label class="field-label">תקציר</label><textarea id="blog.cards.1.excerpt"></textarea></div>
+          <div class="fields-divider">כתבה 3</div>
+          <div class="fields-row"><div class="field"><label class="field-label">תגית</label><textarea id="blog.cards.2.tag"></textarea></div><div class="field"><label class="field-label">מטא</label><textarea id="blog.cards.2.meta"></textarea></div></div>
+          <div class="field"><label class="field-label">כותרת</label><textarea id="blog.cards.2.title"></textarea></div>
+          <div class="field"><label class="field-label">תקציר</label><textarea id="blog.cards.2.excerpt"></textarea></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- תוכן בלוג — ניהול פוסטים -->
+    <div id="blog-manager" style="display:none"></div>
+
+    <!-- תוכן הדרכות — ריק כרגע -->
+    <div id="tutorials-content" style="display:none">
+      <div style="text-align:center;padding:60px 20px;color:var(--text-light)">
+        <div style="font-size:3rem;margin-bottom:16px">🎓</div>
+        <div style="font-size:0.92rem">ניהול תוכן הדרכות יתווסף בקרוב</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TAB: CODE -->
+  <div class="tab-panel" id="tab-code">
+    <div class="status-bar">
+      <div class="status-dot" id="status-dot-code"></div>
+      <div class="status-text" id="status-text-code">טוען קבצים...</div>
+      <button class="editor-btn" onclick="newFilePrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📄 קובץ חדש</button>
+      <button class="editor-btn" onclick="newFolderPrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📁 תיקייה חדשה</button>
+      <button class="editor-btn" onclick="loadFileTree(currentTreePath||'')" style="background:var(--cream);color:var(--text-mid);font-size:0.75rem;padding:5px 14px;">↻ רענן</button>
+    </div>
+    <div class="code-layout">
+      <div class="file-list">
+        <div class="file-list-title">קבצים ותיקיות</div>
+        <div id="file-items"></div>
+        <div id="dropzone" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleDrop(event)" style="margin:12px;border:2px dashed var(--border);border-radius:10px;padding:16px;text-align:center;font-size:0.75rem;color:var(--text-light);cursor:pointer;transition:all 0.2s;">
+          📁 גרור קובץ לכאן להעלאה<br><span style="font-size:0.65rem;">מחליף קובץ קיים באותו שם</span>
+        </div>
+      </div>
+      <div class="editor-wrap">
+        <div class="editor-topbar">
+          <div class="editor-filename" id="editor-filename">— בחר קובץ —</div>
+          <div class="editor-actions">
+            <button class="editor-btn" id="copy-editor-btn" onclick="copyEditorContent()" disabled style="background:var(--cream);color:var(--text-mid);border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;">📋 העתק ללוח</button>
+            <button class="editor-btn" id="paste-publish-btn" onclick="pasteAndPublish()" disabled style="background:var(--navy);color:#fff;border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;">📋 הדבק מהלוח ופרסם</button>
+            <button class="editor-btn" id="save-code-btn" onclick="saveCode()" style="background:var(--orange-deep);color:#fff;border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;">💾 שמור ופרסם</button>
+          </div>
+        </div>
+        <textarea id="code-editor" placeholder="בחר קובץ מהרשימה משמאל..."></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: BACKUPS -->
+  <div class="tab-panel" id="tab-backups">
+    <div class="backups-header">
+      <div class="backups-title">גיבויים</div>
+    </div>
+    <div class="status-bar">
+      <div class="status-dot" id="status-dot-backup"></div>
+      <div class="status-text" id="status-text-backup">טוען גיבויים...</div>
+    </div>
+    <div class="backup-list" id="backup-list"><div class="backup-empty">טוען...</div></div>
+  </div>
+
+</div>
+
+<script src="/admin/admin-core.js"></script>
+<script src="/admin/admin-content.js"></script>
+<script src="/admin/admin-code.js"></script>
+<script src="/admin/admin-backups.js"></script>
+<script>checkToken();</script>
+
+<!-- CONFIRM MODAL -->
+<div id="confirm-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:18px;padding:36px 40px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.2);max-width:340px;width:90%;">
+    <div style="font-size:2rem;margin-bottom:12px;">🗑</div>
+    <div id="confirm-modal-text" style="font-size:1rem;font-weight:700;color:#1a4a6b;margin-bottom:28px;"></div>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button id="confirm-modal-yes" style="background:#ef4444;color:#fff;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
+      <button id="confirm-modal-no" style="background:#eef4f8;color:#1a4a6b;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">ביטול</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
