@@ -38,90 +38,76 @@ function saveToken() {
 
 // ===== INIT =====
 function init() {
-  restoreTab();
-  loadContent();
-  loadFileTree('');
-  loadBackups();
+  selectRepo('omer-taicher-site', document.getElementById('repo-btn-site'));
 }
 
 // ===== TABS =====
-function switchTab(name) {
+function switchTab(name, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
-  event.target.classList.add('active');
-  document.getElementById('save-content-btn').style.display = name === 'content' ? 'flex' : 'none';
+  if (btn) btn.classList.add('active');
+  // שמור ופרסם — גלוי רק בתוכן של אתר ראשי
+  const saveBtn = document.getElementById('save-content-btn');
+  if (saveBtn) saveBtn.style.visibility = (name === 'content' && GITHUB_REPO === 'omer-taicher-site') ? 'visible' : 'hidden';
   localStorage.setItem('admin_active_tab', name);
 }
 
-function restoreTab() {
-  const saved = localStorage.getItem('admin_active_tab') || 'content';
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + saved).classList.add('active');
-  const names = ['content','code','backups'];
-  const idx = names.indexOf(saved);
-  const btns = document.querySelectorAll('.tab-btn');
-  if (btns[idx]) btns[idx].classList.add('active');
-  document.getElementById('save-content-btn').style.display = saved === 'content' ? 'flex' : 'none';
-}
-
 // ===== REPO SWITCHER =====
-function toggleRepoDropdown() {
-  document.getElementById('repo-dropdown').classList.toggle('open');
-}
-
-function selectRepo(repoName, label) {
-  document.getElementById('repo-label').textContent = label;
-  document.getElementById('repo-dropdown').classList.remove('open');
-  document.querySelectorAll('.repo-option').forEach(o => o.classList.remove('active'));
-  event.target.classList.add('active');
-  switchRepo(repoName);
-}
-
-document.addEventListener('click', e => {
-  const sw = document.getElementById('repo-switcher');
-  if (sw && !sw.contains(e.target)) document.getElementById('repo-dropdown').classList.remove('open');
-});
-
-function switchRepo(repoName) {
+function selectRepo(repoName, btn) {
   GITHUB_REPO = repoName;
   contentSha = null; currentData = null;
   currentCodeFile = null; currentCodeSha = null;
   currentTreePath = '';
+
+  // כפתורי repo — active על הנבחר
+  document.querySelectorAll('.repo-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  // איפוס עורך קוד
   const codeEditor = document.getElementById('code-editor');
   if (codeEditor) codeEditor.value = '';
   const editorFilename = document.getElementById('editor-filename');
   if (editorFilename) editorFilename.textContent = '— בחר קובץ —';
-  const deleteBtn = document.getElementById('delete-file-btn');
-  if (deleteBtn) deleteBtn.style.display = 'none';
+
+  // הצג/הסתר תוכן לפי repo — רק בטאב תוכן
+  const isSite  = repoName === 'omer-taicher-site';
+  const isBlog  = repoName === 'omer-taicher-blog';
+  const isTutos = repoName === 'omer-taicher-tutorials';
+
+  const siteBlocks    = document.getElementById('site-content-blocks');
+  const blogMgr       = document.getElementById('blog-manager');
+  const tutosContent  = document.getElementById('tutorials-content');
+  if (siteBlocks)   siteBlocks.style.display   = isSite  ? 'block' : 'none';
+  if (blogMgr)      blogMgr.style.display       = isBlog  ? 'block' : 'none';
+  if (tutosContent) tutosContent.style.display  = isTutos ? 'block' : 'none';
+
+  // כפתור שמור ופרסם — גלוי רק באתר ראשי + טאב תוכן
   const saveBtn = document.getElementById('save-content-btn');
-  if (saveBtn) { saveBtn.disabled = true; saveBtn.style.display = 'none'; }
-  const isMain = repoName === 'omer-taicher-site';
-  const statusBar = document.getElementById('tab-content') && document.getElementById('tab-content').querySelector('.status-bar');
-  if (statusBar) statusBar.style.display = isMain ? 'flex' : 'none';
-  document.querySelectorAll('.section-block').forEach(b => b.style.display = isMain ? 'block' : 'none');
-  const blogMgr = document.getElementById('blog-manager');
-  if (blogMgr) blogMgr.style.display = repoName === 'omer-taicher-blog' ? 'block' : 'none';
-  // עבור אוטומטית לטאב קוד
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  const tabCode = document.getElementById('tab-code');
-  if (tabCode) tabCode.classList.add('active');
-  const codeBtn = document.querySelector('.tab-btn[onclick*="code"]');
-  if (codeBtn) codeBtn.classList.add('active');
-  if (isMain) loadContent();
-  else if (repoName === 'omer-taicher-blog') setTimeout(loadBlogManager, 100);
+  const activeTab = localStorage.getItem('admin_active_tab') || 'content';
+  if (saveBtn) {
+    saveBtn.style.visibility = (isSite && activeTab === 'content') ? 'visible' : 'hidden';
+    saveBtn.disabled = true;
+  }
+
+  // status
+  const statusDot  = document.getElementById('status-dot-content');
+  const statusText = document.getElementById('status-text-content');
+  if (statusDot)  statusDot.className  = 'status-dot loading';
+  if (statusText) statusText.textContent = 'טוען...';
+
+  // טען נתונים
+  if (isSite)  loadContent();
+  if (isBlog)  setTimeout(loadBlogManager, 50);
   loadFileTree('');
   loadBackups();
-  setStatus('code', 'ok', 'עברת ל: ' + REPOS[repoName].name);
 }
 
 // ===== HELPERS =====
 function setStatus(tab, type, msg) {
-  const dot = document.getElementById('status-dot-' + tab);
+  const dot  = document.getElementById('status-dot-'  + tab);
   const text = document.getElementById('status-text-' + tab);
-  if (dot) dot.className = 'status-dot ' + type;
+  if (dot)  dot.className   = 'status-dot ' + type;
   if (text) text.textContent = msg;
 }
 
