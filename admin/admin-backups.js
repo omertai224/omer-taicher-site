@@ -127,21 +127,24 @@ async function loadBackups() {
         </div>`;
       }).join('')}
     `;
-    // נקה גיבויים ישנים לכל קובץ
+    // נקה גיבויים ישנים לכל קובץ (בלי לטעון מחדש)
     const fileNames = [...new Set(files.map(f => f.name.split('__')[0]))];
+    let toDeleteAll = [];
     for (const fname of fileNames) {
       const relevant = files.filter(f => f.name.startsWith(fname)).sort((a,b) => a.name.localeCompare(b.name));
-      const toDelete = relevant.slice(0, Math.max(0, relevant.length - MAX_BACKUPS));
-      for (const f of toDelete) {
+      toDeleteAll = toDeleteAll.concat(relevant.slice(0, Math.max(0, relevant.length - MAX_BACKUPS)));
+    }
+    for (const f of toDeleteAll) {
+      try {
         await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${f.path}`, {
           method: 'DELETE',
           headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: 'מחיקת גיבוי ישן', sha: f.sha, branch: GITHUB_BRANCH })
         });
-      }
+      } catch(e) {}
     }
-    if (fileNames.length) { loadBackups(); return; }
-    setStatus('backup', 'ok', `${files.length} גיבויים`);
+    const remaining = files.filter(f => !toDeleteAll.find(d => d.path === f.path));
+    setStatus('backup', 'ok', `${remaining.length} גיבויים`);
   } catch(e) {
     setStatus('backup', 'error', 'שגיאה: ' + e.message);
   }
