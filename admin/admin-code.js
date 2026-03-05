@@ -32,7 +32,7 @@ function renderTree(items, currentPath) {
     return a.type === 'dir' ? -1 : 1;
   });
   // Breadcrumb
-  let crumbs = `<span class="bc-part" onclick="loadFileTree('')">🏠</span>`;
+  let crumbs = `<span class="bc-part" onclick="loadFileTree('')">🏠 שורש</span>`;
   if (currentPath) {
     const parts = currentPath.split('/');
     parts.forEach((part, i) => {
@@ -46,18 +46,16 @@ function renderTree(items, currentPath) {
     const ext = item.name.split('.').pop().toLowerCase();
     const icon = item.type === 'dir' ? '📁' : (EXT_ICONS[ext] || '📄');
     const desc = FILE_DESCRIPTIONS[item.name] || '';
-    const isEditable = item.type === 'file' && ['html','js','css','json','md','txt','svg'].includes(ext);
     const descTag = desc ? `<span class="file-item-desc">${desc}</span>` : '';
+    const delBtn = `<button class="delete-img-btn" onclick="confirmDelete('${item.path}','${item.sha || ''}','${item.type}')" title="מחק">🗑</button>`;
     if (item.type === 'dir') {
-      html += `<div class="file-item" onclick="loadFileTree('${item.path}')"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}/</span>${descTag}</div>`;
-    } else if (isEditable) {
-      html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}" onclick="loadFile('${item.path}')"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}</div>`;
+      html += `<div class="file-item"><span class="file-item-icon" onclick="loadFileTree('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFileTree('${item.path}')" style="cursor:pointer">${item.name}/</span>${descTag}${delBtn}</div>`;
     } else {
-      const isImage = ['webp','png','jpg','jpeg','gif','svg'].includes(ext);
-      if (isImage) {
-        html += `<div class="file-item"><button class="delete-img-btn" onclick="deleteImage('${item.path}','${item.sha}')" title="מחק">🗑</button><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}</div>`;
+      const isEditable = ['html','js','css','json','md','txt','svg'].includes(ext);
+      if (isEditable) {
+        html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}"><span class="file-item-icon" onclick="loadFile('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFile('${item.path}')" style="cursor:pointer">${item.name}</span>${descTag}${delBtn}</div>`;
       } else {
-        html += `<div class="file-item" style="opacity:0.4;cursor:default"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}</div>`;
+        html += `<div class="file-item"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}${delBtn}</div>`;
       }
     }
   });
@@ -140,17 +138,17 @@ async function saveCode() {
 }
 
 function newFilePrompt() {
-  const prefix = currentTreePath ? currentTreePath + '/' : '';
-  const name = prompt('שם הקובץ החדש:\n(נמצא כרגע ב: /' + (currentTreePath || 'שורש') + ')', prefix);
+  const name = prompt('שם הקובץ החדש:\n(נמצא כרגע ב: /' + (currentTreePath || 'שורש') + ')');
   if (!name || !name.trim()) return;
-  createNewFile(name.trim());
+  const fullPath = currentTreePath ? currentTreePath + '/' + name.trim() : name.trim();
+  createNewFile(fullPath);
 }
 
 function newFolderPrompt() {
-  const prefix = currentTreePath ? currentTreePath + '/' : '';
-  const name = prompt('שם התיקייה החדשה:\n(נמצא כרגע ב: /' + (currentTreePath || 'שורש') + ')', prefix);
+  const name = prompt('שם התיקייה החדשה:\n(נמצא כרגע ב: /' + (currentTreePath || 'שורש') + ')');
   if (!name || !name.trim()) return;
-  createNewFile(name.trim().replace(/\/$/, '') + '/.gitkeep', true);
+  const base = currentTreePath ? currentTreePath + '/' + name.trim() : name.trim();
+  createNewFile(base.replace(/\/$/, '') + '/.gitkeep', true);
 }
 
 async function createNewFile(filepath, isFolderInit) {
@@ -215,28 +213,67 @@ async function deleteFile() {
   }
 }
 
-// ===== DELETE IMAGE =====
-async function deleteImage(path, sha) {
+// ===== CONFIRM MODAL =====
+function confirmDelete(path, sha, type) {
   const name = path.split('/').pop();
-  if (!confirm('למחוק את ' + name + '?')) return;
+  const modal = document.getElementById('confirm-modal');
+  document.getElementById('confirm-modal-text').textContent = 'למחוק את ' + name + '?';
+  modal.style.display = 'flex';
+  document.getElementById('confirm-modal-yes').onclick = async () => {
+    modal.style.display = 'none';
+    if (type === 'dir') await deleteFolder(path);
+    else await deleteAnyFile(path, sha);
+  };
+  document.getElementById('confirm-modal-no').onclick = () => { modal.style.display = 'none'; };
+}
+
+async function deleteAnyFile(path, sha) {
+  const name = path.split('/').pop();
   setStatus('code', 'loading', 'מוחק ' + name + '...');
+  // אם אין SHA — קבל אותו
+  if (!sha) {
+    try {
+      const r = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}`, {
+        headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      const d = await r.json();
+      sha = d.sha;
+    } catch(e) {}
+  }
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
+    method: 'DELETE',
+    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: 'מחיקת ' + path, sha: sha, branch: GITHUB_BRANCH })
+  });
+  if (res.ok) {
+    setStatus('code', 'ok', '✓ ' + name + ' נמחק');
+    loadFileTree(currentTreePath || '');
+  } else {
+    const err = await res.json();
+    setStatus('code', 'error', 'שגיאה: ' + (err.message || 'לא ידוע'));
+  }
+}
+
+async function deleteFolder(folderPath) {
+  setStatus('code', 'loading', 'מוחק תיקייה...');
   try {
-    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
-      method: 'DELETE',
-      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: 'מחיקת ' + path, sha: sha, branch: GITHUB_BRANCH })
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${folderPath}?ref=${GITHUB_BRANCH}`, {
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
     });
-    if (res.ok) {
-      setStatus('code', 'ok', '✓ ' + name + ' נמחק');
-      loadFileTree(currentTreePath || '');
-    } else {
-      const err = await res.json();
-      setStatus('code', 'error', 'שגיאה: ' + (err.message || 'לא ידוע'));
+    const items = await res.json();
+    for (const item of items) {
+      if (item.type === 'dir') await deleteFolder(item.path);
+      else await deleteAnyFile(item.path, item.sha);
     }
+    setStatus('code', 'ok', '✓ תיקייה נמחקה');
+    loadFileTree(currentTreePath || '');
   } catch(e) {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
   }
 }
+
+// ===== DELETE IMAGE =====
+
 
 // ===== DROPZONE UPLOAD =====
 function handleDrop(event) {
