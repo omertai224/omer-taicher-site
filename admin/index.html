@@ -126,6 +126,9 @@
       <div class="file-list">
         <div class="file-list-title">קבצים ותיקיות</div>
         <div id="file-items"></div>
+        <div id="dropzone" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleDrop(event)" style="margin:12px;border:2px dashed var(--border);border-radius:10px;padding:16px;text-align:center;font-size:0.75rem;color:var(--text-light);cursor:pointer;transition:all 0.2s;">
+          📁 גרור קובץ לכאן להעלאה<br><span style="font-size:0.65rem;">מחליף קובץ קיים באותו שם</span>
+        </div>
       </div>
       <div class="editor-wrap">
         <div class="editor-topbar">
