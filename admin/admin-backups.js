@@ -63,6 +63,7 @@ async function deleteSelectedBackups() {
       });
     } catch(e) {}
   }
+  await ensureBackupsFolder();
   setStatus('backup', 'ok', '✓ נמחקו');
   loadBackups();
 }
@@ -89,6 +90,16 @@ async function createBackup() {
   } catch(e) {
     setStatus('backup', 'error', 'שגיאה: ' + e.message);
   }
+}
+
+async function ensureBackupsFolder() {
+  try {
+    await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/backups/.gitkeep`, {
+      method: 'PUT',
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'שמירת תיקיית גיבויים', content: btoa(''), branch: GITHUB_BRANCH })
+    });
+  } catch(e) {}
 }
 
 async function loadBackups() {
@@ -144,6 +155,7 @@ async function loadBackups() {
       } catch(e) {}
     }
     const remaining = files.filter(f => !toDeleteAll.find(d => d.path === f.path));
+    if (toDeleteAll.length) await ensureBackupsFolder();
     setStatus('backup', 'ok', `${remaining.length} גיבויים`);
   } catch(e) {
     setStatus('backup', 'error', 'שגיאה: ' + e.message);
