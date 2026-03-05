@@ -92,14 +92,40 @@ async function saveContent() {
 }
 
 // ===== COPY FUNCTIONS =====
-function copySection(sectionId) {
+function copyToClipboard(text, label) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text)
+      .then(() => setStatus('content', 'ok', '✓ ' + label + ' הועתק ללוח'))
+      .catch(() => fallbackCopy(text, label));
+  } else {
+    fallbackCopy(text, label);
+  }
+}
+
+function fallbackCopy(text, label) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try {
+    document.execCommand('copy');
+    setStatus('content', 'ok', '✓ ' + label + ' הועתק ללוח');
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה בהעתקה');
+  }
+  document.body.removeChild(ta);
+}
+
+function copySection(sectionId, sectionName) {
   const data = {};
-  document.querySelectorAll(`#block-${sectionId} [id*="."]`).forEach(el => {
+  document.querySelectorAll('#block-' + sectionId + ' [id*="."]').forEach(el => {
     if (el.value !== undefined) data[el.id] = el.value;
   });
-  navigator.clipboard.writeText(JSON.stringify(data))
-    .then(() => setStatus('content', 'ok', '✓ ' + label + ' הועתק ללוח'))
-    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
+  const label = sectionName || sectionId;
+  copyToClipboard(JSON.stringify(data), label);
 }
 
 function copyAll() {
@@ -107,7 +133,5 @@ function copyAll() {
   document.querySelectorAll('#tab-content [id*="."]').forEach(el => {
     if (el.value !== undefined) data[el.id] = el.value;
   });
-  navigator.clipboard.writeText(JSON.stringify(data))
-    .then(() => setStatus('content', 'ok', '✓ כל התוכן הועתק ללוח'))
-    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
+  copyToClipboard(JSON.stringify(data), 'כל התוכן');
 }
