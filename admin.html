@@ -91,7 +91,10 @@
   .file-item { padding:12px 16px; cursor:pointer; display:flex; align-items:center; gap:10px; transition:background 0.15s; border-bottom:1px solid var(--border); font-size:0.85rem; color:var(--text-mid); font-weight:500; }
   .file-item:hover { background:var(--cream); }
   .file-item.active { background:var(--orange-light); color:var(--orange-deep); font-weight:700; }
-  .file-item-icon { font-size:0.9rem; }
+  .file-item-icon { font-size:0.9rem; flex-shrink:0; }
+  .file-item-name { flex:1; }
+  .file-item-desc { font-size:0.68rem; color:var(--text-light); background:var(--cream); padding:2px 7px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
+  .file-item.active .file-item-desc { background:rgba(232,133,74,0.15); color:var(--orange-deep); }
   .editor-wrap { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
   .editor-topbar { padding:12px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; background:var(--cream); }
   .editor-filename { font-size:0.85rem; font-weight:700; color:var(--navy); font-family:monospace; }
@@ -572,7 +575,6 @@ async function loadFileTree(path) {
 
 function renderTree(items, currentPath) {
   const container = document.getElementById('file-items');
-  // Sort: folders first, then files
   items.sort((a, b) => {
     if (a.type === b.type) return a.name.localeCompare(b.name);
     return a.type === 'dir' ? -1 : 1;
@@ -580,23 +582,51 @@ function renderTree(items, currentPath) {
 
   const EXT_ICONS = { html:'🌐', js:'⚡', css:'🎨', json:'📋', md:'📝', txt:'📄', webp:'🖼', png:'🖼', jpg:'🖼', svg:'🎭' };
 
+  const DESCRIPTIONS = {
+    'index.html':       'דף הבית',
+    'tutorials.html':   'דף הדרכות',
+    'admin.html':       'פאנל ניהול',
+    'content.json':     'תוכן האתר',
+    'tutorials.json':   'תוכן הדרכות',
+    'toolbar.js':       'סרגל נגישות',
+    'style.css':        'עיצוב',
+    'backups':          'גיבויים',
+    'images':           'תמונות',
+    'Vibe':             'קבצי עיצוב',
+    '.gitkeep':         'מחזיק תיקייה',
+  };
+
   let html = '';
-  // Back button if inside a folder
   if (currentPath) {
     const parent = currentPath.split('/').slice(0, -1).join('/');
-    html += `<div class="file-item" onclick="loadFileTree('${parent}')"><span class="file-item-icon">⬆️</span>חזרה</div>`;
+    html += `<div class="file-item" onclick="loadFileTree('${parent}')"><span class="file-item-icon">⬆️</span><span class="file-item-name">חזרה</span></div>`;
   }
+
   items.forEach(item => {
     if (item.name === '.git') return;
     const ext = item.name.split('.').pop().toLowerCase();
     const icon = item.type === 'dir' ? '📁' : (EXT_ICONS[ext] || '📄');
+    const desc = DESCRIPTIONS[item.name] || '';
     const isEditable = item.type === 'file' && ['html','js','css','json','md','txt','svg'].includes(ext);
+
     if (item.type === 'dir') {
-      html += `<div class="file-item" onclick="loadFileTree('${item.path}')"><span class="file-item-icon">${icon}</span>${item.name}/</div>`;
+      html += `<div class="file-item" onclick="loadFileTree('${item.path}')">
+        <span class="file-item-icon">${icon}</span>
+        <span class="file-item-name">${item.name}/</span>
+        ${desc ? `<span class="file-item-desc">${desc}</span>` : ''}
+      </div>`;
     } else if (isEditable) {
-      html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}" onclick="loadFile('${item.path}')"><span class="file-item-icon">${icon}</span>${item.name}</div>`;
+      html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}" onclick="loadFile('${item.path}')">
+        <span class="file-item-icon">${icon}</span>
+        <span class="file-item-name">${item.name}</span>
+        ${desc ? `<span class="file-item-desc">${desc}</span>` : ''}
+      </div>`;
     } else {
-      html += `<div class="file-item" style="opacity:0.4;cursor:default"><span class="file-item-icon">${icon}</span>${item.name}</div>`;
+      html += `<div class="file-item" style="opacity:0.4;cursor:default">
+        <span class="file-item-icon">${icon}</span>
+        <span class="file-item-name">${item.name}</span>
+        ${desc ? `<span class="file-item-desc">${desc}</span>` : ''}
+      </div>`;
     }
   });
   container.innerHTML = html;
