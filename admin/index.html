@@ -55,54 +55,54 @@
     <div class="section-block open" id="block-hero">
       <div class="section-head" onclick="toggleBlock('hero')"><div class="section-head-left"><div class="section-icon">🏠</div><div><div class="section-name">הירו</div><div class="section-count">כותרת, טקסט, ציטוט</div></div></div><div class="chevron">▼</div></div>
       <div class="section-body">
-        <div class="fields-row"><div class="field"><label class="field-label">כותרת שורה 1</label><input type="text" id="hero.title_1"></div><div class="field"><label class="field-label">כותרת שורה 2</label><input type="text" id="hero.title_2"></div></div>
+        <div class="fields-row"><div class="field"><label class="field-label">כותרת שורה 1</label><textarea id="hero.title_1"></textarea></div><div class="field"><label class="field-label">כותרת שורה 2</label><textarea id="hero.title_2"></textarea></div></div>
         <div class="field"><label class="field-label">טקסט פתיחה</label><textarea id="hero.lead_1"></textarea></div>
         <div class="field"><label class="field-label">טקסט היכרות</label><textarea id="hero.lead_2"></textarea></div>
-        <div class="fields-row"><div class="field"><label class="field-label">ציטוט לקוח</label><input type="text" id="hero.quote"></div><div class="field"><label class="field-label">שם המצטט</label><input type="text" id="hero.quote_attr"></div></div>
+        <div class="fields-row"><div class="field"><label class="field-label">ציטוט לקוח</label><textarea id="hero.quote"></textarea></div><div class="field"><label class="field-label">שם המצטט</label><textarea id="hero.quote_attr"></textarea></div></div>
       </div>
     </div>
     <div class="section-block" id="block-pain">
       <div class="section-head" onclick="toggleBlock('pain')"><div class="section-head-left"><div class="section-icon">😟</div><div><div class="section-name">כאבים</div><div class="section-count">כותרת, 4 כרטיסים, ציטוט</div></div></div><div class="chevron">▼</div></div>
       <div class="section-body">
-        <div class="field"><label class="field-label">כותרת ראשית</label><input type="text" id="pain.title"></div>
-        <div class="fields-divider">כרטיס 1</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><input type="text" id="pain.cards.0.title"></div><div class="field"><label class="field-label">תיאור</label><input type="text" id="pain.cards.0.desc"></div></div>
-        <div class="fields-divider">כרטיס 2</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><input type="text" id="pain.cards.1.title"></div><div class="field"><label class="field-label">תיאור</label><input type="text" id="pain.cards.1.desc"></div></div>
-        <div class="fields-divider">כרטיס 3</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><input type="text" id="pain.cards.2.title"></div><div class="field"><label class="field-label">תיאור</label><input type="text" id="pain.cards.2.desc"></div></div>
-        <div class="fields-divider">כרטיס 4</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><input type="text" id="pain.cards.3.title"></div><div class="field"><label class="field-label">תיאור</label><input type="text" id="pain.cards.3.desc"></div></div>
-        <div class="fields-divider">ציטוט תחתון</div><div class="fields-row"><div class="field"><label class="field-label">ציטוט</label><input type="text" id="pain.quote"></div><div class="field"><label class="field-label">שם</label><input type="text" id="pain.quote_attr"></div></div>
+        <div class="field"><label class="field-label">כותרת ראשית</label><textarea id="pain.title"></textarea></div>
+        <div class="fields-divider">כרטיס 1</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.0.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.0.desc"></textarea></div></div>
+        <div class="fields-divider">כרטיס 2</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.1.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.1.desc"></textarea></div></div>
+        <div class="fields-divider">כרטיס 3</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.2.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.2.desc"></textarea></div></div>
+        <div class="fields-divider">כרטיס 4</div><div class="fields-row"><div class="field"><label class="field-label">כותרת</label><textarea id="pain.cards.3.title"></textarea></div><div class="field"><label class="field-label">תיאור</label><textarea id="pain.cards.3.desc"></textarea></div></div>
+        <div class="fields-divider">ציטוט תחתון</div><div class="fields-row"><div class="field"><label class="field-label">ציטוט</label><textarea id="pain.quote"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="pain.quote_attr"></textarea></div></div>
       </div>
     </div>
     <div class="section-block" id="block-ws">
       <div class="section-head" onclick="toggleBlock('ws')"><div class="section-head-left"><div class="section-icon">🎓</div><div><div class="section-name">הדרכות</div><div class="section-count">4 הדרכות — כותרות ומחירים</div></div></div><div class="chevron">▼</div></div>
       <div class="section-body">
-        <div class="fields-divider">הדרכה 1 — AI</div><div class="field"><label class="field-label">כותרת</label><input type="text" id="workshops.0.title"></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><input type="text" id="workshops.0.price"></div><div class="field"><label class="field-label">תיאור מחיר</label><input type="text" id="workshops.0.price_label"></div></div>
-        <div class="fields-divider">הדרכה 2 — קבצים</div><div class="field"><label class="field-label">כותרת</label><input type="text" id="workshops.1.title"></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><input type="text" id="workshops.1.price"></div><div class="field"><label class="field-label">תיאור מחיר</label><input type="text" id="workshops.1.price_label"></div></div>
-        <div class="fields-divider">הדרכה 3 — אבטחה</div><div class="field"><label class="field-label">כותרת</label><input type="text" id="workshops.2.title"></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><input type="text" id="workshops.2.price"></div><div class="field"><label class="field-label">תיאור מחיר</label><input type="text" id="workshops.2.price_label"></div></div>
-        <div class="fields-divider">הדרכה 4 — גוגל</div><div class="field"><label class="field-label">כותרת</label><input type="text" id="workshops.3.title"></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><input type="text" id="workshops.3.price"></div><div class="field"><label class="field-label">תיאור מחיר</label><input type="text" id="workshops.3.price_label"></div></div>
+        <div class="fields-divider">הדרכה 1 — AI</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.0.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.0.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.0.price_label"></textarea></div></div>
+        <div class="fields-divider">הדרכה 2 — קבצים</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.1.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.1.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.1.price_label"></textarea></div></div>
+        <div class="fields-divider">הדרכה 3 — אבטחה</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.2.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.2.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.2.price_label"></textarea></div></div>
+        <div class="fields-divider">הדרכה 4 — גוגל</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.3.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.3.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.3.price_label"></textarea></div></div>
       </div>
     </div>
     <div class="section-block" id="block-lecture">
       <div class="section-head" onclick="toggleBlock('lecture')"><div class="section-head-left"><div class="section-icon">🎤</div><div><div class="section-name">ההרצאה הבאה</div><div class="section-count">כותרת, תיאור, קישור, מחיר</div></div></div><div class="chevron">▼</div></div>
       <div class="section-body">
-        <div class="fields-row"><div class="field"><label class="field-label">שם (badge)</label><input type="text" id="lecture.badge"></div><div class="field"><label class="field-label">כותרת ראשית</label><input type="text" id="lecture.title"></div></div>
+        <div class="fields-row"><div class="field"><label class="field-label">שם (badge)</label><textarea id="lecture.badge"></textarea></div><div class="field"><label class="field-label">כותרת ראשית</label><textarea id="lecture.title"></textarea></div></div>
         <div class="field"><label class="field-label">תיאור</label><textarea id="lecture.desc"></textarea></div>
-        <div class="field"><label class="field-label">פרס / הטבה</label><input type="text" id="lecture.prize"></div>
-        <div class="fields-row"><div class="field"><label class="field-label">מחיר כרטיס</label><input type="text" id="lecture.price"></div><div class="field"><label class="field-label">קישור לרישום</label><input type="text" id="lecture.url"></div></div>
+        <div class="field"><label class="field-label">פרס / הטבה</label><textarea id="lecture.prize"></textarea></div>
+        <div class="fields-row"><div class="field"><label class="field-label">מחיר כרטיס</label><textarea id="lecture.price"></textarea></div><div class="field"><label class="field-label">קישור לרישום</label><textarea id="lecture.url"></textarea></div></div>
       </div>
     </div>
     <div class="section-block" id="block-testi">
       <div class="section-head" onclick="toggleBlock('testi')"><div class="section-head-left"><div class="section-icon">💬</div><div><div class="section-name">המלצות</div><div class="section-count">ציטוט ראשי + 3 המלצות</div></div></div><div class="chevron">▼</div></div>
       <div class="section-body">
-        <div class="fields-divider">ציטוט ראשי</div><div class="fields-row"><div class="field"><label class="field-label">ציטוט</label><textarea id="testimonials.featured_text"></textarea></div><div class="field"><label class="field-label">שם</label><input type="text" id="testimonials.featured_attr"></div></div>
-        <div class="fields-divider">המלצה 1</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.0.text"></textarea></div><div class="field"><label class="field-label">שם</label><input type="text" id="testimonials.cards.0.name"></div></div>
-        <div class="fields-divider">המלצה 2</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.1.text"></textarea></div><div class="field"><label class="field-label">שם</label><input type="text" id="testimonials.cards.1.name"></div></div>
-        <div class="fields-divider">המלצה 3</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.2.text"></textarea></div><div class="field"><label class="field-label">שם</label><input type="text" id="testimonials.cards.2.name"></div></div>
+        <div class="fields-divider">ציטוט ראשי</div><div class="fields-row"><div class="field"><label class="field-label">ציטוט</label><textarea id="testimonials.featured_text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.featured_attr"></textarea></div></div>
+        <div class="fields-divider">המלצה 1</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.0.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.0.name"></textarea></div></div>
+        <div class="fields-divider">המלצה 2</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.1.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.1.name"></textarea></div></div>
+        <div class="fields-divider">המלצה 3</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.2.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.2.name"></textarea></div></div>
       </div>
     </div>
     <div class="section-block" id="block-about">
       <div class="section-head" onclick="toggleBlock('about')"><div class="section-head-left"><div class="section-icon">👤</div><div><div class="section-name">מי אני</div><div class="section-count">כותרת, פסקאות, ציטוט</div></div></div><div class="chevron">▼</div></div>
       <div class="section-body">
-        <div class="field"><label class="field-label">כותרת</label><input type="text" id="about.title"></div>
+        <div class="field"><label class="field-label">כותרת</label><textarea id="about.title"></textarea></div>
         <div class="field"><label class="field-label">פסקה 1</label><textarea id="about.p1"></textarea></div>
         <div class="field"><label class="field-label">פסקה 2</label><textarea id="about.p2"></textarea></div>
         <div class="field"><label class="field-label">פסקה 3</label><textarea id="about.p3"></textarea></div>
