@@ -102,6 +102,7 @@
         <div class="field"><label class="field-label">✓ כישור 5</label><textarea id="about.cred5"></textarea></div>
         <div class="field"><label class="field-label">✓ כישור 6</label><textarea id="about.cred6"></textarea></div>
       </div>
+    </div>
     <div class="section-block" id="block-lecture">
       <div class="section-head" onclick="toggleBlock('lecture')"><div class="section-head-left"><div class="section-icon">🎤</div><div><div class="section-name">ההרצאה הבאה</div><div class="section-count">כותרת, תיאור, קישור, מחיר</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('lecture','ההרצאה הבאה')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
       <div class="section-body">
@@ -164,6 +165,7 @@
           <div class="editor-filename" id="editor-filename">— בחר קובץ —</div>
           <div class="editor-actions">
             <button class="editor-btn" id="delete-file-btn" onclick="deleteFile()" style="background:#fee2e2;color:var(--red);display:none;">מחק</button>
+            <button class="editor-btn" id="copy-editor-btn" onclick="copyEditorContent()" disabled style="background:var(--cream);color:var(--text-mid);">📋 העתק ללוח</button>
             <button class="editor-btn" id="paste-publish-btn" onclick="pasteAndPublish()" disabled style="background:var(--navy);color:#fff;">📋 הדבק מהלוח ופרסם</button>
           </div>
         </div>
