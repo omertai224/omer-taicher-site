@@ -83,6 +83,17 @@
         <div class="fields-divider">הדרכה 4 — גוגל</div><div class="field"><label class="field-label">כותרת</label><textarea id="workshops.3.title"></textarea></div><div class="fields-row"><div class="field"><label class="field-label">מחיר</label><textarea id="workshops.3.price"></textarea></div><div class="field"><label class="field-label">תיאור מחיר</label><textarea id="workshops.3.price_label"></textarea></div></div>
       </div>
     </div>
+    <div class="section-block" id="block-about">
+      <div class="section-head" onclick="toggleBlock('about')"><div class="section-head-left"><div class="section-icon">👤</div><div><div class="section-name">מי אני</div><div class="section-count">כותרת, פסקאות, ציטוט</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('about','מי אני')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+      <div class="section-body">
+        <div class="field"><label class="field-label">כותרת</label><textarea id="about.title"></textarea></div>
+        <div class="field"><label class="field-label">פסקה 1</label><textarea id="about.p1"></textarea></div>
+        <div class="field"><label class="field-label">פסקה 2</label><textarea id="about.p2"></textarea></div>
+        <div class="field"><label class="field-label">פסקה 3</label><textarea id="about.p3"></textarea></div>
+        <div class="field"><label class="field-label">פסקה 4</label><textarea id="about.p4"></textarea></div>
+        <div class="field"><label class="field-label">פסקה 5</label><textarea id="about.p5"></textarea></div>
+        <div class="field quote-field"><label class="field-label">❝ ציטוט בכרטיס</label><textarea id="about.quote"></textarea></div>
+      </div>
     <div class="section-block" id="block-lecture">
       <div class="section-head" onclick="toggleBlock('lecture')"><div class="section-head-left"><div class="section-icon">🎤</div><div><div class="section-name">ההרצאה הבאה</div><div class="section-count">כותרת, תיאור, קישור, מחיר</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('lecture','ההרצאה הבאה')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
       <div class="section-body">
@@ -101,17 +112,6 @@
         <div class="fields-divider">המלצה 3</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.2.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.2.name"></textarea></div></div>
       </div>
     </div>
-    <div class="section-block" id="block-about">
-      <div class="section-head" onclick="toggleBlock('about')"><div class="section-head-left"><div class="section-icon">👤</div><div><div class="section-name">מי אני</div><div class="section-count">כותרת, פסקאות, ציטוט</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('about','מי אני')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
-      <div class="section-body">
-        <div class="field"><label class="field-label">כותרת</label><textarea id="about.title"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 1</label><textarea id="about.p1"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 2</label><textarea id="about.p2"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 3</label><textarea id="about.p3"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 4</label><textarea id="about.p4"></textarea></div>
-        <div class="field"><label class="field-label">פסקה 5</label><textarea id="about.p5"></textarea></div>
-        <div class="field quote-field"><label class="field-label">❝ ציטוט בכרטיס</label><textarea id="about.quote"></textarea></div>
-      </div>
     </div>
   </div>
 
