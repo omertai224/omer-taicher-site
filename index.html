@@ -1184,6 +1184,11 @@
 </div><!-- end page-content -->
 
 <script>
+  if (window.location.hash) {
+    history.replaceState(null, '', window.location.pathname);
+    window.scrollTo(0, 0);
+  }
+
   const content = document.getElementById('page-content');
   let scale = 1;
 
