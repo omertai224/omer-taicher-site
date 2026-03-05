@@ -93,6 +93,12 @@
         <div class="field"><label class="field-label">פסקה 4</label><textarea id="about.p4"></textarea></div>
         <div class="field"><label class="field-label">פסקה 5</label><textarea id="about.p5"></textarea></div>
         <div class="field quote-field"><label class="field-label">❝ ציטוט בכרטיס</label><textarea id="about.quote"></textarea></div>
+        <div class="field"><label class="field-label">✓ כישור 1</label><textarea id="about.cred1"></textarea></div>
+        <div class="field"><label class="field-label">✓ כישור 2</label><textarea id="about.cred2"></textarea></div>
+        <div class="field"><label class="field-label">✓ כישור 3</label><textarea id="about.cred3"></textarea></div>
+        <div class="field"><label class="field-label">✓ כישור 4</label><textarea id="about.cred4"></textarea></div>
+        <div class="field"><label class="field-label">✓ כישור 5</label><textarea id="about.cred5"></textarea></div>
+        <div class="field"><label class="field-label">✓ כישור 6</label><textarea id="about.cred6"></textarea></div>
       </div>
     <div class="section-block" id="block-lecture">
       <div class="section-head" onclick="toggleBlock('lecture')"><div class="section-head-left"><div class="section-icon">🎤</div><div><div class="section-name">ההרצאה הבאה</div><div class="section-count">כותרת, תיאור, קישור, מחיר</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('lecture','ההרצאה הבאה')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
@@ -110,6 +116,25 @@
         <div class="fields-divider">המלצה 1</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.0.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.0.name"></textarea></div></div>
         <div class="fields-divider">המלצה 2</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.1.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.1.name"></textarea></div></div>
         <div class="fields-divider">המלצה 3</div><div class="fields-row"><div class="field"><label class="field-label">טקסט</label><textarea id="testimonials.cards.2.text"></textarea></div><div class="field"><label class="field-label">שם</label><textarea id="testimonials.cards.2.name"></textarea></div></div>
+      </div>
+    </div>
+    <div class="section-block" id="block-blog">
+      <div class="section-head" onclick="toggleBlock('blog')"><div class="section-head-left"><div class="section-icon">✍️</div><div><div class="section-name">בלוג</div><div class="section-count">כותרת + 3 כתבות</div></div></div><div style="display:flex;align-items:center;gap:8px;"><button onclick="event.stopPropagation();copySection('blog','בלוג')" style="background:var(--orange-light);color:var(--orange-deep);border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:4px 10px;border-radius:20px;font-family:inherit;">📋 העתק</button><div class="chevron">▼</div></div></div>
+      <div class="section-body">
+        <div class="field"><label class="field-label">כותרת הסקשן</label><textarea id="blog.title"></textarea></div>
+        <div class="field"><label class="field-label">תת-כותרת</label><textarea id="blog.sub" rows="2"></textarea></div>
+        <div class="fields-divider">כתבה 1</div>
+        <div class="fields-row"><div class="field"><label class="field-label">תגית</label><textarea id="blog.cards.0.tag"></textarea></div><div class="field"><label class="field-label">מטא</label><textarea id="blog.cards.0.meta"></textarea></div></div>
+        <div class="field"><label class="field-label">כותרת</label><textarea id="blog.cards.0.title"></textarea></div>
+        <div class="field"><label class="field-label">תקציר</label><textarea id="blog.cards.0.excerpt"></textarea></div>
+        <div class="fields-divider">כתבה 2</div>
+        <div class="fields-row"><div class="field"><label class="field-label">תגית</label><textarea id="blog.cards.1.tag"></textarea></div><div class="field"><label class="field-label">מטא</label><textarea id="blog.cards.1.meta"></textarea></div></div>
+        <div class="field"><label class="field-label">כותרת</label><textarea id="blog.cards.1.title"></textarea></div>
+        <div class="field"><label class="field-label">תקציר</label><textarea id="blog.cards.1.excerpt"></textarea></div>
+        <div class="fields-divider">כתבה 3</div>
+        <div class="fields-row"><div class="field"><label class="field-label">תגית</label><textarea id="blog.cards.2.tag"></textarea></div><div class="field"><label class="field-label">מטא</label><textarea id="blog.cards.2.meta"></textarea></div></div>
+        <div class="field"><label class="field-label">כותרת</label><textarea id="blog.cards.2.title"></textarea></div>
+        <div class="field"><label class="field-label">תקציר</label><textarea id="blog.cards.2.excerpt"></textarea></div>
       </div>
     </div>
     </div>
