@@ -81,25 +81,7 @@
     localStorage.setItem(SCALE_KEY, scale);
   }
 
-  // Apply saved scale on load
   applyScale(scale);
-
-  // ===== AUTO PADDING =====
-  function adjustBodyPadding() {
-    const barHeight = bar.offsetHeight;
-    const currentPadding = parseInt(getComputedStyle(document.body).paddingTop) || 0;
-    // Only add toolbar padding on mobile (bar is hidden on desktop)
-    if (window.innerWidth < 960) {
-      document.body.style.paddingTop = (currentPadding < barHeight + 68 ? (barHeight + 68 + 8) + 'px' : currentPadding + 'px');
-    } else {
-      // Remove any extra padding we added on desktop
-      document.body.style.paddingTop = '';
-    }
-  }
-
-  // Run after bar is in DOM
-  setTimeout(adjustBodyPadding, 50);
-  window.addEventListener('resize', adjustBodyPadding);
 
   document.getElementById('a11y-up').addEventListener('click', () => applyScale(scale + 0.1));
   document.getElementById('a11y-down').addEventListener('click', () => applyScale(scale - 0.1));
