@@ -90,3 +90,24 @@ async function saveContent() {
   }
   document.getElementById('save-content-btn').disabled = false;
 }
+
+// ===== COPY FUNCTIONS =====
+function copySection(sectionId) {
+  const data = {};
+  document.querySelectorAll(`#block-${sectionId} [id*="."]`).forEach(el => {
+    if (el.value !== undefined) data[el.id] = el.value;
+  });
+  navigator.clipboard.writeText(JSON.stringify(data))
+    .then(() => setStatus('content', 'ok', '✓ הסקשן הועתק ללוח'))
+    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
+}
+
+function copyAll() {
+  const data = {};
+  document.querySelectorAll('#tab-content [id*="."]').forEach(el => {
+    if (el.value !== undefined) data[el.id] = el.value;
+  });
+  navigator.clipboard.writeText(JSON.stringify(data))
+    .then(() => setStatus('content', 'ok', '✓ כל התוכן הועתק ללוח'))
+    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
+}
