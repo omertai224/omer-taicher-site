@@ -50,6 +50,11 @@ function populateFields(data) {
     const el = document.getElementById(path);
     if (el) el.value = flat[path];
   }
+  // תגים — מערך למחרוזת עם שורות
+  if (data.hero && data.hero.tags) {
+    const tagsEl = document.getElementById('hero.tags');
+    if (tagsEl) tagsEl.value = data.hero.tags.join('\n');
+  }
 }
 
 function toggleBlock(id) {
@@ -63,7 +68,14 @@ async function saveContent() {
     await autoBackup('content.json');
     const newData = JSON.parse(JSON.stringify(currentData));
     document.querySelectorAll('[id*="."]').forEach(el => {
-      if (el.value !== undefined && el.closest('#tab-content')) setByPath(newData, el.id, el.value);
+      if (el.value !== undefined && el.closest('#tab-content')) {
+        if (el.id === 'hero.tags') {
+          // תגים — שורות למערך
+          setByPath(newData, 'hero.tags', el.value.split('\n').map(t => t.trim()).filter(t => t));
+        } else {
+          setByPath(newData, el.id, el.value);
+        }
+      }
     });
     const result = await ghPut('content.json', JSON.stringify(newData, null, 2), contentSha, 'עדכון תוכן דף הבית');
     if (result.content) {
