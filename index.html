@@ -138,19 +138,13 @@
 
 
   /* ===== LECTURE 2-COL & FEATURED 2-COL (desktop) ===== */
-  .lecture-box { display: flex; flex-direction: column; gap: 28px; }
   .lecture-img-col img { width: 100%; border-radius: 20px; display: block; }
   .lecture-content-col { flex: 1; }
-
-  .featured-quote-wrap { display: flex; flex-direction: column; gap: 20px; margin-bottom: 40px; }
   .featured-img-col { width: 100%; }
   .featured-text-col { display: flex; flex-direction: column; justify-content: center; }
 
   @media (min-width: 960px) {
-    .lecture-box { flex-direction: row; align-items: flex-start; gap: 56px; }
     .lecture-img-col { width: 420px; flex-shrink: 0; }
-
-    .featured-quote-wrap { flex-direction: row; align-items: center; gap: 56px; }
     .featured-img-col { width: 420px; flex-shrink: 0; }
     .featured-text-col { flex: 1; }
   }
@@ -779,7 +773,6 @@
 </div>
 
 <!-- HERO -->
-<div style="max-width:1200px;margin:0 auto;">
 <div class="hero">
   <div class="hero-text">
     <div class="hero-eyebrow">טכנאי ומדריך מחשבים, ראשון לציון</div>
@@ -849,8 +842,6 @@
     </div>
   </div>
 </div>
-</div>
-
 <!-- PAIN -->
 <section class="pain-section">
   <div class="pain-inner">
@@ -1208,12 +1199,14 @@
     hamburger.classList.toggle('open');
     mobileMenu.classList.toggle('open');
     if (a11yBar) a11yBar.classList.toggle('menu-open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
   });
 
   function closeMenu() {
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
     if (a11yBar) a11yBar.classList.remove('menu-open');
+    document.body.style.overflow = '';
   }
   document.getElementById('txt-up').addEventListener('click', () => applyScale(scale + 0.1));
   document.getElementById('txt-down').addEventListener('click', () => applyScale(scale - 0.1));
