@@ -38,7 +38,17 @@ function saveToken() {
 
 // ===== INIT =====
 function init() {
-  selectRepo('omer-taicher-site', document.getElementById('repo-btn-site'));
+  const savedRepo = localStorage.getItem('admin_active_repo') || 'omer-taicher-site';
+  const savedTab  = localStorage.getItem('admin_active_tab')  || 'content';
+  const btnMap = {
+    'omer-taicher-site':      'repo-btn-site',
+    'omer-taicher-tutorials': 'repo-btn-tutorials',
+    'omer-taicher-blog':      'repo-btn-blog'
+  };
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabBtn  = [...tabBtns].find(b => b.getAttribute('onclick')?.includes("'" + savedTab + "'"));
+  selectRepo(savedRepo, document.getElementById(btnMap[savedRepo]));
+  switchTab(savedTab, tabBtn || null);
 }
 
 // ===== TABS =====
@@ -56,6 +66,7 @@ function switchTab(name, btn) {
 // ===== REPO SWITCHER =====
 function selectRepo(repoName, btn) {
   GITHUB_REPO = repoName;
+  localStorage.setItem('admin_active_repo', repoName);
   contentSha = null; currentData = null;
   currentCodeFile = null; currentCodeSha = null;
   currentTreePath = '';
