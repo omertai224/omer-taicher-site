@@ -88,6 +88,7 @@ function switchRepo(repoName) {
   GITHUB_REPO = repoName;
   contentSha = null; currentData = null;
   currentCodeFile = null; currentCodeSha = null;
+  currentTreePath = '';
   document.getElementById('code-editor').value = '';
   document.getElementById('editor-filename').textContent = '— בחר קובץ —';
   document.getElementById('delete-file-btn').style.display = 'none';
@@ -95,6 +96,13 @@ function switchRepo(repoName) {
   const isMain = repoName === 'omer-taicher-site';
   document.getElementById('tab-content').querySelector('.status-bar').style.display = isMain ? 'flex' : 'none';
   document.querySelectorAll('.section-block').forEach(b => b.style.display = isMain ? 'block' : 'none');
+  // עבור אוטומטית לטאב קוד כדי לראות את העץ החדש
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-code').classList.add('active');
+  const codeBtn = document.querySelector('.tab-btn[onclick*="code"]');
+  if (codeBtn) codeBtn.classList.add('active');
+  document.getElementById('save-content-btn').style.display = 'none';
   if (isMain) loadContent();
   loadFileTree('');
   loadBackups();
