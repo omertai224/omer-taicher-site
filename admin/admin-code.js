@@ -71,7 +71,7 @@ async function loadFile(filepath) {
   document.getElementById('editor-filename').textContent = filepath;
   document.getElementById('paste-publish-btn').disabled = true;
   document.getElementById('copy-editor-btn').disabled = true;
-  document.getElementById('delete-file-btn').style.display = 'none';
+  
   try {
     const data = await ghGet(filepath);
     currentCodeFile = filepath;
@@ -89,7 +89,7 @@ async function loadFile(filepath) {
     setStatus('code', 'ok', filepath + ' — מוכן לעריכה');
     document.getElementById('paste-publish-btn').disabled = false;
     document.getElementById('copy-editor-btn').disabled = false;
-    document.getElementById('delete-file-btn').style.display = 'inline-block';
+    
   } catch(e) {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
   }
@@ -205,7 +205,7 @@ async function deleteFile() {
       setStatus('code', 'ok', '✓ ' + filename + ' נמחק');
       document.getElementById('code-editor').value = '';
       document.getElementById('editor-filename').textContent = '— בחר קובץ —';
-      document.getElementById('delete-file-btn').style.display = 'none';
+      
       currentCodeFile = null; currentCodeSha = null;
       loadFileTree('');
     } else {
