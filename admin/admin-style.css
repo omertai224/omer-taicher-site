@@ -49,7 +49,7 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .tab-panel { display:none; max-width:900px; margin:0 auto; padding:28px 20px 80px; }
 .tab-panel.active { display:block; }
 
-.section-block { background:var(--white); border:1px solid var(--border); border-radius:16px; margin-bottom:12px; overflow:hidden; }
+.section-block { background:var(--white); border:1px solid var(--border); border-radius:16px; margin-bottom:20px; overflow:hidden; }
 .section-head { padding:16px 20px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; transition:background 0.15s; }
 .section-head:hover { background:var(--cream); }
 .section-head-left { display:flex; align-items:center; gap:12px; }
