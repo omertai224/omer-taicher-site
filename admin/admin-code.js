@@ -32,16 +32,20 @@ function renderTree(items, currentPath) {
     return a.type === 'dir' ? -1 : 1;
   });
   // Breadcrumb
-  let breadcrumb = '<div class="breadcrumb"><span class="bc-part" onclick="loadFileTree(\'\')">🏠 שורש</span>';
+  let backBtn = '';
+  if (currentPath) {
+    const parent = currentPath.split('/').slice(0,-1).join('/');
+    backBtn = `<span class="bc-back" onclick="loadFileTree('${parent}')">⬅️ חזרה</span><span class="bc-divider">|</span>`;
+  }
+  let crumbs = `<span class="bc-part" onclick="loadFileTree('')">🏠</span>`;
   if (currentPath) {
     const parts = currentPath.split('/');
     parts.forEach((part, i) => {
       const partPath = parts.slice(0, i+1).join('/');
-      breadcrumb += `<span class="bc-sep"> / </span><span class="bc-part" onclick="loadFileTree('${partPath}')">${part}</span>`;
+      crumbs += ` <span class="bc-sep">/</span> <span class="bc-part" onclick="loadFileTree('${partPath}')">${part}</span>`;
     });
   }
-  breadcrumb += '</div>';
-  let html = breadcrumb;
+  let html = `<div class="breadcrumb">${backBtn}${crumbs}</div>`;
   items.forEach(item => {
     if (item.name === '.git') return;
     const ext = item.name.split('.').pop().toLowerCase();
