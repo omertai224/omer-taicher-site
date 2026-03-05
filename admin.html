@@ -291,8 +291,9 @@
     <div class="status-bar">
       <div class="status-dot" id="status-dot-code"></div>
       <div class="status-text" id="status-text-code">טוען קבצים...</div>
-      <button class="editor-btn" id="new-file-btn" onclick="newFilePrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">+ קובץ חדש</button>
-      <button class="editor-btn" onclick="loadFileTree()" style="background:var(--cream);color:var(--text-mid);font-size:0.75rem;padding:5px 14px;">↻ רענן</button>
+      <button class="editor-btn" onclick="newFilePrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📄 קובץ חדש</button>
+      <button class="editor-btn" onclick="newFolderPrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📁 תיקייה חדשה</button>
+      <button class="editor-btn" onclick="loadFileTree(currentTreePath||'')" style="background:var(--cream);color:var(--text-mid);font-size:0.75rem;padding:5px 14px;">↻ רענן</button>
     </div>
     <div class="code-layout">
       <div class="file-list">
@@ -346,6 +347,7 @@ let contentSha = null;
 let currentData = null;
 let currentCodeFile = null;
 let currentCodeSha = null;
+let currentTreePath = '';
 
 // ===== TOKEN =====
 function checkToken() {
@@ -540,6 +542,7 @@ async function saveContent() {
 // ===== CODE EDITOR — DYNAMIC FILE TREE =====
 async function loadFileTree(path) {
   path = path || '';
+  currentTreePath = path;
   setStatus('code', 'loading', 'טוען קבצים...');
   try {
     const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
@@ -612,7 +615,7 @@ async function loadFile(filepath) {
 async function saveCode() {
   if (!currentCodeFile) return;
   const filename = currentCodeFile.split('/').pop();
-  if (!confirm('לשמור שינויים ב-' + filename + '?\nגיבוי אוטומטי ייצור לפני השמירה.')) return;
+
   setStatus('code', 'loading', 'שומר ' + filename + '...');
   document.getElementById('code-save-btn').disabled = true;
   try {
@@ -632,30 +635,47 @@ async function saveCode() {
 }
 
 function newFilePrompt() {
-  const name = prompt('שם הקובץ החדש\n(לדוגמה: about.html או blog/post1.html):');
+  const prefix = currentTreePath ? currentTreePath + '/' : '';
+  const name = prompt('שם הקובץ החדש:\n(נמצא כרגע ב: /' + (currentTreePath || 'שורש') + ')', prefix);
   if (!name || !name.trim()) return;
   createNewFile(name.trim());
 }
 
-async function createNewFile(filepath) {
-  setStatus('code', 'loading', 'יוצר ' + filepath + '...');
+function newFolderPrompt() {
+  const prefix = currentTreePath ? currentTreePath + '/' : '';
+  const name = prompt('שם התיקייה החדשה:\n(נמצא כרגע ב: /' + (currentTreePath || 'שורש') + ')', prefix);
+  if (!name || !name.trim()) return;
+  // GitHub לא יכול ליצור תיקייה ריקה — יוצרים קובץ .gitkeep בתוכה
+  const folderPath = name.trim().replace(/\/$/, '') + '/.gitkeep';
+  createNewFile(folderPath, true);
+}
+
+async function createNewFile(filepath, isFolderInit) {
+  setStatus('code', 'loading', 'יוצר...');
   const ext = filepath.split('.').pop().toLowerCase();
   const templates = {
     html: `<!DOCTYPE html>\n<html lang="he" dir="rtl">\n<head>\n<meta charset="UTF-8">\n<title>דף חדש</title>\n</head>\n<body>\n\n</body>\n</html>`,
     js: `// ${filepath}\n`, css: `/* ${filepath} */\n`, json: `{}`, md: `# כותרת\n`
   };
-  const content = templates[ext] || '';
+  const content = isFolderInit ? '' : (templates[ext] || '');
+  const message = isFolderInit ? 'יצירת תיקייה: ' + filepath.replace('/.gitkeep','') : 'יצירת קובץ: ' + filepath;
   try {
     const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${filepath}`, {
       method: 'PUT',
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: 'יצירת ' + filepath, content: btoa(unescape(encodeURIComponent(content))), branch: GITHUB_BRANCH })
+      body: JSON.stringify({ message, content: btoa(unescape(encodeURIComponent(content))), branch: GITHUB_BRANCH })
     });
     const result = await res.json();
     if (result.content) {
-      setStatus('code', 'ok', '✓ ' + filepath + ' נוצר!');
-      await loadFileTree('');
-      await loadFile(filepath);
+      if (isFolderInit) {
+        const folderPath = filepath.replace('/.gitkeep', '');
+        setStatus('code', 'ok', '✓ תיקייה נוצרה: ' + folderPath);
+        await loadFileTree(folderPath);
+      } else {
+        setStatus('code', 'ok', '✓ ' + filepath + ' נוצר!');
+        await loadFileTree(currentTreePath || '');
+        await loadFile(filepath);
+      }
     } else {
       setStatus('code', 'error', 'שגיאה: ' + (result.message || 'לא ידוע'));
     }
