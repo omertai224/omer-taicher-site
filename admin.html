@@ -129,11 +129,15 @@
   <div class="header">
     <div class="header-logo">עומר <span>טייכר</span></div>
     <div class="header-right">
-      <div class="tabs">
+      <div class="tabs" style="margin-left:0">
         <button class="tab-btn active" onclick="switchTab('content')">📝 תוכן</button>
         <button class="tab-btn" onclick="switchTab('code')">💻 קוד</button>
         <button class="tab-btn" onclick="switchTab('backups')">🔄 גיבויים</button>
       </div>
+      <select id="repo-select" onchange="switchRepo(this.value)" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fff;padding:7px 12px;border-radius:50px;font-family:'Rubik',sans-serif;font-size:0.78rem;font-weight:700;cursor:pointer;outline:none;">
+        <option value="omer-taicher-site">🌐 אתר ראשי</option>
+        <option value="omer-taicher-tutorials">🎓 הדרכות</option>
+      </select>
       <button class="save-btn" id="save-content-btn" onclick="saveContent()" disabled>
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
         שמור ופרסם
@@ -315,9 +319,12 @@
 
 <script>
 const GITHUB_USER = 'omertai224';
-const GITHUB_REPO = 'omer-taicher-site';
 const GITHUB_BRANCH = 'main';
-const FILES = ['index.html', 'tutorials.html', 'content.json', 'toolbar.js', 'admin.html'];
+const REPOS = {
+  'omer-taicher-site':      { name: '🌐 אתר ראשי',  contentFile: 'content.json' },
+  'omer-taicher-tutorials': { name: '🎓 הדרכות',     contentFile: 'tutorials.json' }
+};
+let GITHUB_REPO = 'omer-taicher-site';
 
 let GITHUB_TOKEN = '';
 let contentSha = null;
@@ -345,6 +352,27 @@ function saveToken() {
   document.getElementById('token-gate').style.display = 'none';
   document.getElementById('main-content').style.display = 'block';
   init();
+}
+
+// ===== REPO SWITCHER =====
+function switchRepo(repoName) {
+  GITHUB_REPO = repoName;
+  // Reset state
+  contentSha = null; currentData = null;
+  currentCodeFile = null; currentCodeSha = null;
+  document.getElementById('code-editor').value = '';
+  document.getElementById('editor-filename').textContent = '— בחר קובץ —';
+  document.getElementById('code-save-btn').disabled = true;
+  document.getElementById('delete-file-btn').style.display = 'none';
+  document.getElementById('save-content-btn').disabled = true;
+  // Reload everything for new repo
+  const isMain = repoName === 'omer-taicher-site';
+  document.getElementById('tab-content').querySelector('.status-bar').style.display = isMain ? 'flex' : 'none';
+  document.querySelectorAll('.section-block').forEach(b => b.style.display = isMain ? 'block' : 'none');
+  if (isMain) loadContent();
+  loadFileTree('');
+  loadBackups();
+  setStatus('code', 'ok', 'עברת ל: ' + REPOS[repoName].name);
 }
 
 // ===== INIT =====
