@@ -69,13 +69,7 @@
           <div class="profile-title">טכנאי ומדריך מחשבים, ראשון לציון</div>
         </div>
       </div>
-      <div class="profile-tags">
-        <span class="tag">בוגר יחידת המחשבים של חיל האוויר</span>
-        <span class="tag">25 שנות ניסיון</span>
-        <span class="tag">מדריך AI</span>
-        <span class="tag">תמיכה מרחוק</span>
-        <span class="tag">מייסד קהילת "תשאל טכנאי מחשבים" בפייסבוק</span>
-      </div>
+      <div class="profile-tags" id="hero-tags"></div>
       <div class="profile-stats">
         <div class="pstat"><div class="pstat-n">50+</div><div class="pstat-l">הרצאות</div></div>
         <div class="pstat"><div class="pstat-n">+25</div><div class="pstat-l">שנות ניסיון</div></div>
@@ -351,6 +345,16 @@
         const text = get(el.dataset.contentMultiline);
         el.innerHTML = text.split('\n').map(line => `<p>${line}</p>`).join('');
       });
+      // שדות רגילים עם שבירת שורות
+      document.querySelectorAll('[data-content-br]').forEach(el => {
+        const text = get(el.dataset.contentBr);
+        el.innerHTML = text.replace(/\n/g, '<br>');
+      });
+      // תגים דינמיים
+      if (c.hero && c.hero.tags && Array.isArray(c.hero.tags)) {
+        const tagsEl = document.getElementById('hero-tags');
+        if (tagsEl) tagsEl.innerHTML = c.hero.tags.map(t => `<span class="tag">${t}</span>`).join('');
+      }
       const lectureLink = document.getElementById('lecture-link');
       if (lectureLink) lectureLink.href = get('lecture.url');
     })
