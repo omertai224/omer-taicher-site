@@ -70,6 +70,7 @@ async function loadFile(filepath) {
   setStatus('code', 'loading', 'טוען ' + filename + '...');
   document.getElementById('editor-filename').textContent = filepath;
   document.getElementById('paste-publish-btn').disabled = true;
+  document.getElementById('copy-editor-btn').disabled = true;
   document.getElementById('delete-file-btn').style.display = 'none';
   try {
     const data = await ghGet(filepath);
@@ -87,6 +88,7 @@ async function loadFile(filepath) {
     document.getElementById('code-editor').value = content;
     setStatus('code', 'ok', filepath + ' — מוכן לעריכה');
     document.getElementById('paste-publish-btn').disabled = false;
+    document.getElementById('copy-editor-btn').disabled = false;
     document.getElementById('delete-file-btn').style.display = 'inline-block';
   } catch(e) {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
@@ -121,6 +123,7 @@ async function saveCode() {
   const filename = currentCodeFile.split('/').pop();
   setStatus('code', 'loading', 'שומר ' + filename + '...');
   document.getElementById('paste-publish-btn').disabled = true;
+  document.getElementById('copy-editor-btn').disabled = true;
   try {
     await autoBackup(currentCodeFile);
     const newContent = document.getElementById('code-editor').value;
@@ -135,6 +138,7 @@ async function saveCode() {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
   }
   document.getElementById('paste-publish-btn').disabled = false;
+    document.getElementById('copy-editor-btn').disabled = false;
 }
 
 function newFilePrompt() {
@@ -314,4 +318,10 @@ async function uploadFile(file) {
   } catch(e) {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
   }
+}
+
+async function copyEditorContent() {
+  const editor = document.getElementById('code-editor');
+  if (!editor || !editor.value) return;
+  copyToClipboard(editor.value, document.getElementById('editor-filename').textContent);
 }
