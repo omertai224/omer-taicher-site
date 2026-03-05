@@ -229,8 +229,13 @@ async function uploadFile(file) {
     // בדוק אם קובץ קיים (לקבל SHA)
     let sha = null;
     try {
-      const existing = await ghGet(path);
-      sha = existing.sha;
+      const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}`, {
+        headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (res.ok) {
+        const data = await res.json();
+        sha = data.sha;
+      }
     } catch(e) { /* קובץ חדש */ }
     const body = { message: 'העלאת קובץ: ' + path, content: base64, branch: GITHUB_BRANCH };
     if (sha) body.sha = sha;
