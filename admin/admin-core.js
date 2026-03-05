@@ -89,20 +89,25 @@ function switchRepo(repoName) {
   contentSha = null; currentData = null;
   currentCodeFile = null; currentCodeSha = null;
   currentTreePath = '';
-  document.getElementById('code-editor').value = '';
-  document.getElementById('editor-filename').textContent = '— בחר קובץ —';
-  document.getElementById('delete-file-btn').style.display = 'none';
-  document.getElementById('save-content-btn').disabled = true;
+  const codeEditor = document.getElementById('code-editor');
+  if (codeEditor) codeEditor.value = '';
+  const editorFilename = document.getElementById('editor-filename');
+  if (editorFilename) editorFilename.textContent = '— בחר קובץ —';
+  const deleteBtn = document.getElementById('delete-file-btn');
+  if (deleteBtn) deleteBtn.style.display = 'none';
+  const saveBtn = document.getElementById('save-content-btn');
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.style.display = 'none'; }
   const isMain = repoName === 'omer-taicher-site';
-  document.getElementById('tab-content').querySelector('.status-bar').style.display = isMain ? 'flex' : 'none';
+  const statusBar = document.getElementById('tab-content') && document.getElementById('tab-content').querySelector('.status-bar');
+  if (statusBar) statusBar.style.display = isMain ? 'flex' : 'none';
   document.querySelectorAll('.section-block').forEach(b => b.style.display = isMain ? 'block' : 'none');
-  // עבור אוטומטית לטאב קוד כדי לראות את העץ החדש
+  // עבור אוטומטית לטאב קוד
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-code').classList.add('active');
+  const tabCode = document.getElementById('tab-code');
+  if (tabCode) tabCode.classList.add('active');
   const codeBtn = document.querySelector('.tab-btn[onclick*="code"]');
   if (codeBtn) codeBtn.classList.add('active');
-  document.getElementById('save-content-btn').style.display = 'none';
   if (isMain) loadContent();
   loadFileTree('');
   loadBackups();
