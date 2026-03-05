@@ -80,9 +80,9 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .file-item-desc { font-size:0.68rem; color:var(--text-light); background:var(--cream); padding:2px 7px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
 .file-item.active .file-item-desc { background:rgba(232,133,74,0.15); color:var(--orange-deep); }
 .editor-wrap { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
-.editor-topbar { padding:12px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; background:var(--cream); }
+.editor-topbar { padding:12px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; background:var(--cream); flex-wrap:wrap; gap:8px; }
 .editor-filename { font-size:0.85rem; font-weight:700; color:var(--navy); font-family:monospace; }
-.editor-actions { display:flex; gap:8px; }
+.editor-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
 .editor-btn { padding:6px 16px; border-radius:50px; border:none; font-family:'Rubik',sans-serif; font-size:0.78rem; font-weight:700; cursor:pointer; transition:all 0.2s; }
 .editor-btn-save { background:var(--orange-deep); color:#fff; }
 .editor-btn-save:hover { background:var(--navy); }
