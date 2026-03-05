@@ -134,3 +134,20 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .block-copy-btn:hover { opacity: 1; background: var(--navy-light); }
 .tab-copy-all-btn { background: var(--navy-light); color: var(--navy); border: none; padding: 10px 20px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; cursor: pointer; font-family: var(--font); }
 .tab-copy-all-btn:hover { background: var(--navy); color: #fff; }
+
+/* REPO BUTTONS */
+.repo-btn {
+  background: var(--cream);
+  color: var(--text-mid);
+  border: 1.5px solid var(--border);
+  padding: 7px 16px;
+  border-radius: 50px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.repo-btn:hover { border-color: var(--orange-deep); color: var(--orange-deep); }
+.repo-btn.active { background: var(--orange-deep); color: #fff; border-color: var(--orange-deep); }
