@@ -3,7 +3,8 @@ const GITHUB_USER = 'omertai224';
 const GITHUB_BRANCH = 'main';
 const REPOS = {
   'omer-taicher-site':      { name: '🌐 אתר ראשי' },
-  'omer-taicher-tutorials': { name: '🎓 הדרכות' }
+  'omer-taicher-tutorials': { name: '🎓 הדרכות' },
+  'omer-taicher-blog':      { name: '✍️ בלוג' }
 };
 let GITHUB_REPO = 'omer-taicher-site';
 let GITHUB_TOKEN = '';
