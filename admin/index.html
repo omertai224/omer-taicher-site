@@ -163,5 +163,17 @@
 <script src="/admin/admin-code.js"></script>
 <script src="/admin/admin-backups.js"></script>
 <script>checkToken();</script>
+
+<!-- CONFIRM MODAL -->
+<div id="confirm-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:18px;padding:36px 40px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.2);max-width:340px;width:90%;">
+    <div style="font-size:2rem;margin-bottom:12px;">🗑</div>
+    <div id="confirm-modal-text" style="font-size:1rem;font-weight:700;color:#1a4a6b;margin-bottom:28px;"></div>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button id="confirm-modal-yes" style="background:#ef4444;color:#fff;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
+      <button id="confirm-modal-no" style="background:#eef4f8;color:#1a4a6b;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">ביטול</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
