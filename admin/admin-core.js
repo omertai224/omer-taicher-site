@@ -101,6 +101,8 @@ function switchRepo(repoName) {
   const statusBar = document.getElementById('tab-content') && document.getElementById('tab-content').querySelector('.status-bar');
   if (statusBar) statusBar.style.display = isMain ? 'flex' : 'none';
   document.querySelectorAll('.section-block').forEach(b => b.style.display = isMain ? 'block' : 'none');
+  const blogMgr = document.getElementById('blog-manager');
+  if (blogMgr) blogMgr.style.display = repoName === 'omer-taicher-blog' ? 'block' : 'none';
   // עבור אוטומטית לטאב קוד
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -109,6 +111,7 @@ function switchRepo(repoName) {
   const codeBtn = document.querySelector('.tab-btn[onclick*="code"]');
   if (codeBtn) codeBtn.classList.add('active');
   if (isMain) loadContent();
+  else if (repoName === 'omer-taicher-blog') setTimeout(loadBlogManager, 100);
   loadFileTree('');
   loadBackups();
   setStatus('code', 'ok', 'עברת ל: ' + REPOS[repoName].name);
