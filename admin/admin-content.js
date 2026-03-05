@@ -98,7 +98,7 @@ function copySection(sectionId) {
     if (el.value !== undefined) data[el.id] = el.value;
   });
   navigator.clipboard.writeText(JSON.stringify(data))
-    .then(() => setStatus('content', 'ok', '✓ הסקשן הועתק ללוח'))
+    .then(() => setStatus('content', 'ok', '✓ ' + label + ' הועתק ללוח'))
     .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
 }
 
