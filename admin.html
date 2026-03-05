@@ -672,6 +672,8 @@ async function pasteAndPublish() {
     setStatus('code', 'error', 'לא ניתן לגשת ללוח — נסה להדביק ידנית ולחץ שמור');
   }
 }
+
+async function saveCode() {
   if (!currentCodeFile) return;
   const filename = currentCodeFile.split('/').pop();
 
