@@ -2,9 +2,9 @@
 const GITHUB_USER = 'omertai224';
 const GITHUB_BRANCH = 'main';
 const REPOS = {
-  'omer-taicher-site':      { name: '🌐 אתר ראשי' },
-  'omer-taicher-interactive': { name: '🎓 אינטראקטיב' },
-  'omer-taicher-blog':      { name: '✍️ בלוג' }
+  'omer-taicher-site':      { name: 'אתר ראשי' },
+  'omer-taicher-interactive': { name: 'אינטראקטיבי' },
+  'omer-taicher-blog':      { name: 'בלוג' }
 };
 let GITHUB_REPO = 'omer-taicher-site';
 let GITHUB_TOKEN = '';
@@ -128,7 +128,6 @@ function selectRepo(repoName, btn) {
   if (isBlog)  setTimeout(loadBlogManager, 50);
   if (isTutos) setTimeout(loadInteractiveManager, 50);
   loadFileTree('');
-  loadBackups();
 }
 
 // ===== HELPERS =====
