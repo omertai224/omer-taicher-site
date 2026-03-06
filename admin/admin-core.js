@@ -3,7 +3,7 @@ const GITHUB_USER = 'omertai224';
 const GITHUB_BRANCH = 'main';
 const REPOS = {
   'omer-taicher-site':      { name: '🌐 אתר ראשי' },
-  'omer-taicher-tutorials': { name: '🎓 הדרכות' },
+  'omer-taicher-interactive': { name: '🎓 אינטראקטיב' },
   'omer-taicher-blog':      { name: '✍️ בלוג' }
 };
 let GITHUB_REPO = 'omer-taicher-site';
@@ -42,7 +42,7 @@ function init() {
   const savedTab  = localStorage.getItem('admin_active_tab')  || 'content';
   const btnMap = {
     'omer-taicher-site':      'repo-btn-site',
-    'omer-taicher-tutorials': 'repo-btn-tutorials',
+    'omer-taicher-interactive': 'repo-btn-tutorials',
     'omer-taicher-blog':      'repo-btn-blog'
   };
   const tabBtns = document.querySelectorAll('.tab-btn');
@@ -92,7 +92,7 @@ function selectRepo(repoName, btn) {
   // הצג/הסתר תוכן לפי repo — רק בטאב תוכן
   const isSite  = repoName === 'omer-taicher-site';
   const isBlog  = repoName === 'omer-taicher-blog';
-  const isTutos = repoName === 'omer-taicher-tutorials';
+  const isTutos = repoName === 'omer-taicher-interactive';
 
   const siteBlocks    = document.getElementById('site-content-blocks');
   const blogMgr       = document.getElementById('blog-manager');
@@ -118,6 +118,7 @@ function selectRepo(repoName, btn) {
   // טען נתונים
   if (isSite)  loadContent();
   if (isBlog)  setTimeout(loadBlogManager, 50);
+  if (isTutos) setTimeout(loadInteractiveManager, 50);
   loadFileTree('');
   loadBackups();
 }
