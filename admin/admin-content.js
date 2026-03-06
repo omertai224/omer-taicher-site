@@ -175,7 +175,7 @@ function renderBlogList() {
       <div style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
       <div style="display:flex;gap:8px">
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">📋 העתק כל הפוסטים</button>
-        <button style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">📥 הדבק פוסט מהלוח</button>
+        <button onclick="blogPasteFromClipboard()" style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">📥 הדבק פוסט מהלוח</button>
         <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
       </div>
     </div>
@@ -446,4 +446,83 @@ function blogDeletePost(id) {
     }
   };
   document.getElementById('confirm-modal-no').onclick = () => { modal.style.display = 'none'; };
+}
+
+// ─── הדבק פוסט מהלוח (ממיר טקסט Wix ל-HTML) ───────────────────────────────
+
+async function blogPasteFromClipboard() {
+  let text;
+  try {
+    text = await navigator.clipboard.readText();
+  } catch(e) {
+    alert('לא ניתן לקרוא מהלוח. ודאו שאישרתם גישה ללוח בדפדפן.');
+    return;
+  }
+
+  if (!text || !text.trim()) {
+    alert('הלוח ריק. העתיקו את הפוסט מ-Wix ונסו שוב.');
+    return;
+  }
+
+  const post = parseWixPost(text);
+  blogEditingId = null;
+  showBlogForm(post);
+}
+
+function parseWixPost(raw) {
+  // מנקה ומחלק לשורות
+  const lines = raw.split('\n').map(l => l.trim());
+
+  // מזהה אמוג'י בשורה הראשונה או השנייה
+  const emojiMatch = (lines[0] + ' ' + (lines[1] || '')).match(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u);
+  const emoji = emojiMatch ? emojiMatch[0] : '📝';
+
+  // כותרת = שורה ראשונה, בלי האמוג'י
+  const title = lines[0].replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '').trim();
+
+  // אוסף שורות לפסקאות — שורות ריקות מפרידות בין פסקאות
+  const paragraphs = [];
+  let current = [];
+
+  for (let i = 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (line === '') {
+      if (current.length > 0) {
+        paragraphs.push(current.join(' '));
+        current = [];
+      }
+    } else {
+      current.push(line);
+    }
+  }
+  if (current.length > 0) paragraphs.push(current.join(' '));
+
+  // ממיר לHTML
+  const bodyParts = paragraphs.map(p => {
+    // פסקאות קצרות שנראות כמו כותרות (עד 6 מילים, ללא נקודה בסוף)
+    const wordCount = p.split(' ').length;
+    if (wordCount <= 6 && !p.endsWith('.') && !p.endsWith(',') && p.length < 60) {
+      return `<h2>${p}</h2>`;
+    }
+    return `<p>${p}</p>`;
+  });
+
+  const body = bodyParts.join('\n');
+
+  // תקציר = שתי הפסקאות הראשונות מחוברות
+  const excerptParts = paragraphs.slice(0, 2).join(' ').replace(/<[^>]+>/g, '');
+  const excerpt = excerptParts.length > 160 ? excerptParts.slice(0, 157) + '...' : excerptParts;
+
+  return {
+    id: '',
+    title,
+    excerpt,
+    body,
+    date: todayISO(),
+    emoji,
+    image: '',
+    image_alt: '',
+    seo_title: title + ' | עומר טייכר',
+    seo_desc: excerpt
+  };
 }
