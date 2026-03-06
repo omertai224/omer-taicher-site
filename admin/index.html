@@ -30,7 +30,7 @@
     <div class="header-center">
       <div class="repo-pills">
         <button class="repo-pill active" id="repo-btn-site" onclick="selectRepo('omer-taicher-site', this)">🌐 אתר ראשי</button>
-        <button class="repo-pill" id="repo-btn-tutorials" onclick="selectRepo('omer-taicher-tutorials', this)">🎓 הדרכות</button>
+        <button class="repo-pill" id="repo-btn-tutorials" onclick="selectRepo('omer-taicher-interactive', this)">🎓 אינטראקטיב</button>
         <button class="repo-pill" id="repo-btn-blog" onclick="selectRepo('omer-taicher-blog', this)">✍️ בלוג</button>
       </div>
       <div class="tabs">
@@ -149,12 +149,13 @@
     <!-- תוכן בלוג — ניהול פוסטים -->
     <div id="blog-manager" style="display:none"></div>
 
-    <!-- תוכן הדרכות — ריק כרגע -->
+    <!-- תוכן הדרכות אינטראקטיביות -->
     <div id="tutorials-content" style="display:none">
-      <div style="text-align:center;padding:60px 20px;color:var(--text-light)">
-        <div style="font-size:3rem;margin-bottom:16px">🎓</div>
-        <div style="font-size:0.92rem">ניהול תוכן הדרכות יתווסף בקרוב</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
+        <div style="font-size:0.82rem;color:var(--text-light)" id="interactive-count">טוען...</div>
+        <button onclick="interactiveNewItem()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ הדרכה חדשה</button>
       </div>
+      <div id="interactive-list"></div>
     </div>
 
   </div>
