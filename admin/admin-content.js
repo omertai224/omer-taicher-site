@@ -216,8 +216,12 @@ function showBlogForm(post) {
     </div>
 
     <div class="field">
-      <label class="field-label">גוף הפוסט * — ניתן להשתמש ב-HTML: &lt;p&gt; &lt;h2&gt; &lt;strong&gt; &lt;ul&gt; &lt;li&gt;</label>
-      <textarea id="bf-body" rows="14" style="font-size:0.82rem">${post.body}</textarea>
+      <label class="field-label">גוף הפוסט *</label>
+      <div
+        id="bf-body"
+        contenteditable="true"
+        style="min-height:320px;padding:16px 18px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:0.95rem;line-height:1.85;outline:none;cursor:text;font-family:inherit"
+      >${post.body}</div>
     </div>
 
     <div class="field">
@@ -364,7 +368,7 @@ async function blogSavePost() {
   const alert = document.getElementById('bf-alert');
   const title   = document.getElementById('bf-title')?.value.trim();
   const excerpt = document.getElementById('bf-excerpt')?.value.trim();
-  const body    = document.getElementById('bf-body')?.value.trim();
+  const body    = document.getElementById('bf-body')?.innerHTML.trim();
   const date    = document.getElementById('bf-date')?.value;
   const emoji   = '';
   const image   = document.getElementById('bf-image')?.value.trim() || '';
@@ -487,9 +491,14 @@ async function blogPasteFromClipboard() {
 
   blogEditingId = null;
   showBlogForm(post);
+  setTimeout(updateBodyPreview, 50);
+
+function updateBodyPreview() {
+  const preview = document.getElementById('bf-body-preview');
+  if (preview) preview.innerHTML = document.getElementById('bf-body').value;
 }
 
-function parseWixPost(raw) {
+
   // מנקה ומחלק לשורות
   const lines = raw.split('\n').map(l => l.trim());
 
