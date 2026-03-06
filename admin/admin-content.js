@@ -753,9 +753,9 @@ let galleryFilter = 'הכל';
 async function loadGalleryManager() {
   setStatus('gallery', 'loading', 'טוען...');
   try {
-    const res = await fetch('../gallery.json?v=' + Date.now());
-    const data = await res.json();
-    galleryItems = data.items || [];
+    const data = await ghGet('gallery.json');
+    const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
+    galleryItems = content.items || [];
     renderGallery();
     setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
   } catch(e) {
@@ -863,9 +863,9 @@ async function uploadGalleryFiles(input) {
 async function autoSaveGallery() {
   try {
     const json = JSON.stringify({ items: galleryItems }, null, 2);
-    const existing = await githubGet('gallery.json').catch(() => null);
+    const existing = await ghGet('gallery.json').catch(() => null);
     const sha = existing ? existing.sha : undefined;
-    await githubPut('gallery.json', json, 'עדכון גלריה', sha);
+    await ghPut('gallery.json', json, 'עדכון גלריה', sha);
     setStatus('gallery', 'ok', '✓ נשמר — ' + galleryItems.length + ' פריטים');
   } catch(e) {
     setStatus('gallery', 'ok', '✓ הועלה ל-Cloudinary — שגיאה בשמירה');
