@@ -217,10 +217,24 @@ function showBlogForm(post) {
 
     <div class="field">
       <label class="field-label">גוף הפוסט *</label>
+      <div style="display:flex;gap:6px;margin-bottom:6px;align-items:center;flex-wrap:wrap">
+        <button type="button" onmousedown="event.preventDefault();document.execCommand('bold')"
+          style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-weight:900;cursor:pointer;font-family:inherit">B</button>
+        <button type="button" onmousedown="event.preventDefault();document.execCommand('italic')"
+          style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-style:italic;font-weight:700;cursor:pointer;font-family:inherit">I</button>
+        <button type="button" onmousedown="event.preventDefault();document.execCommand('underline')"
+          style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:underline;cursor:pointer;font-family:inherit">U</button>
+        <label style="display:flex;align-items:center;gap:4px;background:var(--cream);border:1px solid var(--border);padding:0 10px;height:34px;border-radius:8px;cursor:pointer;font-size:0.78rem;font-weight:700;color:var(--navy)">
+          צבע
+          <input type="color" value="#e8854a" onchange="document.execCommand('foreColor',false,this.value)"
+            style="width:20px;height:20px;border:none;padding:0;cursor:pointer;background:none">
+        </label>
+      </div>
       <div
         id="bf-body"
         contenteditable="true"
-        style="min-height:320px;padding:16px 18px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:0.95rem;line-height:1.85;outline:none;cursor:text;font-family:inherit"
+        oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
+        style="min-height:420px;height:auto;padding:18px 20px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:0.88rem;line-height:1.75;outline:none;cursor:text;font-family:inherit;overflow:hidden"
       >${post.body}</div>
     </div>
 
