@@ -53,44 +53,13 @@ function renderDownloadList() {
 }
 
 async function downloadRepo(repoKey, repoName) {
-  const btn = document.getElementById(`dl-${repoKey}-btn`);
-  const statusEl = document.getElementById(`dl-${repoKey}-status`);
-
-  btn.disabled = true;
-  btn.style.opacity = '0.5';
-  btn.textContent = '⏳ מוריד...';
-  if (statusEl) statusEl.textContent = '';
-  setStatus('download', 'loading', `מוריד ${repoName}...`);
-
-  try {
-    const stamp = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
-    const zipName = `${repoKey}__${stamp}.zip`;
-    const url = `https://github.com/omertai224/${repoKey}/archive/refs/heads/main.zip`;
-
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`שגיאה ${res.status}`);
-    const blob = await res.blob();
-
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = zipName;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(a.href);
-
-    const sizeMB = (blob.size / 1024 / 1024).toFixed(1);
-    if (statusEl) statusEl.textContent = `✓ ${sizeMB} MB`;
-    setStatus('download', 'ok', `✓ ${repoName} הורד — ${zipName}`);
-
-  } catch (e) {
-    if (statusEl) statusEl.textContent = '✗ שגיאה';
-    setStatus('download', 'error', `שגיאה: ${e.message}`);
-  } finally {
-    btn.disabled = false;
-    btn.style.opacity = '1';
-    btn.textContent = '⬇️ הורד ZIP';
-  }
+  const url = `https://github.com/omertai224/${repoKey}/archive/refs/heads/main.zip`;
+  const a = document.createElement('a');
+  a.href = url;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setStatus('download', 'ok', `✓ ${repoName} — הורדה החלה`);
 }
 
 async function downloadAllRepos() {
