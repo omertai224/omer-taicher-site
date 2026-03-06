@@ -67,7 +67,7 @@ async function saveContent() {
   setStatus('content', 'loading', 'שומר...');
   document.getElementById('save-content-btn').disabled = true;
   try {
-    await autoBackup('content.json');
+
     const newData = JSON.parse(JSON.stringify(currentData));
     document.querySelectorAll('[id*="."]').forEach(el => {
       if (el.value !== undefined && el.closest('#tab-content')) {
@@ -861,4 +861,50 @@ function deleteGalleryItem(index) {
   saveGalleryToStorage();
   renderGallery();
   setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
+}
+
+
+// ===== DOWNLOAD / גיבוי אתר =====
+
+function initDownloadTab() {
+  renderDownloadList();
+}
+
+function renderDownloadList() {
+  const container = document.getElementById('download-repo-list');
+  if (!container) return;
+
+  container.innerHTML = Object.entries(REPOS).map(([repoKey, repoMeta]) => {
+    return `
+      <div style="background:white;border:1px solid var(--border,#e2e8f0);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+        <div style="flex:1;min-width:0;">
+          <div style="font-weight:700;font-size:0.95rem;">${repoMeta.name}</div>
+          <div style="font-family:monospace;font-size:0.7rem;color:var(--muted,#94a3b8);margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">
+            github.com/omertai224/${repoKey}
+          </div>
+        </div>
+        <button onclick="downloadRepo('${repoKey}', '${repoMeta.name}')" style="background:var(--orange-deep,#e8854a);color:white;border:none;padding:8px 18px;border-radius:20px;font-family:inherit;font-weight:700;font-size:0.82rem;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:opacity 0.2s;">הורד ZIP</button>
+      </div>
+    `;
+  }).join('');
+}
+
+async function downloadRepo(repoKey, repoName) {
+  const url = `https://github.com/omertai224/${repoKey}/archive/refs/heads/main.zip`;
+  const a = document.createElement('a');
+  a.href = url;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setStatus('download', 'ok', repoName + ' — הורדה החלה');
+}
+
+async function downloadAllRepos() {
+  setStatus('download', 'loading', 'מוריד את כל הריפוזיטוריז...');
+  const entries = Object.entries(REPOS);
+  for (const [repoKey, repoMeta] of entries) {
+    await downloadRepo(repoKey, repoMeta.name);
+    await new Promise(r => setTimeout(r, 800));
+  }
+  setStatus('download', 'ok', entries.length + ' ריפוזיטוריז הורדו');
 }

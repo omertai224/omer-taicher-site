@@ -125,7 +125,6 @@ async function saveCode() {
   document.getElementById('paste-publish-btn').disabled = true;
   document.getElementById('copy-editor-btn').disabled = true;
   try {
-    await autoBackup(currentCodeFile);
     const newContent = document.getElementById('code-editor').value;
     const result = await ghPut(currentCodeFile, newContent, currentCodeSha, 'עדכון ' + currentCodeFile + ' מפאנל הניהול');
     if (result.content) {
@@ -195,7 +194,6 @@ async function deleteFile() {
   if (!confirm('למחוק את ' + filename + '?\nגיבוי אוטומטי ייצור לפני המחיקה.')) return;
   setStatus('code', 'loading', 'מוחק ' + filename + '...');
   try {
-    await autoBackup(currentCodeFile);
     const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${currentCodeFile}`, {
       method: 'DELETE',
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
