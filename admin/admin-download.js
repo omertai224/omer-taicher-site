@@ -59,7 +59,7 @@ async function downloadRepo(repoKey, repoName) {
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  setStatus('download', 'ok', `✓ ${repoName} — הורדה החלה`);
+  setStatus('download', 'ok', `${repoName} — הורדה החלה`);
 }
 
 async function downloadAllRepos() {
@@ -70,5 +70,5 @@ async function downloadAllRepos() {
     // המתנה קצרה בין הורדות
     await new Promise(r => setTimeout(r, 800));
   }
-  setStatus('download', 'ok', `✓ ${entries.length} ריפוזיטוריז הורדו`);
+  setStatus('download', 'ok', `${entries.length} ריפוזיטוריז הורדו`);
 }
