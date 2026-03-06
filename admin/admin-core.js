@@ -46,28 +46,18 @@ function saveToken() {
   })
   .then(r => {
     if (!r.ok) throw new Error('github');
-    // בדיקת Cloudinary Secret
-    return fetch(`https://api.cloudinary.com/v1_1/drxyfq0cq/resources/image?max_results=1`, {
-      headers: { 'Authorization': 'Basic ' + btoa('854281759352495:' + password) }
-    });
-  })
-  .then(r => {
-    if (r.status === 401) throw new Error('cloudinary');
-    // שניהם תקינים
     localStorage.setItem('gh_token', username);
-    localStorage.setItem('cl_secret', password);
+    if (password) localStorage.setItem('cl_secret', password);
     GITHUB_TOKEN = username;
     CLOUDINARY_API_SECRET = password;
     document.getElementById('token-gate').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
     init();
   })
-  .catch(err => {
+  .catch(() => {
     btn.textContent = 'כניסה';
     btn.disabled = false;
-    if (err.message === 'github') showLoginError('שם משתמש שגוי');
-    else if (err.message === 'cloudinary') showLoginError('סיסמה שגויה');
-    else showLoginError('שגיאת התחברות');
+    showLoginError('שם משתמש שגוי');
   });
 }
 
