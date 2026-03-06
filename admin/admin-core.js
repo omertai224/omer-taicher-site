@@ -48,7 +48,7 @@ function saveToken() {
     if (!r.ok) throw new Error('github');
     // בדיקת Cloudinary Secret
     return fetch(`https://api.cloudinary.com/v1_1/drxyfq0cq/resources/image?max_results=1`, {
-      headers: { 'Authorization': 'Basic ' + btoa('placeholder:' + password) }
+      headers: { 'Authorization': 'Basic ' + btoa('854281759352495:' + password) }
     });
   })
   .then(r => {
