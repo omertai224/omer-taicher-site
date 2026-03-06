@@ -64,7 +64,7 @@ async function deleteSelectedBackups() {
     } catch(e) {}
   }
   await ensureBackupsFolder();
-  setStatus('backup', 'ok', '✓ נמחקו');
+  setStatus('backup', 'ok', 'נמחקו');
   loadBackups();
 }
 
@@ -86,7 +86,7 @@ async function createBackup() {
     a.download = zipName;
     a.click();
     URL.revokeObjectURL(a.href);
-    setStatus('backup', 'ok', '✓ גיבוי הורד: ' + zipName);
+    setStatus('backup', 'ok', 'גיבוי הורד: ' + zipName);
   } catch(e) {
     setStatus('backup', 'error', 'שגיאה: ' + e.message);
   }
@@ -172,7 +172,7 @@ async function restoreBackup(bPath, targetFile) {
     const current = await ghGet(targetFile);
     const result = await ghPut(targetFile, content, current.sha, 'שחזור ' + targetFile + ' מגיבוי');
     if (result.content) {
-      setStatus('backup', 'ok', '✓ ' + targetFile + ' שוחזר בהצלחה!');
+      setStatus('backup', 'ok', '' + targetFile + ' שוחזר בהצלחה!');
       if (targetFile === 'content.json') loadContent();
     } else {
       setStatus('backup', 'error', 'שגיאה בשחזור');
