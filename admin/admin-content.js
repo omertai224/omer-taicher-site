@@ -746,26 +746,31 @@ function interactiveDeleteItem(index) {
 
 
 // ===== GALLERY / MEDIA MANAGER =====
-const GALLERY_STORAGE_KEY = 'omer_gallery_items';
 
-let galleryItems = []; // [{url, type, name, date}]
+let galleryItems = []; // [{url, type, name, date, category}]
+let galleryFilter = 'הכל';
 
-function loadGalleryManager() {
-  // טוען מ-localStorage של הדפדפן
+async function loadGalleryManager() {
+  setStatus('gallery', 'loading', 'טוען...');
   try {
-    const saved = localStorage.getItem(GALLERY_STORAGE_KEY);
-    galleryItems = saved ? JSON.parse(saved) : [];
+    const res = await fetch('../gallery.json?v=' + Date.now());
+    const data = await res.json();
+    galleryItems = data.items || [];
+    renderGallery();
+    setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
   } catch(e) {
     galleryItems = [];
+    renderGallery();
+    setStatus('gallery', 'ok', 'גלריה ריקה');
   }
-  renderGallery();
-  setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
 }
 
-function saveGalleryToStorage() {
-  try {
-    localStorage.setItem(GALLERY_STORAGE_KEY, JSON.stringify(galleryItems));
-  } catch(e) {}
+function filterGallery(cat) {
+  galleryFilter = cat;
+  document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+    btn.classList.toggle('gallery-filter-active', btn.dataset.cat === cat);
+  });
+  renderGallery();
 }
 
 function renderGallery() {
@@ -773,7 +778,11 @@ function renderGallery() {
   const empty = document.getElementById('gallery-empty');
   if (!grid) return;
 
-  if (!galleryItems.length) {
+  const filtered = galleryFilter === 'הכל'
+    ? galleryItems
+    : galleryItems.filter(i => i.category === galleryFilter);
+
+  if (!filtered.length) {
     grid.style.display = 'none';
     if (empty) empty.style.display = 'block';
     return;
@@ -782,21 +791,24 @@ function renderGallery() {
   grid.style.display = 'grid';
   if (empty) empty.style.display = 'none';
 
-  grid.innerHTML = galleryItems.map((item, i) => `
-    <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:#f5f5f5;aspect-ratio:1;group" id="gitem-${i}">
+  grid.innerHTML = filtered.map((item) => {
+    const realIndex = galleryItems.indexOf(item);
+    return `
+    <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#f5f5f5;aspect-ratio:1;" id="gitem-${realIndex}">
       ${item.type === 'video'
         ? `<video src="${item.url}" style="width:100%;height:100%;object-fit:cover;" muted preload="metadata"></video>
            <div style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.6);color:#fff;font-size:0.6rem;padding:2px 6px;border-radius:6px;font-weight:700;">וידאו</div>`
         : `<img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="${item.name}">`
       }
-      <div style="position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.2s;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;gap:4px;opacity:0;transition:opacity 0.2s"
+      <div style="position:absolute;top:6px;left:6px;background:var(--orange-deep);color:#fff;font-size:0.58rem;padding:2px 7px;border-radius:50px;font-weight:700;">${item.category || ''}</div>
+      <div style="position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;flex-direction:column;justify-content:flex-end;padding:8px;gap:4px;opacity:0;transition:all 0.2s;"
            onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
            onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
-        <button onclick="copyGalleryUrl('${item.url}')" style="background:var(--orange-deep,#e8854a);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
-        <button onclick="deleteGalleryItem(${i})" style="background:rgba(255,255,255,0.15);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">מחק</button>
+        <button onclick="copyGalleryUrl('${item.url}')" style="background:var(--orange-deep);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
+        <button onclick="deleteGalleryItem(${realIndex})" style="background:rgba(255,50,50,0.7);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">🗑️ מחק</button>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 function triggerGalleryUpload() {
@@ -807,6 +819,7 @@ async function uploadGalleryFiles(input) {
   const files = Array.from(input.files);
   if (!files.length) return;
 
+  const category = document.getElementById('gallery-category-select').value;
   const btn = document.getElementById('gallery-upload-btn');
   btn.disabled = true;
   btn.innerHTML = 'מעלה...';
@@ -828,6 +841,7 @@ async function uploadGalleryFiles(input) {
           url: data.secure_url,
           type: resourceType,
           name: file.name,
+          category: category,
           date: new Date().toISOString()
         });
         uploaded++;
@@ -837,9 +851,8 @@ async function uploadGalleryFiles(input) {
     }
   }
 
-  saveGalleryToStorage();
   renderGallery();
-  setStatus('gallery', 'ok', '✓ ' + uploaded + ' קבצים הועלו — ' + galleryItems.length + ' סה"כ');
+  setStatus('gallery', 'ok', '✓ ' + uploaded + ' קבצים הועלו — ' + galleryItems.length + ' סה"כ. לחץ שמור!');
 
   btn.disabled = false;
   btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg> העלאת קובץ';
@@ -857,10 +870,20 @@ function copyGalleryUrl(url) {
 }
 
 function deleteGalleryItem(index) {
+  if (!confirm('למחוק את הקובץ מהרשימה?')) return;
   galleryItems.splice(index, 1);
-  saveGalleryToStorage();
   renderGallery();
-  setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
+  setStatus('gallery', 'ok', galleryItems.length + ' פריטים — לחץ שמור!');
+}
+
+function saveGalleryJson() {
+  const json = JSON.stringify({ items: galleryItems }, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'gallery.json';
+  a.click();
+  setStatus('gallery', 'ok', '✓ gallery.json הורד — העלה לגיטהאב');
 }
 
 
