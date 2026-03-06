@@ -743,3 +743,122 @@ function interactiveDeleteItem(index) {
   };
   document.getElementById('confirm-modal-no').onclick = () => { modal.style.display = 'none'; };
 }
+
+
+// ===== GALLERY / MEDIA MANAGER =====
+const GALLERY_STORAGE_KEY = 'omer_gallery_items';
+
+let galleryItems = []; // [{url, type, name, date}]
+
+function loadGalleryManager() {
+  // טוען מ-localStorage של הדפדפן
+  try {
+    const saved = localStorage.getItem(GALLERY_STORAGE_KEY);
+    galleryItems = saved ? JSON.parse(saved) : [];
+  } catch(e) {
+    galleryItems = [];
+  }
+  renderGallery();
+  setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
+}
+
+function saveGalleryToStorage() {
+  try {
+    localStorage.setItem(GALLERY_STORAGE_KEY, JSON.stringify(galleryItems));
+  } catch(e) {}
+}
+
+function renderGallery() {
+  const grid = document.getElementById('gallery-grid');
+  const empty = document.getElementById('gallery-empty');
+  if (!grid) return;
+
+  if (!galleryItems.length) {
+    grid.style.display = 'none';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+
+  grid.style.display = 'grid';
+  if (empty) empty.style.display = 'none';
+
+  grid.innerHTML = galleryItems.map((item, i) => `
+    <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:#f5f5f5;aspect-ratio:1;group" id="gitem-${i}">
+      ${item.type === 'video'
+        ? `<video src="${item.url}" style="width:100%;height:100%;object-fit:cover;" muted preload="metadata"></video>
+           <div style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.6);color:#fff;font-size:0.6rem;padding:2px 6px;border-radius:6px;font-weight:700;">וידאו</div>`
+        : `<img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="${item.name}">`
+      }
+      <div style="position:absolute;inset:0;background:rgba(0,0,0,0);transition:background 0.2s;display:flex;flex-direction:column;justify-content:flex-end;padding:8px;gap:4px;opacity:0;transition:opacity 0.2s"
+           onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
+           onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
+        <button onclick="copyGalleryUrl('${item.url}')" style="background:var(--orange-deep,#e8854a);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
+        <button onclick="deleteGalleryItem(${i})" style="background:rgba(255,255,255,0.15);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">🗑 מחק</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function triggerGalleryUpload() {
+  document.getElementById('gallery-file-input').click();
+}
+
+async function uploadGalleryFiles(input) {
+  const files = Array.from(input.files);
+  if (!files.length) return;
+
+  const btn = document.getElementById('gallery-upload-btn');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ מעלה...';
+  setStatus('gallery', 'loading', 'מעלה ' + files.length + ' קבצים...');
+
+  let uploaded = 0;
+  for (const file of files) {
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('upload_preset', CLOUDINARY_PRESET);
+      const resourceType = file.type.startsWith('video') ? 'video' : 'image';
+      const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/${resourceType}/upload`, {
+        method: 'POST', body: fd
+      });
+      const data = await res.json();
+      if (data.secure_url) {
+        galleryItems.unshift({
+          url: data.secure_url,
+          type: resourceType,
+          name: file.name,
+          date: new Date().toISOString()
+        });
+        uploaded++;
+      }
+    } catch(e) {
+      console.error('שגיאה בהעלאת', file.name, e);
+    }
+  }
+
+  saveGalleryToStorage();
+  renderGallery();
+  setStatus('gallery', 'ok', '✓ ' + uploaded + ' קבצים הועלו — ' + galleryItems.length + ' סה"כ');
+
+  btn.disabled = false;
+  btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg> העלאת קובץ';
+  input.value = '';
+}
+
+function copyGalleryUrl(url) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(url)
+      .then(() => setStatus('gallery', 'ok', '✓ הקישור הועתק ללוח'))
+      .catch(() => fallbackCopy(url, 'קישור'));
+  } else {
+    fallbackCopy(url, 'קישור');
+  }
+}
+
+function deleteGalleryItem(index) {
+  galleryItems.splice(index, 1);
+  saveGalleryToStorage();
+  renderGallery();
+  setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
+}
