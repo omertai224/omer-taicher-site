@@ -750,15 +750,19 @@ function interactiveDeleteItem(index) {
 let galleryItems = []; // [{url, type, name, date, category}]
 let galleryFilter = 'הכל';
 
+let gallerySha = null;
+
 async function loadGalleryManager() {
   setStatus('gallery', 'loading', 'טוען...');
   try {
     const data = await ghGet('gallery.json');
-    const content = JSON.parse(atob(data.content.replace(/\n/g, '')));
+    gallerySha = data.sha;
+    const content = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
     galleryItems = content.items || [];
     renderGallery();
     setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
   } catch(e) {
+    gallerySha = null;
     galleryItems = [];
     renderGallery();
     setStatus('gallery', 'ok', 'גלריה ריקה');
@@ -863,12 +867,15 @@ async function uploadGalleryFiles(input) {
 async function autoSaveGallery() {
   try {
     const json = JSON.stringify({ items: galleryItems }, null, 2);
-    const existing = await ghGet('gallery.json').catch(() => null);
-    const sha = existing ? existing.sha : undefined;
-    await ghPut('gallery.json', json, 'עדכון גלריה', sha);
-    setStatus('gallery', 'ok', '✓ נשמר — ' + galleryItems.length + ' פריטים');
+    const result = await ghPut('gallery.json', json, gallerySha, 'עדכון גלריה');
+    if (result.content) {
+      gallerySha = result.content.sha;
+      setStatus('gallery', 'ok', '✓ נשמר — ' + galleryItems.length + ' פריטים');
+    } else {
+      setStatus('gallery', 'error', 'שגיאה בשמירה: ' + (result.message || ''));
+    }
   } catch(e) {
-    setStatus('gallery', 'ok', '✓ הועלה ל-Cloudinary — שגיאה בשמירה');
+    setStatus('gallery', 'error', 'שגיאה בשמירה');
     console.error(e);
   }
 }
