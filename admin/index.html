@@ -163,7 +163,8 @@
     <div class="status-bar">
       <div class="status-dot" id="status-dot-code"></div>
       <div class="status-text" id="status-text-code">טוען קבצים...</div>
-      <button class="editor-btn" onclick="newFilePrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📄 קובץ חדש</button>
+      <input type="file" id="upload-file-input" multiple style="display:none" onchange="handleUploadInput(this)">
+      <button class="editor-btn" onclick="document.getElementById('upload-file-input').click()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📤 העלה קובץ</button>
       <button class="editor-btn" onclick="newFolderPrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;">📁 תיקייה חדשה</button>
       <button class="editor-btn" onclick="loadFileTree(currentTreePath||'')" style="background:var(--cream);color:var(--text-mid);font-size:0.75rem;padding:5px 14px;">↻ רענן</button>
     </div>
