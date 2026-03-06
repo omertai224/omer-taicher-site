@@ -97,6 +97,9 @@ async function loadFile(filepath) {
 
 async function pasteAndPublish() {
   if (!currentCodeFile) return;
+  if (currentCodeFile === 'index.html') {
+    if (!confirm('⚠️ אתה עומד לשנות את דף הבית הראשי.\nבטוח שזה לא index.html של האדמין?')) return;
+  }
   try {
     const text = await navigator.clipboard.readText();
     if (!text || !text.trim()) { setStatus('code', 'error', 'הלוח ריק — העתק קוד קודם'); return; }
@@ -120,6 +123,9 @@ async function pasteAndPublish() {
 
 async function saveCode() {
   if (!currentCodeFile) return;
+  if (currentCodeFile === 'index.html') {
+    if (!confirm('⚠️ אתה עומד לשנות את דף הבית הראשי.\nבטוח שזה לא index.html של האדמין?')) return;
+  }
   const filename = currentCodeFile.split('/').pop();
   setStatus('code', 'loading', 'שומר ' + filename + '...');
   document.getElementById('paste-publish-btn').disabled = true;
