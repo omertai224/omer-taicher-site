@@ -66,29 +66,18 @@ async function downloadRepo(repoKey, repoName) {
     const stamp = new Date().toISOString().slice(0, 16).replace('T', '_').replace(/:/g, '-');
     const zipName = `${repoKey}__backup_${stamp}.zip`;
 
-    // GitHub API: הורדת zipball של הריפוזיטורי
-    const url = `https://api.github.com/repos/omertai224/${repoKey}/zipball/main`;
-    const res = await fetch(url, {
-      headers: {
-        'Authorization': `token ${GITHUB_TOKEN}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
-    });
+    // קישור הורדה ישיר — עובד מהדפדפן ללא CORS
+    const url = `https://github.com/omertai224/${repoKey}/archive/refs/heads/main.zip`;
 
-    if (!res.ok) throw new Error(`שגיאה ${res.status}`);
-
-    const blob = await res.blob();
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
+    a.href = url;
     a.download = zipName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    URL.revokeObjectURL(a.href);
 
-    const sizeMB = (blob.size / 1024 / 1024).toFixed(2);
-    if (statusEl) statusEl.textContent = `✓ ${sizeMB} MB`;
-    setStatus('download', 'ok', `✓ ${repoName} הורד בהצלחה`);
+    if (statusEl) statusEl.textContent = '✓ הורד';
+    setStatus('download', 'ok', `✓ ${repoName} — הורדה החלה`);
 
   } catch (e) {
     if (statusEl) statusEl.textContent = '✗ שגיאה';
