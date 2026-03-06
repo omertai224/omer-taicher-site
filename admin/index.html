@@ -232,6 +232,14 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
         העלאת קובץ
       </button>
+      <select id="gallery-category-select" style="padding:10px 16px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.85rem;font-weight:600;color:var(--navy);background:#fff;cursor:pointer;outline:none;">
+        <option value="בלוג">✍️ בלוג</option>
+        <option value="אינטראקטיבי">🎓 אינטראקטיבי</option>
+        <option value="דף ראשי">🏠 דף ראשי</option>
+        <option value="דפי נחיתה">📄 דפי נחיתה</option>
+        <option value="הרצאות">📽️ הרצאות</option>
+        <option value="כללי">📁 כללי</option>
+      </select>
       <input type="file" id="gallery-file-input" accept="image/*,video/*" multiple style="display:none" onchange="uploadGalleryFiles(this)">
       <div style="font-size:0.78rem;color:var(--text-light)">תמונות וסרטונים — נשמרים ב-Cloudinary</div>
     </div>
