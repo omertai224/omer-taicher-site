@@ -565,3 +565,181 @@ function updateBodyPreview() {
     seo_desc: excerpt
   };
 }
+
+
+// ===== INTERACTIVE TUTORIALS MANAGEMENT =====
+let interactiveItems = [];
+let interactiveSha = null;
+let interactiveEditingIndex = null;
+
+async function loadInteractiveManager() {
+  setStatus('content', 'loading', 'טוען הדרכות...');
+  const container = document.getElementById('interactive-list');
+  if (!container) return;
+  try {
+    const data = await ghGet('interactive.json');
+    interactiveSha = data.sha;
+    interactiveItems = JSON.parse(decode(data.content));
+    renderInteractiveList();
+    setStatus('content', 'ok', interactiveItems.length + ' הדרכות נטענו');
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:#c0392b;font-size:0.88rem">שגיאה בטעינת הדרכות: ' + e.message + '</div>';
+  }
+}
+
+function renderInteractiveList() {
+  const container = document.getElementById('interactive-list');
+  const count = document.getElementById('interactive-count');
+  if (count) count.textContent = interactiveItems.length + ' הדרכות';
+
+  if (!interactiveItems.length) {
+    container.innerHTML = '<div style="text-align:center;padding:60px 20px;color:var(--text-light);font-size:0.88rem">אין הדרכות עדיין. לחץ + הדרכה חדשה.</div>';
+    return;
+  }
+
+  container.innerHTML = interactiveItems.map((item, i) => `
+    <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;">
+      <div style="width:44px;height:44px;background:linear-gradient(135deg,#1a4a6b,#1e5f74);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-size:0.92rem;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.title}</div>
+        <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${item.steps} שלבים · ${item.desc}</div>
+        <div style="font-size:0.68rem;color:var(--text-light);direction:ltr;text-align:right;margin-top:2px">${item.url}</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-shrink:0;">
+        <button onclick="interactiveEditItem(${i})" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">✏️ ערוך</button>
+        <button onclick="window.open('${item.url}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">👁 פתח</button>
+        <button onclick="interactiveDeleteItem(${i})" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">🗑 מחק</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function interactiveNewItem() {
+  interactiveEditingIndex = null;
+  showInteractiveForm({ title: '', desc: '', steps: '', url: '', price: '', category: '' });
+}
+
+function interactiveEditItem(index) {
+  interactiveEditingIndex = index;
+  showInteractiveForm(interactiveItems[index]);
+}
+
+function showInteractiveForm(item) {
+  const container = document.getElementById('interactive-list');
+  const count = document.getElementById('interactive-count');
+  if (count) count.style.display = 'none';
+
+  container.innerHTML = `
+    <div style="margin-bottom:18px;display:flex;align-items:center;gap:12px">
+      <button onclick="loadInteractiveManager()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
+      <div style="font-size:0.95rem;font-weight:800;color:var(--navy)">${interactiveEditingIndex !== null ? 'עריכת הדרכה' : 'הדרכה חדשה'}</div>
+    </div>
+
+    <div class="field"><label class="field-label">כותרת *</label><textarea id="if-title" rows="2">${item.title}</textarea></div>
+    <div class="field"><label class="field-label">תיאור קצר *</label><textarea id="if-desc" rows="2">${item.desc}</textarea></div>
+    <div class="fields-row">
+      <div class="field"><label class="field-label">מספר שלבים *</label><input id="if-steps" type="number" min="1" value="${item.steps}" style="direction:ltr;text-align:left"></div>
+      <div class="field"><label class="field-label">קטגוריה</label><input id="if-category" type="text" value="${item.category || ''}" placeholder="לדוגמה: AI · תמלול · Windows"></div>
+    </div>
+    <div class="field"><label class="field-label">קישור להדרכה *</label><input id="if-url" type="text" value="${item.url}" style="direction:ltr;text-align:left" placeholder="./Vibe/index.html"></div>
+    <div class="fields-row">
+      <div class="field"><label class="field-label">מחיר (₪)</label><input id="if-price" type="number" min="0" value="${item.price || ''}" style="direction:ltr;text-align:left" placeholder="97"></div>
+      <div class="field"><label class="field-label">סטטוס</label>
+        <select id="if-status" style="padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:0.88rem;background:#fff;">
+          <option value="active" ${(item.status||'active')==='active'?'selected':''}>פעיל — זמין לרכישה</option>
+          <option value="coming_soon" ${item.status==='coming_soon'?'selected':''}>בקרוב</option>
+          <option value="hidden" ${item.status==='hidden'?'selected':''}>מוסתר</option>
+        </select>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
+      <button onclick="interactiveSaveItem()" id="if-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${interactiveEditingIndex !== null ? '💾 שמור שינויים' : '🚀 הוסף הדרכה'}</button>
+      <button onclick="loadInteractiveManager()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
+    </div>
+    <div id="if-alert" style="margin-top:14px"></div>
+  `;
+}
+
+async function interactiveSaveItem() {
+  const btn = document.getElementById('if-save-btn');
+  const alertEl = document.getElementById('if-alert');
+  const title    = document.getElementById('if-title')?.value.trim();
+  const desc     = document.getElementById('if-desc')?.value.trim();
+  const steps    = parseInt(document.getElementById('if-steps')?.value);
+  const url      = document.getElementById('if-url')?.value.trim();
+  const price    = document.getElementById('if-price')?.value.trim();
+  const category = document.getElementById('if-category')?.value.trim();
+  const status   = document.getElementById('if-status')?.value;
+
+  if (!title) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
+  if (!desc)  { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תיאור הוא שדה חובה</div>'; return; }
+  if (!steps) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">מספר שלבים הוא שדה חובה</div>'; return; }
+  if (!url)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">קישור להדרכה הוא שדה חובה</div>'; return; }
+
+  btn.disabled = true;
+  btn.textContent = 'שומר...';
+  setStatus('content', 'loading', 'שומר הדרכה...');
+
+  try {
+    const fresh = await ghGet('interactive.json');
+    interactiveSha = fresh.sha;
+    interactiveItems = JSON.parse(decode(fresh.content));
+
+    const newItem = { title, desc, steps, url, price: price ? parseInt(price) : null, category, status };
+
+    if (interactiveEditingIndex !== null) {
+      interactiveItems[interactiveEditingIndex] = newItem;
+    } else {
+      interactiveItems.push(newItem);
+    }
+
+    const result = await ghPut('interactive.json', JSON.stringify(interactiveItems, null, 2), interactiveSha,
+      (interactiveEditingIndex !== null ? 'עריכת הדרכה: ' : 'הדרכה חדשה: ') + title);
+
+    if (result.content) {
+      interactiveSha = result.content.sha;
+      setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
+      loadInteractiveManager();
+    } else {
+      throw new Error(result.message || 'שגיאה לא ידועה');
+    }
+  } catch(e) {
+    alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + e.message + '</div>';
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+    btn.disabled = false;
+    btn.textContent = interactiveEditingIndex !== null ? '💾 שמור שינויים' : '🚀 הוסף הדרכה';
+  }
+}
+
+function interactiveDeleteItem(index) {
+  const item = interactiveItems[index];
+  if (!item) return;
+  const modal = document.getElementById('confirm-modal');
+  document.getElementById('confirm-modal-text').textContent = 'למחוק את ההדרכה "' + item.title + '"?';
+  modal.style.display = 'flex';
+  document.getElementById('confirm-modal-yes').onclick = async () => {
+    modal.style.display = 'none';
+    setStatus('content', 'loading', 'מוחק הדרכה...');
+    try {
+      const fresh = await ghGet('interactive.json');
+      interactiveSha = fresh.sha;
+      const items = JSON.parse(decode(fresh.content)).filter((_, i) => i !== index);
+      const result = await ghPut('interactive.json', JSON.stringify(items, null, 2), interactiveSha, 'מחיקת הדרכה: ' + item.title);
+      if (result.content) {
+        interactiveSha = result.content.sha;
+        interactiveItems = items;
+        setStatus('content', 'ok', '✓ ההדרכה נמחקה');
+        renderInteractiveList();
+      } else {
+        throw new Error(result.message || 'שגיאה');
+      }
+    } catch(e) {
+      setStatus('content', 'error', 'שגיאה: ' + e.message);
+    }
+  };
+  document.getElementById('confirm-modal-no').onclick = () => { modal.style.display = 'none'; };
+}
