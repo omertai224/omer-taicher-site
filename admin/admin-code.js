@@ -289,6 +289,12 @@ function handleDrop(event) {
   Array.from(files).forEach(file => uploadFile(file));
 }
 
+function handleUploadInput(input) {
+  if (!input.files.length) return;
+  Array.from(input.files).forEach(file => uploadFile(file));
+  input.value = ''; // אפס כדי שאפשר להעלות אותו קובץ שוב
+}
+
 async function uploadFile(file) {
   const path = currentTreePath ? currentTreePath + '/' + file.name : file.name;
   setStatus('code', 'loading', 'מעלה ' + file.name + '...');
