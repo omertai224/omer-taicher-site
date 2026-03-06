@@ -852,11 +852,25 @@ async function uploadGalleryFiles(input) {
   }
 
   renderGallery();
-  setStatus('gallery', 'ok', '✓ ' + uploaded + ' קבצים הועלו — ' + galleryItems.length + ' סה"כ. לחץ שמור!');
+  setStatus('gallery', 'loading', '✓ ' + uploaded + ' הועלו — שומר לאתר...');
+  await autoSaveGallery();
 
   btn.disabled = false;
   btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg> העלאת קובץ';
   input.value = '';
+}
+
+async function autoSaveGallery() {
+  try {
+    const json = JSON.stringify({ items: galleryItems }, null, 2);
+    const existing = await githubGet('gallery.json').catch(() => null);
+    const sha = existing ? existing.sha : undefined;
+    await githubPut('gallery.json', json, 'עדכון גלריה', sha);
+    setStatus('gallery', 'ok', '✓ נשמר — ' + galleryItems.length + ' פריטים');
+  } catch(e) {
+    setStatus('gallery', 'ok', '✓ הועלה ל-Cloudinary — שגיאה בשמירה');
+    console.error(e);
+  }
 }
 
 function copyGalleryUrl(url) {
@@ -869,21 +883,12 @@ function copyGalleryUrl(url) {
   }
 }
 
-function deleteGalleryItem(index) {
+async function deleteGalleryItem(index) {
   if (!confirm('למחוק את הקובץ מהרשימה?')) return;
   galleryItems.splice(index, 1);
   renderGallery();
-  setStatus('gallery', 'ok', galleryItems.length + ' פריטים — לחץ שמור!');
-}
-
-function saveGalleryJson() {
-  const json = JSON.stringify({ items: galleryItems }, null, 2);
-  const blob = new Blob([json], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'gallery.json';
-  a.click();
-  setStatus('gallery', 'ok', '✓ gallery.json הורד — העלה לגיטהאב');
+  setStatus('gallery', 'loading', 'מוחק ושומר...');
+  await autoSaveGallery();
 }
 
 
