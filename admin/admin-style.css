@@ -157,3 +157,11 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .repo-pill { padding:5px 14px; border-radius:50px; border:1.5px solid rgba(255,255,255,0.2); background:transparent; color:rgba(255,255,255,0.6); font-family:'Rubik',sans-serif; font-size:0.78rem; font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
 .repo-pill:hover { border-color:var(--orange); color:var(--orange); }
 .repo-pill.active { background:var(--orange-deep); color:#fff; border-color:var(--orange-deep); }
+
+/* מרווח ויישור כפתורים */
+.header { height:90px; }
+.header-center { gap:10px; }
+.repo-pills { gap:8px; }
+.repo-pill { min-width:110px; text-align:center; justify-content:center; padding:8px 18px; font-size:0.82rem; }
+.tabs { gap:8px; padding:5px; }
+.tab-btn { min-width:110px; text-align:center; padding:8px 18px; font-size:0.82rem; }
