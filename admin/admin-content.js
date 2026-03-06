@@ -460,11 +460,31 @@ async function blogPasteFromClipboard() {
   }
 
   if (!text || !text.trim()) {
-    alert('הלוח ריק. העתיקו את הפוסט מ-Wix ונסו שוב.');
+    alert('הלוח ריק. העתיקו את הפוסט ונסו שוב.');
     return;
   }
 
-  const post = parseWixPost(text);
+  let post;
+  try {
+    // מנסה לפרסר כ-JSON תחילה
+    const parsed = JSON.parse(text.trim());
+    post = {
+      id:        parsed.id        || '',
+      title:     parsed.title     || '',
+      excerpt:   parsed.excerpt   || '',
+      body:      parsed.body      || '',
+      date:      parsed.date      || todayISO(),
+      emoji:     parsed.emoji     || '📝',
+      image:     parsed.image     || '',
+      image_alt: parsed.image_alt || '',
+      seo_title: parsed.seo_title || (parsed.title ? parsed.title + ' | עומר טייכר' : ''),
+      seo_desc:  parsed.seo_desc  || parsed.excerpt || ''
+    };
+  } catch(e) {
+    // אם לא JSON — מפרסר כטקסט גולמי
+    post = parseWixPost(text);
+  }
+
   blogEditingId = null;
   showBlogForm(post);
 }
