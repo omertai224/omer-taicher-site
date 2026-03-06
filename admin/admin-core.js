@@ -127,7 +127,7 @@ function selectRepo(repoName, btn) {
   if (isSite)  loadContent();
   if (isBlog)  setTimeout(loadBlogManager, 50);
   if (isTutos) setTimeout(loadInteractiveManager, 50);
-  loadFileTree('admin');
+  loadFileTree(GITHUB_REPO === 'omer-taicher-site' ? 'admin' : '');
 }
 
 // ===== HELPERS =====
