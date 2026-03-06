@@ -79,7 +79,7 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .file-item-name { flex:1; }
 .file-item-desc { font-size:0.68rem; color:var(--text-light); background:var(--cream); padding:2px 7px; border-radius:50px; white-space:nowrap; flex-shrink:0; }
 .file-item.active .file-item-desc { background:rgba(232,133,74,0.15); color:var(--orange-deep); }
-.editor-wrap { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; }
+.editor-wrap { background:var(--white); border:1px solid var(--border); border-radius:14px; overflow:hidden; display:flex; flex-direction:column; min-height:82vh; }
 .editor-topbar { padding:12px 18px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; background:var(--cream); flex-wrap:wrap; gap:8px; }
 .editor-filename { font-size:0.85rem; font-weight:700; color:var(--navy); font-family:monospace; }
 .editor-actions { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
@@ -87,7 +87,7 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .editor-btn-save { background:var(--orange-deep); color:#fff; }
 .editor-btn-save:hover { background:var(--navy); }
 .editor-btn-save:disabled { opacity:0.4; cursor:not-allowed; }
-#code-editor { flex:1; width:100%; border:none; outline:none; padding:18px; font-family:'Courier New', monospace; font-size:0.82rem; line-height:1.7; resize:none; background:#1e1e2e; color:#cdd6f4; tab-size:2; }
+#code-editor { flex:1; width:100%; min-height:75vh; border:none; outline:none; padding:18px; font-family:'Courier New', monospace; font-size:0.82rem; line-height:1.7; resize:vertical; background:#1e1e2e; color:#cdd6f4; tab-size:2; }
 
 .backups-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
 .backups-title { font-size:1.1rem; font-weight:800; color:var(--navy); }
