@@ -165,3 +165,11 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .repo-pill { min-width:110px; text-align:center; justify-content:center; padding:8px 18px; font-size:0.82rem; }
 .tabs { gap:8px; padding:5px; }
 .tab-btn { min-width:110px; text-align:center; padding:8px 18px; font-size:0.82rem; }
+
+/* תיקון hover ועיצוב סופי */
+.repo-pill { min-width:120px; text-align:center; padding:10px 20px; font-size:0.82rem; background:transparent !important; color:rgba(255,255,255,0.6) !important; border:1.5px solid rgba(255,255,255,0.2) !important; }
+.repo-pill:hover { background:transparent !important; border-color:var(--orange) !important; color:var(--orange) !important; }
+.repo-pill.active { background:var(--orange-deep) !important; color:#fff !important; border-color:var(--orange-deep) !important; }
+.tab-btn { min-width:120px; padding:10px 20px; font-size:0.82rem; }
+.header-center { gap:12px; padding:12px 0; }
+.header { height:auto; min-height:96px; }
