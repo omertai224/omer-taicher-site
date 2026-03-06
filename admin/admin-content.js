@@ -809,6 +809,7 @@ function renderGallery() {
            onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
            onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
         <button onclick="copyGalleryUrl('${item.url}')" style="background:var(--orange-deep);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
+        <button onclick="deleteGalleryItem(${realIndex})" style="background:rgba(220,38,38,0.85);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">🗑️ מחק</button>
       </div>
     </div>`;
   }).join('');
@@ -890,7 +891,33 @@ function copyGalleryUrl(url) {
 }
 
 async function deleteGalleryItem(index) {
-  if (!confirm('למחוק את הקובץ מהרשימה?')) return;
+  if (!confirm('למחוק את הקובץ לצמיתות מ-Cloudinary?')) return;
+  const item = galleryItems[index];
+
+  // מחיקה מ-Cloudinary אם יש API Secret
+  if (CLOUDINARY_API_KEY && CLOUDINARY_API_SECRET) {
+    try {
+      const publicId = item.url.split('/upload/')[1].replace(/\.[^/.]+$/, '').replace(/^v\d+\//, '');
+      const timestamp = Math.round(Date.now() / 1000);
+      const str = `public_id=${publicId}&timestamp=${timestamp}${CLOUDINARY_API_SECRET}`;
+      const msgBuffer = new TextEncoder().encode(str);
+      const hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer);
+      const signature = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2,'0')).join('');
+      const fd = new FormData();
+      fd.append('public_id', publicId);
+      fd.append('signature', signature);
+      fd.append('api_key', CLOUDINARY_API_KEY);
+      fd.append('timestamp', timestamp);
+      const resourceType = item.type === 'video' ? 'video' : 'image';
+      await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/resources/${resourceType}/upload/${publicId}`, {
+        method: 'DELETE',
+        headers: { 'Authorization': 'Basic ' + btoa(CLOUDINARY_API_KEY + ':' + CLOUDINARY_API_SECRET) }
+      });
+    } catch(e) {
+      console.error('שגיאה במחיקה מ-Cloudinary', e);
+    }
+  }
+
   galleryItems.splice(index, 1);
   renderGallery();
   setStatus('gallery', 'loading', 'מוחק ושומר...');
