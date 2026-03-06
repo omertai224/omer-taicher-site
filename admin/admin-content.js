@@ -215,15 +215,9 @@ function showBlogForm(post) {
       <textarea id="bf-body" rows="14" style="font-size:0.82rem">${post.body}</textarea>
     </div>
 
-    <div class="fields-row">
-      <div class="field">
-        <label class="field-label">תאריך *</label>
-        <input id="bf-date" type="date" value="${post.date}">
-      </div>
-      <div class="field">
-        <label class="field-label">אמוג'י</label>
-        <input id="bf-emoji" type="text" value="${post.emoji || '📝'}" maxlength="4">
-      </div>
+    <div class="field">
+      <label class="field-label">תאריך *</label>
+      <input id="bf-date" type="date" value="${post.date}">
     </div>
 
     <div class="field">
@@ -293,7 +287,7 @@ async function blogSavePost() {
   const excerpt = document.getElementById('bf-excerpt')?.value.trim();
   const body    = document.getElementById('bf-body')?.value.trim();
   const date    = document.getElementById('bf-date')?.value;
-  const emoji   = document.getElementById('bf-emoji')?.value.trim() || '📝';
+  const emoji   = '';
   const image   = '';
   const id      = document.getElementById('bf-id')?.value.trim() || titleToSlug(title);
   const seoTitle= document.getElementById('bf-seo-title')?.value.trim() || title + ' | עומר טייכר';
