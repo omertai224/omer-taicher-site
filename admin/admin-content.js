@@ -809,7 +809,6 @@ function renderGallery() {
            onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
            onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
         <button onclick="copyGalleryUrl('${item.url}')" style="background:var(--orange-deep);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
-        <button onclick="deleteGalleryItem(${realIndex})" style="background:rgba(255,50,50,0.7);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">🗑️ מחק</button>
       </div>
     </div>`;
   }).join('');
