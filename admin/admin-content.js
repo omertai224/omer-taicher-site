@@ -180,7 +180,7 @@ function renderBlogList() {
 function blogNewPost() {
   blogEditingId = null;
   showBlogForm({
-    id: '', title: '', excerpt: '', body: '', date: todayISO(), emoji: '📝', image: '', seo_title: '', seo_desc: ''
+    id: '', title: '', excerpt: '', body: '', date: todayISO(), emoji: '📝', image: '', image_alt: '', seo_title: '', seo_desc: ''
   });
 }
 
@@ -216,6 +216,29 @@ function showBlogForm(post) {
     </div>
 
     <div class="field">
+      <label class="field-label">תמונה ראשית</label>
+      <div style="display:flex;gap:10px;align-items:flex-start;margin-top:4px">
+        <div style="flex:1">
+          <input id="bf-image" type="text" value="${post.image || ''}" placeholder="URL של תמונה" style="direction:ltr;text-align:left;margin-bottom:8px">
+          <div id="bf-image-preview" style="margin-top:8px;${post.image ? '' : 'display:none'}">
+            <img src="${post.image || ''}" style="max-width:100%;max-height:140px;border-radius:10px;border:1px solid var(--border);object-fit:cover">
+            <button onclick="clearPostImage()" style="display:block;margin-top:6px;background:#fde8e8;color:#c0392b;border:none;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;cursor:pointer;font-family:inherit">✕ הסר תמונה</button>
+          </div>
+        </div>
+        <div style="flex-shrink:0">
+          <button onclick="triggerImageUpload()" id="bf-upload-btn" style="background:var(--navy);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">📤 העלה תמונה</button>
+          <input type="file" id="bf-image-file" accept="image/*,video/*" style="display:none" onchange="uploadToCloudinary(this)">
+        </div>
+      </div>
+      <div id="bf-upload-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
+    </div>
+
+    <div class="field">
+      <label class="field-label">תיאור תמונה (Alt) — חשוב להנגשה ו-SEO</label>
+      <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תאר את התמונה במשפט קצר">
+    </div>
+
+    <div class="field">
       <label class="field-label">תאריך *</label>
       <input id="bf-date" type="date" value="${post.date}">
     </div>
@@ -240,6 +263,57 @@ function showBlogForm(post) {
       <button onclick="loadBlogManager()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
     </div>
     <div id="bf-alert" style="margin-top:14px"></div>`;
+}
+
+// ===== CLOUDINARY =====
+const CLOUDINARY_CLOUD = 'drxyfq0cq';
+const CLOUDINARY_PRESET = 'omer_site';
+
+function triggerImageUpload() {
+  document.getElementById('bf-image-file').click();
+}
+
+async function uploadToCloudinary(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const status = document.getElementById('bf-upload-status');
+  const btn = document.getElementById('bf-upload-btn');
+  status.textContent = 'מעלה...';
+  btn.disabled = true;
+  btn.textContent = '⏳ מעלה...';
+  try {
+    const fd = new FormData();
+    fd.append('file', file);
+    fd.append('upload_preset', CLOUDINARY_PRESET);
+    const resourceType = file.type.startsWith('video') ? 'video' : 'image';
+    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/${resourceType}/upload`, {
+      method: 'POST', body: fd
+    });
+    const data = await res.json();
+    if (data.secure_url) {
+      document.getElementById('bf-image').value = data.secure_url;
+      const preview = document.getElementById('bf-image-preview');
+      preview.style.display = 'block';
+      preview.querySelector('img').src = data.secure_url;
+      status.style.color = 'var(--green)';
+      status.textContent = '✓ הועלה בהצלחה';
+    } else {
+      throw new Error(data.error?.message || 'שגיאה לא ידועה');
+    }
+  } catch(e) {
+    status.style.color = 'var(--red)';
+    status.textContent = 'שגיאה: ' + e.message;
+  }
+  btn.disabled = false;
+  btn.textContent = '📤 העלה תמונה';
+  input.value = '';
+}
+
+function clearPostImage() {
+  document.getElementById('bf-image').value = '';
+  const preview = document.getElementById('bf-image-preview');
+  preview.style.display = 'none';
+  preview.querySelector('img').src = '';
 }
 
 function blogAutoSlug() {
@@ -288,7 +362,8 @@ async function blogSavePost() {
   const body    = document.getElementById('bf-body')?.value.trim();
   const date    = document.getElementById('bf-date')?.value;
   const emoji   = '';
-  const image   = '';
+  const image   = document.getElementById('bf-image')?.value.trim() || '';
+  const imageAlt= document.getElementById('bf-image-alt')?.value.trim() || '';
   const id      = document.getElementById('bf-id')?.value.trim() || titleToSlug(title);
   const seoTitle= document.getElementById('bf-seo-title')?.value.trim() || title + ' | עומר טייכר';
   const seoDesc = document.getElementById('bf-seo-desc')?.value.trim() || excerpt;
@@ -310,7 +385,7 @@ async function blogSavePost() {
     const freshData = JSON.parse(decode(fresh.content));
     let posts = freshData.posts || [];
 
-    const post = { id, title, excerpt, body, date, emoji, image, seo_title: seoTitle, seo_desc: seoDesc };
+    const post = { id, title, excerpt, body, date, emoji, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc };
 
     if (blogEditingId) {
       const idx = posts.findIndex(p => p.id === blogEditingId);
