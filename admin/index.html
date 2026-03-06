@@ -29,10 +29,13 @@
 <div id="token-gate">
   <div style="font-size:1.3rem;font-weight:800;color:#fff;font-family:'Rubik',sans-serif;">עומר <span style="color:var(--orange)">טייכר</span> — פאנל ניהול</div>
   <div class="token-box">
-    <h2>הכנס GitHub Token</h2>
-    <p>נשמר אצלך במכשיר בלבד</p>
+    <h2>כניסה לפאנל</h2>
+    <p>הכנס פרטי התחברות</p>
     <input type="text" name="username" autocomplete="username" value="admin" style="display:none;">
-    <input class="token-input" id="token-input" type="password" placeholder="ghp_..." autocomplete="current-password" onkeydown="if(event.key='Enter')saveToken()">
+    <label style="font-size:0.78rem;font-weight:700;color:#a8c5d6;margin-bottom:4px;display:block;">שם משתמש</label>
+    <input class="token-input" id="token-input" type="text" placeholder="שם משתמש" autocomplete="username" onkeydown="if(event.key==='Enter')saveToken()">
+    <label style="font-size:0.78rem;font-weight:700;color:#a8c5d6;margin-bottom:4px;display:block;margin-top:12px;">סיסמה</label>
+    <input class="token-input" id="cl-secret-input" type="password" placeholder="סיסמה" autocomplete="current-password" onkeydown="if(event.key==='Enter')saveToken()">
     <button class="token-btn" onclick="saveToken()">כניסה</button>
   </div>
 </div>
