@@ -65,10 +65,18 @@ function switchTab(name, btn) {
     dlBtn.style.transform = name === 'download' ? 'scale(1.05)' : 'scale(1)';
   }
 
+  // כפתור גלריה
+  const glBtn = document.getElementById('tab-btn-gallery');
+  if (glBtn) {
+    glBtn.style.opacity = name === 'gallery' ? '1' : '0.65';
+    glBtn.style.transform = name === 'gallery' ? 'scale(1.05)' : 'scale(1)';
+  }
+
   const saveBtn = document.getElementById('save-content-btn');
   if (saveBtn) saveBtn.style.visibility = (name === 'content' && GITHUB_REPO === 'omer-taicher-site') ? 'visible' : 'hidden';
   localStorage.setItem('admin_active_tab', name);
   if (name === 'download') initDownloadTab();
+  if (name === 'gallery') loadGalleryManager();
 }
 
 // ===== REPO SWITCHER =====
