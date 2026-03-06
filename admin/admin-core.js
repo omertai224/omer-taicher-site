@@ -127,7 +127,7 @@ function selectRepo(repoName, btn) {
   if (isSite)  loadContent();
   if (isBlog)  setTimeout(loadBlogManager, 50);
   if (isTutos) setTimeout(loadInteractiveManager, 50);
-  loadFileTree('');
+  loadFileTree('admin');
 }
 
 // ===== HELPERS =====
