@@ -163,10 +163,10 @@ function renderBlogList() {
           <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}</div>
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0">
-          <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">✏️ ערוך</button>
-          <button onclick="window.open('https://omer-taicher-blog.vercel.app/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">👁 צפה</button>
-          <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">📋 העתק ללוח</button>
-          <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">🗑 מחק</button>
+          <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
+          <button onclick="window.open('https://omer-taicher-blog.vercel.app/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
+          <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
+          <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`).join('');
 
@@ -174,8 +174,8 @@ function renderBlogList() {
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
       <div style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
       <div style="display:flex;gap:8px">
-        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">📋 העתק כל הפוסטים</button>
-        <button onclick="blogPasteFromClipboard()" style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">📥 הדבק פוסט מהלוח</button>
+        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">העתק הכל</button>
+        <button onclick="blogPasteFromClipboard()" style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק פוסט</button>
         <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
       </div>
     </div>
@@ -245,7 +245,7 @@ function showBlogForm(post) {
           </div>
         </div>
         <div style="flex-shrink:0">
-          <button onclick="triggerImageUpload()" id="bf-upload-btn" style="background:var(--navy);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">📤 העלה תמונה</button>
+          <button onclick="triggerImageUpload()" id="bf-upload-btn" style="background:var(--navy);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">העלאת תמונה</button>
           <input type="file" id="bf-image-file" accept="image/*,video/*" style="display:none" onchange="uploadToCloudinary(this)">
         </div>
       </div>
@@ -278,7 +278,7 @@ function showBlogForm(post) {
     </div>
 
     <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
-      <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? '💾 שמור שינויים' : '🚀 פרסם פוסט'}</button>
+      <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
       <button onclick="loadBlogManager()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
     </div>
     <div id="bf-alert" style="margin-top:14px"></div>`;
@@ -299,7 +299,7 @@ async function uploadToCloudinary(input) {
   const btn = document.getElementById('bf-upload-btn');
   status.textContent = 'מעלה...';
   btn.disabled = true;
-  btn.textContent = '⏳ מעלה...';
+  btn.textContent = 'מעלה...';
   try {
     const fd = new FormData();
     fd.append('file', file);
@@ -324,7 +324,7 @@ async function uploadToCloudinary(input) {
     status.textContent = 'שגיאה: ' + e.message;
   }
   btn.disabled = false;
-  btn.textContent = '📤 העלה תמונה';
+  btn.textContent = 'העלאת תמונה';
   input.value = '';
 }
 
@@ -428,7 +428,7 @@ async function blogSavePost() {
     alert.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + e.message + '</div>';
     setStatus('content', 'error', 'שגיאה: ' + e.message);
     btn.disabled = false;
-    btn.textContent = blogEditingId ? '💾 שמור שינויים' : '🚀 פרסם פוסט';
+    btn.textContent = blogEditingId ? 'שמור שינויים' : 'פרסם';
   }
 }
 
@@ -609,9 +609,9 @@ function renderInteractiveList() {
         <div style="font-size:0.68rem;color:var(--text-light);direction:ltr;text-align:right;margin-top:2px">${item.url}</div>
       </div>
       <div style="display:flex;gap:8px;flex-shrink:0;">
-        <button onclick="interactiveEditItem(${i})" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">✏️ ערוך</button>
-        <button onclick="window.open('${item.url}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">👁 פתח</button>
-        <button onclick="interactiveDeleteItem(${i})" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">🗑 מחק</button>
+        <button onclick="interactiveEditItem(${i})" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
+        <button onclick="window.open('${item.url}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">פתח</button>
+        <button onclick="interactiveDeleteItem(${i})" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
       </div>
     </div>
   `).join('');
@@ -657,7 +657,7 @@ function showInteractiveForm(item) {
     </div>
 
     <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
-      <button onclick="interactiveSaveItem()" id="if-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${interactiveEditingIndex !== null ? '💾 שמור שינויים' : '🚀 הוסף הדרכה'}</button>
+      <button onclick="interactiveSaveItem()" id="if-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${interactiveEditingIndex !== null ? 'שמור שינויים' : 'הוסף הדרכה'}</button>
       <button onclick="loadInteractiveManager()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
     </div>
     <div id="if-alert" style="margin-top:14px"></div>
@@ -711,7 +711,7 @@ async function interactiveSaveItem() {
     alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + e.message + '</div>';
     setStatus('content', 'error', 'שגיאה: ' + e.message);
     btn.disabled = false;
-    btn.textContent = interactiveEditingIndex !== null ? '💾 שמור שינויים' : '🚀 הוסף הדרכה';
+    btn.textContent = interactiveEditingIndex !== null ? 'שמור שינויים' : 'הוסף הדרכה';
   }
 }
 
@@ -793,7 +793,7 @@ function renderGallery() {
            onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
            onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
         <button onclick="copyGalleryUrl('${item.url}')" style="background:var(--orange-deep,#e8854a);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
-        <button onclick="deleteGalleryItem(${i})" style="background:rgba(255,255,255,0.15);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">🗑 מחק</button>
+        <button onclick="deleteGalleryItem(${i})" style="background:rgba(255,255,255,0.15);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">מחק</button>
       </div>
     </div>
   `).join('');
@@ -809,7 +809,7 @@ async function uploadGalleryFiles(input) {
 
   const btn = document.getElementById('gallery-upload-btn');
   btn.disabled = true;
-  btn.innerHTML = '⏳ מעלה...';
+  btn.innerHTML = 'מעלה...';
   setStatus('gallery', 'loading', 'מעלה ' + files.length + ' קבצים...');
 
   let uploaded = 0;
