@@ -57,7 +57,14 @@ function switchTab(name, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   if (btn) btn.classList.add('active');
-  // שמור ופרסם — גלוי רק בתוכן של אתר ראשי
+
+  // כפתור גיבוי האתר — הדגש כשפעיל, אפס כשלא
+  const dlBtn = document.getElementById('tab-btn-download');
+  if (dlBtn) {
+    dlBtn.style.opacity = name === 'download' ? '1' : '0.65';
+    dlBtn.style.transform = name === 'download' ? 'scale(1.05)' : 'scale(1)';
+  }
+
   const saveBtn = document.getElementById('save-content-btn');
   if (saveBtn) saveBtn.style.visibility = (name === 'content' && GITHUB_REPO === 'omer-taicher-site') ? 'visible' : 'hidden';
   localStorage.setItem('admin_active_tab', name);
