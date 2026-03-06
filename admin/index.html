@@ -39,8 +39,15 @@
         <button class="tab-btn" onclick="switchTab('backups', this)">🔄 גיבויים</button>
       </div>
     </div>
-    <div style="width:80px;display:flex;justify-content:flex-end;">
-      <button onclick="switchTab('download', this)" id="tab-btn-download" title="גיבוי האתר" style="background:rgba(249,115,22,0.15);color:var(--orange,#f97316);border:1px solid rgba(249,115,22,0.35);width:42px;height:42px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;" onmouseenter="this.style.background='rgba(249,115,22,0.3)'" onmouseleave="this.style.background='rgba(249,115,22,0.15)'">⬇️</button>
+    <div style="width:100%;display:flex;justify-content:flex-end;gap:16px;align-items:center;">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:0.75rem;font-weight:600;color:#3182ce;">גלריה</span>
+        <button onclick="switchTab('gallery', this)" id="tab-btn-gallery" title="גלריית מדיה" style="background:rgba(99,179,237,0.15);color:#3182ce;border:1px solid rgba(99,179,237,0.35);width:42px;height:42px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;" onmouseenter="this.style.background='rgba(99,179,237,0.3)'" onmouseleave="this.style.background='rgba(99,179,237,0.15)'">🖼️</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span style="font-size:0.75rem;font-weight:600;color:var(--orange,#f97316);">גיבוי אתר</span>
+        <button onclick="switchTab('download', this)" id="tab-btn-download" title="גיבוי האתר" style="background:rgba(249,115,22,0.15);color:var(--orange,#f97316);border:1px solid rgba(249,115,22,0.35);width:42px;height:42px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;flex-shrink:0;" onmouseenter="this.style.background='rgba(249,115,22,0.3)'" onmouseleave="this.style.background='rgba(249,115,22,0.15)'">⬇️</button>
+      </div>
     </div>
   </div>
 
@@ -205,7 +212,35 @@
   </div>
 
   <!-- TAB: DOWNLOAD -->
-  <div class="tab-panel" id="tab-download">
+  <!-- TAB: GALLERY -->
+  <div class="tab-panel" id="tab-gallery">
+    <div class="status-bar">
+      <div style="font-size:0.95rem;font-weight:800;color:var(--navy)">🖼️ גלריית מדיה</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="status-dot" id="status-dot-gallery"></div>
+        <div class="status-text" id="status-text-gallery">לחץ להעלאה</div>
+      </div>
+    </div>
+
+    <!-- כפתור העלאה -->
+    <div style="margin-bottom:24px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+      <button onclick="triggerGalleryUpload()" id="gallery-upload-btn" style="background:var(--navy);color:#fff;border:none;padding:11px 24px;border-radius:50px;font-family:inherit;font-weight:700;font-size:0.88rem;cursor:pointer;display:flex;align-items:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+        העלאת קובץ
+      </button>
+      <input type="file" id="gallery-file-input" accept="image/*,video/*" multiple style="display:none" onchange="uploadGalleryFiles(this)">
+      <div style="font-size:0.78rem;color:var(--text-light)">תמונות וסרטונים קצרים — Cloudinary</div>
+    </div>
+
+    <!-- רשת תמונות -->
+    <div id="gallery-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;"></div>
+    <div id="gallery-empty" style="display:none;text-align:center;padding:60px 20px;color:var(--text-light);font-size:0.88rem;">
+      <div style="font-size:3rem;margin-bottom:12px">🖼️</div>
+      אין קבצים עדיין — לחץ להעלאה
+    </div>
+  </div>
+
+  <!-- TAB: DOWNLOAD -->
     <div class="backups-header">
       <div class="backups-title">⬇️ הורדת גיבוי מלא</div>
     </div>
