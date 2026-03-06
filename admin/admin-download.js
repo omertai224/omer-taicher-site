@@ -63,21 +63,25 @@ async function downloadRepo(repoKey, repoName) {
   setStatus('download', 'loading', `מוריד ${repoName}...`);
 
   try {
-    const stamp = new Date().toISOString().slice(0, 16).replace('T', '_').replace(/:/g, '-');
-    const zipName = `${repoKey}__backup_${stamp}.zip`;
-
-    // קישור הורדה ישיר — עובד מהדפדפן ללא CORS
+    const stamp = new Date().toISOString().slice(0, 10); // YYYY-MM-DD
+    const zipName = `${repoKey}__${stamp}.zip`;
     const url = `https://github.com/omertai224/${repoKey}/archive/refs/heads/main.zip`;
 
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`שגיאה ${res.status}`);
+    const blob = await res.blob();
+
     const a = document.createElement('a');
-    a.href = url;
+    a.href = URL.createObjectURL(blob);
     a.download = zipName;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
+    URL.revokeObjectURL(a.href);
 
-    if (statusEl) statusEl.textContent = '✓ הורד';
-    setStatus('download', 'ok', `✓ ${repoName} — הורדה החלה`);
+    const sizeMB = (blob.size / 1024 / 1024).toFixed(1);
+    if (statusEl) statusEl.textContent = `✓ ${sizeMB} MB`;
+    setStatus('download', 'ok', `✓ ${repoName} הורד — ${zipName}`);
 
   } catch (e) {
     if (statusEl) statusEl.textContent = '✗ שגיאה';
