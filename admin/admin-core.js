@@ -61,6 +61,7 @@ function switchTab(name, btn) {
   const saveBtn = document.getElementById('save-content-btn');
   if (saveBtn) saveBtn.style.visibility = (name === 'content' && GITHUB_REPO === 'omer-taicher-site') ? 'visible' : 'hidden';
   localStorage.setItem('admin_active_tab', name);
+  if (name === 'download') initDownloadTab();
 }
 
 // ===== REPO SWITCHER =====
