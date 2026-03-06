@@ -72,7 +72,7 @@ function selectRepo(repoName, btn) {
   currentTreePath = '';
 
   // כפתורי repo — active על הנבחר
-  document.querySelectorAll('.repo-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.repo-btn, .repo-pill').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
   // איפוס עורך קוד
