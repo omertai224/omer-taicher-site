@@ -30,21 +30,21 @@
     <div class="header-center">
       <div class="repo-pills">
         <button class="repo-pill active" id="repo-btn-site" onclick="selectRepo('omer-taicher-site', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> אתר ראשי</button>
-        <button class="repo-pill" id="repo-btn-tutorials" onclick="selectRepo('omer-taicher-interactive', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> אינטראקטיב</button>
+        <button class="repo-pill" id="repo-btn-tutorials" onclick="selectRepo('omer-taicher-interactive', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> אינטראקטיבי</button>
         <button class="repo-pill" id="repo-btn-blog" onclick="selectRepo('omer-taicher-blog', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> בלוג</button>
       </div>
       <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('content', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> תוכן</button>
         <button class="tab-btn" onclick="switchTab('code', this)">💻 קוד</button>
-        <button class="tab-btn" onclick="switchTab('backups', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> גיבויים</button>
+        
       </div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:10px;align-items:center;">
-      <button onclick="switchTab('gallery', this)" id="tab-btn-gallery" title="גלריית מדיה" style="display:inline-flex;align-items:center;gap:7px;background:rgba(99,179,237,0.12);color:#2b6cb0;border:1px solid rgba(99,179,237,0.4);padding:8px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;" onmouseenter="this.style.background='rgba(99,179,237,0.25)'" onmouseleave="this.style.background='rgba(99,179,237,0.12)'">
+      <button onclick="switchTab('gallery', this)" id="tab-btn-gallery" title="גלריית מדיה" style="display:inline-flex;align-items:center;gap:7px;background:rgba(99,179,237,0.18);color:#90cdf4;border:1px solid rgba(99,179,237,0.6);padding:8px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;" onmouseenter="this.style.background='rgba(99,179,237,0.32)'" onmouseleave="this.style.background='rgba(99,179,237,0.12)'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         גלריה
       </button>
-      <button onclick="switchTab('download', this)" id="tab-btn-download" title="גיבוי האתר" style="display:inline-flex;align-items:center;gap:7px;background:rgba(249,115,22,0.12);color:var(--orange-deep,#e8854a);border:1px solid rgba(249,115,22,0.4);padding:8px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;" onmouseenter="this.style.background='rgba(249,115,22,0.25)'" onmouseleave="this.style.background='rgba(249,115,22,0.12)'">
+      <button onclick="switchTab('download', this)" id="tab-btn-download" title="גיבוי האתר" style="display:inline-flex;align-items:center;gap:7px;background:rgba(249,115,22,0.2);color:#fbd38d;border:1px solid rgba(249,115,22,0.65);padding:8px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;" onmouseenter="this.style.background='rgba(249,115,22,0.35)'" onmouseleave="this.style.background='rgba(249,115,22,0.12)'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         גיבוי אתר
       </button>
@@ -156,7 +156,7 @@
     <!-- תוכן בלוג — ניהול פוסטים -->
     <div id="blog-manager" style="display:none"></div>
 
-    <!-- תוכן הדרכות אינטראקטיביות -->
+    <!-- תוכן הדרכות אינטראקטיבייות -->
     <div id="tutorials-content" style="display:none">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
         <div style="font-size:0.82rem;color:var(--text-light)" id="interactive-count">טוען...</div>
@@ -199,19 +199,7 @@
     </div>
   </div>
 
-  <!-- TAB: BACKUPS -->
-  <div class="tab-panel" id="tab-backups">
-    <div class="backups-header">
-      <div class="backups-title">גיבויים</div>
-    </div>
-    <div class="status-bar">
-      <div class="status-dot" id="status-dot-backup"></div>
-      <div class="status-text" id="status-text-backup">טוען גיבויים...</div>
-    </div>
-    <div class="backup-list" id="backup-list"><div class="backup-empty">טוען...</div></div>
-  </div>
-
-  <!-- TAB: DOWNLOAD -->
+    <!-- TAB: DOWNLOAD -->
   <!-- TAB: GALLERY -->
   <div class="tab-panel" id="tab-gallery">
     <div class="status-bar">
@@ -241,6 +229,7 @@
   </div>
 
   <!-- TAB: DOWNLOAD -->
+  <div class="tab-panel" id="tab-download">
     <div class="backups-header">
       <div class="backups-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> הורדת גיבוי מלא</div>
     </div>
@@ -269,7 +258,7 @@
 <script src="/admin/admin-core.js"></script>
 <script src="/admin/admin-content.js"></script>
 <script src="/admin/admin-code.js"></script>
-<script src="/admin/admin-backups.js"></script>
+
 <script src="/admin/admin-download.js"></script>
 <script>checkToken();</script>
 
