@@ -8,6 +8,8 @@ const REPOS = {
 };
 let GITHUB_REPO = 'omer-taicher-site';
 let GITHUB_TOKEN = '';
+let CLOUDINARY_API_KEY = '';
+let CLOUDINARY_API_SECRET = '';
 let contentSha = null;
 let currentData = null;
 let currentCodeFile = null;
@@ -17,6 +19,7 @@ let currentTreePath = '';
 // ===== TOKEN =====
 function checkToken() {
   GITHUB_TOKEN = localStorage.getItem('gh_token') || '';
+  CLOUDINARY_API_SECRET = localStorage.getItem('cl_secret') || '';
   if (!GITHUB_TOKEN) {
     document.getElementById('token-gate').style.display = 'flex';
   } else {
@@ -27,13 +30,56 @@ function checkToken() {
 }
 
 function saveToken() {
-  const val = document.getElementById('token-input').value.trim();
-  if (!val) return;
-  localStorage.setItem('gh_token', val);
-  GITHUB_TOKEN = val;
-  document.getElementById('token-gate').style.display = 'none';
-  document.getElementById('main-content').style.display = 'block';
-  init();
+  const username = document.getElementById('token-input').value.trim();
+  const password = document.getElementById('cl-secret-input').value.trim();
+  if (!username || !password) {
+    showLoginError('נא למלא שם משתמש וסיסמה');
+    return;
+  }
+  const btn = document.querySelector('.token-btn');
+  btn.textContent = 'מתחבר...';
+  btn.disabled = true;
+
+  // בדיקת GitHub Token
+  fetch('https://api.github.com/user', {
+    headers: { 'Authorization': `token ${username}` }
+  })
+  .then(r => {
+    if (!r.ok) throw new Error('github');
+    // בדיקת Cloudinary Secret
+    return fetch(`https://api.cloudinary.com/v1_1/drxyfq0cq/resources/image?max_results=1`, {
+      headers: { 'Authorization': 'Basic ' + btoa('placeholder:' + password) }
+    });
+  })
+  .then(r => {
+    if (r.status === 401) throw new Error('cloudinary');
+    // שניהם תקינים
+    localStorage.setItem('gh_token', username);
+    localStorage.setItem('cl_secret', password);
+    GITHUB_TOKEN = username;
+    CLOUDINARY_API_SECRET = password;
+    document.getElementById('token-gate').style.display = 'none';
+    document.getElementById('main-content').style.display = 'block';
+    init();
+  })
+  .catch(err => {
+    btn.textContent = 'כניסה';
+    btn.disabled = false;
+    if (err.message === 'github') showLoginError('שם משתמש שגוי');
+    else if (err.message === 'cloudinary') showLoginError('סיסמה שגויה');
+    else showLoginError('שגיאת התחברות');
+  });
+}
+
+function showLoginError(msg) {
+  let el = document.getElementById('login-error');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'login-error';
+    el.style = 'color:#f6a67e;font-size:0.82rem;font-weight:700;margin-top:10px;text-align:center;';
+    document.querySelector('.token-btn').after(el);
+  }
+  el.textContent = msg;
 }
 
 // ===== INIT =====
