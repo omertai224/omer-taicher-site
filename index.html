@@ -62,7 +62,7 @@
       </div>
       <div class="profile-top">
         <div class="profile-avatar">
-          <img src="assets/images/hero.webp" alt="עומר טייכר">
+          <img id="img-hero" src="" alt="עומר טייכר">
         </div>
         <div>
           <div class="profile-name">עומר טייכר</div>
@@ -167,7 +167,7 @@
   <div class="section-wrap">
     <div class="about-inner">
       <div class="about-img-wrap" style="background:#fff;">
-        <img src="assets/images/working.webp" alt="עומר טייכר">
+        <img id="img-about" src="" alt="עומר טייכר">
       </div>
       <div class="about-body">
         <span class="section-eyebrow eyebrow-orange-deep">מי אני</span>
@@ -205,7 +205,7 @@
     </div>
     <div class="lecture-box">
       <div class="lecture-img-col">
-        <img src="assets/images/lecture.webp" alt="מיומנו של טכנאי מחשבים, החשוד העיקרי">
+        <img id="img-lecture" src="" alt="מיומנו של טכנאי מחשבים, החשוד העיקרי">
       </div>
       <div class="lecture-content-col">
         <div class="lecture-badge" data-content="lecture.badge">
@@ -237,7 +237,7 @@
     </div>
     <div class="featured-quote-wrap">
       <div class="featured-img-col">
-        <img src="assets/images/remote.webp" alt="תמיכה מרחוק" style="width:100%;border-radius:12px;object-fit:contain;background:#0f2a3a;display:block;">
+        <img id="img-remote" src="" alt="תמיכה מרחוק" style="width:100%;border-radius:12px;object-fit:contain;background:#0f2a3a;display:block;">
       </div>
       <div class="featured-text-col">
         <div class="featured-quote-text" data-content="testimonials.featured_text">"בגלל שאני כל כך תמימה, מנצלים אותי. בגלל זה אני מאוד סומכת עליך. אלוהים שלח אותך."</div>
@@ -357,6 +357,13 @@
       }
       const lectureLink = document.getElementById('lecture-link');
       if (lectureLink) lectureLink.href = get('lecture.url');
+      // תמונות מ-R2
+      const imgs = c.images || {};
+      const imgMap = { hero: 'img-hero', about: 'img-about', lecture: 'img-lecture', remote: 'img-remote' };
+      Object.entries(imgMap).forEach(([key, id]) => {
+        const el = document.getElementById(id);
+        if (el && imgs[key]) el.src = imgs[key];
+      });
     })
     .catch(() => {});
 })();
