@@ -1045,14 +1045,68 @@ function toggleGallerySelect(index, e) {
   renderGallery();
 }
 
+function toggleSelectAll() {
+  const filtered = galleryFilter === 'הכל'
+    ? galleryItems
+    : galleryItems.filter(i => i.category === galleryFilter);
+  const allSelected = filtered.every((item) => selectedGalleryItems.has(galleryItems.indexOf(item)));
+  filtered.forEach((item) => {
+    const idx = galleryItems.indexOf(item);
+    if (allSelected) selectedGalleryItems.delete(idx);
+    else selectedGalleryItems.add(idx);
+  });
+  renderGallery();
+}
+
+async function downloadSelectedGalleryItems() {
+  if (!selectedGalleryItems.size) return;
+  const items = [...selectedGalleryItems].map(i => galleryItems[i]).filter(Boolean);
+  for (const item of items) {
+    try {
+      const res = await fetch(item.url);
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = item.name || item.key || 'image';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      await new Promise(r => setTimeout(r, 300));
+    } catch(e) {
+      console.error('שגיאה בהורדת', item.name, e);
+    }
+  }
+}
+
 function updateMultiDeleteBtn() {
   let btn = document.getElementById('gallery-multi-delete');
   if (!btn) return;
+  const downloadBtn = document.getElementById('gallery-multi-download');
+  const selectAllBtn = document.getElementById('gallery-select-all');
+  const selectAllLabel = document.getElementById('gallery-select-all-label');
+  const filtered = galleryFilter === 'הכל'
+    ? galleryItems
+    : galleryItems.filter(i => i.category === galleryFilter);
+  const allSelected = filtered.length > 0 && filtered.every((item) => selectedGalleryItems.has(galleryItems.indexOf(item)));
+
+  if (selectAllLabel) selectAllLabel.textContent = allSelected ? 'בטל סימון' : 'סמן הכל';
+  if (selectAllBtn) {
+    const rect = selectAllBtn.querySelector('svg rect');
+    if (rect) rect.setAttribute('fill', allSelected ? 'var(--navy)' : 'none');
+  }
+
   if (selectedGalleryItems.size > 0) {
     btn.style.display = 'inline-flex';
     btn.textContent = `🗑️ מחק ${selectedGalleryItems.size} נבחרים`;
+    if (downloadBtn) {
+      downloadBtn.style.display = 'inline-flex';
+      downloadBtn.querySelector('span') ? null : null;
+      const spans = downloadBtn.querySelectorAll('span');
+      // עדכן טקסט
+      downloadBtn.lastChild.textContent = ` הורד ${selectedGalleryItems.size} נבחרים`;
+    }
   } else {
     btn.style.display = 'none';
+    if (downloadBtn) downloadBtn.style.display = 'none';
   }
 }
 
