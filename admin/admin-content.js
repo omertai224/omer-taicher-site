@@ -1122,7 +1122,7 @@ async function setPickerImage(key, url) {
 async function saveImageToContent(key, url) {
   try {
     const res = await ghGet('content.json');
-    const currentContent = JSON.parse(atob(res.content));
+    const currentContent = JSON.parse(decode(res.content));
     if (!currentContent.images) currentContent.images = {};
     currentContent.images[key] = url;
     const sha = res.sha;
