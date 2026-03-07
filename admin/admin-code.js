@@ -48,12 +48,13 @@ function renderTree(items, currentPath) {
     const desc = FILE_DESCRIPTIONS[item.name] || '';
     const descTag = desc ? `<span class="file-item-desc">${desc}</span>` : '';
     const delBtn = `<button class="delete-img-btn" onclick="confirmDelete('${item.path}','${item.sha || ''}','${item.type}')" title="מחק">🗑</button>`;
+    const previewBtn = (item.type === 'file' && ext === 'html') ? `<button class="delete-img-btn" onclick="window.open('https://omertai.net/${item.path}','_blank')" title="תצוגה מקדימה">👁</button>` : '';
     if (item.type === 'dir') {
       html += `<div class="file-item"><span class="file-item-icon" onclick="loadFileTree('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFileTree('${item.path}')" style="cursor:pointer">${item.name}/</span>${descTag}${delBtn}</div>`;
     } else {
       const isEditable = ['html','js','css','json','md','txt','svg'].includes(ext);
       if (isEditable) {
-        html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}"><span class="file-item-icon" onclick="loadFile('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFile('${item.path}')" style="cursor:pointer">${item.name}</span>${descTag}${delBtn}</div>`;
+        html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}"><span class="file-item-icon" onclick="loadFile('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFile('${item.path}')" style="cursor:pointer">${item.name}</span>${descTag}${previewBtn}${delBtn}</div>`;
       } else {
         html += `<div class="file-item"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}${delBtn}</div>`;
       }
