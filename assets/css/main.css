@@ -75,7 +75,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 
 /* ===== PROFILE CARD ===== */
 .profile-card { background: var(--white); border-radius: 22px; padding: 28px; box-shadow: 0 12px 40px var(--shadow); border: 1px solid var(--border); position: relative; margin-top: 40px; }
-.float-sticker { position: absolute; top: -16px; left: 16px; background: var(--orange-deep); color: #fff; padding: 8px 16px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; box-shadow: 0 6px 20px rgba(232,133,74,0.4); white-space: nowrap; display: flex; align-items: center; gap: 6px; }
+.float-sticker { position: absolute; top: -16px; left: 16px; background: #25D366; color: #fff; padding: 8px 16px; border-radius: 50px; font-size: 0.72rem; font-weight: 700; box-shadow: 0 6px 20px rgba(37,211,102,0.4); white-space: nowrap; display: flex; align-items: center; gap: 6px; }
 .profile-top { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; margin-top: 8px; }
 .profile-avatar { width: 64px; height: 64px; border-radius: 50%; overflow: hidden; border: 3px solid var(--white); box-shadow: 0 4px 16px rgba(232,133,74,0.25); flex-shrink: 0; background: linear-gradient(135deg, #fde8d8, #f6c9a4); display: flex; align-items: center; justify-content: center; }
 .profile-avatar img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
