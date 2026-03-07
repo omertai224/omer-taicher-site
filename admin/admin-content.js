@@ -327,7 +327,6 @@ function blogEditPost(id) {
   blogEditingId = id;
   localStorage.setItem('blog_editing_id', id);
   showBlogForm(post);
-  setTimeout(updateSlugHint, 50);
 }
 
 function showBlogForm(post) {
@@ -425,6 +424,7 @@ function showBlogForm(post) {
       <button onclick="blogCancelForm()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
     </div>
     <div id="bf-alert" style="margin-top:14px"></div>`;
+  updateSlugHint();
 }
 
 // ===== CLOUDINARY =====
