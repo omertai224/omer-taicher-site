@@ -240,8 +240,10 @@ function showBlogForm(post) {
           <label class="field-label">תאריך *</label>
           <input id="bf-date" type="date" value="${post.date || todayISO()}" style="max-width:200px">
         </div>
-        <div style="display:flex;gap:8px;padding-bottom:2px">
+        <div style="display:flex;gap:8px;padding-bottom:2px;flex-wrap:wrap">
           ${blogEditingId ? `<button onclick="blogCopyPost()" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">העתק הכל</button>` : ''}
+          ${blogEditingId ? `<button onclick="window.open('https://blog.omertai.net/post.html?id=${blogEditingId}','_blank')" style="background:var(--navy-light);color:var(--navy);border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>` : ''}
+          ${blogEditingId ? `<button onclick="blogDeletePost('${blogEditingId}')" style="background:#fde8e8;color:#c0392b;border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>` : ''}
           <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
         </div>
       </div>
