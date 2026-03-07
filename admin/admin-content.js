@@ -159,6 +159,34 @@ async function loadBlogManager() {
   }
 }
 
+
+function filterBlogList(query) {
+  const q = query.trim().toLowerCase();
+  const items = document.getElementById('blog-list-items');
+  if (!items) return;
+  const filtered = q
+    ? blogPosts.filter(p => (p.title || '').toLowerCase().includes(q) || (p.id || '').toLowerCase().includes(q))
+    : blogPosts;
+  const counter = document.getElementById('blog-search-count');
+  if (counter) counter.textContent = filtered.length + ' פוסטים';
+  items.innerHTML = filtered.length === 0
+    ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">לא נמצאו פוסטים</div>`
+    : filtered.map(p => `
+      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;">
+        <div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:0.92rem;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div>
+          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-shrink:0">
+          <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
+          <button onclick="window.open('https://omer-taicher-blog.vercel.app/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
+          <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
+          <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
+        </div>
+      </div>`).join('');
+}
+
 function renderBlogList() {
   const container = document.getElementById('blog-manager');
   if (!container) return;
@@ -181,8 +209,16 @@ function renderBlogList() {
       </div>`).join('');
 
   container.innerHTML = `
+    <div style="margin-bottom:14px">
+      <input
+        type="text"
+        placeholder="חיפוש לפי כותרת..."
+        oninput="filterBlogList(this.value)"
+        style="width:100%;padding:10px 16px;border:1px solid var(--border);border-radius:50px;font-size:0.88rem;font-family:inherit;outline:none;background:var(--cream);direction:rtl;box-sizing:border-box"
+      >
+    </div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-      <div style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
+      <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
       <div style="display:flex;gap:8px">
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyFormat()">העתק פורמט</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
