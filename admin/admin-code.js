@@ -391,6 +391,104 @@ async function copyEditorContent() {
   }
 }
 
+// ===== COPY FULL REPO TREE =====
+async function copyFullRepo() {
+  const btn = document.getElementById('copy-tree-btn');
+  if (btn) { btn.textContent = 'טוען...'; btn.disabled = true; }
+  setStatus('code', 'loading', 'אוסף את כל הקבצים...');
+
+  try {
+    const allFiles = [];
+    await collectAllFiles('', allFiles);
+
+    const TEXT_EXTS = ['html','js','css','json','md','txt','svg','xml','csv'];
+    let output = `=== עץ קבצים: ${GITHUB_REPO} ===\n`;
+    output += `תאריך: ${new Date().toLocaleString('he-IL')}\n`;
+    output += `ענף: ${GITHUB_BRANCH}\n`;
+    output += `=`.repeat(50) + '\n\n';
+
+    // תחילה — רשימת עץ
+    output += `📁 מבנה הריפוזיטורי:\n`;
+    allFiles.forEach(f => {
+      const depth = f.path.split('/').length - 1;
+      const indent = '  '.repeat(depth);
+      const name = f.path.split('/').pop();
+      output += `${indent}${f.type === 'dir' ? '📁' : '📄'} ${name}\n`;
+    });
+    output += '\n' + '='.repeat(50) + '\n\n';
+
+    // אחר כך — תוכן כל קובץ
+    const fileItems = allFiles.filter(f => f.type === 'file');
+    let loaded = 0;
+    for (const file of fileItems) {
+      const ext = file.path.split('.').pop().toLowerCase();
+      if (!TEXT_EXTS.includes(ext)) continue;
+
+      setStatus('code', 'loading', `טוען ${++loaded}/${fileItems.length}: ${file.path}`);
+
+      try {
+        const data = await ghGet(file.path);
+        let content = '';
+        if (data.content) {
+          content = decode(data.content);
+        } else if (data.download_url) {
+          const res = await fetch(data.download_url);
+          content = await res.text();
+        }
+        output += `📄 ${file.path}\n`;
+        output += `-`.repeat(40) + '\n';
+        output += content + '\n\n';
+      } catch(e) {
+        output += `📄 ${file.path} — [שגיאה בטעינה]\n\n`;
+      }
+    }
+
+    // העתק ללוח
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(output);
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = output;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+
+    setStatus('code', 'ok', `✓ עץ הריפוזיטורי הועתק — ${fileItems.length} קבצים`);
+    if (btn) { btn.textContent = '✓ הועתק!'; setTimeout(() => { btn.textContent = 'העתק עץ'; btn.disabled = false; }, 2500); }
+
+  } catch(e) {
+    setStatus('code', 'error', 'שגיאה: ' + e.message);
+    if (btn) { btn.textContent = 'העתק עץ'; btn.disabled = false; }
+  }
+}
+
+async function collectAllFiles(path, result) {
+  const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
+  const res = await fetch(url, {
+    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+  });
+  const items = await res.json();
+  if (!Array.isArray(items)) return;
+
+  // מיון: תיקיות קודם
+  items.sort((a, b) => {
+    if (a.type === b.type) return a.name.localeCompare(b.name);
+    return a.type === 'dir' ? -1 : 1;
+  });
+
+  for (const item of items) {
+    if (item.name === '.git' || item.name === '.gitkeep') continue;
+    result.push({ path: item.path, type: item.type, sha: item.sha });
+    if (item.type === 'dir') {
+      await collectAllFiles(item.path, result);
+    }
+  }
+}
+
 function showWarnModal(onConfirm) {
   const modal = document.getElementById('warn-modal');
   modal.style.display = 'flex';
