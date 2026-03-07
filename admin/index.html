@@ -313,5 +313,17 @@
     </div>
   </div>
 </div>
+
+<div id="warn-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:18px;padding:36px 40px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.2);max-width:360px;width:90%;">
+    <div style="font-size:2rem;margin-bottom:12px;">⚠️</div>
+    <div style="font-size:1.05rem;font-weight:700;color:#1a4a6b;margin-bottom:8px;">שינוי דף הבית הראשי</div>
+    <div style="font-size:0.85rem;color:#555;margin-bottom:28px;">בטוח שזה לא index.html של האדמין?</div>
+    <div style="display:flex;gap:12px;justify-content:center;">
+      <button id="warn-modal-yes" style="background:#1e5f74;color:#fff;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">כן, המשך</button>
+      <button id="warn-modal-no" style="background:#eef4f8;color:#1a4a6b;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">ביטול</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
