@@ -271,6 +271,8 @@ function blogCopyFormat() {
     .then(() => setStatus('content', 'ok', '✓ הפורמט הועתק — הדבק ב-ChatGPT ואחריו את הפוסט'))
     .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
 }
+
+function blogCopyAll() {
   const text = JSON.stringify({ posts: blogPosts }, null, 2);
   navigator.clipboard.writeText(text)
     .then(() => setStatus('content', 'ok', '✓ כל ' + blogPosts.length + ' הפוסטים הועתקו ללוח'))
