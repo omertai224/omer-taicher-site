@@ -72,7 +72,7 @@ async function loadFile(filepath) {
   setStatus('code', 'loading', 'טוען ' + filename + '...');
   document.getElementById('editor-filename').textContent = filepath;
   document.getElementById('paste-publish-btn').disabled = true;
-  document.getElementById('copy-editor-btn').disabled = true;
+  
   
   try {
     const data = await ghGet(filepath);
@@ -90,7 +90,7 @@ async function loadFile(filepath) {
     document.getElementById('code-editor').value = content;
     setStatus('code', 'ok', filepath + ' — מוכן לעריכה');
     document.getElementById('paste-publish-btn').disabled = false;
-    document.getElementById('copy-editor-btn').disabled = false;
+    
     
   } catch(e) {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
@@ -137,7 +137,7 @@ async function saveCode(skipWarn = false) {
   const filename = currentCodeFile.split('/').pop();
   setStatus('code', 'loading', 'שומר ' + filename + '...');
   document.getElementById('paste-publish-btn').disabled = true;
-  document.getElementById('copy-editor-btn').disabled = true;
+  
   try {
     const newContent = document.getElementById('code-editor').value;
     const result = await ghPut(currentCodeFile, newContent, currentCodeSha, 'עדכון ' + currentCodeFile + ' מפאנל הניהול');
@@ -151,7 +151,7 @@ async function saveCode(skipWarn = false) {
     setStatus('code', 'error', 'שגיאה: ' + e.message);
   }
   document.getElementById('paste-publish-btn').disabled = false;
-    document.getElementById('copy-editor-btn').disabled = false;
+    
 }
 
 function newFilePrompt() {
