@@ -87,4 +87,21 @@
   document.getElementById('a11y-up').addEventListener('click', () => applyScale(scale + 0.1));
   document.getElementById('a11y-down').addEventListener('click', () => applyScale(scale - 0.1));
   document.getElementById('a11y-reset').addEventListener('click', () => applyScale(1));
+
+  // כשהתפריט פתוח — הטולבר יורד לתחתית
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) {
+    const observer = new MutationObserver(() => {
+      if (mobileMenu.classList.contains('open')) {
+        bar.style.top = 'auto';
+        bar.style.bottom = '0';
+        bar.style.transform = 'translateX(-50%)';
+      } else {
+        bar.style.top = '68px';
+        bar.style.bottom = 'auto';
+        bar.style.transform = 'translateX(-50%)';
+      }
+    });
+    observer.observe(mobileMenu, { attributes: true, attributeFilter: ['class'] });
+  }
 })();
