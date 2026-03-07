@@ -420,6 +420,12 @@ function triggerImageUpload() {
   document.getElementById('bf-image-file').click();
 }
 
+function getPostSlug() {
+  if (blogEditingId) return blogEditingId;
+  const title = document.getElementById('bf-title')?.innerText || '';
+  return titleToSlug(title);
+}
+
 async function uploadToCloudinary(input) {
   const file = input.files[0];
   if (!file) return;
