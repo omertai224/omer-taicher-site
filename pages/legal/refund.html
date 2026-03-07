@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מדיניות החזרים | עומר טייכר</title>
+<meta name="description" content="מדיניות ההחזרים של עומר טייכר — מוצרים דיגיטליים">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --orange: #f6a67e;
+    --orange-deep: #e8854a;
+    --orange-light: #fdeede;
+    --navy: #1a4a6b;
+    --cream: #fdf8f2;
+    --cream2: #f5ede0;
+    --text: #1e1e1e;
+    --text-mid: #555;
+    --text-light: #999;
+    --border: #e8e0d6;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Rubik', sans-serif; background: var(--cream); color: var(--text); direction: rtl; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(253,248,242,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+  .logo span { color: var(--orange-deep); }
+  .nav-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-mid); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--navy); }
+
+  .page-hero { background: var(--navy); padding: 100px 24px 48px; text-align: center; }
+  .page-hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(246,166,126,0.15); color: var(--orange); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+  .page-hero p { font-size: 0.95rem; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto; }
+  .page-hero .updated { margin-top: 20px; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+  .content-wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+
+  .section-number { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; color: var(--orange-deep); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .section-number::before { content: ''; width: 20px; height: 2px; background: var(--orange-deep); display: block; }
+
+  .section h2 { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 18px; line-height: 1.3; }
+  .section p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+  .section p:last-child { margin-bottom: 0; }
+  .section ul { padding-right: 20px; margin: 14px 0; }
+  .section ul li { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 8px; }
+
+  .highlight-box { background: var(--orange-light); border-right: 3px solid var(--orange-deep); border-radius: 0 12px 12px 0; padding: 20px 22px; margin: 24px 0; }
+  .highlight-box p { color: var(--navy) !important; font-weight: 700; margin: 0 !important; font-size: 1rem !important; line-height: 1.6 !important; }
+
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 24px 0; }
+  .why-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .why-card .icon { font-size: 1.6rem; margin-bottom: 10px; }
+  .why-card h4 { font-size: 0.88rem; font-weight: 800; color: var(--navy); margin-bottom: 6px; }
+  .why-card p { font-size: 0.82rem; color: var(--text-mid); line-height: 1.6; margin: 0; }
+
+  .contact-box { background: var(--navy); border-radius: 20px; padding: 36px 28px; text-align: center; margin-top: 56px; }
+  .contact-box h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+  .contact-box p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-bottom: 20px; }
+  .contact-box a.btn { display: inline-block; background: var(--orange); color: var(--navy); padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; text-decoration: none; transition: transform 0.2s; }
+  .contact-box a.btn:hover { transform: scale(1.04); }
+
+  footer { background: var(--cream2); border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; font-size: 0.8rem; color: var(--text-light); }
+  footer a { color: var(--navy); text-decoration: none; font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 90px 20px 40px; }
+    .content-wrap { padding: 40px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://omertai.net">עומר <span>טייכר</span></a>
+  <a class="nav-back" href="https://omertai.net">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    חזרה לאתר
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">💳 החזרים</div>
+  <h1>מדיניות החזרים</h1>
+  <p>שקיפות מלאה לפני שאתם רוכשים.</p>
+  <div class="updated">עודכן לאחרונה: דצמבר 2025</div>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <div class="section-number">01 — העיקרון</div>
+    <h2>המוצרים כאן הם דיגיטליים</h2>
+    <p>כל המוצרים הנמכרים באתר — מדריכים קצרים, וידאו-טיפים והדרכות — הם תכנים דיגיטליים.</p>
+    <p>ברגע שביצעת רכישה, התוכן נמסר לך באופן מיידי ומלא.</p>
+    <div class="highlight-box">
+      <p>מסיבה זו, לא ניתן לבטל עסקה או לקבל החזר כספי לאחר הרכישה — מכל סיבה שהיא.</p>
+    </div>
+    <p>זהו הסטנדרט המקובל בתעשיית התוכן הדיגיטלי, ועומד בהתאם לחוק הגנת הצרכן ותקנותיו.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">02 — למה זה כך</div>
+    <h2>ארבע סיבות פשוטות</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icon">📦</div>
+        <h4>אין "מוצר פיזי" להחזיר</h4>
+        <p>בניגוד למוצר פיזי, תוכן דיגיטלי נמסר ונצרך מיידית ואי אפשר "להחזיר" אותו.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">⚡</div>
+        <h4>גישה מיידית</h4>
+        <p>מרגע הרכישה יש לך גישה מלאה לתוכן. הוא בידיים שלך.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">📋</div>
+        <h4>עומד בדין</h4>
+        <p>מדיניות זו עומדת בהתאם לחוק הגנת הצרכן, תשנ"א-1981, וכפי שפורט בתקנון האתר.</p>
+      </div>
+      <div class="why-card">
+        <div class="icon">🤝</div>
+        <h4>שקיפות מראש</h4>
+        <p>כל פרטי המוצר, התוכן והמחיר מפורטים בדף המכירה לפני הרכישה.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-number">03 — לפני שרוכשים</div>
+    <h2>מה כדאי לדעת מראש</h2>
+    <p>לפני כל רכישה מומלץ לקרוא בעיון את תיאור המוצר, לוודא שהוא מתאים לצרכים שלכם, ולפנות אלינו בכל שאלה — לפני שמשלמים.</p>
+    <p>אנחנו זמינים לפני הרכישה ושמחים לענות על כל שאלה כדי שתדעו בדיוק מה אתם מקבלים.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">04 — בעיה טכנית?</div>
+    <h2>משהו לא עבד?</h2>
+    <p>אם נתקלתם בבעיה טכנית שמנעה מכם גישה לתוכן שרכשתם — פנו אלינו מיד.</p>
+    <p>במקרים כאלה נעשה כל מאמץ לפתור את הבעיה ולוודא שאתם מקבלים את מה שרכשתם.</p>
+  </div>
+
+  <div class="contact-box">
+    <h3>יש שאלה לפני הרכישה?</h3>
+    <p>שמחים לענות על הכל לפני שמחליטים.</p>
+    <a class="btn" href="mailto:omertai224@gmail.com">דברו איתי</a>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2025 עומר טייכר · כל הזכויות שמורות</span>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/terms.html">תקנון ותנאי שימוש</a>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/privacy.html">מדיניות פרטיות</a>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/accessibility.html">הצהרת נגישות</a>
+</footer>
+
+<script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
+</body>
+</html>
