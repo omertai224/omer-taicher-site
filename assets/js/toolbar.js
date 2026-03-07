@@ -4,17 +4,16 @@
   style.textContent = `
     .a11y-bar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 9999;
+      top: 68px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9998;
       background: rgba(26,74,107,0.97);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(246,166,126,0.5);
-      border-radius: 0;
+      border: 1px solid rgba(246,166,126,0.5);
+      border-radius: 100px;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
       padding: 10px 22px;
       direction: rtl;
@@ -56,7 +55,7 @@
       background: rgba(255,255,255,0.05);
     }
     @media (min-width: 960px) { .a11y-bar { display: none; } }
-    @media (max-width: 959px) { body { padding-top: 57px; } }
+    @media (max-width: 959px) { body { padding-top: 125px; } }
   `;
   document.head.appendChild(style);
 
