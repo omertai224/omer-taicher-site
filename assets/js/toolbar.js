@@ -5,8 +5,9 @@
     .a11y-bar {
       position: fixed;
       top: 68px;
-      left: 50%;
-      transform: translateX(-50%);
+      left: 10px;
+      right: 10px;
+      width: auto;
       z-index: 9998;
       background: rgba(26,74,107,0.97);
       backdrop-filter: blur(12px);
@@ -14,6 +15,7 @@
       border-radius: 100px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       padding: 10px 22px;
       direction: rtl;
@@ -55,7 +57,7 @@
       background: rgba(255,255,255,0.05);
     }
     @media (min-width: 960px) { .a11y-bar { display: none; } }
-    @media (max-width: 959px) { body { padding-top: 125px; } html { overflow-x: hidden; } }
+    @media (max-width: 959px) { body { padding-top: 125px; } }
   `;
   document.head.appendChild(style);
 
