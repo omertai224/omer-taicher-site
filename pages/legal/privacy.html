@@ -1,11 +1,11 @@
-<!-- repo: omer-taicher-site | קובץ: pages/legal/terms.html -->
+<!-- repo: omer-taicher-site | קובץ: pages/legal/privacy.html -->
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>תקנון ותנאי שימוש | עומר טייכר</title>
-<meta name="description" content="תקנון ותנאי שימוש של אתר עומר טייכר">
+<title>מדיניות פרטיות | עומר טייכר</title>
+<meta name="description" content="מדיניות הפרטיות של אתר עומר טייכר">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -14,7 +14,6 @@
     --orange-deep: #e8854a;
     --orange-light: #fdeede;
     --navy: #1a4a6b;
-    --navy-mid: #1e5f74;
     --cream: #fdf8f2;
     --cream2: #f5ede0;
     --text: #1e1e1e;
@@ -23,154 +22,50 @@
     --border: #e8e0d6;
   }
   html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Rubik', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    direction: rtl;
-    line-height: 1.7;
-  }
+  body { font-family: 'Rubik', sans-serif; background: var(--cream); color: var(--text); direction: rtl; line-height: 1.7; }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
-    background: rgba(253,248,242,0.97);
-    backdrop-filter: blur(12px);
+    background: rgba(253,248,242,0.97); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    height: 60px;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 24px;
+    height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
   }
   .logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
   .logo span { color: var(--orange-deep); }
-  .nav-back {
-    display: inline-flex; align-items: center; gap: 6px;
-    color: var(--text-mid); font-size: 0.85rem; font-weight: 500;
-    text-decoration: none; transition: color 0.2s;
-  }
+  .nav-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-mid); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: color 0.2s; }
   .nav-back:hover { color: var(--navy); }
 
-  /* HERO */
-  .page-hero {
-    background: var(--navy);
-    padding: 100px 24px 48px;
-    text-align: center;
-  }
-  .page-hero-tag {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(246,166,126,0.15);
-    color: var(--orange);
-    padding: 6px 16px; border-radius: 50px;
-    font-size: 0.75rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    margin-bottom: 20px;
-  }
-  .page-hero h1 {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
-    font-weight: 900; color: #fff;
-    line-height: 1.2; margin-bottom: 16px;
-  }
-  .page-hero p {
-    font-size: 0.95rem; color: rgba(255,255,255,0.6);
-    max-width: 480px; margin: 0 auto;
-  }
-  .page-hero .updated {
-    margin-top: 20px;
-    font-size: 0.78rem; color: rgba(255,255,255,0.35);
-  }
+  .page-hero { background: var(--navy); padding: 100px 24px 48px; text-align: center; }
+  .page-hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(246,166,126,0.15); color: var(--orange); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+  .page-hero p { font-size: 0.95rem; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto; }
+  .page-hero .updated { margin-top: 20px; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
 
-  /* CONTENT */
-  .content-wrap {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 56px 24px 80px;
-  }
+  .content-wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
 
-  .section {
-    margin-bottom: 48px;
-    padding-bottom: 48px;
-    border-bottom: 1px solid var(--border);
-  }
+  .section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
   .section:last-child { border-bottom: none; }
 
-  .section-number {
-    font-size: 0.65rem; font-weight: 700;
-    letter-spacing: 0.2em; color: var(--orange-deep);
-    text-transform: uppercase; margin-bottom: 10px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .section-number::before {
-    content: ''; width: 20px; height: 2px;
-    background: var(--orange-deep); display: block;
-  }
+  .section-number { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; color: var(--orange-deep); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .section-number::before { content: ''; width: 20px; height: 2px; background: var(--orange-deep); display: block; }
 
-  .section h2 {
-    font-size: 1.2rem; font-weight: 800;
-    color: var(--navy); margin-bottom: 18px;
-    line-height: 1.3;
-  }
-
-  .section p {
-    font-size: 0.95rem; color: var(--text-mid);
-    line-height: 1.8; margin-bottom: 14px;
-  }
+  .section h2 { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 18px; line-height: 1.3; }
+  .section p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
   .section p:last-child { margin-bottom: 0; }
+  .section ul { padding-right: 20px; margin: 14px 0; }
+  .section ul li { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 8px; }
 
-  .section ul {
-    padding-right: 20px; margin: 14px 0;
-  }
-  .section ul li {
-    font-size: 0.95rem; color: var(--text-mid);
-    line-height: 1.8; margin-bottom: 8px;
-  }
+  .highlight-box { background: var(--orange-light); border-right: 3px solid var(--orange-deep); border-radius: 0 12px 12px 0; padding: 18px 20px; margin: 20px 0; }
+  .highlight-box p { color: var(--navy) !important; font-weight: 600; margin: 0 !important; }
 
-  .highlight-box {
-    background: var(--orange-light);
-    border-right: 3px solid var(--orange-deep);
-    border-radius: 0 12px 12px 0;
-    padding: 18px 20px;
-    margin: 20px 0;
-  }
-  .highlight-box p {
-    color: var(--navy) !important;
-    font-weight: 600;
-    margin: 0 !important;
-  }
+  .contact-box { background: var(--navy); border-radius: 20px; padding: 36px 28px; text-align: center; margin-top: 56px; }
+  .contact-box h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+  .contact-box p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+  .contact-box p:last-of-type { margin-bottom: 20px; }
+  .contact-box a.btn { display: inline-block; background: var(--orange); color: var(--navy); padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; text-decoration: none; transition: transform 0.2s; }
+  .contact-box a.btn:hover { transform: scale(1.04); }
 
-  /* CONTACT BOX */
-  .contact-box {
-    background: var(--navy);
-    border-radius: 20px;
-    padding: 36px 28px;
-    text-align: center;
-    margin-top: 56px;
-  }
-  .contact-box h3 {
-    font-size: 1.1rem; font-weight: 800;
-    color: #fff; margin-bottom: 10px;
-  }
-  .contact-box p {
-    font-size: 0.88rem; color: rgba(255,255,255,0.6);
-    margin-bottom: 20px;
-  }
-  .contact-box a {
-    display: inline-block;
-    background: var(--orange);
-    color: var(--navy);
-    padding: 12px 28px; border-radius: 50px;
-    font-weight: 800; font-size: 0.9rem;
-    text-decoration: none; transition: transform 0.2s;
-  }
-  .contact-box a:hover { transform: scale(1.04); }
-
-  /* FOOTER */
-  footer {
-    background: var(--cream2);
-    border-top: 1px solid var(--border);
-    padding: 28px 24px;
-    text-align: center;
-    font-size: 0.8rem; color: var(--text-light);
-  }
+  footer { background: var(--cream2); border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; font-size: 0.8rem; color: var(--text-light); }
   footer a { color: var(--navy); text-decoration: none; font-weight: 600; }
 
   @media (max-width: 768px) {
@@ -190,111 +85,111 @@
 </nav>
 
 <div class="page-hero">
-  <div class="page-hero-tag"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> מסמך משפטי</div>
-  <h1>תקנון ותנאי שימוש</h1>
-  <p>כל מה שצריך לדעת לפני השימוש באתר ורכישת מוצרים דיגיטליים.</p>
-  <div class="updated">עודכן לאחרונה: 2025</div>
+  <div class="page-hero-tag"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> פרטיות</div>
+  <h1>מדיניות פרטיות</h1>
+  <p>כיצד אנו אוספים, משתמשים ומגנים על המידע האישי שלך.</p>
+  <div class="updated">עודכן לאחרונה: דצמבר 2025</div>
 </div>
 
 <div class="content-wrap">
 
   <div class="section">
     <div class="section-number">01 — מבוא</div>
-    <h2>ברוכים הבאים</h2>
-    <p>השימוש באתר שכתובתו omertai.net (להלן: "האתר"), נועד לרכישת מוצרים דיגיטליים — ובפרט מדריכים קצרים (PDF) ווידאו-טיפים — וכן לכל שירות או מוצר אחר של מפעיל האתר, מר עומר טייכר (להלן: "המפעיל").</p>
-    <p>השימוש באתר מהווה הסכמה מפורשת מצדך (להלן: "המשתמש") לתנאים המפורטים במסמך זה. אם אינך מסכים לכל תנאי השימוש — אל תעשה שימוש באתר.</p>
-    <p>השימוש באתר הינו למטרות חוקיות בלבד ומותר אך ורק למשתמשים כשירים משפטית או לתאגידים.</p>
-    <p>המפעיל רשאי לשנות ולעדכן את תנאי השימוש מעת לעת, לפי שיקול דעתו הבלעדי, ללא צורך בהודעה מוקדמת. נוסח התנאים המחייב הוא זה המפורסם באתר במועד השימוש.</p>
+    <h2>המחויבות שלנו לפרטיותך</h2>
+    <p>עומר טייכר מכבד את פרטיות הגולשים ומתחייב להגן על המידע האישי הנמסר לנו.</p>
+    <p>מסמך זה מפרט כיצד אנו אוספים, משתמשים, מאחסנים ומגנים על המידע האישי שלך בעת השימוש באתר omertai.net, blog.omertai.net ו-interactive.omertai.net.</p>
   </div>
 
   <div class="section">
-    <div class="section-number">02 — הגדרות</div>
-    <h2>מונחים ומשמעויות</h2>
-    <p><strong>"התוכן"</strong> — כל המידע המופיע באתר, לרבות מדריכים קצרים (PDF), וידאו-טיפים, מאמרים, תמונות, הסברים, שאלות ותשובות, וכן הדפים המקוונים, הדיוורים והמסרונים הנלווים.</p>
-    <p><strong>"המוצרים"</strong> — מדריכים קצרים (PDF) ווידאו-טיפים דיגיטליים הנמכרים באתר.</p>
-    <p><strong>"השירות"</strong> — האתר והמוצרים, לרבות הוראות והנחיות נלוות וכל עדכון או שינוי שיבוצע בהם על ידי המפעיל.</p>
-    <p><strong>"שגיאות אתר"</strong> — כל הפרעה בזמינות האתר אשר נגרמה עקב סיבות שאינן בשליטתו הישירה של המפעיל.</p>
-    <p><strong>"הנתונים שלך"</strong> — כל מידע ונתונים אלקטרוניים שנמסרו על ידך או נאספו על ידי המפעיל במהלך השימוש באתר.</p>
+    <div class="section-number">02 — איסוף מידע</div>
+    <h2>אילו פרטים נאספים</h2>
+    <p>בעת השימוש באתר ייתכן שנאסוף מידע אישי שמסרת באופן יזום, כגון:</p>
+    <ul>
+      <li>שם מלא</li>
+      <li>כתובת אימייל</li>
+      <li>מספר טלפון</li>
+      <li>פרטי העסק שלך</li>
+    </ul>
+    <p>בנוסף, אנו עשויים לאסוף מידע טכני באופן אוטומטי, כגון:</p>
+    <ul>
+      <li>כתובת IP</li>
+      <li>סוג הדפדפן והמכשיר</li>
+      <li>דפי האתר בהם ביקרת</li>
+      <li>זמן השהייה באתר</li>
+    </ul>
   </div>
 
   <div class="section">
-    <div class="section-number">03 — אבטחת מידע</div>
-    <h2>הגנה על המידע שלך</h2>
-    <p>האתר מאובטח באמצעים מתקדמים שמטרתם להבטיח שימוש תקין ובטוח ולשמור על פרטיות המשתמשים.</p>
-    <p>כל משתמש מתחייב שלא לבצע כל פעולה שיש בה כדי לשבש את פעילות האתר, לרבות גניבת מידע, פריצה למנגנוני אבטחה או כל שימוש זדוני אחר.</p>
-    <p>המפעיל ינקוט בכל האמצעים החוקיים העומדים לרשותו, לרבות חסימת המשתמש מהשירות ונקיטת הליכים משפטיים, במקרה של שימוש זדוני או פוגע.</p>
-    <p>עם זאת, המפעיל אינו יכול להתחייב להגנה מוחלטת מפני מתקפות סייבר ועל כן לא יישא באחריות במקרה של פרצות אבטחה או זליגת מידע.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-number">04 — רכישה ותשלום</div>
-    <h2>תנאי רכישה</h2>
-    <p>תנאי לרכישה באתר הוא שהרוכש בן 18 ומעלה.</p>
-    <p>המוצרים הדיגיטליים באתר כוללים: מדריכים קצרים (PDF) ווידאו-טיפים.</p>
-    <p>התשלום יתבצע באמצעות כרטיס אשראי ויישומונים כגון Bit ו-PayBox, באמצעות מערכת סליקה מאובטחת, בכפוף לאישור חברת האשראי.</p>
-    <p>המפעיל רשאי לשנות ולעדכן את אמצעי התשלום בכל עת לפי שיקול דעתו הבלעדי, ללא צורך בהודעה מוקדמת.</p>
-    <p>מחירי המוצרים המופיעים באתר הם המחירים הקובעים והמחייבים לכל רכישה, והם כוללים מע"מ כחוק.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-number">05 — ביטולים והחזרים</div>
-    <h2>מדיניות החזרים</h2>
+    <div class="section-number">03 — שימוש במידע</div>
+    <h2>למה המידע משמש</h2>
+    <p>המידע שנאסף ישמש אותנו לצורך:</p>
+    <ul>
+      <li>יצירת קשר ומתן מענה לפניות שלך</li>
+      <li>עיבוד הזמנות ורכישות</li>
+      <li>שיפור חוויית השימוש באתר</li>
+      <li>שליחת עדכונים, הצעות ומידע שיווקי — בכפוף להסכמתך בלבד</li>
+      <li>ניתוח סטטיסטי ושיפור השירותים שלנו</li>
+    </ul>
     <div class="highlight-box">
-      <p>מאחר שהמוצרים הינם דיגיטליים ונמסרים במלואם מיד עם ביצוע התשלום — לא יתאפשר כל ביטול עסקה, החזר כספי או זיכוי, מכל סיבה שהיא.</p>
+      <p>לא נשלח אליך דיוור שיווקי ללא הסכמתך המפורשת. ניתן לבטל את ההרשמה בכל עת.</p>
     </div>
   </div>
 
   <div class="section">
-    <div class="section-number">06 — קניין רוחני</div>
-    <h2>זכויות יוצרים</h2>
-    <p>כל זכויות הקניין הרוחני, לרבות זכויות היוצרים, סימני המסחר, השמות המסחריים, העיצובים וכל זכות אחרת ביחס לאתר ולתוכן שבו — שמורות באופן בלעדי למפעיל.</p>
-    <p>אין להעתיק, לשכפל, לפרסם, לשדר, להעביר, למכור או לעשות כל שימוש מסחרי בתוכן האתר או במוצרים ללא קבלת אישור מראש ובכתב מהמפעיל.</p>
-    <p>הבעלות על תכנים או תמונות של צדדים שלישיים המופיעים באתר שמורה לבעליהם החוקיים, והשימוש בהם כפוף לרישיונות שניתנו כדין.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-number">07 — שימוש אישי ואיסור הפצה</div>
-    <h2>לשימושך האישי בלבד</h2>
-    <p>כל המוצרים הדיגיטליים מיועדים לשימוש אישי ופרטי בלבד של הרוכש.</p>
-    <p>חל איסור מוחלט:</p>
+    <div class="section-number">04 — עוגיות</div>
+    <h2>Cookies ועוגיות</h2>
+    <p>האתר משתמש בקובצי Cookies לצורך:</p>
     <ul>
-      <li>להעביר את התוכן לאחרים, בין בתשלום ובין בחינם.</li>
-      <li>להעתיק, לשכפל, לפרסם, להפיץ, להעלות לרשת האינטרנט או למסור לצד שלישי בכל צורה שהיא.</li>
-      <li>להשתמש בתוכן במסגרת הדרכות, קורסים, הרצאות או כל פעילות עסקית אחרת — ללא אישור מראש ובכתב מהמפעיל.</li>
+      <li>שמירת העדפות משתמש</li>
+      <li>ניתוח תנועה באתר באמצעות Google Analytics או כלים דומים</li>
+      <li>התאמת תכנים ושיווק ממוקד</li>
     </ul>
-    <p>הפרת סעיף זה מהווה הפרת זכויות יוצרים ותאפשר למפעיל לנקוט בכל האמצעים המשפטיים העומדים לרשותו.</p>
+    <p>ניתן להגדיר את הדפדפן כך שיחסום או ימחק עוגיות, אך ייתכן שחלק מהפונקציות באתר לא יעבדו כראוי.</p>
   </div>
 
   <div class="section">
-    <div class="section-number">08 — אחריות</div>
-    <h2>היעדר אחריות</h2>
-    <p>המוצרים ניתנים למשתמש כפי שהם (AS-IS), ללא כל התחייבות לתוצאה מסוימת.</p>
-    <p>המפעיל אינו מתחייב כי השימוש במדריכים או בוידאו-טיפים יביא להצלחה עסקית, טכנית או אחרת.</p>
-    <p>האחריות המלאה ליישום התוכן ולתוצאות השימוש בו חלה על המשתמש בלבד.</p>
-    <p>המפעיל, עובדיו או מי מטעמו לא יישאו באחריות לכל נזק, ישיר או עקיף, שייגרם למשתמש או לצד שלישי כתוצאה מהסתמכות על המידע או השימוש בו.</p>
+    <div class="section-number">05 — שיתוף מידע</div>
+    <h2>העברת מידע לצדדים שלישיים</h2>
+    <p>לא נעביר מידע אישי לצדדים שלישיים אלא במקרים הבאים:</p>
+    <ul>
+      <li>נדרש לפי חוק או צו בית משפט</li>
+      <li>לצורך שיתוף פעולה עם ספקי שירות המסייעים בתפעול האתר, כגון חברות אחסון או מערכות דיוור</li>
+      <li>בהסכמתך המפורשת</li>
+    </ul>
+    <p>ספקי השירות שלנו מחויבים לשמור על סודיות המידע ואינם רשאים לעשות בו שימוש לצרכיהם.</p>
   </div>
 
   <div class="section">
-    <div class="section-number">09 — תגובות ודיוור</div>
-    <h2>תגובות גולשים ודיוור ישיר</h2>
-    <p>הבלוג עשוי לכלול אפשרות להגיב על תכנים. המשתמש אחראי באופן מלא ובלעדי על כל תוכן שיפרסם בתגובות.</p>
-    <p>המפעיל שומר לעצמו את הזכות לבדוק, לערוך, למחוק או לא לאשר כל תגובה לפי שיקול דעתו הבלעדי, ולהסיר תגובות שיש בהן לשון הרע, פגיעה בפרטיות, תוכן בלתי חוקי, פוגעני, שיווקי או שאינו רלוונטי.</p>
-    <p>המפעיל רשאי להציע למשתמשים להצטרף לרשימת התפוצה שלו ולקבל עדכונים ותכנים שיווקיים, בכפוף להוראות חוק התקשורת (בזק ושידורים), תשמ"ב-1982.</p>
+    <div class="section-number">06 — אבטחה</div>
+    <h2>הגנה על המידע שלך</h2>
+    <p>אנו נוקטים באמצעים טכניים וארגוניים מתאימים לשמירה על המידע האישי שלך.</p>
+    <p>עם זאת, אין באפשרותנו להבטיח הגנה מוחלטת מפני חדירה בלתי מורשית. במקרה של אירוע אבטחה שעלול לפגוע בך — נודיע לך בהקדם האפשרי.</p>
   </div>
 
   <div class="section">
-    <div class="section-number">10 — כללי וסמכות שיפוט</div>
-    <h2>הוראות כלליות</h2>
-    <p>תנאי שימוש אלה מהווים את ההסכם השלם והבלעדי בין הצדדים. כל שינוי או תיקון יחייב רק אם נעשה בכתב ואושר על ידי המפעיל.</p>
-    <p>על תנאי שימוש אלה יחולו אך ורק דיני מדינת ישראל.</p>
-    <p>מקום השיפוט הבלעדי לכל עניין הנוגע לתקנון והשימוש באתר יהיה בבית המשפט המוסמך בעיר ראשון לציון או תל אביב בלבד.</p>
-    <p>השימוש באתר מהווה הצהרה של המשתמש כי קרא והבין את תנאי השימוש וכי הוא מסכים להם במלואם.</p>
+    <div class="section-number">07 — קישורים חיצוניים</div>
+    <h2>אתרים של צדדים שלישיים</h2>
+    <p>באתר עשויים להופיע קישורים לאתרים חיצוניים.</p>
+    <p>אנו לא אחראים על מדיניות הפרטיות או התכנים באותם אתרים, ומומלץ לקרוא את מדיניות הפרטיות של כל אתר בנפרד.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">08 — זכויותיך</div>
+    <h2>הזכות לעיין ולמחוק</h2>
+    <p>בהתאם לחוק הגנת הפרטיות, תשמ"א-1981, יש לך הזכות:</p>
+    <ul>
+      <li>לעיין במידע האישי שנשמר עליך</li>
+      <li>לבקש תיקון מידע שגוי</li>
+      <li>לבקש מחיקת המידע שלך ממאגרינו</li>
+    </ul>
+    <p>לכל בקשה — ניתן לפנות אלינו ישירות בדרכי ההתקשרות למטה.</p>
   </div>
 
   <div class="contact-box">
-    <h3>יש שאלות?</h3>
-    <p>אשמח לעזור בכל פנייה.</p>
-    <a href="mailto:omertai224@gmail.com">omertai224@gmail.com</a>
+    <h3>שאלות על הפרטיות שלך?</h3>
+    <p><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11.5 19.79 19.79 0 01.1 2.82 2 2 0 012.08 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.12 8.94a16 16 0 006.29 6.29l1.21-1.21a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg> 052-6587420</p>
+    <p>omertai224@gmail.com</p>
+    <a class="btn" href="mailto:omertai224@gmail.com">שלח הודעה</a>
   </div>
 
 </div>
@@ -302,7 +197,7 @@
 <footer>
   <span>© 2026 עומר טייכר · כל הזכויות שמורות</span>
   &nbsp;·&nbsp;
-  <a href="/pages/legal/privacy.html">מדיניות פרטיות</a>
+  <a href="/pages/legal/terms.html">תקנון ותנאי שימוש</a>
   &nbsp;·&nbsp;
   <a href="/pages/legal/accessibility.html">הצהרת נגישות</a>
 </footer>
