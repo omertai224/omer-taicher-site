@@ -3,7 +3,7 @@ const GITHUB_USER = 'omertai224';
 const GITHUB_BRANCH = 'main';
 const WORKER_URL = 'https://media-worker.omertai224.workers.dev';
 const REPOS = {
-  'omer-taicher-site':      { name: 'אתר ראשי' },
+  'omer-taicher-site':      { name: 'דף ראשי' },
   'omer-taicher-interactive': { name: 'אינטראקטיבי' },
   'omer-taicher-blog':      { name: 'בלוג' }
 };
