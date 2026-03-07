@@ -260,7 +260,15 @@
       <button onclick="filterGallery('דפי נחיתה')" class="gallery-filter-btn" data-cat="דפי נחיתה">📄 דפי נחיתה</button>
       <button onclick="filterGallery('הרצאות')" class="gallery-filter-btn" data-cat="הרצאות">📽️ הרצאות</button>
       <button onclick="filterGallery('כללי')" class="gallery-filter-btn" data-cat="כללי">📁 כללי</button>
-      <button id="gallery-multi-delete" onclick="deleteSelectedGalleryItems()" style="display:none;align-items:center;gap:6px;background:#dc2626;color:#fff;border:none;padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;margin-right:auto;">🗑️ מחק נבחרים</button>
+      <button id="gallery-select-all" onclick="toggleSelectAll()" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--navy);border:1.5px solid var(--border);padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;margin-right:auto;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+        <span id="gallery-select-all-label">סמן הכל</span>
+      </button>
+      <button id="gallery-multi-download" onclick="downloadSelectedGalleryItems()" style="display:none;align-items:center;gap:6px;background:var(--navy);color:#fff;border:none;padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        הורד נבחרים
+      </button>
+      <button id="gallery-multi-delete" onclick="deleteSelectedGalleryItems()" style="display:none;align-items:center;gap:6px;background:#dc2626;color:#fff;border:none;padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;">🗑️ מחק נבחרים</button>
     </div>
 
     <!-- רשת תמונות -->
