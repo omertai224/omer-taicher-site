@@ -65,8 +65,9 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 .hero { padding: 20px 20px 56px; max-width: 1200px; margin: 0 auto; animation: fadeUp 0.6s ease both; }
 .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--orange-light); color: var(--orange-deep); padding: 7px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 24px; }
 .hero-eyebrow::before { content: ''; width: 7px; height: 7px; background: var(--orange-deep); border-radius: 50%; animation: blink 2s infinite; }
-.hero h1 { font-size: clamp(1.6rem, 5.5vw, 3rem); font-weight: 900; line-height: 1.2; letter-spacing: -0.5px; color: var(--navy); margin-bottom: 24px; word-break: break-word; overflow-wrap: break-word; hyphens: auto; }
+.hero h1 { font-size: clamp(1.6rem, 5.5vw, 3rem); font-weight: 900; line-height: 1.2; letter-spacing: -0.5px; color: var(--navy); margin-bottom: 24px; }
 .hero h1 em { font-style: normal; color: var(--orange-deep); }
+.hero h1 span { white-space: nowrap; }
 .hero-lead { font-size: 1rem; color: var(--text-mid); line-height: 2; margin-bottom: 24px; }
 .hero-lead p { margin-bottom: 0; }
 .hero-client-quote { background: var(--navy-light); border-right: 4px solid var(--orange-deep); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 28px 0; font-size: 0.97rem; color: var(--navy); font-style: italic; line-height: 1.65; }
