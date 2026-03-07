@@ -136,8 +136,9 @@ function selectRepo(repoName, btn) {
   if (blogMgr)      blogMgr.style.display       = isBlog  ? 'block' : 'none';
   if (tutosContent) tutosContent.style.display  = isTutos ? 'block' : 'none';
 
-  // כפתור שמור ופרסם — גלוי רק באתר ראשי + טאב תוכן
-  const saveBtn = document.getElementById('save-content-btn');
+  // הסתר status bar בבלוג
+  const contentStatusBar = document.querySelector('#tab-content .status-bar');
+  if (contentStatusBar) contentStatusBar.style.display = isBlog ? 'none' : '';
   const activeTab = localStorage.getItem('admin_active_tab') || 'content';
   if (saveBtn) {
     saveBtn.style.visibility = (isSite && activeTab === 'content') ? 'visible' : 'hidden';
