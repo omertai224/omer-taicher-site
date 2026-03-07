@@ -1058,23 +1058,20 @@ function toggleSelectAll() {
   renderGallery();
 }
 
-async function downloadSelectedGalleryItems() {
+function downloadSelectedGalleryItems() {
   if (!selectedGalleryItems.size) return;
   const items = [...selectedGalleryItems].map(i => galleryItems[i]).filter(Boolean);
-  for (const item of items) {
-    try {
-      const res = await fetch(item.url);
-      const blob = await res.blob();
+  items.forEach((item, i) => {
+    setTimeout(() => {
       const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
+      a.href = item.url;
       a.download = item.name || item.key || 'image';
+      a.target = '_blank';
+      document.body.appendChild(a);
       a.click();
-      URL.revokeObjectURL(a.href);
-      await new Promise(r => setTimeout(r, 300));
-    } catch(e) {
-      console.error('שגיאה בהורדת', item.name, e);
-    }
-  }
+      document.body.removeChild(a);
+    }, i * 400);
+  });
 }
 
 function updateMultiDeleteBtn() {
