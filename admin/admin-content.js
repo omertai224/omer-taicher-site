@@ -832,17 +832,17 @@ async function uploadGalleryFiles(input) {
   let uploaded = 0;
   for (const file of files) {
     try {
-      const fd = new FormData();
-      fd.append('file', file);
-      fd.append('upload_preset', CLOUDINARY_PRESET);
-      const resourceType = file.type.startsWith('video') ? 'video' : 'image';
-      const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/${resourceType}/upload`, {
-        method: 'POST', body: fd
+      const key = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const res = await fetch(`${WORKER_URL}/${key}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': file.type },
+        body: file
       });
       const data = await res.json();
-      if (data.secure_url) {
+      if (data.url) {
+        const resourceType = file.type.startsWith('video') ? 'video' : 'image';
         galleryItems.unshift({
-          url: data.secure_url,
+          url: data.url,
           type: resourceType,
           name: file.name,
           category: category,
@@ -891,31 +891,14 @@ function copyGalleryUrl(url) {
 }
 
 async function deleteGalleryItem(index) {
-  if (!confirm('למחוק את הקובץ לצמיתות מ-Cloudinary?')) return;
+  if (!confirm('למחוק את הקובץ לצמיתות?')) return;
   const item = galleryItems[index];
 
-  // מחיקה מ-Cloudinary אם יש API Secret
-  if (CLOUDINARY_API_KEY && CLOUDINARY_API_SECRET) {
-    try {
-      const publicId = item.url.split('/upload/')[1].replace(/\.[^/.]+$/, '').replace(/^v\d+\//, '');
-      const timestamp = Math.round(Date.now() / 1000);
-      const str = `public_id=${publicId}&timestamp=${timestamp}${CLOUDINARY_API_SECRET}`;
-      const msgBuffer = new TextEncoder().encode(str);
-      const hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer);
-      const signature = Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2,'0')).join('');
-      const fd = new FormData();
-      fd.append('public_id', publicId);
-      fd.append('signature', signature);
-      fd.append('api_key', CLOUDINARY_API_KEY);
-      fd.append('timestamp', timestamp);
-      const resourceType = item.type === 'video' ? 'video' : 'image';
-      await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/resources/${resourceType}/upload/${publicId}`, {
-        method: 'DELETE',
-        headers: { 'Authorization': 'Basic ' + btoa(CLOUDINARY_API_KEY + ':' + CLOUDINARY_API_SECRET) }
-      });
-    } catch(e) {
-      console.error('שגיאה במחיקה מ-Cloudinary', e);
-    }
+  try {
+    const key = item.url.replace('https://media.omertai.net/', '');
+    await fetch(`${WORKER_URL}/${key}`, { method: 'DELETE' });
+  } catch(e) {
+    console.error('שגיאה במחיקה', e);
   }
 
   galleryItems.splice(index, 1);
