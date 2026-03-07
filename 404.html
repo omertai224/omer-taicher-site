@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הדף לא נמצא | עומר טייכר</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --orange: #f6a67e;
+    --orange-deep: #e8854a;
+    --orange-light: #fdeede;
+    --navy: #1a4a6b;
+    --cream: #fdf8f2;
+    --cream2: #f5ede0;
+    --text: #1e1e1e;
+    --text-mid: #555;
+    --border: #e8e0d6;
+  }
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    direction: rtl;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(253,248,242,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+  .logo span { color: var(--orange-deep); }
+
+  .page {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 24px 60px;
+    text-align: center;
+  }
+
+  .inner { max-width: 480px; }
+
+  .big-number {
+    font-size: clamp(6rem, 20vw, 10rem);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1;
+    letter-spacing: -4px;
+    margin-bottom: 8px;
+    position: relative;
+    display: inline-block;
+  }
+  .big-number::after {
+    content: '';
+    position: absolute;
+    bottom: 12px; right: 0; left: 0;
+    height: 6px;
+    background: var(--orange);
+    border-radius: 3px;
+  }
+
+  .emoji { font-size: 2.5rem; margin: 20px 0 16px; display: block; }
+
+  h1 {
+    font-size: clamp(1.4rem, 4vw, 1.9rem);
+    font-weight: 900; color: var(--navy);
+    margin-bottom: 14px; line-height: 1.2;
+  }
+
+  p {
+    font-size: 0.95rem; color: var(--text-mid);
+    line-height: 1.7; margin-bottom: 32px;
+  }
+
+  .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--navy); color: #fff;
+    padding: 13px 28px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 700;
+    text-decoration: none; transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary:hover { background: var(--orange-deep); transform: translateY(-2px); }
+
+  .btn-secondary {
+    background: var(--orange-light); color: var(--navy);
+    padding: 13px 28px; border-radius: 50px;
+    font-size: 0.9rem; font-weight: 700;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-secondary:hover { background: var(--orange); transform: translateY(-2px); }
+
+  .links {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+  }
+  .links a {
+    color: var(--text-mid); font-size: 0.85rem; font-weight: 500;
+    text-decoration: none; padding: 6px 14px;
+    border: 1px solid var(--border); border-radius: 50px;
+    transition: all 0.2s;
+  }
+  .links a:hover { border-color: var(--navy); color: var(--navy); }
+
+  footer {
+    background: var(--cream2); border-top: 1px solid var(--border);
+    padding: 20px 24px; text-align: center;
+    font-size: 0.78rem; color: var(--text-mid);
+  }
+  footer a { color: var(--navy); text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://omertai.net">עומר <span>טייכר</span></a>
+</nav>
+
+<div class="page">
+  <div class="inner">
+    <div class="big-number">404</div>
+    <span class="emoji">🔍</span>
+    <h1>הדף הזה לא קיים</h1>
+    <p>
+      ייתכן שהכתובת שגויה, הדף הוסר, או שפשוט הגעתם לכאן בטעות.
+      בכל מקרה — קל מאוד לחזור למסלול.
+    </p>
+    <div class="btns">
+      <a class="btn-primary" href="https://omertai.net">
+        🏠 חזרה לדף הבית
+      </a>
+      <a class="btn-secondary" href="mailto:omertai224@gmail.com">
+        צור קשר
+      </a>
+    </div>
+    <div class="links">
+      <a href="https://omertai.net">דף ראשי</a>
+      <a href="https://blog.omertai.net">הבלוג</a>
+      <a href="https://interactive.omertai.net">הדרכות</a>
+      <a href="https://omertai.net/pages/legal/terms.html">תקנון</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>© 2025 עומר טייכר</span>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/terms.html">תקנון</a>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/privacy.html">פרטיות</a>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/accessibility.html">נגישות</a>
+</footer>
+
+<script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
+</body>
+</html>
