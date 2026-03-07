@@ -184,7 +184,6 @@ function renderBlogList() {
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
       <div style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
       <div style="display:flex;gap:8px">
-        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyFormat()">העתק פורמט</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
         <button onclick="blogPasteFromClipboard()" style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק פוסט</button>
         <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
@@ -239,38 +238,8 @@ function blogCopyById(id) {
     .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
 }
 
-// העתק פורמט — הוראה מוכנה ל-ChatGPT
-function blogCopyFormat() {
-  const format = `אני רוצה שתארוז לי את הפוסט הבא בפורמט JSON מדויק.
-
-חוקים לגוף הפוסט (שדה body):
-- כל קבוצת שורות שצמודות = תג <p> אחד
-- בין שורות בתוך אותה פסקה = <br>
-- כותרת ביניים קצרה = <h2>
-- אין אימוג'ים בשום מקום
-- אין bullet points, אין מספרים — רק טקסט רץ
-
-החזר בדיוק את המבנה הבא, JSON בלבד, בלי שום טקסט לפני או אחרי:
-
-{
-  "id": "מזהה-בעברית-עם-מקפים",
-  "title": "כותרת הפוסט בלי אימוג'ים",
-  "excerpt": "משפט או שניים שיופיעו בתצוגת הרשימה",
-  "body": "<p>תוכן הפוסט...</p>",
-  "date": "YYYY-MM-DD",
-  "emoji": "",
-  "image": "",
-  "image_alt": "",
-  "seo_title": "כותרת הפוסט | עומר טייכר",
-  "seo_desc": "תיאור קצר עד 155 תווים"
-}
-
-הפוסט:
-`;
-  navigator.clipboard.writeText(format)
-    .then(() => setStatus('content', 'ok', '✓ הפורמט הועתק — הדבק ב-ChatGPT ואחריו את הפוסט'))
-    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
-}
+// העתק את כל הפוסטים כ-JSON מלא
+function blogCopyAll() {
   const text = JSON.stringify({ posts: blogPosts }, null, 2);
   navigator.clipboard.writeText(text)
     .then(() => setStatus('content', 'ok', '✓ כל ' + blogPosts.length + ' הפוסטים הועתקו ללוח'))
