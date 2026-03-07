@@ -273,7 +273,12 @@ function showBlogForm(post) {
         oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
         style="min-height:420px;height:auto;padding:18px 20px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:0.88rem;line-height:1.75;outline:none;cursor:text;font-family:inherit;overflow:hidden"
       >${post.body || ''}</div>
-      <style>#bf-body,#bf-body *{font-size:0.88rem!important;line-height:1.75!important;font-family:inherit!important}</style>
+      <style>
+        #bf-body, #bf-body * { font-size:0.88rem!important; line-height:1.75!important; font-family:inherit!important; }
+        #bf-body p  { margin-bottom: 1.1em; }
+        #bf-body h2 { font-size:1rem!important; font-weight:800!important; margin: 1.2em 0 0.4em; color:#1a4a6b; }
+        #bf-body br { display:block; content:""; margin-top:0.3em; }
+      </style>
     </div>
 
     <div class="field">
@@ -480,6 +485,119 @@ function blogDeletePost(id) {
 
 // ─── הדבק פוסט מהלוח (ממיר טקסט Wix ל-HTML) ───────────────────────────────
 
+function updateBodyPreview() {
+  // bf-body is contenteditable — nothing to update, it renders inline
+}
+
+function parseRawPost(raw) {
+  // מנקה תווים מיוחדים ומחלק לשורות
+  const lines = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n').split('\n').map(l => l.trim());
+
+  // מזהה אמוג'י בשורה הראשונה
+  const emojiMatch = lines[0].match(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}]/u);
+  const emoji = emojiMatch ? emojiMatch[0] : '';
+
+  // כותרת = שורה ראשונה: מסיר מספר מוביל (כמו "1 . " או "12."), ומסיר אימוג'ים
+  let titleRaw = lines[0]
+    .replace(/^\d+\s*[.\-–]\s*/, '')           // מספר מוביל
+    .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}]/gu, '') // אימוג'ים
+    .replace(/[★☆✓✔✗✘]/g, '')
+    .trim();
+
+  // תאריך — מחפש שורה שמתחילה ב-* או מכילה "בינו׳/בפבר׳/במרץ" וכו'
+  let dateISO = todayISO();
+  const heMonths = {
+    'בינו׳': '01', 'בפבר׳': '02', 'במרץ': '03', 'באפר׳': '04',
+    'במאי': '05', 'ביוני': '06', 'ביולי': '07', 'באוג׳': '08',
+    'בספט׳': '09', 'באוק׳': '10', 'בנוב׳': '11', 'בדצמ׳': '12',
+    'ינואר': '01', 'פברואר': '02', 'מרץ': '03', 'אפריל': '04',
+    'מאי': '05', 'יוני': '06', 'יולי': '07', 'אוגוסט': '08',
+    'ספטמבר': '09', 'אוקטובר': '10', 'נובמבר': '11', 'דצמבר': '12'
+  };
+  for (let i = 1; i < Math.min(5, lines.length); i++) {
+    const l = lines[i];
+    for (const [heb, num] of Object.entries(heMonths)) {
+      const m = l.match(new RegExp('(\\d{1,2})\\s+' + heb + '(?:\\s+(\\d{4}))?'));
+      if (m) {
+        const day = m[1].padStart(2, '0');
+        const year = m[2] || '2025';
+        dateISO = `${year}-${num}-${day}`;
+        break;
+      }
+    }
+  }
+
+  // גוף — מדלג על שורה 0 (כותרת) ושורות תאריך/כוכבית בהתחלה
+  let bodyStartIdx = 1;
+  while (bodyStartIdx < lines.length && (
+    lines[bodyStartIdx] === '' ||
+    /^\*/.test(lines[bodyStartIdx]) ||
+    /^\d+\s+ב/.test(lines[bodyStartIdx])
+  )) {
+    bodyStartIdx++;
+  }
+
+  // אוסף קבוצות שורות — כל ריצה של שורות לא-ריקות = בלוק
+  const blocks = [];
+  let current = [];
+  for (let i = bodyStartIdx; i < lines.length; i++) {
+    const line = lines[i];
+    // מסיר אימוג'ים מהשורות
+    const clean = line
+      .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE00}-\u{FE0F}]/gu, '')
+      .replace(/[★☆✓✔✗✘]/g, '')
+      .replace(/^[0-9️⃣]+[️⃣]\s*/g, '')   // מספרים עם אימוג'י
+      .replace(/^[\*\•\-]\s+/, '')         // נקודות רשימה
+      .replace(/^[➡⬅⬇⬆▶◀]\s*/g, '')
+      .trim();
+    if (clean === '') {
+      if (current.length > 0) { blocks.push(current); current = []; }
+    } else {
+      current.push(clean);
+    }
+  }
+  if (current.length > 0) blocks.push(current);
+
+  // ממיר בלוקים ל-HTML — שורה בודדת קצרה = <h2>, אחרת = <p> עם <br> בין שורות
+  const bodyParts = blocks.map(block => {
+    const text = block.join(' ');
+    if (block.length === 1 && text.length < 70 && !text.endsWith('.') && !text.endsWith(',') && !text.endsWith('?')) {
+      return `<h2>${text}</h2>`;
+    }
+    return `<p>${block.join('<br>')}</p>`;
+  });
+
+  const body = bodyParts.join('\n');
+
+  // תקציר — הבלוק הראשון שהוא לא h2, עד 180 תווים
+  let excerptText = '';
+  for (const block of blocks) {
+    const t = block.join(' ');
+    if (t.length >= 20) { excerptText = t; break; }
+  }
+  const excerpt = excerptText.length > 180 ? excerptText.slice(0, 177) + '...' : excerptText;
+
+  // ID אוטומטי מהכותרת
+  const id = titleRaw
+    .replace(/\s+/g, '-')
+    .replace(/[^a-zA-Z0-9\u0590-\u05FF\-]/g, '')
+    .toLowerCase()
+    .slice(0, 60);
+
+  return {
+    id,
+    title: titleRaw,
+    excerpt,
+    body,
+    date: dateISO,
+    emoji,
+    image: '',
+    image_alt: '',
+    seo_title: titleRaw + ' | עומר טייכר',
+    seo_desc: excerpt.slice(0, 155)
+  };
+}
+
 async function blogPasteFromClipboard() {
   let text;
   try {
@@ -496,7 +614,6 @@ async function blogPasteFromClipboard() {
 
   let post;
   try {
-    // מנסה לפרסר כ-JSON תחילה
     const parsed = JSON.parse(text.trim());
     post = {
       id:        parsed.id        || '',
@@ -504,82 +621,19 @@ async function blogPasteFromClipboard() {
       excerpt:   parsed.excerpt   || '',
       body:      parsed.body      || '',
       date:      parsed.date      || todayISO(),
-      emoji:     parsed.emoji     || '📝',
+      emoji:     parsed.emoji     || '',
       image:     parsed.image     || '',
       image_alt: parsed.image_alt || '',
       seo_title: parsed.seo_title || (parsed.title ? parsed.title + ' | עומר טייכר' : ''),
       seo_desc:  parsed.seo_desc  || parsed.excerpt || ''
     };
   } catch(e) {
-    // אם לא JSON — מפרסר כטקסט גולמי
-    post = parseWixPost(text);
+    post = parseRawPost(text);
   }
 
   blogEditingId = null;
   showBlogForm(post);
   setTimeout(updateBodyPreview, 50);
-
-function updateBodyPreview() {
-  const preview = document.getElementById('bf-body-preview');
-  if (preview) preview.innerHTML = document.getElementById('bf-body').value;
-}
-
-
-  // מנקה ומחלק לשורות
-  const lines = raw.split('\n').map(l => l.trim());
-
-  // מזהה אמוג'י בשורה הראשונה או השנייה
-  const emojiMatch = (lines[0] + ' ' + (lines[1] || '')).match(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/u);
-  const emoji = emojiMatch ? emojiMatch[0] : '📝';
-
-  // כותרת = שורה ראשונה, בלי האמוג'י
-  const title = lines[0].replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '').trim();
-
-  // אוסף שורות לפסקאות — שורות ריקות מפרידות בין פסקאות
-  const paragraphs = [];
-  let current = [];
-
-  for (let i = 1; i < lines.length; i++) {
-    const line = lines[i];
-    if (line === '') {
-      if (current.length > 0) {
-        paragraphs.push(current.join(' '));
-        current = [];
-      }
-    } else {
-      current.push(line);
-    }
-  }
-  if (current.length > 0) paragraphs.push(current.join(' '));
-
-  // ממיר לHTML
-  const bodyParts = paragraphs.map(p => {
-    // פסקאות קצרות שנראות כמו כותרות (עד 6 מילים, ללא נקודה בסוף)
-    const wordCount = p.split(' ').length;
-    if (wordCount <= 6 && !p.endsWith('.') && !p.endsWith(',') && p.length < 60) {
-      return `<h2>${p}</h2>`;
-    }
-    return `<p>${p}</p>`;
-  });
-
-  const body = bodyParts.join('\n');
-
-  // תקציר = שתי הפסקאות הראשונות מחוברות
-  const excerptParts = paragraphs.slice(0, 2).join(' ').replace(/<[^>]+>/g, '');
-  const excerpt = excerptParts.length > 160 ? excerptParts.slice(0, 157) + '...' : excerptParts;
-
-  return {
-    id: '',
-    title,
-    excerpt,
-    body,
-    date: todayISO(),
-    emoji,
-    image: '',
-    image_alt: '',
-    seo_title: title + ' | עומר טייכר',
-    seo_desc: excerpt
-  };
 }
 
 
