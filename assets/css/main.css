@@ -67,7 +67,6 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 .hero-eyebrow::before { content: ''; width: 7px; height: 7px; background: var(--orange-deep); border-radius: 50%; animation: blink 2s infinite; }
 .hero h1 { font-size: clamp(1.6rem, 5.5vw, 3rem); font-weight: 900; line-height: 1.2; letter-spacing: -0.5px; color: var(--navy); margin-bottom: 24px; }
 .hero h1 em { font-style: normal; color: var(--orange-deep); }
-.hero h1 span { white-space: nowrap; }
 .hero-lead { font-size: 1rem; color: var(--text-mid); line-height: 2; margin-bottom: 24px; }
 .hero-lead p { margin-bottom: 0; }
 .hero-client-quote { background: var(--navy-light); border-right: 4px solid var(--orange-deep); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 28px 0; font-size: 0.97rem; color: var(--navy); font-style: italic; line-height: 1.65; }
@@ -211,7 +210,8 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   .nav-cta { background: var(--orange-deep); color: #fff !important; padding: 9px 22px; border-radius: 50px; font-weight: 700 !important; }
   .nav-cta:hover { background: var(--navy) !important; }
   .nav-mobile-cta { display: none; }
-  .hero { padding: 20px 60px 80px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 70px; align-items: center; min-height: 100vh; }
+  .hero { padding: 20px 60px 80px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: center; min-height: 100vh; }
+  .hero h1 { font-size: clamp(2rem, 3.2vw, 3rem); }
   .profile-card { margin-top: 0; }
   .float-sticker { top: -18px; left: -18px; }
   .profile-avatar { width: 72px; height: 72px; }
