@@ -230,3 +230,67 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   .blog-grid { grid-template-columns: repeat(3, 1fr); }
   footer { padding: 34px 60px; }
 }
+
+/* WHATSAPP SECTION */
+.wa-section {
+  background: var(--navy);
+  padding: 64px 20px;
+}
+.wa-section-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+.wa-section-icon {
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.wa-section-icon svg { width: 30px; height: 30px; fill: #fff; }
+.wa-section h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+}
+.wa-section-sub {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7;
+  max-width: 500px;
+}
+.wa-section-quiet {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50px;
+  padding: 7px 18px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.05em;
+}
+.wa-section-quiet svg { width: 14px; height: 14px; fill: rgba(255,255,255,0.5); }
+.wa-section-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #25D366;
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-size: 1rem; font-weight: 800;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+  margin-top: 4px;
+}
+.wa-section-btn:hover { background: #1ebe5d; transform: scale(1.04); }
+.wa-section-btn svg { width: 22px; height: 22px; fill: #fff; flex-shrink: 0; }
+.wa-count {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+}
