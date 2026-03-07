@@ -413,7 +413,7 @@ function showBlogForm(post) {
     <div class="field" style="margin-top:16px">
       <label class="field-label">תיאור תמונה (alt text)</label>
       <div style="display:flex;gap:8px;align-items:flex-start;margin-top:4px">
-        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור קצר של התמונה לנגישות ו-SEO" style="flex:1;direction:rtl">
+        <input id="bf-image-alt" type="text" value="" placeholder="לחץ על צור עם AI" style="flex:1;direction:rtl">
         <button onclick="generateAltText()" id="bf-alt-btn" style="background:var(--navy);color:#fff;border:none;padding:10px 16px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0">צור עם AI</button>
       </div>
       <div id="bf-alt-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
@@ -480,13 +480,13 @@ function getPostSlug() {
 function updateSlugHint() {
   const id = getPostSlug();
   const display = document.getElementById('bf-slug-display');
-  if (display) display.textContent = id ? id + '_hero.webp' : '(ייוצר אחרי כתיבת כותרת)';
+  if (display) display.textContent = id || '(ייוצר אחרי כתיבת כותרת)';
 }
 
 function copySlugHint() {
   const id = getPostSlug();
   if (!id) return;
-  navigator.clipboard.writeText(id + '_hero.webp').then(() => {
+  navigator.clipboard.writeText(id).then(() => {
     const btn = document.querySelector('#bf-slug-hint button');
     if (btn) { btn.textContent = 'הועתק'; setTimeout(() => btn.textContent = 'העתק', 1800); }
   });
