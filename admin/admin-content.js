@@ -1080,6 +1080,8 @@ async function selectFromGalleryPicker(url) {
 async function uploadPickerImage(input, key) {
   const file = input.files[0];
   if (!file) return;
+  // וודא שהגלריה נטענה
+  if (!galleryItems.length) await loadGalleryManager();
   const fileKey = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
   try {
     const res = await fetch(`${WORKER_URL}/${fileKey}`, {
