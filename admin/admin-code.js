@@ -48,7 +48,8 @@ function renderTree(items, currentPath) {
     const desc = FILE_DESCRIPTIONS[item.name] || '';
     const descTag = desc ? `<span class="file-item-desc">${desc}</span>` : '';
     const delBtn = `<button class="delete-img-btn" onclick="confirmDelete('${item.path}','${item.sha || ''}','${item.type}')" title="מחק">🗑</button>`;
-    const previewBtn = (item.type === 'file' && ext === 'html') ? `<button class="delete-img-btn" onclick="window.open('https://omertai.net/${item.path}','_blank')" title="תצוגה מקדימה">👁</button>` : '';
+    const repoDomain = GITHUB_REPO === 'omer-taicher-blog' ? 'https://blog.omertai.net' : GITHUB_REPO === 'omer-taicher-interactive' ? 'https://interactive.omertai.net' : 'https://omertai.net';
+    const previewBtn = (item.type === 'file' && ext === 'html') ? `<button class="delete-img-btn" onclick="window.open('${repoDomain}/${item.path}','_blank')" title="תצוגה מקדימה">👁</button>` : '';
     if (item.type === 'dir') {
       html += `<div class="file-item"><span class="file-item-icon" onclick="loadFileTree('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFileTree('${item.path}')" style="cursor:pointer">${item.name}/</span>${descTag}${delBtn}</div>`;
     } else {
