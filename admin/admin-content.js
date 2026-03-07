@@ -9,6 +9,7 @@ async function loadContent() {
     contentSha = data.sha;
     currentData = JSON.parse(decode(data.content));
     populateFields(currentData);
+    initImagePickers(currentData);
     setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך ולשמור');
     document.getElementById('save-content-btn').disabled = false;
   } catch(e) {
@@ -999,4 +1000,144 @@ async function downloadAllRepos() {
     await new Promise(r => setTimeout(r, 800));
   }
   setStatus('download', 'ok', entries.length + ' ריפוזיטוריז הורדו');
+}
+
+// ===== IMAGE PICKER =====
+const IMAGE_KEYS = ['hero', 'about', 'lecture', 'remote'];
+const IMAGE_LABELS = { hero: 'הירו', about: 'מי אני', lecture: 'ההרצאה', remote: 'תמיכה מרחוק' };
+let currentPickerKey = null;
+
+function initImagePickers(contentData) {
+  IMAGE_KEYS.forEach(key => {
+    const container = document.getElementById(`img-picker-${key}`);
+    if (!container) return;
+    const url = (contentData.images && contentData.images[key]) || '';
+    renderImagePicker(container, key, url);
+  });
+}
+
+function renderImagePicker(container, key, url) {
+  container.innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+      ${url ? `<img src="${url}" style="width:80px;height:60px;object-fit:cover;border-radius:8px;border:2px solid var(--orange-deep);" id="img-preview-${key}">` 
+             : `<div style="width:80px;height:60px;border-radius:8px;border:2px dashed var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:1.4rem;" id="img-preview-${key}">🖼️</div>`}
+      <button onclick="openGalleryPicker('${key}')" style="background:var(--orange-light);color:var(--orange-deep);border:none;padding:7px 14px;border-radius:50px;font-family:inherit;font-size:0.78rem;font-weight:700;cursor:pointer;">📁 בחר מגלריה</button>
+      <label style="background:var(--orange-deep);color:#fff;border:none;padding:7px 14px;border-radius:50px;font-family:inherit;font-size:0.78rem;font-weight:700;cursor:pointer;">
+        ⬆️ העלה תמונה
+        <input type="file" accept="image/*,video/*" style="display:none;" onchange="uploadPickerImage(this,'${key}')">
+      </label>
+      ${url ? `<button onclick="clearPickerImage('${key}')" style="background:transparent;color:var(--muted);border:1px solid var(--border);padding:5px 10px;border-radius:50px;font-family:inherit;font-size:0.72rem;cursor:pointer;">✕ הסר</button>` : ''}
+    </div>
+    <input type="hidden" id="img-value-${key}" value="${url}">
+  `;
+}
+
+function openGalleryPicker(key) {
+  currentPickerKey = key;
+  // פותח modal קטן עם הגלריה
+  let modal = document.getElementById('gallery-picker-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'gallery-picker-modal';
+    modal.style = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;padding:20px;';
+    modal.innerHTML = `
+      <div style="background:#fff;border-radius:16px;width:100%;max-width:700px;max-height:80vh;overflow:hidden;display:flex;flex-direction:column;">
+        <div style="padding:16px 20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;">
+          <strong style="font-size:1rem;">בחר תמונה מהגלריה</strong>
+          <button onclick="closeGalleryPicker()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;">✕</button>
+        </div>
+        <div id="gallery-picker-grid" style="padding:16px;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;"></div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+  }
+  modal.style.display = 'flex';
+
+  const grid = document.getElementById('gallery-picker-grid');
+  if (!galleryItems.length) {
+    grid.innerHTML = '<p style="color:#999;text-align:center;padding:20px;">אין תמונות בגלריה עדיין</p>';
+    return;
+  }
+  grid.innerHTML = galleryItems.map((item, i) => `
+    <div onclick="selectFromGalleryPicker('${item.url}')" style="cursor:pointer;border-radius:10px;overflow:hidden;aspect-ratio:1;border:2px solid transparent;transition:border 0.15s;" onmouseenter="this.style.borderColor='#f6a67e'" onmouseleave="this.style.borderColor='transparent'">
+      ${item.type === 'video' 
+        ? `<video src="${item.url}" style="width:100%;height:100%;object-fit:cover;" muted></video>`
+        : `<img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy">`}
+    </div>
+  `).join('');
+}
+
+function closeGalleryPicker() {
+  const modal = document.getElementById('gallery-picker-modal');
+  if (modal) modal.style.display = 'none';
+}
+
+async function selectFromGalleryPicker(url) {
+  closeGalleryPicker();
+  await setPickerImage(currentPickerKey, url);
+}
+
+async function uploadPickerImage(input, key) {
+  const file = input.files[0];
+  if (!file) return;
+  const fileKey = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+  try {
+    const res = await fetch(`${WORKER_URL}/${fileKey}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': file.type },
+      body: file
+    });
+    const data = await res.json();
+    if (data.url) {
+      // שמירה גם בגלריה עם קטגוריה לפי ריפו
+      const repoCategories = {
+        'omer-taicher-site': 'דף ראשי',
+        'omer-taicher-blog': 'בלוג',
+        'omer-taicher-interactive': 'אינטראקטיבי'
+      };
+      const category = repoCategories[GITHUB_REPO] || 'כללי';
+      const resourceType = file.type.startsWith('video') ? 'video' : 'image';
+      galleryItems.unshift({ url: data.url, type: resourceType, name: file.name, category, date: new Date().toISOString() });
+      await autoSaveGallery();
+      await setPickerImage(key, data.url);
+    }
+  } catch(e) {
+    console.error('שגיאה בהעלאה', e);
+  }
+}
+
+async function clearPickerImage(key) {
+  await setPickerImage(key, '');
+}
+
+async function setPickerImage(key, url) {
+  const hiddenInput = document.getElementById(`img-value-${key}`);
+  if (hiddenInput) hiddenInput.value = url;
+  const container = document.getElementById(`img-picker-${key}`);
+  if (container) renderImagePicker(container, key, url);
+  // שמירה ל-content.json
+  await saveImageToContent(key, url);
+}
+
+async function saveImageToContent(key, url) {
+  try {
+    const res = await ghGet('content.json');
+    const currentContent = JSON.parse(atob(res.content));
+    if (!currentContent.images) currentContent.images = {};
+    currentContent.images[key] = url;
+    const sha = res.sha;
+    await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/content.json`, {
+      method: 'PUT',
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `עדכון תמונה: ${key}`,
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(currentContent, null, 2)))),
+        sha
+      })
+    });
+    setStatus('content', 'ok', `✓ תמונת ${IMAGE_LABELS[key]} עודכנה`);
+  } catch(e) {
+    console.error('שגיאה בשמירת תמונה', e);
+    setStatus('content', 'error', 'שגיאה בשמירת תמונה');
+  }
 }
