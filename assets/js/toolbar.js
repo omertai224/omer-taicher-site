@@ -55,6 +55,7 @@
       background: rgba(255,255,255,0.05);
     }
     @media (min-width: 960px) { .a11y-bar { display: none; } }
+    @media (max-width: 959px) { body { padding-top: 70px; } }
   `;
   document.head.appendChild(style);
 
