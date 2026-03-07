@@ -200,6 +200,17 @@ function blogNewPost() {
   });
 }
 
+function blogCopyPost() {
+  const title   = document.getElementById('bf-title')?.value || '';
+  const excerpt = document.getElementById('bf-excerpt')?.value || '';
+  const body    = document.getElementById('bf-body')?.innerText || '';
+  const date    = document.getElementById('bf-date')?.value || '';
+  const text = `כותרת: ${title}\nתאריך: ${date}\n\nתקציר:\n${excerpt}\n\nגוף הפוסט:\n${body}`;
+  navigator.clipboard.writeText(text)
+    .then(() => setStatus('content', 'ok', '✓ הפוסט הועתק ללוח'))
+    .catch(() => { try { document.execCommand('copy'); } catch(e) {} });
+}
+
 function blogCancelForm() {
   localStorage.removeItem('blog_editing_id');
   blogEditingId = null;
@@ -218,11 +229,12 @@ function showBlogForm(post) {
   const container = document.getElementById('blog-manager');
   container.innerHTML = `
     <div style="margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <div style="display:flex;align-items:center;gap:12px">
-        <button onclick="blogCancelForm()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
-        <div style="font-size:0.95rem;font-weight:800;color:var(--navy)">${blogEditingId ? 'עריכת פוסט' : 'פוסט חדש'}</div>
+      <button onclick="blogCancelForm()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
+      <div style="font-size:0.95rem;font-weight:800;color:var(--navy);text-align:center">${blogEditingId ? 'עריכת פוסט' : 'פוסט חדש'}</div>
+      <div style="display:flex;gap:8px;align-items:center">
+        ${blogEditingId ? `<button onclick="blogCopyPost()" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">העתק הכל</button>` : ''}
+        <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
       </div>
-      <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
     </div>
 
     <div class="field">
