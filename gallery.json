@@ -1,3 +1,11 @@
 {
-  "items": []
+  "items": [
+    {
+      "url": "https://media.omertai.net/1772846439490_hero.webp",
+      "type": "image",
+      "name": "hero.webp",
+      "category": "דף ראשי",
+      "date": "2026-03-07T01:20:40.102Z"
+    }
+  ]
 }
