@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מדיניות פרטיות | עומר טייכר</title>
+<meta name="description" content="מדיניות הפרטיות של אתר עומר טייכר">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --orange: #f6a67e;
+    --orange-deep: #e8854a;
+    --orange-light: #fdeede;
+    --navy: #1a4a6b;
+    --cream: #fdf8f2;
+    --cream2: #f5ede0;
+    --text: #1e1e1e;
+    --text-mid: #555;
+    --text-light: #999;
+    --border: #e8e0d6;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Rubik', sans-serif; background: var(--cream); color: var(--text); direction: rtl; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(253,248,242,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+  .logo span { color: var(--orange-deep); }
+  .nav-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-mid); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--navy); }
+
+  .page-hero { background: var(--navy); padding: 100px 24px 48px; text-align: center; }
+  .page-hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(246,166,126,0.15); color: var(--orange); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+  .page-hero p { font-size: 0.95rem; color: rgba(255,255,255,0.6); max-width: 480px; margin: 0 auto; }
+  .page-hero .updated { margin-top: 20px; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+  .content-wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+
+  .section-number { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; color: var(--orange-deep); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .section-number::before { content: ''; width: 20px; height: 2px; background: var(--orange-deep); display: block; }
+
+  .section h2 { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 18px; line-height: 1.3; }
+  .section p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+  .section p:last-child { margin-bottom: 0; }
+  .section ul { padding-right: 20px; margin: 14px 0; }
+  .section ul li { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 8px; }
+
+  .highlight-box { background: var(--orange-light); border-right: 3px solid var(--orange-deep); border-radius: 0 12px 12px 0; padding: 18px 20px; margin: 20px 0; }
+  .highlight-box p { color: var(--navy) !important; font-weight: 600; margin: 0 !important; }
+
+  .contact-box { background: var(--navy); border-radius: 20px; padding: 36px 28px; text-align: center; margin-top: 56px; }
+  .contact-box h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+  .contact-box p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+  .contact-box p:last-of-type { margin-bottom: 20px; }
+  .contact-box a.btn { display: inline-block; background: var(--orange); color: var(--navy); padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; text-decoration: none; transition: transform 0.2s; }
+  .contact-box a.btn:hover { transform: scale(1.04); }
+
+  footer { background: var(--cream2); border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; font-size: 0.8rem; color: var(--text-light); }
+  footer a { color: var(--navy); text-decoration: none; font-weight: 600; }
+
+  @media (max-width: 768px) {
+    .page-hero { padding: 90px 20px 40px; }
+    .content-wrap { padding: 40px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://omertai.net">עומר <span>טייכר</span></a>
+  <a class="nav-back" href="https://omertai.net">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    חזרה לאתר
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">🔒 פרטיות</div>
+  <h1>מדיניות פרטיות</h1>
+  <p>כיצד אנו אוספים, משתמשים ומגנים על המידע האישי שלך.</p>
+  <div class="updated">עודכן לאחרונה: דצמבר 2025</div>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <div class="section-number">01 — מבוא</div>
+    <h2>המחויבות שלנו לפרטיותך</h2>
+    <p>עומר טייכר מכבד את פרטיות הגולשים ומתחייב להגן על המידע האישי הנמסר לנו.</p>
+    <p>מסמך זה מפרט כיצד אנו אוספים, משתמשים, מאחסנים ומגנים על המידע האישי שלך בעת השימוש באתר omertai.net, blog.omertai.net ו-interactive.omertai.net.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">02 — איסוף מידע</div>
+    <h2>אילו פרטים נאספים</h2>
+    <p>בעת השימוש באתר ייתכן שנאסוף מידע אישי שמסרת באופן יזום, כגון:</p>
+    <ul>
+      <li>שם מלא</li>
+      <li>כתובת אימייל</li>
+      <li>מספר טלפון</li>
+      <li>פרטי העסק שלך</li>
+    </ul>
+    <p>בנוסף, אנו עשויים לאסוף מידע טכני באופן אוטומטי, כגון:</p>
+    <ul>
+      <li>כתובת IP</li>
+      <li>סוג הדפדפן והמכשיר</li>
+      <li>דפי האתר בהם ביקרת</li>
+      <li>זמן השהייה באתר</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-number">03 — שימוש במידע</div>
+    <h2>למה המידע משמש</h2>
+    <p>המידע שנאסף ישמש אותנו לצורך:</p>
+    <ul>
+      <li>יצירת קשר ומתן מענה לפניות שלך</li>
+      <li>עיבוד הזמנות ורכישות</li>
+      <li>שיפור חוויית השימוש באתר</li>
+      <li>שליחת עדכונים, הצעות ומידע שיווקי — בכפוף להסכמתך בלבד</li>
+      <li>ניתוח סטטיסטי ושיפור השירותים שלנו</li>
+    </ul>
+    <div class="highlight-box">
+      <p>לא נשלח אליך דיוור שיווקי ללא הסכמתך המפורשת. ניתן לבטל את ההרשמה בכל עת.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-number">04 — עוגיות</div>
+    <h2>Cookies ועוגיות</h2>
+    <p>האתר משתמש בקובצי Cookies לצורך:</p>
+    <ul>
+      <li>שמירת העדפות משתמש</li>
+      <li>ניתוח תנועה באתר באמצעות Google Analytics או כלים דומים</li>
+      <li>התאמת תכנים ושיווק ממוקד</li>
+    </ul>
+    <p>ניתן להגדיר את הדפדפן כך שיחסום או ימחק עוגיות, אך ייתכן שחלק מהפונקציות באתר לא יעבדו כראוי.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">05 — שיתוף מידע</div>
+    <h2>העברת מידע לצדדים שלישיים</h2>
+    <p>לא נעביר מידע אישי לצדדים שלישיים אלא במקרים הבאים:</p>
+    <ul>
+      <li>נדרש לפי חוק או צו בית משפט</li>
+      <li>לצורך שיתוף פעולה עם ספקי שירות המסייעים בתפעול האתר, כגון חברות אחסון או מערכות דיוור</li>
+      <li>בהסכמתך המפורשת</li>
+    </ul>
+    <p>ספקי השירות שלנו מחויבים לשמור על סודיות המידע ואינם רשאים לעשות בו שימוש לצרכיהם.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">06 — אבטחה</div>
+    <h2>הגנה על המידע שלך</h2>
+    <p>אנו נוקטים באמצעים טכניים וארגוניים מתאימים לשמירה על המידע האישי שלך.</p>
+    <p>עם זאת, אין באפשרותנו להבטיח הגנה מוחלטת מפני חדירה בלתי מורשית. במקרה של אירוע אבטחה שעלול לפגוע בך — נודיע לך בהקדם האפשרי.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">07 — קישורים חיצוניים</div>
+    <h2>אתרים של צדדים שלישיים</h2>
+    <p>באתר עשויים להופיע קישורים לאתרים חיצוניים.</p>
+    <p>אנו לא אחראים על מדיניות הפרטיות או התכנים באותם אתרים, ומומלץ לקרוא את מדיניות הפרטיות של כל אתר בנפרד.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">08 — זכויותיך</div>
+    <h2>הזכות לעיין ולמחוק</h2>
+    <p>בהתאם לחוק הגנת הפרטיות, תשמ"א-1981, יש לך הזכות:</p>
+    <ul>
+      <li>לעיין במידע האישי שנשמר עליך</li>
+      <li>לבקש תיקון מידע שגוי</li>
+      <li>לבקש מחיקת המידע שלך ממאגרינו</li>
+    </ul>
+    <p>לכל בקשה — ניתן לפנות אלינו ישירות בדרכי ההתקשרות למטה.</p>
+  </div>
+
+  <div class="contact-box">
+    <h3>שאלות על הפרטיות שלך?</h3>
+    <p>📞 052-6587420</p>
+    <p>omertai224@gmail.com</p>
+    <a class="btn" href="mailto:omertai224@gmail.com">שלח הודעה</a>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2025 עומר טייכר · כל הזכויות שמורות</span>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/terms.html">תקנון ותנאי שימוש</a>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/accessibility.html">הצהרת נגישות</a>
+</footer>
+
+<script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
+</body>
+</html>
