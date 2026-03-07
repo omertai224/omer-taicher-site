@@ -80,9 +80,7 @@
   let scale = parseFloat(localStorage.getItem(SCALE_KEY)) || 1;
 
   function applyScale(s) {
-    const isMobile = window.innerWidth < 960;
-    const maxScale = isMobile ? 1.2 : 1.5;
-    scale = Math.min(maxScale, Math.max(0.8, parseFloat(s.toFixed(1))));
+    scale = Math.min(1.5, Math.max(0.8, parseFloat(s.toFixed(1))));
     document.documentElement.style.fontSize = (scale * 16) + 'px';
     localStorage.setItem(SCALE_KEY, scale);
   }
