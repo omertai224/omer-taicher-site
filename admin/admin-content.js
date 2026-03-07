@@ -143,6 +143,15 @@ async function loadBlogManager() {
     blogSha = data.sha;
     const parsed = JSON.parse(decode(data.content));
     blogPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // שחזור מצב עריכה אחרי רענון
+    const savedId = localStorage.getItem('blog_editing_id');
+    if (savedId) {
+      const post = blogPosts.find(p => p.id === savedId);
+      if (post) { blogEditingId = savedId; showBlogForm(post); return; }
+      localStorage.removeItem('blog_editing_id');
+    }
+
     renderBlogList();
     setStatus('content', 'ok', blogPosts.length + ' פוסטים נטענו');
   } catch(e) {
@@ -185,24 +194,35 @@ function renderBlogList() {
 
 function blogNewPost() {
   blogEditingId = null;
+  localStorage.removeItem('blog_editing_id');
   showBlogForm({
     id: '', title: '', excerpt: '', body: '', date: todayISO(), emoji: '📝', image: '', image_alt: '', seo_title: '', seo_desc: ''
   });
+}
+
+function blogCancelForm() {
+  localStorage.removeItem('blog_editing_id');
+  blogEditingId = null;
+  loadBlogManager();
 }
 
 function blogEditPost(id) {
   const post = blogPosts.find(p => p.id === id);
   if (!post) return;
   blogEditingId = id;
+  localStorage.setItem('blog_editing_id', id);
   showBlogForm(post);
 }
 
 function showBlogForm(post) {
   const container = document.getElementById('blog-manager');
   container.innerHTML = `
-    <div style="margin-bottom:18px;display:flex;align-items:center;gap:12px">
-      <button onclick="loadBlogManager()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
-      <div style="font-size:0.95rem;font-weight:800;color:var(--navy)">${blogEditingId ? 'עריכת פוסט' : 'פוסט חדש'}</div>
+    <div style="margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <button onclick="blogCancelForm()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
+        <div style="font-size:0.95rem;font-weight:800;color:var(--navy)">${blogEditingId ? 'עריכת פוסט' : 'פוסט חדש'}</div>
+      </div>
+      <button onclick="blogSavePost()" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
     </div>
 
     <div class="field">
