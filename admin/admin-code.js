@@ -98,8 +98,13 @@ async function loadFile(filepath) {
 async function pasteAndPublish() {
   if (!currentCodeFile) return;
   if (currentCodeFile === 'index.html') {
-    if (!confirm('⚠️ אתה עומד לשנות את דף הבית הראשי.\nבטוח שזה לא index.html של האדמין?')) return;
+    showWarnModal(() => _doPasteAndPublish());
+    return;
   }
+  await _doPasteAndPublish();
+}
+
+async function _doPasteAndPublish() {
   try {
     const text = await navigator.clipboard.readText();
     if (!text || !text.trim()) { setStatus('code', 'error', 'הלוח ריק — העתק קוד קודם'); return; }
@@ -115,16 +120,17 @@ async function pasteAndPublish() {
       URL.revokeObjectURL(a.href);
     }
     document.getElementById('code-editor').value = text;
-    await saveCode();
+    await saveCode(true);
   } catch(e) {
     setStatus('code', 'error', 'לא ניתן לגשת ללוח — נסה להדביק ידנית');
   }
 }
 
-async function saveCode() {
+async function saveCode(skipWarn = false) {
   if (!currentCodeFile) return;
-  if (currentCodeFile === 'index.html') {
-    if (!confirm('⚠️ אתה עומד לשנות את דף הבית הראשי.\nבטוח שזה לא index.html של האדמין?')) return;
+  if (currentCodeFile === 'index.html' && !skipWarn) {
+    showWarnModal(() => saveCode(true));
+    return;
   }
   const filename = currentCodeFile.split('/').pop();
   setStatus('code', 'loading', 'שומר ' + filename + '...');
@@ -381,4 +387,16 @@ async function copyEditorContent() {
   } catch(e) {
     setStatus('code', 'error', 'שגיאה בהעתקה');
   }
+}
+
+function showWarnModal(onConfirm) {
+  const modal = document.getElementById('warn-modal');
+  modal.style.display = 'flex';
+  document.getElementById('warn-modal-yes').onclick = () => {
+    modal.style.display = 'none';
+    onConfirm();
+  };
+  document.getElementById('warn-modal-no').onclick = () => {
+    modal.style.display = 'none';
+  };
 }
