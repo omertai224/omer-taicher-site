@@ -200,17 +200,19 @@
     </div>
     <div class="code-layout">
       <div class="file-list">
-        <div class="file-list-title">קבצים ותיקיות</div>
+        <div class="file-list-title" style="display:flex;align-items:center;justify-content:space-between;">
+          <span>קבצים ותיקיות</span>
+          <button onclick="copyFullRepo()" id="copy-tree-btn" style="background:var(--navy-light);color:var(--navy);border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;">העתק עץ</button>
+        </div>
         <div id="file-items"></div>
         <div id="dropzone" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleDrop(event)" style="margin:12px;border:2px dashed var(--border);border-radius:10px;padding:16px;text-align:center;font-size:0.75rem;color:var(--text-light);cursor:pointer;transition:all 0.2s;">
-          📁 גרור קובץ לכאן להעלאה<br><span style="font-size:0.65rem;">מחליף קובץ קיים באותו שם</span>
+          גרור קובץ לכאן להעלאה<br><span style="font-size:0.65rem;">מחליף קובץ קיים באותו שם</span>
         </div>
       </div>
       <div class="editor-wrap">
         <div class="editor-topbar">
           <div class="editor-filename" id="editor-filename">— בחר קובץ —</div>
           <div class="editor-actions">
-            <button class="editor-btn" id="copy-editor-btn" onclick="copyEditorContent()" disabled style="background:var(--cream);color:var(--text-mid);border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> העתק ללוח</button>
             <button class="editor-btn" id="paste-publish-btn" onclick="pasteAndPublish()" disabled style="background:var(--navy);color:#fff;border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> הדבק ופרסם</button>
             <button class="editor-btn" id="save-code-btn" onclick="saveCode()" style="background:var(--orange-deep);color:#fff;border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> שמור ופרסם</button>
           </div>
