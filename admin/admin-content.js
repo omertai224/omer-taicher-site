@@ -219,8 +219,8 @@ function postToJSON(post) {
 // העתק מתוך טופס עריכה
 function blogCopyPost() {
   const id      = blogEditingId || '';
-  const title   = document.getElementById('bf-title')?.value || '';
-  const excerpt = document.getElementById('bf-excerpt')?.value || '';
+  const title   = document.getElementById('bf-title')?.innerHTML || '';
+  const excerpt = document.getElementById('bf-excerpt')?.innerHTML || '';
   const body    = document.getElementById('bf-body')?.innerHTML || '';
   const date    = document.getElementById('bf-date')?.value || '';
   const existing = blogPosts.find(p => p.id === id) || {};
@@ -319,12 +319,12 @@ function showBlogForm(post) {
 
     <div class="field">
       <label class="field-label">כותרת *</label>
-      <input id="bf-title" type="text" value="${post.title || ''}" placeholder="כותרת הפוסט" oninput="blogAutoSlug()">
+      <div id="bf-title" contenteditable="true" oninput="blogAutoSlug()" style="min-height:2.2em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:1rem;font-family:inherit;line-height:1.6;background:#fff;outline:none;direction:rtl">${post.title || ''}</div>
     </div>
 
     <div class="field">
       <label class="field-label">תקציר *</label>
-      <textarea id="bf-excerpt" rows="3" placeholder="1-2 משפטים שיופיעו ברשימה">${post.excerpt || ''}</textarea>
+      <div id="bf-excerpt" contenteditable="true" style="min-height:4em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:0.95rem;font-family:inherit;line-height:1.7;background:#fff;outline:none;direction:rtl">${post.excerpt || ''}</div>
     </div>
 
     <div class="field">
@@ -428,7 +428,7 @@ function clearPostImage() {
 }
 
 function blogAutoSlug() {
-  const title = document.getElementById('bf-title')?.value || '';
+  const title = document.getElementById('bf-title')?.innerHTML || '';
   const slug = titleToSlug(title);
   const idField = document.getElementById('bf-id');
   if (idField && !blogEditingId) idField.value = slug;
@@ -437,8 +437,8 @@ function blogAutoSlug() {
 }
 
 function blogAutoSeo() {
-  const title = document.getElementById('bf-title')?.value || '';
-  const excerpt = document.getElementById('bf-excerpt')?.value || '';
+  const title = document.getElementById('bf-title')?.innerHTML || '';
+  const excerpt = document.getElementById('bf-excerpt')?.innerHTML || '';
   const seoTitle = document.getElementById('bf-seo-title');
   const seoDesc = document.getElementById('bf-seo-desc');
   if (seoTitle && !seoTitle.dataset.edited) seoTitle.value = title ? title + ' | עומר טייכר' : '';
@@ -468,8 +468,8 @@ function formatBlogDate(dateStr) {
 async function blogSavePost() {
   const btn = document.getElementById('bf-save-btn') || document.getElementById('bf-save-btn-bottom');
   const alertEl = document.getElementById('bf-alert');
-  const title   = document.getElementById('bf-title')?.value.trim();
-  const excerpt = document.getElementById('bf-excerpt')?.value.trim();
+  const title   = document.document.getElementById('bf-title')?.innerHTML?.trim();
+  const excerpt = document.document.getElementById('bf-excerpt')?.innerHTML?.trim();
   const body    = document.getElementById('bf-body')?.innerHTML.trim();
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
