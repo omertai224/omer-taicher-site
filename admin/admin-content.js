@@ -468,8 +468,8 @@ function formatBlogDate(dateStr) {
 async function blogSavePost() {
   const btn = document.getElementById('bf-save-btn') || document.getElementById('bf-save-btn-bottom');
   const alertEl = document.getElementById('bf-alert');
-  const title   = document.document.getElementById('bf-title')?.innerHTML?.trim();
-  const excerpt = document.document.getElementById('bf-excerpt')?.innerHTML?.trim();
+  const title   = document.getElementById('bf-title')?.innerHTML?.trim();
+  const excerpt = document.getElementById('bf-excerpt')?.innerHTML?.trim();
   const body    = document.getElementById('bf-body')?.innerHTML.trim();
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
