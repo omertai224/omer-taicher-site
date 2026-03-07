@@ -25,6 +25,17 @@ async function loadFileTree(path) {
   }
 }
 
+async function copyFileContent(filepath) {
+  try {
+    const data = await ghGet(filepath);
+    const text = decode(data.content);
+    await navigator.clipboard.writeText(text);
+    setStatus('code', 'ok', '✓ תוכן הקובץ הועתק ללוח: ' + filepath.split('/').pop());
+  } catch(e) {
+    setStatus('code', 'error', 'שגיאה בהעתקה: ' + e.message);
+  }
+}
+
 function renderTree(items, currentPath) {
   const container = document.getElementById('file-items');
   items.sort((a, b) => {
@@ -55,7 +66,8 @@ function renderTree(items, currentPath) {
     } else {
       const isEditable = ['html','js','css','json','md','txt','svg'].includes(ext);
       if (isEditable) {
-        html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}"><span class="file-item-icon" onclick="loadFile('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFile('${item.path}')" style="cursor:pointer">${item.name}</span>${descTag}${previewBtn}${delBtn}</div>`;
+        const copyBtn = `<button class="delete-img-btn" onclick="copyFileContent('${item.path}')" title="העתק תוכן">📋</button>`;
+        html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}"><span class="file-item-icon" onclick="loadFile('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFile('${item.path}')" style="cursor:pointer">${item.name}</span>${descTag}${previewBtn}${copyBtn}${delBtn}</div>`;
       } else {
         html += `<div class="file-item"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}${delBtn}</div>`;
       }
