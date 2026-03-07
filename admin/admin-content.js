@@ -403,18 +403,6 @@ function showBlogForm(post) {
         </div>
       </div>
       <div id="bf-upload-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
-      <div id="bf-slug-hint" style="margin-top:10px;padding:8px 12px;background:#f0f4f8;border-radius:8px;display:flex;align-items:center;gap:8px;direction:ltr">
-        <span style="font-size:0.7rem;font-weight:700;color:var(--text-mid);direction:rtl;flex-shrink:0">שם קובץ מומלץ:</span>
-        <code id="bf-slug-display" style="font-size:0.8rem;color:var(--navy);font-weight:700;flex:1"></code>
-        <button onclick="copySlugHint()" style="background:var(--navy);color:#fff;border:none;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;flex-shrink:0">העתק</button>
-      </div>
-    </div>
-
-    <div class="field" style="margin-top:16px">
-      <label class="field-label">תיאור תמונה (alt text)</label>
-      <div style="margin-top:4px">
-        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור קצר של התמונה" style="direction:rtl;width:100%">
-      </div>
     </div>
 
     <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
@@ -422,7 +410,6 @@ function showBlogForm(post) {
       <button onclick="blogCancelForm()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
     </div>
     <div id="bf-alert" style="margin-top:14px"></div>`;
-  updateSlugHint();
 }
 
 // ===== CLOUDINARY =====
@@ -469,65 +456,6 @@ async function uploadToCloudinary(input) {
   input.value = '';
 }
 
-function getPostSlug() {
-  if (blogEditingId) return blogEditingId;
-  const title = document.getElementById('bf-title')?.innerText || '';
-  return titleToSlug(title);
-}
-
-function updateSlugHint() {
-  const id = getPostSlug();
-  const display = document.getElementById('bf-slug-display');
-  if (display) display.textContent = id || '(ייוצר אחרי כתיבת כותרת)';
-}
-
-function copySlugHint() {
-  const id = getPostSlug();
-  if (!id) return;
-  navigator.clipboard.writeText(id).then(() => {
-    const btn = document.querySelector('#bf-slug-hint button');
-    if (btn) { btn.textContent = 'הועתק'; setTimeout(() => btn.textContent = 'העתק', 1800); }
-  });
-}
-
-async function generateAltText() {
-  const imageUrl = document.getElementById('bf-image')?.value.trim();
-  const btn = document.getElementById('bf-alt-btn');
-  const status = document.getElementById('bf-alt-status');
-  if (!imageUrl) { status.style.color = '#c0392b'; status.textContent = 'יש להזין URL של תמונה תחילה'; return; }
-  btn.disabled = true; btn.textContent = 'מייצר...';
-  status.style.color = 'var(--text-light)'; status.textContent = 'שולח לAI...';
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 100,
-        messages: [{
-          role: 'user',
-          content: [{
-            type: 'image',
-            source: { type: 'url', url: imageUrl }
-          }, {
-            type: 'text',
-            text: 'תאר את התמונה הזו בעברית במשפט קצר אחד (עד 15 מילה) לצורך alt text. ענה רק בתיאור, ללא מבוא.'
-          }]
-        }]
-      })
-    });
-    const data = await res.json();
-    const text = data.content?.[0]?.text?.trim();
-    if (text) {
-      document.getElementById('bf-image-alt').value = text;
-      status.style.color = 'var(--green)'; status.textContent = '✓ alt text נוצר';
-    } else { throw new Error('תשובה ריקה'); }
-  } catch(e) {
-    status.style.color = '#c0392b'; status.textContent = 'שגיאה: ' + e.message;
-  }
-  btn.disabled = false; btn.textContent = 'צור עם AI';
-}
-
 function clearPostImage() {
   document.getElementById('bf-image').value = '';
   const preview = document.getElementById('bf-image-preview');
@@ -540,7 +468,6 @@ function blogAutoSlug() {
   const slug = titleToSlug(title);
   const idField = document.getElementById('bf-id');
   if (idField && !blogEditingId) idField.value = slug;
-  updateSlugHint();
   const preview = document.getElementById('bf-slug-preview');
   if (preview) preview.textContent = slug ? 'post.html?id=' + slug : '';
 }
@@ -585,7 +512,7 @@ async function blogSavePost() {
   const id      = blogEditingId || titleToSlug(title);
   const seoTitle = title + ' | עומר טייכר';
   const seoDesc  = excerpt;
-  const imageAlt = document.getElementById('bf-image-alt')?.value.trim() || title.replace(/<[^>]*>/g,'').trim();
+  const imageAlt = title;
 
   if (!title)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
   if (!excerpt) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תקציר הוא שדה חובה</div>'; return; }
@@ -1004,17 +931,47 @@ let gallerySha = null;
 async function loadGalleryManager() {
   setStatus('gallery', 'loading', 'טוען...');
   try {
-    const data = await ghGet('gallery.json');
-    gallerySha = data.sha;
-    const content = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
-    galleryItems = content.items || [];
+    // טעינת gallery.json לקבלת SHA ומידע קטגוריות
+    try {
+      const data = await ghGet('gallery.json');
+      gallerySha = data.sha;
+      const saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
+      galleryItems = saved.items || [];
+    } catch(e) {
+      gallerySha = null;
+      galleryItems = [];
+    }
+    // סנכרון מה-Worker — הוא מקור האמת
+    const res = await fetch(WORKER_URL);
+    if (res.ok) {
+      const workerData = await res.json();
+      const workerItems = workerData.items || [];
+      // מיזוג: שמור קטגוריות מ-gallery.json, הוסף קבצים חדשים מה-Worker
+      const existingKeys = new Set(galleryItems.map(i => i.key || i.url.split('/').pop()));
+      for (const wi of workerItems) {
+        const key = wi.key;
+        if (!existingKeys.has(key)) {
+          const resourceType = /\.(mp4|mov|webm|avi)$/i.test(key) ? 'video' : 'image';
+          galleryItems.unshift({
+            url: wi.url,
+            type: resourceType,
+            name: key,
+            key: key,
+            category: 'כללי',
+            date: wi.uploaded || new Date().toISOString()
+          });
+        }
+      }
+      // שמור בחזרה אם היו שינויים
+      if (workerItems.length > 0) {
+        await autoSaveGallery();
+      }
+    }
     renderGallery();
     setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
   } catch(e) {
-    gallerySha = null;
-    galleryItems = [];
     renderGallery();
-    setStatus('gallery', 'ok', 'גלריה ריקה');
+    setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
   }
 }
 
