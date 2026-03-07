@@ -38,8 +38,8 @@
       font-family: 'Rubik', sans-serif;
       font-size: 14px;
       font-weight: 800;
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       cursor: pointer;
       transition: background 0.15s, transform 0.1s;
