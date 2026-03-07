@@ -327,6 +327,7 @@ function blogEditPost(id) {
   blogEditingId = id;
   localStorage.setItem('blog_editing_id', id);
   showBlogForm(post);
+  setTimeout(updateSlugHint, 50);
 }
 
 function showBlogForm(post) {
@@ -403,6 +404,20 @@ function showBlogForm(post) {
         </div>
       </div>
       <div id="bf-upload-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
+      <div id="bf-slug-hint" style="margin-top:10px;padding:8px 12px;background:#f0f4f8;border-radius:8px;display:flex;align-items:center;gap:8px;direction:ltr">
+        <span style="font-size:0.7rem;font-weight:700;color:var(--text-mid);direction:rtl;flex-shrink:0">שם קובץ מומלץ:</span>
+        <code id="bf-slug-display" style="font-size:0.8rem;color:var(--navy);font-weight:700;flex:1"></code>
+        <button onclick="copySlugHint()" style="background:var(--navy);color:#fff;border:none;padding:4px 12px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;flex-shrink:0">העתק</button>
+      </div>
+    </div>
+
+    <div class="field" style="margin-top:16px">
+      <label class="field-label">תיאור תמונה (alt text)</label>
+      <div style="display:flex;gap:8px;align-items:flex-start;margin-top:4px">
+        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור קצר של התמונה לנגישות ו-SEO" style="flex:1;direction:rtl">
+        <button onclick="generateAltText()" id="bf-alt-btn" style="background:var(--navy);color:#fff;border:none;padding:10px 16px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0">צור עם AI</button>
+      </div>
+      <div id="bf-alt-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
     </div>
 
     <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
@@ -456,6 +471,59 @@ async function uploadToCloudinary(input) {
   input.value = '';
 }
 
+function updateSlugHint() {
+  const id = document.getElementById('bf-id')?.value || '';
+  const display = document.getElementById('bf-slug-display');
+  if (display) display.textContent = id ? id + '_hero.webp' : '(ייוצר אחרי כתיבת כותרת)';
+}
+
+function copySlugHint() {
+  const id = document.getElementById('bf-id')?.value || '';
+  if (!id) return;
+  navigator.clipboard.writeText(id + '_hero.webp').then(() => {
+    const btn = document.querySelector('#bf-slug-hint button');
+    if (btn) { btn.textContent = 'הועתק'; setTimeout(() => btn.textContent = 'העתק', 1800); }
+  });
+}
+
+async function generateAltText() {
+  const imageUrl = document.getElementById('bf-image')?.value.trim();
+  const btn = document.getElementById('bf-alt-btn');
+  const status = document.getElementById('bf-alt-status');
+  if (!imageUrl) { status.style.color = '#c0392b'; status.textContent = 'יש להזין URL של תמונה תחילה'; return; }
+  btn.disabled = true; btn.textContent = 'מייצר...';
+  status.style.color = 'var(--text-light)'; status.textContent = 'שולח לAI...';
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-20250514',
+        max_tokens: 100,
+        messages: [{
+          role: 'user',
+          content: [{
+            type: 'image',
+            source: { type: 'url', url: imageUrl }
+          }, {
+            type: 'text',
+            text: 'תאר את התמונה הזו בעברית במשפט קצר אחד (עד 15 מילה) לצורך alt text. ענה רק בתיאור, ללא מבוא.'
+          }]
+        }]
+      })
+    });
+    const data = await res.json();
+    const text = data.content?.[0]?.text?.trim();
+    if (text) {
+      document.getElementById('bf-image-alt').value = text;
+      status.style.color = 'var(--green)'; status.textContent = '✓ alt text נוצר';
+    } else { throw new Error('תשובה ריקה'); }
+  } catch(e) {
+    status.style.color = '#c0392b'; status.textContent = 'שגיאה: ' + e.message;
+  }
+  btn.disabled = false; btn.textContent = 'צור עם AI';
+}
+
 function clearPostImage() {
   document.getElementById('bf-image').value = '';
   const preview = document.getElementById('bf-image-preview');
@@ -468,6 +536,7 @@ function blogAutoSlug() {
   const slug = titleToSlug(title);
   const idField = document.getElementById('bf-id');
   if (idField && !blogEditingId) idField.value = slug;
+  updateSlugHint();
   const preview = document.getElementById('bf-slug-preview');
   if (preview) preview.textContent = slug ? 'post.html?id=' + slug : '';
 }
@@ -512,7 +581,7 @@ async function blogSavePost() {
   const id      = blogEditingId || titleToSlug(title);
   const seoTitle = title + ' | עומר טייכר';
   const seoDesc  = excerpt;
-  const imageAlt = title;
+  const imageAlt = document.getElementById('bf-image-alt')?.value.trim() || title;
 
   if (!title)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
   if (!excerpt) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תקציר הוא שדה חובה</div>'; return; }
