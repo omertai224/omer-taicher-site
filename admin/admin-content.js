@@ -222,18 +222,22 @@ function showBlogForm(post) {
         <button onclick="blogCancelForm()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
         <div style="font-size:0.95rem;font-weight:800;color:var(--navy)">${blogEditingId ? 'עריכת פוסט' : 'פוסט חדש'}</div>
       </div>
-      <button onclick="blogSavePost()" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
+      <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
+    </div>
+
+    <div class="field">
+      <label class="field-label">תאריך *</label>
+      <input id="bf-date" type="date" value="${post.date || todayISO()}" style="max-width:200px">
     </div>
 
     <div class="field">
       <label class="field-label">כותרת *</label>
-      <textarea id="bf-title" rows="2" oninput="blogAutoSlug();blogAutoSeo()">${post.title}</textarea>
+      <input id="bf-title" type="text" value="${post.title || ''}" placeholder="כותרת הפוסט" oninput="blogAutoSlug()">
     </div>
-    <div style="font-size:0.72rem;color:var(--text-light);margin:-10px 0 14px;direction:ltr;text-align:left" id="bf-slug-preview">${post.id ? 'post.html?id=' + post.id : ''}</div>
 
     <div class="field">
       <label class="field-label">תקציר *</label>
-      <textarea id="bf-excerpt" rows="3" oninput="blogAutoSeo()">${post.excerpt}</textarea>
+      <textarea id="bf-excerpt" rows="3" placeholder="1-2 משפטים שיופיעו ברשימה">${post.excerpt || ''}</textarea>
     </div>
 
     <div class="field">
@@ -251,7 +255,7 @@ function showBlogForm(post) {
         contenteditable="true"
         oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
         style="min-height:420px;height:auto;padding:18px 20px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:0.88rem;line-height:1.75;outline:none;cursor:text;font-family:inherit;overflow:hidden"
-      >${post.body}</div>
+      >${post.body || ''}</div>
       <style>#bf-body,#bf-body *{font-size:0.88rem!important;line-height:1.75!important;font-family:inherit!important}</style>
     </div>
 
@@ -273,34 +277,9 @@ function showBlogForm(post) {
       <div id="bf-upload-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
     </div>
 
-    <div class="field">
-      <label class="field-label">תיאור תמונה (Alt) — חשוב להנגשה ו-SEO</label>
-      <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תאר את התמונה במשפט קצר">
-    </div>
-
-    <div class="field">
-      <label class="field-label">תאריך *</label>
-      <input id="bf-date" type="date" value="${post.date}">
-    </div>
-
-    <div class="field">
-      <label class="field-label">ID / Slug</label>
-      <input id="bf-id" type="text" value="${post.id}" style="direction:ltr;text-align:left" placeholder="מייוצר אוטומטית מהכותרת">
-    </div>
-
-    <div class="fields-divider">SEO — ממולא אוטומטית, ניתן לשנות</div>
-    <div class="field">
-      <label class="field-label">כותרת SEO</label>
-      <input id="bf-seo-title" type="text" value="${post.seo_title || ''}">
-    </div>
-    <div class="field">
-      <label class="field-label">תיאור SEO</label>
-      <textarea id="bf-seo-desc" rows="2">${post.seo_desc || ''}</textarea>
-    </div>
-
     <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
-      <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
-      <button onclick="loadBlogManager()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
+      <button onclick="blogSavePost()" id="bf-save-btn-bottom" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
+      <button onclick="blogCancelForm()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
     </div>
     <div id="bf-alert" style="margin-top:14px"></div>`;
 }
@@ -395,24 +374,23 @@ function formatBlogDate(dateStr) {
 }
 
 async function blogSavePost() {
-  const btn = document.getElementById('bf-save-btn');
-  const alert = document.getElementById('bf-alert');
+  const btn = document.getElementById('bf-save-btn') || document.getElementById('bf-save-btn-bottom');
+  const alertEl = document.getElementById('bf-alert');
   const title   = document.getElementById('bf-title')?.value.trim();
   const excerpt = document.getElementById('bf-excerpt')?.value.trim();
   const body    = document.getElementById('bf-body')?.innerHTML.trim();
   const date    = document.getElementById('bf-date')?.value;
-  const emoji   = '';
   const image   = document.getElementById('bf-image')?.value.trim() || '';
-  const imageAlt= document.getElementById('bf-image-alt')?.value.trim() || '';
-  const id      = document.getElementById('bf-id')?.value.trim() || titleToSlug(title);
-  const seoTitle= document.getElementById('bf-seo-title')?.value.trim() || title + ' | עומר טייכר';
-  const seoDesc = document.getElementById('bf-seo-desc')?.value.trim() || excerpt;
+  const id      = blogEditingId || titleToSlug(title);
+  const seoTitle = title + ' | עומר טייכר';
+  const seoDesc  = excerpt;
+  const imageAlt = title;
 
-  if (!title)   { alert.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
-  if (!excerpt) { alert.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תקציר הוא שדה חובה</div>'; return; }
-  if (!body)    { alert.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">גוף הפוסט הוא שדה חובה</div>'; return; }
-  if (!date)    { alert.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תאריך הוא שדה חובה</div>'; return; }
-  if (!id)      { alert.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">לא ניתן לייצר ID מהכותרת</div>'; return; }
+  if (!title)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
+  if (!excerpt) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תקציר הוא שדה חובה</div>'; return; }
+  if (!body)    { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">גוף הפוסט הוא שדה חובה</div>'; return; }
+  if (!date)    { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תאריך הוא שדה חובה</div>'; return; }
+  if (!id)      { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">לא ניתן לייצר ID מהכותרת</div>'; return; }
 
   btn.disabled = true;
   btn.textContent = 'שומר...';
@@ -425,7 +403,7 @@ async function blogSavePost() {
     const freshData = JSON.parse(decode(fresh.content));
     let posts = freshData.posts || [];
 
-    const post = { id, title, excerpt, body, date, emoji, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc };
+    const post = { id, title, excerpt, body, date, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc };
 
     if (blogEditingId) {
       const idx = posts.findIndex(p => p.id === blogEditingId);
