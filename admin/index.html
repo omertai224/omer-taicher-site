@@ -246,7 +246,7 @@
     </div>
 
     <!-- פילטר קטגוריות -->
-    <div id="gallery-filter-bar" style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;">
+    <div id="gallery-filter-bar" style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center;">
       <button onclick="filterGallery('הכל')" class="gallery-filter-btn gallery-filter-active" data-cat="הכל">הכל</button>
       <button onclick="filterGallery('בלוג')" class="gallery-filter-btn" data-cat="בלוג">✍️ בלוג</button>
       <button onclick="filterGallery('אינטראקטיבי')" class="gallery-filter-btn" data-cat="אינטראקטיבי">🎓 אינטראקטיבי</button>
@@ -254,6 +254,7 @@
       <button onclick="filterGallery('דפי נחיתה')" class="gallery-filter-btn" data-cat="דפי נחיתה">📄 דפי נחיתה</button>
       <button onclick="filterGallery('הרצאות')" class="gallery-filter-btn" data-cat="הרצאות">📽️ הרצאות</button>
       <button onclick="filterGallery('כללי')" class="gallery-filter-btn" data-cat="כללי">📁 כללי</button>
+      <button id="gallery-multi-delete" onclick="deleteSelectedGalleryItems()" style="display:none;align-items:center;gap:6px;background:#dc2626;color:#fff;border:none;padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;margin-right:auto;">🗑️ מחק נבחרים</button>
     </div>
 
     <!-- רשת תמונות -->
