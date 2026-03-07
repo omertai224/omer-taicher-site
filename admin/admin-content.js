@@ -175,7 +175,7 @@ function renderBlogList() {
         <div style="display:flex;gap:8px;flex-shrink:0">
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://omer-taicher-blog.vercel.app/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
-          <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
+          <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`).join('');
@@ -184,7 +184,7 @@ function renderBlogList() {
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
       <div style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
       <div style="display:flex;gap:8px">
-        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">העתק הכל</button>
+        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
         <button onclick="blogPasteFromClipboard()" style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק פוסט</button>
         <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
       </div>
@@ -200,15 +200,50 @@ function blogNewPost() {
   });
 }
 
+function postToJSON(post) {
+  return JSON.stringify({
+    id:        post.id        || '',
+    title:     post.title     || '',
+    excerpt:   post.excerpt   || '',
+    body:      post.body      || '',
+    date:      post.date      || '',
+    emoji:     post.emoji     || '',
+    image:     post.image     || '',
+    image_alt: post.image_alt || '',
+    seo_title: post.seo_title || '',
+    seo_desc:  post.seo_desc  || ''
+  });
+}
+
+// העתק מתוך טופס עריכה
 function blogCopyPost() {
+  const id      = blogEditingId || '';
   const title   = document.getElementById('bf-title')?.value || '';
   const excerpt = document.getElementById('bf-excerpt')?.value || '';
-  const body    = document.getElementById('bf-body')?.innerText || '';
+  const body    = document.getElementById('bf-body')?.innerHTML || '';
   const date    = document.getElementById('bf-date')?.value || '';
-  const text = `כותרת: ${title}\nתאריך: ${date}\n\nתקציר:\n${excerpt}\n\nגוף הפוסט:\n${body}`;
-  navigator.clipboard.writeText(text)
+  const existing = blogPosts.find(p => p.id === id) || {};
+  const post = { ...existing, id, title, excerpt, body, date };
+  navigator.clipboard.writeText(postToJSON(post))
     .then(() => setStatus('content', 'ok', '✓ הפוסט הועתק ללוח'))
-    .catch(() => { try { document.execCommand('copy'); } catch(e) {} });
+    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
+}
+
+// העתק פוסט מהרשימה לפי ID
+function blogCopyById(id) {
+  const post = blogPosts.find(p => p.id === id);
+  if (!post) return;
+  navigator.clipboard.writeText(postToJSON(post))
+    .then(() => setStatus('content', 'ok', '✓ "' + post.title.slice(0,30) + '" הועתק ללוח'))
+    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
+}
+
+// העתק את כל הפוסטים כ-JSON מלא
+function blogCopyAll() {
+  const text = JSON.stringify({ posts: blogPosts }, null, 2);
+  navigator.clipboard.writeText(text)
+    .then(() => setStatus('content', 'ok', '✓ כל ' + blogPosts.length + ' הפוסטים הועתקו ללוח'))
+    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
 }
 
 function blogCancelForm() {
