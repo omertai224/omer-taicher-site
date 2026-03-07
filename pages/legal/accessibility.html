@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>הצהרת נגישות | עומר טייכר</title>
+<meta name="description" content="הצהרת הנגישות של אתר עומר טייכר — מחויבות לנגישות דיגיטלית לכלל הציבור">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --orange: #f6a67e;
+    --orange-deep: #e8854a;
+    --orange-light: #fdeede;
+    --navy: #1a4a6b;
+    --cream: #fdf8f2;
+    --cream2: #f5ede0;
+    --text: #1e1e1e;
+    --text-mid: #555;
+    --text-light: #999;
+    --border: #e8e0d6;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Rubik', sans-serif; background: var(--cream); color: var(--text); direction: rtl; line-height: 1.7; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(253,248,242,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+  }
+  .logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+  .logo span { color: var(--orange-deep); }
+  .nav-back { display: inline-flex; align-items: center; gap: 6px; color: var(--text-mid); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+  .nav-back:hover { color: var(--navy); }
+
+  .page-hero { background: var(--navy); padding: 100px 24px 48px; text-align: center; }
+  .page-hero-tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(246,166,126,0.15); color: var(--orange); padding: 6px 16px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+  .page-hero h1 { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 16px; }
+  .page-hero p { font-size: 0.95rem; color: rgba(255,255,255,0.6); max-width: 520px; margin: 0 auto; }
+  .page-hero .updated { margin-top: 20px; font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+  .content-wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  .section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+
+  .section-number { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; color: var(--orange-deep); text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .section-number::before { content: ''; width: 20px; height: 2px; background: var(--orange-deep); display: block; }
+
+  .section h2 { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 18px; line-height: 1.3; }
+  .section p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
+  .section p:last-child { margin-bottom: 0; }
+  .section ul { padding-right: 20px; margin: 14px 0; }
+  .section ul li { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 8px; }
+
+  .highlight-box { background: var(--orange-light); border-right: 3px solid var(--orange-deep); border-radius: 0 12px 12px 0; padding: 20px 22px; margin: 24px 0; }
+  .highlight-box p { color: var(--navy) !important; font-weight: 600; margin: 0 !important; }
+
+  .domains-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin: 20px 0; }
+  .domain-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-align: center; }
+  .domain-card .icon { font-size: 1.4rem; margin-bottom: 8px; }
+  .domain-card h4 { font-size: 0.78rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+  .domain-card p { font-size: 0.72rem; color: var(--text-light); margin: 0; }
+
+  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .feature-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 18px; display: flex; align-items: flex-start; gap: 12px; }
+  .feature-card .icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+  .feature-card p { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; margin: 0; }
+
+  .standard-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--navy); color: #fff; padding: 8px 18px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin: 6px 4px; }
+
+  .contact-box { background: var(--navy); border-radius: 20px; padding: 36px 28px; text-align: center; margin-top: 56px; }
+  .contact-box h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+  .contact-box p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-bottom: 6px; }
+  .contact-box p:last-of-type { margin-bottom: 20px; }
+  .contact-box a.btn { display: inline-block; background: var(--orange); color: var(--navy); padding: 12px 28px; border-radius: 50px; font-weight: 800; font-size: 0.9rem; text-decoration: none; transition: transform 0.2s; margin: 4px; }
+  .contact-box a.btn:hover { transform: scale(1.04); }
+  .contact-box a.btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.3); color: #fff; }
+  .contact-box a.btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+  footer { background: var(--cream2); border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; font-size: 0.8rem; color: var(--text-light); }
+  footer a { color: var(--navy); text-decoration: none; font-weight: 600; }
+
+  @media (max-width: 600px) {
+    .domains-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .page-hero { padding: 90px 20px 40px; }
+    .content-wrap { padding: 40px 20px 60px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="https://omertai.net">עומר <span>טייכר</span></a>
+  <a class="nav-back" href="https://omertai.net">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+    חזרה לאתר
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-tag">♿ נגישות</div>
+  <h1>הצהרת נגישות</h1>
+  <p>אנו מאמינים בזכותו של כל אדם לגלוש, ללמוד ולהיות חלק מהתוכן הדיגיטלי שלנו.</p>
+  <div class="updated">עודכן לאחרונה: ינואר 2026</div>
+</div>
+
+<div class="content-wrap">
+
+  <div class="section">
+    <div class="section-number">01 — מבוא</div>
+    <h2>המחויבות שלנו</h2>
+    <p>האתר של עומר טייכר — מדריך וטכנאי מחשבים — נבנה מתוך מחויבות אמיתית להנגשת התוכן והשירותים לכלל הציבור, לרבות אנשים עם מוגבלויות.</p>
+    <p>אנו פועלים בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), תשע"ג-2013, ולתקן הישראלי ת"י 5568 המבוסס על הנחיות WCAG 2.1.</p>
+    <div class="highlight-box">
+      <p>כל אדם, ללא קשר ליכולותיו הפיזיות או הקוגניטיביות, יכול להשתמש באתר זה ולקבל את אותה חוויה מלאה.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-number">02 — היקף ההצהרה</div>
+    <h2>הדומיינים הכלולים בהצהרה זו</h2>
+    <p>הצהרת נגישות זו חלה על כל האתרים הפועלים תחת המותג עומר טייכר:</p>
+    <div class="domains-grid">
+      <div class="domain-card">
+        <div class="icon">🏠</div>
+        <h4>omertai.net</h4>
+        <p>האתר הראשי</p>
+      </div>
+      <div class="domain-card">
+        <div class="icon">✍️</div>
+        <h4>blog.omertai.net</h4>
+        <p>הבלוג</p>
+      </div>
+      <div class="domain-card">
+        <div class="icon">🎓</div>
+        <h4>interactive.omertai.net</h4>
+        <p>הדרכות אינטראקטיביות</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-number">03 — כלי הנגישות</div>
+    <h2>סרגל הנגישות של Enable</h2>
+    <p>האתר משתמש בתוסף הנגישות של Enable.co.il, המאפשר מגוון רחב של התאמות בהתאם לתקן הישראלי ולתקן WCAG 2.1.</p>
+    <p>סרגל הנגישות פעיל בכל עמודי האתר ומופיע בצד שמאל התחתון של המסך. ניתן לפתוח אותו בלחיצה על סמל הנגישות ♿.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">🔤</div>
+        <p><strong>הגדלת והקטנת טקסט</strong> — לנוחות קריאה מלאה</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🎨</div>
+        <p><strong>שינוי ניגודיות צבעים</strong> — כולל מצב ניגודיות גבוהה</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🖱️</div>
+        <p><strong>הגדלת סמן העכבר</strong> — לנוחות ניווט</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔗</div>
+        <p><strong>הדגשת קישורים</strong> — לזיהוי קל יותר</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📖</div>
+        <p><strong>גופן קריא</strong> — להקלה על לקויות קריאה</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">↩️</div>
+        <p><strong>איפוס הגדרות</strong> — חזרה לברירת מחדל בלחיצה אחת</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-number">04 — תאימות ותקנים</div>
+    <h2>תקנים ודפדפנים נתמכים</h2>
+    <p>האתר נבנה בקוד HTML, CSS ו-JavaScript תוך הקפדה על עקרונות נגישות, ועומד ברמת תאימות:</p>
+    <div style="margin: 16px 0;">
+      <span class="standard-badge">✓ ת"י 5568</span>
+      <span class="standard-badge">✓ WCAG 2.1 Level AA</span>
+    </div>
+    <p>האתר מותאם למובייל, טאבלט ומחשב, ותואם לדפדפנים המובילים:</p>
+    <ul>
+      <li>Google Chrome</li>
+      <li>Microsoft Edge</li>
+      <li>Mozilla Firefox</li>
+      <li>Apple Safari</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-number">05 — נגישות השירות</div>
+    <h2>מעבר לאתר — גם השירות נגיש</h2>
+    <p>הנגישות אצלנו לא מסתיימת בדיגיטל. לקוחות הזקוקים להתאמות מיוחדות בהרצאות, בהדרכות אישיות או בשירות תמיכה מרחוק — מוזמנים לפנות אלינו.</p>
+    <p>נעשה כל מאמץ למצוא פתרון מתאים ולהתאים את השירות לצרכיכם.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-number">06 — מגבלות ידועות</div>
+    <h2>היכן אנחנו עדיין עובדים על שיפור</h2>
+    <p>אנו פועלים באופן שוטף לשיפור הנגישות בכל חלקי האתר. ייתכן שחלק מהתכנים הישנים או הווידאו-טיפים טרם הונגשו במלואם.</p>
+    <p>אם נתקלתם בתוכן שאינו נגיש — נשמח שתספרו לנו ונטפל בכך בהקדם.</p>
+  </div>
+
+  <div class="contact-box">
+    <h3>נתקלתם בבעיית נגישות?</h3>
+    <p>📞 052-6587420</p>
+    <p>omertai224@gmail.com</p>
+    <a class="btn" href="mailto:omertai224@gmail.com">שלחו פנייה</a>
+    <a class="btn btn-outline" href="tel:0526587420">התקשרו עכשיו</a>
+  </div>
+
+</div>
+
+<footer>
+  <span>© 2025 עומר טייכר · כל הזכויות שמורות</span>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/terms.html">תקנון ותנאי שימוש</a>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/privacy.html">מדיניות פרטיות</a>
+  &nbsp;·&nbsp;
+  <a href="/pages/legal/refund.html">מדיניות החזרים</a>
+</footer>
+
+<script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
+</body>
+</html>
