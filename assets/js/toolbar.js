@@ -55,7 +55,7 @@
       background: rgba(255,255,255,0.05);
     }
     @media (min-width: 960px) { .a11y-bar { display: none; } }
-    @media (max-width: 959px) { body { padding-top: 125px; } }
+    @media (max-width: 959px) { body { padding-top: 125px; } html, body { overflow-x: hidden; } }
   `;
   document.head.appendChild(style);
 
@@ -88,18 +88,17 @@
   document.getElementById('a11y-down').addEventListener('click', () => applyScale(scale - 0.1));
   document.getElementById('a11y-reset').addEventListener('click', () => applyScale(1));
 
-  // כשהתפריט פתוח — הטולבר יורד לתחתית
+  // כשהתפריט פתוח — הטולבר יורד מתחת לתפריט
   const mobileMenu = document.getElementById('mobile-menu');
   if (mobileMenu) {
     const observer = new MutationObserver(() => {
       if (mobileMenu.classList.contains('open')) {
-        bar.style.top = 'auto';
-        bar.style.bottom = '0';
-        bar.style.transform = 'translateX(-50%)';
+        const menuBottom = mobileMenu.getBoundingClientRect().bottom;
+        bar.style.top = menuBottom + 'px';
+        bar.style.bottom = 'auto';
       } else {
         bar.style.top = '68px';
         bar.style.bottom = 'auto';
-        bar.style.transform = 'translateX(-50%)';
       }
     });
     observer.observe(mobileMenu, { attributes: true, attributeFilter: ['class'] });
