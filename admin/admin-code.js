@@ -399,7 +399,8 @@ async function copyFullRepo() {
 
   try {
     const allFiles = [];
-    await collectAllFiles('', allFiles);
+    const rootOnly = GITHUB_REPO === 'omer-taicher-interactive';
+    await collectAllFiles('', allFiles, rootOnly);
 
     const TEXT_EXTS = ['html','js','css','json','md','txt','svg','xml','csv'];
     let output = `=== עץ קבצים: ${GITHUB_REPO} ===\n`;
@@ -466,7 +467,7 @@ async function copyFullRepo() {
   }
 }
 
-async function collectAllFiles(path, result) {
+async function collectAllFiles(path, result, rootOnly = false) {
   const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
   const res = await fetch(url, {
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
@@ -482,9 +483,10 @@ async function collectAllFiles(path, result) {
 
   for (const item of items) {
     if (item.name === '.git' || item.name === '.gitkeep') continue;
+    if (rootOnly && item.type === 'dir') continue;
     result.push({ path: item.path, type: item.type, sha: item.sha });
     if (item.type === 'dir') {
-      await collectAllFiles(item.path, result);
+      await collectAllFiles(item.path, result, rootOnly);
     }
   }
 }
