@@ -471,14 +471,20 @@ async function uploadToCloudinary(input) {
   input.value = '';
 }
 
+function getPostSlug() {
+  if (blogEditingId) return blogEditingId;
+  const title = document.getElementById('bf-title')?.innerText || '';
+  return titleToSlug(title);
+}
+
 function updateSlugHint() {
-  const id = document.getElementById('bf-id')?.value || '';
+  const id = getPostSlug();
   const display = document.getElementById('bf-slug-display');
   if (display) display.textContent = id ? id + '_hero.webp' : '(ייוצר אחרי כתיבת כותרת)';
 }
 
 function copySlugHint() {
-  const id = document.getElementById('bf-id')?.value || '';
+  const id = getPostSlug();
   if (!id) return;
   navigator.clipboard.writeText(id + '_hero.webp').then(() => {
     const btn = document.querySelector('#bf-slug-hint button');
@@ -581,7 +587,7 @@ async function blogSavePost() {
   const id      = blogEditingId || titleToSlug(title);
   const seoTitle = title + ' | עומר טייכר';
   const seoDesc  = excerpt;
-  const imageAlt = document.getElementById('bf-image-alt')?.value.trim() || title;
+  const imageAlt = document.getElementById('bf-image-alt')?.value.trim() || title.replace(/<[^>]*>/g,'').trim();
 
   if (!title)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
   if (!excerpt) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תקציר הוא שדה חובה</div>'; return; }
