@@ -1,6 +1,7 @@
 // ===== GLOBALS =====
 const GITHUB_USER = 'omertai224';
 const GITHUB_BRANCH = 'main';
+const WORKER_URL = 'https://media-worker.omertai224.workers.dev';
 const REPOS = {
   'omer-taicher-site':      { name: 'אתר ראשי' },
   'omer-taicher-interactive': { name: 'אינטראקטיבי' },
@@ -8,8 +9,6 @@ const REPOS = {
 };
 let GITHUB_REPO = 'omer-taicher-site';
 let GITHUB_TOKEN = '';
-let CLOUDINARY_API_KEY = '';
-let CLOUDINARY_API_SECRET = '';
 let contentSha = null;
 let currentData = null;
 let currentCodeFile = null;
@@ -19,7 +18,6 @@ let currentTreePath = '';
 // ===== TOKEN =====
 function checkToken() {
   GITHUB_TOKEN = localStorage.getItem('gh_token') || '';
-  CLOUDINARY_API_SECRET = localStorage.getItem('cl_secret') || '';
   if (!GITHUB_TOKEN) {
     document.getElementById('token-gate').style.display = 'flex';
   } else {
@@ -31,25 +29,18 @@ function checkToken() {
 
 function saveToken() {
   const username = document.getElementById('token-input').value.trim();
-  const password = document.getElementById('cl-secret-input').value.trim();
-  if (!username || !password) {
-    showLoginError('נא למלא שם משתמש וסיסמה');
-    return;
-  }
+  if (!username) { showLoginError('נא להכניס שם משתמש'); return; }
   const btn = document.querySelector('.token-btn');
   btn.textContent = 'מתחבר...';
   btn.disabled = true;
 
-  // בדיקת GitHub Token
   fetch('https://api.github.com/user', {
     headers: { 'Authorization': `token ${username}` }
   })
   .then(r => {
     if (!r.ok) throw new Error('github');
     localStorage.setItem('gh_token', username);
-    if (password) localStorage.setItem('cl_secret', password);
     GITHUB_TOKEN = username;
-    CLOUDINARY_API_SECRET = password;
     document.getElementById('token-gate').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
     init();
