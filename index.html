@@ -1,375 +1,109 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>עומר טייכר | טכנאי ומדריך מחשבים</title>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/main.css">
-</head>
-<body>
+(function () {
+  // ===== STYLES =====
+  const style = document.createElement('style');
+  style.textContent = `
+    .a11y-bar {
+      position: fixed;
+      top: 68px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: calc(100vw - 40px);
+      z-index: 9998;
+      background: rgba(26,74,107,0.97);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(246,166,126,0.5);
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 22px;
+      direction: rtl;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.2);
+      white-space: nowrap;
+      font-family: 'Rubik', sans-serif;
+    }
+    .a11y-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.8);
+      letter-spacing: 1px;
+      margin-left: 4px;
+    }
+    .a11y-btn {
+      background: rgba(246,166,126,0.1);
+      border: 1px solid rgba(246,166,126,0.5);
+      color: #f6a67e;
+      font-family: 'Rubik', sans-serif;
+      font-size: 14px;
+      font-weight: 800;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      padding: 0;
+    }
+    .a11y-btn:hover { background: rgba(246,166,126,0.25); transform: scale(1.1); }
+    .a11y-btn:active { transform: scale(0.95); }
+    .a11y-btn.reset {
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+      border-color: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+    }
+    @media (min-width: 960px) { .a11y-bar { display: none; } }
+    @media (max-width: 959px) { body { padding-top: 125px; } }
+  `;
+  document.head.appendChild(style);
 
-<!-- NAV -->
-<nav>
-  <a class="logo" href="#">עומר <span>טייכר</span></a>
-  <ul class="nav-links">
-    <li><a href="https://interactive.omertai.net" style="background:var(--orange-deep); color:#fff !important; font-weight:700; padding:7px 16px; border-radius:50px; display:inline-flex; align-items:center; gap:6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>הדרכות אינטראקטיביות</a></li>
-    <li><a href="#lecture"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>ההרצאה הבאה</a></li>
-    <li><a href="https://blog.omertai.net"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>טיפים חינם</a></li>
-    <li><a href="#about"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>מי אני</a></li>
-  </ul>
-  <button class="hamburger" id="hamburger" aria-label="תפריט">
-    <span></span><span></span><span></span>
-  </button>
-  <a href="https://interactive.omertai.net" class="nav-mobile-cta"><span class="btn-arrow">הדרכות <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
-</nav>
+  // ===== HTML =====
+  const bar = document.createElement('div');
+  bar.className = 'a11y-bar';
+  bar.setAttribute('role', 'toolbar');
+  bar.setAttribute('aria-label', 'נגישות');
+  bar.innerHTML = `
+    <span class="a11y-label">גודל טקסט</span>
+    <button class="a11y-btn" id="a11y-down" aria-label="הקטן טקסט">א−</button>
+    <button class="a11y-btn reset" id="a11y-reset" aria-label="איפוס">א</button>
+    <button class="a11y-btn" id="a11y-up" aria-label="הגדל טקסט">א+</button>
+  `;
+  document.body.appendChild(bar);
 
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="https://interactive.omertai.net" onclick="closeMenu()" style="color:var(--orange-deep); font-weight:700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:10px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>הדרכות אינטראקטיביות</a>
-  <a href="#lecture" onclick="closeMenu()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:10px;"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>ההרצאה הבאה</a>
-  <a href="https://blog.omertai.net" onclick="closeMenu()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:10px;"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>טיפים חינם</a>
-  <a href="#about" onclick="closeMenu()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:10px;"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>מי אני</a>
-</div>
+  // ===== LOGIC =====
+  const SCALE_KEY = 'a11y_scale';
+  let scale = parseFloat(localStorage.getItem(SCALE_KEY)) || 1;
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-text">
-    <div class="hero-eyebrow">טכנאי ומדריך מחשבים, ראשון לציון</div>
-    <h1>
-      <span data-content="hero.title_1">המחשב שלכם בידיים טובות.</span><br>
-      <span style="color:var(--orange-deep)" data-content="hero.title_2">סוף סוף יש על מי לסמוך.</span>
-    </h1>
-    <div class="hero-lead" data-content-multiline="hero.lead_1"></div>
-    <div class="hero-lead" data-content-multiline="hero.lead_2"></div>
-    <div class="hero-client-quote">
-      <span data-content="hero.quote">עומר, אתה הדוקטור של המחשב שלי. באמת.</span>
-      <span class="hero-client-name" data-content="hero.quote_attr">לקוחה, עורכת דין</span>
-    </div>
-    <div class="hero-actions">
-      <a href="https://interactive.omertai.net" class="btn btn-primary btn-full">
-        <span class="btn-arrow">לכל ההדרכות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
-      </a>
-      <a href="#about" class="btn btn-secondary btn-full">קצת עליי</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="profile-card">
-      <div class="float-sticker">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        זמין לתמיכה מרחוק
-      </div>
-      <div class="profile-top">
-        <div class="profile-avatar">
-          <img id="img-hero" src="" alt="עומר טייכר">
-        </div>
-        <div>
-          <div class="profile-name">עומר טייכר</div>
-          <div class="profile-title">טכנאי ומדריך מחשבים, ראשון לציון</div>
-        </div>
-      </div>
-      <div class="profile-tags" id="hero-tags"></div>
-      <div class="profile-stats">
-        <div class="pstat"><div class="pstat-n">25+</div><div class="pstat-l">שנות ניסיון</div></div>
-        <div class="pstat"><div class="pstat-n">50+</div><div class="pstat-l">הרצאות</div></div>
-        <div class="pstat"><div class="pstat-n">100%</div><div class="pstat-l">סבלנות</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PAIN -->
-<section class="pain-section">
-  <div class="pain-inner">
-    <span class="section-eyebrow eyebrow-orange">אם זה מוכר לכם, המקום שלכם כאן</span>
-    <h2 class="pain-title" data-content="pain.title">המחשב לא עובד, ואתם מרגישים שלקחו לכם את הידיים.</h2>
-    <div class="pain-grid">
-      <div class="pain-card">
-        <div class="pain-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-        <div class="pain-card-title" data-content="pain.cards.0.title">פחד ללחוץ על הכפתור הלא נכון</div>
-        <div class="pain-card-desc" data-content="pain.cards.0.desc">כל עדכון, כל חלון קופץ. המחשבה "ומה אם נמחק משהו" מוכרת לכם מדי.</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="pain-card-title" data-content="pain.cards.1.title">כל החיים שלכם במחשב</div>
-        <div class="pain-card-desc" data-content="pain.cards.1.desc">תמונות, מסמכים, אנשי קשר. הפחד שמשהו ייעלם שמור שם בפנים, כל הזמן.</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="pain-card-title" data-content="pain.cards.2.title">מנצלים את חוסר הידע שלכם</div>
-        <div class="pain-card-desc" data-content="pain.cards.2.desc">חנויות שדוחפות ציוד מיותר. טכנאים שמדברים טכנולוגית ומשאירים אתכם עם יותר שאלות מתשובות.</div>
-      </div>
-      <div class="pain-card">
-        <div class="pain-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
-        <div class="pain-card-title" data-content="pain.cards.3.title">שיתוק מוחלט כשהמחשב נתקע</div>
-        <div class="pain-card-desc" data-content="pain.cards.3.desc">"זה כאילו פתאום המקרר לא עובד. אבל זה יותר חמור, כי כל החיים במחשב."</div>
-      </div>
-    </div>
-    <div class="pain-quote">
-      <div class="pain-quote-text" data-content="pain.quote">"יש לי ביטחון מלא שכל מה שיקרה לי במחשב או בטלפון - יש לי כתובת."</div>
-      <div class="pain-quote-attr" data-content="pain.quote_attr">לקוחה קבועה, מעצבת פנים</div>
-    </div>
-  </div>
-</section>
-
-<!-- WORKSHOPS -->
-<section class="workshops-section" id="workshops">
-  <div class="section-wrap">
-    <div class="section-header">
-      <span class="section-eyebrow eyebrow-orange-deep">הדרכות</span>
-      <h2 class="section-title" data-content="ws.title">הדרכות אינטראקטיביות קצרות</h2>
-      <div class="section-sub" data-content="ws.sub"></div>
-    </div>
-    <div class="ws-grid">
-      <div class="ws-card">
-        <div class="ws-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
-        <div class="ws-title" data-content="workshops.0.title">AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם</div>
-        <div class="ws-desc"><p data-content="workshops.0.desc_1">הדרכה שתלמד אתכם להשתמש בכלי בינה מלאכותית.</p><p data-content="workshops.0.desc_2">בצורה פשוטה, בקצב שלכם.</p></div>
-        <div class="ws-footer">
-          <div class="ws-price"><span data-content="workshops.0.price">₪47</span> <span data-content="workshops.0.price_label">חד פעמי</span></div>
-          <a href="https://interactive.omertai.net" class="ws-btn"><span class="btn-arrow">להצטרפות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
-        </div>
-      </div>
-      <div class="ws-card">
-        <div class="ws-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
-        <div class="ws-title" data-content="workshops.1.title">לסדר את המחשב, ארגון קבצים, תיקיות וענן</div>
-        <div class="ws-desc"><p data-content="workshops.1.desc_1">כל מה שצריך כדי למצוא כל קובץ תוך שניות.</p><p data-content="workshops.1.desc_2">ולעולם לא לאבד מסמך חשוב שוב.</p></div>
-        <div class="ws-footer">
-          <div class="ws-price"><span data-content="workshops.1.price">₪47</span> <span data-content="workshops.1.price_label">חד פעמי</span></div>
-          <a href="https://interactive.omertai.net" class="ws-btn"><span class="btn-arrow">להצטרפות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
-        </div>
-      </div>
-      <div class="ws-card">
-        <div class="ws-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="ws-title" data-content="workshops.2.title">גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ</div>
-        <div class="ws-desc"><p data-content="workshops.2.desc_1">איך לגלוש בלי פחד, לנהל סיסמאות נכון.</p><p data-content="workshops.2.desc_2">ולזהות הונאות לפני שהן פוגעות בכם.</p></div>
-        <div class="ws-footer">
-          <div class="ws-price"><span data-content="workshops.2.price">₪47</span> <span data-content="workshops.2.price_label">חד פעמי</span></div>
-          <a href="https://interactive.omertai.net" class="ws-btn"><span class="btn-arrow">להצטרפות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
-        </div>
-      </div>
-      <div class="ws-card">
-        <div class="ws-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="ws-title" data-content="workshops.3.title">גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides</div>
-        <div class="ws-desc"><p data-content="workshops.3.desc_1">כל כלי גוגל שאתם משתמשים בו, במקום אחד.</p><p data-content="workshops.3.desc_2">בקצב שלכם, עם תרגול מעשי.</p></div>
-        <div class="ws-footer">
-          <div class="ws-price"><span data-content="workshops.3.price">₪97</span> <span data-content="workshops.3.price_label">חד פעמי</span></div>
-          <a href="https://interactive.omertai.net" class="ws-btn"><span class="btn-arrow">להצטרפות <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section class="about-section" id="about">
-  <div class="section-wrap">
-    <div class="about-inner">
-      <div class="about-img-wrap" style="background:#fff;">
-        <img id="img-about" src="" alt="עומר טייכר">
-      </div>
-      <div class="about-body">
-        <span class="section-eyebrow eyebrow-orange-deep">מי אני</span>
-        <h2 class="about-title" data-content="about.title">מגיל 16 אני מתקן מחשבים.</h2>
-        <p data-content="about.p1">אני בן 40 מראשון לציון. התחלתי להתעסק במחשבים עוד לפני שכולם ידעו מה זה אינטרנט.</p>
-        <p data-content="about.p2">בוגר בית הספר למקצועות המחשב בצה"ל ושירתתי ביחידת המחשבים של חיל האוויר.</p>
-        <p data-content="about.p3">מעל שני עשורים אני מלמד ומתקן מחשבים.</p>
-        <p data-content="about.p4">הקמתי את קבוצת הפייסבוק <strong>"תשאל טכנאי מחשבים"</strong>, אחת הקהילות הגדולות בישראל בתחום.</p>
-        <p data-content="about.p5">הסוד שלי פשוט. <strong>סבלנות אינסופית, בלי שיפוטיות, בשפה שלכם.</strong> לילדים שלכם אין סבלנות להסביר, אז מישהו צריך.</p>
-        <br>
-        <a href="https://interactive.omertai.net" class="btn btn-primary">
-          <span class="btn-arrow">לכל ההדרכות שלי <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
-        </a>
-        <div class="about-card">
-          <div class="about-card-quote" data-content="about.quote">עומר פתר לי תקלה שטכנאים אחרים לא הצליחו. הוא לא רק מקצוען, הוא גם בן אדם זהב.</div>
-          <div class="about-credentials">
-            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span data-content="about.cred1">בוגר יחידת המחשבים של חיל האוויר</span></div>
-            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span data-content="about.cred2">מעל 25 שנות ניסיון בהדרכה וטכנאות</span></div>
-            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span data-content="about.cred3">מייסד קהילת תשאל טכנאי מחשבים בפייסבוק</span></div>
-            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span data-content="about.cred4">מעל 50 הרצאות בפלטפורמת ביז</span></div>
-            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span data-content="about.cred5">תמיכה מרחוק</span></div>
-            <div class="credential"><div class="cred-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div><span data-content="about.cred6">ייעוץ אובייקטיבי, לא מוכר חומרה</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LECTURE -->
-<section class="lecture-section" id="lecture">
-  <div class="section-wrap">
-    <div class="section-header">
-      <span class="section-eyebrow eyebrow-orange-deep">ההרצאה הבאה</span>
-    </div>
-    <div class="lecture-box">
-      <div class="lecture-img-col">
-        <img id="img-lecture" src="" alt="מיומנו של טכנאי מחשבים, החשוד העיקרי">
-      </div>
-      <div class="lecture-content-col">
-        <div class="lecture-badge" data-content="lecture.badge">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          מיומנו של טכנאי מחשבים
-        </div>
-        <div class="lecture-title" data-content="lecture.title">החשוד העיקרי</div>
-        <div class="lecture-desc" data-content-multiline="lecture.desc"></div>
-        <div style="display:flex; gap:16px; margin:16px 0; flex-wrap:wrap;">
-          <div style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#ffffff; font-weight:500;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>שעתיים של חקירה חיה</div>
-          <div style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#ffffff; font-weight:500;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>מחשב אמיתי על המסך</div>
-          <div style="display:flex; align-items:center; gap:6px; font-size:0.85rem; color:#ffffff; font-weight:500;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>שאלות בשידור חי</div>
-        </div>
-        <div data-content="lecture.prize" style="background:var(--orange-light); border:1.5px solid var(--orange); border-radius:12px; padding:14px 18px; margin-bottom:20px; font-size:0.9rem; color:var(--orange-deep); font-weight:700;">🏆 הבלש החד ביותר זוכה בהדרכה אינטראקטיבית מתנה</div>
-        <div class="lecture-price">כרטיס: <strong data-content="lecture.price">חינמי</strong></div>
-        <a id="lecture-link" href="https://bizlive.co.il/event/?eventid=85989" target="_blank" rel="noopener" class="btn btn-primary btn-full">
-          <span class="btn-arrow">לשמירת מקום <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testi-section">
-  <div class="section-wrap">
-    <div class="section-header">
-      <h2 class="section-title">לקוחות מספרים</h2>
-    </div>
-    <div class="featured-quote-wrap">
-      <div class="featured-img-col">
-        <img id="img-remote" src="" alt="תמיכה מרחוק" style="width:100%;border-radius:12px;object-fit:contain;background:#0f2a3a;display:block;">
-      </div>
-      <div class="featured-text-col">
-        <div class="featured-quote-text" data-content="testimonials.featured_text">"בגלל שאני כל כך תמימה, מנצלים אותי. בגלל זה אני מאוד סומכת עליך. אלוהים שלח אותך."</div>
-        <div class="featured-quote-attr" data-content="testimonials.featured_attr">לקוחה קבועה</div>
-      </div>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-text" data-content="testimonials.cards.0.text">"עומר מקצוען ורהוט, מסביר עד שמבינים. לא גרם לי להרגיש טיפשה אפילו פעם אחת."</div>
-        <div class="testi-name" data-content="testimonials.cards.0.name">רותי, מעצבת פנים</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-text" data-content="testimonials.cards.1.text">"ממליץ בחום. פניתי עם מספר בעיות במחשב, טיפל בכל הנושאים במהירות, מקצועיות ויעילות."</div>
-        <div class="testi-name" data-content="testimonials.cards.1.name">יוסי, יועץ עסקי</div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">★★★★★</div>
-        <div class="testi-text" data-content="testimonials.cards.2.text">"השתתפתי בהרצאה הרביעית שלי אצל עומר. מסודר, מאורגן, ונותן טיפים פרקטיים שלא הכרתי."</div>
-        <div class="testi-name" data-content="testimonials.cards.2.name">מרים, גמלאית</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- BLOG -->
-<section class="blog-section" id="blog">
-  <div class="section-wrap">
-    <div class="section-header">
-      <span class="section-eyebrow eyebrow-orange-deep">הבלוג שלי</span>
-      <h2 class="section-title" data-content="blog.title">טיפים חינם</h2>
-      <div class="section-sub" data-content="blog.sub"></div>
-    </div>
-    <div class="blog-grid">
-      <a class="blog-card" href="#">
-        <div class="blog-tag" data-content="blog.cards.0.tag">אבטחה</div>
-        <div class="blog-title" data-content="blog.cards.0.title">עזרה ראשונה למחשב, 5 פעולות שיצילו לכם את המידע</div>
-        <div class="blog-excerpt" data-content="blog.cards.0.excerpt"></div>
-        <div class="blog-meta" data-content="blog.cards.0.meta">4 דקות קריאה, 3 בינואר</div>
-      </a>
-      <a class="blog-card" href="#">
-        <div class="blog-tag" data-content="blog.cards.1.tag">AI</div>
-        <div class="blog-title" data-content="blog.cards.1.title">ChatGPT לא נועד רק לצעירים, 3 דברים שאפשר לעשות איתו היום</div>
-        <div class="blog-excerpt" data-content="blog.cards.1.excerpt"></div>
-        <div class="blog-meta" data-content="blog.cards.1.meta">5 דקות קריאה, 28 דצמבר</div>
-      </a>
-      <a class="blog-card" href="#">
-        <div class="blog-tag" data-content="blog.cards.2.tag">טיפ מהיר</div>
-        <div class="blog-title" data-content="blog.cards.2.title">למה הסיסמה שלכם מסכנת אתכם, וכיצד לתקן את זה ב-5 דקות</div>
-        <div class="blog-excerpt" data-content="blog.cards.2.excerpt"></div>
-        <div class="blog-meta" data-content="blog.cards.2.meta">3 דקות קריאה, 21 דצמבר</div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <a class="footer-logo" href="#">עומר <span>טייכר</span></a>
-  <div class="footer-copy">© 2026 כל הזכויות שמורות</div>
-  <div class="footer-links">
-    <a href="#">מדיניות פרטיות</a>
-    <a href="#">תנאי שימוש</a>
-    <a href="#">צור קשר</a>
-  </div>
-</footer>
-
-<script>
-  if (window.location.hash) { history.replaceState(null, '', window.location.pathname); window.scrollTo(0, 0); }
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
-  });
-  function closeMenu() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow = '';
+  function applyScale(s) {
+    scale = Math.min(1.5, Math.max(0.8, parseFloat(s.toFixed(1))));
+    document.documentElement.style.fontSize = (scale * 16) + 'px';
+    localStorage.setItem(SCALE_KEY, scale);
   }
-</script>
 
-<script>
-(function() {
-  fetch('content.json?v=' + Date.now())
-    .then(r => r.json())
-    .then(c => {
-      function get(path) {
-        return path.split('.').reduce((obj, key) => {
-          if (obj === undefined || obj === null) return '';
-          return isNaN(key) ? obj[key] : obj[parseInt(key)];
-        }, c) || '';
+  applyScale(scale);
+
+  document.getElementById('a11y-up').addEventListener('click', () => applyScale(scale + 0.1));
+  document.getElementById('a11y-down').addEventListener('click', () => applyScale(scale - 0.1));
+  document.getElementById('a11y-reset').addEventListener('click', () => applyScale(1));
+
+  // כשהתפריט פתוח — הטולבר יורד מתחת לתפריט
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) {
+    const observer = new MutationObserver(() => {
+      if (mobileMenu.classList.contains('open')) {
+        const menuBottom = mobileMenu.getBoundingClientRect().bottom;
+        bar.style.top = menuBottom + 'px';
+        bar.style.bottom = 'auto';
+      } else {
+        bar.style.top = '68px';
+        bar.style.bottom = 'auto';
       }
-      document.querySelectorAll('[data-content]').forEach(el => {
-        const val = get(el.dataset.content);
-        if (val.includes('\n')) {
-          el.innerHTML = val.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
-        } else {
-          el.textContent = val;
-        }
-      });
-      document.querySelectorAll('[data-content-multiline]').forEach(el => {
-        const text = get(el.dataset.contentMultiline);
-        el.innerHTML = text.split('\n').map(line => `<p>${line}</p>`).join('');
-      });
-      // שדות רגילים עם שבירת שורות
-      document.querySelectorAll('[data-content-br]').forEach(el => {
-        const text = get(el.dataset.contentBr);
-        el.innerHTML = text.replace(/\n/g, '<br>');
-      });
-      // תגים דינמיים
-      if (c.hero && c.hero.tags && Array.isArray(c.hero.tags)) {
-        const tagsEl = document.getElementById('hero-tags');
-        if (tagsEl) tagsEl.innerHTML = c.hero.tags.map(t => `<span class="tag">${t}</span>`).join('');
-      }
-      const lectureLink = document.getElementById('lecture-link');
-      if (lectureLink) lectureLink.href = get('lecture.url');
-      // תמונות מ-R2
-      const imgs = c.images || {};
-      const imgMap = { hero: 'img-hero', about: 'img-about', lecture: 'img-lecture', remote: 'img-remote' };
-      Object.entries(imgMap).forEach(([key, id]) => {
-        const el = document.getElementById(id);
-        if (el && imgs[key]) el.src = imgs[key];
-      });
-    })
-    .catch(() => {});
+    });
+    observer.observe(mobileMenu, { attributes: true, attributeFilter: ['class'] });
+  }
 })();
-</script>
-
-<script src="assets/js/toolbar.js"></script>
-<script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
-
-</body>
-</html>
