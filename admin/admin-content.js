@@ -429,23 +429,24 @@ async function uploadToCloudinary(input) {
   btn.disabled = true;
   btn.textContent = 'מעלה...';
   try {
-    const fd = new FormData();
-    fd.append('file', file);
-    fd.append('upload_preset', CLOUDINARY_PRESET);
-    const resourceType = file.type.startsWith('video') ? 'video' : 'image';
-    const res = await fetch(`https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD}/${resourceType}/upload`, {
-      method: 'POST', body: fd
+    const slug = getPostSlug();
+    const ext = file.name.split('.').pop().toLowerCase();
+    const key = (slug || Date.now()) + '_hero.' + ext;
+    const res = await fetch(`${WORKER_URL}/${key}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': file.type },
+      body: file
     });
     const data = await res.json();
-    if (data.secure_url) {
-      document.getElementById('bf-image').value = data.secure_url;
+    if (data.url) {
+      document.getElementById('bf-image').value = data.url;
       const preview = document.getElementById('bf-image-preview');
       preview.style.display = 'block';
-      preview.querySelector('img').src = data.secure_url;
+      preview.querySelector('img').src = data.url;
       status.style.color = 'var(--green)';
       status.textContent = '✓ הועלה בהצלחה';
     } else {
-      throw new Error(data.error?.message || 'שגיאה לא ידועה');
+      throw new Error(data.error || 'שגיאה לא ידועה');
     }
   } catch(e) {
     status.style.color = 'var(--red)';
