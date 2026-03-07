@@ -777,6 +777,8 @@ function filterGallery(cat) {
   renderGallery();
 }
 
+let selectedGalleryItems = new Set();
+
 function renderGallery() {
   const grid = document.getElementById('gallery-grid');
   const empty = document.getElementById('gallery-empty');
@@ -789,6 +791,7 @@ function renderGallery() {
   if (!filtered.length) {
     grid.style.display = 'none';
     if (empty) empty.style.display = 'block';
+    updateMultiDeleteBtn();
     return;
   }
 
@@ -797,22 +800,67 @@ function renderGallery() {
 
   grid.innerHTML = filtered.map((item) => {
     const realIndex = galleryItems.indexOf(item);
+    const isSelected = selectedGalleryItems.has(realIndex);
     return `
-    <div style="position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#f5f5f5;aspect-ratio:1;" id="gitem-${realIndex}">
+    <div onclick="toggleGallerySelect(${realIndex}, event)" style="position:relative;border-radius:12px;overflow:hidden;border:${isSelected ? '3px solid var(--orange-deep)' : '1px solid var(--border)'};background:#f5f5f5;aspect-ratio:1;cursor:pointer;" id="gitem-${realIndex}">
       ${item.type === 'video'
         ? `<video src="${item.url}" style="width:100%;height:100%;object-fit:cover;" muted preload="metadata"></video>
            <div style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.6);color:#fff;font-size:0.6rem;padding:2px 6px;border-radius:6px;font-weight:700;">וידאו</div>`
         : `<img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="${item.name}">`
       }
+      ${isSelected ? `<div style="position:absolute;top:6px;right:6px;background:var(--orange-deep);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;">✓</div>` : ''}
       <div style="position:absolute;top:6px;left:6px;background:var(--orange-deep);color:#fff;font-size:0.58rem;padding:2px 7px;border-radius:50px;font-weight:700;">${item.category || ''}</div>
       <div style="position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;flex-direction:column;justify-content:flex-end;padding:8px;gap:4px;opacity:0;transition:all 0.2s;"
            onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
            onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
-        <button onclick="copyGalleryUrl('${item.url}')" style="background:var(--orange-deep);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
-        <button onclick="deleteGalleryItem(${realIndex})" style="background:rgba(220,38,38,0.85);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">🗑️ מחק</button>
+        <button onclick="event.stopPropagation();copyGalleryUrl('${item.url}')" style="background:var(--orange-deep);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
+        <button onclick="event.stopPropagation();deleteGalleryItem(${realIndex})" style="background:rgba(220,38,38,0.85);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">🗑️ מחק</button>
       </div>
     </div>`;
   }).join('');
+
+  updateMultiDeleteBtn();
+}
+
+function toggleGallerySelect(index, e) {
+  if (e.target.tagName === 'BUTTON') return;
+  if (selectedGalleryItems.has(index)) {
+    selectedGalleryItems.delete(index);
+  } else {
+    selectedGalleryItems.add(index);
+  }
+  renderGallery();
+}
+
+function updateMultiDeleteBtn() {
+  let btn = document.getElementById('gallery-multi-delete');
+  if (!btn) return;
+  if (selectedGalleryItems.size > 0) {
+    btn.style.display = 'inline-flex';
+    btn.textContent = `🗑️ מחק ${selectedGalleryItems.size} נבחרים`;
+  } else {
+    btn.style.display = 'none';
+  }
+}
+
+async function deleteSelectedGalleryItems() {
+  if (!selectedGalleryItems.size) return;
+  if (!confirm(`למחוק ${selectedGalleryItems.size} קבצים לצמיתות?`)) return;
+
+  const indices = Array.from(selectedGalleryItems).sort((a, b) => b - a);
+  for (const index of indices) {
+    const item = galleryItems[index];
+    try {
+      const key = item.url.replace('https://media.omertai.net/', '');
+      await fetch(`${WORKER_URL}/${key}`, { method: 'DELETE' });
+    } catch(e) { console.error(e); }
+    galleryItems.splice(index, 1);
+  }
+
+  selectedGalleryItems.clear();
+  renderGallery();
+  setStatus('gallery', 'loading', 'שומר...');
+  await autoSaveGallery();
 }
 
 function triggerGalleryUpload() {
