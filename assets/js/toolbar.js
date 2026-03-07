@@ -5,9 +5,10 @@
     .a11y-bar {
       position: fixed;
       top: 68px;
-      left: 10px;
-      right: 10px;
-      width: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: calc(100vw - 40px);
       z-index: 9998;
       background: rgba(26,74,107,0.97);
       backdrop-filter: blur(12px);
@@ -79,7 +80,9 @@
   let scale = parseFloat(localStorage.getItem(SCALE_KEY)) || 1;
 
   function applyScale(s) {
-    scale = Math.min(1.5, Math.max(0.8, parseFloat(s.toFixed(1))));
+    const isMobile = window.innerWidth < 960;
+    const maxScale = isMobile ? 1.2 : 1.5;
+    scale = Math.min(maxScale, Math.max(0.8, parseFloat(s.toFixed(1))));
     document.documentElement.style.fontSize = (scale * 16) + 'px';
     localStorage.setItem(SCALE_KEY, scale);
   }
