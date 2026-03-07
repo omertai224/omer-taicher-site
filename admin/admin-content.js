@@ -516,7 +516,7 @@ async function blogSavePost() {
       throw new Error(result.message || 'שגיאה לא ידועה');
     }
   } catch(e) {
-    alert.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + e.message + '</div>';
+    alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + e.message + '</div>';
     setStatus('content', 'error', 'שגיאה: ' + e.message);
     btn.disabled = false;
     btn.textContent = blogEditingId ? 'שמור שינויים' : 'פרסם';
