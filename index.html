@@ -220,6 +220,7 @@
         </div>
 
         <div class="lecture-price">כרטיס: <strong data-content="lecture.price">חינמי</strong></div>
+        <div id="lecture-prize" style="display:none; background:var(--orange-light); border:1.5px solid var(--orange); border-radius:12px; padding:14px 18px; margin-bottom:20px; font-size:0.9rem; color:var(--orange-deep); font-weight:700;"></div>
         <a id="lecture-link" href="https://bizlive.co.il/event/?eventid=85989" target="_blank" rel="noopener" class="btn btn-primary btn-full">
           <span class="btn-arrow">לשמירת מקום <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
         </a>
@@ -358,6 +359,16 @@
       }
       const lectureLink = document.getElementById('lecture-link');
       if (lectureLink) lectureLink.href = get('lecture.url');
+      const prizeEl = document.getElementById('lecture-prize');
+      if (prizeEl) {
+        const prizeText = get('lecture.prize');
+        if (prizeText && prizeText.trim() !== '') {
+          prizeEl.textContent = prizeText;
+          prizeEl.style.display = 'block';
+        } else {
+          prizeEl.style.display = 'none';
+        }
+      }
       // תמונות מ-R2
       const imgs = c.images || {};
       const imgMap = { hero: 'img-hero', about: 'img-about', lecture: 'img-lecture', remote: 'img-remote' };
