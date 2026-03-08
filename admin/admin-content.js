@@ -1228,6 +1228,7 @@ async function loadGalleryManager() {
   try {
     // טעינת קטגוריות מ-gallery.json
     let categories = {};
+    let order = [];
     try {
       const data = await ghGet('gallery.json');
       gallerySha = data.sha;
@@ -1238,7 +1239,6 @@ async function loadGalleryManager() {
       gallerySha = null;
     }
     // קבצים מה-Worker בלבד
-    let order = [];
     const res = await fetch(WORKER_URL);
     if (res.ok) {
       const workerData = await res.json();
@@ -1495,13 +1495,11 @@ async function uploadGalleryFiles(input) {
 
 async function autoSaveGallery() {
   try {
-    // רענן SHA לפני שמירה
-    if (!gallerySha) {
-      try {
-        const fresh = await ghGet('gallery.json');
-        gallerySha = fresh.sha;
-      } catch(e) { gallerySha = null; }
-    }
+    // תמיד רענן SHA לפני שמירה
+    try {
+      const fresh = await ghGet('gallery.json');
+      gallerySha = fresh.sha;
+    } catch(e) { gallerySha = null; }
     const categories = {};
     const order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
     galleryItems.forEach(item => {
