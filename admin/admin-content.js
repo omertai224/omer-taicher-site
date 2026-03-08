@@ -213,6 +213,9 @@ function filterBlogList(query) {
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
           <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
           <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
+          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
+          <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
+          ${sched ? `<button onclick="blogCancelSchedule('${p.id}')" style="background:#fff3cd;color:#856404;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">בטל תזמון</button>` : ''}
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`;
@@ -243,7 +246,10 @@ function renderBlogList() {
           <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
           <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
-        </div>
+          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
+          <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
+          ${sched ? `<button onclick="blogCancelSchedule('${p.id}')" style="background:#fff3cd;color:#856404;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">בטל תזמון</button>` : ''}
+          <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
       </div>`;
     }).join('');
 
@@ -848,6 +854,27 @@ async function blogSendWhatsapp(postId) {
   }
 }
 
+
+async function blogCancelSchedule(postId) {
+  if (!confirm('לבטל את התזמון לפוסט זה?')) return;
+  try {
+    setStatus('content', 'loading', 'מבטל תזמון...');
+    const data = await ghGet('scheduled.json');
+    const scheduledSha = data.sha;
+    let scheduled = JSON.parse(decode(data.content));
+    scheduled = scheduled.filter(s => !(s.postId === postId && !s.sent));
+    const result = await ghPut('scheduled.json', JSON.stringify(scheduled, null, 2), scheduledSha, 'ביטול תזמון: ' + postId);
+    if (result.content) {
+      blogScheduled = scheduled.filter(s => !s.sent);
+      setStatus('content', 'ok', '✓ התזמון בוטל');
+      renderBlogList();
+    } else {
+      setStatus('content', 'error', 'שגיאה: ' + (result.message || ''));
+    }
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+  }
+}
 
 async function blogScheduleWhatsapp(postId) {
   const post = blogPosts.find(p => p.id === postId);
