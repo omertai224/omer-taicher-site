@@ -455,5 +455,36 @@
 
 <script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
 
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;right:0;left:0;z-index:9999;padding:16px 24px;background:#fff;border-top:1px solid var(--border);box-shadow:0 -4px 24px rgba(26,74,107,0.10);direction:rtl;animation:slideUp 0.3s ease;">
+  <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <p style="flex:1;font-size:0.85rem;color:var(--text-mid);line-height:1.6;min-width:220px;">
+      האתר משתמש בעוגיות לשיפור חווית הגלישה.
+      <a href="/pages/legal/privacy.html" style="color:var(--navy);font-weight:700;text-decoration:underline;">מדיניות פרטיות</a>
+    </p>
+    <div style="display:flex;gap:10px;flex-shrink:0;">
+      <button onclick="setCookieConsent(false)" style="padding:9px 20px;border-radius:50px;border:1.5px solid var(--border);background:#fff;color:var(--text-mid);font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;">דחייה</button>
+      <button onclick="setCookieConsent(true)" style="padding:9px 20px;border-radius:50px;border:none;background:var(--navy);color:#fff;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;">אישור</button>
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes slideUp { from { transform:translateY(100%); opacity:0; } to { transform:translateY(0); opacity:1; } }
+</style>
+
+<script>
+(function() {
+  const consent = localStorage.getItem('cookie_consent');
+  if (consent === null) {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+})();
+
+function setCookieConsent(accepted) {
+  localStorage.setItem('cookie_consent', accepted ? 'accepted' : 'declined');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+</script>
+
 </body>
 </html>
