@@ -618,12 +618,12 @@ function showBlogForm(post) {
       </div>
       <div class="field" style="margin-bottom:12px">
         <label class="field-label">כותרת SEO (לשונית + שיתוף)</label>
-        <input id="bf-seo-title" type="text" value="${post.seo_title || ''}" oninput="this.dataset.edited='1';document.getElementById('bf-seo-title-count').textContent=this.value.length+' תווים'" placeholder="כותרת | עומר טייכר" style="direction:rtl">
+        <input id="bf-seo-title" type="text" value="${post.seo_title || ''}" oninput="this.dataset.edited='1';this.dataset.cleared=this.value===''?'1':'';document.getElementById('bf-seo-title-count').textContent=this.value.length+' תווים'" placeholder="כותרת | עומר טייכר" style="direction:rtl">
         <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-title-count">${(post.seo_title||'').length} תווים</div>
       </div>
       <div class="field" style="margin-bottom:12px">
         <label class="field-label">תיאור SEO (גוגל + שיתוף)</label>
-        <textarea id="bf-seo-desc" rows="2" oninput="this.dataset.edited='1';document.getElementById('bf-seo-desc-count').textContent=this.value.length+' / 155 תווים'" placeholder="תיאור קצר עד 155 תווים" style="direction:rtl;resize:vertical">${post.seo_desc || ''}</textarea>
+        <textarea id="bf-seo-desc" rows="2" oninput="this.dataset.edited='1';this.dataset.cleared=this.value===''?'1':'';document.getElementById('bf-seo-desc-count').textContent=this.value.length+' / 155 תווים'" placeholder="תיאור קצר עד 155 תווים" style="direction:rtl;resize:vertical">${post.seo_desc || ''}</textarea>
         <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-desc-count">${(post.seo_desc||'').length} / 155 תווים</div>
       </div>
       <div class="field">
@@ -632,7 +632,7 @@ function showBlogForm(post) {
       </div>
       <div class="field" style="margin-top:12px">
         <label class="field-label">URL Slug (אנגלית בלבד)</label>
-        <input id="bf-id" type="text" value="${titleToSlug(post.id || '')}" placeholder="post-url-slug" style="direction:ltr;text-align:left" oninput="this.value=this.value.replace(/[^a-zA-Z0-9\\-]/g,'').toLowerCase()">
+        <input id="bf-id" type="text" value="${titleToSlug(post.id || '')}" placeholder="post-url-slug" style="direction:ltr;text-align:left" oninput="this.value=this.value.replace(/[^a-zA-Z0-9\\-]/g,'').toLowerCase();this.dataset.cleared=this.value===''?'1':''">
         <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px">משמש גם כשם קובץ התמונה</div>
       </div>
     </div>
@@ -762,7 +762,7 @@ function blogAutoSlug() {
   const title = document.getElementById('bf-title')?.innerHTML || '';
   const slug = titleToSlug(title);
   const idField = document.getElementById('bf-id');
-  if (idField && !blogEditingId) idField.value = slug;
+  if (idField && !blogEditingId && !idField.value.trim() && idField.dataset.cleared !== '1') idField.value = slug;
   const preview = document.getElementById('bf-slug-preview');
   if (preview) preview.textContent = slug ? 'post.html?id=' + slug : '';
 }
@@ -772,8 +772,8 @@ function blogAutoSeo() {
   const excerpt = document.getElementById('bf-excerpt')?.innerHTML || '';
   const seoTitle = document.getElementById('bf-seo-title');
   const seoDesc = document.getElementById('bf-seo-desc');
-  if (seoTitle && !seoTitle.dataset.edited) seoTitle.value = title ? title + ' | עומר טייכר' : '';
-  if (seoDesc && !seoDesc.dataset.edited) seoDesc.value = excerpt;
+  if (seoTitle && !seoTitle.dataset.edited && seoTitle.dataset.cleared !== '1') seoTitle.value = title ? title + ' | עומר טייכר' : '';
+  if (seoDesc && !seoDesc.dataset.edited && seoDesc.dataset.cleared !== '1') seoDesc.value = excerpt;
 }
 
 function titleToSlug(title) {
