@@ -160,13 +160,26 @@ async function loadBlogManager() {
 }
 
 
+let blogImageFilter = 'all'; // 'all' | 'with' | 'without'
+
+function setBlogImageFilter(val) {
+  blogImageFilter = val;
+  document.querySelectorAll('.blog-img-filter').forEach(btn => {
+    btn.style.background = btn.dataset.val === val ? 'var(--navy)' : 'transparent';
+    btn.style.color = btn.dataset.val === val ? '#fff' : 'var(--text-mid)';
+  });
+  filterBlogList(document.querySelector('#blog-manager input[type=text]')?.value || '');
+}
+
 function filterBlogList(query) {
   const q = query.trim().toLowerCase();
   const items = document.getElementById('blog-list-items');
   if (!items) return;
-  const filtered = q
+  let filtered = q
     ? blogPosts.filter(p => (p.title || '').toLowerCase().includes(q) || (p.id || '').toLowerCase().includes(q))
     : blogPosts;
+  if (blogImageFilter === 'with') filtered = filtered.filter(p => p.image);
+  if (blogImageFilter === 'without') filtered = filtered.filter(p => !p.image);
   const counter = document.getElementById('blog-search-count');
   if (counter) counter.textContent = filtered.length + ' פוסטים';
   items.innerHTML = filtered.length === 0
@@ -218,7 +231,14 @@ function renderBlogList() {
       >
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-      <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
+        <div style="display:flex;gap:3px;border:1px solid var(--border);border-radius:20px;overflow:hidden;padding:2px;">
+          <button class="blog-img-filter" data-val="all" onclick="setBlogImageFilter('all')" style="background:var(--navy);color:#fff;border:none;padding:4px 10px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;border-radius:16px;">הכל</button>
+          <button class="blog-img-filter" data-val="with" onclick="setBlogImageFilter('with')" style="background:transparent;color:var(--text-mid);border:none;padding:4px 10px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;border-radius:16px;">עם תמונה (${blogPosts.filter(p=>p.image).length})</button>
+          <button class="blog-img-filter" data-val="without" onclick="setBlogImageFilter('without')" style="background:transparent;color:var(--text-mid);border:none;padding:4px 10px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;border-radius:16px;">בלי תמונה (${blogPosts.filter(p=>!p.image).length})</button>
+        </div>
+      </div>
       <div style="display:flex;gap:8px">
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyFormat()">העתק פורמט</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
