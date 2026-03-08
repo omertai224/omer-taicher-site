@@ -728,9 +728,9 @@ async function blogSavePost() {
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
   const id      = blogEditingId || titleToSlug(title);
-  const seoTitle = (document.getElementById('bf-seo-title')?.value.trim() || title + ' | עומר טייכר');
-  const seoDesc  = (document.getElementById('bf-seo-desc')?.value.trim() || excerpt);
-  const imageAlt = (document.getElementById('bf-image-alt')?.value.trim() || title);
+  const seoTitle = document.getElementById('bf-seo-title')?.value.trim() ?? '';
+  const seoDesc  = document.getElementById('bf-seo-desc')?.value.trim() ?? '';
+  const imageAlt = document.getElementById('bf-image-alt')?.value.trim() ?? '';
 
   if (!title)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
   if (!excerpt) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תקציר הוא שדה חובה</div>'; return; }
