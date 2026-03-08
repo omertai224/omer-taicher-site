@@ -804,7 +804,8 @@ async function blogSavePost() {
   const body    = document.getElementById('bf-body')?.innerHTML.trim();
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
-  const id      = document.getElementById('bf-id')?.value.trim() || blogEditingId || titleToSlug(title);
+  const idFieldVal = document.getElementById('bf-id')?.value.trim();
+  const id = idFieldVal !== undefined ? (idFieldVal || '') : (blogEditingId || titleToSlug(title));
   const seoTitle = document.getElementById('bf-seo-title')?.value.trim() ?? '';
   const seoDesc  = document.getElementById('bf-seo-desc')?.value.trim() ?? '';
   const imageAlt = document.getElementById('bf-image-alt')?.value.trim() ?? '';
