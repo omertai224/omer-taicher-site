@@ -938,47 +938,41 @@ let gallerySha = null;
 async function loadGalleryManager() {
   setStatus('gallery', 'loading', 'טוען...');
   try {
-    // טעינת gallery.json לקבלת SHA ומידע קטגוריות
+    // טעינת קטגוריות מ-gallery.json
+    let categories = {};
     try {
       const data = await ghGet('gallery.json');
       gallerySha = data.sha;
       const saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
-      galleryItems = saved.items || [];
+      categories = saved.categories || {};
     } catch(e) {
       gallerySha = null;
-      galleryItems = [];
     }
-    // סנכרון מה-Worker — הוא מקור האמת
+    // קבצים מה-Worker בלבד
     const res = await fetch(WORKER_URL);
     if (res.ok) {
       const workerData = await res.json();
       const workerItems = workerData.items || [];
-      // מיזוג: שמור קטגוריות מ-gallery.json, הוסף קבצים חדשים מה-Worker
-      const existingKeys = new Set(galleryItems.map(i => i.key || i.url.split('/').pop()));
-      for (const wi of workerItems) {
-        const key = wi.key;
-        if (!existingKeys.has(key)) {
-          const resourceType = /\.(mp4|mov|webm|avi)$/i.test(key) ? 'video' : 'image';
-          galleryItems.unshift({
-            url: wi.url,
-            type: resourceType,
-            name: key,
-            key: key,
-            category: 'כללי',
-            date: wi.uploaded || new Date().toISOString()
-          });
-        }
-      }
-      // שמור בחזרה אם היו שינויים
-      if (workerItems.length > 0) {
-        await autoSaveGallery();
-      }
+      galleryItems = workerItems.map(wi => {
+        const resourceType = /\.(mp4|mov|webm|avi)$/i.test(wi.key) ? 'video' : 'image';
+        return {
+          url: wi.url,
+          type: resourceType,
+          name: wi.key,
+          key: wi.key,
+          category: categories[wi.key] || 'כללי',
+          date: wi.uploaded || ''
+        };
+      });
+    } else {
+      galleryItems = [];
     }
     renderGallery();
     setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
   } catch(e) {
+    galleryItems = [];
     renderGallery();
-    setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
+    setStatus('gallery', 'error', 'שגיאה בטעינה');
   }
 }
 
@@ -1188,11 +1182,17 @@ async function uploadGalleryFiles(input) {
 
 async function autoSaveGallery() {
   try {
-    const json = JSON.stringify({ items: galleryItems }, null, 2);
-    const result = await ghPut('gallery.json', json, gallerySha, 'עדכון גלריה');
+    const categories = {};
+    galleryItems.forEach(item => {
+      if (item.key && item.category && item.category !== 'כללי') {
+        categories[item.key] = item.category;
+      }
+    });
+    const json = JSON.stringify({ categories }, null, 2);
+    const result = await ghPut('gallery.json', json, gallerySha, 'עדכון קטגוריות גלריה');
     if (result.content) {
       gallerySha = result.content.sha;
-      setStatus('gallery', 'ok', '✓ נשמר — ' + galleryItems.length + ' פריטים');
+      setStatus('gallery', 'ok', '✓ נשמר');
     } else {
       setStatus('gallery', 'error', 'שגיאה בשמירה: ' + (result.message || ''));
     }
