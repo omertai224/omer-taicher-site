@@ -200,6 +200,7 @@ function filterBlogList(query) {
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://omer-taicher-blog.vercel.app/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
+          <button onclick="blogPasteDesignById('${p.id}')" style="background:var(--cream);color:var(--navy);border:1px solid var(--navy);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק עיצוב</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`).join('');
@@ -222,6 +223,7 @@ function renderBlogList() {
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://omer-taicher-blog.vercel.app/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
+          <button onclick="blogPasteDesignById('${p.id}')" style="background:var(--cream);color:var(--navy);border:1px solid var(--navy);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק עיצוב</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`).join('');
@@ -278,6 +280,36 @@ function postToJSON(post) {
 }
 
 // העתק מתוך טופס עריכה
+function blogPasteDesignById(postId) {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  overlay.innerHTML = `
+    <div style="background:#fff;border-radius:16px;padding:28px;width:90%;max-width:600px;direction:rtl;">
+      <div style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:4px">הדבק HTML מעוצב</div>
+      <div style="font-size:0.78rem;color:var(--text-light);margin-bottom:12px">הפוסט יישמר אוטומטית אחרי ההחלה</div>
+      <textarea id="paste-design-input" placeholder="הדבק כאן את ה-HTML שקיבלת..." style="width:100%;height:220px;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:0.85rem;font-family:monospace;resize:vertical;box-sizing:border-box;direction:ltr;"></textarea>
+      <div style="display:flex;gap:10px;margin-top:14px;justify-content:flex-end;">
+        <button onclick="this.closest('div[style*=fixed]').remove()" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">ביטול</button>
+        <button onclick="applyDesignById('${postId}', this)" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">החל ושמור</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  setTimeout(() => document.getElementById('paste-design-input')?.focus(), 50);
+}
+
+async function applyDesignById(postId, btn) {
+  const html = document.getElementById('paste-design-input')?.value.trim();
+  if (!html) return;
+  const idx = blogPosts.findIndex(p => p.id === postId);
+  if (idx === -1) return;
+  blogPosts[idx].body = html;
+  btn.textContent = 'שומר...';
+  btn.disabled = true;
+  await saveBlogPosts();
+  btn.closest('div[style*="fixed"]').remove();
+  setStatus('content', 'ok', 'עיצוב הוחל ונשמר');
+}
+
 function blogPasteDesign() {
   const overlay = document.createElement('div');
   overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;';
