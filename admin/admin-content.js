@@ -988,6 +988,7 @@ async function loadGalleryManager() {
       galleryItems = [];
     }
     renderGallery();
+    updateGalleryFilterCounts();
     setStatus('gallery', 'ok', galleryItems.length + ' פריטים');
   } catch(e) {
     galleryItems = [];
@@ -1002,6 +1003,17 @@ function filterGallery(cat) {
     btn.classList.toggle('gallery-filter-active', btn.dataset.cat === cat);
   });
   renderGallery();
+}
+
+function updateGalleryFilterCounts() {
+  document.querySelectorAll('.gallery-filter-btn').forEach(btn => {
+    const cat = btn.dataset.cat;
+    const count = cat === 'הכל' ? galleryItems.length : galleryItems.filter(i => i.category === cat).length;
+    // שמור את הטקסט המקורי בלי ספירה
+    const baseText = btn.dataset.label || btn.textContent.replace(/\s*\(\d+\)$/, '').trim();
+    btn.dataset.label = baseText;
+    btn.textContent = `${baseText} (${count})`;
+  });
 }
 
 let selectedGalleryItems = new Set();
