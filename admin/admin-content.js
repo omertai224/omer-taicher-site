@@ -133,6 +133,7 @@ function copyAll() {
 let blogPosts = [];
 let blogSha = null;
 let blogEditingId = null; // null = פוסט חדש, string = עריכה
+let blogScheduled = []; // תזמונים פעילים
 
 async function loadBlogManager() {
   setStatus('content', 'loading', 'טוען פוסטים...');
@@ -143,6 +144,12 @@ async function loadBlogManager() {
     blogSha = data.sha;
     const parsed = JSON.parse(decode(data.content));
     blogPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    // טעינת תזמונים
+    try {
+      const sched = await ghGet('scheduled.json');
+      blogScheduled = JSON.parse(decode(sched.content)).filter(s => !s.sent);
+    } catch(e) { blogScheduled = []; }
 
     // שחזור מצב עריכה אחרי רענון
     const savedId = localStorage.getItem('blog_editing_id');
@@ -189,21 +196,27 @@ function filterBlogList(query) {
   if (counter) counter.textContent = filtered.length + ' פוסטים';
   items.innerHTML = filtered.length === 0
     ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">לא נמצאו פוסטים</div>`
-    : filtered.map(p => `
+    : filtered.map(p => {
+      const sched = blogScheduled.find(s => s.postId === p.id);
+      const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${sched.sendAt.replace('T',' ').slice(0,16)}</div>` : '';
+      return `
       <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;">
         ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
         <div style="flex:1;min-width:0">
           <div style="font-size:0.92rem;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div>
           <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${q && !(p.title||"").toLowerCase().includes(q) && !(p.id||"").toLowerCase().includes(q) && !(p.excerpt||"").toLowerCase().includes(q) ? ' · <span style="color:#f6a67e;font-weight:700">נמצא בתוכן</span>' : ""}</div>
+          ${schedTag}
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0">
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://blog.omertai.net/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
-          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח</button>
+          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
+          <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
 }
 
 function renderBlogList() {
@@ -212,21 +225,27 @@ function renderBlogList() {
 
   const listHTML = blogPosts.length === 0
     ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">אין פוסטים עדיין</div>`
-    : blogPosts.map(p => `
+    : blogPosts.map(p => {
+      const sched = blogScheduled.find(s => s.postId === p.id);
+      const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${sched.sendAt.replace('T',' ').slice(0,16)}</div>` : '';
+      return `
       <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;">
         ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
         <div style="flex:1;min-width:0">
           <div style="font-size:0.92rem;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div>
           <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}</div>
+          ${schedTag}
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0">
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://blog.omertai.net/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
-          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח</button>
+          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
+          <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
-      </div>`).join('');
+      </div>`;
+    }).join('');
 
   container.innerHTML = `
     <div style="margin-bottom:14px">
@@ -827,6 +846,76 @@ async function blogSendWhatsapp(postId) {
   } catch(e) {
     setStatus('content', 'error', 'שגיאה בשליחה: ' + e.message);
   }
+}
+
+
+async function blogScheduleWhatsapp(postId) {
+  const post = blogPosts.find(p => p.id === postId);
+  if (!post) return;
+
+  // overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'schedule-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:10000;display:flex;align-items:center;justify-content:center';
+
+  const now = new Date();
+  const tomorrow = new Date(now.getTime() + 24*60*60*1000);
+  const defaultDate = tomorrow.toISOString().slice(0,10);
+
+  overlay.innerHTML = `
+    <div style="background:#fff;border-radius:16px;padding:28px;width:320px;direction:rtl;font-family:Rubik,sans-serif">
+      <div style="font-size:1rem;font-weight:700;color:#1a4a6b;margin-bottom:4px">תזמון הודעה לוואטסאפ</div>
+      <div style="font-size:0.82rem;color:#888;margin-bottom:20px">${post.title.replace(/<[^>]+>/g,'')}</div>
+      <label style="font-size:0.82rem;font-weight:600;color:#555;display:block;margin-bottom:6px">תאריך</label>
+      <input id="schedule-date" type="date" value="${defaultDate}" style="width:100%;padding:8px 12px;border:1px solid #e0d6cc;border-radius:8px;font-size:0.9rem;margin-bottom:14px;box-sizing:border-box;font-family:inherit">
+      <label style="font-size:0.82rem;font-weight:600;color:#555;display:block;margin-bottom:6px">שעה</label>
+      <input id="schedule-time" type="time" value="08:00" style="width:100%;padding:8px 12px;border:1px solid #e0d6cc;border-radius:8px;font-size:0.9rem;margin-bottom:20px;box-sizing:border-box;font-family:inherit">
+      <div style="display:flex;gap:10px">
+        <button id="schedule-confirm" style="flex:1;background:#128c7e;color:#fff;border:none;padding:10px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
+        <button id="schedule-cancel" style="flex:1;background:#f5ede0;color:#555;border:none;padding:10px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">ביטול</button>
+      </div>
+      <div id="schedule-status" style="margin-top:12px;font-size:0.82rem;text-align:center;color:#888"></div>
+    </div>`;
+
+  document.body.appendChild(overlay);
+  document.getElementById('schedule-cancel').onclick = () => overlay.remove();
+
+  document.getElementById('schedule-confirm').onclick = async () => {
+    const date = document.getElementById('schedule-date').value;
+    const time = document.getElementById('schedule-time').value;
+    if (!date || !time) return;
+
+    const sendAt = date + 'T' + time + ':00';
+    const statusEl = document.getElementById('schedule-status');
+    statusEl.textContent = 'שומר...';
+
+    try {
+      // טוען scheduled.json קיים
+      let scheduled = [];
+      let scheduledSha = null;
+      try {
+        const data = await ghGet('scheduled.json');
+        scheduledSha = data.sha;
+        scheduled = JSON.parse(decode(data.content));
+      } catch(e) { scheduledSha = null; }
+
+      // מוסיף רשומה
+      scheduled.push({ postId, sendAt, sent: false, addedAt: new Date().toISOString() });
+
+      const result = await ghPut('scheduled.json', JSON.stringify(scheduled, null, 2), scheduledSha, 'תזמון פוסט: ' + postId);
+      if (result.content) {
+        statusEl.style.color = '#128c7e';
+        statusEl.textContent = '✓ מתוזמן ל-' + time + ' בתאריך ' + date;
+        setTimeout(() => overlay.remove(), 1500);
+      } else {
+        statusEl.style.color = '#c0392b';
+        statusEl.textContent = 'שגיאה: ' + (result.message || '');
+      }
+    } catch(e) {
+      statusEl.style.color = '#c0392b';
+      statusEl.textContent = 'שגיאה: ' + e.message;
+    }
+  };
 }
 
 
