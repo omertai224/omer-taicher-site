@@ -238,16 +238,10 @@ function renderBlogList() {
       >
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
-        <div style="display:flex;gap:3px;border:1px solid var(--border);border-radius:20px;overflow:hidden;padding:2px;">
-          <button class="blog-img-filter" data-val="all" onclick="setBlogImageFilter('all')" style="background:var(--navy);color:#fff;border:none;padding:4px 10px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;border-radius:16px;">הכל</button>
-          <button class="blog-img-filter" data-val="with" onclick="setBlogImageFilter('with')" style="background:transparent;color:var(--text-mid);border:none;padding:4px 10px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;border-radius:16px;">עם תמונה (${blogPosts.filter(p=>p.image).length})</button>
-          <button class="blog-img-filter" data-val="without" onclick="setBlogImageFilter('without')" style="background:transparent;color:var(--text-mid);border:none;padding:4px 10px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;border-radius:16px;">בלי תמונה (${blogPosts.filter(p=>!p.image).length})</button>
-        </div>
-      </div>
+      <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
       <div style="display:flex;gap:8px">
-        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyFormat()">העתק פורמט</button>
+        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptNew()">הנחיה לפוסט חדש</button>
+        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptUpgrade()">הנחיה לשדרוג פוסט</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
         <button onclick="blogPasteFromClipboard()" style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק פוסט</button>
         <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
@@ -358,23 +352,41 @@ function blogCopyById(id) {
     .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
 }
 
-// העתק פורמט — הוראה מוכנה ל-ChatGPT
-function blogCopyFormat() {
-  const format = `אני רוצה שתארוז לי את הפוסט הבא בפורמט JSON מדויק.
+// הנחיה לפוסט חדש — מביאים כותרת + טקסט גולמי
+function blogCopyPromptNew() {
+  const prompt = `אתה עוזר לי לבנות פוסט לבלוג שלי באתר omertai.net.
 
-חוקים לגוף הפוסט (שדה body):
-- כל קבוצת שורות שצמודות = תג <p> אחד
-- בין שורות בתוך אותה פסקה = <br>
-- כותרת ביניים קצרה = <h2>
+סגנון הכתיבה של הבלוג:
+- שפה חמה, טבעית, אנושית
+- שורות קצרות, פסקאות מרווחות
+- לשון רבים בלבד (לכם, שלכם, להצטרף) — לא זכר ולא נקבה
+- ללא מקפים — רק פסיקות ונקודות
+- אחרי כל נקודה — שורה חדשה
+
+מבנה קבוע לכל פוסט:
+1. פתיחה עם משל או סצנה מהחיים שהקורא מכיר (לא מתחילים בהסבר טכני)
+2. שורה קצרה שמגיבה לסיטואציה — לפעמים מילה אחת בלבד
+3. blockquote שמחבר בין הסצנה לנושא הטכני — "ככה בדיוק נראה..."
+4. הסבר קצר + רשימת bullet points עם הפתרון המעשי
+5. תיבת post-insight עם תובנה אחת מסכמת
+6. משפט סיום חד ומודגש
+
+חוקי HTML לגוף הפוסט (שדה body):
+- כל קבוצת שורות צמודות = תג <p> אחד
+- בין שורות באותה פסקה = <br>
+- כותרת ביניים = <h2>
+- ציטוט = <blockquote>
+- תיבת תובנה = <div class="post-insight">טקסט</div>
+- רשימה = <ul> עם <li> (רק כשצריך פתרון מעשי)
 - אין אימוג'ים בשום מקום
-- אין bullet points, אין מספרים — רק טקסט רץ
+- טקסט מודגש חשוב = <strong>
 
-החזר בדיוק את המבנה הבא, JSON בלבד, בלי שום טקסט לפני או אחרי:
+החזר JSON בלבד, ללא שום טקסט לפני או אחרי:
 
 {
   "id": "מזהה-בעברית-עם-מקפים",
-  "title": "כותרת הפוסט בלי אימוג'ים",
-  "excerpt": "משפט או שניים שיופיעו בתצוגת הרשימה",
+  "title": "כותרת עם <br> בין שורות אם יש שתיים",
+  "excerpt": "שלוש שורות קצרות עם <br> ביניהן — מה שיופיע בכרטיס בבלוג",
   "body": "<p>תוכן הפוסט...</p>",
   "date": "YYYY-MM-DD",
   "emoji": "",
@@ -384,10 +396,66 @@ function blogCopyFormat() {
   "seo_desc": "תיאור קצר עד 155 תווים"
 }
 
-הפוסט:
+הכותרת והטקסט לפוסט:
 `;
-  navigator.clipboard.writeText(format)
-    .then(() => setStatus('content', 'ok', '✓ הפורמט הועתק — הדבק ב-ChatGPT ואחריו את הפוסט'))
+  navigator.clipboard.writeText(prompt)
+    .then(() => setStatus('content', 'ok', '✓ ההנחיה הועתקה — הדבק ב-Claude ואחריה את הכותרת והטקסט'))
+    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
+}
+
+// הנחיה לשדרוג פוסט — מביאים HTML של פוסט קיים עם טקסט ששונה
+function blogCopyPromptUpgrade() {
+  const prompt = `אתה עוזר לי לעצב מחדש פוסט לבלוג שלי באתר omertai.net.
+
+יש לי פוסט קיים שבו שיניתי את הטקסט.
+המשימה שלך: לעצב אותו מחדש לפי הדפוס המדויק של הבלוג שלי.
+
+סגנון הכתיבה של הבלוג:
+- שפה חמה, טבעית, אנושית
+- שורות קצרות, פסקאות מרווחות
+- לשון רבים בלבד (לכם, שלכם, להצטרף) — לא זכר ולא נקבה
+- ללא מקפים — רק פסיקות ונקודות
+- אחרי כל נקודה — שורה חדשה
+
+מבנה קבוע לכל פוסט:
+1. פתיחה עם משל או סצנה מהחיים שהקורא מכיר (לא מתחילים בהסבר טכני)
+2. שורה קצרה שמגיבה לסיטואציה — לפעמים מילה אחת בלבד
+3. blockquote שמחבר בין הסצנה לנושא הטכני — "ככה בדיוק נראה..."
+4. הסבר קצר + רשימת bullet points עם הפתרון המעשי
+5. תיבת post-insight עם תובנה אחת מסכמת
+6. משפט סיום חד ומודגש
+
+חוקי HTML לגוף הפוסט (שדה body):
+- כל קבוצת שורות צמודות = תג <p> אחד
+- בין שורות באותה פסקה = <br>
+- כותרת ביניים = <h2>
+- ציטוט = <blockquote>
+- תיבת תובנה = <div class="post-insight">טקסט</div>
+- רשימה = <ul> עם <li> (רק כשצריך פתרון מעשי)
+- אין אימוג'ים בשום מקום
+- טקסט מודגש חשוב = <strong>
+
+החזר JSON בלבד, ללא שום טקסט לפני או אחרי.
+אל תשנה את התוכן — רק את העיצוב וההיררכיה.
+שמור על ה-id המקורי אם קיים.
+
+{
+  "id": "מזהה-בעברית-עם-מקפים",
+  "title": "כותרת עם <br> בין שורות אם יש שתיים",
+  "excerpt": "שלוש שורות קצרות עם <br> ביניהן — מה שיופיע בכרטיס בבלוג",
+  "body": "<p>תוכן הפוסט...</p>",
+  "date": "YYYY-MM-DD",
+  "emoji": "",
+  "image": "",
+  "image_alt": "",
+  "seo_title": "כותרת הפוסט | עומר טייכר",
+  "seo_desc": "תיאור קצר עד 155 תווים"
+}
+
+הפוסט לשדרוג:
+`;
+  navigator.clipboard.writeText(prompt)
+    .then(() => setStatus('content', 'ok', '✓ ההנחיה הועתקה — הדבק ב-Claude ואחריה את ה-HTML של הפוסט'))
     .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
 }
 
