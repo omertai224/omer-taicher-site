@@ -709,8 +709,8 @@ function blogAutoSeo() {
 
 function titleToSlug(title) {
   return title.trim()
-    .replace(/\s+/g, '-')
-    .replace(/[^\u0590-\u05FF\uFB1D-\uFB4Fa-zA-Z0-9\-]/g, '')
+    .replace(/[\s\u0590-\u05FF\uFB1D-\uFB4F]+/g, '-')
+    .replace(/[^a-zA-Z0-9\-]/g, '')
     .replace(/-+/g, '-')
     .replace(/^-|-$/g, '')
     .toLowerCase();
