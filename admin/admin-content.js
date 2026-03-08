@@ -965,15 +965,17 @@ async function loadGalleryManager() {
       gallerySha = data.sha;
       const saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
       categories = saved.categories || {};
+      order = saved.order || [];
     } catch(e) {
       gallerySha = null;
     }
     // קבצים מה-Worker בלבד
+    let order = [];
     const res = await fetch(WORKER_URL);
     if (res.ok) {
       const workerData = await res.json();
       const workerItems = workerData.items || [];
-      galleryItems = workerItems.map(wi => {
+      const mapped = workerItems.map(wi => {
         const resourceType = /\.(mp4|mov|webm|avi)$/i.test(wi.key) ? 'video' : 'image';
         return {
           url: wi.url,
@@ -984,6 +986,17 @@ async function loadGalleryManager() {
           date: wi.uploaded || ''
         };
       });
+      // סדר לפי order השמור, קבצים חדשים בסוף
+      if (order && order.length) {
+        const orderMap = {};
+        order.forEach((key, i) => orderMap[key] = i);
+        mapped.sort((a, b) => {
+          const ia = orderMap[a.key] !== undefined ? orderMap[a.key] : 9999;
+          const ib = orderMap[b.key] !== undefined ? orderMap[b.key] : 9999;
+          return ia - ib;
+        });
+      }
+      galleryItems = mapped;
     } else {
       galleryItems = [];
     }
@@ -1215,12 +1228,13 @@ async function uploadGalleryFiles(input) {
 async function autoSaveGallery() {
   try {
     const categories = {};
+    const order = galleryItems.map(i => i.key).filter(Boolean);
     galleryItems.forEach(item => {
       if (item.key && item.category && item.category !== 'כללי') {
         categories[item.key] = item.category;
       }
     });
-    const json = JSON.stringify({ categories }, null, 2);
+    const json = JSON.stringify({ categories, order }, null, 2);
     const result = await ghPut('gallery.json', json, gallerySha, 'עדכון קטגוריות גלריה');
     if (result.content) {
       gallerySha = result.content.sha;
