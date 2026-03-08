@@ -1074,6 +1074,18 @@ function downloadSelectedGalleryItems() {
   });
 }
 
+function moveSelectedToCategory() {
+  const cat = document.getElementById('gallery-move-select')?.value;
+  if (!cat) return;
+  selectedGalleryItems.forEach(idx => {
+    if (galleryItems[idx]) galleryItems[idx].category = cat;
+  });
+  selectedGalleryItems.clear();
+  renderGallery();
+  autoSaveGallery();
+  document.getElementById('gallery-move-select').value = '';
+}
+
 function updateMultiDeleteBtn() {
   let btn = document.getElementById('gallery-multi-delete');
   if (!btn) return;
@@ -1094,16 +1106,14 @@ function updateMultiDeleteBtn() {
   if (selectedGalleryItems.size > 0) {
     btn.style.display = 'inline-flex';
     btn.textContent = `🗑️ מחק ${selectedGalleryItems.size} נבחרים`;
-    if (downloadBtn) {
-      downloadBtn.style.display = 'inline-flex';
-      downloadBtn.querySelector('span') ? null : null;
-      const spans = downloadBtn.querySelectorAll('span');
-      // עדכן טקסט
-      downloadBtn.lastChild.textContent = ` הורד ${selectedGalleryItems.size} נבחרים`;
-    }
+    if (downloadBtn) downloadBtn.style.display = 'inline-flex';
+    const moveDiv = document.getElementById('gallery-multi-move');
+    if (moveDiv) moveDiv.style.display = 'inline-flex';
   } else {
     btn.style.display = 'none';
     if (downloadBtn) downloadBtn.style.display = 'none';
+    const moveDiv = document.getElementById('gallery-multi-move');
+    if (moveDiv) moveDiv.style.display = 'none';
   }
 }
 
