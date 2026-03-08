@@ -455,32 +455,32 @@
 
 <script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
 
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;right:0;left:0;z-index:9999;padding:16px 24px;background:#fff;border-top:1px solid var(--border);box-shadow:0 -4px 24px rgba(26,74,107,0.10);direction:rtl;animation:slideUp 0.3s ease;">
-  <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-    <p style="flex:1;font-size:0.85rem;color:var(--text-mid);line-height:1.6;min-width:220px;">
+<div id="privacy-notice" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:9999;direction:rtl;animation:floatUp 0.4s cubic-bezier(0.16,1,0.3,1);pointer-events:none;">
+  <div style="pointer-events:auto;background:#0f2a3a;color:#fff;border-radius:20px;padding:16px 22px;display:flex;align-items:center;gap:16px;box-shadow:0 8px 40px rgba(15,42,58,0.35);border:1px solid rgba(255,255,255,0.08);white-space:nowrap;flex-wrap:wrap;max-width:calc(100vw - 40px);">
+    <p style="font-size:0.82rem;color:rgba(255,255,255,0.75);line-height:1.5;margin:0;flex:1;min-width:180px;white-space:normal;">
       האתר משתמש בעוגיות לשיפור חווית הגלישה.
-      <a href="/pages/legal/privacy.html" style="color:var(--navy);font-weight:700;text-decoration:underline;">מדיניות פרטיות</a>
+      <a href="/pages/legal/privacy.html" style="color:#f6a67e;font-weight:700;text-decoration:none;border-bottom:1px solid rgba(246,166,126,0.4);">מדיניות פרטיות</a>
     </p>
-    <div style="display:flex;gap:10px;flex-shrink:0;">
-      <button onclick="setCookieConsent(false)" style="padding:9px 20px;border-radius:50px;border:1.5px solid var(--border);background:#fff;color:var(--text-mid);font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;">דחייה</button>
-      <button onclick="setCookieConsent(true)" style="padding:9px 20px;border-radius:50px;border:none;background:var(--navy);color:#fff;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;">אישור</button>
+    <div style="display:flex;gap:8px;flex-shrink:0;">
+      <button onclick="setCookieConsent(false)" style="padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,0.2);background:transparent;color:rgba(255,255,255,0.6);font-family:inherit;font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.2s;" onmouseenter="this.style.borderColor='rgba(255,255,255,0.5)';this.style.color='#fff'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.6)'">דחייה</button>
+      <button onclick="setCookieConsent(true)" style="padding:8px 20px;border-radius:50px;border:none;background:#f6a67e;color:#0f2a3a;font-family:inherit;font-size:0.78rem;font-weight:800;cursor:pointer;transition:transform 0.2s;" onmouseenter="this.style.transform='scale(1.04)'" onmouseleave="this.style.transform='scale(1)'">אישור</button>
     </div>
   </div>
 </div>
 
 <style>
-@keyframes slideUp { from { transform:translateY(100%); opacity:0; } to { transform:translateY(0); opacity:1; } }
+@keyframes floatUp { from { transform:translateX(-50%) translateY(20px); opacity:0; } to { transform:translateX(-50%) translateY(0); opacity:1; } }
 </style>
 
 <script>
 function setCookieConsent(accepted) {
   localStorage.setItem('cookie_consent', accepted ? 'accepted' : 'declined');
-  document.getElementById('cookie-banner').style.display = 'none';
+  document.getElementById('privacy-notice').style.display = 'none';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   if (localStorage.getItem('cookie_consent') === null) {
-    document.getElementById('cookie-banner').style.display = 'block';
+    document.getElementById('privacy-notice').style.display = 'block';
   }
 });
 </script>
