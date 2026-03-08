@@ -200,6 +200,7 @@ function filterBlogList(query) {
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://blog.omertai.net/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
+          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`).join('');
@@ -222,6 +223,7 @@ function renderBlogList() {
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://blog.omertai.net/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
+          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`).join('');
@@ -795,6 +797,38 @@ function formatBlogDate(dateStr) {
   const months = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
+
+async function blogSendWhatsapp(postId) {
+  const post = blogPosts.find(p => p.id === postId);
+  if (!post) return;
+
+  const excerpt = post.excerpt.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').trim();
+  const url = 'https://blog.omertai.net/post.html?id=' + post.id;
+  const message = 'היי חברים, בוקר טוב ☀️\nפוסט חדש עלה:\n\n' + excerpt + '\n\n' + url;
+
+  const instanceId = '7105234514';
+  const apiToken = '3ce48a9a896443f3a7f6698f4a6012936c7dc288199e4ec19c';
+  const apiUrl = 'https://7105.api.greenapi.com';
+  const chatId = '972526587420@c.us';
+
+  try {
+    setStatus('content', 'loading', 'שולח לוואטסאפ...');
+    const res = await fetch(`${apiUrl}/waInstance${instanceId}/sendMessage/${apiToken}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chatId, message })
+    });
+    const data = await res.json();
+    if (data.idMessage) {
+      setStatus('content', 'ok', '✓ נשלח לוואטסאפ');
+    } else {
+      setStatus('content', 'error', 'שגיאה: ' + JSON.stringify(data));
+    }
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה בשליחה: ' + e.message);
+  }
+}
+
 
 async function blogSavePost() {
   const btn = document.getElementById('bf-save-btn') || document.getElementById('bf-save-btn-bottom');
