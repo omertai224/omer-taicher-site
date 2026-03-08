@@ -412,7 +412,19 @@ function blogEditPost(id) {
   showBlogForm(post);
 }
 
+function stripHtmlAdmin(str) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = str || '';
+  return tmp.textContent || tmp.innerText || '';
+}
+
 function showBlogForm(post) {
+  // נקה HTML מהשדות שמיועדים לטקסט נקי בלבד
+  post = Object.assign({}, post, {
+    seo_title: stripHtmlAdmin(post.seo_title),
+    seo_desc:  stripHtmlAdmin(post.seo_desc),
+    image_alt: stripHtmlAdmin(post.image_alt)
+  });
   const container = document.getElementById('blog-manager');
   container.innerHTML = `
     <div style="margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
