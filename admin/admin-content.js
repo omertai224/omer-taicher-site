@@ -1227,8 +1227,15 @@ async function uploadGalleryFiles(input) {
 
 async function autoSaveGallery() {
   try {
+    // רענן SHA לפני שמירה
+    if (!gallerySha) {
+      try {
+        const fresh = await ghGet('gallery.json');
+        gallerySha = fresh.sha;
+      } catch(e) { gallerySha = null; }
+    }
     const categories = {};
-    const order = galleryItems.map(i => i.key).filter(Boolean);
+    const order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
     galleryItems.forEach(item => {
       if (item.key && item.category && item.category !== 'כללי') {
         categories[item.key] = item.category;
