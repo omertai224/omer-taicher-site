@@ -268,6 +268,18 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         הורד נבחרים
       </button>
+      <div id="gallery-multi-move" style="display:none;align-items:center;gap:6px;">
+        <select id="gallery-move-select" style="padding:7px 14px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.8rem;font-weight:600;color:var(--navy);background:#fff;cursor:pointer;outline:none;">
+          <option value="">העבר ל...</option>
+          <option value="בלוג">בלוג</option>
+          <option value="אינטראקטיבי">אינטראקטיבי</option>
+          <option value="דף ראשי">דף ראשי</option>
+          <option value="דפי נחיתה">דפי נחיתה</option>
+          <option value="הרצאות">הרצאות</option>
+          <option value="כללי">כללי</option>
+        </select>
+        <button onclick="moveSelectedToCategory()" style="background:var(--orange-deep);color:#fff;border:none;padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;">העבר</button>
+      </div>
       <button id="gallery-multi-delete" onclick="deleteSelectedGalleryItems()" style="display:none;align-items:center;gap:6px;background:#dc2626;color:#fff;border:none;padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;">🗑️ מחק נבחרים</button>
     </div>
 
