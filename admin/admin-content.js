@@ -278,6 +278,25 @@ function postToJSON(post) {
 }
 
 // העתק מתוך טופס עריכה
+function blogPasteDesign() {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;';
+  overlay.innerHTML = `
+    <div style="background:#fff;border-radius:16px;padding:28px;width:90%;max-width:600px;direction:rtl;">
+      <div style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:12px">הדבק HTML מעוצב</div>
+      <textarea id="paste-design-input" placeholder="הדבק כאן את ה-HTML שקיבלת..." style="width:100%;height:220px;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:0.85rem;font-family:monospace;resize:vertical;box-sizing:border-box;direction:ltr;"></textarea>
+      <div style="display:flex;gap:10px;margin-top:14px;justify-content:flex-end;">
+        <button onclick="this.closest('div[style*=fixed]').remove()" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">ביטול</button>
+        <button onclick="
+          const html = document.getElementById('paste-design-input').value.trim();
+          if(html) { document.getElementById('bf-body').innerHTML = html; this.closest('div[style*=fixed]').remove(); }
+        " style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">החל עיצוב</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  setTimeout(() => document.getElementById('paste-design-input')?.focus(), 50);
+}
+
 function blogCopyPost() {
   const id      = blogEditingId || '';
   const title   = document.getElementById('bf-title')?.innerHTML || '';
@@ -372,6 +391,7 @@ function showBlogForm(post) {
         <div style="display:flex;gap:8px;padding-bottom:2px;flex-wrap:wrap">
           ${blogEditingId ? `<button onclick="blogCopyPost()" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">העתק הכל</button>` : ''}
           ${blogEditingId ? `<button onclick="window.open('https://blog.omertai.net/post.html?id=${blogEditingId}','_blank')" style="background:var(--navy-light);color:var(--navy);border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>` : ''}
+          ${blogEditingId ? `<button onclick="blogPasteDesign()" style="background:var(--cream);color:var(--navy);border:1px solid var(--navy);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק עיצוב</button>` : ''}
           ${blogEditingId ? `<button onclick="blogDeletePost('${blogEditingId}')" style="background:#fde8e8;color:#c0392b;border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>` : ''}
           <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
         </div>
