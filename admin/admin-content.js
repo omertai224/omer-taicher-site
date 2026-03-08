@@ -619,6 +619,11 @@ function showBlogForm(post) {
         <label class="field-label">תיאור תמונה (image_alt)</label>
         <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור התמונה לנגישות ו-SEO" style="direction:rtl">
       </div>
+      <div class="field" style="margin-top:12px">
+        <label class="field-label">URL Slug (אנגלית בלבד)</label>
+        <input id="bf-id" type="text" value="${post.id || ''}" placeholder="post-url-slug" style="direction:ltr;text-align:left" oninput="this.value=this.value.replace(/[^a-zA-Z0-9\\-]/g,'').toLowerCase()">
+        <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px">משמש גם כשם קובץ התמונה</div>
+      </div>
     </div>
 
     <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
@@ -637,7 +642,9 @@ function triggerImageUpload() {
 }
 
 function getPostSlug() {
-  if (blogEditingId) return blogEditingId;
+  const idField = document.getElementById('bf-id');
+  if (idField && idField.value.trim()) return idField.value.trim();
+  if (blogEditingId && /^[a-zA-Z0-9\-]+$/.test(blogEditingId)) return blogEditingId;
   const title = document.getElementById('bf-title')?.innerText || '';
   return titleToSlug(title);
 }
@@ -786,7 +793,7 @@ async function blogSavePost() {
   const body    = document.getElementById('bf-body')?.innerHTML.trim();
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
-  const id      = blogEditingId || titleToSlug(title);
+  const id      = document.getElementById('bf-id')?.value.trim() || blogEditingId || titleToSlug(title);
   const seoTitle = document.getElementById('bf-seo-title')?.value.trim() ?? '';
   const seoDesc  = document.getElementById('bf-seo-desc')?.value.trim() ?? '';
   const imageAlt = document.getElementById('bf-image-alt')?.value.trim() ?? '';
