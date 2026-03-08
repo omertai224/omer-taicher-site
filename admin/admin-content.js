@@ -179,7 +179,7 @@ function filterBlogList(query) {
     ? blogPosts.filter(p =>
         (p.title || '').toLowerCase().includes(q) ||
         (p.id || '').toLowerCase().includes(q) ||
-        (p.content || '').toLowerCase().includes(q) ||
+        (p.body || '').toLowerCase().includes(q) ||
         (p.excerpt || '').toLowerCase().includes(q)
       )
     : blogPosts;
@@ -194,7 +194,7 @@ function filterBlogList(query) {
         ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
         <div style="flex:1;min-width:0">
           <div style="font-size:0.92rem;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div>
-          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${q && !(p.title||"").toLowerCase().includes(q) && !(p.id||"").toLowerCase().includes(q) ? ' · <span style="color:#f6a67e;font-weight:700">נמצא בתוכן</span>' : ""}</div>
+          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${q && !(p.title||"").toLowerCase().includes(q) && !(p.id||"").toLowerCase().includes(q) && !(p.excerpt||"").toLowerCase().includes(q) ? ' · <span style="color:#f6a67e;font-weight:700">נמצא בתוכן</span>' : ""}</div>
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0">
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
