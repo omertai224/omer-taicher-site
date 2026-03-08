@@ -733,6 +733,8 @@ function selectImageFromGalleryPicker(url) {
   }
   document.getElementById('blog-gallery-picker')?.remove();
 }
+
+function clearPostImage() {
   document.getElementById('bf-image').value = '';
   const preview = document.getElementById('bf-image-preview');
   preview.style.display = 'none';
