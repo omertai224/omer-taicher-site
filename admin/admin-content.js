@@ -240,6 +240,7 @@ function renderBlogList() {
       <div style="display:flex;gap:8px">
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptNew()">הנחיה לפוסט חדש</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptUpgrade()">הנחיה לשדרוג פוסט</button>
+        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptImage()">הנחיה ליצירת תמונה</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
         <button onclick="blogPasteFromClipboard()" style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק פוסט</button>
         <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
@@ -417,10 +418,17 @@ const PROMPT_DEFAULTS = {
 אל תשאל שאלות. אל תוסיף הסברים. החזר JSON בלבד, ללא שום טקסט לפני או אחרי.
 
 הפוסט לשדרוג:`
+,
+  image: ``
 };
 
+function blogCopyPromptImage() {
+  openPromptEditor('image');
+}
+
 async function openPromptEditor(type) {
-  const title = type === 'new' ? 'הנחיה לפוסט חדש' : 'הנחיה לשדרוג פוסט';
+  const titles = { new: 'הנחיה לפוסט חדש', upgrade: 'הנחיה לשדרוג פוסט', image: 'הנחיה ליצירת תמונה' };
+  const title = titles[type] || type;
 
   // טוען את הקובץ מ-GitHub
   let currentText = PROMPT_DEFAULTS[type];
