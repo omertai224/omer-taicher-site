@@ -352,9 +352,9 @@ function blogCopyById(id) {
     .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
 }
 
-// הנחיה לפוסט חדש — מביאים כותרת + טקסט גולמי
-function blogCopyPromptNew() {
-  const prompt = `אתה עוזר לי לבנות פוסט לבלוג שלי באתר omertai.net.
+// ברירות מחדל להנחיות
+const PROMPT_DEFAULTS = {
+  new: `אתה עוזר לי לבנות פוסט לבלוג שלי באתר omertai.net.
 
 סגנון הכתיבה של הבלוג:
 - שפה חמה, טבעית, אנושית
@@ -396,16 +396,9 @@ function blogCopyPromptNew() {
   "seo_desc": "תיאור קצר עד 155 תווים"
 }
 
-הכותרת והטקסט לפוסט:
-`;
-  navigator.clipboard.writeText(prompt)
-    .then(() => setStatus('content', 'ok', '✓ ההנחיה הועתקה — הדבק ב-Claude ואחריה את הכותרת והטקסט'))
-    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
-}
+הכותרת והטקסט לפוסט:`,
 
-// הנחיה לשדרוג פוסט — מביאים HTML של פוסט קיים עם טקסט ששונה
-function blogCopyPromptUpgrade() {
-  const prompt = `אתה עוזר לי לעצב מחדש פוסט לבלוג שלי באתר omertai.net.
+  upgrade: `אתה עוזר לי לעצב מחדש פוסט לבלוג שלי באתר omertai.net.
 
 יש לי פוסט קיים שבו שיניתי את הטקסט.
 המשימה שלך: לעצב אותו מחדש לפי הדפוס המדויק של הבלוג שלי.
@@ -452,11 +445,53 @@ function blogCopyPromptUpgrade() {
   "seo_desc": "תיאור קצר עד 155 תווים"
 }
 
-הפוסט לשדרוג:
-`;
-  navigator.clipboard.writeText(prompt)
-    .then(() => setStatus('content', 'ok', '✓ ההנחיה הועתקה — הדבק ב-Claude ואחריה את ה-HTML של הפוסט'))
-    .catch(() => setStatus('content', 'error', 'שגיאה בהעתקה'));
+הפוסט לשדרוג:`
+};
+
+function openPromptEditor(type) {
+  const isNew = type === 'new';
+  const storageKey = isNew ? 'blog_prompt_new' : 'blog_prompt_upgrade';
+  const title = isNew ? 'הנחיה לפוסט חדש' : 'הנחיה לשדרוג פוסט';
+  const current = localStorage.getItem(storageKey) || PROMPT_DEFAULTS[type];
+
+  const overlay = document.createElement('div');
+  overlay.id = 'prompt-editor-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;';
+  overlay.innerHTML = `
+    <div style="background:#fff;border-radius:16px;padding:28px;width:100%;max-width:700px;max-height:90vh;display:flex;flex-direction:column;gap:16px;direction:rtl;box-shadow:0 8px 40px rgba(0,0,0,0.18);">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:1.05rem;font-weight:800;color:var(--navy)">${title}</div>
+        <button onclick="document.getElementById('prompt-editor-overlay').remove()" style="background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--text-mid);line-height:1;">✕</button>
+      </div>
+      <textarea id="prompt-editor-text" style="flex:1;min-height:380px;max-height:55vh;border:1px solid var(--border);border-radius:10px;padding:14px;font-size:0.82rem;font-family:monospace;resize:vertical;box-sizing:border-box;direction:rtl;line-height:1.7;outline:none;">${current.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</textarea>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+        <button onclick="
+          localStorage.removeItem('${storageKey}');
+          document.getElementById('prompt-editor-text').value = PROMPT_DEFAULTS['${type}'].replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        " style="background:none;border:none;cursor:pointer;font-size:0.78rem;color:var(--text-light);font-family:inherit;text-decoration:underline;">איפוס לברירת מחדל</button>
+        <div style="display:flex;gap:10px;">
+          <button onclick="document.getElementById('prompt-editor-overlay').remove()" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;">ביטול</button>
+          <button onclick="
+            const raw = document.getElementById('prompt-editor-text').value;
+            const txt = raw.replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+            localStorage.setItem('${storageKey}', txt);
+            navigator.clipboard.writeText(txt)
+              .then(() => { setStatus('content','ok','✓ ההנחיה נשמרה והועתקה'); document.getElementById('prompt-editor-overlay').remove(); })
+              .catch(() => setStatus('content','error','שגיאה בהעתקה'));
+          " style="background:var(--orange-deep);color:#fff;border:none;padding:9px 24px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;">שמור והעתק</button>
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  setTimeout(() => document.getElementById('prompt-editor-text')?.focus(), 50);
+}
+
+function blogCopyPromptNew() {
+  openPromptEditor('new');
+}
+
+function blogCopyPromptUpgrade() {
+  openPromptEditor('upgrade');
 }
 
 function blogCopyAll() {
