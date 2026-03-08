@@ -804,8 +804,7 @@ async function blogSavePost() {
   const body    = document.getElementById('bf-body')?.innerHTML.trim();
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
-  const idFieldVal = document.getElementById('bf-id')?.value.trim();
-  const id = idFieldVal !== undefined ? (idFieldVal || '') : (blogEditingId || titleToSlug(title));
+  const id = document.getElementById('bf-id')?.value.trim() || blogEditingId || titleToSlug(title);
   const seoTitle = document.getElementById('bf-seo-title')?.value.trim() ?? '';
   const seoDesc  = document.getElementById('bf-seo-desc')?.value.trim() ?? '';
   const imageAlt = document.getElementById('bf-image-alt')?.value.trim() ?? '';
@@ -814,7 +813,7 @@ async function blogSavePost() {
   if (!excerpt) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תקציר הוא שדה חובה</div>'; return; }
   if (!body)    { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">גוף הפוסט הוא שדה חובה</div>'; return; }
   if (!date)    { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תאריך הוא שדה חובה</div>'; return; }
-  if (!id)      { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">לא ניתן לייצר ID מהכותרת</div>'; return; }
+  if (!id)      { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">URL Slug הוא שדה חובה — מלאו אותו באנגלית</div>'; document.getElementById("bf-id")?.focus(); return; }
 
   btn.disabled = true;
   btn.textContent = 'שומר...';
