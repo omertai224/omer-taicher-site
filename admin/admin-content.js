@@ -200,7 +200,6 @@ function filterBlogList(query) {
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://blog.omertai.net/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
-          <button onclick="blogPasteDesignById('${p.id}')" style="background:var(--cream);color:var(--navy);border:1px solid var(--navy);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק עיצוב</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`).join('');
@@ -223,7 +222,6 @@ function renderBlogList() {
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open('https://blog.omertai.net/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
-          <button onclick="blogPasteDesignById('${p.id}')" style="background:var(--cream);color:var(--navy);border:1px solid var(--navy);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק עיצוב</button>
           <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
         </div>
       </div>`).join('');
@@ -398,52 +396,24 @@ const PROMPT_DEFAULTS = {
 
 הכותרת והטקסט לפוסט:`,
 
-  upgrade: `אתה עוזר לי לעצב מחדש פוסט לבלוג שלי באתר omertai.net.
+  upgrade: `אתה מעצב HTML של פוסטים לבלוג שלי באתר omertai.net.
 
-יש לי פוסט קיים שבו שיניתי את הטקסט.
-המשימה שלך: לעצב אותו מחדש לפי הדפוס המדויק של הבלוג שלי.
+אני מביא לך JSON של פוסט קיים.
+המשימה שלך: להחזיר לי את אותו JSON בדיוק, עם אותו טקסט בדיוק — רק לתקן את עיצוב ה-HTML בשדה body לפי הדפוס הבא.
 
-סגנון הכתיבה של הבלוג:
-- שפה חמה, טבעית, אנושית
-- שורות קצרות, פסקאות מרווחות
-- לשון רבים בלבד (לכם, שלכם, להצטרף) — לא זכר ולא נקבה
-- ללא מקפים — רק פסיקות ונקודות
-- אחרי כל נקודה — שורה חדשה
-
-מבנה קבוע לכל פוסט:
-1. פתיחה עם משל או סצנה מהחיים שהקורא מכיר (לא מתחילים בהסבר טכני)
-2. שורה קצרה שמגיבה לסיטואציה — לפעמים מילה אחת בלבד
-3. blockquote שמחבר בין הסצנה לנושא הטכני — "ככה בדיוק נראה..."
-4. הסבר קצר + רשימת bullet points עם הפתרון המעשי
-5. תיבת post-insight עם תובנה אחת מסכמת
-6. משפט סיום חד ומודגש
-
-חוקי HTML לגוף הפוסט (שדה body):
+חוקי עיצוב HTML לשדה body:
 - כל קבוצת שורות צמודות = תג <p> אחד
 - בין שורות באותה פסקה = <br>
 - כותרת ביניים = <h2>
-- ציטוט = <blockquote>
+- ציטוט בולט = <blockquote>
 - תיבת תובנה = <div class="post-insight">טקסט</div>
-- רשימה = <ul> עם <li> (רק כשצריך פתרון מעשי)
+- רשימה = <ul> עם <li>
+- טקסט מודגש = <strong>
 - אין אימוג'ים בשום מקום
-- טקסט מודגש חשוב = <strong>
+
+כל שאר השדות (id, title, excerpt, date, image, seo_title, seo_desc) — מעתיק בדיוק כמו שהם, ללא שינוי.
 
 החזר JSON בלבד, ללא שום טקסט לפני או אחרי.
-אל תשנה את התוכן — רק את העיצוב וההיררכיה.
-שמור על ה-id המקורי אם קיים.
-
-{
-  "id": "מזהה-בעברית-עם-מקפים",
-  "title": "כותרת עם <br> בין שורות אם יש שתיים",
-  "excerpt": "שלוש שורות קצרות עם <br> ביניהן — מה שיופיע בכרטיס בבלוג",
-  "body": "<p>תוכן הפוסט...</p>",
-  "date": "YYYY-MM-DD",
-  "emoji": "",
-  "image": "",
-  "image_alt": "",
-  "seo_title": "כותרת הפוסט | עומר טייכר",
-  "seo_desc": "תיאור קצר עד 155 תווים"
-}
 
 הפוסט לשדרוג:`
 };
