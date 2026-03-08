@@ -448,11 +448,19 @@ const PROMPT_DEFAULTS = {
 הפוסט לשדרוג:`
 };
 
-function openPromptEditor(type) {
-  const isNew = type === 'new';
-  const storageKey = isNew ? 'blog_prompt_new' : 'blog_prompt_upgrade';
-  const title = isNew ? 'הנחיה לפוסט חדש' : 'הנחיה לשדרוג פוסט';
-  const current = localStorage.getItem(storageKey) || PROMPT_DEFAULTS[type];
+async function openPromptEditor(type) {
+  const title = type === 'new' ? 'הנחיה לפוסט חדש' : 'הנחיה לשדרוג פוסט';
+
+  // טוען את הקובץ מ-GitHub
+  let currentText = PROMPT_DEFAULTS[type];
+  let promptsSha = null;
+  let promptsData = { new: PROMPT_DEFAULTS.new, upgrade: PROMPT_DEFAULTS.upgrade };
+  try {
+    const file = await ghGet('prompts.json');
+    promptsSha = file.sha;
+    promptsData = JSON.parse(decode(file.content));
+    currentText = promptsData[type] || PROMPT_DEFAULTS[type];
+  } catch(e) { /* קובץ לא קיים עדיין — ישתמש בברירות מחדל */ }
 
   const overlay = document.createElement('div');
   overlay.id = 'prompt-editor-overlay';
@@ -463,27 +471,43 @@ function openPromptEditor(type) {
         <div style="font-size:1.05rem;font-weight:800;color:var(--navy)">${title}</div>
         <button onclick="document.getElementById('prompt-editor-overlay').remove()" style="background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--text-mid);line-height:1;">✕</button>
       </div>
-      <textarea id="prompt-editor-text" style="flex:1;min-height:380px;max-height:55vh;border:1px solid var(--border);border-radius:10px;padding:14px;font-size:0.82rem;font-family:monospace;resize:vertical;box-sizing:border-box;direction:rtl;line-height:1.7;outline:none;">${current.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</textarea>
+      <textarea id="prompt-editor-text" style="flex:1;min-height:380px;max-height:55vh;border:1px solid var(--border);border-radius:10px;padding:14px;font-size:0.82rem;font-family:monospace;resize:vertical;box-sizing:border-box;direction:rtl;line-height:1.7;outline:none;"></textarea>
       <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-        <button onclick="
-          localStorage.removeItem('${storageKey}');
-          document.getElementById('prompt-editor-text').value = PROMPT_DEFAULTS['${type}'].replace(/</g,'&lt;').replace(/>/g,'&gt;');
-        " style="background:none;border:none;cursor:pointer;font-size:0.78rem;color:var(--text-light);font-family:inherit;text-decoration:underline;">איפוס לברירת מחדל</button>
+        <button id="prompt-reset-btn" style="background:none;border:none;cursor:pointer;font-size:0.78rem;color:var(--text-light);font-family:inherit;text-decoration:underline;">איפוס לברירת מחדל</button>
         <div style="display:flex;gap:10px;">
           <button onclick="document.getElementById('prompt-editor-overlay').remove()" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;">ביטול</button>
-          <button onclick="
-            const raw = document.getElementById('prompt-editor-text').value;
-            const txt = raw.replace(/&lt;/g,'<').replace(/&gt;/g,'>');
-            localStorage.setItem('${storageKey}', txt);
-            navigator.clipboard.writeText(txt)
-              .then(() => { setStatus('content','ok','✓ ההנחיה נשמרה והועתקה'); document.getElementById('prompt-editor-overlay').remove(); })
-              .catch(() => setStatus('content','error','שגיאה בהעתקה'));
-          " style="background:var(--orange-deep);color:#fff;border:none;padding:9px 24px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;">שמור והעתק</button>
+          <button id="prompt-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 24px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;">שמור והעתק</button>
         </div>
       </div>
     </div>`;
   document.body.appendChild(overlay);
-  setTimeout(() => document.getElementById('prompt-editor-text')?.focus(), 50);
+
+  const textarea = document.getElementById('prompt-editor-text');
+  textarea.value = currentText;
+  setTimeout(() => textarea.focus(), 50);
+
+  document.getElementById('prompt-reset-btn').onclick = () => {
+    textarea.value = PROMPT_DEFAULTS[type];
+  };
+
+  document.getElementById('prompt-save-btn').onclick = async () => {
+    const btn = document.getElementById('prompt-save-btn');
+    const txt = textarea.value;
+    btn.textContent = 'שומר...';
+    btn.disabled = true;
+    try {
+      promptsData[type] = txt;
+      const result = await ghPut('prompts.json', JSON.stringify(promptsData, null, 2), promptsSha, 'עדכון הנחיה: ' + type);
+      if (result.content) promptsSha = result.content.sha;
+      await navigator.clipboard.writeText(txt);
+      setStatus('content', 'ok', '✓ ההנחיה נשמרה ב-GitHub והועתקה');
+      document.getElementById('prompt-editor-overlay').remove();
+    } catch(e) {
+      setStatus('content', 'error', 'שגיאה בשמירה: ' + e.message);
+      btn.textContent = 'שמור והעתק';
+      btn.disabled = false;
+    }
+  };
 }
 
 function blogCopyPromptNew() {
