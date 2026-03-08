@@ -491,6 +491,27 @@ function showBlogForm(post) {
       <div id="bf-upload-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
     </div>
 
+    <div class="field" style="margin-top:28px;background:#f0f6fb;border:1.5px solid #c3d9ec;border-radius:14px;padding:18px 20px;">
+      <div style="font-size:0.82rem;font-weight:800;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:7px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        SEO וסושיאל
+      </div>
+      <div class="field" style="margin-bottom:12px">
+        <label class="field-label">כותרת SEO (לשונית + שיתוף)</label>
+        <input id="bf-seo-title" type="text" value="${post.seo_title || ''}" oninput="this.dataset.edited='1';document.getElementById('bf-seo-title-count').textContent=this.value.length+' תווים'" placeholder="כותרת | עומר טייכר" style="direction:rtl">
+        <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-title-count">${(post.seo_title||'').length} תווים</div>
+      </div>
+      <div class="field" style="margin-bottom:12px">
+        <label class="field-label">תיאור SEO (גוגל + שיתוף)</label>
+        <textarea id="bf-seo-desc" rows="2" oninput="this.dataset.edited='1';document.getElementById('bf-seo-desc-count').textContent=this.value.length+' / 155 תווים'" placeholder="תיאור קצר עד 155 תווים" style="direction:rtl;resize:vertical">${post.seo_desc || ''}</textarea>
+        <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-desc-count">${(post.seo_desc||'').length} / 155 תווים</div>
+      </div>
+      <div class="field">
+        <label class="field-label">תיאור תמונה (image_alt)</label>
+        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור התמונה לנגישות ו-SEO" style="direction:rtl">
+      </div>
+    </div>
+
     <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
       <button onclick="blogSavePost()" id="bf-save-btn-bottom" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
       <button onclick="blogCancelForm()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
@@ -603,9 +624,9 @@ async function blogSavePost() {
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
   const id      = blogEditingId || titleToSlug(title);
-  const seoTitle = title + ' | עומר טייכר';
-  const seoDesc  = excerpt;
-  const imageAlt = title;
+  const seoTitle = (document.getElementById('bf-seo-title')?.value.trim() || title + ' | עומר טייכר');
+  const seoDesc  = (document.getElementById('bf-seo-desc')?.value.trim() || excerpt);
+  const imageAlt = (document.getElementById('bf-image-alt')?.value.trim() || title);
 
   if (!title)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
   if (!excerpt) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תקציר הוא שדה חובה</div>'; return; }
