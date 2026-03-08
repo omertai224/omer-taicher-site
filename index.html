@@ -473,17 +473,16 @@
 </style>
 
 <script>
-(function() {
-  const consent = localStorage.getItem('cookie_consent');
-  if (consent === null) {
-    document.getElementById('cookie-banner').style.display = 'block';
-  }
-})();
-
 function setCookieConsent(accepted) {
   localStorage.setItem('cookie_consent', accepted ? 'accepted' : 'declined');
   document.getElementById('cookie-banner').style.display = 'none';
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (localStorage.getItem('cookie_consent') === null) {
+    document.getElementById('cookie-banner').style.display = 'block';
+  }
+});
 </script>
 
 </body>
