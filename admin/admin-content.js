@@ -305,7 +305,23 @@ async function applyDesignById(postId, btn) {
   blogPosts[idx].body = html;
   btn.textContent = 'שומר...';
   btn.disabled = true;
-  await saveBlogPosts();
+  try {
+    const fresh = await ghGet('posts.json');
+    blogSha = fresh.sha;
+    const freshData = JSON.parse(decode(fresh.content));
+    let posts = freshData.posts || [];
+    const idx = posts.findIndex(p => p.id === postId);
+    if (idx === -1) throw new Error('פוסט לא נמצא');
+    posts[idx] = blogPosts[blogPosts.findIndex(p => p.id === postId)];
+    const result = await ghPut('posts.json', JSON.stringify({ posts }, null, 2), blogSha, 'עדכון עיצוב: ' + postId);
+    if (result.content) {
+      blogSha = result.content.sha;
+      blogPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+      setStatus('content', 'ok', '✓ עיצוב הוחל ונשמר');
+    } else throw new Error(result.message || 'שגיאה');
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+  }
   btn.closest('div[style*="fixed"]').remove();
   setStatus('content', 'ok', 'עיצוב הוחל ונשמר');
 }
