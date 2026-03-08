@@ -587,19 +587,15 @@ function showBlogForm(post) {
 
     <div class="field">
       <label class="field-label">תמונה ראשית</label>
-      <div style="display:flex;gap:10px;align-items:flex-start;margin-top:4px">
-        <div style="flex:1">
-          <input id="bf-image" type="text" value="${post.image || ''}" placeholder="URL של תמונה" style="direction:ltr;text-align:left;margin-bottom:8px">
-          <div id="bf-image-preview" style="margin-top:8px;${post.image ? '' : 'display:none'}">
-            <img src="${post.image || ''}" style="max-width:100%;max-height:140px;border-radius:10px;border:1px solid var(--border);object-fit:cover">
-            <button onclick="clearPostImage()" style="display:block;margin-top:6px;background:#fde8e8;color:#c0392b;border:none;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;cursor:pointer;font-family:inherit">✕ הסר תמונה</button>
-          </div>
-        </div>
-        <div style="flex-shrink:0;display:flex;flex-direction:column;gap:8px;">
-          <button onclick="triggerImageUpload()" id="bf-upload-btn" style="background:var(--navy);color:#fff;border:none;padding:10px 18px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">העלאת תמונה</button>
-          <button onclick="openBlogGalleryPicker()" style="background:var(--cream);color:var(--navy);border:1.5px solid var(--navy);padding:10px 18px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">בחירה מגלריה</button>
-          <input type="file" id="bf-image-file" accept="image/*,video/*" style="display:none" onchange="uploadToCloudinary(this)">
-        </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:4px;flex-wrap:wrap">
+        <input id="bf-image" type="text" value="${post.image || ''}" placeholder="URL של תמונה" style="direction:ltr;text-align:left;flex:1;min-width:0">
+        <button onclick="triggerImageUpload()" id="bf-upload-btn" style="background:var(--navy);color:#fff;border:none;padding:10px 16px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0">העלאת תמונה</button>
+        <button onclick="openBlogGalleryPicker()" style="background:var(--cream);color:var(--navy);border:1.5px solid var(--navy);padding:10px 16px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0">בחירה מגלריה</button>
+        <input type="file" id="bf-image-file" accept="image/*,video/*" style="display:none" onchange="uploadToCloudinary(this)">
+      </div>
+      <div id="bf-image-preview" style="margin-top:8px;${post.image ? '' : 'display:none'}">
+        <img src="${post.image || ''}" style="max-width:100%;max-height:140px;border-radius:10px;border:1px solid var(--border);object-fit:cover">
+        <button onclick="clearPostImage()" style="display:block;margin-top:6px;background:#fde8e8;color:#c0392b;border:none;padding:5px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;cursor:pointer;font-family:inherit">✕ הסר תמונה</button>
       </div>
       <div id="bf-upload-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
     </div>
@@ -671,6 +667,9 @@ async function uploadToCloudinary(input) {
       preview.querySelector('img').src = data.url;
       status.style.color = 'var(--green)';
       status.textContent = '✓ הועלה בהצלחה';
+      // הוספה אוטומטית לגלריה קטגוריית בלוג
+      galleryItems.unshift({ url: data.url, type: 'image', name: key, date: new Date().toISOString(), category: 'בלוג' });
+      await autoSaveGallery();
     } else {
       throw new Error(data.error || 'שגיאה לא ידועה');
     }
