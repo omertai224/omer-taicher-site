@@ -376,12 +376,12 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
     if (!response.ok || !data.paymentUrl) throw new Error(data.error || 'שגיאה');
 
     document.getElementById('redirect-msg').className = 'alert alert-info visible';
-    setTimeout(() => { window.location.href = data.paymentUrl; }, 800);
+    setTimeout(() => { window.location.href = data.paymentUrl; }, 700);
 
   } catch (err) {
     btn.classList.remove('loading');
     btn.disabled = false;
-    alertEl.textContent = err.message || 'אירעה שגיאה. נסו שוב או פנו אלינו בוואטסאפ.';
+    alertEl.textContent = err.message || 'אירעה שגיאה. נסו שוב או פנו אלינו.';
     alertEl.className = 'alert alert-error visible';
   }
 });
