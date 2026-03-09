@@ -352,6 +352,7 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
   const productName = cart.length === 1
     ? cart[0].name
     : cart.map(i => i.name).join(', ');
+  const productKey = cart.length === 1 ? productParam : null;
 
   const btn = document.getElementById('pay-btn');
   btn.classList.add('loading');
@@ -363,11 +364,11 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         productName,
+        productKey,
         amount: total,
         customerName: name,
         customerEmail: email,
-        customerPhone: phone,
-        failUrl: 'https://omertai.net/pages/checkout/' + window.location.search + '&status=failed'
+        customerPhone: phone
       })
     });
 
