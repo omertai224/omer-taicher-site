@@ -301,7 +301,7 @@
       const grid = document.getElementById('blog-grid');
       if (!grid || !items.length) return;
 
-      grid.innerHTML = items.map(item => {
+      grid.innerHTML = items.map((item, index) => {
         const title = item.querySelector('title')?.textContent || '';
         const link  = item.querySelector('link')?.textContent || 'https://blog.omertai.net';
         const date  = item.querySelector('pubDate')?.textContent || '';
@@ -317,10 +317,12 @@
           : `<div class="blog-thumb blog-thumb-empty"></div>`;
         const titleHtml = title.replace(/\. /g, '.<br>');
         const excerptHtml = excerpt.replace(/\. /g, '.<br>');
+        const newBadge = index === 0 ? `<div class="blog-new-badge">חדש</div>` : '';
 
         return `<a class="blog-card" href="${link}">
           ${imgHtml}
           <div class="blog-card-body">
+            ${newBadge}
             <div class="blog-title">${titleHtml}</div>
             <div class="blog-excerpt">${excerptHtml}</div>
             <div class="blog-meta">${meta}</div>
