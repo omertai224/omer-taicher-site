@@ -292,7 +292,7 @@
     return Math.max(1, Math.round(words / 200));
   }
 
-  fetch('https://blog.omertai.net/feed.xml?v=' + Date.now())
+  fetch('https://blog.omertai.net/api/feed?v=' + Date.now())
     .then(r => r.text())
     .then(xml => {
       const parser = new DOMParser();
