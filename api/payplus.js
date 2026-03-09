@@ -49,7 +49,6 @@ export default async function handler(req, res) {
         email: customerEmail || '',
         phone: customerPhone || ''
       },
-      success_url: successUrl || 'https://omertai.net/pages/checkout/success.html',
       fail_url: failUrl || 'https://omertai.net/pages/checkout/?status=failed',
       cancel_url: 'https://omertai.net/pages/checkout/?status=cancelled'
     };
