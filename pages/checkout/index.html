@@ -3,707 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>רכישת הדרכה | עומר טייכר</title>
+<title>תשלום | עומר טייכר</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
-<meta name="description" content="רכישת הדרכות דיגיטליות של עומר טייכר">
 <meta name="robots" content="noindex,nofollow">
 
 <style>
-/* ===== דף קופה ===== */
 .checkout-page {
   min-height: 100vh;
   background: var(--cream);
   padding-top: 60px;
 }
-
-/* NAV מינימלי */
 .checkout-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 100;
+  position: fixed; top: 0; width: 100%; z-index: 100;
   background: rgba(253,248,242,0.97);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; align-items: center; justify-content: space-between;
   padding: 0 20px;
 }
-.checkout-nav-logo {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--navy);
-  text-decoration: none;
-}
+.checkout-nav-logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
 .checkout-nav-logo span { color: var(--orange-deep); }
-.checkout-nav-secure {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.72rem;
-  color: var(--text-light);
-  font-weight: 600;
-}
+.checkout-nav-secure { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--text-light); font-weight: 600; }
 
-/* תוכן */
 .checkout-inner {
-  max-width: 960px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 40px 16px 60px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
-/* כרטיס מוצר */
-.product-card {
+/* כרטיס מוצר/סל */
+.order-card {
   background: #fff;
-  border-radius: 20px;
-  padding: 28px 24px;
-  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
-  border: 1px solid var(--border);
-}
-.product-card-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-}
-.product-icon {
-  width: 52px;
-  height: 52px;
-  background: var(--orange-light);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.product-info { flex: 1; }
-.product-eyebrow {
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--orange-deep);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-.product-name {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--navy);
-  line-height: 1.3;
-  margin-bottom: 6px;
-}
-.product-desc {
-  font-size: 0.8rem;
-  color: var(--text-mid);
-  line-height: 1.7;
-}
-.product-price-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 20px;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
-}
-.product-price {
-  font-size: 1.6rem;
-  font-weight: 900;
-  color: var(--navy);
-}
-.product-price-sub {
-  font-size: 0.72rem;
-  color: var(--text-light);
-  font-weight: 400;
-  display: block;
-  margin-top: 2px;
-}
-.product-badge {
-  background: #f0fdf4;
-  color: #15803d;
-  border: 1px solid #bbf7d0;
-  border-radius: 50px;
-  padding: 6px 14px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-/* רשימת מוצרים לבחירה */
-.products-section {
-  background: #fff;
-  border-radius: 20px;
-  padding: 28px 24px;
-  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
-  border: 1px solid var(--border);
-}
-.products-section-title {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 18px;
-}
-.product-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.product-option {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 18px;
-  border: 2px solid var(--border);
-  border-radius: 14px;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: var(--cream);
-  position: relative;
-}
-.product-option:hover {
-  border-color: var(--orange-deep);
-  background: #fff;
-}
-.product-option.selected {
-  border-color: var(--orange-deep);
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(232,133,74,0.15);
-}
-.product-option-radio {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: all 0.2s;
-}
-.product-option.selected .product-option-radio {
-  border-color: var(--orange-deep);
-  background: var(--orange-deep);
-}
-.product-option.selected .product-option-radio::after {
-  content: '';
-  width: 8px;
-  height: 8px;
-  background: #fff;
-  border-radius: 50%;
-}
-.product-option-body { flex: 1; }
-.product-option-name {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--navy);
-  line-height: 1.3;
-  margin-bottom: 2px;
-}
-.product-option-desc {
-  font-size: 0.73rem;
-  color: var(--text-light);
-  line-height: 1.5;
-}
-.product-option-price {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--orange-deep);
-  flex-shrink: 0;
-}
-
-/* טופס */
-.checkout-form-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 28px 24px;
-  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
-  border: 1px solid var(--border);
-}
-.form-title {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--navy);
-  margin-bottom: 20px;
-}
-.form-row {
-  margin-bottom: 16px;
-}
-.form-label {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 6px;
-}
-.form-label span {
-  color: var(--orange-deep);
-  margin-right: 2px;
-}
-.form-input {
-  width: 100%;
-  padding: 13px 16px;
-  border: 1.5px solid var(--border);
-  border-radius: 12px;
-  font-family: var(--font);
-  font-size: 0.92rem;
-  color: var(--text);
-  background: var(--cream);
-  transition: border-color 0.2s, box-shadow 0.2s;
-  direction: rtl;
-  -webkit-appearance: none;
-}
-.form-input:focus {
-  outline: none;
-  border-color: var(--navy);
-  box-shadow: 0 0 0 3px rgba(26,74,107,0.08);
-  background: #fff;
-}
-.form-input.error {
-  border-color: var(--red);
-  box-shadow: 0 0 0 3px rgba(239,68,68,0.08);
-}
-.form-hint {
-  font-size: 0.7rem;
-  color: var(--text-light);
-  margin-top: 5px;
-  line-height: 1.4;
-}
-.form-error-msg {
-  font-size: 0.73rem;
-  color: var(--red);
-  margin-top: 4px;
-  display: none;
-}
-.form-error-msg.visible { display: block; }
-
-/* סיכום */
-.summary-card {
-  background: var(--navy);
   border-radius: 20px;
   padding: 24px;
-  color: #fff;
+  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
+  border: 1px solid var(--border);
 }
-.summary-title {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.order-card-title {
+  font-size: 0.72rem; font-weight: 700; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: 0.5px;
   margin-bottom: 16px;
 }
-.summary-line {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.88rem;
-  margin-bottom: 10px;
+.order-item {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 14px 0;
+  border-bottom: 1px solid var(--border);
 }
-.summary-line-label { color: rgba(255,255,255,0.7); }
-.summary-line-value { color: #fff; font-weight: 600; }
-.summary-divider {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.12);
-  margin: 14px 0;
+.order-item:last-child { border-bottom: none; padding-bottom: 0; }
+.order-item:first-child { padding-top: 0; }
+.order-item-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: var(--orange-light); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
 }
-.summary-total {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.summary-total-label {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(255,255,255,0.85);
-}
-.summary-total-price {
-  font-size: 1.7rem;
-  font-weight: 900;
-  color: #fff;
-}
+.order-item-body { flex: 1; }
+.order-item-name { font-size: 0.9rem; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 2px; }
+.order-item-sub  { font-size: 0.72rem; color: var(--text-light); }
+.order-item-price { font-size: 1.1rem; font-weight: 900; color: var(--navy); white-space: nowrap; }
 
-/* כפתור תשלום */
+.order-total {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 16px; padding-top: 16px;
+  border-top: 2px solid var(--border);
+}
+.order-total-label { font-size: 0.88rem; font-weight: 700; color: var(--text-mid); }
+.order-total-price { font-size: 1.5rem; font-weight: 900; color: var(--navy); }
+
+/* טופס */
+.form-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
+  border: 1px solid var(--border);
+}
+.form-card-title { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 20px; }
+.form-row { margin-bottom: 16px; }
+.form-label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.form-label span { color: var(--orange-deep); margin-right: 2px; }
+.form-label em { font-style: normal; font-weight: 400; color: var(--text-light); font-size: 0.72rem; }
+.form-input {
+  width: 100%; padding: 13px 16px;
+  border: 1.5px solid var(--border); border-radius: 12px;
+  font-family: var(--font); font-size: 0.92rem; color: var(--text);
+  background: var(--cream); direction: rtl;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+.form-input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,74,107,0.08); background: #fff; }
+.form-input.error { border-color: var(--red); }
+.form-hint { font-size: 0.7rem; color: var(--text-light); margin-top: 5px; }
+.form-error-msg { font-size: 0.73rem; color: var(--red); margin-top: 4px; display: none; }
+.form-error-msg.visible { display: block; }
+
+/* כפתור */
 .pay-btn {
-  width: 100%;
-  padding: 18px 28px;
-  background: var(--orange-deep);
-  color: #fff;
-  border: none;
-  border-radius: 50px;
-  font-family: var(--font);
-  font-size: 1.05rem;
-  font-weight: 800;
-  cursor: pointer;
-  transition: all 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 16px;
-  position: relative;
-  overflow: hidden;
+  width: 100%; padding: 17px 28px;
+  background: var(--orange-deep); color: #fff;
+  border: none; border-radius: 50px;
+  font-family: var(--font); font-size: 1rem; font-weight: 800;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
 }
-.pay-btn:hover:not(:disabled) {
-  background: var(--navy);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(26,74,107,0.25);
-}
-.pay-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-.pay-btn-spinner {
-  display: none;
-  width: 20px;
-  height: 20px;
-  border: 2.5px solid rgba(255,255,255,0.3);
-  border-top-color: #fff;
-  border-radius: 50%;
-  animation: spin 0.7s linear infinite;
-}
+.pay-btn:hover:not(:disabled) { background: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,74,107,0.25); }
+.pay-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.pay-btn-spinner { display: none; width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
 .pay-btn.loading .pay-btn-text { display: none; }
 .pay-btn.loading .pay-btn-spinner { display: block; }
-
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* סרגל אמון */
-.trust-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 0 4px;
-}
-.trust-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.72rem;
-  color: var(--text-light);
-  font-weight: 600;
-}
+.trust-bar { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+.trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--text-light); font-weight: 600; }
 
-/* הודעות שגיאה/הצלחה */
-.alert {
-  border-radius: 14px;
-  padding: 16px 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  line-height: 1.5;
-  display: none;
-  margin-top: 12px;
-}
+.alert { border-radius: 14px; padding: 14px 18px; font-size: 0.85rem; font-weight: 600; line-height: 1.5; display: none; margin-top: 12px; }
 .alert.visible { display: block; }
-.alert-error {
-  background: #fef2f2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
-}
-.alert-info {
-  background: var(--navy-light);
-  color: var(--navy);
-  border: 1px solid #c3d9e8;
-}
+.alert-error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+.alert-info   { background: var(--navy-light); color: var(--navy); border: 1px solid #c3d9e8; }
 
-/* status banner */
-.status-banner {
-  border-radius: 14px;
-  padding: 16px 20px;
-  font-size: 0.88rem;
-  font-weight: 700;
-  text-align: center;
-  display: none;
-}
-.status-banner.failed {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: #fef2f2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
-}
-.status-banner.cancelled {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--navy-light);
-  color: var(--navy);
-  border: 1px solid #c3d9e8;
-}
+.status-banner { border-radius: 14px; padding: 14px 18px; font-size: 0.88rem; font-weight: 700; display: none; }
+.status-banner.failed { display: flex; align-items: center; gap: 8px; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+.status-banner.cancelled { display: flex; align-items: center; gap: 8px; background: var(--navy-light); color: var(--navy); border: 1px solid #c3d9e8; }
+
+/* empty state */
+.empty-state { text-align: center; padding: 60px 20px; }
+.empty-state-title { font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.empty-state-sub { font-size: 0.88rem; color: var(--text-mid); margin-bottom: 24px; }
 
 @media (min-width: 700px) {
-  .checkout-inner {
-    display: grid;
-    grid-template-columns: 1fr 360px;
-    grid-template-rows: auto;
-    gap: 24px;
-    align-items: start;
-  }
-  .products-section { grid-column: 1; }
-  .checkout-form-card { grid-column: 1; }
-  .right-col { grid-column: 2; grid-row: 1 / span 3; }
-  .trust-bar-wrap { grid-column: 1 / -1; }
+  .checkout-inner { display: grid; grid-template-columns: 1fr 340px; align-items: start; }
+  .left-col { display: flex; flex-direction: column; gap: 20px; }
+  .right-col { display: flex; flex-direction: column; gap: 16px; }
+  .status-banner { grid-column: 1 / -1; }
 }
 </style>
 </head>
 <body>
 <div class="checkout-page">
 
-<!-- NAV -->
 <nav class="checkout-nav">
   <a class="checkout-nav-logo" href="https://omertai.net">עומר <span>טייכר</span></a>
   <div class="checkout-nav-secure">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="11" width="18" height="11" rx="2"/>
-      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-    </svg>
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
     תשלום מאובטח
   </div>
 </nav>
 
 <div class="checkout-inner">
 
-  <!-- סטטוס מחזור תשלום קודם -->
   <div id="status-banner" class="status-banner"></div>
 
-  <!-- בחירת מוצר -->
-  <section class="products-section">
-    <div class="products-section-title">בחרו הדרכה</div>
-    <div class="product-list" id="product-list">
+  <!-- עמודה שמאלית: סיכום הזמנה + טופס -->
+  <div class="left-col">
 
-      <div class="product-option" data-product="vibe" data-name="כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית, בחינם" data-price="97" data-desc="לומדים להתקין, להגדיר ולהשתמש בכלי שממיר הקלטות, ישיבות, שיעורים וסרטוני יוטיוב לטקסט בעברית">
-        <div class="product-option-radio"></div>
-        <div class="product-option-body">
-          <div class="product-option-name">כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית, בחינם</div>
-          <div class="product-option-desc">הקלטות, ישיבות, שיעורים וסרטוני יוטיוב — לטקסט, בלי לשלם מנוי</div>
-        </div>
-        <div class="product-option-price">₪97</div>
+    <!-- סיכום מה קונים -->
+    <div class="order-card" id="order-card">
+      <div class="order-card-title">ההזמנה שלכם</div>
+      <div id="order-items"></div>
+      <div class="order-total">
+        <span class="order-total-label">סה"כ לתשלום</span>
+        <span class="order-total-price" id="order-total">₪0</span>
       </div>
-
-      <div class="product-option selected" data-product="ai" data-name="AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם" data-price="47" data-desc="הדרכה שתלמד אתכם להשתמש בכלי בינה מלאכותית בצורה פשוטה ובקצב שלכם">
-        <div class="product-option-radio"></div>
-        <div class="product-option-body">
-          <div class="product-option-name">AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם</div>
-          <div class="product-option-desc">בינה מלאכותית בצורה פשוטה, בקצב שלכם</div>
-        </div>
-        <div class="product-option-price">₪47</div>
-      </div>
-
-      <div class="product-option" data-product="files" data-name="לסדר את המחשב, ארגון קבצים, תיקיות וענן" data-price="47" data-desc="כל מה שצריך כדי למצוא כל קובץ תוך שניות, ולעולם לא לאבד מסמך חשוב שוב">
-        <div class="product-option-radio"></div>
-        <div class="product-option-body">
-          <div class="product-option-name">לסדר את המחשב, ארגון קבצים, תיקיות וענן</div>
-          <div class="product-option-desc">למצוא כל קובץ תוך שניות, לתמיד</div>
-        </div>
-        <div class="product-option-price">₪47</div>
-      </div>
-
-      <div class="product-option" data-product="security" data-name="גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ" data-price="47" data-desc="לגלוש בלי פחד, לנהל סיסמאות נכון, ולזהות הונאות לפני שהן פוגעות בכם">
-        <div class="product-option-radio"></div>
-        <div class="product-option-body">
-          <div class="product-option-name">גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ</div>
-          <div class="product-option-desc">הגנה אמיתית בכמה שלבים פשוטים</div>
-        </div>
-        <div class="product-option-price">₪47</div>
-      </div>
-
-      <div class="product-option" data-product="google" data-name="גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides" data-price="97" data-desc="כל כלי גוגל שאתם משתמשים בו, במקום אחד, עם תרגול מעשי">
-        <div class="product-option-radio"></div>
-        <div class="product-option-body">
-          <div class="product-option-name">גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides</div>
-          <div class="product-option-desc">כל כלי גוגל, במקום אחד, עם תרגול מעשי</div>
-        </div>
-        <div class="product-option-price">₪97</div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- טופס פרטים -->
-  <section class="checkout-form-card">
-    <div class="form-title">פרטים לקבלת ההדרכה</div>
-
-    <div class="form-row">
-      <label class="form-label" for="customer-name">שם מלא <span>*</span></label>
-      <input class="form-input" type="text" id="customer-name" placeholder="שם פרטי ושם משפחה" autocomplete="name">
-      <div class="form-error-msg" id="name-error">נא להזין שם מלא</div>
     </div>
 
-    <div class="form-row">
-      <label class="form-label" for="customer-email">כתובת אימייל <span>*</span></label>
-      <input class="form-input" type="email" id="customer-email" placeholder="yourname@gmail.com" autocomplete="email" dir="ltr">
-      <div class="form-hint">כאן נשלח את פרטי הגישה לאחר התשלום</div>
-      <div class="form-error-msg" id="email-error">נא להזין כתובת אימייל תקינה</div>
+    <!-- empty state אם הגיעו בלי מוצר -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="empty-state-title">לא נבחרה הדרכה</div>
+      <div class="empty-state-sub">חזרו לדף ההדרכות ובחרו מה שמתאים לכם.</div>
+      <a href="https://interactive.omertai.net" class="btn btn-primary">לכל ההדרכות</a>
     </div>
 
-    <div class="form-row">
-      <label class="form-label" for="customer-phone">טלפון <span style="font-weight:400; color:var(--text-light);">(לא חובה)</span></label>
-      <input class="form-input" type="tel" id="customer-phone" placeholder="050-0000000" autocomplete="tel" dir="ltr">
-      <div class="form-hint">לעזרה מהירה אם יש בעיה</div>
+    <!-- טופס -->
+    <div class="form-card" id="form-card">
+      <div class="form-card-title">פרטים לקבלת ההדרכה</div>
+
+      <div class="form-row">
+        <label class="form-label" for="customer-name">שם מלא <span>*</span></label>
+        <input class="form-input" type="text" id="customer-name" placeholder="שם פרטי ושם משפחה" autocomplete="name">
+        <div class="form-error-msg" id="name-error">נא להזין שם מלא</div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="customer-email">כתובת אימייל <span>*</span></label>
+        <input class="form-input" type="email" id="customer-email" placeholder="yourname@gmail.com" autocomplete="email" dir="ltr">
+        <div class="form-hint">כאן נשלח את פרטי הגישה לאחר התשלום</div>
+        <div class="form-error-msg" id="email-error">נא להזין כתובת אימייל תקינה</div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="customer-phone">טלפון <em>(לא חובה)</em></label>
+        <input class="form-input" type="tel" id="customer-phone" placeholder="050-0000000" autocomplete="tel" dir="ltr">
+        <div class="form-hint">לעזרה מהירה אם יש בעיה</div>
+      </div>
+
+      <div class="alert alert-error" id="form-alert"></div>
     </div>
+  </div>
 
-    <div class="alert alert-error" id="form-alert"></div>
-  </section>
-
-  <!-- עמודה ימנית: סיכום + כפתור -->
+  <!-- עמודה ימנית: כפתור + אמון -->
   <div class="right-col">
-    <div class="summary-card">
-      <div class="summary-title">סיכום הזמנה</div>
-      <div class="summary-line">
-        <span class="summary-line-label" id="summary-product-name">AI לכולם</span>
-        <span class="summary-line-value" id="summary-product-price">₪47</span>
-      </div>
-      <hr class="summary-divider">
-      <div class="summary-total">
-        <span class="summary-total-label">סה"כ לתשלום</span>
-        <span class="summary-total-price" id="summary-total">₪47</span>
-      </div>
+    <button class="pay-btn" id="pay-btn" type="button">
+      <span class="pay-btn-text" style="display:flex;align-items:center;gap:10px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        לתשלום מאובטח
+      </span>
+      <div class="pay-btn-spinner"></div>
+    </button>
 
-      <button class="pay-btn" id="pay-btn" type="button">
-        <span class="pay-btn-text" style="display:flex;align-items:center;gap:10px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-            <line x1="1" y1="10" x2="23" y2="10"/>
-          </svg>
-          לתשלום מאובטח
-        </span>
-        <div class="pay-btn-spinner"></div>
-      </button>
+    <div class="alert alert-info" id="redirect-msg">מעבירים אתכם לדף התשלום המאובטח...</div>
 
-      <div class="alert alert-info" id="redirect-msg" style="margin-top:14px;">
-        מעבירים אתכם לדף התשלום המאובטח של PayPlus...
-      </div>
-    </div>
-
-    <div class="trust-bar" style="margin-top:16px;">
+    <div class="trust-bar">
       <div class="trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-        </svg>
-        תשלום מוצפן SSL
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        SSL מוצפן
       </div>
       <div class="trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="20 6 9 17 4 12"/>
-        </svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         מאובטח על ידי PayPlus
       </div>
       <div class="trust-item">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <polyline points="12 6 12 12 16 14"/>
-        </svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         גישה מיידית
       </div>
     </div>
 
-    <div style="text-align:center;margin-top:14px;">
-      <a href="/pages/legal/refund.html" style="font-size:0.71rem;color:var(--text-light);text-decoration:none;border-bottom:1px solid var(--border);">מדיניות החזרים</a>
+    <div style="text-align:center;">
+      <a href="https://omertai.net/pages/legal/refund.html" style="font-size:0.71rem;color:var(--text-light);text-decoration:none;border-bottom:1px solid var(--border);">מדיניות החזרים</a>
     </div>
   </div>
 
-</div><!-- /checkout-inner -->
-</div><!-- /checkout-page -->
+</div>
+</div>
 
 <script>
-// ===== בחירת מוצר =====
-const options = document.querySelectorAll('.product-option');
-let selected = {
-  name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',
-  price: '47',
-  desc: 'הדרכה שתלמד אתכם להשתמש בכלי בינה מלאכותית בצורה פשוטה ובקצב שלכם'
+// ===== מאגר מוצרים =====
+const PRODUCTS = {
+  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
+  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
+  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
+  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
+  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
 };
 
-options.forEach(opt => {
-  opt.addEventListener('click', () => {
-    options.forEach(o => o.classList.remove('selected'));
-    opt.classList.add('selected');
-    selected = {
-      name: opt.dataset.name,
-      price: opt.dataset.price,
-      desc: opt.dataset.desc
-    };
-    updateSummary();
-  });
-});
+// ===== קריאת URL params =====
+const params = new URLSearchParams(window.location.search);
+let cart = []; // [{ name, price }]
 
-function updateSummary() {
-  const shortName = selected.name.split(',')[0];
-  document.getElementById('summary-product-name').textContent = shortName;
-  document.getElementById('summary-product-price').textContent = '₪' + selected.price;
-  document.getElementById('summary-total').textContent = '₪' + selected.price;
+// מוצר יחיד
+const productParam = params.get('product');
+if (productParam && PRODUCTS[productParam]) {
+  cart = [PRODUCTS[productParam]];
 }
 
-// ===== בדיקת סטטוס URL =====
-const urlParams = new URLSearchParams(window.location.search);
-const status = urlParams.get('status');
-const banner = document.getElementById('status-banner');
-if (status === 'failed') {
-  banner.className = 'status-banner failed';
-  banner.style.display = 'flex';
-  banner.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> התשלום לא הצליח. ניתן לנסות שוב.`;
-}
-if (status === 'cancelled') {
-  banner.className = 'status-banner cancelled';
-  banner.style.display = 'flex';
-  banner.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 9 15 15"/><polyline points="15 9 9 15"/></svg> התשלום בוטל. ניתן לחזור ולנסות.`;
-}
-
-// ===== בדיקת מוצר מ-URL =====
-const productParam = urlParams.get('product');
-if (productParam) {
-  options.forEach(opt => {
-    if (opt.dataset.product === productParam) opt.click();
+// סל (לעתיד: ?cart=vibe,ai)
+const cartParam = params.get('cart');
+if (cartParam) {
+  cartParam.split(',').forEach(key => {
+    if (PRODUCTS[key]) cart.push(PRODUCTS[key]);
   });
 }
 
-// ===== ולידציה =====
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
+// ===== הצגת הזמנה =====
+function renderOrder() {
+  const itemsEl = document.getElementById('order-items');
+  const totalEl = document.getElementById('order-total');
+  const formCard = document.getElementById('form-card');
+  const payBtn  = document.getElementById('pay-btn');
+  const emptyState = document.getElementById('empty-state');
+  const orderCard  = document.getElementById('order-card');
 
-function showFieldError(inputId, errorId, show) {
-  const input = document.getElementById(inputId);
-  const err = document.getElementById(errorId);
-  if (show) {
-    input.classList.add('error');
-    err.classList.add('visible');
-  } else {
-    input.classList.remove('error');
-    err.classList.remove('visible');
-  }
-}
-
-// ===== כפתור תשלום =====
-document.getElementById('pay-btn').addEventListener('click', async () => {
-  const name = document.getElementById('customer-name').value.trim();
-  const email = document.getElementById('customer-email').value.trim();
-  const phone = document.getElementById('customer-phone').value.trim();
-  const alert = document.getElementById('form-alert');
-  const redirectMsg = document.getElementById('redirect-msg');
-
-  let valid = true;
-  showFieldError('customer-name', 'name-error', !name);
-  showFieldError('customer-email', 'email-error', !validateEmail(email));
-  if (!name) valid = false;
-  if (!validateEmail(email)) valid = false;
-
-  if (!valid) {
-    alert.textContent = 'נא למלא את כל השדות החובה כנדרש.';
-    alert.className = 'alert alert-error visible';
+  if (cart.length === 0) {
+    orderCard.style.display = 'none';
+    formCard.style.display  = 'none';
+    payBtn.style.display    = 'none';
+    emptyState.style.display = 'block';
     return;
   }
 
-  alert.className = 'alert';
+  const total = cart.reduce((s, i) => s + i.price, 0);
+
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="order-item">
+      <div class="order-item-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <div class="order-item-body">
+        <div class="order-item-name">${item.name}</div>
+        <div class="order-item-sub">גישה מיידית לאחר התשלום</div>
+      </div>
+      <div class="order-item-price">₪${item.price}</div>
+    </div>
+  `).join('');
+
+  totalEl.textContent = '₪' + total;
+}
+
+renderOrder();
+
+// ===== סטטוס URL =====
+const status = params.get('status');
+const banner = document.getElementById('status-banner');
+if (status === 'failed') {
+  banner.className = 'status-banner failed';
+  banner.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> התשלום לא הצליח. ניתן לנסות שוב.';
+}
+if (status === 'cancelled') {
+  banner.className = 'status-banner cancelled';
+  banner.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg> התשלום בוטל. ניתן לחזור ולנסות.';
+}
+
+// ===== ולידציה =====
+function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+function showErr(inputId, errId, show) {
+  document.getElementById(inputId).classList.toggle('error', show);
+  document.getElementById(errId).classList.toggle('visible', show);
+}
+
+document.getElementById('customer-name').addEventListener('input', () => showErr('customer-name','name-error',false));
+document.getElementById('customer-email').addEventListener('input', () => showErr('customer-email','email-error',false));
+
+// ===== תשלום =====
+document.getElementById('pay-btn').addEventListener('click', async () => {
+  if (cart.length === 0) return;
+
+  const name  = document.getElementById('customer-name').value.trim();
+  const email = document.getElementById('customer-email').value.trim();
+  const phone = document.getElementById('customer-phone').value.trim();
+  const alertEl = document.getElementById('form-alert');
+
+  let valid = true;
+  showErr('customer-name',  'name-error',  !name);
+  showErr('customer-email', 'email-error', !validateEmail(email));
+  if (!name || !validateEmail(email)) valid = false;
+
+  if (!valid) {
+    alertEl.textContent = 'נא למלא את כל השדות החובה.';
+    alertEl.className = 'alert alert-error visible';
+    return;
+  }
+  alertEl.className = 'alert';
+
+  const total = cart.reduce((s, i) => s + i.price, 0);
+  const productName = cart.length === 1
+    ? cart[0].name
+    : cart.map(i => i.name).join(', ');
 
   const btn = document.getElementById('pay-btn');
   btn.classList.add('loading');
@@ -714,41 +362,27 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        productName: selected.name,
-        amount: selected.price,
+        productName,
+        amount: total,
         customerName: name,
         customerEmail: email,
         customerPhone: phone,
-        successUrl: `https://omertai.net/pages/checkout/success.html?product=${encodeURIComponent(selected.name)}`,
-        failUrl: 'https://omertai.net/pages/checkout/?status=failed'
+        failUrl: 'https://omertai.net/pages/checkout/' + window.location.search + '&status=failed'
       })
     });
 
     const data = await response.json();
+    if (!response.ok || !data.paymentUrl) throw new Error(data.error || 'שגיאה');
 
-    if (!response.ok || !data.paymentUrl) {
-      throw new Error(data.error || 'שגיאה ביצירת קישור תשלום');
-    }
-
-    redirectMsg.className = 'alert alert-info visible';
-    setTimeout(() => {
-      window.location.href = data.paymentUrl;
-    }, 800);
+    document.getElementById('redirect-msg').className = 'alert alert-info visible';
+    setTimeout(() => { window.location.href = data.paymentUrl; }, 800);
 
   } catch (err) {
     btn.classList.remove('loading');
     btn.disabled = false;
-    alert.textContent = err.message || 'אירעה שגיאה. נסו שוב או פנו אלינו בוואטסאפ.';
-    alert.className = 'alert alert-error visible';
+    alertEl.textContent = err.message || 'אירעה שגיאה. נסו שוב או פנו אלינו בוואטסאפ.';
+    alertEl.className = 'alert alert-error visible';
   }
-});
-
-// ===== ניקוי שגיאות בהקלדה =====
-document.getElementById('customer-name').addEventListener('input', () => {
-  showFieldError('customer-name', 'name-error', false);
-});
-document.getElementById('customer-email').addEventListener('input', () => {
-  showFieldError('customer-email', 'email-error', false);
 });
 </script>
 
