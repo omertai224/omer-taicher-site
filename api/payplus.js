@@ -1,9 +1,10 @@
 /**
  * api/payplus.js — Vercel Serverless Function
- * מטפל בתקשורת עם PayPlus בצד השרת (המפתחות לא חשופים בצד הלקוח)
+ * תקשורת עם PayPlus בצד השרת
  *
- * להחלפה לפרודקשן: שנו את המפתחות ב-Environment Variables ב-Vercel:
- *   PAYPLUS_API_KEY, PAYPLUS_SECRET_KEY, PAYPLUS_PAGE_UID, PAYPLUS_ENV=production
+ * Environment Variables ב-Vercel:
+ *   PAYPLUS_API_KEY, PAYPLUS_SECRET_KEY, PAYPLUS_PAGE_UID
+ *   PAYPLUS_ENV=production (לפרודקשן בלבד)
  */
 
 const PAYPLUS_BASE_URL = process.env.PAYPLUS_ENV === 'production'
@@ -15,7 +16,6 @@ const SECRET_KEY = process.env.PAYPLUS_SECRET_KEY || '6352f66d-931d-47c2-b562-f2
 const PAGE_UID   = process.env.PAYPLUS_PAGE_UID   || '1e3f5175-576a-4abf-962c-b5e19dd82da8';
 
 export default async function handler(req, res) {
-  // CORS
   res.setHeader('Access-Control-Allow-Origin', 'https://omertai.net');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -30,41 +30,33 @@ export default async function handler(req, res) {
       amount,
       customerName,
       customerEmail,
-      customerPhone,
-      failUrl
+      customerPhone
     } = req.body;
 
     if (!productName || !amount) {
       return res.status(400).json({ error: 'חסרים פרטי מוצר' });
     }
 
-    // success_url עם פרמטר המוצר — מוביל לדף ההצלחה שלנו
     const successUrl = productKey
       ? `https://omertai.net/pages/checkout/success.html?product=${productKey}`
       : 'https://omertai.net/pages/checkout/success.html';
 
-    const defaultFailUrl = productKey
+    const failUrl = productKey
       ? `https://omertai.net/pages/checkout/?product=${productKey}&status=failed`
       : 'https://omertai.net/pages/checkout/?status=failed';
 
-    const defaultCancelUrl = productKey
+    const cancelUrl = productKey
       ? `https://omertai.net/pages/checkout/?product=${productKey}&status=cancelled`
       : 'https://omertai.net/pages/checkout/?status=cancelled';
 
     const payload = {
       payment_page_uid: PAGE_UID,
-      charge_default: {
-        charge_type: 'regular',
-        number_of_payments: 1
-      },
+      charge_method: 1,
       amount: parseFloat(amount),
       currency_code: 'ILS',
-      order: {
-        total_price: parseFloat(amount),
-        vat_type: 1,
-        language_code: 'HE',
-        currency_code: 'ILS'
-      },
+      sendEmailApproval: true,
+      sendEmailFailure: false,
+      initial_invoice: true,
       products: [
         {
           name: productName,
@@ -78,8 +70,8 @@ export default async function handler(req, res) {
         phone: customerPhone || ''
       },
       success_url: successUrl,
-      fail_url: failUrl || defaultFailUrl,
-      cancel_url: defaultCancelUrl
+      fail_url: failUrl,
+      cancel_url: cancelUrl
     };
 
     const response = await fetch(`${PAYPLUS_BASE_URL}/api/v1.0/PaymentPages/generateLink`, {
