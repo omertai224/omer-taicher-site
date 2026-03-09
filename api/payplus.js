@@ -66,7 +66,7 @@ export default async function handler(req, res) {
     const data = await response.json();
     console.log('PayPlus response:', JSON.stringify(data));
 
-    if (!response.ok || data.results?.status !== '1') {
+    if (!response.ok || (data.results?.status !== "1" && data.results?.status !== "success")) {
       console.error('PayPlus error:', JSON.stringify(data));
       return res.status(502).json({ error: 'שגיאה ביצירת קישור תשלום', details: data });
     }
