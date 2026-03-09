@@ -1,154 +1,217 @@
+<!-- repo: omer-taicher-site | קובץ: pages/checkout/success.html -->
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>תשלום הצליח | עומר טייכר</title>
+<title>תשלום בוצע בהצלחה | עומר טייכר</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <meta name="robots" content="noindex,nofollow">
+
 <style>
-  .success-page {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
-    background: var(--cream);
-  }
-  .success-card {
-    background: #fff;
-    border-radius: 24px;
-    padding: 48px 32px;
-    max-width: 480px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 16px 48px rgba(26,74,107,0.12);
-    border: 1px solid var(--border);
-  }
-  .success-icon {
-    width: 80px;
-    height: 80px;
-    background: #f0fdf4;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 28px;
-    border: 2px solid #bbf7d0;
-  }
-  .success-title {
-    font-size: 1.7rem;
-    font-weight: 900;
-    color: var(--navy);
-    margin-bottom: 12px;
-    line-height: 1.2;
-  }
-  .success-sub {
-    font-size: 0.95rem;
-    color: var(--text-mid);
-    line-height: 1.8;
-    margin-bottom: 32px;
-  }
-  .success-product {
-    background: var(--navy-light);
-    border-radius: 14px;
-    padding: 18px 20px;
-    margin-bottom: 28px;
-    text-align: right;
-  }
-  .success-product-label {
-    font-size: 0.72rem;
-    color: var(--text-light);
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
-  }
-  .success-product-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--navy);
-  }
-  .success-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-  .success-wa {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: #25D366;
-    color: #fff;
-    border-radius: 50px;
-    padding: 14px 28px;
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.2s;
-  }
-  .success-wa:hover {
-    background: #1da851;
-    transform: translateY(-2px);
-  }
-  .success-home {
-    color: var(--navy);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-decoration: none;
-    opacity: 0.65;
-    transition: opacity 0.2s;
-    padding: 8px;
-    display: inline-block;
-  }
-  .success-home:hover { opacity: 1; }
+.success-page {
+  min-height: 100vh;
+  background: var(--cream);
+  padding-top: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.success-nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(253,248,242,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 60px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 20px;
+}
+.success-nav-logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+.success-nav-logo span { color: var(--orange-deep); }
+
+.success-inner {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 48px 16px 64px;
+  width: 100%;
+}
+
+/* אנימציה כניסה */
+.success-inner { animation: fadeUp 0.5s ease both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+/* אייקון הצלחה */
+.success-icon-wrap {
+  display: flex; justify-content: center; margin-bottom: 28px;
+}
+.success-circle {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 12px 32px rgba(34,197,94,0.35);
+  animation: popIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275) 0.1s both;
+}
+@keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
+
+.success-title {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  font-weight: 900; color: var(--navy);
+  text-align: center; margin-bottom: 12px; line-height: 1.2;
+}
+.success-sub {
+  font-size: 0.93rem; color: var(--text-mid);
+  text-align: center; line-height: 1.8; margin-bottom: 36px;
+}
+
+/* כרטיס מוצר */
+.success-product-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
+  margin-bottom: 20px;
+}
+.success-product-label {
+  font-size: 0.7rem; font-weight: 700; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px;
+}
+.success-product-row {
+  display: flex; align-items: center; gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 20px;
+}
+.success-product-icon {
+  width: 48px; height: 48px; flex-shrink: 0;
+  background: var(--orange-light); border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+}
+.success-product-name {
+  font-size: 0.95rem; font-weight: 800; color: var(--navy); line-height: 1.3;
+}
+.success-product-sub {
+  font-size: 0.75rem; color: var(--text-light); margin-top: 3px;
+}
+
+/* כפתור ראשי */
+.btn-go {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; padding: 18px 28px;
+  background: var(--orange-deep); color: #fff;
+  border-radius: 50px; font-family: var(--font);
+  font-size: 1rem; font-weight: 800;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 8px 24px rgba(232,133,74,0.35);
+}
+.btn-go:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(26,74,107,0.25); }
+.btn-go svg { transition: transform 0.2s; }
+.btn-go:hover svg { transform: translateX(-4px); }
+
+/* הודעת מייל */
+.email-note {
+  background: var(--navy-light);
+  border-right: 4px solid var(--navy);
+  border-radius: 0 14px 14px 0;
+  padding: 14px 18px;
+  font-size: 0.82rem; color: var(--navy); font-weight: 600; line-height: 1.7;
+  margin-bottom: 20px;
+}
+.email-note em { font-style: normal; color: var(--orange-deep); }
+
+/* שאלות */
+.help-row {
+  text-align: center; margin-top: 28px;
+  font-size: 0.8rem; color: var(--text-light); line-height: 1.8;
+}
+.help-row a { color: var(--navy); font-weight: 700; text-decoration: none; }
+.help-row a:hover { color: var(--orange-deep); }
 </style>
 </head>
 <body>
-
 <div class="success-page">
-  <div class="success-card">
-    <div class="success-icon">
-      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+
+<nav class="success-nav">
+  <a class="success-nav-logo" href="https://omertai.net">עומר <span>טייכר</span></a>
+</nav>
+
+<div class="success-inner">
+
+  <div class="success-icon-wrap">
+    <div class="success-circle">
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
         <polyline points="20 6 9 17 4 12"/>
       </svg>
     </div>
-
-    <div class="success-title">התשלום הצליח.</div>
-    <p class="success-sub">
-      תודה רבה.
-      <br>
-      ניצור איתכם קשר בהקדם עם פרטי הגישה.
-    </p>
-
-    <div class="success-product" id="product-box" style="display:none;">
-      <div class="success-product-label">ההדרכה שרכשתם</div>
-      <div class="success-product-name" id="product-name"></div>
-    </div>
-
-    <div class="success-actions">
-      <a class="success-wa" href="https://wa.me/972526587420?text=שלום%20עומר%2C%20רק%20סיימתי%20לשלם%20להדרכה%20%F0%9F%99%82" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        שלחו לי הודעה בוואטסאפ
-      </a>
-      <a class="success-home" href="https://omertai.net">חזרה לאתר הראשי</a>
-    </div>
   </div>
+
+  <h1 class="success-title">התשלום בוצע בהצלחה</h1>
+  <p class="success-sub">ההדרכה שלכם מוכנה ומחכה.<br>אפשר להתחיל עכשיו.</p>
+
+  <div class="success-product-card">
+    <div class="success-product-label">מה קניתם</div>
+    <div class="success-product-row">
+      <div class="success-product-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <div>
+        <div class="success-product-name" id="product-name">הדרכה אינטראקטיבית</div>
+        <div class="success-product-sub">גישה מיידית ולצמיתות</div>
+      </div>
+    </div>
+
+    <a class="btn-go" id="btn-go" href="#">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="5 3 19 12 5 21 5 3"/>
+      </svg>
+      עברו להדרכה עכשיו
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="email-note">
+    שלחנו לכם מייל עם קישור להדרכה וקבלה פורמלית על התשלום.
+    לא קיבלתם? בדקו את תיקיית <em>הספאם</em> — לפעמים הוא מגיע לשם.
+  </div>
+
+  <div class="help-row">
+    נתקעתם? יש שאלה?<br>
+    <a href="mailto:omer@omertai.net">omer@omertai.net</a> — עונה בדרך כלל תוך כמה שעות.
+  </div>
+
+</div>
 </div>
 
 <script>
-// הצגת שם המוצר אם הועבר ב-URL
-const params = new URLSearchParams(window.location.search);
-const product = params.get('product');
+// מיפוי מוצר → שם + קישור
+const PRODUCTS = {
+  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://interactive.omertai.net/Vibe/' },
+  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://interactive.omertai.net/AI/' },
+  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: 'https://interactive.omertai.net/Files/' },
+  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: 'https://interactive.omertai.net/Security/' },
+  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', url: 'https://interactive.omertai.net/Google/' }
+};
+
+const params  = new URLSearchParams(window.location.search);
+const key     = params.get('product');
+const product = key && PRODUCTS[key] ? PRODUCTS[key] : null;
+
 if (product) {
-  document.getElementById('product-name').textContent = decodeURIComponent(product);
-  document.getElementById('product-box').style.display = 'block';
+  document.getElementById('product-name').textContent = product.name;
+  document.getElementById('btn-go').href = product.url;
+} else {
+  // לא ידוע — שולחים לדף ההדרכות הכללי
+  document.getElementById('btn-go').href = 'https://interactive.omertai.net';
 }
 </script>
 
