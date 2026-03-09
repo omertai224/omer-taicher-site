@@ -1952,8 +1952,6 @@ function populateInteractiveContentFields(d) {
   set('ic.shop.eyebrow', d.shop?.eyebrow);
   set('ic.shop.title',   d.shop?.title);
   set('ic.shop.sub',     d.shop?.sub);
-  set('ic.guarantee.title', d.guarantee?.title);
-  set('ic.guarantee.text',  d.guarantee?.text);
   (d.faq || []).forEach((f, i) => {
     set(`ic.faq.${i}.q`, f.q);
     set(`ic.faq.${i}.a`, f.a);
@@ -1990,8 +1988,6 @@ async function saveInteractiveContent() {
     newData.shop.eyebrow = get('ic.shop.eyebrow');
     newData.shop.title   = get('ic.shop.title');
     newData.shop.sub     = get('ic.shop.sub');
-    newData.guarantee.title = get('ic.guarantee.title');
-    newData.guarantee.text  = get('ic.guarantee.text');
     (newData.faq || []).forEach((f, i) => {
       f.q = get(`ic.faq.${i}.q`);
       f.a = get(`ic.faq.${i}.a`);
