@@ -303,7 +303,7 @@
 
       grid.innerHTML = items.map((item, index) => {
         const title = item.querySelector('title')?.textContent || '';
-        const link  = item.querySelector('link')?.textContent || 'https://blog.omertai.net';
+        const link = item.querySelector('guid')?.textContent || 'https://blog.omertai.net';
         const date  = item.querySelector('pubDate')?.textContent || '';
         const rawDesc = item.querySelector('description')?.textContent || '';
         const plain = stripHTML(rawDesc);
