@@ -315,8 +315,8 @@
         const imgHtml = imgUrl
           ? `<div class="blog-thumb" style="background-image:url('${imgUrl}')"></div>`
           : `<div class="blog-thumb blog-thumb-empty"></div>`;
-        const titleHtml = title.replace(/\. /g, '.<br>');
-        const excerptHtml = excerpt.replace(/\. /g, '.<br>');
+        const titleHtml = title.replace(/([.?!]) /g, '$1<br>');
+        const excerptHtml = excerpt.replace(/([.?!]) /g, '$1<br>');
         const newBadge = index === 0 ? `<div class="blog-new-badge">חדש</div>` : '';
 
         return `<a class="blog-card" href="${link}">
