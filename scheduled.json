@@ -32,13 +32,13 @@
   {
     "postId": "youtube-video-ends-with-pizza",
     "sendAt": "2026-03-09T08:12:00",
-    "sent": false,
+    "sent": true,
     "addedAt": "2026-03-09T08:10:40.556Z"
   },
   {
     "postId": "ont-turn-off-during-update",
     "sendAt": "2026-03-09T08:12:00",
-    "sent": false,
+    "sent": true,
     "addedAt": "2026-03-09T08:10:53.097Z"
   }
 ]
