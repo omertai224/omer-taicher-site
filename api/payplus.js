@@ -1,9 +1,5 @@
 /**
  * api/payplus.js — Vercel Serverless Function
- * מטפל בתקשורת עם PayPlus בצד השרת
- *
- * להחלפה לפרודקשן: שנו את המפתחות ב-Environment Variables ב-Vercel
- * והוסיפו: PAYPLUS_ENV=production
  */
 
 const PAYPLUS_BASE_URL = process.env.PAYPLUS_ENV === 'production'
@@ -31,15 +27,14 @@ export default async function handler(req, res) {
 
     const payload = {
       payment_page_uid: PAGE_UID,
+      amount: parseFloat(amount),
+      currency_code: 'ILS',
       charge_default: {
         charge_type: 'regular',
         number_of_payments: 1
       },
       order: {
-        total_price: parseFloat(amount),
-        vat_type: 0,
-        language_code: 'HE',
-        currency_code: 'ILS'
+        language_code: 'HE'
       },
       products: [
         {
@@ -69,7 +64,6 @@ export default async function handler(req, res) {
     });
 
     const data = await response.json();
-
     console.log('PayPlus response:', JSON.stringify(data));
 
     if (!response.ok || data.results?.status !== '1') {
