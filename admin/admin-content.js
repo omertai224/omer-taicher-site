@@ -147,7 +147,10 @@ async function loadBlogManager() {
 
     // טעינת תזמונים
     try {
-      const sched = await ghGet('scheduled.json');
+      const schedRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/omer-taicher-site/contents/scheduled.json?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
+        headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      const sched = await schedRes.json();
       blogScheduled = JSON.parse(decode(sched.content)).filter(s => !s.sent);
     } catch(e) { blogScheduled = []; }
 
@@ -855,11 +858,20 @@ async function blogCancelSchedule(postId) {
   if (!confirm('לבטל את התזמון לפוסט זה?')) return;
   try {
     setStatus('content', 'loading', 'מבטל תזמון...');
-    const data = await ghGet('scheduled.json');
+    const SITE_REPO = 'omer-taicher-site';
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${SITE_REPO}/contents/scheduled.json?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    const data = await res.json();
     const scheduledSha = data.sha;
     let scheduled = JSON.parse(decode(data.content));
     scheduled = scheduled.filter(s => !(s.postId === postId && !s.sent));
-    const result = await ghPut('scheduled.json', JSON.stringify(scheduled, null, 2), scheduledSha, 'ביטול תזמון: ' + postId);
+    const putRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${SITE_REPO}/contents/scheduled.json`, {
+      method: 'PUT',
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: 'ביטול תזמון: ' + postId, content: btoa(unescape(encodeURIComponent(JSON.stringify(scheduled, null, 2)))), sha: scheduledSha, branch: GITHUB_BRANCH })
+    });
+    const result = await putRes.json();
     if (result.content) {
       blogScheduled = scheduled.filter(s => !s.sent);
       setStatus('content', 'ok', '✓ התזמון בוטל');
@@ -913,11 +925,15 @@ async function blogScheduleWhatsapp(postId) {
     statusEl.textContent = 'שומר...';
 
     try {
-      // טוען scheduled.json קיים
+      // טוען scheduled.json מ-omer-taicher-site תמיד
+      const SITE_REPO = 'omer-taicher-site';
       let scheduled = [];
       let scheduledSha = null;
       try {
-        const data = await ghGet('scheduled.json');
+        const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${SITE_REPO}/contents/scheduled.json?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
+          headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        const data = await res.json();
         scheduledSha = data.sha;
         scheduled = JSON.parse(decode(data.content));
       } catch(e) { scheduledSha = null; }
@@ -925,7 +941,12 @@ async function blogScheduleWhatsapp(postId) {
       // מוסיף רשומה
       scheduled.push({ postId, sendAt, sent: false, addedAt: new Date().toISOString() });
 
-      const result = await ghPut('scheduled.json', JSON.stringify(scheduled, null, 2), scheduledSha, 'תזמון פוסט: ' + postId);
+      const putRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${SITE_REPO}/contents/scheduled.json`, {
+        method: 'PUT',
+        headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: 'תזמון פוסט: ' + postId, content: btoa(unescape(encodeURIComponent(JSON.stringify(scheduled, null, 2)))), sha: scheduledSha, branch: GITHUB_BRANCH })
+      });
+      const result = await putRes.json();
       if (result.content) {
         statusEl.style.color = '#128c7e';
         statusEl.textContent = '✓ מתוזמן ל-' + time + ' בתאריך ' + date;
