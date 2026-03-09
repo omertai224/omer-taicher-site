@@ -1,21 +1,20 @@
 /**
  * api/payplus.js — Vercel Serverless Function
- * מטפל בתקשורת עם PayPlus בצד השרת (המפתחות לא חשופים בצד הלקוח)
+ * מטפל בתקשורת עם PayPlus בצד השרת
  *
- * להחלפה לפרודקשן: שנו את המפתחות ב-Environment Variables ב-Vercel:
- *   PAYPLUS_API_KEY, PAYPLUS_SECRET_KEY, PAYPLUS_PAGE_UID
+ * להחלפה לפרודקשן: שנו את המפתחות ב-Environment Variables ב-Vercel
+ * והוסיפו: PAYPLUS_ENV=production
  */
 
 const PAYPLUS_BASE_URL = process.env.PAYPLUS_ENV === 'production'
-  ? 'https://myaccount.payplus.co.il'
-  : 'https://myaccountdev.payplus.co.il';
+  ? 'https://restapi.payplus.co.il'
+  : 'https://restapidev.payplus.co.il';
 
 const API_KEY    = process.env.PAYPLUS_API_KEY    || 'dac11423-0481-4d1b-a08d-98485b596c2e';
 const SECRET_KEY = process.env.PAYPLUS_SECRET_KEY || '6352f66d-931d-47c2-b562-f2fd5016da00';
 const PAGE_UID   = process.env.PAYPLUS_PAGE_UID   || '1e3f5175-576a-4abf-962c-b5e19dd82da8';
 
 export default async function handler(req, res) {
-  // CORS
   res.setHeader('Access-Control-Allow-Origin', 'https://omertai.net');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -38,22 +37,25 @@ export default async function handler(req, res) {
       },
       order: {
         total_price: parseFloat(amount),
-        vat_type: 1,
+        vat_type: 0,
         language_code: 'HE',
         currency_code: 'ILS'
       },
-      product: {
-        name: productName,
-        quantity: 1,
-        price: parseFloat(amount)
-      },
+      products: [
+        {
+          name: productName,
+          quantity: 1,
+          price: parseFloat(amount),
+          vat_type: 0
+        }
+      ],
       customer: {
         customer_name: customerName || '',
         email: customerEmail || '',
         phone: customerPhone || ''
       },
-      success_url: successUrl || 'https://omertai.net/pages/payment-success.html',
-      fail_url: failUrl || 'https://omertai.net/pages/checkout.html?status=failed',
+      success_url: successUrl || 'https://omertai.net/pages/checkout/success.html',
+      fail_url: failUrl || 'https://omertai.net/pages/checkout/?status=failed',
       cancel_url: 'https://omertai.net/pages/checkout/?status=cancelled'
     };
 
@@ -68,8 +70,10 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
+    console.log('PayPlus response:', JSON.stringify(data));
+
     if (!response.ok || data.results?.status !== '1') {
-      console.error('PayPlus error:', data);
+      console.error('PayPlus error:', JSON.stringify(data));
       return res.status(502).json({ error: 'שגיאה ביצירת קישור תשלום', details: data });
     }
 
@@ -79,7 +83,7 @@ export default async function handler(req, res) {
     });
 
   } catch (err) {
-    console.error('Server error:', err);
-    return res.status(500).json({ error: 'שגיאת שרת פנימית' });
+    console.error('Server error:', err.message);
+    return res.status(500).json({ error: 'שגיאת שרת פנימית', message: err.message });
   }
 }
