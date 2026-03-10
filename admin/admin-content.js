@@ -1212,20 +1212,18 @@ let interactiveSha = null;
 let interactiveEditingIndex = null;
 
 async function loadInteractiveManager() {
-  setStatus('content', 'loading', 'טוען...');
-  // init sub-tabs: start on content tab
-  if (typeof switchInteractiveTab === 'function') switchInteractiveTab('content');
-  // load content.json
-  await loadInteractiveContent();
-  // load interactive.json in background
+  setStatus('content', 'loading', 'טוען הדרכות...');
+  const container = document.getElementById('interactive-list');
+  if (!container) return;
   try {
     const data = await ghGet('interactive.json');
     interactiveSha = data.sha;
     interactiveItems = JSON.parse(decode(data.content));
     renderInteractiveList();
+    setStatus('content', 'ok', interactiveItems.length + ' הדרכות נטענו');
   } catch(e) {
-    const container = document.getElementById('interactive-list');
-    if (container) container.innerHTML = '<div style="text-align:center;padding:40px;color:#c0392b;font-size:0.88rem">שגיאה בטעינת הדרכות: ' + e.message + '</div>';
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:#c0392b;font-size:0.88rem">שגיאה בטעינת הדרכות: ' + e.message + '</div>';
   }
 }
 
@@ -1503,8 +1501,9 @@ function renderGallery() {
       <div style="position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;flex-direction:column;justify-content:flex-end;padding:8px;gap:4px;opacity:0;transition:all 0.2s;"
            onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
            onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
-        <button onclick="event.stopPropagation();copyGalleryUrl('${item.url}')" style="background:var(--orange-deep);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">📋 העתק קישור</button>
-        <button onclick="event.stopPropagation();deleteGalleryItem(${realIndex})" style="background:rgba(220,38,38,0.85);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">🗑️ מחק</button>
+        <button onclick="event.stopPropagation();window.open('${item.url}','_blank')" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.4);width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">פתח בלשונית</button>
+        <button onclick="event.stopPropagation();copyGalleryUrl('${item.url}')" style="background:var(--orange-deep);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">העתק קישור</button>
+        <button onclick="event.stopPropagation();deleteGalleryItem(${realIndex})" style="background:rgba(220,38,38,0.85);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">מחק</button>
       </div>
     </div>`;
   }).join('');
@@ -1904,105 +1903,4 @@ async function saveImageToContent(key, url) {
     console.error('שגיאה בשמירת תמונה', e);
     setStatus('content', 'error', 'שגיאה בשמירת תמונה');
   }
-}
-
-
-// ===== INTERACTIVE CONTENT MANAGER (content.json of omer-taicher-interactive) =====
-
-let interactiveContentSha = null;
-let interactiveContentData = null;
-
-async function loadInteractiveContent() {
-  setStatus('content', 'loading', 'טוען תוכן אינטראקטיבי...');
-  try {
-    const data = await ghGet('content.json');
-    interactiveContentSha = data.sha;
-    interactiveContentData = JSON.parse(decode(data.content));
-    populateInteractiveContentFields(interactiveContentData);
-    setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך');
-    const saveBtn = document.getElementById('save-interactive-content-btn');
-    if (saveBtn) saveBtn.disabled = false;
-  } catch(e) {
-    setStatus('content', 'error', 'שגיאה: ' + e.message);
-  }
-}
-
-function populateInteractiveContentFields(d) {
-  const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
-  set('ic.page.eyebrow',    d.page?.eyebrow);
-  set('ic.page.title_1',    d.page?.title_1);
-  set('ic.page.title_2',    d.page?.title_2);
-  set('ic.page.title_3',    d.page?.title_3);
-  set('ic.page.sub',        d.page?.sub);
-  (d.pain_cards || []).forEach((c, i) => {
-    set(`ic.pain_cards.${i}.title`, c.title);
-    set(`ic.pain_cards.${i}.desc`,  c.desc);
-  });
-  set('ic.solution.label', d.solution?.label);
-  set('ic.solution.title', d.solution?.title);
-  set('ic.solution.sub',   d.solution?.sub);
-  set('ic.how.eyebrow', d.how?.eyebrow);
-  set('ic.how.title',   d.how?.title);
-  set('ic.how.sub',     d.how?.sub);
-  set('ic.how.note',    d.how?.note);
-  (d.how?.steps || []).forEach((s, i) => {
-    set(`ic.how.steps.${i}.title`, s.title);
-    set(`ic.how.steps.${i}.desc`,  s.desc);
-  });
-  set('ic.shop.eyebrow', d.shop?.eyebrow);
-  set('ic.shop.title',   d.shop?.title);
-  set('ic.shop.sub',     d.shop?.sub);
-  (d.faq || []).forEach((f, i) => {
-    set(`ic.faq.${i}.q`, f.q);
-    set(`ic.faq.${i}.a`, f.a);
-  });
-}
-
-async function saveInteractiveContent() {
-  const saveBtn = document.getElementById('save-interactive-content-btn');
-  if (saveBtn) saveBtn.disabled = true;
-  setStatus('content', 'loading', 'שומר...');
-  try {
-    const get = (id) => { const el = document.getElementById(id); return el ? el.value : ''; };
-    const newData = JSON.parse(JSON.stringify(interactiveContentData));
-    newData.page.eyebrow = get('ic.page.eyebrow');
-    newData.page.title_1 = get('ic.page.title_1');
-    newData.page.title_2 = get('ic.page.title_2');
-    newData.page.title_3 = get('ic.page.title_3');
-    newData.page.sub     = get('ic.page.sub');
-    (newData.pain_cards || []).forEach((c, i) => {
-      c.title = get(`ic.pain_cards.${i}.title`);
-      c.desc  = get(`ic.pain_cards.${i}.desc`);
-    });
-    newData.solution.label = get('ic.solution.label');
-    newData.solution.title = get('ic.solution.title');
-    newData.solution.sub   = get('ic.solution.sub');
-    newData.how.eyebrow = get('ic.how.eyebrow');
-    newData.how.title   = get('ic.how.title');
-    newData.how.sub     = get('ic.how.sub');
-    newData.how.note    = get('ic.how.note');
-    (newData.how.steps || []).forEach((s, i) => {
-      s.title = get(`ic.how.steps.${i}.title`);
-      s.desc  = get(`ic.how.steps.${i}.desc`);
-    });
-    newData.shop.eyebrow = get('ic.shop.eyebrow');
-    newData.shop.title   = get('ic.shop.title');
-    newData.shop.sub     = get('ic.shop.sub');
-    (newData.faq || []).forEach((f, i) => {
-      f.q = get(`ic.faq.${i}.q`);
-      f.a = get(`ic.faq.${i}.a`);
-    });
-
-    const result = await ghPut('content.json', JSON.stringify(newData, null, 2), interactiveContentSha, 'עדכון תוכן אינטראקטיבי');
-    if (result.content) {
-      interactiveContentSha = result.content.sha;
-      interactiveContentData = newData;
-      setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
-    } else {
-      setStatus('content', 'error', 'שגיאה: ' + (result.message || 'לא ידוע'));
-    }
-  } catch(e) {
-    setStatus('content', 'error', 'שגיאה: ' + e.message);
-  }
-  if (saveBtn) saveBtn.disabled = false;
 }
