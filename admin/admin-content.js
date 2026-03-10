@@ -2106,7 +2106,10 @@ function renderContactStats() {
     `${line('#1a4a6b', `סה"כ ${total} אנשי קשר ייחודיים.`)}
      ${line('#1a4a6b', '954 אנשים עם מספר טלפון. 14 ללא טלפון.')}
      ${line('#1a4a6b', '153 נרשמו עם שם פרטי בלבד ללא שם משפחה.')}
-     ${line('#1a4a6b', '821 עם Gmail. 76 עם Walla. 22 עם Yahoo. 15 עם Bezeqint.')}
+     ${line('#1a4a6b', '821 אנשים עם Gmail.')}
+     ${line('#5b8fa8', '76 אנשים עם Walla.')}
+     ${line('#5b8fa8', '22 אנשים עם Yahoo.')}
+     ${line('#5b8fa8', '15 אנשים עם Bezeqint.')}
      ${line('#1a4a6b', `ממוצע רישומים לאיש קשר: ${(allContacts.reduce((s,c) => s+(parseInt(c.count)||1), 0)/total).toFixed(1)} הרצאות.`)}`
   ];
 
