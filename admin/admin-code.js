@@ -352,38 +352,6 @@ async function uploadFile(file) {
 
 async function copyEditorContent() {
   const editor = document.getElementById('code-editor');
-  if (!editor || !editor.value) return;
-  copyToClipboard(editor.value, document.getElementById('editor-filename').textContent);
-}
-
-// override copyEditorContent with inline clipboard
-async function copyEditorContent() {
-  const editor = document.getElementById('code-editor');
-  const filename = document.getElementById('editor-filename').textContent;
-  if (!editor || !editor.value) return;
-  const text = editor.value;
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      await navigator.clipboard.writeText(text);
-    } else {
-      const ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
-    }
-    setStatus('code', 'ok', '✓ ' + filename + ' הועתק ללוח');
-  } catch(e) {
-    setStatus('code', 'error', 'שגיאה בהעתקה');
-  }
-}
-
-async function copyEditorContent() {
-  const editor = document.getElementById('code-editor');
   const filename = document.getElementById('editor-filename').textContent;
   if (!editor || !editor.value) return;
   const text = editor.value;
