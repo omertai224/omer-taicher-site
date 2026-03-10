@@ -2069,6 +2069,20 @@ function saveNote(i) {
   saveContacts();
 }
 
+let contactSortDir = null;
+
+function toggleCountSort() {
+  contactSortDir = contactSortDir === 'desc' ? 'asc' : 'desc';
+  const arrow = document.getElementById('sort-arrow');
+  if (arrow) arrow.textContent = contactSortDir === 'desc' ? '↓' : '↑';
+  filterContacts();
+}
+
+function setLoyaltyFilter(val) {
+  const sel = document.getElementById('contacts-filter-loyalty');
+  if (sel) { sel.value = val; filterContacts(); }
+}
+
 function filterContacts() {
   const q = (document.getElementById('contacts-search')?.value || '').toLowerCase();
   const loyalty = document.getElementById('contacts-filter-loyalty')?.value || 'all';
@@ -2088,6 +2102,11 @@ function filterContacts() {
     
     return matchQ && matchL;
   });
+
+  if (contactSortDir) {
+    filteredContacts.sort((a, b) => contactSortDir === 'desc' ? (b.count||1) - (a.count||1) : (a.count||1) - (b.count||1));
+  }
+
   renderContacts();
   const count = document.getElementById('contacts-count');
   if (count) count.textContent = filteredContacts.length.toLocaleString() + ' תוצאות';
