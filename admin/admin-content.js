@@ -1211,6 +1211,61 @@ let interactiveItems = [];
 let interactiveSha = null;
 let interactiveEditingIndex = null;
 
+let icData = null;
+let icSha  = null;
+
+async function loadInteractiveContent() {
+  if (GITHUB_REPO !== 'omer-taicher-interactive') return;
+  const saveBtn = document.getElementById('save-interactive-content-btn');
+  setStatus('content', 'loading', 'טוען תוכן אינטראקטיבי...');
+  try {
+    const data = await ghGet('content.json');
+    icSha  = data.sha;
+    icData = JSON.parse(decode(data.content));
+    // מילוי שדות ic.*
+    const flat = flatten(icData, 'ic');
+    for (const path in flat) {
+      const el = document.getElementById(path);
+      if (el) el.value = flat[path] === null ? '' : flat[path];
+    }
+    setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך ולשמור');
+    if (saveBtn) { saveBtn.disabled = false; saveBtn.style.opacity = '1'; saveBtn.style.display = 'inline-flex'; }
+    // מאזין לשינויים
+    document.querySelectorAll('#ic-panel-content [id^="ic."]').forEach(el => {
+      el.addEventListener('input', () => {
+        if (saveBtn) { saveBtn.disabled = false; saveBtn.style.opacity = '1'; }
+      });
+    });
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+  }
+}
+
+async function saveInteractiveContent() {
+  if (!icData || !icSha) return;
+  const saveBtn = document.getElementById('save-interactive-content-btn');
+  setStatus('content', 'loading', 'שומר...');
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.style.opacity = '0.4'; }
+  try {
+    const newData = JSON.parse(JSON.stringify(icData));
+    document.querySelectorAll('#ic-panel-content [id^="ic."]').forEach(el => {
+      const path = el.id.replace(/^ic\./, '');
+      setByPath(newData, path, el.value);
+    });
+    const result = await ghPut('content.json', JSON.stringify(newData, null, 2), icSha, 'עדכון תוכן אינטראקטיבי');
+    if (result.content) {
+      icSha  = result.content.sha;
+      icData = newData;
+      setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
+    } else {
+      setStatus('content', 'error', 'שגיאה: ' + (result.message || 'לא ידוע'));
+    }
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+  }
+  if (saveBtn) { saveBtn.disabled = false; saveBtn.style.opacity = '1'; }
+}
+
 async function loadInteractiveManager() {
   setStatus('content', 'loading', 'טוען הדרכות...');
   const container = document.getElementById('interactive-list');
