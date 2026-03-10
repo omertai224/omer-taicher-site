@@ -1905,6 +1905,28 @@ async function saveImageToContent(key, url) {
   }
 }
 
+
+// ============================================================
+// INTERACTIVE SUB-TABS
+// ============================================================
+function switchInteractiveTab(tab) {
+  const contentPanel  = document.getElementById('ic-panel-content');
+  const productsPanel = document.getElementById('ic-panel-products');
+  const btnContent    = document.getElementById('ic-tab-btn-content');
+  const btnProducts   = document.getElementById('ic-tab-btn-products');
+  const saveBtn       = document.getElementById('save-interactive-content-btn');
+
+  const isContent = tab === 'content';
+  if (contentPanel)  contentPanel.style.display  = isContent ? 'block' : 'none';
+  if (productsPanel) productsPanel.style.display  = isContent ? 'none'  : 'block';
+
+  const activeStyle   = 'display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;';
+  const inactiveStyle = 'display:inline-flex;align-items:center;gap:6px;background:transparent;color:var(--navy);border:1.5px solid var(--border);padding:9px 20px;border-radius:50px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;';
+  if (btnContent)  btnContent.style.cssText  = isContent ? activeStyle : inactiveStyle;
+  if (btnProducts) btnProducts.style.cssText = isContent ? inactiveStyle : activeStyle;
+  if (saveBtn) saveBtn.style.display = isContent ? 'block' : 'none';
+}
+
 // ============================================================
 // CONTACTS
 // ============================================================
