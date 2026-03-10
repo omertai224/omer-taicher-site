@@ -1904,3 +1904,114 @@ async function saveImageToContent(key, url) {
     setStatus('content', 'error', 'שגיאה בשמירת תמונה');
   }
 }
+
+// ============================================================
+// CONTACTS
+// ============================================================
+let allContacts = [];
+let filteredContacts = [];
+
+async function loadContacts() {
+  try {
+    const r = await fetch('/contacts.json?v=' + Date.now());
+    if (!r.ok) { allContacts = []; renderContacts(); return; }
+    const data = await r.json();
+    allContacts = data.contacts || [];
+    filteredContacts = [...allContacts];
+    renderContacts();
+  } catch(e) {
+    allContacts = [];
+    renderContacts();
+  }
+}
+
+function renderContacts() {
+  const tbody = document.getElementById('contacts-tbody');
+  const empty = document.getElementById('contacts-empty');
+  const count = document.getElementById('contacts-count');
+  if (!tbody) return;
+
+  const list = filteredContacts;
+  if (count) count.textContent = list.length + ' אנשי קשר';
+
+  if (!list.length) {
+    tbody.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  tbody.innerHTML = list.map((c, i) => `
+    <tr style="border-bottom:1px solid var(--border);${i % 2 === 0 ? '' : 'background:var(--cream);'}">
+      <td style="padding:10px 16px;">${c.first_name || ''}</td>
+      <td style="padding:10px 16px;">${c.last_name || ''}</td>
+      <td style="padding:10px 16px;direction:ltr;text-align:right;">${c.email || ''}</td>
+      <td style="padding:10px 16px;direction:ltr;text-align:right;">${c.phone || ''}</td>
+      <td style="padding:10px 16px;text-align:center;">
+        <button onclick="deleteContact('${c.email}')" style="background:#fde8e8;color:#c0392b;border:none;padding:5px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function filterContacts() {
+  const q = document.getElementById('contacts-search')?.value?.toLowerCase() || '';
+  filteredContacts = allContacts.filter(c =>
+    (c.first_name || '').toLowerCase().includes(q) ||
+    (c.last_name || '').toLowerCase().includes(q) ||
+    (c.email || '').toLowerCase().includes(q) ||
+    (c.phone || '').includes(q)
+  );
+  renderContacts();
+}
+
+function deleteContact(email) {
+  if (!confirm('למחוק את ' + email + '?')) return;
+  allContacts = allContacts.filter(c => c.email !== email);
+  filteredContacts = filteredContacts.filter(c => c.email !== email);
+  renderContacts();
+  saveContacts();
+}
+
+async function saveContacts() {
+  const token = localStorage.getItem('admin_token');
+  if (!token) return;
+  await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/contacts.json', {
+    method: 'PUT',
+    headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      message: 'עדכון אנשי קשר',
+      content: btoa(unescape(encodeURIComponent(JSON.stringify({ contacts: allContacts }, null, 2)))),
+      sha: await getFileSha('contacts.json')
+    })
+  });
+}
+
+async function getFileSha(path) {
+  const token = localStorage.getItem('admin_token');
+  const r = await fetch(`https://api.github.com/repos/omertai224/omer-taicher-site/contents/${path}`, {
+    headers: { Authorization: 'token ' + token }
+  });
+  if (!r.ok) return undefined;
+  const d = await r.json();
+  return d.sha;
+}
+
+
+function exportContacts() {
+  const rows = [['שם פרטי','שם משפחה','אימייל','טלפון']];
+  allContacts.forEach(c => rows.push([c.first_name, c.last_name, c.email, c.phone]));
+  const csv = rows.map(r => r.map(v => `"${v || ''}"`).join(',')).join('\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'contacts.csv';
+  a.click();
+}
+
+// Load on tab switch
+const _origSwitchTab = window.switchTab;
+window.switchTab = function(tab, btn) {
+  _origSwitchTab && _origSwitchTab(tab, btn);
+  if (tab === 'contacts') loadContacts();
+};
