@@ -1934,14 +1934,18 @@ let allContacts = [];
 let filteredContacts = [];
 
 async function loadContacts() {
+  const token = localStorage.getItem('admin_token');
   try {
-    const r = await fetch('/contacts.json?v=' + Date.now());
-    if (!r.ok) { allContacts = []; renderContacts(); return; }
-    const data = await r.json();
-    allContacts = data.contacts || [];
+    const res = await fetch(`https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json?ref=main&t=${Date.now()}`, {
+      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) { allContacts = []; renderContacts(); return; }
+    const data = await res.json();
+    const parsed = JSON.parse(decode(data.content));
+    allContacts = parsed.contacts || [];
     filteredContacts = [...allContacts];
-    renderStats(data.stats || {});
-    renderInsights(data.stats || {}, allContacts);
+    renderStats(parsed.stats || {});
+    renderInsights(parsed.stats || {}, allContacts);
     renderContacts();
   } catch(e) {
     allContacts = [];
@@ -2123,8 +2127,8 @@ function deleteContact(email) {
 async function saveContacts() {
   const token = localStorage.getItem('admin_token');
   if (!token) return;
-  const sha = await getFileSha('contacts.json');
-  await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/contacts.json', {
+  const sha = await getFileSha('admin/contacts.json');
+  await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json', {
     method: 'PUT',
     headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
     body: JSON.stringify({
