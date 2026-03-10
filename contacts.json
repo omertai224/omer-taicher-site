@@ -1,27 +1,20 @@
 {
-  "stats": {
-    "total": 1068,
-    "loyal_3plus": 235,
-    "loyal_10plus": 50,
-    "single_reg": 657,
-    "gmail_pct": 77
-  },
   "contacts": [
+    {
+      "first_name": "הדסה",
+      "last_name": "",
+      "email": "hadam28@gmail.com",
+      "phone": "972-58-788-4670",
+      "count": 25,
+      "notes": ""
+    },
     {
       "first_name": "יהל",
       "last_name": "אוראל",
       "email": "yahelori@gmail.com",
       "phone": "052-8871986",
-      "count": 25,
-      "notes": "נרשם 25 פעמים — קהל נאמן ביותר"
-    },
-    {
-      "first_name": "הדסה",
-      "last_name": "מרכוס",
-      "email": "hadam28@gmail.com",
-      "phone": "972-58-788-4670",
-      "count": 25,
-      "notes": "נרשם 25 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "count": 24,
+      "notes": ""
     },
     {
       "first_name": "פינה",
@@ -29,15 +22,15 @@
       "email": "fina3010@gmail.com",
       "phone": "972-54-566-2527",
       "count": 24,
-      "notes": "נרשם 24 פעמים — קהל נאמן ביותר"
+      "notes": ""
     },
     {
-      "first_name": "ra",
-      "last_name": "go",
+      "first_name": "Ra",
+      "last_name": "",
       "email": "rago1907@gmail.com",
       "phone": "972-52-935-5615",
-      "count": 22,
-      "notes": "נרשם 22 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "count": 21,
+      "notes": ""
     },
     {
       "first_name": "חיה",
@@ -45,23 +38,23 @@
       "email": "chayafrd@gmail.com",
       "phone": "972-50-922-5441",
       "count": 21,
-      "notes": "נרשם 21 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
-      "first_name": "shimon",
-      "last_name": "shemesh",
+      "first_name": "שמעון",
+      "last_name": "",
       "email": "sshemesh1@gmail.com",
       "phone": "972-54-462-9753",
       "count": 18,
-      "notes": "נרשם 18 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "shosh",
-      "last_name": "bar",
+      "last_name": "",
       "email": "shoshmaz@017.net.il",
       "phone": "972-50-687-7065",
       "count": 18,
-      "notes": "נרשם 18 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "אריה",
@@ -69,7 +62,7 @@
       "email": "akivilis@barkiv.com",
       "phone": "972-52-323-2063",
       "count": 17,
-      "notes": "נרשם 17 פעמים — קהל נאמן ביותר"
+      "notes": ""
     },
     {
       "first_name": "Zion",
@@ -77,7 +70,7 @@
       "email": "zion.sas@gmail.com",
       "phone": "972-53-725-6191",
       "count": 16,
-      "notes": "נרשם 16 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "פולק",
@@ -85,47 +78,31 @@
       "email": "silvip123@gmail.com",
       "phone": "972-52-858-3535",
       "count": 16,
-      "notes": "נרשם 16 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "תמר",
-      "last_name": "קסטל בר-און",
+      "last_name": "קסטל",
       "email": "tami.ksbr@gmail.com",
       "phone": "972-54-661-8696",
       "count": 16,
-      "notes": "נרשם 16 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
-      "first_name": "Jacob",
-      "last_name": "Moses",
+      "first_name": "מוזס",
+      "last_name": "יעקב",
       "email": "jmoses65@walla.com",
       "phone": "972-50-763-4678",
       "count": 16,
-      "notes": "נרשם 16 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "בלהה",
-      "last_name": "456",
+      "last_name": "",
       "email": "bilha07@gmail.com",
       "phone": "972-55-255-0456",
       "count": 16,
-      "notes": "נרשם 16 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
-    },
-    {
-      "first_name": "Amnon",
-      "last_name": "",
-      "email": "amnonk@outlook.com",
-      "phone": "972-54-617-6233",
-      "count": 15,
-      "notes": "נרשם 15 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
-    },
-    {
-      "first_name": "Hillel",
-      "last_name": "Gross",
-      "email": "grosshillel@gmail.com",
-      "phone": "972-54-228-0400",
-      "count": 15,
-      "notes": "נרשם 15 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "רחלי",
@@ -133,7 +110,7 @@
       "email": "sherutemisrad1@gmail.com",
       "phone": "972-54-330-3481",
       "count": 15,
-      "notes": "נרשם 15 פעמים — קהל נאמן ביותר"
+      "notes": ""
     },
     {
       "first_name": "ברכה",
@@ -141,7 +118,7 @@
       "email": "brachak22@gmail.com",
       "phone": "972-50-464-2798",
       "count": 15,
-      "notes": "נרשם 15 פעמים — קהל נאמן ביותר"
+      "notes": ""
     },
     {
       "first_name": "naomi",
@@ -149,7 +126,7 @@
       "email": "naomind2022@gmail.com",
       "phone": "972-52-392-2970",
       "count": 15,
-      "notes": "נרשם 15 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "ענת",
@@ -157,7 +134,7 @@
       "email": "anatlw@gmail.com",
       "phone": "972-50-624-1575",
       "count": 15,
-      "notes": "נרשם 15 פעמים — קהל נאמן ביותר"
+      "notes": ""
     },
     {
       "first_name": "אריאל",
@@ -165,7 +142,23 @@
       "email": "spivak_a@netvision.net.il",
       "phone": "972-52-251-0495",
       "count": 15,
-      "notes": "נרשם 15 פעמים — קהל נאמן ביותר. שמות שונים בין הרצאות. ספק ישן — כנראה גיל 55+"
+      "notes": ""
+    },
+    {
+      "first_name": "Amnon",
+      "last_name": "",
+      "email": "amnonk@outlook.com",
+      "phone": "972-54-617-6233",
+      "count": 14,
+      "notes": ""
+    },
+    {
+      "first_name": "Hillel",
+      "last_name": "Gross",
+      "email": "grosshillel@gmail.com",
+      "phone": "972-54-228-0400",
+      "count": 14,
+      "notes": ""
     },
     {
       "first_name": "דני",
@@ -173,15 +166,15 @@
       "email": "rmsd@walla.co.il",
       "phone": "972-54-796-0585",
       "count": 14,
-      "notes": "נרשם 14 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "תהילה",
-      "last_name": "פרץ",
+      "last_name": "",
       "email": "tehilla5115@gmail.com",
       "phone": "972-50-659-6263",
       "count": 14,
-      "notes": "נרשם 14 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "גיורא",
@@ -189,15 +182,15 @@
       "email": "giyorayogev@outlook.co.il",
       "phone": "972-54-987-7226",
       "count": 14,
-      "notes": "נרשם 14 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "Israel",
-      "last_name": "Pomerantz",
+      "first_name": "ישראל",
+      "last_name": "פומרנץ",
       "email": "pomeri@zahav.net.il",
       "phone": "972-54-609-8105",
       "count": 14,
-      "notes": "נרשם 14 פעמים — חוזר קבוע. שמות שונים בין הרצאות. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "עמליה",
@@ -205,7 +198,7 @@
       "email": "danaruty@gmail.com",
       "phone": "972-55-939-0123",
       "count": 14,
-      "notes": "נרשם 14 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "עומר",
@@ -213,7 +206,7 @@
       "email": "omertai224demo@gmail.com",
       "phone": "972-52-658-7420",
       "count": 13,
-      "notes": "נרשם 13 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "עמליה",
@@ -221,7 +214,7 @@
       "email": "vamav9@gmail.com",
       "phone": "972-50-330-4290",
       "count": 13,
-      "notes": "נרשם 13 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "עו\"ד מרתה דגן",
@@ -229,7 +222,7 @@
       "email": "martitadaga@gmail.com",
       "phone": "972-54-768-5596",
       "count": 13,
-      "notes": "נרשם 13 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "Orly",
@@ -237,7 +230,7 @@
       "email": "orly1221@yahoo.com",
       "phone": "972-50-000-0000",
       "count": 13,
-      "notes": "נרשם 13 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "יפית",
@@ -245,15 +238,7 @@
       "email": "yafit3013@walla.com",
       "phone": "972-50-599-1833",
       "count": 13,
-      "notes": "נרשם 13 פעמים — חוזר קבוע"
-    },
-    {
-      "first_name": "ארז",
-      "last_name": "מלמד",
-      "email": "erezm315@gmail.com",
-      "phone": "972-50-889-9704",
-      "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "צביקה",
@@ -261,15 +246,15 @@
       "email": "montag.zvika@gmail.com",
       "phone": "972-54-471-4901",
       "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "רןבן",
-      "last_name": "יהודה",
+      "first_name": "רן",
+      "last_name": "בן",
       "email": "ranby1110@gmail.com",
       "phone": "972-50-237-3666",
       "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "נעמה",
@@ -277,7 +262,7 @@
       "email": "naama0511@gmail.com",
       "phone": "972-51-585-6090",
       "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "מאיר",
@@ -285,7 +270,7 @@
       "email": "ymeir10@gmail.com",
       "phone": "972-54-446-4055",
       "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "מאיר",
@@ -293,7 +278,7 @@
       "email": "meirsamara@gmail.com",
       "phone": "972-52-878-3264",
       "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "דינה",
@@ -301,7 +286,7 @@
       "email": "dinagonen@walla.com",
       "phone": "972-54-598-6619",
       "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "Michael",
@@ -309,7 +294,7 @@
       "email": "mikbdn@gmail.com",
       "phone": "972-54-472-2122",
       "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "עמוס",
@@ -317,15 +302,15 @@
       "email": "amostrb@gmail.com",
       "phone": "972-54-420-1325",
       "count": 12,
-      "notes": "נרשם 12 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "Co",
-      "last_name": "",
-      "email": "coach122@yahoo.com",
-      "phone": "972-50-000-0000",
+      "first_name": "ארז",
+      "last_name": "מלמד",
+      "email": "erezm315@gmail.com",
+      "phone": "972-50-889-9704",
       "count": 11,
-      "notes": "נרשם 11 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "דבורה",
@@ -333,7 +318,7 @@
       "email": "shvdvora@gmail.com",
       "phone": "972-50-579-4626",
       "count": 11,
-      "notes": "נרשם 11 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "Helga",
@@ -341,23 +326,23 @@
       "email": "helgaseg@gmail.com",
       "phone": "972-52-320-8659",
       "count": 11,
-      "notes": "נרשם 11 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "Avi",
-      "last_name": "Tal",
-      "email": "a.tal1961@gmail.com",
-      "phone": "972-54-634-9385",
+      "first_name": "Co",
+      "last_name": "",
+      "email": "coach122@yahoo.com",
+      "phone": "972-50-000-0000",
       "count": 10,
-      "notes": "נרשם 10 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
-      "first_name": "‪Karin",
-      "last_name": "‬‏",
+      "first_name": "קרן",
+      "last_name": "קרין",
       "email": "kerengeneral@gmail.com",
       "phone": "972-52-750-0540",
       "count": 10,
-      "notes": "נרשם 10 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "שמעון",
@@ -365,7 +350,7 @@
       "email": "shimon_h@walla.co.il",
       "phone": "972-52-830-1524",
       "count": 10,
-      "notes": "נרשם 10 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "עפרה",
@@ -373,7 +358,7 @@
       "email": "ofrasha@gmail.com",
       "phone": "972-50-557-0312",
       "count": 10,
-      "notes": "נרשם 10 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "רחל",
@@ -381,15 +366,15 @@
       "email": "racheli1920@gmail.com",
       "phone": "972-54-625-2565",
       "count": 10,
-      "notes": "נרשם 10 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "סופיה",
-      "last_name": "קוגן",
+      "last_name": "",
       "email": "sophiakogan25@gmail.com",
       "phone": "972-50-202-8353",
       "count": 10,
-      "notes": "נרשם 10 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "ראובן",
@@ -397,7 +382,7 @@
       "email": "reuven.stern@gmail.com",
       "phone": "972-52-363-6446",
       "count": 10,
-      "notes": "נרשם 10 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "עמנואל",
@@ -405,23 +390,15 @@
       "email": "ihorn@012.net.il",
       "phone": "972-54-436-3727",
       "count": 10,
-      "notes": "נרשם 10 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "מירי",
-      "last_name": "טינסקי",
-      "email": "miritinsky@gmail.com",
-      "phone": "972-52-276-8162",
+      "first_name": "A.",
+      "last_name": "tal",
+      "email": "a.tal1961@gmail.com",
+      "phone": "972-54-634-9385",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
-    },
-    {
-      "first_name": "רמי",
-      "last_name": "דיסקוביץ",
-      "email": "rami.disk@gmail.com",
-      "phone": "972-54-123-4567",
-      "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אסתר",
@@ -429,7 +406,7 @@
       "email": "savtaesther@gmail.com",
       "phone": "972-52-287-5188",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "שלמה",
@@ -437,7 +414,7 @@
       "email": "shlomotraining@gmail.com",
       "phone": "972-54-645-5780",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "יהודית פרי",
@@ -445,23 +422,23 @@
       "email": "yudithperry@gmail.com",
       "phone": "972-54-471-9441",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "Zohar",
-      "last_name": "Peled",
+      "first_name": "זהר",
+      "last_name": "",
       "email": "zohpel@gmail.com",
       "phone": "972-58-408-8800",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "מירי",
-      "last_name": "רוזנשטוק",
+      "last_name": "",
       "email": "rosmirir@gmail.com",
       "phone": "972-54-998-1902",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "לרה",
@@ -469,15 +446,15 @@
       "email": "lara5151@walla.co.il",
       "phone": "972-50-000-0000",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "ענת",
-      "last_name": "ענבר-ליבמן",
+      "last_name": "ענבר",
       "email": "anat.inbar.libman@gmail.com",
       "phone": "972-52-471-9880",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אבי",
@@ -485,7 +462,7 @@
       "email": "aviraz4@gmail.com",
       "phone": "972-54-998-0105",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "עפרה",
@@ -493,7 +470,7 @@
       "email": "ofra-da@zahav.net.il",
       "phone": "972-52-448-8717",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "אורי",
@@ -501,7 +478,7 @@
       "email": "limornoga@gmail.com",
       "phone": "972-54-674-7431",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "רונן",
@@ -509,23 +486,31 @@
       "email": "ronenb@gmail.com",
       "phone": "972-55-886-0164",
       "count": 9,
-      "notes": "נרשם 9 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "TZIPORA",
-      "last_name": "SHILIN",
-      "email": "tzipishilin@gmail.com",
-      "phone": "972-52-265-2172",
+      "first_name": "מירי",
+      "last_name": "",
+      "email": "miritinsky@gmail.com",
+      "phone": "972-52-276-8162",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
+    },
+    {
+      "first_name": "רמי",
+      "last_name": "דיסקוביץ",
+      "email": "rami.disk@gmail.com",
+      "phone": "972-54-123-4567",
+      "count": 8,
+      "notes": ""
     },
     {
       "first_name": "ליאורה",
-      "last_name": "מרום",
+      "last_name": "",
       "email": "liora.marom.koren@gmail.com",
       "phone": "972-52-375-5746",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "תמי",
@@ -533,7 +518,7 @@
       "email": "tamidvir@gmail.com",
       "phone": "0522533033",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "רונית",
@@ -541,7 +526,7 @@
       "email": "a.ronit10@gmail.com",
       "phone": "972-50-505-0805",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "BOAZ",
@@ -549,7 +534,7 @@
       "email": "boazweiss@gmail.com",
       "phone": "972-50-200-2446",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "מוטי",
@@ -557,7 +542,7 @@
       "email": "motimar@gmail.com",
       "phone": "0523523833",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "Shaul",
@@ -565,7 +550,7 @@
       "email": "wanielsh@gmail.com",
       "phone": "972-54-742-2284",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אורנית",
@@ -573,15 +558,15 @@
       "email": "aornit60@gmail.com",
       "phone": "972-50-965-5011",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "דוד",
-      "last_name": "סומך",
+      "last_name": "",
       "email": "somrkh@zahav.net.il",
       "phone": "972-50-661-7222",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע. שמות שונים בין הרצאות. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "צביה",
@@ -589,7 +574,7 @@
       "email": "aviram.zviya@gmail.com",
       "phone": "972-54-446-2046",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "יעקב",
@@ -597,31 +582,15 @@
       "email": "jacob.dinur@gmail.com",
       "phone": "972-52-344-4867",
       "count": 8,
-      "notes": "נרשם 8 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "שי",
-      "last_name": "קרטין",
-      "email": "kartin59@zahav.net.il",
-      "phone": "972-54-792-8778",
+      "first_name": "TZIPORA",
+      "last_name": "SHILIN",
+      "email": "tzipishilin@gmail.com",
+      "phone": "972-52-265-2172",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע. ספק ישן — כנראה גיל 55+"
-    },
-    {
-      "first_name": "noam",
-      "last_name": "machluf",
-      "email": "noam@evigence.com",
-      "phone": "972-52-312-4863",
-      "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
-    },
-    {
-      "first_name": "דורלי",
-      "last_name": "וייצן",
-      "email": "oriana5.oriana5@gmail.com",
-      "phone": "972-52-277-0300",
-      "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אורית",
@@ -629,7 +598,7 @@
       "email": "orit957@gmail.com",
       "phone": "972-54-282-3321",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "נחמה",
@@ -637,7 +606,7 @@
       "email": "nehamalg@gmail.com",
       "phone": "972-50-847-7432",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אורנה",
@@ -645,7 +614,7 @@
       "email": "orbar72@gmail.com",
       "phone": "972-50-621-1117",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אור",
@@ -653,7 +622,7 @@
       "email": "pazlight2@gmail.com",
       "phone": "972-52-442-0554",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "גולדנברג",
@@ -661,7 +630,7 @@
       "email": "ildigolden@gmail.com",
       "phone": "972-54-478-2419",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "חגי",
@@ -669,7 +638,7 @@
       "email": "a22348577@gmail.com",
       "phone": "972-52-945-3811",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "גילה",
@@ -677,7 +646,7 @@
       "email": "gilass11sss@gmail.com",
       "phone": "972-52-321-0048",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אמנון",
@@ -685,7 +654,7 @@
       "email": "amnondanor@gmail.com",
       "phone": "972-50-638-4499",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "Meir",
@@ -693,7 +662,7 @@
       "email": "meirch@gmail.com",
       "phone": "972-54-449-2312",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אסתי",
@@ -701,7 +670,7 @@
       "email": "sterez72@gmail.com",
       "phone": "972-53-834-9965",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אורנה",
@@ -709,7 +678,7 @@
       "email": "ornametrix@gmail.com",
       "phone": "972-52-592-5318",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "Mali",
@@ -717,7 +686,7 @@
       "email": "mrg0548441245@gmail.com",
       "phone": "972-54-844-1245",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אברהם",
@@ -725,47 +694,31 @@
       "email": "mrgltavi@gmail.com",
       "phone": "972-54-546-5738",
       "count": 7,
-      "notes": "נרשם 7 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "david",
-      "last_name": "toledo",
-      "email": "toledo253@gmail.com",
-      "phone": "972-50-762-9864",
+      "first_name": "שי",
+      "last_name": "קרטין",
+      "email": "kartin59@zahav.net.il",
+      "phone": "972-54-792-8778",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
-      "first_name": "שרון",
-      "last_name": "קריספין",
-      "email": "yonyon030509@gmail.com",
-      "phone": "972-52-278-8973",
+      "first_name": "noam",
+      "last_name": "machluf",
+      "email": "noam@evigence.com",
+      "phone": "972-52-312-4863",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "ניר",
-      "last_name": "אלעד",
-      "email": "nelad45@gmail.com",
-      "phone": "972-50-303-0222",
+      "first_name": "דורלי",
+      "last_name": "וייצן",
+      "email": "oriana5.oriana5@gmail.com",
+      "phone": "972-52-277-0300",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
-    },
-    {
-      "first_name": "Hani",
-      "last_name": "Cohen",
-      "email": "hanic1009@gmail.com",
-      "phone": "972-58-402-0994",
-      "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
-    },
-    {
-      "first_name": "יפעת לוי",
-      "last_name": "ארגונומיה ויציבה נכונה",
-      "email": "yifat.levy@gmail.com",
-      "phone": "972-50-698-0009",
-      "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "דניאלה",
@@ -773,7 +726,7 @@
       "email": "danamich@gmail.com",
       "phone": "972-54-595-8472",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "Erez",
@@ -781,7 +734,7 @@
       "email": "erez.sus@gmail.com",
       "phone": "972-52-332-0144",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אריאלה",
@@ -789,15 +742,15 @@
       "email": "artziar@hotmail.com",
       "phone": "972-52-338-4770",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "ולדימיר",
-      "last_name": "שטיבלמן",
+      "first_name": "VOVA",
+      "last_name": "",
       "email": "vovasheg@gmail.com",
       "phone": "972-52-927-9990",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "שרה שטיינר",
@@ -805,7 +758,7 @@
       "email": "sara.steiner565@gmail.com",
       "phone": "0549720131",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "גיורא",
@@ -813,15 +766,15 @@
       "email": "giyorayogev@outlok.co.il",
       "phone": "972-54-987-7226",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אייל",
-      "last_name": "שטולבך",
+      "last_name": "",
       "email": "eyalshtulbachness@gmail.com",
       "phone": "972-50-835-8645",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "Alexander",
@@ -829,7 +782,7 @@
       "email": "alandau007@gmail.com",
       "phone": "972-50-442-9121",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "נאוה",
@@ -837,7 +790,7 @@
       "email": "navakt1@gmail.com",
       "phone": "972-52-445-7638",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "נילי",
@@ -845,15 +798,15 @@
       "email": "niliadi@gmail.com",
       "phone": "972-50-450-9991",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "תמר",
-      "last_name": "קורח",
+      "last_name": "",
       "email": "tami.korakh@gmail.com",
       "phone": "972-50-750-8108",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "מיכל",
@@ -861,7 +814,7 @@
       "email": "michaltsadka@gmail.com",
       "phone": "972-50-622-3376",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "זהבה",
@@ -869,31 +822,55 @@
       "email": "zehava6455@gmail.com",
       "phone": "972-54-300-8961",
       "count": 6,
-      "notes": "נרשם 6 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "שלומיק",
-      "last_name": "קיי",
-      "email": "shlomiken111@gmail.com",
-      "phone": "972-50-220-4466",
-      "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
-    },
-    {
-      "first_name": "rjk",
+      "first_name": "דוד",
       "last_name": "",
-      "email": "rr1mm1@walla.co.il",
-      "phone": "972-54-452-5485",
+      "email": "toledo253@gmail.com",
+      "phone": "972-50-762-9864",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
+    },
+    {
+      "first_name": "שרון",
+      "last_name": "קריספין",
+      "email": "yonyon030509@gmail.com",
+      "phone": "972-52-278-8973",
+      "count": 5,
+      "notes": ""
+    },
+    {
+      "first_name": "ניר",
+      "last_name": "אלעד",
+      "email": "nelad45@gmail.com",
+      "phone": "972-50-303-0222",
+      "count": 5,
+      "notes": ""
+    },
+    {
+      "first_name": "חני",
+      "last_name": "כהן",
+      "email": "hanic1009@gmail.com",
+      "phone": "972-58-402-0994",
+      "count": 5,
+      "notes": ""
+    },
+    {
+      "first_name": "יפעת לוי",
+      "last_name": "ארגונומיה ויציבה נכונה",
+      "email": "yifat.levy@gmail.com",
+      "phone": "972-50-698-0009",
+      "count": 5,
+      "notes": ""
     },
     {
       "first_name": "כרמלה",
-      "last_name": "פליישמן",
+      "last_name": "פלישמן",
       "email": "klava27@gmail.com",
       "phone": "972-52-842-4057",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "Galit",
@@ -901,7 +878,7 @@
       "email": "galitmusai1@gmail.com",
       "phone": "03-549-4456",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "זהבה",
@@ -909,15 +886,15 @@
       "email": "gaber-z@zahav.net.il",
       "phone": "054-300-8961",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "גיל",
-      "last_name": "שוכהנדלר",
+      "last_name": "",
       "email": "gilsh08@gmail.com",
       "phone": "972-54-656-6446",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אשר",
@@ -925,7 +902,7 @@
       "email": "ashcuc1@hotmail.com",
       "phone": "972-50-637-8237",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "נעמי",
@@ -933,7 +910,7 @@
       "email": "naomiyariv806@gmail.com",
       "phone": "972-50-541-3336",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אילונה",
@@ -941,7 +918,7 @@
       "email": "elonake@gmail.com",
       "phone": "972-52-834-2510",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "שלמה",
@@ -949,7 +926,7 @@
       "email": "shlomoaashkenazi@gmail.com",
       "phone": "972-50-628-4197",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "שחר",
@@ -957,15 +934,15 @@
       "email": "shachar.mail@gmail.com",
       "phone": "972-54-728-8298",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אבי",
-      "last_name": "פינץ",
+      "last_name": "",
       "email": "avi.fintz@gmail.com",
       "phone": "972-52-399-7975",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "Yori",
@@ -973,7 +950,7 @@
       "email": "yorizohar@gmail.com",
       "phone": "972-54-787-7440",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "נעמה",
@@ -981,7 +958,7 @@
       "email": "toledano.legal@gmail.com",
       "phone": "972-50-202-5032",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "איציק",
@@ -989,15 +966,15 @@
       "email": "ravvitre@gmail.com",
       "phone": "972-54-777-4757",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "בועז",
+      "first_name": "בעז",
       "last_name": "שני",
       "email": "shaniboaz@gmail.com",
       "phone": "972-52-851-4369",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "שרה",
@@ -1005,7 +982,7 @@
       "email": "skatzz123@gmail.com",
       "phone": "972-54-632-1224",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "ציון",
@@ -1013,7 +990,7 @@
       "email": "zion687@gmail.com",
       "phone": "972-50-264-8148",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "בני",
@@ -1021,7 +998,7 @@
       "email": "benyzolotov62@gmail.com",
       "phone": "972-53-333-3317",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "איתי",
@@ -1029,7 +1006,7 @@
       "email": "etay@shura-t.com",
       "phone": "972-54-910-0097",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "אנג'לה",
@@ -1037,7 +1014,7 @@
       "email": "angyonyvit@gmail.com",
       "phone": "972-50-888-2776",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "Benni",
@@ -1045,7 +1022,7 @@
       "email": "bennidekel@gmail.com",
       "phone": "972-52-334-3363",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
       "first_name": "לילך",
@@ -1053,31 +1030,23 @@
       "email": "lilachbogen@gmail.com",
       "phone": "972-52-391-6691",
       "count": 5,
-      "notes": "נרשם 5 פעמים — חוזר קבוע"
+      "notes": ""
     },
     {
-      "first_name": "אלירן",
-      "last_name": "מתוק",
-      "email": "elimatok83@gmail.com",
-      "phone": "972-52-394-1750",
+      "first_name": "שלומיק",
+      "last_name": "קיי",
+      "email": "shlomiken111@gmail.com",
+      "phone": "972-50-220-4466",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "Debbie",
-      "last_name": "Gross",
-      "email": "debbiegross25@gmail.com",
-      "phone": "972-3-222-2469",
+      "first_name": "rjk",
+      "last_name": "",
+      "email": "rr1mm1@walla.co.il",
+      "phone": "972-54-452-5485",
       "count": 4,
-      "notes": "נרשם 4 פעמים. שמות שונים בין הרצאות"
-    },
-    {
-      "first_name": "רחל",
-      "last_name": "יהושע",
-      "email": "rachely1963@gmail.com",
-      "phone": "054-3303481",
-      "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עופר",
@@ -1085,15 +1054,15 @@
       "email": "offer.shemesh@gmail.com",
       "phone": "972-54-239-2111",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "מיכל",
-      "last_name": "רייזנר",
+      "last_name": "",
       "email": "michal.reizner@gmail.com",
       "phone": "972-54-232-2741",
       "count": 4,
-      "notes": "נרשם 4 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "מירב",
@@ -1101,7 +1070,7 @@
       "email": "merav.fi2411@gmail.com",
       "phone": "972-53-336-8683",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רונית",
@@ -1109,7 +1078,7 @@
       "email": "ronit.sch@bezeqint.net",
       "phone": "055-881-1810",
       "count": 4,
-      "notes": "נרשם 4 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "רינה",
@@ -1117,7 +1086,7 @@
       "email": "rytextly@gmail.com",
       "phone": "",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "מרסלה מוסקוביץ",
@@ -1125,7 +1094,7 @@
       "email": "marcela@prepared.co.il",
       "phone": "972-54-726-9221",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רמי",
@@ -1133,7 +1102,7 @@
       "email": "ramitot@gmail.com",
       "phone": "972-54-957-4418",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "גיורא",
@@ -1141,15 +1110,15 @@
       "email": "gioray1@bezeqint.net",
       "phone": "972-54-987-7226",
       "count": 4,
-      "notes": "נרשם 4 פעמים. שמות שונים בין הרצאות. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "זקס",
-      "last_name": "יוסף",
+      "last_name": "",
       "email": "ys6944235@gmail.com",
       "phone": "972-52-856-4533",
       "count": 4,
-      "notes": "נרשם 4 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "משה",
@@ -1157,7 +1126,7 @@
       "email": "elor777@gmail.com",
       "phone": "053-3577570",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "גדעון",
@@ -1165,7 +1134,7 @@
       "email": "g.dotan1@gmail.com",
       "phone": "972-54-532-2619",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "חגי",
@@ -1173,15 +1142,15 @@
       "email": "office@shaalti.co.il",
       "phone": "972-52-945-3811",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "Carmit",
-      "last_name": "Yanay",
+      "first_name": "כרמית",
+      "last_name": "ינאי",
       "email": "carmity@medispec-int.com",
       "phone": "972-52-259-8586",
       "count": 4,
-      "notes": "נרשם 4 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "זאב",
@@ -1189,7 +1158,7 @@
       "email": "zeevs14@bezeqint.net",
       "phone": "972-52-246-2746",
       "count": 4,
-      "notes": "נרשם 4 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "יגאל",
@@ -1197,7 +1166,7 @@
       "email": "samid_y@gevim.org.il",
       "phone": "972-50-590-0771",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ישראלה",
@@ -1205,7 +1174,7 @@
       "email": "sufur11@gmail.com",
       "phone": "972-52-515-5656",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ניר קרמר Nircan",
@@ -1213,7 +1182,7 @@
       "email": "kremer.nir@gmail.com",
       "phone": "972-50-560-4888",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דורלי",
@@ -1221,7 +1190,7 @@
       "email": "dormik@netvision.net.il",
       "phone": "972-52-277-0300",
       "count": 4,
-      "notes": "נרשם 4 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "שמואל",
@@ -1229,7 +1198,7 @@
       "email": "1944samsam@gmail.com",
       "phone": "972-50-369-9531",
       "count": 4,
-      "notes": "נרשם 4 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "shosh",
@@ -1237,7 +1206,7 @@
       "email": "shoshmaz@017.netil",
       "phone": "972-50-687-7065",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "סימה",
@@ -1245,7 +1214,7 @@
       "email": "simaseg679@gmail.com",
       "phone": "972-54-462-7631",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "משה",
@@ -1253,7 +1222,7 @@
       "email": "elor78@gmail.com",
       "phone": "972-53-357-7570",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "מוטי",
@@ -1261,7 +1230,7 @@
       "email": "moty@smtel.co.il",
       "phone": "972-54-430-4470",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלי צווייג עו\"ד ונוטריון",
@@ -1269,7 +1238,7 @@
       "email": "office@eliz-law.co.il",
       "phone": "972-52-541-9509",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דורי גולדשטיין",
@@ -1277,7 +1246,7 @@
       "email": "d.dissolve@gmail.com",
       "phone": "972-54-455-9315",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "גיא",
@@ -1285,7 +1254,7 @@
       "email": "guypeer88@gmail.com",
       "phone": "972-50-354-6454",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "גילה",
@@ -1293,7 +1262,7 @@
       "email": "gila.peled@gmail.com",
       "phone": "972-50-781-2393",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלי",
@@ -1301,7 +1270,7 @@
       "email": "amazonbuysell@gmail.com",
       "phone": "052-3501650",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "‫אתי",
@@ -1309,7 +1278,7 @@
       "email": "etisc22@gmail.com",
       "phone": "972-50-777-5677",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נחום",
@@ -1317,7 +1286,7 @@
       "email": "nzolotov@gmail.com",
       "phone": "972-52-264-0218",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אינה",
@@ -1325,7 +1294,7 @@
       "email": "inap5900@gmail.com",
       "phone": "972-50-667-8596",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דוד",
@@ -1333,7 +1302,7 @@
       "email": "daylonster@gmail.com",
       "phone": "972-52-745-3972",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עו\"ד קרן",
@@ -1341,7 +1310,7 @@
       "email": "kerenhamber.law@gmail.com",
       "phone": "972-52-808-4081",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ורד",
@@ -1349,7 +1318,7 @@
       "email": "vcohen10@gmail.com",
       "phone": "972-50-364-6772",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "איב",
@@ -1357,7 +1326,7 @@
       "email": "iravai73@yahoo.com",
       "phone": "972-52-345-1200",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דורון",
@@ -1365,7 +1334,7 @@
       "email": "lahav.doron@gmail.com",
       "phone": "972-54-446-8279",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אורלי",
@@ -1373,7 +1342,7 @@
       "email": "saorly1@gmail.com",
       "phone": "972-50-560-8124",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "סמיון",
@@ -1381,7 +1350,7 @@
       "email": "simions@inter.net.il",
       "phone": "972-54-320-0255",
       "count": 4,
-      "notes": "נרשם 4 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "בני",
@@ -1389,7 +1358,7 @@
       "email": "benyz3009@gmail.com",
       "phone": "972-53-333-3317",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "yosi",
@@ -1397,7 +1366,7 @@
       "email": "zanjiri@gmail.com",
       "phone": "972-50-534-1540",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ענת",
@@ -1405,71 +1374,31 @@
       "email": "anati10@yahoo.com",
       "phone": "972-54-345-0453",
       "count": 4,
-      "notes": "נרשם 4 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "Bar",
-      "last_name": "Shahar",
-      "email": "baaarshahar@walla.com",
-      "phone": "972-53-279-6155",
+      "first_name": "אלירן",
+      "last_name": "מתוק",
+      "email": "elimatok83@gmail.com",
+      "phone": "972-52-394-1750",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
-      "first_name": "אתי",
-      "last_name": "רפלד",
-      "email": "ettyrr@gmail.com",
-      "phone": "972-50-979-0436",
+      "first_name": "Dvora",
+      "last_name": "Gross",
+      "email": "debbiegross25@gmail.com",
+      "phone": "972-3-222-2469",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
-      "first_name": "מוניקה",
-      "last_name": "שקד",
-      "email": "monicashakked@gmail.com",
-      "phone": "972-54-609-9205",
+      "first_name": "רחל",
+      "last_name": "יהושע",
+      "email": "rachely1963@gmail.com",
+      "phone": "054-3303481",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
-    },
-    {
-      "first_name": "‪Osnat",
-      "last_name": "Gitai‬‏",
-      "email": "osnat.gitai@gmail.com",
-      "phone": "972-54-561-1398",
-      "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
-    },
-    {
-      "first_name": "הילה",
-      "last_name": "דולב",
-      "email": "h71020021@gmail.com",
-      "phone": "972-50-630-6811",
-      "count": 3,
-      "notes": "נרשם 3 פעמים"
-    },
-    {
-      "first_name": "אלי",
-      "last_name": "ק",
-      "email": "elik2508@gmail.com",
-      "phone": "052-925-9165",
-      "count": 3,
-      "notes": "נרשם 3 פעמים"
-    },
-    {
-      "first_name": "איילת",
-      "last_name": "צויבל",
-      "email": "atzvibel@gmail.com",
-      "phone": "972-52-890-9177",
-      "count": 3,
-      "notes": "נרשם 3 פעמים"
-    },
-    {
-      "first_name": "מנחם",
-      "last_name": "משגב",
-      "email": "mmisgav@gmail.com",
-      "phone": "051-267-4856",
-      "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אריאל",
@@ -1477,7 +1406,7 @@
       "email": "arielshaf@gmail.com",
       "phone": "972-50-869-0022",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עידן",
@@ -1485,7 +1414,7 @@
       "email": "broshzltd@gmail.com",
       "phone": "972-53-726-7291",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "חיים",
@@ -1493,7 +1422,7 @@
       "email": "haimsh47@walla.com",
       "phone": "972-54-461-0945",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "לירון",
@@ -1501,7 +1430,7 @@
       "email": "lirongb@gmail.com",
       "phone": "972-50-620-4221",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "איתן",
@@ -1509,15 +1438,15 @@
       "email": "info@quickcafe.co.il",
       "phone": "972-3-691-7022",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלירן",
-      "last_name": "זקין",
+      "last_name": "",
       "email": "eli3736@gmail.com",
       "phone": "972-54-819-8826",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "הוורדי",
@@ -1525,7 +1454,7 @@
       "email": "izackh19@gmail.com",
       "phone": "972-52-522-7117",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רחל",
@@ -1533,7 +1462,7 @@
       "email": "rshen10@gmail.com",
       "phone": "050-698-0655",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "יוסי בן זכריה",
@@ -1541,7 +1470,7 @@
       "email": "benzecha@gmail.com",
       "phone": "0508663539",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "פרחה",
@@ -1549,7 +1478,7 @@
       "email": "01f0844@gmail.com",
       "phone": "972-52-422-6927",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "shosh",
@@ -1557,7 +1486,7 @@
       "email": "shoshma@gmail.com",
       "phone": "972-50-687-7065",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלי",
@@ -1565,7 +1494,7 @@
       "email": "eli626@bezeqint.net",
       "phone": "972-50-627-6337",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "חוה",
@@ -1573,7 +1502,7 @@
       "email": "laorhi@gmail.com",
       "phone": "972-58-603-0389",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שוש",
@@ -1581,7 +1510,7 @@
       "email": "tuval52@walla.com",
       "phone": "",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "Avigail",
@@ -1589,7 +1518,7 @@
       "email": "avigailber@gmail.com",
       "phone": "972-54-440-5220",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "רחל הרשטיק",
@@ -1597,7 +1526,7 @@
       "email": "rachel.hershtik@gmail.com",
       "phone": "972-52-422-8342",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רות",
@@ -1605,7 +1534,7 @@
       "email": "ruthb170@gmail.com",
       "phone": "054-672-8082",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "מרינה מנוקיאן",
@@ -1613,7 +1542,7 @@
       "email": "manukian77@gmail.com",
       "phone": "972-52-940-4254",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אורן",
@@ -1621,7 +1550,7 @@
       "email": "orenleshem71@gmail.com",
       "phone": "972-52-344-7118",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ליאת",
@@ -1629,7 +1558,7 @@
       "email": "liatros@walla.co.il",
       "phone": "972-52-331-5581",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ליטל שרביט",
@@ -1637,7 +1566,7 @@
       "email": "litalshclinic@gmail.com",
       "phone": "972-54-958-5328",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "חנה",
@@ -1645,7 +1574,7 @@
       "email": "rnd238@gmail.com",
       "phone": "972-50-742-1551",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ארנון",
@@ -1653,7 +1582,7 @@
       "email": "arnonf9@gmail.com",
       "phone": "972-54-428-8909",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רינה",
@@ -1661,15 +1590,15 @@
       "email": "rina.wais@gmail.com",
       "phone": "054-571-6169",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עמנואל",
-      "last_name": "פלג",
+      "last_name": "",
       "email": "fochen@gmail.com",
       "phone": "972-54-490-8647",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אילנה",
@@ -1677,7 +1606,7 @@
       "email": "eilana333@walla.com",
       "phone": "972-52-393-9001",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "זיזי",
@@ -1685,7 +1614,7 @@
       "email": "zizikatz1@gmail.com",
       "phone": "972-54-532-5253",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נטע",
@@ -1693,7 +1622,7 @@
       "email": "netta.kerem@gmail.com",
       "phone": "972-52-618-0390",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "Rinat",
@@ -1701,7 +1630,7 @@
       "email": "hr.rinat@gmail.com",
       "phone": "972-54-999-7115",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אליהו",
@@ -1709,7 +1638,7 @@
       "email": "el01@bezeqint.net",
       "phone": "972-52-890-6160",
       "count": 3,
-      "notes": "נרשם 3 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "שרון קדם",
@@ -1717,7 +1646,7 @@
       "email": "sharonkedem1@gmail.com",
       "phone": "972-52-459-5912",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלכס",
@@ -1725,7 +1654,7 @@
       "email": "bigsasha@gmail.com",
       "phone": "972-52-946-0790",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ג'וד ברק - ייעוץ עסקי",
@@ -1733,7 +1662,7 @@
       "email": "jude@excelleader.co.il",
       "phone": "972-52-811-7106",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "Ora",
@@ -1741,7 +1670,7 @@
       "email": "ora.segal.drori@gmail.com",
       "phone": "",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "יצחק",
@@ -1749,7 +1678,7 @@
       "email": "ikune142@gmail.com",
       "phone": "972-55-882-1677",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שירלי",
@@ -1757,7 +1686,7 @@
       "email": "shirlyziv81@gmail.com",
       "phone": "972-54-468-0627",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אבי",
@@ -1765,7 +1694,7 @@
       "email": "ronit669@gmail.com",
       "phone": "972-54-227-1039",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "זהר",
@@ -1773,7 +1702,7 @@
       "email": "zohpel@gmail.comz",
       "phone": "972-58-408-8800",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אורית לב",
@@ -1781,7 +1710,7 @@
       "email": "oritabutbul1406@gmail.com",
       "phone": "972-50-710-1266",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "aizik",
@@ -1789,7 +1718,7 @@
       "email": "alik10@gmail.com",
       "phone": "972-50-337-3203",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ליאור",
@@ -1797,7 +1726,7 @@
       "email": "amorelior@gmail.com",
       "phone": "972-52-429-1312",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "RUTH",
@@ -1805,7 +1734,7 @@
       "email": "ruth.eytan@gmail.com",
       "phone": "972-6934507815",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "לימור",
@@ -1813,15 +1742,15 @@
       "email": "limor.kh.law@gmail.com",
       "phone": "972-50-627-5497",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "‪betzalel",
-      "last_name": "israeli‬‏",
+      "first_name": "בצלאל",
+      "last_name": "ישראלי",
       "email": "betzalel.israeli@gmail.com",
       "phone": "972-52-942-6737",
       "count": 3,
-      "notes": "נרשם 3 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "קרן הופמן מאמנת אישית",
@@ -1829,7 +1758,7 @@
       "email": "keren.hoffman44@gmail.com",
       "phone": "972-52-360-5439",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ענת",
@@ -1837,7 +1766,7 @@
       "email": "anatoren53@gmail.com",
       "phone": "972-52-329-3896",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שמעון",
@@ -1845,7 +1774,7 @@
       "email": "shimonhevlin@gmail.com",
       "phone": "972-52-830-1524",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דן",
@@ -1853,7 +1782,7 @@
       "email": "amik18@gmail.com",
       "phone": "972-54-468-2349",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ציונה",
@@ -1861,7 +1790,7 @@
       "email": "tziona371@gmail.com",
       "phone": "972-52-371-3354",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אריאלה",
@@ -1869,7 +1798,7 @@
       "email": "artziar@hotmail.comcom",
       "phone": "972-52-338-4770",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "CHAIM",
@@ -1877,7 +1806,7 @@
       "email": "hlv119@gmail.com",
       "phone": "972-54-542-4270",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שרה",
@@ -1885,279 +1814,71 @@
       "email": "katz154@walla.com",
       "phone": "972-54-632-1224",
       "count": 3,
-      "notes": "נרשם 3 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "דוד",
-      "last_name": "קריספין",
-      "email": "fkrispin@p12.net.il",
-      "phone": "972-52-946-6269",
+      "first_name": "בר",
+      "last_name": "שחר",
+      "email": "baaarshahar@walla.com",
+      "phone": "972-53-279-6155",
       "count": 2,
-      "notes": "נרשם 2 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
-      "first_name": "mazal",
-      "last_name": "gabay",
-      "email": "mazal.gabay@gmail.com",
-      "phone": "972-53-777-5113",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "Patricia",
-      "last_name": "Israel",
-      "email": "pataplouf@yahoo.com",
-      "phone": "972-52-365-2515",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "ריקי",
-      "last_name": "כהן",
-      "email": "riki.c.design@gmail.com",
-      "phone": "972-54-770-3810",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "פנינה",
-      "last_name": "ביתן",
-      "email": "pninaela@bezeqint.net",
-      "phone": "972-50-910-1141",
-      "count": 2,
-      "notes": "נרשם 2 פעמים. ספק ישן — כנראה גיל 55+"
-    },
-    {
-      "first_name": "רויטל",
+      "first_name": "אתי",
       "last_name": "",
-      "email": "revitalronen2003@gmail.com",
-      "phone": "972-50-303-5001",
+      "email": "ettyrr@gmail.com",
+      "phone": "972-50-979-0436",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "‫ןרד",
-      "last_name": "אדאוי‬‎",
-      "email": "veredsilat@gmail.com",
-      "phone": "972-50-369-2404",
+      "first_name": "מוניקה",
+      "last_name": "שקד",
+      "email": "monicashakked@gmail.com",
+      "phone": "972-54-609-9205",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "סי",
-      "last_name": "",
-      "email": "grosssivan@gmail.com",
-      "phone": "972-50-850-7498",
+      "first_name": "‪Osnat",
+      "last_name": "Gitai‬‏",
+      "email": "osnat.gitai@gmail.com",
+      "phone": "972-54-561-1398",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "ברכה",
-      "last_name": "",
-      "email": "brac153@gmail.com",
-      "phone": "972-50-223-7721",
+      "first_name": "הילה",
+      "last_name": "דולב",
+      "email": "h71020021@gmail.com",
+      "phone": "972-50-630-6811",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "Il",
-      "last_name": "",
-      "email": "ilan122@gmail.com",
-      "phone": "972-54-453-4576",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "לי",
-      "last_name": "נודל",
-      "email": "nudel_l@yahoo.com",
-      "phone": "972-52-483-0724",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "חני",
-      "last_name": "",
-      "email": "hanni.perlin@gmail.com",
-      "phone": "972-54-123-4567",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "Dvora",
-      "last_name": "Bergman",
-      "email": "dvora.bergman@gmail.com",
-      "phone": "972-55-884-7944",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "שושי",
-      "last_name": "",
-      "email": "krshosh@walla.co.il",
-      "phone": "972-50-923-0133",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "שבתאי",
-      "last_name": "איתן",
-      "email": "shabtai.eitan@gmail.com",
-      "phone": "972-50-620-6180",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "ריטה",
-      "last_name": "שטכמן",
-      "email": "rita88888@gmail.com",
-      "phone": "972-50-810-8384",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "יעקב",
-      "last_name": "אלבו",
-      "email": "yacov@coral-ltd.co.il",
-      "phone": "972-50-533-9896",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "דליה",
-      "last_name": "ציזיק",
-      "email": "petzek@gmail.com",
-      "phone": "972-52-399-4056",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "אסף",
-      "last_name": "",
-      "email": "profiref@gmail.com",
-      "phone": "972-52-625-0448",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "משה",
-      "last_name": "גני",
-      "email": "moshegani99@gmail.com",
-      "phone": "972-52-423-0104",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלי",
-      "last_name": "צווייג",
-      "email": "zweiad@gmail.com",
-      "phone": "972-52-541-9509",
+      "last_name": "ק",
+      "email": "elik2508@gmail.com",
+      "phone": "052-925-9165",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "רבקה",
-      "last_name": "גלאור",
-      "email": "rivgal@walla.com",
-      "phone": "972-52-372-1537",
+      "first_name": "איילת",
+      "last_name": "צויבל",
+      "email": "atzvibel@gmail.com",
+      "phone": "972-52-890-9177",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "טל",
-      "last_name": "קהת",
-      "email": "talkehat@gmail.com",
-      "phone": "972-50-565-2673",
+      "first_name": "מנחם",
+      "last_name": "משגב",
+      "email": "mmisgav@gmail.com",
+      "phone": "051-267-4856",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "מירי",
-      "last_name": "אושרוב",
-      "email": "osherov.mi@gmail.com",
-      "phone": "972-54-351-8147",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "נטלי",
-      "last_name": "לוין",
-      "email": "studio.natalie.levin@gmail.com",
-      "phone": "972-52-445-5671",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "לביאה",
-      "last_name": "שטיין",
-      "email": "leviastein50@gmail.com",
-      "phone": "972-54-492-1195",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "חפצי",
-      "last_name": "מאירי",
-      "email": "meiry50@walla.co.il",
-      "phone": "972-50-697-2832",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "דליה",
-      "last_name": "זגורי",
-      "email": "zdal111@gmail.com",
-      "phone": "972-52-899-1199",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "שרה",
-      "last_name": "נלקין",
-      "email": "saryoc@gmail.com",
-      "phone": "972-54-462-5834",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "רעיה",
-      "last_name": "הורוביץ",
-      "email": "ho.raya@gmail.com",
-      "phone": "972-54-676-9221",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "ירון",
-      "last_name": "אנטניר",
-      "email": "tony.zebra@gmail.com",
-      "phone": "972-52-510-5100",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "גלית",
-      "last_name": "מנדלבאום",
-      "email": "galitmac@bezeqint.net",
-      "phone": "972-50-732-8819",
-      "count": 2,
-      "notes": "נרשם 2 פעמים. ספק ישן — כנראה גיל 55+"
-    },
-    {
-      "first_name": "דורית",
-      "last_name": "לוינגר",
-      "email": "doritgle@gmail.com",
-      "phone": "054-4210687",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
-    },
-    {
-      "first_name": "דרור גנאינסקי",
-      "last_name": "מאג שרותי דפוס",
-      "email": "5501633@gmail.com",
-      "phone": "052-2812581",
-      "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "יובל",
@@ -2165,7 +1886,7 @@
       "email": "bzyuval@walla.co.il",
       "phone": "972-54-486-6371",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נוריt",
@@ -2173,7 +1894,7 @@
       "email": "ntan06@gmail.com",
       "phone": "972-52-447-8280",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "חנה",
@@ -2181,15 +1902,15 @@
       "email": "rnd328@gmail.com",
       "phone": "972-50-742-1551",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עינת",
-      "last_name": "רוט",
+      "last_name": "",
       "email": "natirot@gmail.com",
       "phone": "972-50-673-4911",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אמיר",
@@ -2197,7 +1918,7 @@
       "email": "morenoa10@walla.com",
       "phone": "972-52-943-6394",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אילנה",
@@ -2205,7 +1926,7 @@
       "email": "ijanovich@yahoo.com",
       "phone": "972-58-749-8315",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שמואל",
@@ -2213,23 +1934,23 @@
       "email": "shmuel.dvir@gmail.com",
       "phone": "972-52-420-0509",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "OSHRAT",
-      "last_name": "DANON",
+      "first_name": "אושרת",
+      "last_name": "דנון",
       "email": "aradc@walla.co.il",
       "phone": "972-52-605-8598",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
-      "first_name": "Grigori",
-      "last_name": "Rabinovich",
+      "first_name": "גרגורי",
+      "last_name": "רבינוביץ'",
       "email": "grishar8@gmail.com",
       "phone": "972-52-224-8224",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "פלורה",
@@ -2237,7 +1958,7 @@
       "email": "avital31@gmail.com",
       "phone": "972-50-761-9930",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "hananel",
@@ -2245,7 +1966,7 @@
       "email": "hmaklev@gmail.com",
       "phone": "972-50-557-3536",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עינת",
@@ -2253,15 +1974,15 @@
       "email": "einat78@gmail.com",
       "phone": "972-50-795-6350",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "Zohar",
-      "last_name": "Shayish",
+      "first_name": "זהר",
+      "last_name": "",
       "email": "zohar1210@gmail.com",
       "phone": "972-54-681-8190",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "David",
@@ -2269,7 +1990,7 @@
       "email": "dakopelman@gmail.com",
       "phone": "972-52-614-8680",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "מירי",
@@ -2277,7 +1998,7 @@
       "email": "hibarda@gmail.com",
       "phone": "972-50-942-6746",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ניר",
@@ -2285,7 +2006,7 @@
       "email": "nirbi@yahoo.com",
       "phone": "972-52-569-6273",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלי",
@@ -2293,7 +2014,7 @@
       "email": "eba209@gmail.com",
       "phone": "972-54-999-3778",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "יפעת",
@@ -2301,23 +2022,23 @@
       "email": "yifatgiat@gmail.com",
       "phone": "972-53-776-1161",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "ruti",
-      "last_name": "adler",
+      "first_name": "רותי",
+      "last_name": "",
       "email": "ruti44adler@gmail.com",
       "phone": "972-58-404-6210",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אילן",
-      "last_name": "לוי יזם נדל״ן",
+      "last_name": "לוי",
       "email": "ilanlevi1166@walla.co.il",
       "phone": "972-50-531-0476",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "Eli",
@@ -2325,7 +2046,7 @@
       "email": "barnea101@bezeqint.net",
       "phone": "972-52-358-1877",
       "count": 2,
-      "notes": "נרשם 2 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "רות",
@@ -2333,7 +2054,7 @@
       "email": "hashuv100@gmail.com",
       "phone": "972-52-123-4567",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ליאורה",
@@ -2341,7 +2062,7 @@
       "email": "liorah10@gmail.com",
       "phone": "972-54-494-9803",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רונית",
@@ -2349,7 +2070,7 @@
       "email": "ronit80013@gmail.com",
       "phone": "972-54-478-2520",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "הדס",
@@ -2357,7 +2078,7 @@
       "email": "zr_hadas@hotmail.com",
       "phone": "972-52-367-1384",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "Valentin",
@@ -2365,7 +2086,7 @@
       "email": "gorval@gmail.com",
       "phone": "052-834-2256",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רונן בר לב",
@@ -2373,7 +2094,7 @@
       "email": "rbarlev19@gmail.com",
       "phone": "054-4821190",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אטל טור",
@@ -2381,7 +2102,7 @@
       "email": "etheltur@gmail.com",
       "phone": "972-54-784-5652",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דבורית",
@@ -2389,7 +2110,7 @@
       "email": "dvorit1961@gmail.com",
       "phone": "054-800-5330",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "קטי",
@@ -2397,7 +2118,7 @@
       "email": "katifm19@gmail.com",
       "phone": "972-55-729-8180",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "צילה",
@@ -2405,7 +2126,7 @@
       "email": "tsila37@gmail.com",
       "phone": "972-52-463-3581",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "מרתה",
@@ -2413,7 +2134,7 @@
       "email": "martabk1@gmail.com",
       "phone": "972-52-250-3344",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עדי",
@@ -2421,7 +2142,7 @@
       "email": "capara1@gmail.com",
       "phone": "972-50-543-2640",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ציפי פרבר",
@@ -2429,7 +2150,7 @@
       "email": "sipi.imun@gmail.com",
       "phone": "972-54-488-0359",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "יעקב",
@@ -2437,7 +2158,7 @@
       "email": "yacovzamir@gmail.com",
       "phone": "054-338-5734",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עדי",
@@ -2445,7 +2166,7 @@
       "email": "adiezra.office@gmail.com",
       "phone": "972-54-892-7228",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "לרה",
@@ -2453,7 +2174,7 @@
       "email": "lara5151@walla.com",
       "phone": "972-50-000-0000",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רחלי",
@@ -2461,15 +2182,15 @@
       "email": "rsaloniki@gmail.com",
       "phone": "972-52-332-6433",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "שלמה",
-      "last_name": "בציא",
+      "first_name": "Shlomo",
+      "last_name": "A",
       "email": "sbatsia@gmail.com",
       "phone": "1-904-955-5524",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "inbal",
@@ -2477,7 +2198,7 @@
       "email": "israelinbal@gmail.com",
       "phone": "972-54-444-1022",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נאוה אגם זיו",
@@ -2485,7 +2206,7 @@
       "email": "navaaz1954@gmail.com",
       "phone": "972-52-445-7638",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עידו",
@@ -2493,7 +2214,7 @@
       "email": "edo.baa@gmail.com",
       "phone": "972-50-750-0372",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עודד",
@@ -2501,15 +2222,15 @@
       "email": "oded.nesher@gmail.com",
       "phone": "972-52-448-1188",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "Oren",
-      "last_name": "Pearlsman",
+      "first_name": "אורן",
+      "last_name": "פרלסמן",
       "email": "orenkulu@gmail.com",
       "phone": "972-52-361-9815",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "עזרא",
@@ -2517,7 +2238,7 @@
       "email": "ezranavy@gmail.com",
       "phone": "972-50-686-6565",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "הדס",
@@ -2525,7 +2246,7 @@
       "email": "hadassnapir@gmail.com",
       "phone": "972-52-830-5890",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "צביה",
@@ -2533,7 +2254,7 @@
       "email": "zviyaa@hotmail.com",
       "phone": "972-54-446-2046",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "בת",
@@ -2541,7 +2262,7 @@
       "email": "effect.ltd@gmail.com",
       "phone": "972-54-305-0821",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "קארין",
@@ -2549,7 +2270,7 @@
       "email": "karinkikoz1@gmail.com",
       "phone": "972-54-300-3819",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלונה",
@@ -2557,15 +2278,15 @@
       "email": "alonabrochman@gmail.com",
       "phone": "972-54-433-6334",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
-      "first_name": "רחלי",
+      "first_name": "חלי",
       "last_name": "",
       "email": "heli300308@gmail.com",
       "phone": "972-52-474-9927",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "ברכה",
@@ -2573,7 +2294,7 @@
       "email": "b.manoss10@gmail.com",
       "phone": "972-54-455-8774",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "גל",
@@ -2581,7 +2302,7 @@
       "email": "smirgol8@gmail.com",
       "phone": "972-54-535-5375",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "Mira",
@@ -2589,7 +2310,7 @@
       "email": "mira.eliaz@gmail.com",
       "phone": "972-54-430-6931",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "חגית",
@@ -2597,7 +2318,7 @@
       "email": "hagitbe@outlook.com",
       "phone": "972-54-470-8620",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלה",
@@ -2605,7 +2326,7 @@
       "email": "ella7a6@gmail.com",
       "phone": "972-52-844-7878",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ציפי",
@@ -2613,7 +2334,7 @@
       "email": "tsippy.b@gmail.com",
       "phone": "972-52-450-0621",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שירלי",
@@ -2621,7 +2342,7 @@
       "email": "mirachor@gmail.com",
       "phone": "972-50-716-0411",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "מיכאל",
@@ -2629,7 +2350,7 @@
       "email": "13eilati13@gmail.com",
       "phone": "972-54-456-0696",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נוי",
@@ -2637,7 +2358,7 @@
       "email": "noyls19@gmail.com",
       "phone": "972-54-795-5323",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נתן",
@@ -2645,7 +2366,7 @@
       "email": "natab@walla.co.il",
       "phone": "972-50-759-8575",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "ענבל",
@@ -2653,7 +2374,7 @@
       "email": "dangoor.inbal@gmail.com",
       "phone": "972-52-266-5336",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "קליין",
@@ -2661,7 +2382,7 @@
       "email": "j.klein@bezeqint.net",
       "phone": "972-52-278-1519",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "mazalit",
@@ -2669,7 +2390,7 @@
       "email": "mazalit72@hotmail.com",
       "phone": "972-54-469-4274",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דוד",
@@ -2677,7 +2398,7 @@
       "email": "david_memi@walla.com",
       "phone": "972-52-945-8274",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שרה",
@@ -2685,7 +2406,7 @@
       "email": "sarashachnik@gmail.com",
       "phone": "972-52-855-3494",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שרון",
@@ -2693,7 +2414,7 @@
       "email": "sharon.koninsky@gmail.com",
       "phone": "972-52-304-5045",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "מאירה",
@@ -2701,7 +2422,7 @@
       "email": "meira26@bezeqint.net",
       "phone": "972-50-727-8406",
       "count": 2,
-      "notes": "נרשם 2 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "פנינה",
@@ -2709,7 +2430,7 @@
       "email": "pninaif@gmail.com",
       "phone": "972-50-628-2750",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שוש",
@@ -2717,7 +2438,7 @@
       "email": "shoshke.ef@gmail.com",
       "phone": "972-50-628-3733",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אסתר",
@@ -2725,7 +2446,7 @@
       "email": "estheryadgaroff@gmail.com",
       "phone": "972-54-455-8083",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "הנרייטה",
@@ -2733,7 +2454,7 @@
       "email": "henri2244@gmail.com",
       "phone": "972-50-911-0402",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אילנה",
@@ -2741,7 +2462,7 @@
       "email": "elanaqt@outlook.co.il",
       "phone": "972-58-555-5555",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "פנינה",
@@ -2749,7 +2470,7 @@
       "email": "pnina.vinokur@gmail.com",
       "phone": "972-54-579-7772",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דרור",
@@ -2757,7 +2478,7 @@
       "email": "drorves@gmail.com",
       "phone": "972-54-643-6067",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רחל",
@@ -2765,7 +2486,7 @@
       "email": "rachel@oglaw.co.il",
       "phone": "972-52-293-3969",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלינור",
@@ -2773,7 +2494,7 @@
       "email": "belinor1@gmail.com",
       "phone": "972-50-869-2333",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "חני",
@@ -2781,7 +2502,7 @@
       "email": "coztravel24@gmail.com",
       "phone": "972-58-402-0994",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שמוליק",
@@ -2789,7 +2510,7 @@
       "email": "shmulik181270@gmail.com",
       "phone": "972-52-604-0101",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "איריס",
@@ -2797,7 +2518,7 @@
       "email": "irisle2@gmail.com",
       "phone": "052-869-4227",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "טל",
@@ -2805,7 +2526,7 @@
       "email": "talsade28@gmail.com",
       "phone": "972-53-790-7792",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "Ofir",
@@ -2813,7 +2534,7 @@
       "email": "ofir.gilor@gmail.com",
       "phone": "972-58-550-9090",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "קרן",
@@ -2821,7 +2542,7 @@
       "email": "pooh28105@walla.com",
       "phone": "972-52-220-0510",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "אהוד",
@@ -2829,7 +2550,7 @@
       "email": "ehud.urieli@gmail.com",
       "phone": "972-52-770-1405",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שלומית",
@@ -2837,7 +2558,7 @@
       "email": "ozshlomit@gmail.com",
       "phone": "972-54-493-4988",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אור",
@@ -2845,7 +2566,7 @@
       "email": "orlatheatre@gmail.com",
       "phone": "972-5236421960",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "sharon",
@@ -2853,7 +2574,7 @@
       "email": "nishri.sharon@gmail.com",
       "phone": "972-50-203-5790",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אמנון",
@@ -2861,7 +2582,7 @@
       "email": "amnonrapoport@hotmail.com",
       "phone": "972-54-240-6551",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שרית",
@@ -2869,7 +2590,7 @@
       "email": "saritp88@gmail.com",
       "phone": "972-54-202-2821",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "orit",
@@ -2877,7 +2598,7 @@
       "email": "orit.sror@gmail.com",
       "phone": "972-52-605-6747",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ניקי",
@@ -2885,7 +2606,7 @@
       "email": "friedmanzahava208@gmail.com",
       "phone": "972-52-708-8700",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שניר",
@@ -2893,7 +2614,7 @@
       "email": "snir.lustigmedia@gmail.com",
       "phone": "972-54-741-4585",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אהרן",
@@ -2901,7 +2622,7 @@
       "email": "aganoser@gmail.com",
       "phone": "972-50-699-8542",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "מירב",
@@ -2909,7 +2630,7 @@
       "email": "meravhaz@gmail.com",
       "phone": "972-50-111-1111",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "יהלומית",
@@ -2917,7 +2638,7 @@
       "email": "yahalomit9@walla.co.il",
       "phone": "972-50-301-2660",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "כנרת",
@@ -2925,7 +2646,7 @@
       "email": "kikiamos@gmail.com",
       "phone": "972-54-442-1255",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אורי",
@@ -2933,7 +2654,7 @@
       "email": "orir229@gmail.com",
       "phone": "972-54-642-2031",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אמנון",
@@ -2941,7 +2662,7 @@
       "email": "amnon@planium.com",
       "phone": "054-2406551",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עמליה",
@@ -2949,7 +2670,7 @@
       "email": "amalia.archdesign@gmail.com",
       "phone": "972-50-542-8007",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דלאל",
@@ -2957,7 +2678,7 @@
       "email": "dalalbaker10@gmail.com",
       "phone": "972-54-536-3616",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אבי",
@@ -2965,7 +2686,7 @@
       "email": "avikamsh@walla.com",
       "phone": "0522576098",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "גיל חן",
@@ -2973,7 +2694,7 @@
       "email": "gilc65@gmail.com",
       "phone": "972-54-220-1013",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אליעזר",
@@ -2981,7 +2702,7 @@
       "email": "zweliad@gmail.com",
       "phone": "972-52-541-9509",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "עמנואל",
@@ -2989,7 +2710,7 @@
       "email": "immanuel44@gmail.com",
       "phone": "972-54-436-3727",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שרוליק",
@@ -2997,7 +2718,7 @@
       "email": "gireramiti@gmail.com",
       "phone": "972-50-123-4567",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלי",
@@ -3005,7 +2726,7 @@
       "email": "emiron@netvision.net.il",
       "phone": "972-54-790-6426",
       "count": 2,
-      "notes": "נרשם 2 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "קלרה",
@@ -3013,7 +2734,7 @@
       "email": "claraparenting@gmail.com",
       "phone": "972-52-561-1209",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רז",
@@ -3021,7 +2742,7 @@
       "email": "razdanin@gmail.com",
       "phone": "972-53-123-4567",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שלמה",
@@ -3029,7 +2750,7 @@
       "email": "shlomdb1@gmail.com",
       "phone": "972-54-484-2862",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שירלי",
@@ -3037,7 +2758,7 @@
       "email": "shirley.moshe@gmail.com",
       "phone": "972-52-556-0006",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "צבי",
@@ -3045,7 +2766,7 @@
       "email": "zvib44@gmail.com",
       "phone": "972-58-499-6271",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דוד",
@@ -3053,7 +2774,7 @@
       "email": "doody196201@gmail.com",
       "phone": "0549-103203",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נירית",
@@ -3061,7 +2782,7 @@
       "email": "shnirit@gmail.com",
       "phone": "972-54-490-7147",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "דבי",
@@ -3069,7 +2790,7 @@
       "email": "tahory1@gmail.com",
       "phone": "972-50-522-0313",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אלינה",
@@ -3077,7 +2798,7 @@
       "email": "alinash33@walla.co.il",
       "phone": "972-54-797-4732",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "יורם",
@@ -3085,7 +2806,7 @@
       "email": "ymi2506@gmail.com",
       "phone": "972-54-666-1890",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נירית",
@@ -3093,7 +2814,7 @@
       "email": "niritfadlun@gmail.com",
       "phone": "972-54-232-6666",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רינת",
@@ -3101,7 +2822,7 @@
       "email": "rintoosh@gmail.com",
       "phone": "972-50-622-0520",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "זקי",
@@ -3109,7 +2830,7 @@
       "email": "jk571111@gmail.com",
       "phone": "972-52-832-7006",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "Yossi",
@@ -3117,7 +2838,7 @@
       "email": "ccyossi@yahoo.com",
       "phone": "972-58-580-9090",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "קרן",
@@ -3125,7 +2846,7 @@
       "email": "keren@activ-it.co.il",
       "phone": "972-54-550-9377",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ליעד",
@@ -3133,7 +2854,7 @@
       "email": "liadkelmer.official2020@gmail.com",
       "phone": "972-54-202-7057",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רני לביא פרי",
@@ -3141,7 +2862,7 @@
       "email": "studiorenyp@gmail.com",
       "phone": "972-54-421-2105",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שירן",
@@ -3149,7 +2870,7 @@
       "email": "shirangdstudio@gmail.com",
       "phone": "972-50-433-2024",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אריק",
@@ -3157,7 +2878,7 @@
       "email": "arikzil72@gmail.com",
       "phone": "972-52-399-6777",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רות",
@@ -3165,7 +2886,7 @@
       "email": "ruthlevi3105@gmail.com",
       "phone": "972-54-468-3113",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ולנטינו",
@@ -3173,7 +2894,7 @@
       "email": "vdsrmark@gmail.com",
       "phone": "972-54-469-2025",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "רון",
@@ -3181,7 +2902,7 @@
       "email": "rongal@netvision.net.il",
       "phone": "972-52-299-6594",
       "count": 2,
-      "notes": "נרשם 2 פעמים. ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "רנה",
@@ -3189,7 +2910,7 @@
       "email": "ranae13@gmail.com",
       "phone": "972-54-791-6738",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "גל",
@@ -3197,7 +2918,7 @@
       "email": "ggaladler@gmail.com",
       "phone": "972-50-846-0829",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "פרידה",
@@ -3205,7 +2926,7 @@
       "email": "fridaa49@gmail.com",
       "phone": "972-54-770-6077",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "משה",
@@ -3213,7 +2934,7 @@
       "email": "moshemr1@gmsil.com",
       "phone": "972-52-284-2838",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "lora",
@@ -3221,7 +2942,7 @@
       "email": "lora07@walla.co.il",
       "phone": "972-52-662-6877",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "Shirley",
@@ -3229,7 +2950,7 @@
       "email": "shirleyrozental@walla.co.il",
       "phone": "",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ציפי",
@@ -3237,7 +2958,7 @@
       "email": "zipinaeh@gmail.com",
       "phone": "972-52-480-2456",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "נעה",
@@ -3245,15 +2966,15 @@
       "email": "noagidr@gmail.com",
       "phone": "972-50-993-0902",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "ציפי",
-      "last_name": "נאה",
+      "last_name": "",
       "email": "zi230@walla.com",
       "phone": "972-52-480-2456",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "שירלי",
@@ -3261,7 +2982,7 @@
       "email": "ssz070375@gmail.com",
       "phone": "972-54-753-8129",
       "count": 2,
-      "notes": "נרשם 2 פעמים. שמות שונים בין הרצאות"
+      "notes": ""
     },
     {
       "first_name": "מנחם",
@@ -3269,7 +2990,7 @@
       "email": "menachemla@gmail.com",
       "phone": "972-50-975-0270",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "אירית",
@@ -3277,7 +2998,7 @@
       "email": "iritshim3@gmail.com",
       "phone": "972-54-595-6775",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שוש",
@@ -3285,7 +3006,7 @@
       "email": "shoshjul@gmail.com",
       "phone": "972-50-579-3992",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
     },
     {
       "first_name": "שוש",
@@ -3293,7 +3014,279 @@
       "email": "reizi60@gmail.com",
       "phone": "972-52-761-4546",
       "count": 2,
-      "notes": "נרשם 2 פעמים"
+      "notes": ""
+    },
+    {
+      "first_name": "דוד",
+      "last_name": "קריספין",
+      "email": "fkrispin@p12.net.il",
+      "phone": "972-52-946-6269",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "mazal",
+      "last_name": "gabay",
+      "email": "mazal.gabay@gmail.com",
+      "phone": "972-53-777-5113",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "Patricia",
+      "last_name": "Israel",
+      "email": "pataplouf@yahoo.com",
+      "phone": "972-52-365-2515",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "ריקי",
+      "last_name": "כהן",
+      "email": "riki.c.design@gmail.com",
+      "phone": "972-54-770-3810",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "פנינה",
+      "last_name": "ביתן",
+      "email": "pninaela@bezeqint.net",
+      "phone": "972-50-910-1141",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "רויטל",
+      "last_name": "",
+      "email": "revitalronen2003@gmail.com",
+      "phone": "972-50-303-5001",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "‫ןרד",
+      "last_name": "אדאוי‬‎",
+      "email": "veredsilat@gmail.com",
+      "phone": "972-50-369-2404",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "סי",
+      "last_name": "",
+      "email": "grosssivan@gmail.com",
+      "phone": "972-50-850-7498",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "ברכה",
+      "last_name": "",
+      "email": "brac153@gmail.com",
+      "phone": "972-50-223-7721",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "Il",
+      "last_name": "",
+      "email": "ilan122@gmail.com",
+      "phone": "972-54-453-4576",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "לי",
+      "last_name": "נודל",
+      "email": "nudel_l@yahoo.com",
+      "phone": "972-52-483-0724",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "חני",
+      "last_name": "",
+      "email": "hanni.perlin@gmail.com",
+      "phone": "972-54-123-4567",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "Dvora",
+      "last_name": "Bergman",
+      "email": "dvora.bergman@gmail.com",
+      "phone": "972-55-884-7944",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "שושי",
+      "last_name": "",
+      "email": "krshosh@walla.co.il",
+      "phone": "972-50-923-0133",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "שבתאי",
+      "last_name": "איתן",
+      "email": "shabtai.eitan@gmail.com",
+      "phone": "972-50-620-6180",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "ריטה",
+      "last_name": "שטכמן",
+      "email": "rita88888@gmail.com",
+      "phone": "972-50-810-8384",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "יעקב",
+      "last_name": "אלבו",
+      "email": "yacov@coral-ltd.co.il",
+      "phone": "972-50-533-9896",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "דליה",
+      "last_name": "ציזיק",
+      "email": "petzek@gmail.com",
+      "phone": "972-52-399-4056",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "אסף",
+      "last_name": "",
+      "email": "profiref@gmail.com",
+      "phone": "972-52-625-0448",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "משה",
+      "last_name": "גני",
+      "email": "moshegani99@gmail.com",
+      "phone": "972-52-423-0104",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "אלי",
+      "last_name": "צווייג",
+      "email": "zweiad@gmail.com",
+      "phone": "972-52-541-9509",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "רבקה",
+      "last_name": "גלאור",
+      "email": "rivgal@walla.com",
+      "phone": "972-52-372-1537",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "טל",
+      "last_name": "קהת",
+      "email": "talkehat@gmail.com",
+      "phone": "972-50-565-2673",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "מירי",
+      "last_name": "אושרוב",
+      "email": "osherov.mi@gmail.com",
+      "phone": "972-54-351-8147",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "נטלי",
+      "last_name": "לוין",
+      "email": "studio.natalie.levin@gmail.com",
+      "phone": "972-52-445-5671",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "לביאה",
+      "last_name": "שטיין",
+      "email": "leviastein50@gmail.com",
+      "phone": "972-54-492-1195",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "חפצי",
+      "last_name": "מאירי",
+      "email": "meiry50@walla.co.il",
+      "phone": "972-50-697-2832",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "דליה",
+      "last_name": "זגורי",
+      "email": "zdal111@gmail.com",
+      "phone": "972-52-899-1199",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "שרה",
+      "last_name": "נלקין",
+      "email": "saryoc@gmail.com",
+      "phone": "972-54-462-5834",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "רעיה",
+      "last_name": "הורוביץ",
+      "email": "ho.raya@gmail.com",
+      "phone": "972-54-676-9221",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "ירון",
+      "last_name": "אנטניר",
+      "email": "tony.zebra@gmail.com",
+      "phone": "972-52-510-5100",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "גלית",
+      "last_name": "מנדלבאום",
+      "email": "galitmac@bezeqint.net",
+      "phone": "972-50-732-8819",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "דורית",
+      "last_name": "לוינגר",
+      "email": "doritgle@gmail.com",
+      "phone": "054-4210687",
+      "count": 1,
+      "notes": ""
+    },
+    {
+      "first_name": "דרור גנאינסקי",
+      "last_name": "מאג שרותי דפוס",
+      "email": "5501633@gmail.com",
+      "phone": "052-2812581",
+      "count": 1,
+      "notes": ""
     },
     {
       "first_name": "ליהי",
@@ -3349,7 +3342,7 @@
       "email": "hanit100@zahav.net.il",
       "phone": "972-54-520-0668",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "נטלי",
@@ -3581,7 +3574,7 @@
       "email": "dredlich@bezeqint.net",
       "phone": "972-50-427-2204",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "צופית",
@@ -3597,7 +3590,7 @@
       "email": "oshrat@017.net.il",
       "phone": "972-54-469-3283",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "יפה",
@@ -3909,7 +3902,7 @@
       "email": "erantirosh@gmai.com",
       "phone": "972-52-660-6972",
       "count": 1,
-      "notes": "שגיאת הקלדה באימייל — gmai במקום gmail"
+      "notes": ""
     },
     {
       "first_name": "אוטי",
@@ -4741,7 +4734,7 @@
       "email": "zilber-a@zahav.net.il",
       "phone": "972-52-311-4100",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "בלהה",
@@ -5093,7 +5086,7 @@
       "email": "danny242@zahav.net.il",
       "phone": "972-52-255-3533",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "עוזיאל",
@@ -5221,7 +5214,7 @@
       "email": "vaad@tauex.tau.ac.il",
       "phone": "972-3-640-7453",
       "count": 1,
-      "notes": "אקדמיה — אוניברסיטת ת\"א"
+      "notes": ""
     },
     {
       "first_name": "סיגלית",
@@ -5301,7 +5294,7 @@
       "email": "shech@netvision.net.il",
       "phone": "972-52-264-0628",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "תמיר",
@@ -5677,7 +5670,7 @@
       "email": "dafna_dl@zahav.net.il",
       "phone": "972-54-725-7993",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "דפנה דלמדה",
@@ -5845,7 +5838,7 @@
       "email": "tamhag@bezeqint.net",
       "phone": "972-3-640-7453",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "עמית",
@@ -5853,7 +5846,7 @@
       "email": "amitbr01@bezeqint.net",
       "phone": "972-54-447-9869",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "מוטי",
@@ -5885,7 +5878,7 @@
       "email": "ribameir@netvision.net.il",
       "phone": "972-54-422-2593",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "תמי",
@@ -6189,7 +6182,7 @@
       "email": "sigalay@tauex.tau.ac.il",
       "phone": "03-6406493",
       "count": 1,
-      "notes": "אקדמיה — אוניברסיטת ת\"א"
+      "notes": ""
     },
     {
       "first_name": "אלשייך",
@@ -6317,7 +6310,7 @@
       "email": "birandm@bezeqint.net",
       "phone": "972-52-545-1761",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "אדוה",
@@ -6733,7 +6726,7 @@
       "email": "strenger@zahav.net.il",
       "phone": "972-52-334-6685",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "אהד",
@@ -6837,7 +6830,7 @@
       "email": "benyzolotov62@gmai.com",
       "phone": "972-53-333-3317",
       "count": 1,
-      "notes": "שגיאת הקלדה באימייל — gmai במקום gmail"
+      "notes": ""
     },
     {
       "first_name": "נאור",
@@ -7445,7 +7438,7 @@
       "email": "neomist@zahav.net.il",
       "phone": "972-52-351-7785",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "אורית",
@@ -7877,7 +7870,7 @@
       "email": "doria@bezeqint.net",
       "phone": "972-58-726-2522",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "מדה",
@@ -7949,7 +7942,7 @@
       "email": "bddanny@inter.net.il",
       "phone": "972-52-455-2501",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "ניר",
@@ -8405,7 +8398,7 @@
       "email": "offer_zl@netvision.net.il",
       "phone": "972-50-406-5013",
       "count": 1,
-      "notes": "ספק ישן — כנראה גיל 55+"
+      "notes": ""
     },
     {
       "first_name": "איל",
