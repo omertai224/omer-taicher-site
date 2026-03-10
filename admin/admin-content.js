@@ -1996,6 +1996,7 @@ function renderContactStats() {
   const loyal3  = allContacts.filter(c => (parseInt(c.count)||1) >= 3).length;
   const loyal10 = allContacts.filter(c => (parseInt(c.count)||1) >= 10).length;
   const single  = allContacts.filter(c => (parseInt(c.count)||1) === 1).length;
+  const two     = allContacts.filter(c => (parseInt(c.count)||1) === 2).length;
   const items = [
     { label: 'סה"כ אנשי קשר',      value: total,   color: '#1a4a6b', bg: '#eef4f8' },
     { label: 'נאמנים (3+ הרצאות)', value: loyal3,  color: '#2d6a4f', bg: '#d8f3dc' },
@@ -2003,13 +2004,46 @@ function renderContactStats() {
     { label: 'רישום יחיד',          value: single,  color: '#888',    bg: '#f5f5f5' },
   ];
   bar.innerHTML = items.map(i =>
-    `<div style="background:${i.bg};border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;">
+    `<div style="background:${i.bg};border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;cursor:pointer;" onclick="setLoyaltyFilter('${i.label.includes('יחיד')?'1':i.label.includes('מאוד')?'10':i.label.includes('3+')?'3':'all'}')">
       <div style="font-size:1.6rem;font-weight:900;color:${i.color};">${i.value}</div>
       <div style="font-size:0.73rem;color:var(--text-light);margin-top:4px;font-weight:600;">${i.label}</div>
     </div>`
   ).join('');
+
+  // DNA insights
   const box = document.getElementById('contacts-insights');
-  if (box) box.style.display = 'none';
+  const txt = document.getElementById('contacts-insights-text');
+  if (!box || !txt) return;
+
+  const pctVip    = Math.round(loyal10 / total * 100);
+  const pctLoyal  = Math.round(loyal3  / total * 100);
+  const pctSingle = Math.round(single  / total * 100);
+  const pctTwo    = Math.round(two     / total * 100);
+
+  txt.innerHTML = `
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div style="background:#fff;border:1px solid #c3d9e8;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:0.78rem;font-weight:800;color:#e8854a;margin-bottom:6px;">VIP אמיתיים, ${loyal10} אנשים, ${pctVip}% מהקהל</div>
+        <div style="font-size:0.8rem;color:#444;line-height:1.7;">הגיעו 10 פעמים ויותר. מאמינים בך לחלוטין, חוזרים מרצון. אלה האנשים שישלמו על מינוי, חבילה או גישה מוקדמת. כל מוצר חדש שתוציא, להם קודם כל.</div>
+      </div>
+      <div style="background:#fff;border:1px solid #c3d9e8;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:0.78rem;font-weight:800;color:#2d6a4f;margin-bottom:6px;">חוזרים, ${loyal3 - loyal10} אנשים</div>
+        <div style="font-size:0.8rem;color:#444;line-height:1.7;">הגיעו 3 עד 9 פעמים. כבר בדקו אותך ואהבו. צריך עוד דחיפה אחת כדי להפוך ל-VIP. הצעה ספציפית, הזמנה אישית או תוכן בלעדי יכולים לעשות את זה.</div>
+      </div>
+      <div style="background:#fff;border:1px solid #c3d9e8;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:0.78rem;font-weight:800;color:#888;margin-bottom:6px;">חד-פעמיים, ${single} אנשים, ${pctSingle}% מהקהל</div>
+        <div style="font-size:0.8rem;color:#444;line-height:1.7;">הגיעו פעם אחת ולא חזרו. לא בהכרח אבודים. ${two} מהם חזרו פעם שנייה. הנושא לא תמיד היה מדויק להם, או שפשוט לא קיבלו סיבה לחזור.</div>
+      </div>
+    </div>
+    <div style="background:#fff;border:1px solid #c3d9e8;border-radius:10px;padding:14px 16px;font-size:0.8rem;color:#444;line-height:1.8;">
+      <span style="font-weight:800;color:#1a4a6b;">DNA כללי של הקהל.</span>
+      88% ישראלים עם שמות בעברית. רובם עם Gmail, כלומר נוחים עם טכנולוגיה ברמה בסיסית.
+      כ-35 אנשים עם אימייל ישן (בזק, זהב, נטוויז'ן) שגילם ככל הנראה 55 ומעלה, בדיוק הקהל שמגיע להרצאות AI ומחשבים כי הטכנולוגיה מפחידה אותם.
+      954 אנשי קשר עם טלפון, 14 ללא טלפון.
+      153 ללא שם משפחה, כלומר נרשמו עם שם פרטי בלבד.
+    </div>
+  `;
+  box.style.display = 'block';
 }
 
 function renderContacts() {
@@ -2036,11 +2070,7 @@ function renderContacts() {
       <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.email}</td>
       <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;white-space:nowrap;">${phone}</td>
       <td style="padding:9px 14px;text-align:center;">
-        <div style="display:flex;align-items:center;justify-content:center;gap:4px;">
-          <button onclick="changeCount('${esc(c.email)}',-1)" style="background:var(--cream);border:1px solid var(--border);width:22px;height:22px;border-radius:50%;font-size:0.9rem;cursor:pointer;color:var(--navy);font-family:inherit;display:inline-flex;align-items:center;justify-content:center;padding:0;">-</button>
-          <span style="background:${bg};color:${col};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;min-width:28px;text-align:center;">${cnt}</span>
-          <button onclick="changeCount('${esc(c.email)}',1)" style="background:var(--cream);border:1px solid var(--border);width:22px;height:22px;border-radius:50%;font-size:0.9rem;cursor:pointer;color:var(--navy);font-family:inherit;display:inline-flex;align-items:center;justify-content:center;padding:0;">+</button>
-        </div>
+        <span style="background:${bg};color:${col};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;min-width:28px;display:inline-block;text-align:center;">${cnt}</span>
       </td>
       <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:200px;">
         <div id="nd-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
@@ -2154,6 +2184,30 @@ async function deleteContactFromSB(email) {
   } catch(e) {
     console.error('שגיאה במחיקה:', e);
   }
+}
+
+async function importNotes() {
+  const text = prompt('הדבק כאן CSV עם עמודות email,notes (שורה לכל איש קשר):\n\nדוגמה:\nhadam28@gmail.com,לקוחה VIP\nfina3010@gmail.com,מעוניינת בקורס AI');
+  if (!text) return;
+  const lines = text.trim().split('\n').filter(l => l.trim());
+  // skip header if exists
+  const start = lines[0].toLowerCase().includes('email') ? 1 : 0;
+  let updated = 0, errors = 0;
+  for (let i = start; i < lines.length; i++) {
+    const comma = lines[i].indexOf(',');
+    if (comma === -1) continue;
+    const email = lines[i].slice(0, comma).trim().toLowerCase();
+    const note  = lines[i].slice(comma + 1).trim();
+    if (!email) continue;
+    try {
+      await saveContactToSB(email, { notes: note });
+      const c = allContacts.find(x => x.email === email);
+      if (c) c.notes = note;
+      updated++;
+    } catch(e) { errors++; }
+  }
+  filterContacts();
+  alert(`עודכנו ${updated} הערות בהצלחה.${errors ? ' ' + errors + ' שגיאות.' : ''}`);
 }
 
 function exportContacts() {
