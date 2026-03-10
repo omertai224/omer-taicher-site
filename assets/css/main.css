@@ -165,12 +165,8 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 /* ===== BLOG ===== */
 .blog-section { background: var(--cream); }
 .blog-grid { display: flex; flex-direction: column; gap: 14px; }
-.blog-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s; }
+.blog-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 22px; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s; }
 .blog-card:hover { box-shadow: 0 8px 24px var(--shadow); }
-.blog-thumb { width: 100%; height: 180px; background-size: cover; background-position: center; background-color: var(--navy-light); }
-.blog-thumb-empty { display: none; }
-.blog-card-body { padding: 22px; }
-.blog-new-badge { display: inline-block; background: var(--orange); color: #fff; padding: 3px 10px; border-radius: 50px; font-size: 0.65rem; font-weight: 800; margin-bottom: 10px; letter-spacing: 0.5px; }
 .blog-tag { display: inline-block; background: var(--navy-light); color: var(--navy-mid); padding: 4px 11px; border-radius: 50px; font-size: 0.67rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 .blog-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
 .blog-excerpt { font-size: 0.8rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
@@ -298,3 +294,10 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   font-size: 0.78rem;
   color: rgba(255,255,255,0.4);
 }
+
+/* Blog cards — with image */
+.blog-card { overflow: hidden; padding: 0; }
+.blog-thumb { width: 100%; height: 180px; background-size: cover; background-position: center; background-color: var(--navy-light); }
+.blog-thumb-empty { display: none; }
+.blog-card-body { padding: 22px; }
+.blog-new-badge { display: inline-block; background: var(--orange); color: #fff; border-radius: 50px; font-size: 0.65rem; font-weight: 800; padding: 3px 10px; margin-bottom: 10px; }
