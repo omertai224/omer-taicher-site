@@ -206,8 +206,8 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   .mobile-menu { display: none !important; }
   nav { padding: 0 60px; height: 60px; }
   .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
-  .nav-links a { color: var(--text-mid); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--navy); }
+  .nav-links a { color: #1a4a6b; text-decoration: none; font-size: 0.85rem; font-weight: 600; padding: 7px 14px; border-radius: 50px; background: #eef4f8; transition: background 0.2s, color 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+  .nav-links a:hover { background: #fdeede; color: #e8854a; }
   .nav-cta { background: var(--orange-deep); color: #fff !important; padding: 9px 22px; border-radius: 50px; font-weight: 700 !important; }
   .nav-cta:hover { background: var(--navy) !important; }
   .nav-mobile-cta { display: none; }
