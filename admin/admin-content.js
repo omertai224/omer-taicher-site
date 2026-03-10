@@ -1932,7 +1932,8 @@ function switchInteractiveTab(tab) {
 // CONTACTS — Supabase
 // ============================================================
 const SB_URL = 'https://cbnwxmsgzffvssssqwdz.supabase.co';
-function getSBKey() { return localStorage.getItem('sb_key') || ''; }
+const SB_ANON = 'sb_publishable_SmOVPhSh6uaJGE6nb9D9Pg_gzRmlxiU';
+function getSBKey() { return SB_ANON; }
 
 let allContacts = [];
 let filteredContacts = [];
@@ -1965,13 +1966,6 @@ async function loadContacts() {
   const tbody = document.getElementById('contacts-tbody');
   if (bar)   bar.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text-light);font-size:0.85rem;">טוען...</div>';
   if (tbody) tbody.innerHTML = '';
-
-  // אם אין מפתח — בקש מהמשתמש
-  if (!getSBKey()) {
-    const k = prompt('הכנס Supabase Secret Key:');
-    if (k) localStorage.setItem('sb_key', k.trim());
-    else return;
-  }
 
   try {
     const data = await sbFetch('GET', '/rest/v1/contacts?select=*&order=count.desc&limit=2000');
