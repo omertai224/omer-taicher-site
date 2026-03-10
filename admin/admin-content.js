@@ -2058,7 +2058,6 @@ function renderContactStats() {
   window._insightTabs = tabContent;
   window._insightActive = 0;
 
-  const txt = document.getElementById('contacts-insights-text');
   if (txt) txt.innerHTML = tabContent[0];
   box.style.display = 'block';
 }
