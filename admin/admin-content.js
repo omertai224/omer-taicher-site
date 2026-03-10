@@ -1932,76 +1932,69 @@ function switchInteractiveTab(tab) {
 // ============================================================
 let allContacts = [];
 let filteredContacts = [];
+let contactsSha = null;
 
 async function loadContacts() {
   const token = localStorage.getItem('admin_token');
+  const bar   = document.getElementById('contacts-stats-bar');
+  const tbody = document.getElementById('contacts-tbody');
+  if (bar)   bar.innerHTML   = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text-light);font-size:0.85rem;">טוען...</div>';
+  if (tbody) tbody.innerHTML = '';
+
   try {
     const res = await fetch(`https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json?ref=main&t=${Date.now()}`, {
       headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
     });
-    if (!res.ok) { allContacts = []; renderContacts(); return; }
+    if (!res.ok) throw new Error('קובץ לא נמצא (' + res.status + ')');
     const data = await res.json();
+    contactsSha = data.sha;
     const parsed = JSON.parse(decode(data.content));
-    allContacts = parsed.contacts || [];
+    allContacts = (parsed.contacts || []).map(c => ({
+      first_name: c.first_name || '',
+      last_name:  c.last_name  || '',
+      email:      c.email      || '',
+      phone:      c.phone      || '',
+      count:      parseInt(c.count) || 1,
+      notes:      c.notes      || ''
+    }));
     filteredContacts = [...allContacts];
-    renderStats(parsed.stats || {});
-    renderInsights(parsed.stats || {}, allContacts);
+    renderContactStats();
     renderContacts();
   } catch(e) {
+    if (bar) bar.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:20px;color:#c0392b;font-size:0.85rem;">שגיאה בטעינה: ${e.message}</div>`;
     allContacts = [];
+    filteredContacts = [];
     renderContacts();
   }
 }
 
-function renderStats(stats) {
+function renderContactStats() {
   const bar = document.getElementById('contacts-stats-bar');
   if (!bar) return;
+
+  const total   = allContacts.length;
+  const loyal3  = allContacts.filter(c => c.count >= 3).length;
+  const loyal10 = allContacts.filter(c => c.count >= 10).length;
+  const single  = allContacts.filter(c => c.count === 1).length;
+  const gmailN  = allContacts.filter(c => (c.email||'').includes('@gmail.')).length;
+  const gmailPct = total ? Math.round(gmailN / total * 100) : 0;
+
   const items = [
-    { label: 'סה"כ אנשי קשר', value: stats.total || 0, color: '#1a4a6b' },
-    { label: 'נאמנים (3+ הרצאות)', value: stats.loyal_3plus || 0, color: '#2d6a4f' },
-    { label: 'מאוד נאמנים (10+)', value: stats.loyal_10plus || 0, color: '#e8854a' },
-    { label: 'רישום יחיד', value: stats.single_reg || 0, color: '#888' },
+    { label: 'סה"כ אנשי קשר', value: total,   color: '#1a4a6b', bg: '#eef4f8' },
+    { label: 'נאמנים (3+ הרצאות)', value: loyal3,  color: '#2d6a4f', bg: '#d8f3dc' },
+    { label: 'מאוד נאמנים (10+)',  value: loyal10, color: '#e8854a', bg: '#fdeede' },
+    { label: 'Gmail ' + gmailPct + '%', value: single,  color: '#888',    bg: '#f5f5f5' },
   ];
   bar.innerHTML = items.map(i => `
-    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;">
+    <div style="background:${i.bg};border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;cursor:default;">
       <div style="font-size:1.6rem;font-weight:900;color:${i.color};">${i.value.toLocaleString()}</div>
-      <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;font-weight:600;">${i.label}</div>
+      <div style="font-size:0.73rem;color:var(--text-light);margin-top:4px;font-weight:600;">${i.label}</div>
     </div>
   `).join('');
 
-  // עדכון טקסט הסלקט עם המספרים האמיתיים
-  const sel = document.getElementById('contacts-filter-loyalty');
-  if (sel) {
-    const opt10 = sel.querySelector('option[value="10"]');
-    const opt3  = sel.querySelector('option[value="3"]');
-    const opt1  = sel.querySelector('option[value="1"]');
-    if (opt10) opt10.textContent = `מאוד נאמנים`;
-    if (opt3)  opt3.textContent  = `נאמנים`;
-    if (opt1)  opt1.textContent  = `רישום יחיד`;
-  }
-}
-
-function renderInsights(stats, contacts) {
+  // הסתרת insights ישן
   const box = document.getElementById('contacts-insights');
-  const txt = document.getElementById('contacts-insights-text');
-  if (!box || !txt) return;
-
-  const total = stats.total || contacts.length;
-  const loyal = stats.loyal_3plus || 0;
-  const top = stats.loyal_10plus || 0;
-  const single = stats.single_reg || 0;
-  const gmailPct = stats.gmail_pct || 77;
-
-  const lines = [
-    `<strong>${total.toLocaleString()} אנשי קשר</strong> ייחודיים מכלל ההרצאות שלך.`,
-    `<strong>${loyal} אנשים (${Math.round(loyal/total*100)}%)</strong> נרשמו ל-3 הרצאות ומעלה - הקהל הנאמן שלך.`,
-    `<strong>${top} אנשים</strong> נרשמו ל-10 הרצאות ומעלה - הקהל החם ביותר. אלה הראשונים שיקנו הדרכה בתשלום.`,
-    `<strong>${single} אנשים (${Math.round(single/total*100)}%)</strong> נרשמו פעם אחת ולא חזרו - פוטנציאל שטרם מומש.`,
-    `<strong>${gmailPct}%</strong> מהקהל הם Gmail. שאר - walla, bezeqint, zahav - בדרך כלל גיל 55+.`,
-    `<strong>235 אנשים</strong> חוזרים כל חודש. אלה לא מקרה - הם מחכים שתציע להם משהו.`,
-  ];
-  txt.innerHTML = lines.join('<br>');
-  box.style.display = 'block';
+  if (box) box.style.display = 'none';
 }
 
 function renderContacts() {
@@ -2020,34 +2013,52 @@ function renderContacts() {
   }
   if (empty) empty.style.display = 'none';
 
-  // Show max 200 rows for performance
   const display = list.slice(0, 200);
 
   tbody.innerHTML = display.map((c, i) => {
-    const loyaltyColor = c.count >= 10 ? '#e8854a' : c.count >= 3 ? '#2d6a4f' : '#aaa';
-    const loyaltyBg = c.count >= 10 ? '#fdeede' : c.count >= 3 ? '#d8f3dc' : '#f5f5f5';
+    const cnt = parseInt(c.count) || 1;
+    const loyaltyColor = cnt >= 10 ? '#e8854a' : cnt >= 3 ? '#2d6a4f' : '#aaa';
+    const loyaltyBg    = cnt >= 10 ? '#fdeede' : cnt >= 3 ? '#d8f3dc' : '#f5f5f5';
+    const phone = (c.phone||'').replace(/^\+?972-?/,'0').replace(/^972-?/,'0');
+    const notesSafe = (c.notes||'').replace(/"/g,'&quot;').replace(/[—–]/g,'-');
+    const emailSafe = (c.email||'').replace(/"/g,'&quot;');
     return `
-    <tr style="border-bottom:1px solid var(--border);${i % 2 === 0 ? '' : 'background:#fafafa;'}" id="crow-${i}">
-      <td style="padding:9px 14px;">${c.first_name || ''}</td>
-      <td style="padding:9px 14px;">${c.last_name || ''}</td>
-      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.email || ''}</td>
-      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${(c.phone||'').replace(/^\+?972-?/,'0').replace(/^972-?/,'0')}</td>
+    <tr style="border-bottom:1px solid var(--border);${i % 2 === 0 ? '' : 'background:#fafafa;'}">
+      <td style="padding:9px 14px;font-weight:600;">${c.first_name}</td>
+      <td style="padding:9px 14px;">${c.last_name}</td>
+      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.email}</td>
+      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;white-space:nowrap;">${phone}</td>
       <td style="padding:9px 14px;text-align:center;">
-        <span style="background:${loyaltyBg};color:${loyaltyColor};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;">${c.count || 1}</span>
+        <div style="display:flex;align-items:center;justify-content:center;gap:4px;">
+          <button onclick="changeCount('${emailSafe}',-1)" style="background:var(--cream);border:1px solid var(--border);width:22px;height:22px;border-radius:50%;font-size:0.85rem;line-height:1;cursor:pointer;color:var(--navy);font-family:inherit;display:inline-flex;align-items:center;justify-content:center;">-</button>
+          <span id="count-badge-${i}" style="background:${loyaltyBg};color:${loyaltyColor};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;min-width:28px;text-align:center;">${cnt}</span>
+          <button onclick="changeCount('${emailSafe}',+1)" style="background:var(--cream);border:1px solid var(--border);width:22px;height:22px;border-radius:50%;font-size:0.85rem;line-height:1;cursor:pointer;color:var(--navy);font-family:inherit;display:inline-flex;align-items:center;justify-content:center;">+</button>
+        </div>
       </td>
-      <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:220px;">
-        <div id="notes-display-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${(c.notes||'').replace(/[—–]/g,'-') || '<span style=\'color:#ccc;\'>+ הוסף הערה</span>'}</div>
-        <input id="notes-input-${i}" type="text" value="${(c.notes||'').replace(/"/g,'&quot;')}" onblur="saveNote(${i})" onkeydown="if(event.key==='Enter')saveNote(${i})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
+      <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:200px;">
+        <div id="notes-display-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${notesSafe || '<span style=\'color:#ccc;\'>+ הוסף הערה</span>'}</div>
+        <input id="notes-input-${i}" type="text" value="${notesSafe}" onblur="saveNote(${i})" onkeydown="if(event.key==='Enter')saveNote(${i})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
       </td>
       <td style="padding:9px 14px;text-align:center;">
-        <button onclick="deleteContact('${c.email}')" style="background:#fde8e8;color:#c0392b;border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
+        <button onclick="deleteContact('${emailSafe}')" style="background:#fde8e8;color:#c0392b;border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
       </td>
-    </tr>`
+    </tr>`;
   }).join('');
 
   if (list.length > 200) {
-    tbody.innerHTML += `<tr><td colspan="7" style="padding:14px;text-align:center;color:var(--text-light);font-size:0.82rem;">מוצגים 200 מתוך ${list.length.toLocaleString()} - צמצם את החיפוש לתוצאות נוספות</td></tr>`;
+    tbody.innerHTML += `<tr><td colspan="7" style="padding:14px;text-align:center;color:var(--text-light);font-size:0.82rem;">מוצגים 200 מתוך ${list.length.toLocaleString()} — צמצמו את החיפוש לתוצאות נוספות</td></tr>`;
   }
+}
+
+function changeCount(email, delta) {
+  const c = allContacts.find(x => x.email === email);
+  if (!c) return;
+  c.count = Math.max(1, (parseInt(c.count) || 1) + delta);
+  const fc = filteredContacts.find(x => x.email === email);
+  if (fc) fc.count = c.count;
+  renderContactStats();
+  renderContacts();
+  saveContacts();
 }
 
 function editNote(i) {
@@ -2062,7 +2073,6 @@ function saveNote(i) {
   const val = inp.value.trim();
   const contact = filteredContacts[i];
   if (!contact) return;
-  // Update in allContacts too
   const orig = allContacts.find(c => c.email === contact.email);
   if (orig) orig.notes = val;
   contact.notes = val;
@@ -2088,27 +2098,32 @@ function setLoyaltyFilter(val) {
 }
 
 function filterContacts() {
-  const q = (document.getElementById('contacts-search')?.value || '').toLowerCase();
+  const q       = (document.getElementById('contacts-search')?.value || '').toLowerCase();
   const loyalty = document.getElementById('contacts-filter-loyalty')?.value || 'all';
-  
+
   filteredContacts = allContacts.filter(c => {
+    const cnt = parseInt(c.count) || 1;
     const matchQ = !q ||
       (c.first_name || '').toLowerCase().includes(q) ||
-      (c.last_name || '').toLowerCase().includes(q) ||
-      (c.email || '').toLowerCase().includes(q) ||
-      (c.phone || '').includes(q);
-    
-    const matchL = loyalty === 'all' ? true :
-      loyalty === '10' ? c.count >= 10 :
-      loyalty === '3'  ? c.count >= 3 :
-      loyalty === '1'  ? c.count === 1 :
-      loyalty === 'notes' ? (c.notes && c.notes.trim()) : true;
-    
+      (c.last_name  || '').toLowerCase().includes(q) ||
+      (c.email      || '').toLowerCase().includes(q) ||
+      (c.phone      || '').includes(q);
+
+    const matchL = loyalty === 'all'   ? true :
+                   loyalty === '10'    ? cnt >= 10 :
+                   loyalty === '3'     ? cnt >= 3  :
+                   loyalty === '1'     ? cnt === 1 :
+                   loyalty === 'notes' ? !!(c.notes && c.notes.trim()) : true;
+
     return matchQ && matchL;
   });
 
   if (contactSortDir) {
-    filteredContacts.sort((a, b) => contactSortDir === 'desc' ? (b.count||1) - (a.count||1) : (a.count||1) - (b.count||1));
+    filteredContacts.sort((a, b) =>
+      contactSortDir === 'desc'
+        ? (parseInt(b.count)||1) - (parseInt(a.count)||1)
+        : (parseInt(a.count)||1) - (parseInt(b.count)||1)
+    );
   }
 
   renderContacts();
@@ -2118,8 +2133,9 @@ function filterContacts() {
 
 function deleteContact(email) {
   if (!confirm('למחוק את ' + email + '?')) return;
-  allContacts = allContacts.filter(c => c.email !== email);
+  allContacts     = allContacts.filter(c => c.email !== email);
   filteredContacts = filteredContacts.filter(c => c.email !== email);
+  renderContactStats();
   renderContacts();
   saveContacts();
 }
@@ -2127,16 +2143,29 @@ function deleteContact(email) {
 async function saveContacts() {
   const token = localStorage.getItem('admin_token');
   if (!token) return;
-  const sha = await getFileSha('admin/contacts.json');
-  await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json', {
-    method: 'PUT',
-    headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      message: 'עדכון אנשי קשר',
-      content: btoa(unescape(encodeURIComponent(JSON.stringify({ contacts: allContacts }, null, 2)))),
-      sha
-    })
-  });
+  try {
+    // רענן SHA לפני שמירה
+    if (!contactsSha) {
+      const r = await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json', {
+        headers: { Authorization: 'token ' + token }
+      });
+      if (r.ok) contactsSha = (await r.json()).sha;
+    }
+    const body = { contacts: allContacts };
+    const res = await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json', {
+      method: 'PUT',
+      headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: 'עדכון אנשי קשר',
+        content: btoa(unescape(encodeURIComponent(JSON.stringify(body, null, 2)))),
+        sha: contactsSha
+      })
+    });
+    const result = await res.json();
+    if (result.content) contactsSha = result.content.sha;
+  } catch(e) {
+    console.error('שגיאה בשמירת אנשי קשר', e);
+  }
 }
 
 async function getFileSha(path) {
