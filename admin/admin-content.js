@@ -1939,7 +1939,7 @@ let allContacts = [];
 let filteredContacts = [];
 let contactSortDir = null;
 
-async function sbFetch(method, path, body) {
+async function sbFetch(method, path, body, extraHeaders) {
   const key = getSBKey();
   if (!key) throw new Error('מפתח Supabase חסר');
   const opts = {
@@ -1948,7 +1948,8 @@ async function sbFetch(method, path, body) {
       'apikey': key,
       'Authorization': 'Bearer ' + key,
       'Content-Type': 'application/json',
-      'Prefer': method === 'POST' ? 'return=representation' : ''
+      'Prefer': method === 'POST' ? 'return=representation' : '',
+      ...(extraHeaders || {})
     }
   };
   if (body) opts.body = JSON.stringify(body);
@@ -1968,7 +1969,7 @@ async function loadContacts() {
   if (tbody) tbody.innerHTML = '';
 
   try {
-    const data = await sbFetch('GET', '/rest/v1/contacts?select=*&order=count.desc&limit=2000');
+    const data = await sbFetch('GET', '/rest/v1/contacts?select=*&order=count.desc&limit=2000', null, { 'Range': '0-1999' });
     allContacts = (data || []).map(c => ({
       first_name: c.first_name || '',
       last_name:  c.last_name  || '',
