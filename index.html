@@ -301,7 +301,7 @@
       const grid = document.getElementById('blog-grid');
       if (!grid || !items.length) return;
 
-      grid.innerHTML = items.map(item => {
+      grid.innerHTML = items.map((item, index) => {
         const title = item.querySelector('title')?.textContent || '';
         const link  = item.querySelector('guid')?.textContent || 'https://blog.omertai.net';
         const date  = item.querySelector('pubDate')?.textContent || '';
@@ -311,13 +311,23 @@
         const readTime = estimateReadTime(plain);
         const cats = Array.from(item.querySelectorAll('category'));
         const tag = cats.length ? cats[0].textContent : 'טיפ';
-        const meta = readTime + ' דקות קריאה, ' + formatDate(date);
+        const meta = readTime + ' דקות קריאה · ' + formatDate(date);
+        const enclosure = item.querySelector('enclosure');
+        const imgUrl = enclosure ? enclosure.getAttribute('url') : '';
+        const imgHtml = imgUrl
+          ? `<div class="blog-thumb" style="background-image:url('${imgUrl}')"></div>`
+          : `<div class="blog-thumb blog-thumb-empty"></div>`;
+        const titleHtml = title.replace(/([.?!]) /g, '$1<br>');
+        const newBadge = index === 0 ? `<div class="blog-new-badge">חדש</div>` : '';
 
         return `<a class="blog-card" href="${link}">
-          <div class="blog-tag">${tag}</div>
-          <div class="blog-title">${title}</div>
-          <div class="blog-excerpt">${excerpt}</div>
-          <div class="blog-meta">${meta}</div>
+          ${imgHtml}
+          <div class="blog-card-body">
+            ${newBadge}
+            <div class="blog-title">${titleHtml}</div>
+            <div class="blog-excerpt">${excerpt}</div>
+            <div class="blog-meta">${meta}</div>
+          </div>
         </a>`;
       }).join('');
     })
