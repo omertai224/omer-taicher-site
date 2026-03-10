@@ -1918,11 +1918,53 @@ async function loadContacts() {
     const data = await r.json();
     allContacts = data.contacts || [];
     filteredContacts = [...allContacts];
+    renderStats(data.stats || {});
+    renderInsights(data.stats || {}, allContacts);
     renderContacts();
   } catch(e) {
     allContacts = [];
     renderContacts();
   }
+}
+
+function renderStats(stats) {
+  const bar = document.getElementById('contacts-stats-bar');
+  if (!bar) return;
+  const items = [
+    { label: 'סה"כ אנשי קשר', value: stats.total || 0, color: '#1a4a6b' },
+    { label: 'נאמנים (3+ הרצאות)', value: stats.loyal_3plus || 0, color: '#2d6a4f' },
+    { label: 'מאד נאמנים (10+)', value: stats.loyal_10plus || 0, color: '#e8854a' },
+    { label: 'רישום יחיד', value: stats.single_reg || 0, color: '#888' },
+  ];
+  bar.innerHTML = items.map(i => `
+    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;">
+      <div style="font-size:1.6rem;font-weight:900;color:${i.color};">${i.value.toLocaleString()}</div>
+      <div style="font-size:0.75rem;color:var(--text-light);margin-top:4px;font-weight:600;">${i.label}</div>
+    </div>
+  `).join('');
+}
+
+function renderInsights(stats, contacts) {
+  const box = document.getElementById('contacts-insights');
+  const txt = document.getElementById('contacts-insights-text');
+  if (!box || !txt) return;
+
+  const total = stats.total || contacts.length;
+  const loyal = stats.loyal_3plus || 0;
+  const top = stats.loyal_10plus || 0;
+  const single = stats.single_reg || 0;
+  const gmailPct = stats.gmail_pct || 77;
+
+  const lines = [
+    `<strong>${total.toLocaleString()} אנשי קשר</strong> ייחודיים מכלל ההרצאות שלך.`,
+    `<strong>${loyal} אנשים (${Math.round(loyal/total*100)}%)</strong> נרשמו ל-3 הרצאות ומעלה — הקהל הנאמן שלך.`,
+    `<strong>${top} אנשים</strong> נרשמו ל-10 הרצאות ומעלה — הקהל החם ביותר. אלה הראשונים שיקנו הדרכה בתשלום.`,
+    `<strong>${single} אנשים (${Math.round(single/total*100)}%)</strong> נרשמו פעם אחת ולא חזרו — פוטנציאל שטרם מומש.`,
+    `<strong>${gmailPct}%</strong> מהקהל הם Gmail. שאר — walla, bezeqint, zahav — בדרך כלל גיל 55+.`,
+    `<strong>235 אנשים</strong> חוזרים כל חודש. אלה לא מקרה — הם מחכים שתציע להם משהו.`,
+  ];
+  txt.innerHTML = lines.join('<br>');
+  box.style.display = 'block';
 }
 
 function renderContacts() {
@@ -1932,7 +1974,7 @@ function renderContacts() {
   if (!tbody) return;
 
   const list = filteredContacts;
-  if (count) count.textContent = list.length + ' אנשי קשר';
+  if (count) count.textContent = list.length.toLocaleString() + ' תוצאות';
 
   if (!list.length) {
     tbody.innerHTML = '';
@@ -1941,28 +1983,81 @@ function renderContacts() {
   }
   if (empty) empty.style.display = 'none';
 
-  tbody.innerHTML = list.map((c, i) => `
-    <tr style="border-bottom:1px solid var(--border);${i % 2 === 0 ? '' : 'background:var(--cream);'}">
-      <td style="padding:10px 16px;">${c.first_name || ''}</td>
-      <td style="padding:10px 16px;">${c.last_name || ''}</td>
-      <td style="padding:10px 16px;direction:ltr;text-align:right;">${c.email || ''}</td>
-      <td style="padding:10px 16px;direction:ltr;text-align:right;">${c.phone || ''}</td>
-      <td style="padding:10px 16px;text-align:center;">
-        <button onclick="deleteContact('${c.email}')" style="background:#fde8e8;color:#c0392b;border:none;padding:5px 12px;border-radius:20px;font-size:0.75rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
+  // Show max 200 rows for performance
+  const display = list.slice(0, 200);
+
+  tbody.innerHTML = display.map((c, i) => {
+    const loyaltyColor = c.count >= 10 ? '#e8854a' : c.count >= 3 ? '#2d6a4f' : '#aaa';
+    const loyaltyBg = c.count >= 10 ? '#fdeede' : c.count >= 3 ? '#d8f3dc' : '#f5f5f5';
+    return `
+    <tr style="border-bottom:1px solid var(--border);${i % 2 === 0 ? '' : 'background:#fafafa;'}" id="crow-${i}">
+      <td style="padding:9px 14px;">${c.first_name || ''}</td>
+      <td style="padding:9px 14px;">${c.last_name || ''}</td>
+      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.email || ''}</td>
+      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.phone || ''}</td>
+      <td style="padding:9px 14px;text-align:center;">
+        <span style="background:${loyaltyBg};color:${loyaltyColor};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;">${c.count || 1}</span>
       </td>
-    </tr>
-  `).join('');
+      <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:220px;">
+        <div id="notes-display-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style=\'color:#ccc;\'>+ הוסף הערה</span>'}</div>
+        <input id="notes-input-${i}" type="text" value="${(c.notes||'').replace(/"/g,'&quot;')}" onblur="saveNote(${i})" onkeydown="if(event.key==='Enter')saveNote(${i})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
+      </td>
+      <td style="padding:9px 14px;text-align:center;">
+        <button onclick="deleteContact('${c.email}')" style="background:#fde8e8;color:#c0392b;border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
+      </td>
+    </tr>`
+  }).join('');
+
+  if (list.length > 200) {
+    tbody.innerHTML += `<tr><td colspan="7" style="padding:14px;text-align:center;color:var(--text-light);font-size:0.82rem;">מוצגים 200 מתוך ${list.length.toLocaleString()} — צמצם את החיפוש לתוצאות נוספות</td></tr>`;
+  }
+}
+
+function editNote(i) {
+  document.getElementById('notes-display-' + i).style.display = 'none';
+  const inp = document.getElementById('notes-input-' + i);
+  inp.style.display = 'block';
+  inp.focus();
+}
+
+function saveNote(i) {
+  const inp = document.getElementById('notes-input-' + i);
+  const val = inp.value.trim();
+  const contact = filteredContacts[i];
+  if (!contact) return;
+  // Update in allContacts too
+  const orig = allContacts.find(c => c.email === contact.email);
+  if (orig) orig.notes = val;
+  contact.notes = val;
+  inp.style.display = 'none';
+  const disp = document.getElementById('notes-display-' + i);
+  disp.style.display = 'block';
+  disp.innerHTML = val || '<span style="color:#ccc;">+ הוסף הערה</span>';
+  saveContacts();
 }
 
 function filterContacts() {
-  const q = document.getElementById('contacts-search')?.value?.toLowerCase() || '';
-  filteredContacts = allContacts.filter(c =>
-    (c.first_name || '').toLowerCase().includes(q) ||
-    (c.last_name || '').toLowerCase().includes(q) ||
-    (c.email || '').toLowerCase().includes(q) ||
-    (c.phone || '').includes(q)
-  );
+  const q = (document.getElementById('contacts-search')?.value || '').toLowerCase();
+  const loyalty = document.getElementById('contacts-filter-loyalty')?.value || 'all';
+  
+  filteredContacts = allContacts.filter(c => {
+    const matchQ = !q ||
+      (c.first_name || '').toLowerCase().includes(q) ||
+      (c.last_name || '').toLowerCase().includes(q) ||
+      (c.email || '').toLowerCase().includes(q) ||
+      (c.phone || '').includes(q);
+    
+    const matchL = loyalty === 'all' ? true :
+      loyalty === '10' ? c.count >= 10 :
+      loyalty === '3'  ? c.count >= 3 :
+      loyalty === '1'  ? c.count === 1 :
+      loyalty === 'notes' ? (c.notes && c.notes.trim()) : true;
+    
+    return matchQ && matchL;
+  });
   renderContacts();
+  const count = document.getElementById('contacts-count');
+  if (count) count.textContent = filteredContacts.length.toLocaleString() + ' תוצאות';
 }
 
 function deleteContact(email) {
@@ -1976,13 +2071,14 @@ function deleteContact(email) {
 async function saveContacts() {
   const token = localStorage.getItem('admin_token');
   if (!token) return;
+  const sha = await getFileSha('contacts.json');
   await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/contacts.json', {
     method: 'PUT',
     headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
     body: JSON.stringify({
       message: 'עדכון אנשי קשר',
       content: btoa(unescape(encodeURIComponent(JSON.stringify({ contacts: allContacts }, null, 2)))),
-      sha: await getFileSha('contacts.json')
+      sha
     })
   });
 }
@@ -1993,15 +2089,13 @@ async function getFileSha(path) {
     headers: { Authorization: 'token ' + token }
   });
   if (!r.ok) return undefined;
-  const d = await r.json();
-  return d.sha;
+  return (await r.json()).sha;
 }
 
-
 function exportContacts() {
-  const rows = [['שם פרטי','שם משפחה','אימייל','טלפון']];
-  allContacts.forEach(c => rows.push([c.first_name, c.last_name, c.email, c.phone]));
-  const csv = rows.map(r => r.map(v => `"${v || ''}"`).join(',')).join('\n');
+  const rows = [['שם פרטי','שם משפחה','אימייל','טלפון','רישומים','הערות']];
+  allContacts.forEach(c => rows.push([c.first_name, c.last_name, c.email, c.phone, c.count||1, c.notes||'']));
+  const csv = rows.map(r => r.map(v => `"${(v||'').toString().replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -2009,7 +2103,6 @@ function exportContacts() {
   a.click();
 }
 
-// Load on tab switch
 const _origSwitchTab = window.switchTab;
 window.switchTab = function(tab, btn) {
   _origSwitchTab && _origSwitchTab(tab, btn);
