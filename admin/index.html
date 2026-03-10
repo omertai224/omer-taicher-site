@@ -37,60 +37,6 @@
     <input class="token-input" id="token-input" type="password" placeholder="סיסמה" autocomplete="current-password" onkeydown="if(event.key==='Enter')saveToken()">
     <button class="token-btn" onclick="saveToken()">כניסה</button>
   </div>
-  <!-- TAB: CONTACTS -->
-  <div class="tab-panel" id="tab-contacts">
-
-    <!-- STATS BAR -->
-    <div id="contacts-stats-bar" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;"></div>
-
-    <!-- INSIGHTS -->
-    <div id="contacts-insights" style="background:linear-gradient(135deg,#eef4f8,#fff);border:1px solid #c3d9e8;border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:0.85rem;line-height:1.8;color:#1a4a6b;display:none;">
-      <div style="font-weight:800;margin-bottom:8px;font-size:0.9rem;">ניתוח קהל</div>
-      <div id="contacts-insights-text"></div>
-    </div>
-
-    <!-- TOOLBAR -->
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
-      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
-        <input type="text" id="contacts-search" placeholder="חיפוש לפי שם / אימייל / טלפון..." oninput="filterContacts()" style="padding:8px 16px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.85rem;outline:none;width:260px;">
-        <select id="contacts-filter-loyalty" onchange="filterContacts()" style="padding:8px 14px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.83rem;outline:none;color:var(--navy);font-weight:600;">
-          <option value="all">כולם</option>
-          <option value="10">נאמנים 10+</option>
-          <option value="3">חוזרים 3+</option>
-          <option value="1">רישום יחיד</option>
-          <option value="notes">עם הערות</option>
-        </select>
-      </div>
-      <div style="display:flex;gap:8px;">
-        <span id="contacts-count" style="font-size:0.82rem;font-weight:600;color:var(--text-light);align-self:center;"></span>
-        <button onclick="exportContacts()" style="background:var(--cream);color:var(--navy);border:1.5px solid var(--border);padding:8px 16px;border-radius:50px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          ייצוא CSV
-        </button>
-      </div>
-    </div>
-
-    <!-- TABLE -->
-    <div style="overflow-x:auto;border-radius:12px;border:1px solid var(--border);">
-      <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
-        <thead>
-          <tr style="background:var(--navy);color:#fff;">
-            <th style="padding:11px 14px;text-align:right;font-weight:700;white-space:nowrap;width:80px;">שם פרטי</th>
-            <th style="padding:11px 14px;text-align:right;font-weight:700;white-space:nowrap;width:80px;">שם משפחה</th>
-            <th style="padding:11px 14px;text-align:right;font-weight:700;">אימייל</th>
-            <th style="padding:11px 14px;text-align:right;font-weight:700;white-space:nowrap;min-width:130px;">טלפון</th>
-            <th id="th-count" onclick="toggleCountSort()" style="padding:11px 14px;text-align:center;font-weight:700;white-space:nowrap;cursor:pointer;user-select:none;" title="מיין לפי רישומים">רישומים <span id="sort-arrow">↕</span></th>
-            <th style="padding:11px 14px;text-align:right;font-weight:700;">הערות</th>
-            <th style="padding:11px 14px;text-align:center;font-weight:700;">פעולות</th>
-          </tr>
-        </thead>
-        <tbody id="contacts-tbody"></tbody>
-      </table>
-    </div>
-    <div id="contacts-empty" style="display:none;text-align:center;padding:48px;color:var(--text-light);">
-      <div style="opacity:0.3;margin-bottom:8px;">אין תוצאות</div>
-    </div>
-  </div>
 
 </div>
 
@@ -361,6 +307,61 @@
   </div>
 
     <!-- TAB: DOWNLOAD -->
+<!-- TAB: CONTACTS -->
+  <div class="tab-panel" id="tab-contacts">
+
+    <!-- STATS BAR -->
+    <div id="contacts-stats-bar" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;"></div>
+
+    <!-- INSIGHTS -->
+    <div id="contacts-insights" style="background:linear-gradient(135deg,#eef4f8,#fff);border:1px solid #c3d9e8;border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:0.85rem;line-height:1.8;color:#1a4a6b;display:none;">
+      <div style="font-weight:800;margin-bottom:8px;font-size:0.9rem;">ניתוח קהל</div>
+      <div id="contacts-insights-text"></div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+        <input type="text" id="contacts-search" placeholder="חיפוש לפי שם / אימייל / טלפון..." oninput="filterContacts()" style="padding:8px 16px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.85rem;outline:none;width:260px;">
+        <select id="contacts-filter-loyalty" onchange="filterContacts()" style="padding:8px 14px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.83rem;outline:none;color:var(--navy);font-weight:600;">
+          <option value="all">כולם</option>
+          <option value="10">נאמנים 10+</option>
+          <option value="3">חוזרים 3+</option>
+          <option value="1">רישום יחיד</option>
+          <option value="notes">עם הערות</option>
+        </select>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <span id="contacts-count" style="font-size:0.82rem;font-weight:600;color:var(--text-light);align-self:center;"></span>
+        <button onclick="exportContacts()" style="background:var(--cream);color:var(--navy);border:1.5px solid var(--border);padding:8px 16px;border-radius:50px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          ייצוא CSV
+        </button>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div style="overflow-x:auto;border-radius:12px;border:1px solid var(--border);">
+      <table style="width:100%;border-collapse:collapse;font-size:0.84rem;">
+        <thead>
+          <tr style="background:var(--navy);color:#fff;">
+            <th style="padding:11px 14px;text-align:right;font-weight:700;white-space:nowrap;width:80px;">שם פרטי</th>
+            <th style="padding:11px 14px;text-align:right;font-weight:700;white-space:nowrap;width:80px;">שם משפחה</th>
+            <th style="padding:11px 14px;text-align:right;font-weight:700;">אימייל</th>
+            <th style="padding:11px 14px;text-align:right;font-weight:700;white-space:nowrap;min-width:130px;">טלפון</th>
+            <th id="th-count" onclick="toggleCountSort()" style="padding:11px 14px;text-align:center;font-weight:700;white-space:nowrap;cursor:pointer;user-select:none;" title="מיין לפי רישומים">רישומים <span id="sort-arrow">↕</span></th>
+            <th style="padding:11px 14px;text-align:right;font-weight:700;">הערות</th>
+            <th style="padding:11px 14px;text-align:center;font-weight:700;">פעולות</th>
+          </tr>
+        </thead>
+        <tbody id="contacts-tbody"></tbody>
+      </table>
+    </div>
+    <div id="contacts-empty" style="display:none;text-align:center;padding:48px;color:var(--text-light);">
+      <div style="opacity:0.3;margin-bottom:8px;">אין תוצאות</div>
+    </div>
+  </div>
+
   <!-- TAB: GALLERY -->
   <div class="tab-panel" id="tab-gallery">
     <div class="status-bar">
