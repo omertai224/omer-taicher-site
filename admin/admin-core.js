@@ -104,6 +104,7 @@ function switchTab(name, btn) {
   localStorage.setItem('admin_active_tab', name);
   if (name === 'download') initDownloadTab();
   if (name === 'gallery') loadGalleryManager();
+  if (name === 'contacts') loadContacts();
 }
 
 // ===== REPO SWITCHER =====
