@@ -66,7 +66,9 @@ function showLoginError(msg) {
 // ===== INIT =====
 function init() {
   const savedRepo = localStorage.getItem('admin_active_repo') || 'omer-taicher-site';
-  const savedTab  = localStorage.getItem('admin_active_tab')  || 'content';
+  const rawTab    = localStorage.getItem('admin_active_tab') || 'content';
+  const validTabs = ['content', 'code', 'gallery', 'download', 'contacts'];
+  const savedTab  = validTabs.includes(rawTab) ? rawTab : 'content';
   const btnMap = {
     'omer-taicher-site':      'repo-btn-site',
     'omer-taicher-interactive': 'repo-btn-tutorials',
