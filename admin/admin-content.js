@@ -2148,6 +2148,59 @@ async function getFileSha(path) {
   return (await r.json()).sha;
 }
 
+// ===== INTERACTIVE CONTENT (ic.*) =====
+let interactiveContentSha = null;
+let interactiveContentData = null;
+
+async function loadInteractiveContent() {
+  setStatus('content', 'loading', 'טוען תוכן...');
+  try {
+    const data = await ghGet('content.json');
+    interactiveContentSha = data.sha;
+    interactiveContentData = JSON.parse(decode(data.content));
+    populateInteractiveFields(interactiveContentData);
+    setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך ולשמור');
+    const saveBtn = document.getElementById('save-interactive-content-btn');
+    if (saveBtn) { saveBtn.disabled = false; saveBtn.style.opacity = '1'; saveBtn.style.display = 'block'; }
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+  }
+}
+
+function populateInteractiveFields(data) {
+  const flat = flatten(data, '');
+  for (const path in flat) {
+    const el = document.getElementById('ic.' + path);
+    if (el) el.value = flat[path];
+  }
+}
+
+async function saveInteractiveContent() {
+  setStatus('content', 'loading', 'שומר...');
+  const saveBtn = document.getElementById('save-interactive-content-btn');
+  if (saveBtn) saveBtn.disabled = true;
+  try {
+    const newData = JSON.parse(JSON.stringify(interactiveContentData));
+    document.querySelectorAll('[id^="ic."]').forEach(el => {
+      if (el.value !== undefined) {
+        const path = el.id.replace(/^ic\./, '');
+        setByPath(newData, path, el.value);
+      }
+    });
+    const result = await ghPut('content.json', JSON.stringify(newData, null, 2), interactiveContentSha, 'עדכון תוכן אינטראקטיבי');
+    if (result.content) {
+      interactiveContentSha = result.content.sha;
+      interactiveContentData = newData;
+      setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
+    } else {
+      setStatus('content', 'error', 'שגיאה: ' + (result.message || 'לא ידוע'));
+    }
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+  }
+  if (saveBtn) saveBtn.disabled = false;
+}
+
 function exportContacts() {
   const rows = [['שם פרטי','שם משפחה','אימייל','טלפון','רישומים','הערות']];
   allContacts.forEach(c => rows.push([c.first_name, c.last_name, c.email, c.phone, c.count||1, c.notes||'']));
