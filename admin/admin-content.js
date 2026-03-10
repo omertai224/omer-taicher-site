@@ -2120,24 +2120,39 @@ function renderContactStats() {
   box.style.display = 'block';
 }
 
+let contactsPage = 0;
+const CONTACTS_PER_PAGE = 200;
+
 function renderContacts() {
   const tbody = document.getElementById('contacts-tbody');
   const empty = document.getElementById('contacts-empty');
   const count = document.getElementById('contacts-count');
+  const pagDiv = document.getElementById('contacts-pagination');
   if (!tbody) return;
+
   if (count) count.textContent = filteredContacts.length + ' תוצאות';
+
   if (!filteredContacts.length) {
     tbody.innerHTML = '';
     if (empty) empty.style.display = 'block';
+    if (pagDiv) pagDiv.style.display = 'none';
     return;
   }
   if (empty) empty.style.display = 'none';
-  tbody.innerHTML = filteredContacts.slice(0, 200).map((c, i) => {
+
+  const totalPages = Math.ceil(filteredContacts.length / CONTACTS_PER_PAGE);
+  if (contactsPage >= totalPages) contactsPage = 0;
+
+  const start = contactsPage * CONTACTS_PER_PAGE;
+  const pageItems = filteredContacts.slice(start, start + CONTACTS_PER_PAGE);
+
+  tbody.innerHTML = pageItems.map((c, i) => {
     const cnt = parseInt(c.count) || 1;
     const col = cnt >= 10 ? '#e8854a' : cnt >= 3 ? '#2d6a4f' : '#aaa';
     const bg  = cnt >= 10 ? '#fdeede' : cnt >= 3 ? '#d8f3dc' : '#f5f5f5';
     const phone = (c.phone || '').replace(/^\+?972-?/, '0');
     const esc = s => (s||'').replace(/"/g, '&quot;');
+    const gi = start + i;
     return `<tr style="border-bottom:1px solid var(--border);${i%2?'background:#fafafa;':''}">
       <td style="padding:9px 14px;font-weight:600;">${c.first_name}</td>
       <td style="padding:9px 14px;">${c.last_name}</td>
@@ -2147,8 +2162,8 @@ function renderContacts() {
         <span style="background:${bg};color:${col};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;min-width:28px;display:inline-block;text-align:center;">${cnt}</span>
       </td>
       <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:200px;">
-        <div id="nd-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
-        <input id="ni-${i}" type="text" value="${esc(c.notes)}" onblur="saveNote(${i})" onkeydown="if(event.key==='Enter')saveNote(${i})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
+        <div id="nd-${gi}" onclick="editNote(${gi})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
+        <input id="ni-${gi}" type="text" value="${esc(c.notes)}" onblur="saveNote(${gi})" onkeydown="if(event.key==='Enter')saveNote(${gi})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
       </td>
       <td style="padding:9px 14px;text-align:center;white-space:nowrap;">
         <button onclick="openEditContact('${esc(c.email)}')" style="background:#eef4f8;color:#1a4a6b;border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;margin-left:4px;">עריכה</button>
@@ -2156,9 +2171,51 @@ function renderContacts() {
       </td>
     </tr>`;
   }).join('');
-  if (filteredContacts.length > 200) {
-    tbody.innerHTML += `<tr><td colspan="7" style="padding:14px;text-align:center;color:var(--text-light);font-size:0.82rem;">מוצגים 200 מתוך ${filteredContacts.length} — צמצמו את החיפוש</td></tr>`;
+
+  // Pagination bar
+  if (pagDiv) {
+    if (totalPages <= 1) {
+      pagDiv.style.display = 'none';
+    } else {
+      pagDiv.style.display = 'flex';
+      const btnStyle = (active) =>
+        `padding:6px 12px;border-radius:50px;border:1.5px solid ${active ? '#1a4a6b' : 'var(--border)'};background:${active ? '#1a4a6b' : '#fff'};color:${active ? '#fff' : 'var(--navy)'};font-family:inherit;font-size:0.8rem;font-weight:700;cursor:${active ? 'default' : 'pointer'};transition:all 0.15s;`;
+
+      let btns = '';
+      // Prev
+      btns += `<button onclick="goContactsPage(${contactsPage-1})" ${contactsPage===0?'disabled':''} style="${btnStyle(false)}opacity:${contactsPage===0?'0.3':'1'};">הקודם</button>`;
+
+      // Page numbers — smart windowing
+      const window_size = 5;
+      let startP = Math.max(0, contactsPage - 2);
+      let endP = Math.min(totalPages - 1, startP + window_size - 1);
+      if (endP - startP < window_size - 1) startP = Math.max(0, endP - window_size + 1);
+
+      if (startP > 0) btns += `<button onclick="goContactsPage(0)" style="${btnStyle(false)}">1</button>${startP > 1 ? '<span style="align-self:center;color:#aaa;">...</span>' : ''}`;
+      for (let p = startP; p <= endP; p++) {
+        btns += `<button onclick="goContactsPage(${p})" style="${btnStyle(p===contactsPage)}">${p+1}</button>`;
+      }
+      if (endP < totalPages - 1) btns += `${endP < totalPages - 2 ? '<span style="align-self:center;color:#aaa;">...</span>' : ''}<button onclick="goContactsPage(${totalPages-1})" style="${btnStyle(false)}">${totalPages}</button>`;
+
+      // Next
+      btns += `<button onclick="goContactsPage(${contactsPage+1})" ${contactsPage===totalPages-1?'disabled':''} style="${btnStyle(false)}opacity:${contactsPage===totalPages-1?'0.3':'1'};">הבא</button>`;
+
+      // Info
+      btns += `<span style="font-size:0.78rem;color:var(--text-light);align-self:center;margin-right:4px;">${start+1}–${Math.min(start+CONTACTS_PER_PAGE, filteredContacts.length)} מתוך ${filteredContacts.length}</span>`;
+
+      pagDiv.innerHTML = btns;
+    }
   }
+}
+
+function goContactsPage(p) {
+  const totalPages = Math.ceil(filteredContacts.length / CONTACTS_PER_PAGE);
+  if (p < 0 || p >= totalPages) return;
+  contactsPage = p;
+  renderContacts();
+  // Scroll to top of table
+  const tbl = document.querySelector('#tab-contacts > div[style*="overflow-x"]');
+  if (tbl) tbl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function changeCount(email, delta) {
@@ -2219,6 +2276,7 @@ function setLoyaltyFilter(val) {
 }
 
 function filterContacts() {
+  contactsPage = 0;
   const q  = (document.getElementById('contacts-search')?.value || '').toLowerCase();
   const lf = document.getElementById('contacts-filter-loyalty')?.value || 'all';
   filteredContacts = allContacts.filter(c => {
