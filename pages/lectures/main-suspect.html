@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מיומנו של טכנאי מחשבים: החשוד העיקרי · עומר טייכר</title>
+<meta name="description" content="הרצאה אונליין אינטראקטיבית, לומדים לחקור תקלות מחשב כמו בלשים אמיתיים. 29 במרץ 2026, 18:00. חינמי לגמרי.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a4a6b;
+  --navy-mid: #1e5f74;
+  --navy-dark: #0f2a3a;
+  --orange: #f6a67e;
+  --orange-deep: #e8854a;
+  --orange-light: #fdeede;
+  --cream: #fdf8f2;
+  --white: #ffffff;
+  --border: #e8e0d6;
+  --text: #1e1e1e;
+  --text-mid: #555;
+  --text-light: #999;
+  --green: #25d366;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Rubik', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  direction: rtl;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: var(--navy-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 80%, rgba(232,133,74,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 80% 20%, rgba(26,74,107,0.5) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* floating badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(246,166,126,0.12);
+  border: 1px solid rgba(246,166,126,0.35);
+  color: var(--orange);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 32px;
+  animation: fadeDown 0.6s ease both;
+}
+.hero-badge-dot {
+  width: 7px; height: 7px;
+  background: var(--orange);
+  border-radius: 50%;
+  animation: blink 2s infinite;
+}
+
+.hero-content {
+  max-width: 760px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-series {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 7vw, 4rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+.hero-title em {
+  font-style: normal;
+  color: var(--orange);
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 36px;
+  animation: fadeUp 0.6s 0.3s ease both;
+}
+
+/* meta strip */
+.hero-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+  animation: fadeUp 0.6s 0.4s ease both;
+}
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.meta-chip svg { opacity: 0.6; flex-shrink: 0; }
+.meta-chip.free {
+  background: rgba(37,211,102,0.1);
+  border-color: rgba(37,211,102,0.3);
+  color: #5effa1;
+}
+
+/* CTA */
+.hero-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  animation: fadeUp 0.6s 0.5s ease both;
+}
+.btn-register {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--orange-deep);
+  color: #fff;
+  padding: 18px 44px;
+  border-radius: 50px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s;
+  box-shadow: 0 8px 32px rgba(232,133,74,0.35);
+}
+.btn-register:hover {
+  background: #fff;
+  color: var(--navy);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(232,133,74,0.4);
+}
+.btn-register svg { transition: transform 0.2s; }
+.btn-register:hover svg { transform: translateX(-4px); }
+.hero-cta-note {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+}
+
+/* scroll arrow */
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  animation: fadeUp 1s 1s ease both;
+}
+.scroll-hint svg { animation: bounce 2s infinite; }
+
+/* ===== COUNTDOWN ===== */
+.countdown-section {
+  background: var(--navy);
+  padding: 36px 20px;
+  text-align: center;
+}
+.countdown-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.countdown-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.cd-unit {
+  text-align: center;
+  min-width: 70px;
+}
+.cd-num {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.cd-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+.cd-sep {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--orange);
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+/* ===== SECTION WRAPPER ===== */
+.section-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+.section-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--orange-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  display: block;
+}
+.section-title {
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 0.97rem;
+  color: var(--text-mid);
+  line-height: 1.8;
+  max-width: 620px;
+}
+
+/* ===== FOR WHO ===== */
+.forwho-section { background: var(--white); }
+.forwho-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 40px;
+}
+.forwho-card {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.forwho-icon {
+  width: 40px; height: 40px;
+  background: var(--orange-light);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.forwho-icon svg { color: var(--orange-deep); }
+.forwho-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.forwho-desc {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+/* ===== WHAT YOU LEARN ===== */
+.learn-section { background: var(--cream); }
+.cases-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 40px;
+}
+.case-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.case-card::before {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: var(--orange-deep);
+  border-radius: 0 18px 18px 0;
+}
+.case-num {
+  font-size: 0.68rem;
+  font-weight: 900;
+  color: var(--orange-deep);
+  background: var(--orange-light);
+  border-radius: 50px;
+  padding: 4px 10px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.case-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 5px;
+  line-height: 1.35;
+}
+.case-desc {
+  font-size: 0.82rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+}
+
+/* ===== FORMAT ===== */
+.format-section { background: var(--navy); }
+.format-section .section-title { color: #fff; }
+.format-section .section-sub { color: rgba(255,255,255,0.6); }
+.format-section .section-eyebrow { color: var(--orange); }
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 40px;
+}
+.format-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: 24px 20px;
+  text-align: center;
+}
+.format-card svg { color: var(--orange); margin-bottom: 12px; }
+.format-card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.format-card-desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ===== QUOTE ===== */
+.quote-section { background: var(--orange-light); }
+.quote-card {
+  background: var(--navy);
+  border-radius: 20px;
+  padding: 40px 36px;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.quote-mark {
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--orange);
+  font-family: Georgia, serif;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+.quote-text {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.75;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+.quote-attr {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--orange);
+}
+
+/* ===== ABOUT ===== */
+.about-section { background: var(--white); }
+.about-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.about-text p {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 2;
+  margin-bottom: 16px;
+}
+.about-text strong { color: var(--navy); }
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+.about-stat {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+}
+.about-stat-n {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1;
+}
+.about-stat-l {
+  font-size: 0.7rem;
+  color: var(--text-light);
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 60% at 50% 100%, rgba(232,133,74,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.final-cta-inner { position: relative; z-index: 1; }
+.final-cta-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--orange);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+}
+.final-cta-title {
+  font-size: clamp(1.6rem, 5vw, 2.8rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.final-cta-sub {
+  font-size: 0.97rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 40px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+.final-details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.final-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.7);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--navy-dark);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 24px 20px;
+  text-align: center;
+}
+.footer-logo {
+  font-size: 0.97rem;
+  font-weight: 800;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.footer-logo span { color: var(--orange); }
+.footer-copy {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .forwho-grid { grid-template-columns: 1fr; }
+  .format-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); }
+  .case-card { padding: 18px 20px; }
+  .hero-meta { gap: 6px; }
+  .meta-chip { font-size: 0.76rem; padding: 7px 12px; }
+  .quote-card { padding: 28px 20px; }
+}
+
+@media (min-width: 768px) {
+  .about-inner { flex-direction: row; align-items: flex-start; gap: 56px; }
+  .about-text { flex: 1; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); min-width: 260px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div style="animation: fadeDown 0.5s ease both;">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      29 במרץ 2026 · 18:00 עד 19:00 · חינמי לגמרי
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-series">מיומנו של טכנאי מחשבים</div>
+    <h1 class="hero-title">החשוד <em>העיקרי</em></h1>
+    <div class="hero-subtitle">לומדים לחקור תקלות מחשב כמו בלשים אמיתיים</div>
+
+    <div class="hero-meta">
+      <div class="meta-chip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        ראשון, 29 במרץ 2026
+      </div>
+      <div class="meta-chip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        18:00 עד 19:00
+      </div>
+      <div class="meta-chip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        הרצאה אונליין
+      </div>
+      <div class="meta-chip free">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        ₪0 · חינמי לגמרי
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="https://bizlive.co.il/event/?eventid=85989" target="_blank" rel="noopener" class="btn-register">
+        שמירת מקום, בחינם
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
+      </a>
+      <div class="hero-cta-note">המקומות מוגבלים · ההרשמה מאשרת כניסה</div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- COUNTDOWN -->
+<section class="countdown-section">
+  <div class="countdown-label">ההרצאה מתחילה בעוד</div>
+  <div class="countdown-wrap">
+    <div class="cd-unit">
+      <div class="cd-num" id="cd-secs">--</div>
+      <div class="cd-label">שניות</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="cd-mins">--</div>
+      <div class="cd-label">דקות</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="cd-hours">--</div>
+      <div class="cd-label">שעות</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="cd-days">--</div>
+      <div class="cd-label">ימים</div>
+    </div>
+  </div>
+  </section>
+
+<!-- FOR WHO -->
+<section class="forwho-section">
+  <div class="section-wrap">
+    <span class="section-eyebrow">למי זה מיועד</span>
+    <h2 class="section-title">אם המחשב הוא כלי העבודה שלך, זה בשבילך</h2>
+    <p class="section-sub">לא צריך להיות "טכנולוגי".<br>צריך רק להיות מישהו שהמחשב חשוב לו ורוצה להבין קצת יותר.</p>
+
+    <div class="forwho-grid">
+      <div class="forwho-card">
+        <div class="forwho-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div>
+          <div class="forwho-title">עורכי דין ורואי חשבון</div>
+          <div class="forwho-desc">שהמחשב הוא שולחן העבודה שלהם.<br>וכל תקלה עולה בזמן ובכסף.</div>
+        </div>
+      </div>
+      <div class="forwho-card">
+        <div class="forwho-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+        <div>
+          <div class="forwho-title">מטפלים ויועצים</div>
+          <div class="forwho-desc">שצריכים שהטכנולוגיה תעבוד שקטה ברקע.<br>בלי להסיח את הדעת.</div>
+        </div>
+      </div>
+      <div class="forwho-card">
+        <div class="forwho-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div>
+          <div class="forwho-title">כל מי שהמחשב לא זז</div>
+          <div class="forwho-desc">ויש להם משהו דחוף לשלוח.<br>והמחשב פשוט לא משתף פעולה.</div>
+        </div>
+      </div>
+      <div class="forwho-card">
+        <div class="forwho-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <div class="forwho-title">סקרנים שרוצים להבין</div>
+          <div class="forwho-desc">לא בהכרח לתקן לבד.<br>אלא להבין מה קורה בפנים ולדבר עם טכנאי בגובה העיניים.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU LEARN -->
+<section class="learn-section">
+  <div class="section-wrap">
+    <span class="section-eyebrow">תיק החקירה</span>
+    <h2 class="section-title">מה חוקרים בהרצאה</h2>
+    <p class="section-sub">כל תקלה היא חשוד.<br>נלמד לחקור אותה שלב אחרי שלב, בדיוק כמו בלשים אמיתיים.</p>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-num">חקירה 1</div>
+        <div>
+          <div class="case-title">המחשב לא נדלק</div>
+          <div class="case-desc">ספק הכוח, המסך, כרטיס המסך, מי האשם?<br>נלמד לשלול חשודים אחד אחד עד שמגיעים לפתרון.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">חקירה 2</div>
+        <div>
+          <div class="case-title">המחשב איטי ולא זז</div>
+          <div class="case-desc">מה מאט את המחשב?<br>נעלה מחשב אמיתי על המסך.<br>נבדוק מה מכביד עליו ונחזיר לו מהירות, בשידור חי.</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-num">בונוס</div>
+        <div>
+          <div class="case-title">שאלות חיות מהקהל</div>
+          <div class="case-desc">אחרי כל חקירה, שאלות ותשובות בשידור חי.<br>הבלש הכי פעיל בצ'אט מרוויח אנטי-וירוס לשנה שלמה.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMAT -->
+<section class="format-section">
+  <div class="section-wrap">
+    <span class="section-eyebrow">איך זה עובד</span>
+    <h2 class="section-title">שעה של חקירה חיה</h2>
+    <p class="section-sub">לא שיעור, לא קורס.<br>חקירה אינטראקטיבית שבה הקהל הוא חלק מהצוות.</p>
+
+    <div class="format-grid">
+      <div class="format-card">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="format-card-title">מחשב אמיתי על המסך</div>
+        <div class="format-card-desc">לא שקפים יבשים.<br>רואים מחשב אמיתי, עם תקלות אמיתיות, נפתרות בזמן אמת.</div>
+      </div>
+      <div class="format-card">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        <div class="format-card-title">הקהל חוקר יחד</div>
+        <div class="format-card-desc">שאלות בצ'אט, ניחושים, פתרון משותף.<br>כולם בלשים, לא רק צופים.</div>
+      </div>
+      <div class="format-card">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="format-card-title">שעה בדיוק</div>
+        <div class="format-card-desc">18:00 עד 19:00.<br>ממוקד, צפוף, בלי בזבוז זמן.<br>מגיעים ויוצאים עם ידע אמיתי.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="section-wrap" style="text-align:center">
+    <span class="section-eyebrow" style="text-align:center;display:block">מה אומרים</span>
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">עומר תציל אותי.<br>אני צריכה לשלוח משהו דחוף,<br>והמחשב לא זז.</div>
+      <div class="quote-attr">לקוחה קבועה, עורכת דין</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="section-wrap">
+    <span class="section-eyebrow">מי מרצה</span>
+    <h2 class="section-title">עומר טייכר</h2>
+    <div class="about-inner">
+      <div class="about-text">
+        <p>בן 40 מראשון לציון.<br><strong>מגיל 16 אני בלש מחשבים.</strong></p>
+        <p>כשהייתי בן 16, לקחתי מחשב ישן של שכן.<br>הוא אמר לי: "הוא מת, תזרוק אותו."<br>לא זרקתי.<br>פתחתי, בדקתי, חיברתי, ניתקתי.<br>ובסוף גיליתי שזה היה קבל רופף.<br>המחשב קם לתחייה.<br>הרגע הזה שינה הכל.</p>
+        <p>מאז אני עוזר לאנשים שהמחשב הוא כלי העבודה שלהם.<br><strong>לא לפחד ממנו, אלא לחקור אותו.</strong></p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="about-stat-n">+25</div>
+            <div class="about-stat-l">שנות ניסיון</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-n">+50</div>
+            <div class="about-stat-l">הרצאות</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-n">+252</div>
+            <div class="about-stat-l">חברים בקבוצה</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-inner">
+    <div class="final-cta-eyebrow">המקומות מוגבלים</div>
+    <h2 class="final-cta-title">מצטרפים לחקירה?</h2>
+    <p class="final-cta-sub">שעה אחת. מחשב אמיתי על המסך. ויוצאים עם הבנה אחרת של כל תקלה שתפגשו.</p>
+
+    <div class="final-details">
+      <div class="final-detail">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        ראשון, 29 במרץ 2026
+      </div>
+      <div class="final-detail">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        18:00 עד 19:00
+      </div>
+      <div class="final-detail" style="background:rgba(37,211,102,0.1);border-color:rgba(37,211,102,0.3);color:#5effa1;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        חינמי לגמרי
+      </div>
+    </div>
+
+    <a href="https://bizlive.co.il/event/?eventid=85989" target="_blank" rel="noopener" class="btn-register" style="font-size:1.1rem; padding:20px 52px;">
+      שמירת מקום, חינם
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-logo" href="https://omertai.net">עומר <span>טייכר</span></a>
+  <div class="footer-copy" style="margin-top:6px">© 2026 כל הזכויות שמורות</div>
+</footer>
+
+<script>
+// Countdown
+const target = new Date('2026-03-29T18:00:00+03:00');
+function updateCountdown() {
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.querySelector('.countdown-section').style.display = 'none';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+
+<script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
+</body>
+</html>
