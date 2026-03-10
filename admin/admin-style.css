@@ -293,6 +293,80 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
   .restore-btn { flex: 1; text-align: center; }
 }
 
+/* ============================================
+   CONTACTS MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+
+  /* stats bar — 2x2 */
+  #contacts-stats-bar {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* toolbar — חיפוש מתחת לסלקט */
+  #tab-contacts > div[style*="flex"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  #contacts-search {
+    width: 100% !important;
+  }
+  #contacts-filter-loyalty {
+    width: 100% !important;
+  }
+
+  /* כפתור ייצוא CSV */
+  #tab-contacts button[onclick="exportContacts()"] {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* טבלה — גלילה אופקית */
+  #tab-contacts > div[style*="overflow-x"] {
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+  #tab-contacts table {
+    min-width: 560px;
+  }
+  #tab-contacts th,
+  #tab-contacts td {
+    padding: 8px 10px !important;
+    font-size: 0.78rem !important;
+  }
+
+  /* כפתורי header עליונים — גלריה גיבוי אנשי קשר */
+  .header > div:last-child {
+    flex-wrap: wrap !important;
+    width: 100%;
+    justify-content: center;
+  }
+  .header > div:last-child button {
+    flex: 1;
+    min-width: 90px;
+    justify-content: center !important;
+  }
+
+  /* insights box */
+  #contacts-insights {
+    font-size: 0.78rem !important;
+    padding: 12px 14px !important;
+  }
+
+  /* interactive sub-tabs */
+  #tutorials-content > div:first-child {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+  #ic-tab-btn-content,
+  #ic-tab-btn-products {
+    flex: 1 !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+}
+
 /* BLOG POST ROW — inline styles override via class */
 @media (max-width: 768px) {
   #blog-list-items > div {
