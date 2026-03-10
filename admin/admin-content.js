@@ -1927,25 +1927,28 @@ function switchInteractiveTab(tab) {
   if (saveBtn) saveBtn.style.display = isContent ? 'block' : 'none';
 }
 
+
 // ============================================================
 // CONTACTS
 // ============================================================
 let allContacts = [];
 let filteredContacts = [];
 let contactsSha = null;
+let contactSortDir = null;
 
 async function loadContacts() {
   const bar   = document.getElementById('contacts-stats-bar');
   const tbody = document.getElementById('contacts-tbody');
-  if (bar)   bar.innerHTML   = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text-light);font-size:0.85rem;">טוען...</div>';
+  if (bar)   bar.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text-light);font-size:0.85rem;">טוען...</div>';
   if (tbody) tbody.innerHTML = '';
 
   try {
-    const res = await fetch(`https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json?ref=main&t=${Date.now()}`, {
-      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
-    });
-    if (!res.ok) throw new Error('קובץ לא נמצא (' + res.status + ')');
-    const data = await res.json();
+    const res = await fetch(
+      `https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json?ref=main&t=${Date.now()}`,
+      { headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } }
+    );
+    if (!res.ok) throw new Error('שגיאה ' + res.status);
+    const data  = await res.json();
     contactsSha = data.sha;
     const parsed = JSON.parse(decode(data.content));
     allContacts = (parsed.contacts || []).map(c => ({
@@ -1953,14 +1956,14 @@ async function loadContacts() {
       last_name:  c.last_name  || '',
       email:      c.email      || '',
       phone:      c.phone      || '',
-      count:      parseInt(c.count) || 1,
+      count:      parseInt(c.count)  || 1,
       notes:      c.notes      || ''
     }));
     filteredContacts = [...allContacts];
     renderContactStats();
     renderContacts();
   } catch(e) {
-    if (bar) bar.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:20px;color:#c0392b;font-size:0.85rem;">שגיאה בטעינה: ${e.message}</div>`;
+    if (bar) bar.innerHTML = `<div style="grid-column:1/-1;padding:20px;color:#c0392b;font-size:0.85rem;text-align:center;">שגיאה בטעינה: ${e.message}</div>`;
     allContacts = [];
     filteredContacts = [];
     renderContacts();
@@ -1970,28 +1973,22 @@ async function loadContacts() {
 function renderContactStats() {
   const bar = document.getElementById('contacts-stats-bar');
   if (!bar) return;
-
   const total   = allContacts.length;
-  const loyal3  = allContacts.filter(c => c.count >= 3).length;
-  const loyal10 = allContacts.filter(c => c.count >= 10).length;
-  const single  = allContacts.filter(c => c.count === 1).length;
-  const gmailN  = allContacts.filter(c => (c.email||'').includes('@gmail.')).length;
-  const gmailPct = total ? Math.round(gmailN / total * 100) : 0;
-
+  const loyal3  = allContacts.filter(c => (parseInt(c.count)||1) >= 3).length;
+  const loyal10 = allContacts.filter(c => (parseInt(c.count)||1) >= 10).length;
+  const single  = allContacts.filter(c => (parseInt(c.count)||1) === 1).length;
   const items = [
-    { label: 'סה"כ אנשי קשר', value: total,   color: '#1a4a6b', bg: '#eef4f8' },
+    { label: 'סה"כ אנשי קשר',      value: total,   color: '#1a4a6b', bg: '#eef4f8' },
     { label: 'נאמנים (3+ הרצאות)', value: loyal3,  color: '#2d6a4f', bg: '#d8f3dc' },
     { label: 'מאוד נאמנים (10+)',  value: loyal10, color: '#e8854a', bg: '#fdeede' },
-    { label: 'Gmail ' + gmailPct + '%', value: single,  color: '#888',    bg: '#f5f5f5' },
+    { label: 'רישום יחיד',          value: single,  color: '#888',    bg: '#f5f5f5' },
   ];
-  bar.innerHTML = items.map(i => `
-    <div style="background:${i.bg};border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;cursor:default;">
-      <div style="font-size:1.6rem;font-weight:900;color:${i.color};">${i.value.toLocaleString()}</div>
+  bar.innerHTML = items.map(i =>
+    `<div style="background:${i.bg};border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;">
+      <div style="font-size:1.6rem;font-weight:900;color:${i.color};">${i.value}</div>
       <div style="font-size:0.73rem;color:var(--text-light);margin-top:4px;font-weight:600;">${i.label}</div>
-    </div>
-  `).join('');
-
-  // הסתרת insights ישן
+    </div>`
+  ).join('');
   const box = document.getElementById('contacts-insights');
   if (box) box.style.display = 'none';
 }
@@ -2001,51 +1998,42 @@ function renderContacts() {
   const empty = document.getElementById('contacts-empty');
   const count = document.getElementById('contacts-count');
   if (!tbody) return;
-
-  const list = filteredContacts;
-  if (count) count.textContent = list.length.toLocaleString() + ' תוצאות';
-
-  if (!list.length) {
+  if (count) count.textContent = filteredContacts.length + ' תוצאות';
+  if (!filteredContacts.length) {
     tbody.innerHTML = '';
     if (empty) empty.style.display = 'block';
     return;
   }
   if (empty) empty.style.display = 'none';
-
-  const display = list.slice(0, 200);
-
-  tbody.innerHTML = display.map((c, i) => {
+  tbody.innerHTML = filteredContacts.slice(0, 200).map((c, i) => {
     const cnt = parseInt(c.count) || 1;
-    const loyaltyColor = cnt >= 10 ? '#e8854a' : cnt >= 3 ? '#2d6a4f' : '#aaa';
-    const loyaltyBg    = cnt >= 10 ? '#fdeede' : cnt >= 3 ? '#d8f3dc' : '#f5f5f5';
-    const phone = (c.phone||'').replace(/^\+?972-?/,'0').replace(/^972-?/,'0');
-    const notesSafe = (c.notes||'').replace(/"/g,'&quot;').replace(/[—–]/g,'-');
-    const emailSafe = (c.email||'').replace(/"/g,'&quot;');
-    return `
-    <tr style="border-bottom:1px solid var(--border);${i % 2 === 0 ? '' : 'background:#fafafa;'}">
+    const col = cnt >= 10 ? '#e8854a' : cnt >= 3 ? '#2d6a4f' : '#aaa';
+    const bg  = cnt >= 10 ? '#fdeede' : cnt >= 3 ? '#d8f3dc' : '#f5f5f5';
+    const phone = (c.phone || '').replace(/^\+?972-?/, '0');
+    const esc = s => (s||'').replace(/"/g, '&quot;');
+    return `<tr style="border-bottom:1px solid var(--border);${i%2?'background:#fafafa;':''}">
       <td style="padding:9px 14px;font-weight:600;">${c.first_name}</td>
       <td style="padding:9px 14px;">${c.last_name}</td>
       <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.email}</td>
       <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;white-space:nowrap;">${phone}</td>
       <td style="padding:9px 14px;text-align:center;">
         <div style="display:flex;align-items:center;justify-content:center;gap:4px;">
-          <button onclick="changeCount('${emailSafe}',-1)" style="background:var(--cream);border:1px solid var(--border);width:22px;height:22px;border-radius:50%;font-size:0.85rem;line-height:1;cursor:pointer;color:var(--navy);font-family:inherit;display:inline-flex;align-items:center;justify-content:center;">-</button>
-          <span id="count-badge-${i}" style="background:${loyaltyBg};color:${loyaltyColor};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;min-width:28px;text-align:center;">${cnt}</span>
-          <button onclick="changeCount('${emailSafe}',+1)" style="background:var(--cream);border:1px solid var(--border);width:22px;height:22px;border-radius:50%;font-size:0.85rem;line-height:1;cursor:pointer;color:var(--navy);font-family:inherit;display:inline-flex;align-items:center;justify-content:center;">+</button>
+          <button onclick="changeCount('${esc(c.email)}',-1)" style="background:var(--cream);border:1px solid var(--border);width:22px;height:22px;border-radius:50%;font-size:0.9rem;cursor:pointer;color:var(--navy);font-family:inherit;display:inline-flex;align-items:center;justify-content:center;padding:0;">-</button>
+          <span style="background:${bg};color:${col};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;min-width:28px;text-align:center;">${cnt}</span>
+          <button onclick="changeCount('${esc(c.email)}',1)" style="background:var(--cream);border:1px solid var(--border);width:22px;height:22px;border-radius:50%;font-size:0.9rem;cursor:pointer;color:var(--navy);font-family:inherit;display:inline-flex;align-items:center;justify-content:center;padding:0;">+</button>
         </div>
       </td>
       <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:200px;">
-        <div id="notes-display-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${notesSafe || '<span style=\'color:#ccc;\'>+ הוסף הערה</span>'}</div>
-        <input id="notes-input-${i}" type="text" value="${notesSafe}" onblur="saveNote(${i})" onkeydown="if(event.key==='Enter')saveNote(${i})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
+        <div id="nd-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
+        <input id="ni-${i}" type="text" value="${esc(c.notes)}" onblur="saveNote(${i})" onkeydown="if(event.key==='Enter')saveNote(${i})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
       </td>
       <td style="padding:9px 14px;text-align:center;">
-        <button onclick="deleteContact('${emailSafe}')" style="background:#fde8e8;color:#c0392b;border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
+        <button onclick="deleteContact('${esc(c.email)}')" style="background:#fde8e8;color:#c0392b;border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
       </td>
     </tr>`;
   }).join('');
-
-  if (list.length > 200) {
-    tbody.innerHTML += `<tr><td colspan="7" style="padding:14px;text-align:center;color:var(--text-light);font-size:0.82rem;">מוצגים 200 מתוך ${list.length.toLocaleString()} — צמצמו את החיפוש לתוצאות נוספות</td></tr>`;
+  if (filteredContacts.length > 200) {
+    tbody.innerHTML += `<tr><td colspan="7" style="padding:14px;text-align:center;color:var(--text-light);font-size:0.82rem;">מוצגים 200 מתוך ${filteredContacts.length} — צמצמו את החיפוש</td></tr>`;
   }
 }
 
@@ -2061,28 +2049,26 @@ function changeCount(email, delta) {
 }
 
 function editNote(i) {
-  document.getElementById('notes-display-' + i).style.display = 'none';
-  const inp = document.getElementById('notes-input-' + i);
+  document.getElementById('nd-' + i).style.display = 'none';
+  const inp = document.getElementById('ni-' + i);
   inp.style.display = 'block';
   inp.focus();
 }
 
 function saveNote(i) {
-  const inp = document.getElementById('notes-input-' + i);
-  const val = inp.value.trim();
-  const contact = filteredContacts[i];
-  if (!contact) return;
-  const orig = allContacts.find(c => c.email === contact.email);
+  const inp  = document.getElementById('ni-' + i);
+  const val  = inp.value.trim();
+  const c    = filteredContacts[i];
+  if (!c) return;
+  const orig = allContacts.find(x => x.email === c.email);
   if (orig) orig.notes = val;
-  contact.notes = val;
+  c.notes = val;
   inp.style.display = 'none';
-  const disp = document.getElementById('notes-display-' + i);
+  const disp = document.getElementById('nd-' + i);
   disp.style.display = 'block';
   disp.innerHTML = val || '<span style="color:#ccc;">+ הוסף הערה</span>';
   saveContacts();
 }
-
-let contactSortDir = null;
 
 function toggleCountSort() {
   contactSortDir = contactSortDir === 'desc' ? 'asc' : 'desc';
@@ -2097,26 +2083,23 @@ function setLoyaltyFilter(val) {
 }
 
 function filterContacts() {
-  const q       = (document.getElementById('contacts-search')?.value || '').toLowerCase();
-  const loyalty = document.getElementById('contacts-filter-loyalty')?.value || 'all';
-
+  const q  = (document.getElementById('contacts-search')?.value || '').toLowerCase();
+  const lf = document.getElementById('contacts-filter-loyalty')?.value || 'all';
   filteredContacts = allContacts.filter(c => {
     const cnt = parseInt(c.count) || 1;
-    const matchQ = !q ||
-      (c.first_name || '').toLowerCase().includes(q) ||
-      (c.last_name  || '').toLowerCase().includes(q) ||
-      (c.email      || '').toLowerCase().includes(q) ||
-      (c.phone      || '').includes(q);
-
-    const matchL = loyalty === 'all'   ? true :
-                   loyalty === '10'    ? cnt >= 10 :
-                   loyalty === '3'     ? cnt >= 3  :
-                   loyalty === '1'     ? cnt === 1 :
-                   loyalty === 'notes' ? !!(c.notes && c.notes.trim()) : true;
-
+    const matchQ = !q
+      || (c.first_name || '').toLowerCase().includes(q)
+      || (c.last_name  || '').toLowerCase().includes(q)
+      || (c.email      || '').toLowerCase().includes(q)
+      || (c.phone      || '').includes(q);
+    const matchL = lf === 'all' ? true
+      : lf === '10'   ? cnt >= 10
+      : lf === '3'    ? cnt >= 3
+      : lf === '1'    ? cnt === 1
+      : lf === 'notes'? !!(c.notes && c.notes.trim())
+      : true;
     return matchQ && matchL;
   });
-
   if (contactSortDir) {
     filteredContacts.sort((a, b) =>
       contactSortDir === 'desc'
@@ -2124,15 +2107,14 @@ function filterContacts() {
         : (parseInt(a.count)||1) - (parseInt(b.count)||1)
     );
   }
-
   renderContacts();
   const count = document.getElementById('contacts-count');
-  if (count) count.textContent = filteredContacts.length.toLocaleString() + ' תוצאות';
+  if (count) count.textContent = filteredContacts.length + ' תוצאות';
 }
 
 function deleteContact(email) {
   if (!confirm('למחוק את ' + email + '?')) return;
-  allContacts     = allContacts.filter(c => c.email !== email);
+  allContacts      = allContacts.filter(c => c.email !== email);
   filteredContacts = filteredContacts.filter(c => c.email !== email);
   renderContactStats();
   renderContacts();
@@ -2143,20 +2125,24 @@ async function saveContacts() {
   if (!GITHUB_TOKEN) return;
   try {
     if (!contactsSha) {
-      const r = await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json', {
-        headers: { Authorization: 'token ' + GITHUB_TOKEN }
-      });
+      const r = await fetch(
+        'https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json',
+        { headers: { Authorization: 'token ' + GITHUB_TOKEN } }
+      );
       if (r.ok) contactsSha = (await r.json()).sha;
     }
-    const res = await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json', {
-      method: 'PUT',
-      headers: { Authorization: 'token ' + GITHUB_TOKEN, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: 'עדכון אנשי קשר',
-        content: btoa(unescape(encodeURIComponent(JSON.stringify({ contacts: allContacts }, null, 2)))),
-        sha: contactsSha
-      })
-    });
+    const res = await fetch(
+      'https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json',
+      {
+        method: 'PUT',
+        headers: { Authorization: 'token ' + GITHUB_TOKEN, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: 'עדכון אנשי קשר',
+          content: btoa(unescape(encodeURIComponent(JSON.stringify({ contacts: allContacts }, null, 2)))),
+          sha: contactsSha
+        })
+      }
+    );
     const result = await res.json();
     if (result.content) contactsSha = result.content.sha;
   } catch(e) {
@@ -2164,71 +2150,10 @@ async function saveContacts() {
   }
 }
 
-async function getFileSha(path) {
-  const r = await fetch(`https://api.github.com/repos/omertai224/omer-taicher-site/contents/${path}`, {
-    headers: { Authorization: 'token ' + GITHUB_TOKEN }
-  });
-  if (!r.ok) return undefined;
-  return (await r.json()).sha;
-}
-
-// ===== INTERACTIVE CONTENT (ic.*) =====
-let interactiveContentSha = null;
-let interactiveContentData = null;
-
-async function loadInteractiveContent() {
-  setStatus('content', 'loading', 'טוען תוכן...');
-  try {
-    const data = await ghGet('content.json');
-    interactiveContentSha = data.sha;
-    interactiveContentData = JSON.parse(decode(data.content));
-    populateInteractiveFields(interactiveContentData);
-    setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך ולשמור');
-    const saveBtn = document.getElementById('save-interactive-content-btn');
-    if (saveBtn) { saveBtn.disabled = false; saveBtn.style.opacity = '1'; saveBtn.style.display = 'block'; }
-  } catch(e) {
-    setStatus('content', 'error', 'שגיאה: ' + e.message);
-  }
-}
-
-function populateInteractiveFields(data) {
-  const flat = flatten(data, '');
-  for (const path in flat) {
-    const el = document.getElementById('ic.' + path);
-    if (el) el.value = flat[path];
-  }
-}
-
-async function saveInteractiveContent() {
-  setStatus('content', 'loading', 'שומר...');
-  const saveBtn = document.getElementById('save-interactive-content-btn');
-  if (saveBtn) saveBtn.disabled = true;
-  try {
-    const newData = JSON.parse(JSON.stringify(interactiveContentData));
-    document.querySelectorAll('[id^="ic."]').forEach(el => {
-      if (el.value !== undefined) {
-        const path = el.id.replace(/^ic\./, '');
-        setByPath(newData, path, el.value);
-      }
-    });
-    const result = await ghPut('content.json', JSON.stringify(newData, null, 2), interactiveContentSha, 'עדכון תוכן אינטראקטיבי');
-    if (result.content) {
-      interactiveContentSha = result.content.sha;
-      interactiveContentData = newData;
-      setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
-    } else {
-      setStatus('content', 'error', 'שגיאה: ' + (result.message || 'לא ידוע'));
-    }
-  } catch(e) {
-    setStatus('content', 'error', 'שגיאה: ' + e.message);
-  }
-  if (saveBtn) saveBtn.disabled = false;
-}
-
 function exportContacts() {
   const rows = [['שם פרטי','שם משפחה','אימייל','טלפון','רישומים','הערות']];
-  allContacts.forEach(c => rows.push([c.first_name, c.last_name, c.email, c.phone, c.count||1, c.notes||'']));
-  const csv = rows.map(r => r.map(v => `"${(v||'').toString().replace(/"/g,'""')}"`).join(',')).join('\n');
+  allContacts.forEach(c => rows.push([c.first_name, c.last_name, c.email, c.phone, parseInt(c.count)||1, c.notes||'']));
+  const csv  = rows.map(r => r.map(v => `"${(v||'').toString().replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
@@ -2236,4 +2161,11 @@ function exportContacts() {
   a.click();
 }
 
-
+async function getFileSha(path) {
+  const r = await fetch(
+    `https://api.github.com/repos/omertai224/omer-taicher-site/contents/${path}`,
+    { headers: { Authorization: 'token ' + GITHUB_TOKEN } }
+  );
+  if (!r.ok) return undefined;
+  return (await r.json()).sha;
+}
