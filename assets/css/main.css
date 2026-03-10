@@ -127,7 +127,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 
 /* ===== ABOUT ===== */
 .about-section { background: var(--cream); }
-.about-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 12px 40px var(--shadow); margin-bottom: 36px; aspect-ratio: 4/3; }
+.about-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 12px 40px var(--shadow); margin-bottom: 36px; aspect-ratio: 3/4; max-height: 420px; }
 .about-img-wrap img { width:100%; height:100%; object-fit:cover; object-position:center top; display:block; }
 .about-title { font-size: clamp(1.7rem, 6vw, 2.5rem); font-weight: 900; color: var(--navy); line-height: 1.2; margin-bottom: 20px; }
 .about-body p { color: var(--text-mid); font-size: 0.95rem; line-height: 2; margin-bottom: 18px; }
