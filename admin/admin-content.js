@@ -2021,8 +2021,6 @@ function renderContactStats() {
   const pctTwo    = Math.round(two     / total * 100);
 
   // בניית תוכן 4 כרטיסיות
-  const two     = allContacts.filter(c => (parseInt(c.count)||1) === 2).length;
-
   const line = (color, text) =>
     `<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f4f8;">
       <div style="width:7px;height:7px;border-radius:50%;background:${color};margin-top:6px;flex-shrink:0;"></div>
