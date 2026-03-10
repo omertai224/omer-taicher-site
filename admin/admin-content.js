@@ -1211,10 +1211,130 @@ let interactiveItems = [];
 let interactiveSha = null;
 let interactiveEditingIndex = null;
 
+let interactiveContentSha = null;
+
+async function loadInteractiveContent() {
+  const saveBtn = document.getElementById('save-interactive-content-btn');
+  try {
+    const data = await ghGet('content.json');
+    interactiveContentSha = data.sha;
+    const d = JSON.parse(decode(data.content));
+
+    const setField = (id, val) => {
+      const el = document.getElementById(id);
+      if (el && val != null) el.value = val;
+    };
+
+    setField('ic.page.eyebrow',      d.page?.eyebrow);
+    setField('ic.page.title_1',      d.page?.title_1);
+    setField('ic.page.title_2',      d.page?.title_2);
+    setField('ic.page.title_3',      d.page?.title_3);
+    setField('ic.page.sub',          d.page?.sub);
+
+    (d.pain_cards || []).forEach((c, i) => {
+      setField(`ic.pain_cards.${i}.title`, c.title);
+      setField(`ic.pain_cards.${i}.desc`,  c.desc);
+    });
+
+    setField('ic.solution.label', d.solution?.label);
+    setField('ic.solution.title', d.solution?.title);
+    setField('ic.solution.sub',   d.solution?.sub);
+
+    setField('ic.how.eyebrow', d.how?.eyebrow);
+    setField('ic.how.title',   d.how?.title);
+    setField('ic.how.sub',     d.how?.sub);
+    setField('ic.how.note',    d.how?.note);
+    (d.how?.steps || []).forEach((s, i) => {
+      setField(`ic.how.steps.${i}.title`, s.title);
+      setField(`ic.how.steps.${i}.desc`,  s.desc);
+    });
+
+    setField('ic.shop.eyebrow', d.shop?.eyebrow);
+    setField('ic.shop.title',   d.shop?.title);
+    setField('ic.shop.sub',     d.shop?.sub);
+
+    (d.faq || []).forEach((f, i) => {
+      setField(`ic.faq.${i}.q`, f.q);
+      setField(`ic.faq.${i}.a`, f.a);
+    });
+
+    if (saveBtn) { saveBtn.disabled = false; saveBtn.style.opacity = '1'; saveBtn.style.display = 'block'; }
+    setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך ולשמור');
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה בטעינת תוכן: ' + e.message);
+  }
+}
+
+async function saveInteractiveContent() {
+  const saveBtn = document.getElementById('save-interactive-content-btn');
+  if (!interactiveContentSha) { setStatus('content', 'error', 'תוכן לא נטען עדיין'); return; }
+  setStatus('content', 'loading', 'שומר...');
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.style.opacity = '0.6'; }
+
+  const g = id => document.getElementById(id)?.value || '';
+
+  const newData = {
+    page: {
+      eyebrow: g('ic.page.eyebrow'),
+      title_1: g('ic.page.title_1'),
+      title_2: g('ic.page.title_2'),
+      title_3: g('ic.page.title_3'),
+      sub:     g('ic.page.sub')
+    },
+    pain_cards: [0,1,2,3].map(i => ({
+      title: g(`ic.pain_cards.${i}.title`),
+      desc:  g(`ic.pain_cards.${i}.desc`)
+    })),
+    solution: {
+      label: g('ic.solution.label'),
+      title: g('ic.solution.title'),
+      sub:   g('ic.solution.sub')
+    },
+    how: {
+      eyebrow: g('ic.how.eyebrow'),
+      title:   g('ic.how.title'),
+      sub:     g('ic.how.sub'),
+      note:    g('ic.how.note'),
+      steps: [0,1,2,3].map(i => ({
+        title: g(`ic.how.steps.${i}.title`),
+        desc:  g(`ic.how.steps.${i}.desc`)
+      }))
+    },
+    shop: {
+      eyebrow: g('ic.shop.eyebrow'),
+      title:   g('ic.shop.title'),
+      sub:     g('ic.shop.sub')
+    },
+    faq: [0,1,2,3,4].map(i => ({
+      q: g(`ic.faq.${i}.q`),
+      a: g(`ic.faq.${i}.a`)
+    }))
+  };
+
+  try {
+    const fresh = await ghGet('content.json');
+    interactiveContentSha = fresh.sha;
+    const result = await ghPut('content.json', JSON.stringify(newData, null, 2), interactiveContentSha, 'עדכון תוכן אינטראקטיבי');
+    if (result.content) {
+      interactiveContentSha = result.content.sha;
+      setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
+    } else {
+      setStatus('content', 'error', 'שגיאה: ' + (result.message || 'לא ידוע'));
+    }
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה: ' + e.message);
+  }
+  if (saveBtn) { saveBtn.disabled = false; saveBtn.style.opacity = '1'; }
+}
+
 async function loadInteractiveManager() {
   setStatus('content', 'loading', 'טוען הדרכות...');
   const container = document.getElementById('interactive-list');
   if (!container) return;
+
+  // טעינת תוכן הדף (ic-panel-content)
+  await loadInteractiveContent();
+
   try {
     const data = await ghGet('interactive.json');
     interactiveSha = data.sha;
