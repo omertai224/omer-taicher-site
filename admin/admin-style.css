@@ -354,6 +354,19 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
     padding: 12px 14px !important;
   }
 
+
+  /* contacts action buttons — flex wrap on mobile */
+  #contacts-action-btns {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+  }
+  #contacts-action-btns button {
+    flex: 1;
+    min-width: 100px;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
   /* interactive sub-tabs */
   #tutorials-content > div:first-child {
     flex-wrap: wrap !important;
