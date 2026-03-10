@@ -2020,29 +2020,28 @@ function renderContactStats() {
   const pctSingle = Math.round(single  / total * 100);
   const pctTwo    = Math.round(two     / total * 100);
 
-  txt.innerHTML = `
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:16px;">
-      <div style="background:#fff;border:1px solid #c3d9e8;border-radius:10px;padding:14px 16px;">
-        <div style="font-size:0.78rem;font-weight:800;color:#e8854a;margin-bottom:6px;">VIP אמיתיים, ${loyal10} אנשים, ${pctVip}% מהקהל</div>
-        <div style="font-size:0.8rem;color:#444;line-height:1.7;">הגיעו 10 פעמים ויותר. מאמינים בך לחלוטין, חוזרים מרצון. אלה האנשים שישלמו על מינוי, חבילה או גישה מוקדמת. כל מוצר חדש שתוציא, להם קודם כל.</div>
-      </div>
-      <div style="background:#fff;border:1px solid #c3d9e8;border-radius:10px;padding:14px 16px;">
-        <div style="font-size:0.78rem;font-weight:800;color:#2d6a4f;margin-bottom:6px;">חוזרים, ${loyal3 - loyal10} אנשים</div>
-        <div style="font-size:0.8rem;color:#444;line-height:1.7;">הגיעו 3 עד 9 פעמים. כבר בדקו אותך ואהבו. צריך עוד דחיפה אחת כדי להפוך ל-VIP. הצעה ספציפית, הזמנה אישית או תוכן בלעדי יכולים לעשות את זה.</div>
-      </div>
-      <div style="background:#fff;border:1px solid #c3d9e8;border-radius:10px;padding:14px 16px;">
-        <div style="font-size:0.78rem;font-weight:800;color:#888;margin-bottom:6px;">חד-פעמיים, ${single} אנשים, ${pctSingle}% מהקהל</div>
-        <div style="font-size:0.8rem;color:#444;line-height:1.7;">הגיעו פעם אחת ולא חזרו. לא בהכרח אבודים. ${two} מהם חזרו פעם שנייה. הנושא לא תמיד היה מדויק להם, או שפשוט לא קיבלו סיבה לחזור.</div>
-      </div>
+  const line = (dot, color, text) =>
+    `<div style="display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid #eef4f8;">
+      <div style="width:8px;height:8px;border-radius:50%;background:${color};margin-top:5px;flex-shrink:0;"></div>
+      <div style="font-size:0.82rem;color:#333;line-height:1.6;">${text}</div>
+    </div>`;
+
+  txt.innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+    <div>
+      <div style="font-size:0.75rem;font-weight:800;color:#1a4a6b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">סגמנטים</div>
+      ${line('#e8854a', '#e8854a', `<strong>${loyal10} אנשים (${pctVip}%) הם VIP אמיתיים.</strong> הגיעו 10 פעמים ומעלה. כל מוצר חדש, להם קודם כל.`)}
+      ${line('#2d6a4f', '#2d6a4f', `<strong>${loyal3 - loyal10} אנשים חוזרים</strong> בטווח 3 עד 9 פעמים. קרובים מאוד להפוך ל-VIP. הזמנה אישית תעשה את זה.`)}
+      ${line('#aaa', '#aaa', `<strong>${single} אנשים (${pctSingle}%) הגיעו פעם אחת בלבד.</strong> לא בהכרח אבודים. ${two} מהם חזרו פעם שנייה.`)}
     </div>
-    <div style="background:#fff;border:1px solid #c3d9e8;border-radius:10px;padding:14px 16px;font-size:0.8rem;color:#444;line-height:1.8;">
-      <span style="font-weight:800;color:#1a4a6b;">DNA כללי של הקהל.</span>
-      88% ישראלים עם שמות בעברית. רובם עם Gmail, כלומר נוחים עם טכנולוגיה ברמה בסיסית.
-      כ-35 אנשים עם אימייל ישן (בזק, זהב, נטוויז'ן) שגילם ככל הנראה 55 ומעלה, בדיוק הקהל שמגיע להרצאות AI ומחשבים כי הטכנולוגיה מפחידה אותם.
-      954 אנשי קשר עם טלפון, 14 ללא טלפון.
-      153 ללא שם משפחה, כלומר נרשמו עם שם פרטי בלבד.
+    <div>
+      <div style="font-size:0.75rem;font-weight:800;color:#1a4a6b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">DNA של הקהל</div>
+      ${line('#1a4a6b', '#1a4a6b', '88% ישראלים עם שמות בעברית.')}
+      ${line('#1a4a6b', '#1a4a6b', 'רוב הקהל עם Gmail, נוחים עם טכנולוגיה ברמה בסיסית.')}
+      ${line('#1a4a6b', '#1a4a6b', 'כ-35 אנשים עם אימייל ישן (בזק, זהב, נטוויז\'ן). גיל 55 ומעלה. בדיוק הקהל שמגיע כי הטכנולוגיה מפחידה אותו.')}
+      ${line('#1a4a6b', '#1a4a6b', '954 עם טלפון. 14 ללא טלפון.')}
+      ${line('#1a4a6b', '#1a4a6b', '153 נרשמו עם שם פרטי בלבד, ללא שם משפחה.')}
     </div>
-  `;
+  </div>`;
   box.style.display = 'block';
 }
 
