@@ -601,6 +601,16 @@ nav {
 .nav-links { display: none; }
 .hamburger { display: none; }
 .nav-mobile-cta { display: none; }
+.nav-back {
+  display: flex; align-items: center; gap: 6px;
+  color: #1a4a6b; text-decoration: none;
+  font-size: 0.85rem; font-weight: 600;
+  padding: 7px 14px; border-radius: 50px;
+  background: rgba(26,74,107,0.08);
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+.nav-back:hover { background: #fdeede; color: #e8854a; }
 @media (min-width: 960px) {
   .nav-links { display: flex; gap: 24px; list-style: none; align-items: center; }
   .nav-links a { color: #555; text-decoration: none; font-size: 0.88rem; font-weight: 500; font-family: 'Rubik', sans-serif; }
@@ -612,11 +622,10 @@ nav {
 
 <nav>
   <a class="logo" href="https://omertai.net">עומר <span>טייכר</span></a>
-  <ul class="nav-links">
-    <li><a href="https://omertai.net">דף ראשי</a></li>
-    <li><a href="https://blog.omertai.net">טיפים חינם</a></li>
-    <li><a href="https://interactive.omertai.net" style="background:#e8854a;color:#fff !important;font-weight:700;padding:7px 16px;border-radius:50px;">הדרכות</a></li>
-  </ul>
+  <a class="nav-back" href="https://omertai.net">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    חזרה לאתר
+  </a>
 </nav>
 
 <!-- HERO -->
