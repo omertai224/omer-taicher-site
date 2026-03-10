@@ -1935,7 +1935,6 @@ let filteredContacts = [];
 let contactsSha = null;
 
 async function loadContacts() {
-  const token = localStorage.getItem('admin_token');
   const bar   = document.getElementById('contacts-stats-bar');
   const tbody = document.getElementById('contacts-tbody');
   if (bar)   bar.innerHTML   = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text-light);font-size:0.85rem;">טוען...</div>';
@@ -1943,7 +1942,7 @@ async function loadContacts() {
 
   try {
     const res = await fetch(`https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json?ref=main&t=${Date.now()}`, {
-      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+      headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
     });
     if (!res.ok) throw new Error('קובץ לא נמצא (' + res.status + ')');
     const data = await res.json();
@@ -2141,23 +2140,20 @@ function deleteContact(email) {
 }
 
 async function saveContacts() {
-  const token = localStorage.getItem('admin_token');
-  if (!token) return;
+  if (!GITHUB_TOKEN) return;
   try {
-    // רענן SHA לפני שמירה
     if (!contactsSha) {
       const r = await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json', {
-        headers: { Authorization: 'token ' + token }
+        headers: { Authorization: 'token ' + GITHUB_TOKEN }
       });
       if (r.ok) contactsSha = (await r.json()).sha;
     }
-    const body = { contacts: allContacts };
     const res = await fetch('https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json', {
       method: 'PUT',
-      headers: { Authorization: 'token ' + token, 'Content-Type': 'application/json' },
+      headers: { Authorization: 'token ' + GITHUB_TOKEN, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         message: 'עדכון אנשי קשר',
-        content: btoa(unescape(encodeURIComponent(JSON.stringify(body, null, 2)))),
+        content: btoa(unescape(encodeURIComponent(JSON.stringify({ contacts: allContacts }, null, 2)))),
         sha: contactsSha
       })
     });
@@ -2169,9 +2165,8 @@ async function saveContacts() {
 }
 
 async function getFileSha(path) {
-  const token = localStorage.getItem('admin_token');
   const r = await fetch(`https://api.github.com/repos/omertai224/omer-taicher-site/contents/${path}`, {
-    headers: { Authorization: 'token ' + token }
+    headers: { Authorization: 'token ' + GITHUB_TOKEN }
   });
   if (!r.ok) return undefined;
   return (await r.json()).sha;
