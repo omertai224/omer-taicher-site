@@ -2020,28 +2020,48 @@ function renderContactStats() {
   const pctSingle = Math.round(single  / total * 100);
   const pctTwo    = Math.round(two     / total * 100);
 
-  const line = (dot, color, text) =>
-    `<div style="display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid #eef4f8;">
-      <div style="width:8px;height:8px;border-radius:50%;background:${color};margin-top:5px;flex-shrink:0;"></div>
+  // בניית תוכן 4 כרטיסיות
+  const two     = allContacts.filter(c => (parseInt(c.count)||1) === 2).length;
+
+  const line = (color, text) =>
+    `<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid #f0f4f8;">
+      <div style="width:7px;height:7px;border-radius:50%;background:${color};margin-top:6px;flex-shrink:0;"></div>
       <div style="font-size:0.82rem;color:#333;line-height:1.6;">${text}</div>
     </div>`;
 
-  txt.innerHTML = `<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-    <div>
-      <div style="font-size:0.75rem;font-weight:800;color:#1a4a6b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">סגמנטים</div>
-      ${line('#e8854a', '#e8854a', `<strong>${loyal10} אנשים (${pctVip}%) הם VIP אמיתיים.</strong> הגיעו 10 פעמים ומעלה. כל מוצר חדש, להם קודם כל.`)}
-      ${line('#2d6a4f', '#2d6a4f', `<strong>${loyal3 - loyal10} אנשים חוזרים</strong> בטווח 3 עד 9 פעמים. קרובים מאוד להפוך ל-VIP. הזמנה אישית תעשה את זה.`)}
-      ${line('#aaa', '#aaa', `<strong>${single} אנשים (${pctSingle}%) הגיעו פעם אחת בלבד.</strong> לא בהכרח אבודים. ${two} מהם חזרו פעם שנייה.`)}
-    </div>
-    <div>
-      <div style="font-size:0.75rem;font-weight:800;color:#1a4a6b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em;">DNA של הקהל</div>
-      ${line('#1a4a6b', '#1a4a6b', '88% ישראלים עם שמות בעברית.')}
-      ${line('#1a4a6b', '#1a4a6b', 'רוב הקהל עם Gmail, נוחים עם טכנולוגיה ברמה בסיסית.')}
-      ${line('#1a4a6b', '#1a4a6b', 'כ-35 אנשים עם אימייל ישן (בזק, זהב, נטוויז\'ן). גיל 55 ומעלה. בדיוק הקהל שמגיע כי הטכנולוגיה מפחידה אותו.')}
-      ${line('#1a4a6b', '#1a4a6b', '954 עם טלפון. 14 ללא טלפון.')}
-      ${line('#1a4a6b', '#1a4a6b', '153 נרשמו עם שם פרטי בלבד, ללא שם משפחה.')}
-    </div>
-  </div>`;
+  const tabContent = [
+    // כרטיסייה 0 — סגמנטים
+    `${line('#e8854a', `<strong>${loyal10} אנשים (${pctVip}%) הם VIP.</strong> הגיעו 10 פעמים ומעלה. הקהל הכי חם שיש. כל מוצר חדש, להם קודם כל.`)}
+     ${line('#2d6a4f', `<strong>${loyal3 - loyal10} אנשים חוזרים</strong> בטווח 3 עד 9 פעמים. קרובים להפוך ל-VIP. הזמנה אישית תעשה את ההבדל.`)}
+     ${line('#5b8fa8', `<strong>${two} אנשים</strong> חזרו פעם שנייה. עוד דחיפה קטנה ויהפכו לחוזרים קבועים.`)}
+     ${line('#aaa', `<strong>${single} אנשים (${pctSingle}%) הגיעו פעם אחת בלבד.</strong> לא בהכרח אבודים. חלקם פשוט לא קיבלו סיבה לחזור.`)}`,
+
+    // כרטיסייה 1 — DNA
+    `${line('#1a4a6b', '88% ישראלים עם שמות בעברית.')}
+     ${line('#1a4a6b', 'רוב הקהל עם Gmail. נוחים עם טכנולוגיה ברמה בסיסית.')}
+     ${line('#1a4a6b', 'כ-35 אנשים עם אימייל ישן מבזק, זהב ונטוויז\'ן. גיל 55 ומעלה. בדיוק הקהל שמגיע כי הטכנולוגיה מפחידה אותו.')}
+     ${line('#1a4a6b', 'walla.com ו-walla.co.il יחד מהווים כ-76 אנשים. קהל ישראלי ותיק, גיל ממוצע גבוה יחסית.')}
+     ${line('#1a4a6b', 'yahoo.com עם 22 אנשים. קהל בינלאומי יותר, ייתכן שלשוניים.')}`,
+
+    // כרטיסייה 2 — המלצות מכירה
+    `${line('#f6a67e', `לפנות ל-${loyal10} ה-VIP ישירות עם הצעה בלעדית. הם כבר הוכיחו נאמנות. מינוי חודשי, חבילה, גישה מוקדמת.`)}
+     ${line('#f6a67e', `ה-${loyal3 - loyal10} חוזרים הם הזדמנות הכי גדולה לגדילה. הזמנה אישית בשמם לאירוע הבא תמיר חלק גדול מהם ל-VIP.`)}
+     ${line('#f6a67e', 'קהל הגיל המבוגר (דומיינים ישנים) מגיב טוב לתוכן מעשי, פשוט וללא עומס. להדגיש שמדובר בצעדים קטנים.')}
+     ${line('#f6a67e', `${single} חד-פעמיים זה מאגר גדול. תוכן שיווקי ממוקד לנושא שהגיעו אליו יכול להחזיר חלק מהם.`)}`,
+
+    // כרטיסייה 3 — נתונים כלליים
+    `${line('#1a4a6b', `סה"כ ${total} אנשי קשר ייחודיים.`)}
+     ${line('#1a4a6b', '954 אנשים עם מספר טלפון. 14 ללא טלפון.')}
+     ${line('#1a4a6b', '153 נרשמו עם שם פרטי בלבד ללא שם משפחה.')}
+     ${line('#1a4a6b', '821 עם Gmail. 76 עם Walla. 22 עם Yahoo. 15 עם Bezeqint.')}
+     ${line('#1a4a6b', `ממוצע רישומים לאיש קשר: ${(allContacts.reduce((s,c) => s+(parseInt(c.count)||1), 0)/total).toFixed(1)} הרצאות.`)}`
+  ];
+
+  window._insightTabs = tabContent;
+  window._insightActive = 0;
+
+  const txt = document.getElementById('contacts-insights-text');
+  if (txt) txt.innerHTML = tabContent[0];
   box.style.display = 'block';
 }
 
@@ -2118,6 +2138,18 @@ function saveNote(i) {
   saveContactToSB(c.email, { notes: val });
 }
 
+function switchInsightTab(i) {
+  window._insightActive = i;
+  const txt = document.getElementById('contacts-insights-text');
+  if (txt && window._insightTabs) txt.innerHTML = window._insightTabs[i];
+  for (let j = 0; j < 4; j++) {
+    const btn = document.getElementById('itab-' + j);
+    if (!btn) continue;
+    btn.style.borderBottomColor = j === i ? '#1a4a6b' : 'transparent';
+    btn.style.color = j === i ? '#1a4a6b' : '#aaa';
+  }
+}
+
 function toggleCountSort() {
   contactSortDir = contactSortDir === 'desc' ? 'asc' : 'desc';
   const arrow = document.getElementById('sort-arrow');
@@ -2183,6 +2215,72 @@ async function deleteContactFromSB(email) {
   } catch(e) {
     console.error('שגיאה במחיקה:', e);
   }
+}
+
+async function importLecture(input) {
+  const file = input.files[0];
+  if (!file) return;
+  input.value = '';
+
+  const bar = document.getElementById('contacts-stats-bar');
+  if (bar) bar.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:#1a4a6b;font-size:0.85rem;font-weight:700;">מעבד קובץ...</div>';
+
+  const text = await file.text();
+  const lines = text.split('\n').map(l => l.trim()).filter(l => l);
+
+  // זיהוי עמודות
+  const header = lines[0].split(',').map(h => h.replace(/"/g,'').trim().toLowerCase());
+  const iEmail = header.findIndex(h => h.includes('email'));
+  const iFirst = header.findIndex(h => h.includes('firstname') || h.includes('first_name') || h === 'שם פרטי');
+  const iLast  = header.findIndex(h => h.includes('lastname')  || h.includes('last_name')  || h === 'שם משפחה');
+  const iPhone = header.findIndex(h => h.includes('phone') || h === 'טלפון');
+
+  if (iEmail === -1) { alert('לא נמצאה עמודת Email בקובץ.'); loadContacts(); return; }
+
+  const parseRow = line => {
+    const cols = [];
+    let cur = '', inQ = false;
+    for (const ch of line) {
+      if (ch === '"') { inQ = !inQ; continue; }
+      if (ch === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
+      else cur += ch;
+    }
+    cols.push(cur.trim());
+    return cols;
+  };
+
+  let added = 0, updated = 0, skipped = 0;
+
+  for (let i = 1; i < lines.length; i++) {
+    const cols  = parseRow(lines[i]);
+    const email = (cols[iEmail] || '').toLowerCase().trim();
+    if (!email || !email.includes('@')) { skipped++; continue; }
+
+    const fn    = iFirst >= 0 ? (cols[iFirst] || '').trim() : '';
+    const ln    = iLast  >= 0 ? (cols[iLast]  || '').trim() : '';
+    const phone = iPhone >= 0 ? (cols[iPhone] || '').trim() : '';
+
+    const existing = allContacts.find(c => c.email === email);
+
+    try {
+      if (existing) {
+        const newCount = (parseInt(existing.count) || 1) + 1;
+        await sbFetch('PATCH', `/rest/v1/contacts?email=eq.${encodeURIComponent(email)}`, { count: newCount });
+        existing.count = newCount;
+        updated++;
+      } else {
+        const newContact = { email, first_name: fn, last_name: ln, phone, count: 1, notes: '' };
+        await sbFetch('POST', '/rest/v1/contacts', newContact);
+        allContacts.push(newContact);
+        added++;
+      }
+    } catch(e) { skipped++; }
+  }
+
+  filteredContacts = [...allContacts];
+  renderContactStats();
+  filterContacts();
+  alert(`ייבוא הושלם.\n${added} נרשמים חדשים נוספו.\n${updated} נרשמים קיימים עודכנו.\n${skipped} שורות דולגו.`);
 }
 
 async function importNotes() {
