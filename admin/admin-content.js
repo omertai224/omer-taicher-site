@@ -1929,12 +1929,36 @@ function switchInteractiveTab(tab) {
 
 
 // ============================================================
-// CONTACTS
+// CONTACTS — Supabase
 // ============================================================
+const SB_URL = 'https://cbnwxmsgzffvssssqwdz.supabase.co';
+function getSBKey() { return localStorage.getItem('sb_key') || ''; }
+
 let allContacts = [];
 let filteredContacts = [];
-let contactsSha = null;
 let contactSortDir = null;
+
+async function sbFetch(method, path, body) {
+  const key = getSBKey();
+  if (!key) throw new Error('מפתח Supabase חסר');
+  const opts = {
+    method,
+    headers: {
+      'apikey': key,
+      'Authorization': 'Bearer ' + key,
+      'Content-Type': 'application/json',
+      'Prefer': method === 'POST' ? 'return=representation' : ''
+    }
+  };
+  if (body) opts.body = JSON.stringify(body);
+  const res = await fetch(SB_URL + path, opts);
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(err);
+  }
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
+}
 
 async function loadContacts() {
   const bar   = document.getElementById('contacts-stats-bar');
@@ -1942,16 +1966,16 @@ async function loadContacts() {
   if (bar)   bar.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--text-light);font-size:0.85rem;">טוען...</div>';
   if (tbody) tbody.innerHTML = '';
 
+  // אם אין מפתח — בקש מהמשתמש
+  if (!getSBKey()) {
+    const k = prompt('הכנס Supabase Secret Key:');
+    if (k) localStorage.setItem('sb_key', k.trim());
+    else return;
+  }
+
   try {
-    const res = await fetch(
-      `https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json?ref=main&t=${Date.now()}`,
-      { headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } }
-    );
-    if (!res.ok) throw new Error('שגיאה ' + res.status);
-    const data  = await res.json();
-    contactsSha = data.sha;
-    const parsed = JSON.parse(decode(data.content));
-    allContacts = (parsed.contacts || []).map(c => ({
+    const data = await sbFetch('GET', '/rest/v1/contacts?select=*&order=count.desc&limit=2000');
+    allContacts = (data || []).map(c => ({
       first_name: c.first_name || '',
       last_name:  c.last_name  || '',
       email:      c.email      || '',
@@ -2045,7 +2069,7 @@ function changeCount(email, delta) {
   if (fc) fc.count = c.count;
   renderContactStats();
   renderContacts();
-  saveContacts();
+  saveContactToSB(email, { count: c.count });
 }
 
 function editNote(i) {
@@ -2067,7 +2091,7 @@ function saveNote(i) {
   const disp = document.getElementById('nd-' + i);
   disp.style.display = 'block';
   disp.innerHTML = val || '<span style="color:#ccc;">+ הוסף הערה</span>';
-  saveContacts();
+  saveContactToSB(c.email, { notes: val });
 }
 
 function toggleCountSort() {
@@ -2118,35 +2142,22 @@ function deleteContact(email) {
   filteredContacts = filteredContacts.filter(c => c.email !== email);
   renderContactStats();
   renderContacts();
-  saveContacts();
+  deleteContactFromSB(email);
 }
 
-async function saveContacts() {
-  if (!GITHUB_TOKEN) return;
+async function saveContactToSB(email, fields) {
   try {
-    if (!contactsSha) {
-      const r = await fetch(
-        'https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json',
-        { headers: { Authorization: 'token ' + GITHUB_TOKEN } }
-      );
-      if (r.ok) contactsSha = (await r.json()).sha;
-    }
-    const res = await fetch(
-      'https://api.github.com/repos/omertai224/omer-taicher-site/contents/admin/contacts.json',
-      {
-        method: 'PUT',
-        headers: { Authorization: 'token ' + GITHUB_TOKEN, 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: 'עדכון אנשי קשר',
-          content: btoa(unescape(encodeURIComponent(JSON.stringify({ contacts: allContacts }, null, 2)))),
-          sha: contactsSha
-        })
-      }
-    );
-    const result = await res.json();
-    if (result.content) contactsSha = result.content.sha;
+    await sbFetch('PATCH', `/rest/v1/contacts?email=eq.${encodeURIComponent(email)}`, fields);
   } catch(e) {
-    console.error('שגיאה בשמירת אנשי קשר', e);
+    console.error('שגיאה בשמירה:', e);
+  }
+}
+
+async function deleteContactFromSB(email) {
+  try {
+    await sbFetch('DELETE', `/rest/v1/contacts?email=eq.${encodeURIComponent(email)}`);
+  } catch(e) {
+    console.error('שגיאה במחיקה:', e);
   }
 }
 
