@@ -156,7 +156,10 @@ function selectRepo(repoName, btn) {
   // טען נתונים
   if (isSite)  loadContent();
   if (isBlog)  setTimeout(loadBlogManager, 50);
-  if (isTutos) setTimeout(loadInteractiveManager, 50);
+  if (isTutos) {
+    setTimeout(loadInteractiveManager, 50);
+    setTimeout(loadInteractiveContent, 80);
+  }
   loadFileTree(GITHUB_REPO === 'omer-taicher-site' ? 'admin' : '');
 }
 
