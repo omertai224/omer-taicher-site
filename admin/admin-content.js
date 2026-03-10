@@ -2155,8 +2155,4 @@ function exportContacts() {
   a.click();
 }
 
-const _origSwitchTab = window.switchTab;
-window.switchTab = function(tab, btn) {
-  _origSwitchTab && _origSwitchTab(tab, btn);
-  if (tab === 'contacts') loadContacts();
-};
+
