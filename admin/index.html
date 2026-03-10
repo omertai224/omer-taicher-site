@@ -314,9 +314,14 @@
     <div id="contacts-stats-bar" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;"></div>
 
     <!-- INSIGHTS -->
-    <div id="contacts-insights" style="background:linear-gradient(135deg,#eef4f8,#fff);border:1px solid #c3d9e8;border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:0.85rem;line-height:1.8;color:#1a4a6b;display:none;">
-      <div style="font-weight:800;margin-bottom:8px;font-size:0.9rem;">ניתוח קהל</div>
-      <div id="contacts-insights-text"></div>
+    <div id="contacts-insights" style="margin-bottom:20px;display:none;">
+      <div style="display:flex;gap:0;border-bottom:2px solid #c3d9e8;margin-bottom:0;">
+        <button onclick="switchInsightTab(0)" id="itab-0" style="padding:9px 20px;font-family:inherit;font-size:0.8rem;font-weight:700;border:none;border-bottom:3px solid #1a4a6b;background:transparent;color:#1a4a6b;cursor:pointer;margin-bottom:-2px;">סגמנטים</button>
+        <button onclick="switchInsightTab(1)" id="itab-1" style="padding:9px 20px;font-family:inherit;font-size:0.8rem;font-weight:700;border:none;border-bottom:3px solid transparent;background:transparent;color:#aaa;cursor:pointer;margin-bottom:-2px;">DNA של הקהל</button>
+        <button onclick="switchInsightTab(2)" id="itab-2" style="padding:9px 20px;font-family:inherit;font-size:0.8rem;font-weight:700;border:none;border-bottom:3px solid transparent;background:transparent;color:#aaa;cursor:pointer;margin-bottom:-2px;">המלצות מכירה</button>
+        <button onclick="switchInsightTab(3)" id="itab-3" style="padding:9px 20px;font-family:inherit;font-size:0.8rem;font-weight:700;border:none;border-bottom:3px solid transparent;background:transparent;color:#aaa;cursor:pointer;margin-bottom:-2px;">נתונים כלליים</button>
+      </div>
+      <div id="contacts-insights-text" style="background:#fff;border:1px solid #c3d9e8;border-top:none;border-radius:0 0 12px 12px;padding:18px 20px;"></div>
     </div>
 
     <!-- TOOLBAR -->
@@ -333,6 +338,11 @@
       </div>
       <div style="display:flex;gap:8px;">
         <span id="contacts-count" style="font-size:0.82rem;font-weight:600;color:var(--text-light);align-self:center;"></span>
+        <input type="file" id="lecture-csv-input" accept=".csv" style="display:none" onchange="importLecture(this)">
+        <button onclick="document.getElementById('lecture-csv-input').click()" style="background:#1a4a6b;color:#fff;border:none;padding:8px 18px;border-radius:50px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+          ייבוא הרצאה
+        </button>
         <button onclick="importNotes()" style="background:#eef4f8;color:#1a4a6b;border:1.5px solid #c3d9e8;padding:8px 16px;border-radius:50px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
           ייבוא הערות
