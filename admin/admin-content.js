@@ -1971,9 +1971,9 @@ function renderStats(stats) {
     const opt10 = sel.querySelector('option[value="10"]');
     const opt3  = sel.querySelector('option[value="3"]');
     const opt1  = sel.querySelector('option[value="1"]');
-    if (opt10) opt10.textContent = `מאוד נאמנים (${(stats.loyal_10plus||0).toLocaleString()})`;
-    if (opt3)  opt3.textContent  = `נאמנים (${(stats.loyal_3plus||0).toLocaleString()})`;
-    if (opt1)  opt1.textContent  = `רישום יחיד (${(stats.single_reg||0).toLocaleString()})`;
+    if (opt10) opt10.textContent = `מאוד נאמנים`;
+    if (opt3)  opt3.textContent  = `נאמנים`;
+    if (opt1)  opt1.textContent  = `רישום יחיד`;
   }
 }
 
@@ -1990,11 +1990,11 @@ function renderInsights(stats, contacts) {
 
   const lines = [
     `<strong>${total.toLocaleString()} אנשי קשר</strong> ייחודיים מכלל ההרצאות שלך.`,
-    `<strong>${loyal} אנשים (${Math.round(loyal/total*100)}%)</strong> נרשמו ל-3 הרצאות ומעלה — הקהל הנאמן שלך.`,
-    `<strong>${top} אנשים</strong> נרשמו ל-10 הרצאות ומעלה — הקהל החם ביותר. אלה הראשונים שיקנו הדרכה בתשלום.`,
-    `<strong>${single} אנשים (${Math.round(single/total*100)}%)</strong> נרשמו פעם אחת ולא חזרו — פוטנציאל שטרם מומש.`,
-    `<strong>${gmailPct}%</strong> מהקהל הם Gmail. שאר — walla, bezeqint, zahav — בדרך כלל גיל 55+.`,
-    `<strong>235 אנשים</strong> חוזרים כל חודש. אלה לא מקרה — הם מחכים שתציע להם משהו.`,
+    `<strong>${loyal} אנשים (${Math.round(loyal/total*100)}%)</strong> נרשמו ל-3 הרצאות ומעלה - הקהל הנאמן שלך.`,
+    `<strong>${top} אנשים</strong> נרשמו ל-10 הרצאות ומעלה - הקהל החם ביותר. אלה הראשונים שיקנו הדרכה בתשלום.`,
+    `<strong>${single} אנשים (${Math.round(single/total*100)}%)</strong> נרשמו פעם אחת ולא חזרו - פוטנציאל שטרם מומש.`,
+    `<strong>${gmailPct}%</strong> מהקהל הם Gmail. שאר - walla, bezeqint, zahav - בדרך כלל גיל 55+.`,
+    `<strong>235 אנשים</strong> חוזרים כל חודש. אלה לא מקרה - הם מחכים שתציע להם משהו.`,
   ];
   txt.innerHTML = lines.join('<br>');
   box.style.display = 'block';
@@ -2027,12 +2027,12 @@ function renderContacts() {
       <td style="padding:9px 14px;">${c.first_name || ''}</td>
       <td style="padding:9px 14px;">${c.last_name || ''}</td>
       <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.email || ''}</td>
-      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.phone || ''}</td>
+      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${(c.phone||'').replace(/^\+?972-?/,'0').replace(/^972-?/,'0')}</td>
       <td style="padding:9px 14px;text-align:center;">
         <span style="background:${loyaltyBg};color:${loyaltyColor};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;">${c.count || 1}</span>
       </td>
       <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:220px;">
-        <div id="notes-display-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style=\'color:#ccc;\'>+ הוסף הערה</span>'}</div>
+        <div id="notes-display-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${(c.notes||'').replace(/[—–]/g,'-') || '<span style=\'color:#ccc;\'>+ הוסף הערה</span>'}</div>
         <input id="notes-input-${i}" type="text" value="${(c.notes||'').replace(/"/g,'&quot;')}" onblur="saveNote(${i})" onkeydown="if(event.key==='Enter')saveNote(${i})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
       </td>
       <td style="padding:9px 14px;text-align:center;">
@@ -2042,7 +2042,7 @@ function renderContacts() {
   }).join('');
 
   if (list.length > 200) {
-    tbody.innerHTML += `<tr><td colspan="7" style="padding:14px;text-align:center;color:var(--text-light);font-size:0.82rem;">מוצגים 200 מתוך ${list.length.toLocaleString()} — צמצם את החיפוש לתוצאות נוספות</td></tr>`;
+    tbody.innerHTML += `<tr><td colspan="7" style="padding:14px;text-align:center;color:var(--text-light);font-size:0.82rem;">מוצגים 200 מתוך ${list.length.toLocaleString()} - צמצם את החיפוש לתוצאות נוספות</td></tr>`;
   }
 }
 
