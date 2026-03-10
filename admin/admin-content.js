@@ -2150,7 +2150,8 @@ function renderContacts() {
         <div id="nd-${i}" onclick="editNote(${i})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
         <input id="ni-${i}" type="text" value="${esc(c.notes)}" onblur="saveNote(${i})" onkeydown="if(event.key==='Enter')saveNote(${i})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
       </td>
-      <td style="padding:9px 14px;text-align:center;">
+      <td style="padding:9px 14px;text-align:center;white-space:nowrap;">
+        <button onclick="openEditContact('${esc(c.email)}')" style="background:#eef4f8;color:#1a4a6b;border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;margin-left:4px;">עריכה</button>
         <button onclick="deleteContact('${esc(c.email)}')" style="background:#fde8e8;color:#c0392b;border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;">מחק</button>
       </td>
     </tr>`;
@@ -2254,6 +2255,96 @@ function deleteContact(email) {
   renderContactStats();
   renderContacts();
   deleteContactFromSB(email);
+}
+
+
+function openEditContact(email) {
+  const c = allContacts.find(x => x.email === email);
+  if (!c) return;
+
+  const overlay = document.createElement('div');
+  overlay.id = 'edit-contact-overlay';
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;';
+
+  overlay.innerHTML = `
+    <div style="background:#fff;border-radius:20px;padding:32px 28px;max-width:420px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,0.2);direction:rtl;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+        <div style="font-size:1rem;font-weight:800;color:#1a4a6b;">עריכת איש קשר</div>
+        <button onclick="document.getElementById('edit-contact-overlay').remove()" style="background:none;border:none;cursor:pointer;font-size:1.3rem;color:#aaa;line-height:1;">✕</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+        <div>
+          <label style="font-size:0.7rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">שם פרטי</label>
+          <input id="ec-first" type="text" value="${(c.first_name||'').replace(/"/g,'&quot;')}" style="width:100%;padding:9px 13px;border:1.5px solid #e8e0d6;border-radius:10px;font-family:inherit;font-size:0.88rem;outline:none;background:#fdf8f2;">
+        </div>
+        <div>
+          <label style="font-size:0.7rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">שם משפחה</label>
+          <input id="ec-last" type="text" value="${(c.last_name||'').replace(/"/g,'&quot;')}" style="width:100%;padding:9px 13px;border:1.5px solid #e8e0d6;border-radius:10px;font-family:inherit;font-size:0.88rem;outline:none;background:#fdf8f2;">
+        </div>
+      </div>
+      <div style="margin-bottom:12px;">
+        <label style="font-size:0.7rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">אימייל</label>
+        <input id="ec-email" type="email" value="${c.email}" dir="ltr" style="width:100%;padding:9px 13px;border:1.5px solid #e8e0d6;border-radius:10px;font-family:inherit;font-size:0.88rem;outline:none;background:#fdf8f2;text-align:left;">
+        <div id="ec-email-err" style="color:#c0392b;font-size:0.75rem;margin-top:4px;display:none;">אימייל זה כבר קיים במאגר</div>
+      </div>
+      <div style="margin-bottom:24px;">
+        <label style="font-size:0.7rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:5px;">טלפון</label>
+        <input id="ec-phone" type="tel" value="${(c.phone||'').replace(/^\+?972-?/,'0')}" dir="ltr" style="width:100%;padding:9px 13px;border:1.5px solid #e8e0d6;border-radius:10px;font-family:inherit;font-size:0.88rem;outline:none;background:#fdf8f2;text-align:left;">
+      </div>
+      <div style="display:flex;gap:10px;">
+        <button onclick="saveEditContact('${email.replace(/'/g,"\'")}', this)" style="flex:1;background:#e8854a;color:#fff;border:none;padding:11px;border-radius:50px;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;">שמור</button>
+        <button onclick="document.getElementById('edit-contact-overlay').remove()" style="flex:1;background:#eef4f8;color:#1a4a6b;border:none;padding:11px;border-radius:50px;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;">ביטול</button>
+      </div>
+    </div>`;
+
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+}
+
+async function saveEditContact(originalEmail, btn) {
+  const newFirst = document.getElementById('ec-first').value.trim();
+  const newLast  = document.getElementById('ec-last').value.trim();
+  const newEmail = document.getElementById('ec-email').value.trim().toLowerCase();
+  const newPhone = document.getElementById('ec-phone').value.trim();
+  const errEl    = document.getElementById('ec-email-err');
+
+  if (!newEmail || !newEmail.includes('@')) {
+    errEl.textContent = 'אימייל לא תקין';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  // בדיקת כפיל — רק אם האימייל השתנה
+  if (newEmail !== originalEmail) {
+    const duplicate = allContacts.find(x => x.email === newEmail);
+    if (duplicate) {
+      errEl.textContent = 'אימייל זה כבר קיים במאגר (' + (duplicate.first_name||'') + ' ' + (duplicate.last_name||'') + ')';
+      errEl.style.display = 'block';
+      return;
+    }
+  }
+  errEl.style.display = 'none';
+
+  btn.textContent = 'שומר...';
+  btn.disabled = true;
+
+  try {
+    const fields = { first_name: newFirst, last_name: newLast, email: newEmail, phone: newPhone };
+    await saveContactToSB(originalEmail, fields);
+
+    // עדכון מקומי
+    const c = allContacts.find(x => x.email === originalEmail);
+    if (c) { c.first_name = newFirst; c.last_name = newLast; c.email = newEmail; c.phone = newPhone; }
+    const fc = filteredContacts.find(x => x.email === originalEmail);
+    if (fc) { fc.first_name = newFirst; fc.last_name = newLast; fc.email = newEmail; fc.phone = newPhone; }
+
+    document.getElementById('edit-contact-overlay').remove();
+    renderContacts();
+  } catch(e) {
+    btn.textContent = 'שמור';
+    btn.disabled = false;
+    alert('שגיאה בשמירה. נסה שוב.');
+  }
 }
 
 async function saveContactToSB(email, fields) {
