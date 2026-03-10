@@ -141,6 +141,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 /* ===== LECTURE ===== */
 .lecture-section { background: var(--white); }
 .lecture-box { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); border-radius: 22px; padding: 36px 28px; color: #fff; position: relative; overflow: hidden; }
+.lecture-img-col { display: block; margin-bottom: 24px; }
 .lecture-img-col img { width: 100%; border-radius: 20px; display: block; }
 .lecture-content-col { flex: 1; }
 .lecture-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(246,166,126,0.18); border: 1px solid rgba(246,166,126,0.4); color: var(--orange); padding: 6px 14px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; margin-bottom: 16px; }
@@ -152,7 +153,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 /* ===== TESTIMONIALS ===== */
 .testi-section { background: var(--orange-light); }
 .featured-quote-wrap { background: var(--navy); border-radius: 18px; padding: 32px; margin-bottom: 24px; }
-.featured-img-col { width: 100%; }
+.featured-img-col { display: block; margin-bottom: 24px; }
 .featured-text-col { display: flex; flex-direction: column; justify-content: center; }
 .featured-quote-text { font-size: 1.1rem; color: #fff; font-style: italic; line-height: 1.75; margin-bottom: 12px; }
 .featured-quote-attr { font-size: 0.75rem; color: var(--orange); font-weight: 600; }
@@ -165,7 +166,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 /* ===== BLOG ===== */
 .blog-section { background: var(--cream); }
 .blog-grid { display: flex; flex-direction: column; gap: 14px; }
-.blog-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 22px; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s; }
+.blog-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; text-decoration: none; color: inherit; display: block; transition: box-shadow 0.2s; overflow: hidden; }
 .blog-card:hover { box-shadow: 0 8px 24px var(--shadow); }
 .blog-tag { display: inline-block; background: var(--navy-light); color: var(--navy-mid); padding: 4px 11px; border-radius: 50px; font-size: 0.67rem; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 .blog-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); line-height: 1.4; margin-bottom: 8px; }
@@ -222,9 +223,10 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   .about-inner { display: grid; grid-template-columns: 380px 1fr; gap: 56px; align-items: start; }
   .about-img-wrap { margin-bottom: 0; aspect-ratio: 4/5; max-width: 380px; }
   .lecture-box { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; padding: 60px; }
-  .lecture-img-col { width: 420px; flex-shrink: 0; }
+  .lecture-img-col { width: 420px; flex-shrink: 0; display: block; }
   .lecture-photo-wrap { width: 240px; height: 240px; border-radius: 50%; aspect-ratio: 1; margin-bottom: 0; }
-  .featured-img-col { width: 420px; flex-shrink: 0; }
+  .featured-quote-wrap { display: grid; grid-template-columns: 420px 1fr; gap: 48px; align-items: center; }
+  .featured-img-col { width: 100%; display: block; flex-shrink: 0; }
   .featured-text-col { flex: 1; }
   .testi-grid { grid-template-columns: repeat(3, 1fr); }
   .blog-grid { grid-template-columns: repeat(3, 1fr); }
@@ -295,8 +297,6 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   color: rgba(255,255,255,0.4);
 }
 
-/* Blog cards — with image */
-.blog-card { overflow: hidden; padding: 0; }
 .blog-thumb { width: 100%; height: 180px; background-size: cover; background-position: center; background-color: var(--navy-light); }
 .blog-thumb-empty { display: none; }
 .blog-card-body { padding: 22px; }
