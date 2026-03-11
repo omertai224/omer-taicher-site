@@ -1698,6 +1698,7 @@ async function uploadGalleryFiles(input) {
           url: data.url,
           type: resourceType,
           name: file.name,
+          key: key,
           category: category,
           date: new Date().toISOString()
         });
@@ -1915,7 +1916,7 @@ async function uploadPickerImage(input, key) {
       };
       const category = repoCategories[GITHUB_REPO] || 'כללי';
       const resourceType = file.type.startsWith('video') ? 'video' : 'image';
-      galleryItems.unshift({ url: data.url, type: resourceType, name: file.name, category, date: new Date().toISOString() });
+      galleryItems.unshift({ url: data.url, type: resourceType, name: file.name, key: fileKey, category, date: new Date().toISOString() });
       await autoSaveGallery();
       await setPickerImage(key, data.url);
     }
