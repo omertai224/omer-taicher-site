@@ -7,7 +7,8 @@ async function loadContent() {
   try {
     const data = await ghGet('content.json');
     contentSha = data.sha;
-    currentData = JSON.parse(decode(data.content));
+    try { currentData = JSON.parse(decode(data.content)); }
+    catch(pe) { throw new Error('content.json לא תקין: ' + pe.message); }
     populateFields(currentData);
     initImagePickers(currentData);
     setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך ולשמור');
@@ -1683,9 +1684,10 @@ async function uploadGalleryFiles(input) {
   setStatus('gallery', 'loading', 'מעלה ' + files.length + ' קבצים...');
 
   let uploaded = 0;
-  for (const file of files) {
+  for (let fi = 0; fi < files.length; fi++) {
+    const file = files[fi];
     try {
-      const key = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const key = Date.now() + '_' + fi + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
       const res = await fetch(`${WORKER_URL}/${key}`, {
         method: 'PUT',
         headers: { 'Content-Type': file.type },
@@ -2219,7 +2221,7 @@ function goContactsPage(p) {
   if (tbl) tbl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function changeCount(email, delta) {
+async function changeCount(email, delta) {
   const c = allContacts.find(x => x.email === email);
   if (!c) return;
   c.count = Math.max(1, (parseInt(c.count) || 1) + delta);
@@ -2227,7 +2229,7 @@ function changeCount(email, delta) {
   if (fc) fc.count = c.count;
   renderContactStats();
   renderContacts();
-  saveContactToSB(email, { count: c.count });
+  await saveContactToSB(email, { count: c.count });
 }
 
 function editNote(i) {
@@ -2237,7 +2239,7 @@ function editNote(i) {
   inp.focus();
 }
 
-function saveNote(i) {
+async function saveNote(i) {
   const inp  = document.getElementById('ni-' + i);
   const val  = inp.value.trim();
   const c    = filteredContacts[i];
@@ -2249,7 +2251,7 @@ function saveNote(i) {
   const disp = document.getElementById('nd-' + i);
   disp.style.display = 'block';
   disp.innerHTML = val || '<span style="color:#ccc;">+ הוסף הערה</span>';
-  saveContactToSB(c.email, { notes: val });
+  await saveContactToSB(c.email, { notes: val });
 }
 
 function switchInsightTab(i) {

@@ -266,7 +266,10 @@ async function deleteAnyFile(path, sha) {
       });
       const d = await r.json();
       sha = d.sha;
-    } catch(e) {}
+    } catch(e) {
+      setStatus('code', 'error', 'שגיאה בקבלת SHA: ' + e.message);
+      return;
+    }
   }
   const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
     method: 'DELETE',

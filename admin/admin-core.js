@@ -17,7 +17,7 @@ let currentTreePath = '';
 
 // ===== TOKEN =====
 function checkToken() {
-  GITHUB_TOKEN = localStorage.getItem('gh_token') || '';
+  GITHUB_TOKEN = sessionStorage.getItem('gh_token') || '';
   if (!GITHUB_TOKEN) {
     document.getElementById('token-gate').style.display = 'flex';
   } else {
@@ -29,7 +29,11 @@ function checkToken() {
 
 function saveToken() {
   const username = document.getElementById('token-input').value.trim();
-  if (!username) { showLoginError('נא להכניס שם משתמש'); return; }
+  if (!username) { showLoginError('נא להכניס טוקן'); return; }
+  if (!/^(ghp_|github_pat_)/.test(username) && username.length < 20) {
+    showLoginError('הטוקן לא נראה תקין — בדוק שהעתקת נכון');
+    return;
+  }
   const btn = document.querySelector('.token-btn');
   btn.textContent = 'מתחבר...';
   btn.disabled = true;
@@ -39,7 +43,7 @@ function saveToken() {
   })
   .then(r => {
     if (!r.ok) throw new Error('github');
-    localStorage.setItem('gh_token', username);
+    sessionStorage.setItem('gh_token', username);
     GITHUB_TOKEN = username;
     document.getElementById('token-gate').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
@@ -48,7 +52,7 @@ function saveToken() {
   .catch(() => {
     btn.textContent = 'כניסה';
     btn.disabled = false;
-    showLoginError('שם משתמש שגוי');
+    showLoginError('טוקן שגוי או שאין חיבור לאינטרנט');
   });
 }
 
