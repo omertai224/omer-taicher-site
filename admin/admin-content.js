@@ -709,6 +709,7 @@ async function uploadToCloudinary(input) {
       headers: { 'Content-Type': file.type },
       body: file
     });
+    if (!res.ok) throw new Error('שגיאה בהעלאה: ' + res.status);
     const data = await res.json();
     if (data.url) {
       document.getElementById('bf-image').value = data.url;
@@ -1701,6 +1702,7 @@ async function uploadGalleryFiles(input) {
         headers: { 'Content-Type': file.type },
         body: file
       });
+      if (!res.ok) throw new Error('שגיאה בהעלאה: ' + res.status);
       const data = await res.json();
       if (data.url) {
         const resourceType = file.type.startsWith('video') ? 'video' : 'image';
@@ -1916,6 +1918,7 @@ async function uploadPickerImage(input, key) {
       headers: { 'Content-Type': file.type },
       body: file
     });
+    if (!res.ok) throw new Error('שגיאה בהעלאה: ' + res.status);
     const data = await res.json();
     if (data.url) {
       // שמירה גם בגלריה עם קטגוריה לפי ריפו
@@ -2165,15 +2168,15 @@ function renderContacts() {
     const esc = s => (s||'').replace(/"/g, '&quot;');
     const gi = start + i;
     return `<tr style="border-bottom:1px solid var(--border);${i%2?'background:#fafafa;':''}">
-      <td style="padding:9px 14px;font-weight:600;">${c.first_name}</td>
-      <td style="padding:9px 14px;">${c.last_name}</td>
-      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.email}</td>
+      <td style="padding:9px 14px;font-weight:600;">${escapeHtml(c.first_name)}</td>
+      <td style="padding:9px 14px;">${escapeHtml(c.last_name)}</td>
+      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${escapeHtml(c.email)}</td>
       <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;white-space:nowrap;">${phone}</td>
       <td style="padding:9px 14px;text-align:center;">
         <span style="background:${bg};color:${col};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;min-width:28px;display:inline-block;text-align:center;">${cnt}</span>
       </td>
       <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:200px;">
-        <div id="nd-${gi}" onclick="editNote(${gi})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
+        <div id="nd-${gi}" onclick="editNote(${gi})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes ? esc(c.notes) : '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
         <input id="ni-${gi}" type="text" value="${esc(c.notes)}" onblur="saveNote(${gi})" onkeydown="if(event.key==='Enter')saveNote(${gi})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
       </td>
       <td style="padding:9px 14px;text-align:center;white-space:nowrap;">
@@ -2260,7 +2263,7 @@ async function saveNote(i) {
     inp.style.display = 'none';
     const disp = document.getElementById('nd-' + i);
     disp.style.display = 'block';
-    disp.innerHTML = val || '<span style="color:#ccc;">+ הוסף הערה</span>';
+    disp.innerHTML = val ? escapeHtml(val) : '<span style="color:#ccc;">+ הוסף הערה</span>';
   } catch(e) {
     inp.style.borderColor = '#c0392b';
     setTimeout(() => { inp.style.borderColor = ''; }, 2000);

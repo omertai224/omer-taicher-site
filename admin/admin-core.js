@@ -30,7 +30,7 @@ function checkToken() {
 function saveToken() {
   const username = document.getElementById('token-input').value.trim();
   if (!username) { showLoginError('נא להכניס טוקן'); return; }
-  if (!/^(ghp_|github_pat_)/.test(username) && username.length < 20) {
+  if (!/^(ghp_|github_pat_)/.test(username) || username.length < 20) {
     showLoginError('הטוקן לא נראה תקין — בדוק שהעתקת נכון');
     return;
   }
@@ -179,6 +179,7 @@ async function ghGet(path) {
   const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
   });
+  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
   return res.json();
 }
 
@@ -188,6 +189,7 @@ async function ghPut(path, content, sha, message) {
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, content: btoa(unescape(encodeURIComponent(content))), sha, branch: GITHUB_BRANCH })
   });
+  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
   return res.json();
 }
 
