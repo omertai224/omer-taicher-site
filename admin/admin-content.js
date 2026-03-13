@@ -1615,7 +1615,7 @@ function downloadSelectedGalleryItems() {
   });
 }
 
-function moveSelectedToCategory() {
+async function moveSelectedToCategory() {
   const cat = document.getElementById('gallery-move-select')?.value;
   if (!cat) return;
   selectedGalleryItems.forEach(idx => {
@@ -1623,8 +1623,9 @@ function moveSelectedToCategory() {
   });
   selectedGalleryItems.clear();
   renderGallery();
-  autoSaveGallery();
+  updateGalleryFilterCounts();
   document.getElementById('gallery-move-select').value = '';
+  await autoSaveGallery();
 }
 
 function updateMultiDeleteBtn() {
@@ -1730,7 +1731,10 @@ async function uploadGalleryFiles(input) {
   input.value = '';
 }
 
+let _gallerySaving = false;
 async function autoSaveGallery() {
+  if (_gallerySaving) return;
+  _gallerySaving = true;
   try {
     // תמיד רענן SHA לפני שמירה
     try {
@@ -1740,7 +1744,7 @@ async function autoSaveGallery() {
     const categories = {};
     const order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
     galleryItems.forEach(item => {
-      if (item.key && item.category && item.category !== 'כללי') {
+      if (item.key && item.category) {
         categories[item.key] = item.category;
       }
     });
@@ -1755,6 +1759,8 @@ async function autoSaveGallery() {
   } catch(e) {
     setStatus('gallery', 'error', 'שגיאה בשמירה');
     console.error(e);
+  } finally {
+    _gallerySaving = false;
   }
 }
 
