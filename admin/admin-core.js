@@ -17,7 +17,7 @@ let currentTreePath = '';
 
 // ===== TOKEN =====
 function checkToken() {
-  GITHUB_TOKEN = localStorage.getItem('gh_token') || '';
+  GITHUB_TOKEN = sessionStorage.getItem('gh_token') || '';
   if (!GITHUB_TOKEN) {
     document.getElementById('token-gate').style.display = 'flex';
   } else {
@@ -29,7 +29,11 @@ function checkToken() {
 
 function saveToken() {
   const username = document.getElementById('token-input').value.trim();
-  if (!username) { showLoginError('נא להכניס שם משתמש'); return; }
+  if (!username) { showLoginError('נא להכניס טוקן'); return; }
+  if (!/^(ghp_|github_pat_)/.test(username) || username.length < 20) {
+    showLoginError('הטוקן לא נראה תקין — בדוק שהעתקת נכון');
+    return;
+  }
   const btn = document.querySelector('.token-btn');
   btn.textContent = 'מתחבר...';
   btn.disabled = true;
@@ -39,7 +43,7 @@ function saveToken() {
   })
   .then(r => {
     if (!r.ok) throw new Error('github');
-    localStorage.setItem('gh_token', username);
+    sessionStorage.setItem('gh_token', username);
     GITHUB_TOKEN = username;
     document.getElementById('token-gate').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
@@ -48,7 +52,7 @@ function saveToken() {
   .catch(() => {
     btn.textContent = 'כניסה';
     btn.disabled = false;
-    showLoginError('שם משתמש שגוי');
+    showLoginError('טוקן שגוי או שאין חיבור לאינטרנט');
   });
 }
 
@@ -74,39 +78,74 @@ function init() {
     'omer-taicher-interactive': 'repo-btn-tutorials',
     'omer-taicher-blog':      'repo-btn-blog'
   };
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  const tabBtn  = [...tabBtns].find(b => b.getAttribute('onclick')?.includes("'" + savedTab + "'"));
   selectRepo(savedRepo, document.getElementById(btnMap[savedRepo]));
-  switchTab(savedTab, tabBtn || null);
+  if (savedTab !== 'content') switchTab(savedTab);
 }
 
 // ===== TABS =====
 function switchTab(name, btn) {
+  const utilityTabs = ['code', 'gallery', 'download', 'contacts'];
+  const isUtility = utilityTabs.includes(name);
+
+  // הסתר את כל הפאנלים
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  if (btn) btn.classList.add('active');
 
-  // כפתור גיבוי האתר — הדגש כשפעיל, אפס כשלא
-  const dlBtn = document.getElementById('tab-btn-download');
-  if (dlBtn) {
-    dlBtn.style.opacity = name === 'download' ? '1' : '0.65';
-    dlBtn.style.transform = name === 'download' ? 'scale(1.05)' : 'scale(1)';
+  if (isUtility) {
+    // הצג פאנל כלי עזר
+    document.getElementById('tab-' + name).classList.add('active');
+  } else {
+    // הצג תוכן — חזרה לתוכן הריפו הנוכחי
+    document.getElementById('tab-content').classList.add('active');
   }
 
-  // כפתור גלריה
-  const glBtn = document.getElementById('tab-btn-gallery');
-  if (glBtn) {
-    glBtn.style.opacity = name === 'gallery' ? '1' : '0.65';
-    glBtn.style.transform = name === 'gallery' ? 'scale(1.05)' : 'scale(1)';
+  // הדגשת כפתורי עזר
+  const utilBtns = { download: 'tab-btn-download', gallery: 'tab-btn-gallery', contacts: 'tab-btn-contacts', code: 'tab-btn-code' };
+  for (const [key, id] of Object.entries(utilBtns)) {
+    const b = document.getElementById(id);
+    if (b) {
+      b.style.opacity = name === key ? '1' : '0.65';
+      b.style.transform = name === key ? 'scale(1.05)' : 'scale(1)';
+    }
   }
 
+  // כפתור שמור ופרסם
   const saveBtn = document.getElementById('save-content-btn');
-  if (saveBtn) saveBtn.style.visibility = (name === 'content' && GITHUB_REPO === 'omer-taicher-site') ? 'visible' : 'hidden';
+  if (saveBtn) saveBtn.style.visibility = (!isUtility && GITHUB_REPO === 'omer-taicher-site') ? 'visible' : 'hidden';
+
   localStorage.setItem('admin_active_tab', name);
   if (name === 'download') initDownloadTab();
   if (name === 'gallery') loadGalleryManager();
   if (name === 'contacts') loadContacts();
+  if (name === 'code') {
+    // טען עץ קבצים לריפו הנוכחי
+    loadFileTree(GITHUB_REPO === 'omer-taicher-site' ? 'admin' : '');
+    // סמן כפתור repo נכון בטאב קוד
+    document.querySelectorAll('.code-repo-btn').forEach(b => b.classList.remove('active'));
+    const codeRepoBtnMap = { 'omer-taicher-site': 'code-repo-site', 'omer-taicher-interactive': 'code-repo-interactive', 'omer-taicher-blog': 'code-repo-blog' };
+    const activeCodeBtn = document.getElementById(codeRepoBtnMap[GITHUB_REPO]);
+    if (activeCodeBtn) activeCodeBtn.classList.add('active');
+  }
+}
+
+// ===== CODE REPO SWITCHER =====
+function switchCodeRepo(repoName, btn) {
+  GITHUB_REPO = repoName;
+  currentCodeFile = null;
+  currentCodeSha = null;
+  currentTreePath = '';
+
+  // סמן כפתור פעיל
+  document.querySelectorAll('.code-repo-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+
+  // אפס עורך
+  const codeEditor = document.getElementById('code-editor');
+  if (codeEditor) codeEditor.value = '';
+  const editorFilename = document.getElementById('editor-filename');
+  if (editorFilename) editorFilename.textContent = '— בחר קובץ —';
+
+  // טען עץ קבצים
+  loadFileTree(repoName === 'omer-taicher-site' ? 'admin' : '');
 }
 
 // ===== REPO SWITCHER =====
@@ -114,20 +153,15 @@ function selectRepo(repoName, btn) {
   GITHUB_REPO = repoName;
   localStorage.setItem('admin_active_repo', repoName);
   contentSha = null; currentData = null;
-  currentCodeFile = null; currentCodeSha = null;
-  currentTreePath = '';
 
   // כפתורי repo — active על הנבחר
   document.querySelectorAll('.repo-btn, .repo-pill').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
 
-  // איפוס עורך קוד
-  const codeEditor = document.getElementById('code-editor');
-  if (codeEditor) codeEditor.value = '';
-  const editorFilename = document.getElementById('editor-filename');
-  if (editorFilename) editorFilename.textContent = '— בחר קובץ —';
+  // חזרה לתצוגת תוכן
+  switchTab('content');
 
-  // הצג/הסתר תוכן לפי repo — רק בטאב תוכן
+  // הצג/הסתר תוכן לפי repo
   const isSite  = repoName === 'omer-taicher-site';
   const isBlog  = repoName === 'omer-taicher-blog';
   const isTutos = repoName === 'omer-taicher-interactive';
@@ -139,11 +173,10 @@ function selectRepo(repoName, btn) {
   if (blogMgr)      blogMgr.style.display       = isBlog  ? 'block' : 'none';
   if (tutosContent) tutosContent.style.display  = isTutos ? 'block' : 'none';
 
-  // כפתור שמור ופרסם — גלוי רק באתר ראשי + טאב תוכן
+  // כפתור שמור ופרסם — גלוי רק באתר ראשי
   const saveBtn = document.getElementById('save-content-btn');
-  const activeTab = localStorage.getItem('admin_active_tab') || 'content';
   if (saveBtn) {
-    saveBtn.style.visibility = (isSite && activeTab === 'content') ? 'visible' : 'hidden';
+    saveBtn.style.visibility = isSite ? 'visible' : 'hidden';
     saveBtn.disabled = true;
   }
 
@@ -160,7 +193,6 @@ function selectRepo(repoName, btn) {
     setTimeout(loadInteractiveManager, 50);
     setTimeout(loadInteractiveContent, 80);
   }
-  loadFileTree(GITHUB_REPO === 'omer-taicher-site' ? 'admin' : '');
 }
 
 // ===== HELPERS =====
@@ -175,6 +207,7 @@ async function ghGet(path) {
   const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
   });
+  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
   return res.json();
 }
 
@@ -184,6 +217,7 @@ async function ghPut(path, content, sha, message) {
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, content: btoa(unescape(encodeURIComponent(content))), sha, branch: GITHUB_BRANCH })
   });
+  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
   return res.json();
 }
 

@@ -16,6 +16,7 @@ async function loadFileTree(path) {
   try {
     const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
     const res = await fetch(url, { headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } });
+    if (!res.ok) throw new Error('שגיאה בטעינה: ' + res.status);
     const items = await res.json();
     if (!Array.isArray(items)) throw new Error('לא ניתן לטעון');
     renderTree(items, path);
@@ -36,6 +37,8 @@ async function copyFileContent(filepath) {
   }
 }
 
+function escAttr(s) { return (s||'').replace(/&/g,'&amp;').replace(/'/g,'&#39;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
 function renderTree(items, currentPath) {
   const container = document.getElementById('file-items');
   items.sort((a, b) => {
@@ -48,7 +51,7 @@ function renderTree(items, currentPath) {
     const parts = currentPath.split('/');
     parts.forEach((part, i) => {
       const partPath = parts.slice(0, i+1).join('/');
-      crumbs += ` <span class="bc-sep">/</span> <span class="bc-part" onclick="loadFileTree('${partPath}')">${part}</span>`;
+      crumbs += ` <span class="bc-sep">/</span> <span class="bc-part" onclick="loadFileTree('${escAttr(partPath)}')">${escAttr(part)}</span>`;
     });
   }
   let html = `<div class="breadcrumb">${crumbs}</div>`;
@@ -58,18 +61,18 @@ function renderTree(items, currentPath) {
     const icon = item.type === 'dir' ? '📁' : (EXT_ICONS[ext] || '📄');
     const desc = FILE_DESCRIPTIONS[item.name] || '';
     const descTag = desc ? `<span class="file-item-desc">${desc}</span>` : '';
-    const delBtn = `<button class="delete-img-btn" onclick="confirmDelete('${item.path}','${item.sha || ''}','${item.type}')" title="מחק">🗑</button>`;
+    const delBtn = `<button class="delete-img-btn" onclick="confirmDelete('${escAttr(item.path)}','${escAttr(item.sha || '')}','${escAttr(item.type)}')" title="מחק">🗑</button>`;
     const repoDomain = GITHUB_REPO === 'omer-taicher-blog' ? 'https://blog.omertai.net' : GITHUB_REPO === 'omer-taicher-interactive' ? 'https://interactive.omertai.net' : 'https://omertai.net';
-    const previewBtn = (item.type === 'file' && ext === 'html') ? `<button class="delete-img-btn" onclick="window.open('${repoDomain}/${item.path}','_blank')" title="תצוגה מקדימה">👁</button>` : '';
+    const previewBtn = (item.type === 'file' && ext === 'html') ? `<button class="delete-img-btn" onclick="window.open('${escAttr(repoDomain + '/' + item.path)}','_blank')" title="תצוגה מקדימה">👁</button>` : '';
     if (item.type === 'dir') {
-      html += `<div class="file-item"><span class="file-item-icon" onclick="loadFileTree('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFileTree('${item.path}')" style="cursor:pointer">${item.name}/</span>${descTag}${delBtn}</div>`;
+      html += `<div class="file-item"><span class="file-item-icon" onclick="loadFileTree('${escAttr(item.path)}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFileTree('${escAttr(item.path)}')" style="cursor:pointer">${escAttr(item.name)}/</span>${descTag}${delBtn}</div>`;
     } else {
       const isEditable = ['html','js','css','json','md','txt','svg'].includes(ext);
       if (isEditable) {
-        const copyBtn = `<button class="delete-img-btn" onclick="copyFileContent('${item.path}')" title="העתק תוכן">📋</button>`;
-        html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}"><span class="file-item-icon" onclick="loadFile('${item.path}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFile('${item.path}')" style="cursor:pointer">${item.name}</span>${descTag}${previewBtn}${copyBtn}${delBtn}</div>`;
+        const copyBtn = `<button class="delete-img-btn" onclick="copyFileContent('${escAttr(item.path)}')" title="העתק תוכן">📋</button>`;
+        html += `<div class="file-item" id="fi-${item.path.replace(/\//g,'__')}"><span class="file-item-icon" onclick="loadFile('${escAttr(item.path)}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFile('${escAttr(item.path)}')" style="cursor:pointer">${escAttr(item.name)}</span>${descTag}${previewBtn}${copyBtn}${delBtn}</div>`;
       } else {
-        html += `<div class="file-item"><span class="file-item-icon">${icon}</span><span class="file-item-name">${item.name}</span>${descTag}${delBtn}</div>`;
+        html += `<div class="file-item"><span class="file-item-icon">${icon}</span><span class="file-item-name">${escAttr(item.name)}</span>${descTag}${delBtn}</div>`;
       }
     }
   });
@@ -266,7 +269,10 @@ async function deleteAnyFile(path, sha) {
       });
       const d = await r.json();
       sha = d.sha;
-    } catch(e) {}
+    } catch(e) {
+      setStatus('code', 'error', 'שגיאה בקבלת SHA: ' + e.message);
+      return;
+    }
   }
   const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
     method: 'DELETE',

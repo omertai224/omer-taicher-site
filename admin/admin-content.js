@@ -7,7 +7,8 @@ async function loadContent() {
   try {
     const data = await ghGet('content.json');
     contentSha = data.sha;
-    currentData = JSON.parse(decode(data.content));
+    try { currentData = JSON.parse(decode(data.content)); }
+    catch(pe) { throw new Error('content.json לא תקין: ' + pe.message); }
     populateFields(currentData);
     initImagePickers(currentData);
     setStatus('content', 'ok', 'תוכן נטען — ניתן לערוך ולשמור');
@@ -561,6 +562,11 @@ function stripHtmlAdmin(str) {
   return tmp.textContent || tmp.innerText || '';
 }
 
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 function showBlogForm(post) {
 
   const container = document.getElementById('blog-manager');
@@ -587,12 +593,12 @@ function showBlogForm(post) {
 
     <div class="field">
       <label class="field-label">כותרת *</label>
-      <div id="bf-title" contenteditable="true" oninput="blogAutoSlug()" style="min-height:2.2em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:1rem;font-family:inherit;line-height:1.6;background:#fff;outline:none;direction:rtl">${post.title || ''}</div>
+      <div id="bf-title" contenteditable="true" oninput="blogAutoSlug()" style="min-height:2.2em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:1rem;font-family:inherit;line-height:1.6;background:#fff;outline:none;direction:rtl">${escapeHtml(post.title)}</div>
     </div>
 
     <div class="field">
       <label class="field-label">תקציר *</label>
-      <div id="bf-excerpt" contenteditable="true" style="min-height:4em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:0.95rem;font-family:inherit;line-height:1.7;background:#fff;outline:none;direction:rtl">${post.excerpt || ''}</div>
+      <div id="bf-excerpt" contenteditable="true" style="min-height:4em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:0.95rem;font-family:inherit;line-height:1.7;background:#fff;outline:none;direction:rtl">${escapeHtml(post.excerpt)}</div>
     </div>
 
     <div class="field">
@@ -703,6 +709,7 @@ async function uploadToCloudinary(input) {
       headers: { 'Content-Type': file.type },
       body: file
     });
+    if (!res.ok) throw new Error('שגיאה בהעלאה: ' + res.status);
     const data = await res.json();
     if (data.url) {
       document.getElementById('bf-image').value = data.url;
@@ -829,24 +836,23 @@ async function blogSendWhatsapp(postId) {
   const excerpt = post.excerpt.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').trim();
   const url = 'https://blog.omertai.net/post.html?id=' + post.id;
   const message = 'היי חברים, בוקר טוב ☀️\nפוסט חדש עלה:\n\n' + excerpt + '\n\n' + url;
-
-  const instanceId = '7105234514';
-  const apiToken = '3ce48a9a896443f3a7f6698f4a6012936c7dc288199e4ec19c';
-  const apiUrl = 'https://7105.api.greenapi.com';
   const chatId = '972526587420@c.us';
 
   try {
     setStatus('content', 'loading', 'שולח לוואטסאפ...');
-    const res = await fetch(`${apiUrl}/waInstance${instanceId}/sendMessage/${apiToken}`, {
+    const res = await fetch('/api/whatsapp', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `token ${GITHUB_TOKEN}`
+      },
       body: JSON.stringify({ chatId, message })
     });
     const data = await res.json();
-    if (data.idMessage) {
+    if (data.success) {
       setStatus('content', 'ok', '✓ נשלח לוואטסאפ');
     } else {
-      setStatus('content', 'error', 'שגיאה: ' + JSON.stringify(data));
+      setStatus('content', 'error', 'שגיאה: ' + (data.error || 'לא ידוע'));
     }
   } catch(e) {
     setStatus('content', 'error', 'שגיאה בשליחה: ' + e.message);
@@ -999,6 +1005,8 @@ async function blogSavePost() {
     if (blogEditingId) {
       const idx = posts.findIndex(p => p.id === blogEditingId);
       if (idx === -1) throw new Error('הפוסט לא נמצא');
+      // בדיקה שה-ID החדש לא שייך לפוסט אחר
+      if (id !== blogEditingId && posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט אחר עם ID: ' + id);
       posts[idx] = post;
     } else {
       if (posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט עם ID: ' + id);
@@ -1455,7 +1463,9 @@ async function loadGalleryManager() {
     try {
       const data = await ghGet('gallery.json');
       gallerySha = data.sha;
-      const saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
+      let saved;
+      try { saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))))); }
+      catch(pe) { console.error('gallery.json לא תקין:', pe); saved = {}; }
       categories = saved.categories || {};
       order = saved.order || [];
     } catch(e) {
@@ -1683,14 +1693,16 @@ async function uploadGalleryFiles(input) {
   setStatus('gallery', 'loading', 'מעלה ' + files.length + ' קבצים...');
 
   let uploaded = 0;
-  for (const file of files) {
+  for (let fi = 0; fi < files.length; fi++) {
+    const file = files[fi];
     try {
-      const key = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      const key = Date.now() + '_' + fi + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
       const res = await fetch(`${WORKER_URL}/${key}`, {
         method: 'PUT',
         headers: { 'Content-Type': file.type },
         body: file
       });
+      if (!res.ok) throw new Error('שגיאה בהעלאה: ' + res.status);
       const data = await res.json();
       if (data.url) {
         const resourceType = file.type.startsWith('video') ? 'video' : 'image';
@@ -1906,6 +1918,7 @@ async function uploadPickerImage(input, key) {
       headers: { 'Content-Type': file.type },
       body: file
     });
+    if (!res.ok) throw new Error('שגיאה בהעלאה: ' + res.status);
     const data = await res.json();
     if (data.url) {
       // שמירה גם בגלריה עם קטגוריה לפי ריפו
@@ -2155,15 +2168,15 @@ function renderContacts() {
     const esc = s => (s||'').replace(/"/g, '&quot;');
     const gi = start + i;
     return `<tr style="border-bottom:1px solid var(--border);${i%2?'background:#fafafa;':''}">
-      <td style="padding:9px 14px;font-weight:600;">${c.first_name}</td>
-      <td style="padding:9px 14px;">${c.last_name}</td>
-      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${c.email}</td>
+      <td style="padding:9px 14px;font-weight:600;">${escapeHtml(c.first_name)}</td>
+      <td style="padding:9px 14px;">${escapeHtml(c.last_name)}</td>
+      <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;">${escapeHtml(c.email)}</td>
       <td style="padding:9px 14px;direction:ltr;text-align:right;font-size:0.8rem;color:#555;white-space:nowrap;">${phone}</td>
       <td style="padding:9px 14px;text-align:center;">
         <span style="background:${bg};color:${col};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:700;min-width:28px;display:inline-block;text-align:center;">${cnt}</span>
       </td>
       <td style="padding:9px 14px;font-size:0.78rem;color:#666;max-width:200px;">
-        <div id="nd-${gi}" onclick="editNote(${gi})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes || '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
+        <div id="nd-${gi}" onclick="editNote(${gi})" style="cursor:pointer;min-height:20px;" title="לחץ לעריכה">${c.notes ? esc(c.notes) : '<span style="color:#ccc;">+ הוסף הערה</span>'}</div>
         <input id="ni-${gi}" type="text" value="${esc(c.notes)}" onblur="saveNote(${gi})" onkeydown="if(event.key==='Enter')saveNote(${gi})" style="display:none;width:100%;padding:4px 8px;border:1.5px solid var(--navy);border-radius:6px;font-family:inherit;font-size:0.78rem;outline:none;">
       </td>
       <td style="padding:9px 14px;text-align:center;white-space:nowrap;">
@@ -2219,7 +2232,7 @@ function goContactsPage(p) {
   if (tbl) tbl.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function changeCount(email, delta) {
+async function changeCount(email, delta) {
   const c = allContacts.find(x => x.email === email);
   if (!c) return;
   c.count = Math.max(1, (parseInt(c.count) || 1) + delta);
@@ -2227,7 +2240,7 @@ function changeCount(email, delta) {
   if (fc) fc.count = c.count;
   renderContactStats();
   renderContacts();
-  saveContactToSB(email, { count: c.count });
+  await saveContactToSB(email, { count: c.count });
 }
 
 function editNote(i) {
@@ -2237,19 +2250,24 @@ function editNote(i) {
   inp.focus();
 }
 
-function saveNote(i) {
+async function saveNote(i) {
   const inp  = document.getElementById('ni-' + i);
   const val  = inp.value.trim();
   const c    = filteredContacts[i];
   if (!c) return;
   const orig = allContacts.find(x => x.email === c.email);
-  if (orig) orig.notes = val;
-  c.notes = val;
-  inp.style.display = 'none';
-  const disp = document.getElementById('nd-' + i);
-  disp.style.display = 'block';
-  disp.innerHTML = val || '<span style="color:#ccc;">+ הוסף הערה</span>';
-  saveContactToSB(c.email, { notes: val });
+  try {
+    await saveContactToSB(c.email, { notes: val });
+    if (orig) orig.notes = val;
+    c.notes = val;
+    inp.style.display = 'none';
+    const disp = document.getElementById('nd-' + i);
+    disp.style.display = 'block';
+    disp.innerHTML = val ? escapeHtml(val) : '<span style="color:#ccc;">+ הוסף הערה</span>';
+  } catch(e) {
+    inp.style.borderColor = '#c0392b';
+    setTimeout(() => { inp.style.borderColor = ''; }, 2000);
+  }
 }
 
 function switchInsightTab(i) {
@@ -2351,7 +2369,7 @@ function openEditContact(email) {
         <input id="ec-phone" type="tel" value="${(c.phone||'').replace(/^\+?972-?/,'0')}" dir="ltr" style="width:100%;padding:9px 13px;border:1.5px solid #e8e0d6;border-radius:10px;font-family:inherit;font-size:0.88rem;outline:none;background:#fdf8f2;text-align:left;">
       </div>
       <div style="display:flex;gap:10px;">
-        <button onclick="saveEditContact('${email.replace(/'/g,"\'")}', this)" style="flex:1;background:#e8854a;color:#fff;border:none;padding:11px;border-radius:50px;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;">שמור</button>
+        <button onclick="saveEditContact('${escapeHtml(email).replace(/'/g,'&#39;')}', this)" style="flex:1;background:#e8854a;color:#fff;border:none;padding:11px;border-radius:50px;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;">שמור</button>
         <button onclick="document.getElementById('edit-contact-overlay').remove()" style="flex:1;background:#eef4f8;color:#1a4a6b;border:none;padding:11px;border-radius:50px;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;">ביטול</button>
       </div>
     </div>`;
@@ -2367,7 +2385,7 @@ async function saveEditContact(originalEmail, btn) {
   const newPhone = document.getElementById('ec-phone').value.trim();
   const errEl    = document.getElementById('ec-email-err');
 
-  if (!newEmail || !newEmail.includes('@')) {
+  if (!newEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(newEmail)) {
     errEl.textContent = 'אימייל לא תקין';
     errEl.style.display = 'block';
     return;

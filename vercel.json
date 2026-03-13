@@ -2,6 +2,29 @@
   "functions": {
     "api/payplus.js": {
       "maxDuration": 10
+    },
+    "api/whatsapp.js": {
+      "maxDuration": 10
     }
-  }
+  },
+  "headers": [
+    {
+      "source": "/assets/css/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=604800" }
+      ]
+    },
+    {
+      "source": "/assets/js/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=604800" }
+      ]
+    },
+    {
+      "source": "/(.*).json",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=60, s-maxage=300" }
+      ]
+    }
+  ]
 }

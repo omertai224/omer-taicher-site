@@ -11,9 +11,9 @@ const PAYPLUS_BASE_URL = process.env.PAYPLUS_ENV === 'production'
   ? 'https://restapi.payplus.co.il'
   : 'https://restapidev.payplus.co.il';
 
-const API_KEY    = process.env.PAYPLUS_API_KEY    || 'dac11423-0481-4d1b-a08d-98485b596c2e';
-const SECRET_KEY = process.env.PAYPLUS_SECRET_KEY || '6352f66d-931d-47c2-b562-f2fd5016da00';
-const PAGE_UID   = process.env.PAYPLUS_PAGE_UID   || '1e3f5175-576a-4abf-962c-b5e19dd82da8';
+const API_KEY    = process.env.PAYPLUS_API_KEY;
+const SECRET_KEY = process.env.PAYPLUS_SECRET_KEY;
+const PAGE_UID   = process.env.PAYPLUS_PAGE_UID;
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://omertai.net');
