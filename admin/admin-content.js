@@ -562,6 +562,11 @@ function stripHtmlAdmin(str) {
   return tmp.textContent || tmp.innerText || '';
 }
 
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 function showBlogForm(post) {
 
   const container = document.getElementById('blog-manager');
@@ -588,12 +593,12 @@ function showBlogForm(post) {
 
     <div class="field">
       <label class="field-label">כותרת *</label>
-      <div id="bf-title" contenteditable="true" oninput="blogAutoSlug()" style="min-height:2.2em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:1rem;font-family:inherit;line-height:1.6;background:#fff;outline:none;direction:rtl">${post.title || ''}</div>
+      <div id="bf-title" contenteditable="true" oninput="blogAutoSlug()" style="min-height:2.2em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:1rem;font-family:inherit;line-height:1.6;background:#fff;outline:none;direction:rtl">${escapeHtml(post.title)}</div>
     </div>
 
     <div class="field">
       <label class="field-label">תקציר *</label>
-      <div id="bf-excerpt" contenteditable="true" style="min-height:4em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:0.95rem;font-family:inherit;line-height:1.7;background:#fff;outline:none;direction:rtl">${post.excerpt || ''}</div>
+      <div id="bf-excerpt" contenteditable="true" style="min-height:4em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:0.95rem;font-family:inherit;line-height:1.7;background:#fff;outline:none;direction:rtl">${escapeHtml(post.excerpt)}</div>
     </div>
 
     <div class="field">
@@ -830,24 +835,23 @@ async function blogSendWhatsapp(postId) {
   const excerpt = post.excerpt.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').trim();
   const url = 'https://blog.omertai.net/post.html?id=' + post.id;
   const message = 'היי חברים, בוקר טוב ☀️\nפוסט חדש עלה:\n\n' + excerpt + '\n\n' + url;
-
-  const instanceId = '7105234514';
-  const apiToken = '3ce48a9a896443f3a7f6698f4a6012936c7dc288199e4ec19c';
-  const apiUrl = 'https://7105.api.greenapi.com';
   const chatId = '972526587420@c.us';
 
   try {
     setStatus('content', 'loading', 'שולח לוואטסאפ...');
-    const res = await fetch(`${apiUrl}/waInstance${instanceId}/sendMessage/${apiToken}`, {
+    const res = await fetch('/api/whatsapp', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `token ${GITHUB_TOKEN}`
+      },
       body: JSON.stringify({ chatId, message })
     });
     const data = await res.json();
-    if (data.idMessage) {
+    if (data.success) {
       setStatus('content', 'ok', '✓ נשלח לוואטסאפ');
     } else {
-      setStatus('content', 'error', 'שגיאה: ' + JSON.stringify(data));
+      setStatus('content', 'error', 'שגיאה: ' + (data.error || 'לא ידוע'));
     }
   } catch(e) {
     setStatus('content', 'error', 'שגיאה בשליחה: ' + e.message);
@@ -1000,6 +1004,8 @@ async function blogSavePost() {
     if (blogEditingId) {
       const idx = posts.findIndex(p => p.id === blogEditingId);
       if (idx === -1) throw new Error('הפוסט לא נמצא');
+      // בדיקה שה-ID החדש לא שייך לפוסט אחר
+      if (id !== blogEditingId && posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט אחר עם ID: ' + id);
       posts[idx] = post;
     } else {
       if (posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט עם ID: ' + id);
@@ -1456,7 +1462,9 @@ async function loadGalleryManager() {
     try {
       const data = await ghGet('gallery.json');
       gallerySha = data.sha;
-      const saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, '')))));
+      let saved;
+      try { saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))))); }
+      catch(pe) { console.error('gallery.json לא תקין:', pe); saved = {}; }
       categories = saved.categories || {};
       order = saved.order || [];
     } catch(e) {
@@ -2245,13 +2253,18 @@ async function saveNote(i) {
   const c    = filteredContacts[i];
   if (!c) return;
   const orig = allContacts.find(x => x.email === c.email);
-  if (orig) orig.notes = val;
-  c.notes = val;
-  inp.style.display = 'none';
-  const disp = document.getElementById('nd-' + i);
-  disp.style.display = 'block';
-  disp.innerHTML = val || '<span style="color:#ccc;">+ הוסף הערה</span>';
-  await saveContactToSB(c.email, { notes: val });
+  try {
+    await saveContactToSB(c.email, { notes: val });
+    if (orig) orig.notes = val;
+    c.notes = val;
+    inp.style.display = 'none';
+    const disp = document.getElementById('nd-' + i);
+    disp.style.display = 'block';
+    disp.innerHTML = val || '<span style="color:#ccc;">+ הוסף הערה</span>';
+  } catch(e) {
+    inp.style.borderColor = '#c0392b';
+    setTimeout(() => { inp.style.borderColor = ''; }, 2000);
+  }
 }
 
 function switchInsightTab(i) {
@@ -2369,7 +2382,7 @@ async function saveEditContact(originalEmail, btn) {
   const newPhone = document.getElementById('ec-phone').value.trim();
   const errEl    = document.getElementById('ec-email-err');
 
-  if (!newEmail || !newEmail.includes('@')) {
+  if (!newEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(newEmail)) {
     errEl.textContent = 'אימייל לא תקין';
     errEl.style.display = 'block';
     return;
