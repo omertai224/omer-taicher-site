@@ -37,6 +37,15 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'חסרים פרטי מוצר' });
     }
 
+    const parsedAmount = parseFloat(amount);
+    if (!Number.isFinite(parsedAmount) || parsedAmount <= 0 || parsedAmount > 10000) {
+      return res.status(400).json({ error: 'סכום לא תקין' });
+    }
+
+    if (customerEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
+      return res.status(400).json({ error: 'כתובת אימייל לא תקינה' });
+    }
+
     const successUrl = productKey
       ? `https://omertai.net/pages/checkout/success.html?product=${productKey}`
       : 'https://omertai.net/pages/checkout/success.html';
@@ -52,7 +61,7 @@ export default async function handler(req, res) {
     const payload = {
       payment_page_uid: PAGE_UID,
       charge_method: 1,
-      amount: parseFloat(amount),
+      amount: parsedAmount,
       currency_code: 'ILS',
       sendEmailApproval: true,
       sendEmailFailure: false,
@@ -61,7 +70,7 @@ export default async function handler(req, res) {
         {
           name: productName,
           quantity: 1,
-          price: parseFloat(amount)
+          price: parsedAmount
         }
       ],
       customer: {
