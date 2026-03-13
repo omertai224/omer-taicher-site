@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://cdn.enable.co.il">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800;900&display=optional" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800;900&display=optional" rel="stylesheet"></noscript>
-<link rel="preload" href="https://media.omertai.net/1772846439490_hero.webp" as="image" type="image/webp">
 <link rel="stylesheet" href="assets/css/main.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
 <style>
@@ -24,7 +23,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
 .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:transparent;border-radius:8px}.hamburger span{display:block;width:22px;height:2px;background:var(--navy);border-radius:2px;transition:all 0.3s}
 .btn{display:inline-block;padding:15px 32px;border-radius:50px;font-family:var(--font);font-weight:700;font-size:1rem;text-decoration:none;border:none;cursor:pointer;transition:all 0.2s}
 .btn-primary{background:var(--orange-deep);color:#fff}.btn-secondary{background:transparent;color:var(--navy);border:2px solid var(--navy)}.btn-full{width:100%;text-align:center;display:block}.btn-arrow{display:inline-flex;align-items:center;gap:10px}
-.hero{padding:20px 20px 56px;max-width:1200px;margin:0 auto;animation:fadeUp 0.6s ease both}
+.hero{padding:20px 20px 56px;max-width:1200px;margin:0 auto}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--orange-light);color:var(--orange-deep);padding:7px 16px;border-radius:50px;font-size:0.8rem;font-weight:700;margin-bottom:24px}
 .hero-eyebrow::before{content:'';width:7px;height:7px;background:var(--orange-deep);border-radius:50%;animation:blink 2s infinite}
 .hero h1{font-size:clamp(1.6rem,5.5vw,3rem);font-weight:900;line-height:1.2;letter-spacing:-0.5px;color:var(--navy);margin-bottom:24px}
@@ -213,7 +212,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       </a>
       <div class="profile-top">
         <div class="profile-avatar">
-          <img id="img-hero" src="https://media.omertai.net/1772846439490_hero.webp" alt="עומר טייכר" width="72" height="72" fetchpriority="high">
+          <img id="img-hero" src="https://media.omertai.net/1772846439490_hero.webp" alt="עומר טייכר" width="72" height="72" loading="lazy">
         </div>
         <div>
           <div class="profile-name">עומר טייכר</div>
