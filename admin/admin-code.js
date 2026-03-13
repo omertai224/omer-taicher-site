@@ -16,6 +16,7 @@ async function loadFileTree(path) {
   try {
     const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
     const res = await fetch(url, { headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } });
+    if (!res.ok) throw new Error('שגיאה בטעינה: ' + res.status);
     const items = await res.json();
     if (!Array.isArray(items)) throw new Error('לא ניתן לטעון');
     renderTree(items, path);

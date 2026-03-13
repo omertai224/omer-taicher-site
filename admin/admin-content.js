@@ -2369,7 +2369,7 @@ function openEditContact(email) {
         <input id="ec-phone" type="tel" value="${(c.phone||'').replace(/^\+?972-?/,'0')}" dir="ltr" style="width:100%;padding:9px 13px;border:1.5px solid #e8e0d6;border-radius:10px;font-family:inherit;font-size:0.88rem;outline:none;background:#fdf8f2;text-align:left;">
       </div>
       <div style="display:flex;gap:10px;">
-        <button onclick="saveEditContact('${email.replace(/'/g,"\'")}', this)" style="flex:1;background:#e8854a;color:#fff;border:none;padding:11px;border-radius:50px;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;">שמור</button>
+        <button onclick="saveEditContact('${escapeHtml(email).replace(/'/g,'&#39;')}', this)" style="flex:1;background:#e8854a;color:#fff;border:none;padding:11px;border-radius:50px;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;">שמור</button>
         <button onclick="document.getElementById('edit-contact-overlay').remove()" style="flex:1;background:#eef4f8;color:#1a4a6b;border:none;padding:11px;border-radius:50px;font-family:inherit;font-size:0.88rem;font-weight:700;cursor:pointer;">ביטול</button>
       </div>
     </div>`;
