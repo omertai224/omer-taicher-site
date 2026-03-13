@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>תשלום · עומר טייכר</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
 <meta name="robots" content="noindex,nofollow">
 
@@ -375,8 +375,16 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
     const data = await response.json();
     if (!response.ok || !data.paymentUrl) throw new Error(data.error || 'שגיאה');
 
-    document.getElementById('redirect-msg').className = 'alert alert-info visible';
-    setTimeout(() => { window.location.href = data.paymentUrl; }, 700);
+    try {
+      const payUrl = new URL(data.paymentUrl);
+      if (!['restapi.payplus.co.il', 'restapidev.payplus.co.il', 'payments.payplus.co.il'].includes(payUrl.hostname)) {
+        throw new Error('כתובת תשלום לא מוכרת');
+      }
+      document.getElementById('redirect-msg').className = 'alert alert-info visible';
+      setTimeout(() => { window.location.href = data.paymentUrl; }, 700);
+    } catch (urlErr) {
+      throw new Error(urlErr.message || 'שגיאה בכתובת התשלום');
+    }
 
   } catch (err) {
     btn.classList.remove('loading');
@@ -387,6 +395,6 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
 });
 </script>
 
-<script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js"></script>
+<script src="https://cdn.enable.co.il/licenses/enable-L3247ax2zm0fj6l-0219-80371/init.js" async></script>
 </body>
 </html>
