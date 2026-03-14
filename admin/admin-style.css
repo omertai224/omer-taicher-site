@@ -38,7 +38,7 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .save-btn:disabled { opacity:0.4; cursor:not-allowed; }
 
 .status-bar { background:var(--white); border:1px solid var(--border); border-radius:14px; padding:12px 18px; margin-bottom:24px; display:flex; align-items:center; gap:10px; font-size:0.83rem; }
-.status-dot { width:8px; height:8px; border-radius:50%; background:var(--text-light); flex-shrink:0; }
+.status-dot { width:8px; height:8px; border-radius:50%; background:var(--text-light); flex-shrink:0; transition:background 0.3s; }
 .status-dot.ok { background:var(--green); }
 .status-dot.loading { background:var(--orange); animation:blink 1s infinite; }
 .status-dot.error { background:var(--red); }
