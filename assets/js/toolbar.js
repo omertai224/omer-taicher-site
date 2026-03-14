@@ -1,4 +1,7 @@
 (function () {
+  // נגישות רק בפרודקשן
+  if (location.hostname !== 'omertai.net' && location.hostname !== 'www.omertai.net') return;
+
   const STORAGE_KEY = 'a11y_settings';
   const defaults = { scale: 1, contrast: false, monochrome: false, sepia: false, links: false, animations: false, cursor: false, spacing: false, dyslexia: false, ruler: false, invert: false, hideImages: false, focusHighlight: false };
   let settings = Object.assign({}, defaults);
