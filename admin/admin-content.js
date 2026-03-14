@@ -1,5 +1,5 @@
 // ===== TAB: CONTENT =====
-const BLOG_ORIGIN = location.hostname.includes('github.io') ? 'https://omertai.net' : location.origin;
+const BLOG_ORIGIN = location.origin;
 
 // ===== SITE CONTENT (אתר ראשי) =====
 async function loadContent() {
