@@ -1,0 +1,209 @@
+<html xmlns="http://www.w3.org/1999/xhtml" dir="rtl" style="overflow:hidden;">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+		<title>How to set up Vibe and transcribe Hebrew video and document files in Windows</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900&subset=hebrew&display=swap" rel="stylesheet">
+		<link id="style" rel="stylesheet" type="text/css" href="style.css">
+		</head>
+	
+		<body onload="setNavBarColor(1);" style="background-color:#202020; overflow:hidden;'<div class="slideshow-container">
+<div class="mySlides fade">
+<style>
+@keyframes fadeInDown { from { opacity:0; transform:translateY(-30px);} to { opacity:1; transform:translateY(0);} }
+@keyframes fadeInUp   { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0);} }
+@keyframes pulse      { 0%,100%{ transform:scale(1);} 50%{ transform:scale(1.05);} }
+@keyframes shimmer    { 0%{ background-position:200% center;} 100%{ background-position:-200% center;} }
+.intro-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:calc(100vh - 62px); background:#1a1a2e; text-align:center; padding:20px 40px; box-sizing:border-box; overflow:hidden; }
+.intro-badge { background:linear-gradient(135deg,#667eea,#764ba2); color:white; padding:5px 16px; border-radius:50px; font-size:12px; letter-spacing:2px; text-transform:uppercase; animation:fadeInDown 0.8s ease both; margin-bottom:12px; }
+.intro-title { font-size:clamp(20px,3.5vw,46px); font-weight:900; color:white; line-height:1.15; animation:fadeInDown 0.9s ease 0.2s both; margin-bottom:8px; }
+.intro-title span { background:linear-gradient(90deg,#f6a67e,#ff6b6b,#f6a67e); background-size:200% auto; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shimmer 3s linear infinite; }
+.intro-subtitle { font-size:clamp(12px,1.8vw,18px); color:#ffffffaa; animation:fadeInDown 1s ease 0.4s both; margin-bottom:4px; }
+.intro-author { font-size:13px; color:#ffffff66; animation:fadeInDown 1s ease 0.5s both; margin-bottom:20px; }
+.intro-cards { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; animation:fadeInUp 1s ease 0.6s both; margin-bottom:20px; }
+.intro-card { background:#ffffff12; border:1px solid #ffffff22; border-radius:14px; padding:12px 18px; min-width:130px; max-width:170px; }
+.intro-card .icon { font-size:24px; margin-bottom:6px; }
+.intro-card .label { color:#ffffffcc; font-size:12px; line-height:1.3; }
+.intro-btn { background:linear-gradient(135deg,#f6a67e,#ff6b6b); color:white; border:none; padding:14px 40px; border-radius:50px; font-size:17px; font-weight:700; cursor:pointer; animation:fadeInUp 1s ease 0.8s both, pulse 2s ease 2s infinite; box-shadow:0 8px 32px rgba(246,166,126,0.4); font-family:Rubik,sans-serif; }
+.intro-btn:hover { transform:scale(1.05); box-shadow:0 12px 40px rgba(246,166,126,0.6); }
+</style>
+<div class="intro-wrap">
+  <div class="intro-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="white" style="margin-left:5px;vertical-align:middle;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> חינמי. פרטי. עובד אופליין.</div>
+  <div class="intro-title">כלי ה-AI שחוסך לכם<br>שעות וכסף <span>בכל שבוע</span></div>
+  <div class="intro-subtitle">מדריך צעד אחר צעד, Windows</div>
+  <div class="intro-author">עומר טייכר · מדריך וטכנאי מחשבים</div>
+  <div class="intro-cards">
+    <div class="intro-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="label">24 שלבים פשוטים</div></div>
+    <div class="intro-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div><div class="label">תמלול וידאו ואודיו</div></div>
+    <div class="intro-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><div class="label">תמיכה מלאה בעברית</div></div>
+    <div class="intro-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div><div class="label">שמירה במגוון פורמטים</div></div>
+  </div>
+  <button class="intro-btn" onclick="nextSlide(1)">▶&nbsp;&nbsp;בואו נתחיל</button>
+</div>
+</div><div class="mySlides fade">
+<style>
+.dl-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:calc(100vh - 62px); background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%); text-align:center; padding:20px 40px; box-sizing:border-box; overflow:hidden; }
+.dl-step { background:linear-gradient(135deg,#1e5f74,#5b8fa8); color:white; padding:5px 18px; border-radius:50px; font-size:12px; letter-spacing:2px; margin-bottom:16px; display:inline-block; }
+.dl-title { font-size:clamp(22px,3.5vw,42px); font-weight:900; color:white; margin-bottom:10px; line-height:1.2; }
+.dl-title span { color:#f6a67e; }
+.dl-sub { color:#ffffffaa; font-size:15px; margin-bottom:32px; }
+.dl-box { background:#ffffff0d; border:2px solid #1e5f74; border-radius:20px; padding:28px 40px; margin-bottom:28px; max-width:480px; width:100%; }
+.dl-box-title { color:white; font-size:13px; margin-bottom:16px; color:#ffffffbb; }
+.dl-btn { background:linear-gradient(135deg,#2563eb,#1d4ed8); color:white; border:none; padding:14px 32px; border-radius:50px; font-size:16px; font-weight:700; cursor:pointer; font-family:Rubik,sans-serif; display:flex; align-items:center; gap:10px; margin:0 auto 12px; width:fit-content; }
+.dl-version { color:#ffffff55; font-size:12px; }
+.dl-arrow { display:flex; align-items:center; gap:10px; color:#f6a67e; font-size:15px; font-weight:700; animation:pulse 2s ease infinite; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.5;} }
+</style>
+<div class="dl-wrap">
+  <div class="dl-step">שלב ראשון לפני ההדרכה</div>
+  <div class="dl-title">הורידו את <span>Vibe</span> למחשב</div>
+  <div class="dl-sub">גשו לאתר הרשמי של Vibe והורידו את התוכנה בחינם</div>
+  <div class="dl-box">
+    <div class="dl-box-title">לחצו על הכפתור כדי לפתוח את האתר הרשמי ולהוריד:</div>
+    <a href="https://thewh1teagle.github.io/vibe/" target="_blank" style="text-decoration:none;">
+      <div class="dl-btn">
+        Download For Windows
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 11H2V2h9v9zm0 11H2v-9h9v9zm11-11h-9V2h9v9zm0 11h-9v-9h9v9z"/>
+        </svg>
+      </div>
+    </a>
+    <div class="dl-version">v3.0.15</div>
+  </div>
+  <div class="dl-arrow">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    לאחר ההורדה, לחצו על כפתור ההמשך כדי להמשיך בהדרכה
+  </div>
+</div>
+</div>
+<div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_1.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_1.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 4" style="top:35.5185%;left:57.7558%;right:31.4767%;bottom:61.1667%;"></div><div class="text arrow-right" style="left:calc(57.7558% - 315px);top:calc(37.1296% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">1<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בתיקיית ההורדות, לחצו לחיצה כפולה על קובץ ההתקנה <span style=" color:#f6a67e;">vibe_3.0.15_x64-setup</span> כדי להתחיל את תהליך ההתקנה.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_2.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_2.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 5" style="top:28.8519%;left:62.1163%;right:31.1279%;bottom:65.4259%;"></div><div class="text arrow-right" style="left:calc(62.1163% - 315px);top:calc(31.6667% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">2<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>Windows Defender SmartScreen חסם את הפעלת התוכנה. לחצו על הקישור <span style=" color:#f6a67e;">מידע נוסף</span> כדי להציג אפשרויות נוספות.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_3.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_3.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 6" style="top:66.7222%;left:41.0116%;right:48.1628%;bottom:28.1111%;"></div><div class="text arrow-left" style="left:calc(51.8372% + 15px);top:calc(69.2593% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">3<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>לחצו על הכפתור <span style=" color:#f6a67e;">הפעל בכל מקרה</span> כדי לאשר את הפעלת תוכנת Vibe למרות אזהרת Windows.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_4.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_4.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 7" style="top:64.6852%;left:54.6163%;right:39.2093%;bottom:31.6296%;"></div><div class="text arrow-right" style="left:calc(54.6163% - 315px);top:calc(66.4815% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">4<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>מסך הפתיחה של אשף ההתקנה של Vibe. לחצו על <span style=" color:#f6a67e;">Next ></span> כדי להתחיל בתהליך ההתקנה.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_5.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_5.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 8" style="top:64.6852%;left:54.6163%;right:39.2093%;bottom:31.6296%;"></div><div class="text arrow-right" style="left:calc(54.6163% - 315px);top:calc(66.4815% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">5<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בחירת תיקיית ההתקנה, ניתן להשאיר את נתיב ברירת המחדל. לחצו על <span style=" color:#f6a67e;">Next ></span> כדי להמשיך.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_6.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_6.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 9" style="top:23.9444%;left:32.0581%;right:31.7093%;bottom:29.037%;"></div><div class="text arrow-left" style="left:calc(68.2907% + 15px);top:calc(47.4074% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">6<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>ההתקנה מתבצעת. המתינו עד שסרגל ההתקנה יסתיים. לחצו על הריבוע הכחול כדי להתקדם בהדרכה.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_7.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_7.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 10" style="top:64.6852%;left:54.6163%;right:39.2093%;bottom:31.6296%;"></div><div class="text arrow-right" style="left:calc(54.6163% - 315px);top:calc(66.4815% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">7<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>ההתקנה הושלמה בהצלחה. לחצו על <span style=" color:#f6a67e;">Next ></span> כדי להמשיך לשלב האחרון.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_8.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_8.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 11" style="top:64.6852%;left:54.6163%;right:39.2093%;bottom:31.6296%;"></div><div class="text arrow-right" style="left:calc(54.6163% - 315px);top:calc(66.4815% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">8<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>ההתקנה הסתיימה. ניתן להשאיר את "Run vibe" מסומן. לחצו על <span style=" color:#f6a67e;">Finish</span> כדי לסגור את אשף ההתקנה ולהפעיל את Vibe.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_9.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_9.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 12" style="top:34.1296%;left:27.814%;right:27.8721%;bottom:37%;"></div><div class="text arrow-left" style="left:calc(72.1279% + 15px);top:calc(48.5185% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">9<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בהפעלה הראשונה, Vibe מוריד את מודל העברית. המתינו עד שההורדה תסתיים. לחצו על הריבוע הכחול כדי להתקדם בהדרכה.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_10.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_10.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 13" style="top:37.463%;left:47.5233%;right:47.2326%;bottom:56.3519%;"></div><div class="text arrow-left" style="left:calc(52.7674% + 15px);top:calc(40.5556% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">10<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>מסך Vibe הראשי. לחצו על אזור <span style=" color:#f6a67e;">Select File</span> או גררו לתוכו קובץ וידאו או אודיו לתמלול.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_11.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_11.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 14" style="top:32.1852%;left:22.814%;right:69.093%;bottom:63.0185%;"></div><div class="text arrow-left" style="left:calc(30.907% + 15px);top:calc(34.537% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">11<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בחלון פתיחת הקובץ, נווטו אל <span style=" color:#f6a67e;">סרטי וידאו</span> בסרגל הצד השמאלי כדי לאתר את קבצי הווידאו שלכם.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_12.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_12.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 37" style="top:21.8148%;left:33.6279%;right:57.6977%;bottom:68.2037%;"></div><div class="text arrow-left" style="left:calc(42.3023% + 15px);top:calc(26.7593% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">12<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בחרו את קובץ הווידאו שברצונכם לתמלל, במקרה זה <span style=" color:#f6a67e;">קומה 1 - שף פרטי</span>. לחצו עליו פעם אחת לבחירה.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_13.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_13.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 38" style="top:57.6481%;left:60.8372%;right:31.7093%;bottom:38.2037%;"></div><div class="text arrow-right" style="left:calc(60.8372% - 315px);top:calc(59.7222% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">13<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>לאחר שבחרותם את הקובץ, לחצו על <span style=" color:#f6a67e;">Open</span> כדי לטעון אותו ב-Vibe.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_14.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_14.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 18" style="top:29.963%;left:22.2326%;right:22.5814%;bottom:65.3333%;"></div><div class="text arrow-left" style="left:calc(77.4186% + 15px);top:calc(32.3148% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">14<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>הקובץ נטען בהצלחה. שימו לב שהשפה כרגע מוגדרת כ-English, לחצו על תפריט <span style=" color:#f6a67e;">Language</span> כדי לשנות לעברית.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_15.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_15.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 19" style="top:59.7778%;left:23.686%;right:62.4651%;bottom:34.5%;"></div><div class="text arrow-left" style="left:calc(37.5349% + 15px);top:calc(62.5926% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">15<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בתפריט הנפתח, גללו ובחרוו <span style=" color:#f6a67e;">Hebrew</span> כדי לומר ל-Vibe שהווידאו מדובר בעברית.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_16.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_16.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 20" style="top:63.1111%;left:41.593%;right:41.0116%;bottom:30.0556%;"></div><div class="text arrow-left" style="left:calc(58.9884% + 15px);top:calc(66.4815% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">16<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>השפה מוגדרת כעת ל-Hebrew. לחצו על הכפתור הכחול <span style=" color:#f6a67e;">Transcribe</span> כדי להתחיל בתמלול.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_17.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_17.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 21" style="top:58.2037%;left:39.9651%;right:40.314%;bottom:34.8704%;"></div><div class="text arrow-left" style="left:calc(59.686% + 15px);top:calc(61.6667% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">17<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>התמלול בתהליך. המתינו עד שהתמלול יסתיים, זה עשוי לקחת מספר דקות. לחצו על הריבוע הכחול כדי להתקדם בהדרכה.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_18.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_18.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 26" style="top:36.9074%;left:22.4651%;right:73.5698%;bottom:57.2778%;"></div><div class="text arrow-left" style="left:calc(26.4302% + 15px);top:calc(39.8148% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">18<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>התמלול הסתיים וניתן לראות את הטקסט בעברית. לחצו על <span style=" color:#f6a67e;">Copy</span> כדי להעתיק את כל הטקסט ללוח.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_19.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_19.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 27" style="top:37.1852%;left:68.8023%;right:22.6977%;bottom:57.463%;"></div><div class="text arrow-right" style="left:calc(68.8023% - 315px);top:calc(39.8148% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">19<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>לחלופין, לחצו על תפריט פורמט הייצוא בצד ימין (כרגע <span style=" color:#f6a67e;">pdf</span>) כדי לבחור פורמט שמירה אחר.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_20.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_20.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 28" style="top:42.5556%;left:69.0349%;right:21.5349%;bottom:52.0926%;"></div><div class="text arrow-right" style="left:calc(69.0349% - 315px);top:calc(45.1852% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">20<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בתפריט הפורמטים, בחרו <span style=" color:#f6a67e;">Text</span> כדי לשמור את התמלול כקובץ טקסט פשוט.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_21.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_21.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 29" style="top:36.9074%;left:22.4651%;right:73.5698%;bottom:57.2778%;"></div><div class="text arrow-left" style="left:calc(26.4302% + 15px);top:calc(39.8148% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">21<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>הפורמט שונה ל-Text. לחצו על <span style=" color:#f6a67e;">Copy</span> כדי להעתיק את הטקסט, או על כפתור ההורדה כדי לשמור כקובץ.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_22.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_22.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 30" style="top:36.9074%;left:25.6628%;right:70.3721%;bottom:57.2778%;"></div><div class="text arrow-left" style="left:calc(29.6279% + 15px);top:calc(39.8148% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">22<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>לחצו על <span style=" color:#f6a67e;">Save Transcript</span> כדי לשמור את קובץ התמלול למחשב.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_23.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_23.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 31" style="top:32.1852%;left:22.814%;right:69.907%;bottom:63.0185%;"></div><div class="text arrow-left" style="left:calc(30.093% + 15px);top:calc(34.537% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">23<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בחלון השמירה, נווטו אל התיקייה הרצויה, למשל <span style=" color:#f6a67e;">מסמכים</span>, ואז לחצו על <span style=" color:#f6a67e;">Save</span> לשמירה.</div></div></div></div></div><div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_24.png" src =".//images//How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_24.png" style="height:calc(100vh - 62px);width:auto;max-width:100%;"><div class="box 32" style="top:57.6481%;left:60.8372%;right:31.7093%;bottom:38.2037%;"></div><div class="text arrow-right" style="left:calc(60.8372% - 315px);top:calc(59.7222% - 25px);position:absolute;width:300; height: fit-content;">
+					 <div style="text-align: right;">24<div style="color: #ffffffbb;display: inline;">/24</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בחרו את תיקיית המסמכים ולחצו על <span style=" color:#f6a67e;">Save</span> כדי לשמור את קובץ התמלול. הקובץ ישמר בפורמט שבחרות.</div></div></div></div></div><div class="mySlides fade">
+<style>
+.outro-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:calc(100vh - 62px); overflow:hidden; padding:16px 20px; box-sizing:border-box; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); }
+.outro-title { font-size:clamp(16px,2.5vw,30px); font-weight:900; color:white; margin-bottom:4px; text-align:center; }
+.outro-title span { color:#f6a67e; }
+.outro-sub { color:#ffffffaa; font-size:13px; margin-bottom:12px; text-align:center; }
+.use-cases { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; width:100%; max-width:960px; margin-bottom:12px; }
+.use-card { background:#ffffff0d; border:1px solid #ffffff1a; border-radius:12px; padding:10px 12px; transition:transform 0.2s, background 0.2s; text-align:right; }
+.use-card:hover { transform:translateY(-3px); background:#ffffff18; }
+.use-card .uc-icon { font-size:20px; margin-bottom:4px; }
+.use-card .uc-title { color:#f6a67e; font-size:12px; font-weight:700; margin-bottom:3px; }
+.use-card .uc-desc { color:#ffffffbb; font-size:11px; line-height:1.5; }
+.use-card .uc-tool { color:#a8c5d6; font-size:10px; margin-top:4px; font-weight:600; }
+.outro-tip { background:#ffffff0d; border:1px solid #f6a67e44; border-radius:10px; padding:8px 16px; max-width:960px; width:100%; margin-bottom:10px; text-align:right; }
+.outro-tip span { color:#f6a67e; font-weight:700; font-size:12px; }
+.outro-tip p { color:#ffffffcc; font-size:11px; margin:2px 0 0 0; line-height:1.5; }
+.btn-restart { background:linear-gradient(135deg,#f6a67e,#ff6b6b); color:white; border:none; padding:12px 36px; border-radius:50px; font-size:15px; font-weight:700; cursor:pointer; font-family:Rubik,sans-serif; box-shadow:0 6px 20px rgba(246,166,126,0.35); }
+.btn-restart:hover { transform:scale(1.05); }
+</style>
+<div class="outro-wrap">
+  <div class="outro-title"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:8px;"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg> סיימת! עכשיו מה עושים עם <span>התמלול?</span></div>
+  <div class="outro-sub">התמלול הגולמי הוא חומר גלם יקר ערך. הנה מה שאפשר לעשות איתו:</div>
+  <div class="use-cases">
+    <div class="use-card">
+      <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18M8.5 8.5C7 10 6 12 6 14c0 3.3 2.7 6 6 6s6-2.7 6-6c0-2-1-4-2.5-5.5"/><path d="M12 2v4M12 2l3 2M12 2L9 4"/></svg></div>
+      <div class="uc-title">עיבוד ראשוני</div>
+      <div class="uc-desc">הדביקו את התמלול הגולמי, בקשו תיקון שגיאות, הוספת פיסוק וחלוקה לפסקאות.</div>
+      <div class="uc-tool">Claude / ChatGPT / Gemini</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M8 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2h-2"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="12" y2="18"/></svg></div>
+      <div class="uc-title">פרוטוקול ומשימות</div>
+      <div class="uc-desc">מישיבה לטבלה. חילוץ החלטות, מי עושה מה ועד מתי.</div>
+      <div class="uc-tool">Gemini</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></div>
+      <div class="uc-title">מיחזור תוכן</div>
+      <div class="uc-desc">הפיכת הרצאה לפוסטים, רילס ותסריטים לרשתות חברתיות.</div>
+      <div class="uc-tool">ChatGPT</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg></div>
+      <div class="uc-title">כרטיסיות לימוד</div>
+      <div class="uc-desc">שאלות ותשובות על החומר, כרטיסיות זיכרון וסיכום שיעור.</div>
+      <div class="uc-tool">Claude</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+      <div class="uc-title">מפת מושגים</div>
+      <div class="uc-desc">הפיכת הטקסט למבנה היררכי ויזואלי לפי נושאים.</div>
+      <div class="uc-tool">Claude / Gemini</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg></div>
+      <div class="uc-title">ארגון ידע</div>
+      <div class="uc-desc">סיכום עם כותרות, תגיות ותקציר מנהלים לשמירה.</div>
+      <div class="uc-tool">Claude / ChatGPT</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+      <div class="uc-title">צ'אט עם הסרטון</div>
+      <div class="uc-desc">שאלו שאלות על התמלול. מה נאמר על נושא X? האם היה קונפליקט?</div>
+      <div class="uc-tool">NotebookLM</div>
+    </div>
+    <div class="use-card">
+      <div class="uc-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
+      <div class="uc-title">פודקאסט אוטומטי</div>
+      <div class="uc-desc">יוצר פודקאסט של שני אנשים שמדברים על התמלול שלכם.</div>
+      <div class="uc-tool">NotebookLM</div>
+    </div>
+  </div>
+  <div class="outro-tip">
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:4px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> טיפ זהב לעברית:</span>
+    <p>תמיד כתוב בתחילת הפרומפט: "אל תתרגם לאנגלית, שמור על עברית טבעית וקולחת."</p>
+  </div>
+  <button class="btn-restart" onclick="showSlides(1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:6px;"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>חזור להתחלה</button>
+</div>
+</div>
+</div><img id="logo.png" src=".//images//logo.png" style="z-index:3;position:fixed;top:calc(100% - 54px);left:30px;height:46;"><a class="prev" onclick="prevSlide()"><img id="left-arrow" src=".//images//left.png" style="height:52px"></a>
+<a class="next" onclick="nextSlide()"><img id="right-arrow" src=".//images//right.png" style="height:52px"></a></div><br><script id="script" type="text/javascript" src="script.js"></script>
+<div class="nav-background"><div id="0" class ="nav" style="left:calc(0% + 106px);right:calc(96.1538% + -96.9231px);"></div><div id="1" class ="nav" style="left:calc(3.84615% + 96.9231px);right:calc(92.3077% + -86.8462px);"></div><div id="2" class ="nav" style="left:calc(7.69231% + 86.8462px);right:calc(88.4615% + -76.7692px);"></div><div id="3" class ="nav" style="left:calc(11.5385% + 76.7692px);right:calc(84.6154% + -66.6923px);"></div><div id="4" class ="nav" style="left:calc(15.3846% + 66.6923px);right:calc(80.7692% + -56.6154px);"></div><div id="5" class ="nav" style="left:calc(19.2308% + 56.6154px);right:calc(76.9231% + -46.5385px);"></div><div id="6" class ="nav" style="left:calc(23.0769% + 46.5385px);right:calc(73.0769% + -36.4615px);"></div><div id="7" class ="nav" style="left:calc(26.9231% + 36.4615px);right:calc(69.2308% + -26.3846px);"></div><div id="8" class ="nav" style="left:calc(30.7692% + 26.3846px);right:calc(65.3846% + -16.3077px);"></div><div id="9" class ="nav" style="left:calc(34.6154% + 16.3077px);right:calc(61.5385% + -6.23077px);"></div><div id="10" class ="nav" style="left:calc(38.4615% + 6.23077px);right:calc(57.6923% + 3.84615px);"></div><div id="11" class ="nav" style="left:calc(42.3077% + -3.84615px);right:calc(53.8462% + 13.9231px);"></div><div id="12" class ="nav" style="left:calc(46.1538% + -13.9231px);right:calc(50% + 24px);"></div><div id="13" class ="nav" style="left:calc(50% + -24px);right:calc(46.1539% + 33.0769px);"></div><div id="14" class ="nav" style="left:calc(53.8461% + -33.0769px);right:calc(42.3077% + 43.1538px);"></div><div id="15" class ="nav" style="left:calc(57.6923% + -43.1538px);right:calc(38.4615% + 53.2308px);"></div><div id="16" class ="nav" style="left:calc(61.5385% + -53.2308px);right:calc(34.6154% + 63.3077px);"></div><div id="17" class ="nav" style="left:calc(65.3846% + -63.3077px);right:calc(30.7692% + 73.3846px);"></div><div id="18" class ="nav" style="left:calc(69.2308% + -73.3846px);right:calc(26.9231% + 83.4615px);"></div><div id="19" class ="nav" style="left:calc(73.0769% + -83.4615px);right:calc(23.0769% + 93.5385px);"></div><div id="20" class ="nav" style="left:calc(76.9231% + -93.5385px);right:calc(19.2308% + 103.615px);"></div><div id="21" class ="nav" style="left:calc(80.7692% + -103.615px);right:calc(15.3846% + 113.692px);"></div><div id="22" class ="nav" style="left:calc(84.6154% + -113.692px);right:calc(11.5385% + 123.769px);"></div><div id="23" class ="nav" style="left:calc(88.4615% + -123.769px);right:calc(7.69231% + 133.846px);"></div><div id="24" class ="nav" style="left:calc(92.3077% + -133.846px);right:calc(3.84616% + 143.923px);"></div><div id="25" class ="nav" style="left:calc(96.1538% + -143.923px);right:calc(7.62939e-06% + 154px);"></div></div><script>document.getElementsByClassName('box 4')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 5')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 6')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 7')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 8')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 9')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 10')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 11')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 12')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 13')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 14')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 37')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 38')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 18')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 19')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 20')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 21')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 26')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 27')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 28')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 29')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 30')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 31')[0].addEventListener('click', nextSlide, false);</script>
+<script>document.getElementsByClassName('box 32')[0].addEventListener('click', nextSlide, false);</script>
+</body></html>

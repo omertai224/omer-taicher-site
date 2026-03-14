@@ -118,7 +118,8 @@ function switchTab(name, btn) {
   if (name === 'contacts') loadContacts();
   if (name === 'code') {
     // טען עץ קבצים לריפו הנוכחי
-    loadFileTree(GITHUB_REPO === 'omer-taicher-site' ? 'admin' : '');
+    if (GITHUB_REPO === 'omer-taicher-site') loadFileTree('admin');
+    else loadFileTree('');
     // סמן כפתור repo נכון בטאב קוד
     document.querySelectorAll('.code-repo-btn').forEach(b => b.classList.remove('active'));
     const codeRepoBtnMap = { 'omer-taicher-site': 'code-repo-site', 'omer-taicher-interactive': 'code-repo-interactive', 'omer-taicher-blog': 'code-repo-blog' };
@@ -144,8 +145,10 @@ function switchCodeRepo(repoName, btn) {
   const editorFilename = document.getElementById('editor-filename');
   if (editorFilename) editorFilename.textContent = '— בחר קובץ —';
 
-  // טען עץ קבצים
-  loadFileTree(repoName === 'omer-taicher-site' ? 'admin' : '');
+  // טען עץ קבצים — כל הריפוזיטוריז מאוחדים תחת omer-taicher-site
+  if (repoName === 'omer-taicher-site') loadFileTree('admin');
+  else if (repoName === 'omer-taicher-blog') loadFileTree('');
+  else if (repoName === 'omer-taicher-interactive') loadFileTree('');
 }
 
 // ===== REPO SWITCHER =====
@@ -203,8 +206,17 @@ function setStatus(tab, type, msg) {
   if (text) text.textContent = msg;
 }
 
+// All repos are now unified under omer-taicher-site
+const UNIFIED_REPO = 'omer-taicher-site';
+function resolveRepoPath(path) {
+  if (GITHUB_REPO === 'omer-taicher-blog') return 'blog/' + path;
+  if (GITHUB_REPO === 'omer-taicher-interactive') return 'interactive/' + path;
+  return path;
+}
+
 async function ghGet(path) {
-  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
+  const resolvedPath = resolveRepoPath(path);
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedPath}?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
   });
   if (!res.ok) throw new Error('GitHub API error: ' + res.status);
@@ -212,7 +224,8 @@ async function ghGet(path) {
 }
 
 async function ghPut(path, content, sha, message) {
-  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
+  const resolvedPath = resolveRepoPath(path);
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedPath}`, {
     method: 'PUT',
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
     body: JSON.stringify({ message, content: btoa(unescape(encodeURIComponent(content))), sha, branch: GITHUB_BRANCH })

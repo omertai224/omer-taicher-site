@@ -15,7 +15,7 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .token-input { width:100%; background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.2); color:#fff; padding:12px 16px; border-radius:10px; font-family:'Rubik',sans-serif; font-size:0.9rem; outline:none; margin-bottom:14px; direction:ltr; text-align:left; }
 .token-btn { width:100%; background:var(--orange-deep); color:#fff; border:none; padding:13px; border-radius:50px; font-family:'Rubik',sans-serif; font-size:0.95rem; font-weight:700; cursor:pointer; }
 
-.header { background:var(--navy); padding:0 28px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:0 2px 16px rgba(0,0,0,0.2); height:80px; }
+.header { background:var(--navy); padding:12px 28px; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:100; box-shadow:0 2px 16px rgba(0,0,0,0.2); min-height:70px; flex-wrap:wrap; gap:10px; }
 .header-logo { font-size:1rem; font-weight:800; color:#fff; }
 .header-logo span { color:var(--orange); }
 .header-right { display:flex; align-items:center; gap:10px; }
@@ -154,10 +154,9 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 
 .header-center { display:flex; align-items:center; gap:10px; }
 .repo-pills { display:flex; gap:8px; align-items:center; }
-.repo-pill { padding:8px 18px; border-radius:50px; border:1.5px solid rgba(255,255,255,0.2); background:transparent; color:rgba(255,255,255,0.6); font-family:'Rubik',sans-serif; font-size:0.82rem; font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap; min-width:110px; text-align:center; justify-content:center; display:inline-flex; align-items:center; gap:6px; }
+.repo-pill { padding:8px 18px; border-radius:50px; border:1.5px solid rgba(255,255,255,0.2); background:transparent; color:rgba(255,255,255,0.6); font-family:'Rubik',sans-serif; font-size:0.82rem; font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap; text-align:center; justify-content:center; display:inline-flex; align-items:center; gap:6px; }
 .repo-pill:hover { border-color:var(--orange); color:var(--orange); }
 .repo-pill.active { background:var(--orange-deep); color:#fff; border-color:var(--orange-deep); }
-.header { height:auto; min-height:70px; }
 
 /* ============================================
    MOBILE RESPONSIVE — פאנל ניהול

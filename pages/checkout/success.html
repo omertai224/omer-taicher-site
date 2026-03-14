@@ -195,11 +195,11 @@
 <script>
 // מיפוי מוצר → שם + קישור
 const PRODUCTS = {
-  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://interactive.omertai.net/Vibe/' },
-  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://interactive.omertai.net/AI/' },
-  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: 'https://interactive.omertai.net/Files/' },
-  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: 'https://interactive.omertai.net/Security/' },
-  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', url: 'https://interactive.omertai.net/Google/' }
+  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/Vibe/' },
+  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://omertai.net/interactive/AI/' },
+  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: 'https://omertai.net/interactive/Files/' },
+  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: 'https://omertai.net/interactive/Security/' },
+  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', url: 'https://omertai.net/interactive/Google/' }
 };
 
 const params  = new URLSearchParams(window.location.search);
@@ -211,7 +211,7 @@ if (product) {
   document.getElementById('btn-go').href = product.url;
 } else {
   // לא ידוע — שולחים לדף ההדרכות הכללי
-  document.getElementById('btn-go').href = 'https://interactive.omertai.net';
+  document.getElementById('btn-go').href = 'https://omertai.net/interactive';
 }
 </script>
 

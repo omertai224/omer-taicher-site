@@ -1,0 +1,508 @@
+<!-- repo: omer-taicher-blog | קובץ: index.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>עומר טייכר · הבלוג</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
+<meta name="description" content="טיפים פשוטים לטכנולוגיה יומיומית. מחשבים, סמארטפונים ואינטרנט, בשפה ברורה.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://media.omertai.net">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --orange: #f6a67e;
+  --orange-deep: #e8854a;
+  --orange-light: #fdeede;
+  --navy: #1a4a6b;
+  --navy-mid: #1e5f74;
+  --cream: #fdf8f2;
+  --cream2: #f5ede0;
+  --text: #1e1e1e;
+  --text-mid: #555;
+  --text-light: #666;
+  --border: #e8e0d6;
+}
+body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text); direction:rtl; }
+
+/* NAV */
+nav {
+  padding:0 20px;
+  height:60px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  position:fixed; top:0; width:100%;
+  background:rgba(253,248,242,0.98);
+  z-index:100;
+}
+.logo { font-size:1.1rem; font-weight:900; color:var(--navy); text-decoration:none; }
+.logo span { color:#c46a2a; }
+.nav-cta {
+  display:flex; align-items:center; gap:6px;
+  color:#1a4a6b; text-decoration:none;
+  font-size:0.85rem; font-weight:700;
+  padding:7px 14px; border-radius:50px;
+  background:#eef4f8;
+  transition:background 0.2s, color 0.2s;
+  border:none; cursor:pointer; font-family:inherit;
+}
+.nav-cta:hover { background:#fdeede; color:#e8854a; }
+
+/* HERO */
+.hero {
+  display:grid; grid-template-columns:1fr 380px;
+  min-height:52vh;
+  border-bottom:1px solid var(--border);
+  background:var(--cream2);
+  text-decoration:none; color:inherit;
+  cursor:pointer; transition:filter 0.2s;
+  margin-top:0;
+}
+.hero:hover { filter:brightness(0.97); }
+.hero-content {
+  padding:56px 60px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+.hero-label {
+  font-size:0.65rem; font-weight:700; letter-spacing:0.2em;
+  color:#c46a2a; text-transform:uppercase; margin-bottom:20px;
+  display:flex; align-items:center; gap:10px;
+}
+.hero-label::before { content:''; width:28px; height:2px; background:#c46a2a; display:block; }
+.hero h1 {
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  font-weight:900; line-height:1.2; color:var(--navy);
+  margin-bottom:16px; letter-spacing:-0.02em;
+}
+.hero h1 em { font-style:normal; color:var(--orange-deep); }
+.hero-excerpt { font-size:0.92rem; color:var(--text-mid); line-height:1.75; margin-bottom:28px; max-width:440px; }
+.hero-read {
+  display:inline-flex; align-items:center; gap:10px;
+  color:var(--navy); font-weight:700; font-size:0.9rem;
+  text-decoration:none; border-bottom:2px solid var(--orange-deep);
+  padding-bottom:3px; width:fit-content;
+}
+.hero-meta {
+  margin-top:32px; padding-top:24px;
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; gap:16px;
+  font-size:0.78rem; color:var(--text-mid);
+}
+.hero-meta strong { color:var(--navy); }
+.hero-img {
+  position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg,#1a4a6b,#1e5f74);
+  font-size:6rem;
+  align-self:center;
+  margin:24px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  aspect-ratio:1/1;
+}
+.hero-img::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 40% 40%, rgba(246,166,126,0.2) 0%, transparent 65%);
+  border-radius:16px;
+}
+.hero-img img { width:100%; height:100%; object-fit:cover; }
+.hero-num {
+  position:absolute; bottom:16px; right:16px;
+  font-size:0.6rem; color:rgba(255,255,255,0.4); letter-spacing:0.1em;
+}
+
+/* POSTS HEADER */
+.posts-header {
+  padding:36px 60px 18px;
+  display:flex; align-items:baseline; justify-content:space-between;
+  border-bottom:1px solid var(--border);
+}
+.posts-header h2 {
+  font-size:0.65rem; font-weight:700;
+  letter-spacing:0.2em; color:var(--text-light); text-transform:uppercase;
+}
+.posts-count { font-size:0.78rem; color:var(--text-light); }
+
+/* POST ROW */
+.post-row {
+  display:grid;
+  grid-template-columns:1fr 260px;
+  min-height:220px;
+  border-bottom:1px solid var(--border);
+  text-decoration:none; color:inherit;
+  cursor:pointer;
+  transition:background 0.18s;
+}
+.post-row:hover { background:var(--cream2); }
+.post-row:hover .row-arrow { background:var(--orange-light); transform:translateX(-4px); }
+.post-row.blue { background:#fff; }
+.post-row.blue .post-row-img { background:linear-gradient(135deg,#1a4a6b,#1e5f74); }
+.post-row.orange { background:var(--orange-light); }
+.post-row.orange .post-row-img { background:linear-gradient(135deg,#e8854a,#f6a67e); }
+.post-row.orange .row-num { color:var(--orange-deep); }
+.post-row.orange .post-row-body p { color:var(--text-mid); }
+.post-row.orange .row-time { color:var(--text-light); }
+.post-row.orange .row-arrow { border-color:var(--orange-deep); color:var(--orange-deep); }
+
+.post-row-img {
+  display:flex; align-items:center; justify-content:center;
+  font-size:4rem; position:relative; overflow:hidden;
+  border-right:1px solid var(--border);
+  aspect-ratio:1/1;
+  align-self:center;
+  margin:20px;
+  border-radius:14px;
+  order:2;
+}
+.post-row-img::after {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 40% 40%, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius:14px;
+}
+.post-row-img img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+
+.post-row-body {
+  padding:32px 40px 32px 24px;
+  display:flex; flex-direction:column; justify-content:center; gap:12px;
+  order:1;
+}
+.row-num {
+  font-size:0.6rem; font-weight:700;
+  color:var(--text-light); letter-spacing:0.15em;
+}
+.post-row-body h3 {
+  font-size:1.1rem; font-weight:900;
+  color:var(--navy); line-height:1.38; letter-spacing:-0.01em;
+}
+.post-row-body p {
+  font-size:0.85rem; line-height:1.7;
+  color:var(--text-mid); max-width:500px;
+}
+.row-footer {
+  display:flex; align-items:center; justify-content:space-between; margin-top:4px;
+}
+.row-time { font-size:0.72rem; color:var(--text-light); }
+.row-arrow {
+  width:34px; height:34px; border-radius:50%;
+  border:1.5px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--text-mid); font-size:0.85rem; transition:all 0.2s;
+}
+
+/* LOAD MORE */
+.load-more {
+  padding:40px; text-align:center;
+  border-bottom:1px solid var(--border);
+  background:#fff;
+}
+.load-more-btn {
+  background:transparent; color:var(--navy);
+  border:1.5px solid var(--border);
+  padding:13px 36px; border-radius:50px;
+  font-size:0.88rem; font-weight:700; cursor:pointer; font-family:inherit;
+  transition:all 0.2s;
+}
+.load-more-btn:hover { border-color:var(--orange-deep); color:var(--orange-deep); }
+.load-more-btn:disabled { opacity:0.4; cursor:default; }
+
+/* CTA */
+.cta-strip {
+  background:var(--navy);
+  padding:44px 60px;
+  display:flex; align-items:center; justify-content:space-between; gap:40px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.cta-strip h3 { font-size:1.4rem; font-weight:900; color:#fff; }
+.cta-strip p { font-size:0.88rem; color:rgba(255,255,255,0.75); margin-top:6px; }
+.cta-btn-white {
+  background:var(--orange); color:var(--navy);
+  border:none; padding:13px 32px; border-radius:50px;
+  font-size:0.9rem; font-weight:900; cursor:pointer; font-family:inherit;
+  white-space:nowrap; flex-shrink:0; transition:transform 0.2s;
+  text-decoration:none; display:inline-block;
+}
+.cta-btn-white:hover { transform:scale(1.04); }
+
+/* FOOTER */
+footer {
+  background:var(--cream2);
+  padding:32px 60px;
+  display:flex; align-items:center; justify-content:space-between;
+  color:var(--text-mid); font-size:0.8rem;
+  border-top:1px solid var(--border);
+}
+.footer-logo { font-size:1rem; font-weight:900; color:var(--navy); }
+.footer-logo span { color:#c46a2a; }
+
+/* EMPTY STATE */
+.empty-state {
+  padding:80px 60px; text-align:center;
+  color:var(--text-mid); background:#fff;
+  border-bottom:1px solid var(--border);
+}
+
+/* HERO PLACEHOLDER - prevents CLS */
+#hero-container { min-height:52vh; background:var(--cream2); border-bottom:1px solid var(--border); }
+#hero-container:empty { display:block; }
+#hero-container:not(:empty) { min-height:auto; background:none; border-bottom:none; }
+#posts-list { min-height:880px; }
+#posts-list:not(:empty) { min-height:auto; }
+
+/* SKIP LINK */
+.skip-link {
+  position:absolute; top:-100px; left:0;
+  background:var(--navy); color:#fff;
+  padding:12px 24px; z-index:200;
+  font-size:0.9rem; font-weight:700;
+  text-decoration:none; border-radius:0 0 8px 0;
+  transition:top 0.2s;
+}
+.skip-link:focus { top:0; }
+
+/* MOBILE */
+@media(min-width:960px){
+  .hero { margin-top:60px; }
+}
+@media(max-width:768px){
+  #hero-container { min-height:calc(100vw + 200px); }
+  #hero-container:not(:empty) { min-height:auto; }
+  #posts-list { min-height:1800px; }
+  #posts-list:not(:empty) { min-height:auto; }
+  nav { padding:0 20px; }
+  .hero { grid-template-columns:1fr; min-height:auto; }
+  .hero-img { order:-1; margin:20px 20px 0; width:calc(100% - 40px); aspect-ratio:1/1; font-size:4rem; }
+  .hero-content { padding:28px 20px 40px; }
+  .posts-header { padding:24px 20px 14px; }
+  .post-row { grid-template-columns:1fr; min-height:auto; }
+  .post-row-img { order:-1; margin:16px 16px 0; width:calc(100% - 32px); aspect-ratio:1/1; border-right:none; font-size:3rem; }
+  .post-row-body { padding:20px 20px 24px; }
+  .cta-strip { flex-direction:column; padding:36px 20px; text-align:center; }
+  footer { flex-direction:column; gap:10px; padding:24px 20px; }
+  .load-more { padding:28px 20px; }
+}
+</style>
+  <meta property="og:title" content="הבלוג של עומר טייכר | טיפים למחשב ו-AI">
+  <meta property="og:description" content="טיפים פרקטיים למחשב, אבטחה ובינה מלאכותית. כתובים בפשטות, מניסיון של 25 שנה.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:url" content="/">
+  <meta property="og:image" content="https://media.omertai.net/1772846439490_hero.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="הבלוג של עומר טייכר | טיפים למחשב ו-AI">
+  <meta name="twitter:description" content="טיפים פרקטיים למחשב, אבטחה ובינה מלאכותית. כתובים בפשטות, מניסיון של 25 שנה.">
+  <meta name="twitter:image" content="https://media.omertai.net/1772846439490_hero.webp">
+  <link rel="canonical" href="/">
+  <link rel="alternate" type="application/rss+xml" title="עומר טייכר | טיפים" href="/api/blog-feed">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "הבלוג של עומר טייכר",
+    "description": "טיפים פרקטיים למחשב, אבטחה ובינה מלאכותית",
+    "url": "/",
+    "inLanguage": "he",
+    "author": {
+      "@type": "Person",
+      "name": "עומר טייכר",
+      "url": "https://omertai.net"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">דלג לתוכן</a>
+
+<nav>
+  <a href="https://omertai.net" class="logo">עומר <span>טייכר</span> <span style="font-weight:400;color:var(--text-mid);font-size:0.9rem">· הבלוג</span></a>
+  <a href="https://omertai.net" class="nav-cta"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg> חזרה לאתר</a>
+</nav>
+
+<main id="main">
+<div id="hero-container"></div>
+
+<div class="posts-header">
+  <h2>כל הפוסטים</h2>
+  <span class="posts-count" id="posts-count">טוען...</span>
+</div>
+
+<div id="posts-list"></div>
+
+<div class="load-more" id="load-more-section" style="display:none;">
+  <button class="load-more-btn" id="load-more-btn" onclick="loadMore()">טען עוד פוסטים ↓</button>
+</div>
+
+</main>
+
+<div class="cta-strip">
+  <div>
+    <h3>יש לכם שאלה? אני כאן.</h3>
+    <p>25 שנות ניסיון בשירות שלכם - בטלפון, בזום, או בביתכם.</p>
+  </div>
+  <a href="https://wa.me/972526587420" target="_blank" rel="noopener" class="cta-btn-white" style="background:#25D366;border-color:#25D366;display:inline-flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> דברו איתי בוואטסאפ</a>
+</div>
+
+<footer>
+  <div class="footer-logo">עומר <span>טייכר</span></div>
+  <span>© 2026 · כל הזכויות שמורות</span>
+  <div style="margin-top:10px; font-size:0.78rem; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+    <a href="https://omertai.net/pages/legal/terms.html" style="color:inherit; text-decoration:none;">תקנון</a>
+    <a href="https://omertai.net/pages/legal/privacy.html" style="color:inherit; text-decoration:none;">פרטיות</a>
+    <a href="https://omertai.net/pages/legal/refund.html" style="color:inherit; text-decoration:none;">מדיניות החזרים</a>
+    <a href="https://omertai.net/pages/legal/accessibility.html" style="color:inherit; text-decoration:none;">נגישות</a>
+  </div>
+</footer>
+
+<script>
+const POSTS_PER_PAGE = 4;
+let allPosts = [];
+let displayedCount = 0;
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  const months = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+function renderHero(post) {
+  const imgContent = post.image
+    ? `<img src="${post.image}" alt="${post.image_alt || post.title}" fetchpriority="high" width="380" height="380" sizes="(max-width:768px) calc(100vw - 40px), 330px">`
+    : post.emoji;
+  document.getElementById('hero-container').innerHTML = `
+    <a class="hero" href="post.html?id=${post.id}">
+      <div class="hero-content">
+        <div class="hero-label">הפוסט האחרון</div>
+        <h1>${post.title}</h1>
+        <p class="hero-excerpt">${post.excerpt}</p>
+        <span class="hero-read">קרא את הפוסט ←</span>
+        <div class="hero-meta">
+          <strong>עומר טייכר</strong>
+          <span>·</span><span>${formatDate(post.date)}</span>
+        </div>
+      </div>
+      <div class="hero-img">${imgContent}<div class="hero-num">01 / ${String(allPosts.length).padStart(2,'0')}</div></div>
+    </a>`;
+}
+
+function renderPostRow(post, index, colorClass) {
+  const imgContent = post.image
+    ? `<img src="${post.image}" alt="${post.image_alt || post.title}" loading="lazy" width="260" height="260" sizes="(max-width:768px) calc(100vw - 32px), 220px">`
+    : post.emoji;
+  return `
+    <a class="post-row ${colorClass}" href="post.html?id=${post.id}">
+      <div class="post-row-body">
+        <span class="row-num">${String(index + 2).padStart(2,'0')}</span>
+        <h3>${post.title}</h3>
+        <p>${post.excerpt}</p>
+        <div class="row-footer">
+          <span class="row-time">${formatDate(post.date)}</span>
+          <div class="row-arrow">←</div>
+        </div>
+      </div>
+      <div class="post-row-img">${imgContent}</div>
+    </a>`;
+}
+
+async function loadMore() {
+  const btn = document.getElementById('load-more-btn');
+  btn.disabled = true;
+  btn.textContent = 'טוען...';
+  try {
+    currentPage++;
+    const offset = 1 + displayedCount;
+    let data;
+    try {
+      const res = await fetch(`/api/blog-posts?page=1&limit=${POSTS_PER_PAGE}&offset=${offset}`);
+      if (!res.ok) throw new Error(res.status);
+      data = await res.json();
+    } catch {
+      const res = await fetch('posts.json');
+      const raw = await res.json();
+      const posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+      const slice = posts.slice(offset, offset + POSTS_PER_PAGE).map(({ body, ...rest }) => rest);
+      data = { posts: slice, total: posts.length };
+    }
+    const list = document.getElementById('posts-list');
+    data.posts.forEach((post, i) => {
+      const isLast = (i === data.posts.length - 1);
+      const colorClass = isLast ? 'blue' : (i % 2 === 0 ? 'orange' : 'blue');
+      list.insertAdjacentHTML('beforeend', renderPostRow(post, displayedCount + i, colorClass));
+    });
+    displayedCount += data.posts.length;
+    const total = totalPosts - 1;
+    if (displayedCount >= total) {
+      document.getElementById('load-more-section').style.display = 'none';
+    } else {
+      btn.textContent = `טען עוד פוסטים ↓ (${total - displayedCount} נותרו)`;
+      btn.disabled = false;
+    }
+  } catch(e) {
+    btn.textContent = 'שגיאה בטעינה, נסו שוב';
+    btn.disabled = false;
+    console.error(e);
+  }
+}
+
+let currentPage = 1;
+let totalPosts = 0;
+
+async function fetchPosts(limit) {
+  try {
+    const res = await fetch(`/api/blog-posts?page=1&limit=${limit}`);
+    if (!res.ok) throw new Error(res.status);
+    return await res.json();
+  } catch {
+    const res = await fetch('posts.json');
+    const data = await res.json();
+    const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+    const slice = posts.slice(0, limit).map(({ body, ...rest }) => rest);
+    return { posts: slice, total: posts.length };
+  }
+}
+
+async function init() {
+  try {
+    const data = await fetchPosts(1 + POSTS_PER_PAGE);
+    totalPosts = data.total;
+    allPosts = data.posts;
+
+    document.getElementById('posts-count').textContent = `${totalPosts} פוסטים`;
+
+    if (allPosts.length === 0) {
+      document.getElementById('hero-container').innerHTML = '';
+      document.getElementById('posts-list').innerHTML = '<div class="empty-state">אין פוסטים עדיין.</div>';
+      return;
+    }
+
+    renderHero(allPosts[0]);
+
+    const list = document.getElementById('posts-list');
+    const firstBatch = allPosts.slice(1);
+    firstBatch.forEach((post, i) => {
+      const isLast = (i === firstBatch.length - 1);
+      const colorClass = isLast ? 'blue' : (i % 2 === 0 ? 'orange' : 'blue');
+      list.insertAdjacentHTML('beforeend', renderPostRow(post, i, colorClass));
+    });
+    displayedCount = firstBatch.length;
+    currentPage = 1;
+
+    if (totalPosts > 1 + POSTS_PER_PAGE) {
+      document.getElementById('load-more-section').style.display = 'block';
+      const remaining = totalPosts - 1 - POSTS_PER_PAGE;
+      document.getElementById('load-more-btn').textContent = `טען עוד פוסטים ↓ (${remaining} נותרו)`;
+    }
+  } catch(e) {
+    document.getElementById('posts-count').textContent = '';
+    console.error('Failed to load posts:', e);
+  }
+}
+
+init();
+</script>
+<script src="toolbar.js" defer></script>
+</body>
+</html>
