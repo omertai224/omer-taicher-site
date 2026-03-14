@@ -17,7 +17,7 @@ let currentTreePath = '';
 
 // ===== TOKEN =====
 function checkToken() {
-  GITHUB_TOKEN = sessionStorage.getItem('gh_token') || '';
+  GITHUB_TOKEN = localStorage.getItem('gh_token') || '';
   if (!GITHUB_TOKEN) {
     document.getElementById('token-gate').style.display = 'flex';
   } else {
@@ -43,7 +43,7 @@ function saveToken() {
   })
   .then(r => {
     if (!r.ok) throw new Error('github');
-    sessionStorage.setItem('gh_token', username);
+    localStorage.setItem('gh_token', username);
     GITHUB_TOKEN = username;
     document.getElementById('token-gate').style.display = 'none';
     document.getElementById('main-content').style.display = 'block';
