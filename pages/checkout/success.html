@@ -3,6 +3,7 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="UTF-8">
+<script src="/assets/js/base-path.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>תשלום בוצע · עומר טייכר</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
@@ -136,7 +137,7 @@
 <div class="success-page">
 
 <nav class="success-nav">
-  <a class="success-nav-logo" href="https://omertai.net">עומר <span>טייכר</span></a>
+  <a class="success-nav-logo" href="/">עומר <span>טייכר</span></a>
 </nav>
 
 <div class="success-inner">
@@ -195,11 +196,11 @@
 <script>
 // מיפוי מוצר → שם + קישור
 const PRODUCTS = {
-  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/Vibe/' },
-  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://omertai.net/interactive/AI/' },
-  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: 'https://omertai.net/interactive/Files/' },
-  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: 'https://omertai.net/interactive/Security/' },
-  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', url: 'https://omertai.net/interactive/Google/' }
+  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: '/interactive/Vibe/' },
+  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: '/interactive/AI/' },
+  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: '/interactive/Files/' },
+  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: '/interactive/Security/' },
+  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', url: '/interactive/Google/' }
 };
 
 const params  = new URLSearchParams(window.location.search);
@@ -211,7 +212,7 @@ if (product) {
   document.getElementById('btn-go').href = product.url;
 } else {
   // לא ידוע — שולחים לדף ההדרכות הכללי
-  document.getElementById('btn-go').href = 'https://omertai.net/interactive';
+  document.getElementById('btn-go').href = '/interactive';
 }
 </script>
 
