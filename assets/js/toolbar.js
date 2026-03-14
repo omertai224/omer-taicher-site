@@ -1,10 +1,16 @@
 (function () {
   const STORAGE_KEY = 'a11y_settings';
-  const defaults = { scale: 1, contrast: false, monochrome: false, sepia: false, links: false, animations: false, cursor: false, spacing: false };
+  const defaults = { scale: 1, contrast: false, monochrome: false, sepia: false, links: false, animations: false, cursor: false, spacing: false, dyslexia: false, ruler: false, invert: false, hideImages: false, focusHighlight: false };
   let settings = Object.assign({}, defaults);
 
   // טעינת הגדרות שמורות
   try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); if (saved) Object.assign(settings, saved); } catch(e) {}
+
+  // ===== LOAD DYSLEXIA FONT =====
+  const fontLink = document.createElement('link');
+  fontLink.rel = 'stylesheet';
+  fontLink.href = 'https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap';
+  document.head.appendChild(fontLink);
 
   // ===== STYLES =====
   const style = document.createElement('style');
@@ -200,6 +206,38 @@
     html.a11y-cursor { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e8854a' opacity='0.5'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23e8854a'/%3E%3C/svg%3E") 16 16, auto !important; }
     html.a11y-cursor a, html.a11y-cursor button, html.a11y-cursor [role="button"] { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e8854a' opacity='0.5'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23e8854a'/%3E%3C/svg%3E") 16 16, pointer !important; }
     html.a11y-spacing p, html.a11y-spacing li, html.a11y-spacing span, html.a11y-spacing div { letter-spacing: 0.05em !important; word-spacing: 0.1em !important; line-height: 2 !important; }
+
+    /* Dyslexia-friendly font */
+    html.a11y-dyslexia * { font-family: 'Lexend', Arial, sans-serif !important; }
+
+    /* Invert colors */
+    html.a11y-invert { filter: invert(1) hue-rotate(180deg); }
+    html.a11y-invert img, html.a11y-invert video, html.a11y-invert svg { filter: invert(1) hue-rotate(180deg); }
+    html.a11y-invert.a11y-contrast { filter: invert(1) hue-rotate(180deg) contrast(1.4); }
+    html.a11y-invert.a11y-monochrome { filter: invert(1) hue-rotate(180deg) grayscale(1); }
+
+    /* Hide images */
+    html.a11y-hide-images img, html.a11y-hide-images svg:not(.a11y-panel svg):not(.a11y-trigger svg),
+    html.a11y-hide-images video, html.a11y-hide-images [style*="background-image"] { opacity: 0.05 !important; }
+
+    /* Focus highlight */
+    html.a11y-focus-highlight *:focus { outline: 3px solid #e8854a !important; outline-offset: 3px !important; box-shadow: 0 0 0 6px rgba(232,133,74,0.3) !important; }
+    html.a11y-focus-highlight *:focus-visible { outline: 3px solid #e8854a !important; outline-offset: 3px !important; box-shadow: 0 0 0 6px rgba(232,133,74,0.3) !important; }
+
+    /* Reading ruler */
+    .a11y-reading-ruler {
+      position: fixed;
+      left: 0; right: 0;
+      height: 40px;
+      z-index: 99999;
+      pointer-events: none;
+      border-top: 2px solid rgba(232,133,74,0.7);
+      border-bottom: 2px solid rgba(232,133,74,0.7);
+      background: rgba(232,133,74,0.08);
+      transition: top 0.05s linear;
+      display: none;
+    }
+    .a11y-reading-ruler.visible { display: block; }
   `;
   document.head.appendChild(style);
 
@@ -288,6 +326,45 @@
       </div>
     </div>
 
+    <div class="a11y-group">
+      <div class="a11y-group-label">כלים נוספים</div>
+      <div class="a11y-toggle" data-key="dyslexia">
+        <div class="a11y-toggle-info">
+          <div class="a11y-toggle-icon"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></div>
+          <span class="a11y-toggle-label">פונט דיסלקציה</span>
+        </div>
+        <div class="a11y-toggle-switch"></div>
+      </div>
+      <div class="a11y-toggle" data-key="ruler">
+        <div class="a11y-toggle-info">
+          <div class="a11y-toggle-icon"><svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><rect x="1" y="8" width="22" height="8" rx="1" opacity="0.3" fill="#f6a67e"/></svg></div>
+          <span class="a11y-toggle-label">סרגל קריאה</span>
+        </div>
+        <div class="a11y-toggle-switch"></div>
+      </div>
+      <div class="a11y-toggle" data-key="invert">
+        <div class="a11y-toggle-info">
+          <div class="a11y-toggle-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2v20" stroke="#f6a67e"/><path d="M12 2a10 10 0 000 20" fill="#f6a67e" opacity="0.5"/></svg></div>
+          <span class="a11y-toggle-label">היפוך צבעים</span>
+        </div>
+        <div class="a11y-toggle-switch"></div>
+      </div>
+      <div class="a11y-toggle" data-key="hideImages">
+        <div class="a11y-toggle-info">
+          <div class="a11y-toggle-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5" fill="#f6a67e"/><path d="M21 15l-5-5L5 21"/><line x1="2" y1="2" x2="22" y2="22" stroke-width="2.5"/></svg></div>
+          <span class="a11y-toggle-label">הסתרת תמונות</span>
+        </div>
+        <div class="a11y-toggle-switch"></div>
+      </div>
+      <div class="a11y-toggle" data-key="focusHighlight">
+        <div class="a11y-toggle-info">
+          <div class="a11y-toggle-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4"/><path d="M12 19v4"/><path d="M1 12h4"/><path d="M19 12h4"/></svg></div>
+          <span class="a11y-toggle-label">הדגשת פוקוס</span>
+        </div>
+        <div class="a11y-toggle-switch"></div>
+      </div>
+    </div>
+
     <button class="a11y-reset-all" id="a11y-reset-all">איפוס כל ההגדרות</button>
     <div class="a11y-kbd">Shift+A לפתיחה מהירה</div>
   `;
@@ -311,6 +388,13 @@
     html.classList.toggle('a11y-no-animations', settings.animations);
     html.classList.toggle('a11y-cursor', settings.cursor);
     html.classList.toggle('a11y-spacing', settings.spacing);
+    html.classList.toggle('a11y-dyslexia', settings.dyslexia);
+    html.classList.toggle('a11y-invert', settings.invert);
+    html.classList.toggle('a11y-hide-images', settings.hideImages);
+    html.classList.toggle('a11y-focus-highlight', settings.focusHighlight);
+
+    // Reading ruler
+    if (rulerEl) rulerEl.classList.toggle('visible', settings.ruler);
 
     // עדכון UI
     panel.querySelectorAll('.a11y-toggle').forEach(function(el) {
@@ -318,7 +402,7 @@
     });
 
     // כפתור trigger מציין אם יש הגדרות פעילות
-    const hasActive = settings.contrast || settings.monochrome || settings.sepia || settings.links || settings.animations || settings.cursor || settings.spacing || settings.scale !== 1;
+    const hasActive = settings.contrast || settings.monochrome || settings.sepia || settings.links || settings.animations || settings.cursor || settings.spacing || settings.dyslexia || settings.ruler || settings.invert || settings.hideImages || settings.focusHighlight || settings.scale !== 1;
     trigger.classList.toggle('has-active', hasActive);
 
     save();
@@ -329,6 +413,18 @@
     document.documentElement.style.fontSize = '';
     applyToggles();
   }
+
+  // ===== READING RULER =====
+  const rulerEl = document.createElement('div');
+  rulerEl.className = 'a11y-reading-ruler';
+  document.body.appendChild(rulerEl);
+
+  document.addEventListener('mousemove', function(e) {
+    if (settings.ruler) rulerEl.style.top = (e.clientY - 20) + 'px';
+  });
+  document.addEventListener('touchmove', function(e) {
+    if (settings.ruler && e.touches[0]) rulerEl.style.top = (e.touches[0].clientY - 20) + 'px';
+  }, { passive: true });
 
   // החל הגדרות בטעינה
   applyScale(settings.scale);
