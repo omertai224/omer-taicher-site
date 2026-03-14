@@ -1,6 +1,6 @@
 // ===== TAB: CODE EDITOR =====
 const FILE_DESCRIPTIONS = {
-  'index.html':'דף הבית', 'content.json':'תוכן האתר',
+  'index.html':'דף הבית',
   'admin':'פאנל ניהול', 'admin-style.css':'עיצוב פאנל', 'admin-core.js':'לוגיקה ראשית',
   'admin-content.js':'טאב תוכן', 'admin-code.js':'טאב קוד', 'admin-backups.js':'טאב גיבויים',
   'assets':'קבצי אתר', 'js':'סקריפטים', 'toolbar.js':'סרגל נגישות',
