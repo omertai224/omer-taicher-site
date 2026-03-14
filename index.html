@@ -9,12 +9,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://media.omertai.net">
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="assets/css/main.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
 <style>
-:root{--cream:#fdf8f2;--white:#ffffff;--orange:#f6a67e;--orange-deep:#e8854a;--orange-light:#fdeede;--navy:#1a4a6b;--navy-mid:#1e5f74;--navy-light:#eef4f8;--text:#1e1e1e;--text-mid:#555;--text-light:#999;--border:#e8e0d6;--shadow:rgba(26,74,107,0.09);--font:'Rubik',sans-serif;--radius:14px}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{font-family:var(--font);background:var(--cream);color:var(--text);line-height:1.65;direction:rtl;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
+:root{--cream:#fdf8f2;--white:#ffffff;--orange:#f6a67e;--orange-deep:#e8854a;--orange-light:#fdeede;--navy:#1a4a6b;--navy-mid:#1e5f74;--navy-light:#eef4f8;--text:#1e1e1e;--text-mid:#555;--text-light:#767676;--border:#e8e0d6;--shadow:rgba(26,74,107,0.09);--font:'Rubik',sans-serif;--radius:14px}
+@font-face{font-family:'Rubik Fallback';src:local('Arial');ascent-override:88%;descent-override:25%;line-gap-override:0%;size-adjust:105%}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{font-family:'Rubik','Rubik Fallback',sans-serif;background:var(--cream);color:var(--text);line-height:1.65;direction:rtl;-webkit-font-smoothing:antialiased;overflow-x:hidden;max-width:100vw}
 nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
 .logo{font-size:1.1rem;font-weight:800;color:var(--navy);text-decoration:none}.logo span{color:var(--orange-deep)}
 .nav-links{display:none}.nav-mobile-cta{background:var(--orange-deep);color:#fff;padding:8px 18px;border-radius:50px;font-weight:700;font-size:0.82rem;text-decoration:none;transition:background 0.2s}
@@ -22,7 +25,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
 .btn{display:inline-block;padding:15px 32px;border-radius:50px;font-family:var(--font);font-weight:700;font-size:1rem;text-decoration:none;border:none;cursor:pointer;transition:all 0.2s}
 .btn-primary{background:var(--orange-deep);color:#fff}.btn-secondary{background:transparent;color:var(--navy);border:2px solid var(--navy)}.btn-full{width:100%;text-align:center;display:block}.btn-arrow{display:inline-flex;align-items:center;gap:10px}
 .hero{padding:20px 20px 56px;max-width:1200px;margin:0 auto}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--orange-light);color:var(--orange-deep);padding:7px 16px;border-radius:50px;font-size:0.8rem;font-weight:700;margin-bottom:24px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--orange-light);color:#b5662e;padding:7px 16px;border-radius:50px;font-size:0.8rem;font-weight:700;margin-bottom:24px}
 .hero-eyebrow::before{content:'';width:7px;height:7px;background:var(--orange-deep);border-radius:50%;animation:blink 2s infinite}
 .hero h1{font-size:clamp(1.6rem,5.5vw,3rem);font-weight:900;line-height:1.2;letter-spacing:-0.5px;color:var(--navy);margin-bottom:24px}
 .hero-lead{font-size:1rem;color:var(--text-mid);line-height:2;margin-bottom:24px}
@@ -188,7 +191,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
     <div class="hero-eyebrow">טכנאי ומדריך מחשבים, ראשון לציון</div>
     <h1>
       <span data-content="hero.title_1">המחשב שלכם בידיים טובות.</span><br>
-      <span style="color:var(--orange-deep)" data-content="hero.title_2">סוף סוף יש על מי לסמוך.</span>
+      <span style="color:#c46a2a" data-content="hero.title_2">סוף סוף יש על מי לסמוך.</span>
     </h1>
     <div class="hero-lead" data-content-multiline="hero.lead_1"><p>עורכי דין, מטפלים, יועצים, רואי חשבון.</p><p>כשהמחשב נתקע, העבודה נתקעת.</p><p>אתם לא אמורים לדעת לפתור את זה לבד.</p></div>
     <div class="hero-lead" data-content-multiline="hero.lead_2"><p>אני עומר, בוגר יחידת המחשבים של חיל האוויר.</p><p>25 שנה בתחום. סבלנות אינסופית.</p><p>אני כאן כדי שתדעו שיש למי לפנות.</p></div>
@@ -211,7 +214,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       </a>
       <div class="profile-top">
         <div class="profile-avatar">
-          <img id="img-hero" src="https://media.omertai.net/1772846439490_hero.webp" alt="עומר טייכר" width="72" height="72">
+          <img id="img-hero" src="https://media.omertai.net/1772846439490_hero.webp" alt="עומר טייכר" width="72" height="72" sizes="72px">
         </div>
         <div>
           <div class="profile-name">עומר טייכר</div>

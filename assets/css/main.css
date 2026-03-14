@@ -14,15 +14,16 @@
   --navy-light: #eef4f8;
   --text: #1e1e1e;
   --text-mid: #555;
-  --text-light: #999;
+  --text-light: #767676;
   --border: #e8e0d6;
   --shadow: rgba(26,74,107,0.09);
   --green: #22c55e;
   --red: #ef4444;
-  --font: 'Rubik', sans-serif;
+  --font: 'Rubik', 'Rubik Fallback', sans-serif;
   --radius: 14px;
 }
 
+@font-face { font-family: 'Rubik Fallback'; src: local('Arial'); ascent-override: 88%; descent-override: 25%; line-gap-override: 0%; size-adjust: 105%; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; }
 body { font-family: var(--font); background: var(--cream); color: var(--text); line-height: 1.65; direction: rtl; -webkit-font-smoothing: antialiased; overflow-x: hidden; max-width: 100vw; }
@@ -63,7 +64,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 
 /* ===== HERO ===== */
 .hero { padding: 20px 20px 56px; max-width: 1200px; margin: 0 auto; }
-.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--orange-light); color: var(--orange-deep); padding: 7px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 24px; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--orange-light); color: #b5662e; padding: 7px 16px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 24px; }
 .hero-eyebrow::before { content: ''; width: 7px; height: 7px; background: var(--orange-deep); border-radius: 50%; animation: blink 2s infinite; }
 .hero h1 { font-size: clamp(1.6rem, 5.5vw, 3rem); font-weight: 900; line-height: 1.2; letter-spacing: -0.5px; color: var(--navy); margin-bottom: 24px; }
 .hero h1 em { font-style: normal; color: var(--orange-deep); }
@@ -102,8 +103,8 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 .pain-inner { max-width: 1100px; margin: 0 auto; }
 .pain-title { font-size: clamp(1.7rem, 6vw, 2.6rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 40px; }
 .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.pain-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 22px; transition: background 0.2s, border-color 0.2s; }
-.pain-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(246,166,126,0.4); }
+.pain-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 22px; transition: background 0.2s, box-shadow 0.2s; }
+.pain-card:hover { background: rgba(255,255,255,0.1); box-shadow: inset 0 0 0 1px rgba(246,166,126,0.4); }
 .pain-icon { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; background: rgba(246,166,126,0.12); border-radius: 12px; margin-bottom: 14px; }
 .pain-card-title { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.35; }
 .pain-card-desc { font-size: 0.78rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
