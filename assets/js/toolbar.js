@@ -153,14 +153,14 @@
     .a11y-toggle-switch::after {
       content: '';
       position: absolute;
-      top: 2px; left: 2px;
+      top: 2px; right: 2px;
       width: 16px; height: 16px;
       border-radius: 50%;
       background: rgba(255,255,255,0.6);
       transition: transform 0.2s, background 0.2s;
     }
     .a11y-toggle.active .a11y-toggle-switch { background: #e8854a; }
-    .a11y-toggle.active .a11y-toggle-switch::after { transform: translateX(-14px); background: #fff; }
+    .a11y-toggle.active .a11y-toggle-switch::after { transform: translateX(14px); background: #fff; }
     .a11y-toggle.active .a11y-toggle-icon { background: rgba(232,133,74,0.2); }
 
     .a11y-reset-all {
