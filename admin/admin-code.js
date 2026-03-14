@@ -14,7 +14,8 @@ async function loadFileTree(path) {
   currentTreePath = path;
   setStatus('code', 'loading', 'טוען קבצים...');
   try {
-    const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
+    const resolvedPath = resolveRepoPath(path);
+    const url = `https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedPath}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
     const res = await fetch(url, { headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' } });
     if (!res.ok) throw new Error('שגיאה בטעינה: ' + res.status);
     const items = await res.json();
@@ -62,7 +63,7 @@ function renderTree(items, currentPath) {
     const desc = FILE_DESCRIPTIONS[item.name] || '';
     const descTag = desc ? `<span class="file-item-desc">${desc}</span>` : '';
     const delBtn = `<button class="delete-img-btn" onclick="confirmDelete('${escAttr(item.path)}','${escAttr(item.sha || '')}','${escAttr(item.type)}')" title="מחק">🗑</button>`;
-    const repoDomain = GITHUB_REPO === 'omer-taicher-blog' ? 'https://blog.omertai.net' : GITHUB_REPO === 'omer-taicher-interactive' ? 'https://interactive.omertai.net' : 'https://omertai.net';
+    const repoDomain = 'https://omertai.net';
     const previewBtn = (item.type === 'file' && ext === 'html') ? `<button class="delete-img-btn" onclick="window.open('${escAttr(repoDomain + '/' + item.path)}','_blank')" title="תצוגה מקדימה">👁</button>` : '';
     if (item.type === 'dir') {
       html += `<div class="file-item"><span class="file-item-icon" onclick="loadFileTree('${escAttr(item.path)}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFileTree('${escAttr(item.path)}')" style="cursor:pointer">${escAttr(item.name)}/</span>${descTag}${delBtn}</div>`;
@@ -193,7 +194,8 @@ async function createNewFile(filepath, isFolderInit) {
   const content = isFolderInit ? '' : (templates[ext] || '');
   const message = isFolderInit ? 'יצירת תיקייה: ' + filepath.replace('/.gitkeep','') : 'יצירת קובץ: ' + filepath;
   try {
-    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${filepath}`, {
+    const resolvedFilepath = resolveRepoPath(filepath);
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedFilepath}`, {
       method: 'PUT',
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
       body: JSON.stringify({ message, content: btoa(unescape(encodeURIComponent(content))), branch: GITHUB_BRANCH })
@@ -223,7 +225,8 @@ async function deleteFile() {
   if (!confirm('למחוק את ' + filename + '?\nגיבוי אוטומטי ייצור לפני המחיקה.')) return;
   setStatus('code', 'loading', 'מוחק ' + filename + '...');
   try {
-    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${currentCodeFile}`, {
+    const resolvedDelPath = resolveRepoPath(currentCodeFile);
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedDelPath}`, {
       method: 'DELETE',
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
       body: JSON.stringify({ message: 'מחיקת ' + currentCodeFile, sha: currentCodeSha, branch: GITHUB_BRANCH })
@@ -264,7 +267,8 @@ async function deleteAnyFile(path, sha) {
   // אם אין SHA — קבל אותו
   if (!sha) {
     try {
-      const r = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}`, {
+      const resolvedP = resolveRepoPath(path);
+      const r = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedP}?ref=${GITHUB_BRANCH}`, {
         headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
       });
       const d = await r.json();
@@ -274,7 +278,8 @@ async function deleteAnyFile(path, sha) {
       return;
     }
   }
-  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
+  const resolvedDelP = resolveRepoPath(path);
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedDelP}`, {
     method: 'DELETE',
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: 'מחיקת ' + path, sha: sha, branch: GITHUB_BRANCH })
@@ -291,7 +296,8 @@ async function deleteAnyFile(path, sha) {
 async function deleteFolder(folderPath) {
   setStatus('code', 'loading', 'מוחק תיקייה...');
   try {
-    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${folderPath}?ref=${GITHUB_BRANCH}`, {
+    const resolvedFolderP = resolveRepoPath(folderPath);
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedFolderP}?ref=${GITHUB_BRANCH}`, {
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
     });
     const items = await res.json();
@@ -338,8 +344,9 @@ async function uploadFile(file) {
     });
     // בדוק אם קובץ קיים (לקבל SHA)
     // העלאה בלבד — ללא החלפה
+    const resolvedUploadPath = resolveRepoPath(path);
     const body = { message: 'העלאת קובץ: ' + path, content: base64, branch: GITHUB_BRANCH };
-    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}`, {
+    const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedUploadPath}`, {
       method: 'PUT',
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
       body: JSON.stringify(body)
@@ -454,7 +461,8 @@ async function copyFullRepo() {
 }
 
 async function collectAllFiles(path, result, rootOnly = false) {
-  const url = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/${path}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
+  const resolvedCollectPath = resolveRepoPath(path);
+  const url = `https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolvedCollectPath}?ref=${GITHUB_BRANCH}&t=${Date.now()}`;
   const res = await fetch(url, {
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
   });

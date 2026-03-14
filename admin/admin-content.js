@@ -213,7 +213,7 @@ function filterBlogList(query) {
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0">
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
-          <button onclick="window.open('https://blog.omertai.net/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
+          <button onclick="window.open('https://omertai.net/blog/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
           <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
           <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
@@ -243,7 +243,7 @@ function renderBlogList() {
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0">
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
-          <button onclick="window.open('https://blog.omertai.net/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
+          <button onclick="window.open('https://omertai.net/blog/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
           <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
           <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
@@ -584,7 +584,7 @@ function showBlogForm(post) {
           <input id="bf-date" type="date" value="${post.date || todayISO()}" style="max-width:200px">
         </div>
         <div style="display:flex;gap:8px;padding-bottom:2px;flex-wrap:wrap">
-          ${blogEditingId ? `<button onclick="window.open('https://blog.omertai.net/post.html?id=${blogEditingId}','_blank')" style="background:var(--navy-light);color:var(--navy);border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>` : ''}
+          ${blogEditingId ? `<button onclick="window.open('https://omertai.net/blog/post.html?id=${blogEditingId}','_blank')" style="background:var(--navy-light);color:var(--navy);border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>` : ''}
           ${blogEditingId ? `<button onclick="blogDeletePost('${blogEditingId}')" style="background:#fde8e8;color:#c0392b;border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>` : ''}
           <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
         </div>
@@ -834,7 +834,7 @@ async function blogSendWhatsapp(postId) {
   if (!post) return;
 
   const excerpt = post.excerpt.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').trim();
-  const url = 'https://blog.omertai.net/post.html?id=' + post.id;
+  const url = 'https://omertai.net/blog/post.html?id=' + post.id;
   const message = 'היי חברים, בוקר טוב ☀️\nפוסט חדש עלה:\n\n' + excerpt + '\n\n' + url;
   const chatId = '972526587420@c.us';
 
@@ -1964,7 +1964,7 @@ async function saveImageToContent(key, url) {
     if (!currentContent.images) currentContent.images = {};
     currentContent.images[key] = url;
     const sha = res.sha;
-    await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/content.json`, {
+    await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${resolveRepoPath('content.json')}`, {
       method: 'PUT',
       headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({

@@ -1,0 +1,716 @@
+<!-- repo: omer-taicher-blog | קובץ: post.html -->
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">עומר טייכר - הבלוג</title>
+<meta name="description" id="page-desc" content="">
+<!-- Open Graph -->
+<meta property="og:type"        content="article" id="og-type">
+<meta property="og:site_name"   content="עומר טייכר - הבלוג">
+<meta property="og:title"       content="" id="og-title">
+<meta property="og:description" content="" id="og-desc">
+<meta property="og:url"         content="" id="og-url">
+<meta property="og:image"       content="" id="og-image">
+<meta property="og:locale"      content="he_IL">
+<meta name="twitter:card" content="summary_large_image" id="tw-card">
+<meta name="twitter:title" content="" id="tw-title">
+<meta name="twitter:description" content="" id="tw-desc">
+<meta name="twitter:image" content="" id="tw-image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://media.omertai.net">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+:root {
+  --orange: #f6a67e;
+  --orange-deep: #e8854a;
+  --orange-light: #fdeede;
+  --navy: #1a4a6b;
+  --navy-mid: #1e5f74;
+  --cream: #fdf8f2;
+  --cream2: #f5ede0;
+  --text: #1e1e1e;
+  --text-mid: #555;
+  --text-light: #666;
+  --border: #e8e0d6;
+}
+body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text); direction:rtl; }
+
+/* NAV */
+nav {
+  padding:0 20px;
+  height:60px;
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  position:fixed; top:0; width:100%;
+  background:rgba(253,248,242,0.97);
+  z-index:100;
+}
+.logo { font-size:1.1rem; font-weight:900; color:var(--navy); text-decoration:none; }
+.logo span { color:#c46a2a; }
+.nav-back {
+  color:var(--text-mid); font-size:0.85rem; font-weight:500;
+  text-decoration:none; display:flex; align-items:center; gap:8px;
+  transition:color 0.2s;
+}
+.nav-back:hover { color:var(--navy); }
+
+/* POST HEADER */
+.post-header {
+  background:var(--cream2);
+  padding:48px 60px;
+  border-bottom:1px solid var(--border);
+  max-width:760px;
+  margin:60px auto 0;
+  display:grid;
+  grid-template-columns:1fr 200px;
+  gap:32px;
+  align-items:center;
+}
+.post-header-text {
+  display:flex; flex-direction:column;
+}
+.post-label {
+  font-size:0.65rem; font-weight:700; letter-spacing:0.2em;
+  color:#c46a2a; text-transform:uppercase; margin-bottom:20px;
+  display:flex; align-items:center; gap:10px;
+}
+.post-label::before { content:''; width:28px; height:2px; background:#c46a2a; display:block; }
+.post-header h1 {
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:900; line-height:1.2; color:var(--navy);
+  margin-bottom:20px; letter-spacing:-0.02em;
+}
+.post-header .excerpt {
+  font-size:1rem; color:var(--text-mid); line-height:1.75;
+  margin-bottom:28px;
+}
+.post-meta {
+  padding-top:24px;
+  border-top:1px solid var(--border);
+  display:flex; align-items:center; gap:16px;
+  font-size:0.78rem; color:var(--text-mid);
+}
+.post-meta strong { color:var(--navy); }
+
+/* POST IMAGE */
+.post-image-box {
+  border-radius:16px; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+  font-size:3.5rem;
+  aspect-ratio:1/1;
+  width:100%;
+  background:linear-gradient(135deg,#1a4a6b,#1e5f74);
+  position:relative;
+}
+.post-image-box::before {
+  content:''; position:absolute; inset:0;
+  background:radial-gradient(circle at 40% 40%, rgba(246,166,126,0.2) 0%, transparent 65%);
+}
+.post-image-box img { width:100%; height:100%; object-fit:cover; }
+
+/* POST BODY */
+.post-body-wrap {
+  max-width:680px;
+  margin:0 auto;
+  padding:52px 60px 60px;
+  border-bottom:1px solid var(--border);
+}
+.post-body { font-size:1rem; line-height:1.85; color:var(--text); }
+.post-body h2 {
+  font-size:1.25rem; font-weight:900; color:var(--navy);
+  margin:36px 0 14px; letter-spacing:-0.01em;
+}
+.post-body h3 {
+  font-size:1.05rem; font-weight:700; color:var(--navy);
+  margin:28px 0 10px;
+}
+.post-body p { margin-bottom:18px; }
+.post-body strong { color:var(--navy); font-weight:700; }
+.post-body a { color:var(--orange-deep); text-decoration:underline; }
+.post-body ul, .post-body ol {
+  margin:0 0 18px 0; padding-right:24px;
+}
+.post-body li { margin-bottom:8px; }
+.post-body br { line-height:2.4; }
+
+/* BLOCKQUOTE */
+.post-body blockquote {
+  margin: 28px 0;
+  padding: 20px 24px;
+  border-right: 4px solid var(--orange-deep);
+  background: var(--orange-light);
+  border-radius: 0 12px 12px 0;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--navy);
+  font-weight: 500;
+}
+
+/* INSIGHT BOX */
+.post-body .post-insight {
+  margin: 32px 0;
+  padding: 22px 28px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 14px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+/* TOOL CARD */
+.post-body .post-tool-card {
+  margin: 28px 0;
+  padding: 22px 26px;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 12px rgba(30,30,30,0.06);
+}
+.post-body .post-tool-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--navy);
+}
+.post-body .post-tool-by {
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+.post-body .post-tool-link {
+  margin-top: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--orange-deep);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.post-body .post-tool-link:hover { text-decoration: underline; }
+
+/* NAV PREV/NEXT */
+.post-nav {
+  max-width:760px;
+  margin:0 auto;
+  padding:36px 60px;
+  display:flex; gap:16px;
+  margin-bottom:48px;
+  border-bottom:1px solid var(--border);
+  background:var(--cream2);
+}
+.post-nav-btn {
+  flex:1; padding:20px 24px; border-radius:14px;
+  background:#fff; border:1px solid var(--border);
+  text-decoration:none; color:inherit;
+  display:flex; flex-direction:column; gap:6px;
+  transition:border-color 0.2s, background 0.2s;
+}
+.post-nav-btn:hover { border-color:var(--orange-deep); background:var(--orange-light); }
+.post-nav-btn .nav-direction {
+  font-size:0.65rem; font-weight:700; letter-spacing:0.15em;
+  color:var(--orange-deep); text-transform:uppercase;
+}
+.post-nav-btn .nav-title {
+  font-size:0.88rem; font-weight:700; color:var(--navy); line-height:1.35;
+}
+
+/* SHARE BUTTONS */
+.share-bar {
+  max-width:760px;
+  margin:0 auto;
+  padding:28px 60px;
+  background:var(--cream2);
+  border-bottom:1px solid var(--border);
+}
+.share-intro {
+  font-size:0.9rem;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:12px;
+  line-height:1.5;
+}
+.share-buttons {
+  display:flex; align-items:center; gap:8px; flex-wrap:nowrap;
+}
+.share-label {
+  font-size:0.72rem; font-weight:700; color:var(--text-mid);
+  letter-spacing:0.08em; flex-shrink:0; white-space:nowrap;
+}
+.share-btn {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:7px 14px; border-radius:50px;
+  font-size:0.75rem; font-weight:700; font-family:inherit;
+  border:1px solid var(--border);
+  background:#fff; color:var(--navy);
+  text-decoration:none; cursor:pointer;
+  transition:border-color 0.2s, background 0.2s, color 0.2s;
+  white-space:nowrap; flex-shrink:0;
+}
+.share-btn:hover { border-color:var(--navy); background:var(--navy); color:#fff; }
+.share-btn:hover svg { fill:#fff; stroke:#fff; }
+.share-btn svg { width:14px; height:14px; fill:var(--navy); flex-shrink:0; transition:fill 0.2s, stroke 0.2s; }
+.share-btn.copied { border-color:#25D366; background:#25D366; color:#fff; }
+.share-btn.copied svg { fill:#fff; stroke:#fff; }
+.share-icon-only { padding:9px 12px; }
+.share-icon-only svg { width:18px; height:18px; }
+.share-wa-btn { border-color:#25D366; }
+.share-wa-btn svg { fill:#25D366; }
+.share-wa-btn:hover { background:#25D366; border-color:#25D366; }
+.share-wa-btn:hover svg { fill:#fff; }
+.share-fb-btn { border-color:#1877F2; }
+.share-fb-btn svg { fill:#1877F2; }
+.share-fb-btn:hover { background:#1877F2; border-color:#1877F2; }
+.share-fb-btn:hover svg { fill:#fff; }
+@media(max-width:768px){
+  .share-bar { padding:24px 20px; }
+  .share-buttons { gap:6px; }
+  .share-btn { padding:6px 11px; font-size:0.72rem; }
+}
+
+/* WHATSAPP JOIN BLOCK */
+.wa-join {
+  max-width:760px;
+  margin:0 auto;
+  padding:40px 60px;
+  background:var(--cream2);
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between; gap:32px;
+}
+.wa-join-text h3 {
+  font-size:1.15rem; font-weight:900; color:var(--navy); margin-bottom:6px;
+}
+.wa-join-text p {
+  font-size:0.88rem; color:var(--text-mid); line-height:1.6;
+}
+.wa-join-btn {
+  display:inline-flex; align-items:center; gap:10px;
+  background:#25D366; color:#fff;
+  padding:13px 28px; border-radius:50px;
+  font-size:0.9rem; font-weight:900; font-family:inherit;
+  text-decoration:none; white-space:nowrap; flex-shrink:0;
+  transition:transform 0.2s, background 0.2s;
+}
+.wa-join-btn:hover { background:#1ebe5d; transform:scale(1.04); }
+.wa-join-btn svg { width:20px; height:20px; fill:#fff; flex-shrink:0; }
+@media(max-width:768px){
+  .wa-join { flex-direction:column; padding:32px 20px; text-align:center; }
+}
+
+/* CTA */
+.cta-strip {
+  background:var(--navy);
+  padding:44px 60px;
+  display:flex; align-items:center; justify-content:space-between; gap:40px;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.cta-strip h3 { font-size:1.4rem; font-weight:900; color:#fff; }
+.cta-strip p { font-size:0.88rem; color:rgba(255,255,255,0.75); margin-top:6px; }
+.cta-btn-white {
+  background:var(--orange); color:var(--navy);
+  border:none; padding:13px 32px; border-radius:50px;
+  font-size:0.9rem; font-weight:900; cursor:pointer; font-family:inherit;
+  white-space:nowrap; flex-shrink:0; transition:transform 0.2s;
+  text-decoration:none; display:inline-block;
+}
+.cta-btn-white:hover { transform:scale(1.04); }
+
+/* FOOTER */
+footer {
+  background:var(--cream2);
+  padding:32px 60px;
+  display:flex; align-items:center; justify-content:space-between;
+  color:var(--text-mid); font-size:0.8rem;
+  border-top:1px solid var(--border);
+}
+.footer-logo { font-size:1rem; font-weight:900; color:var(--navy); }
+.footer-logo span { color:#c46a2a; }
+
+/* NOT FOUND */
+.not-found {
+  max-width:760px; margin:0 auto;
+  padding:80px 60px; text-align:center;
+}
+.not-found h2 { font-size:1.5rem; font-weight:900; color:var(--navy); margin-bottom:16px; }
+.not-found p { color:var(--text-mid); margin-bottom:28px; }
+.not-found a { color:var(--orange-deep); text-decoration:none; font-weight:700; }
+
+/* SKIP LINK */
+.skip-link {
+  position:absolute; top:-100px; left:0;
+  background:var(--navy); color:#fff;
+  padding:12px 24px; z-index:200;
+  font-size:0.9rem; font-weight:700;
+  text-decoration:none; border-radius:0 0 8px 0;
+  transition:top 0.2s;
+}
+.skip-link:focus { top:0; }
+
+/* MOBILE */
+@media(max-width:768px){
+  nav { padding:0 20px; }
+  .post-header, .post-body-wrap, .post-nav { padding-right:20px; padding-left:20px; }
+  .post-header { padding-top:36px; margin-top:0; grid-template-columns:1fr; }
+  .post-image-box { width:100%; max-width:280px; margin:0 auto; }
+  .post-body-wrap { padding-top:32px; padding-bottom:40px; }
+  .post-nav { flex-direction:column; }
+  .cta-strip { flex-direction:column; padding:36px 20px; text-align:center; }
+  footer { flex-direction:column; gap:10px; padding:24px 20px; }
+}
+</style>
+  <link rel="canonical" id="canonical-url" href="/">
+</head>
+<body>
+
+<a href="#main" class="skip-link">דלג לתוכן</a>
+
+<nav>
+  <a href="https://omertai.net" class="logo">עומר <span>טייכר</span></a>
+  <a href="/blog/" class="nav-back">→ כל הפוסטים</a>
+</nav>
+
+<main id="main">
+<div id="post-content" style="min-height:80vh"></div>
+</main>
+
+<div class="cta-strip">
+  <div>
+    <h3>יש לכם שאלה? אני כאן.</h3>
+    <p>25 שנות ניסיון בשירות שלכם - בטלפון, בזום, או בביתכם.</p>
+  </div>
+  <a href="https://wa.me/972526587420" target="_blank" rel="noopener" class="cta-btn-white" style="background:#25D366;border-color:#25D366;display:inline-flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> דברו איתי בוואטסאפ</a>
+</div>
+
+<footer>
+  <div class="footer-logo">עומר <span>טייכר</span></div>
+  <span>© 2026 · כל הזכויות שמורות</span>
+  <div style="margin-top:10px; font-size:0.78rem; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+    <a href="https://omertai.net/pages/legal/terms.html" style="color:inherit; text-decoration:none;">תקנון</a>
+    <a href="https://omertai.net/pages/legal/privacy.html" style="color:inherit; text-decoration:none;">פרטיות</a>
+    <a href="https://omertai.net/pages/legal/refund.html" style="color:inherit; text-decoration:none;">מדיניות החזרים</a>
+    <a href="https://omertai.net/pages/legal/accessibility.html" style="color:inherit; text-decoration:none;">נגישות</a>
+  </div>
+</footer>
+
+<script>
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  const months = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
+async function init() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id');
+  const container = document.getElementById('post-content');
+
+  if (!id) {
+    container.innerHTML = `<div class="not-found"><h2>פוסט לא נמצא</h2><p>לא צוין מזהה פוסט.</p><a href="/blog/">חזרה לבלוג</a></div>`;
+    return;
+  }
+
+  try {
+    let data;
+    try {
+      const res = await fetch(`/api/blog-posts?id=${encodeURIComponent(id)}`);
+      if (!res.ok) throw new Error(res.status);
+      data = await res.json();
+    } catch {
+      const res = await fetch('posts.json');
+      const raw = await res.json();
+      const posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+      const post = posts.find(p => p.id === id);
+      if (!post) {
+        container.innerHTML = `<div class="not-found"><h2>פוסט לא נמצא</h2><p>הפוסט המבוקש לא קיים.</p><a href="/blog/">חזרה לבלוג</a></div>`;
+        return;
+      }
+      const idx = posts.indexOf(post);
+      const prev = posts[idx + 1] ? { id: posts[idx + 1].id, title: posts[idx + 1].title } : null;
+      const next = posts[idx - 1] ? { id: posts[idx - 1].id, title: posts[idx - 1].title } : null;
+      data = { post, prev, next, total: posts.length };
+    }
+    if (!data.post) {
+      container.innerHTML = `<div class="not-found"><h2>פוסט לא נמצא</h2><p>הפוסט המבוקש לא קיים.</p><a href="/blog/">חזרה לבלוג</a></div>`;
+      return;
+    }
+    const post = data.post;
+    const prev = data.prev;
+    const next = data.next;
+    const total = data.total;
+    const idx = 0;
+
+    // strip HTML tags for plain-text contexts (title tag, meta)
+    function stripHtml(str) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = str;
+      return tmp.textContent || tmp.innerText || '';
+    }
+
+    // Update page meta
+    document.getElementById('page-title').textContent = stripHtml(`${post.seo_title || post.title} | עומר טייכר`);
+    document.getElementById('page-desc').setAttribute('content', stripHtml(post.seo_desc || post.excerpt));
+    // og tags
+    const ogTitle = stripHtml(post.seo_title || post.title);
+    const ogDesc  = stripHtml(post.seo_desc  || post.excerpt);
+    const ogUrl   = window.location.href;
+    const ogImage = post.image || '';
+    document.getElementById('og-title').setAttribute('content', ogTitle + ' | עומר טייכר');
+    document.getElementById('og-desc').setAttribute('content', ogDesc);
+    document.getElementById('og-url').setAttribute('content', ogUrl);
+    document.getElementById('og-image').setAttribute('content', ogImage);
+    document.getElementById('tw-title').setAttribute('content', ogTitle + ' | עומר טייכר');
+    document.getElementById('tw-desc').setAttribute('content', ogDesc);
+    document.getElementById('tw-image').setAttribute('content', ogImage);
+    document.getElementById('canonical-url').setAttribute('href', ogUrl);
+
+    // JSON-LD structured data
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": ogTitle,
+      "description": ogDesc,
+      "image": ogImage,
+      "url": ogUrl,
+      "datePublished": post.date,
+      "author": { "@type": "Person", "name": "עומר טייכר", "url": "https://omertai.net" },
+      "publisher": { "@type": "Person", "name": "עומר טייכר" },
+      "inLanguage": "he"
+    });
+    document.head.appendChild(ld);
+
+    const imgContent = post.image
+      ? `<img src="${post.image}" alt="${post.image_alt || post.title}" fetchpriority="high" width="200" height="200">`
+      : `<span style="position:relative;z-index:1">${post.emoji}</span>`;
+
+    // Prev/Next nav
+    let navHTML = '';
+    if (prev || next) {
+      navHTML = `<div class="post-nav">`;
+      if (next) {
+        navHTML += `<a class="post-nav-btn" href="post.html?id=${next.id}">
+          <span class="nav-direction">הפוסט הבא ←</span>
+          <span class="nav-title">${next.title}</span>
+        </a>`;
+      }
+      if (prev) {
+        navHTML += `<a class="post-nav-btn" href="post.html?id=${prev.id}">
+          <span class="nav-direction">→ הפוסט הקודם</span>
+          <span class="nav-title">${prev.title}</span>
+        </a>`;
+      }
+      navHTML += `</div>`;
+    }
+
+    container.innerHTML = `
+      <div class="post-header">
+        <div class="post-header-text">
+          <div class="post-label">מאמר / ${String(total).padStart(2,'0')}</div>
+          <h1>${post.title}</h1>
+          <p class="excerpt">${post.excerpt}</p>
+          <div class="post-meta">
+            <strong>עומר טייכר</strong>
+            <span>·</span><span>${formatDate(post.date)}</span>
+          </div>
+        </div>
+        <div class="post-image-box">${imgContent}</div>
+      </div>
+      <div class="post-body-wrap">
+        <div class="post-body">${post.body}</div>
+      </div>
+      </div>
+      <div class="share-bar">
+        <p class="share-intro">אם זה עזר לכם, אולי יעזור גם למישהו שאתם מכירים.</p>
+        <div class="share-buttons">
+          <span class="share-label">שתפו</span>
+        <a class="share-btn share-icon-only share-wa-btn" id="share-wa" href="#" target="_blank" rel="noopener" aria-label="שתף בוואטסאפ">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a class="share-btn share-icon-only share-fb-btn" id="share-fb" href="#" target="_blank" rel="noopener" aria-label="שתף בפייסבוק">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <button class="share-btn" id="share-copy" onclick="copyLink(this)">
+          🔗
+          <span class="copy-label">העתק קישור</span>
+        </button>
+        </div>
+      </div>
+      <div class="wa-join">
+        <div class="wa-join-text">
+          <h3>הצטרפו לקבוצת הוואטסאפ שלי</h3>
+          <p>קבוצה שקטה - אין רעש, אין צ'אט.<br>רק הרצאות, תכנים ועדכונים לפני כולם, בחינם לגמרי.</p>
+        </div>
+        <a class="wa-join-btn" href="https://chat.whatsapp.com/KcQuPcjxrSzKHjCqCJrP7r?mode=gi_t" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          הצטרפו עכשיו
+        </a>
+      </div>
+      ${navHTML}`;
+    window._currentPost = post;
+    initShareButtons();
+  } catch(e) {
+    container.innerHTML = `<div class="not-found"><h2>שגיאה בטעינה</h2><p>לא ניתן לטעון את הפוסט.</p><a href="/blog/">חזרה לבלוג</a></div>`;
+    console.error(e);
+  }
+}
+
+init();
+
+function initShareButtons() {
+  const url = encodeURIComponent(window.location.href);
+  const title = encodeURIComponent(document.title);
+  const waBtn = document.getElementById('share-wa');
+  const fbBtn = document.getElementById('share-fb');
+  if (waBtn) waBtn.href = `https://wa.me/?text=${title}%20${url}`;
+  if (fbBtn) fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+}
+
+function copyLink(btn) {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    btn.classList.add('copied');
+    const label = btn.querySelector('.copy-label');
+    if (label) { label.textContent = 'הועתק'; }
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      if (label) { label.textContent = 'העתק קישור'; }
+    }, 2000);
+  });
+}
+
+window.addEventListener('load', initShareButtons);
+
+function shareAsImage() {
+  const post = window._currentPost;
+  if (!post) return;
+
+  const btn = document.getElementById('share-img');
+  btn.textContent = 'מכין תמונה...';
+  btn.disabled = true;
+
+  const stripHtml = str => {
+    const d = document.createElement('div');
+    d.innerHTML = str || '';
+    return d.textContent || '';
+  };
+
+  const title   = stripHtml(post.seo_title || post.title).replace(' | עומר טייכר', '');
+  const desc    = stripHtml(post.seo_desc  || post.excerpt);
+  const imgSrc  = post.image || '';
+  const postUrl = window.location.href;
+
+  const canvas  = document.createElement('canvas');
+  canvas.width  = 1200;
+  canvas.height = 630;
+  const ctx     = canvas.getContext('2d');
+
+  const draw = () => {
+    // רקע
+    ctx.fillStyle = '#fdf8f2';
+    ctx.fillRect(0, 0, 1200, 630);
+
+    // פס עליון כתום
+    ctx.fillStyle = '#f6a67e';
+    ctx.fillRect(0, 0, 1200, 8);
+
+    // תמונה בצד שמאל
+    const drawText = () => {
+      // רקע כהה על החצי הימני
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(600, 8, 600, 622);
+
+      // כותרת
+      ctx.fillStyle = '#1a4a6b';
+      ctx.font = 'bold 36px Arial';
+      ctx.direction = 'rtl';
+      ctx.textAlign = 'right';
+
+      // wrap כותרת
+      const words = title.split(' ');
+      let line = '';
+      let y = 120;
+      for (const word of words) {
+        const test = line + word + ' ';
+        if (ctx.measureText(test).width > 520 && line) {
+          ctx.fillText(line, 1170, y);
+          line = word + ' ';
+          y += 50;
+        } else {
+          line = test;
+        }
+      }
+      ctx.fillText(line, 1170, y);
+      y += 60;
+
+      // קו הפרדה
+      ctx.strokeStyle = '#f6a67e';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(630, y);
+      ctx.lineTo(1170, y);
+      ctx.stroke();
+      y += 30;
+
+      // תיאור
+      ctx.fillStyle = '#555';
+      ctx.font = '22px Arial';
+      const descWords = desc.split(' ');
+      let dLine = '';
+      for (const word of descWords) {
+        const test = dLine + word + ' ';
+        if (ctx.measureText(test).width > 520 && dLine) {
+          ctx.fillText(dLine, 1170, y);
+          dLine = word + ' ';
+          y += 34;
+        } else {
+          dLine = test;
+        }
+      }
+      ctx.fillText(dLine, 1170, y);
+
+      // שם האתר בתחתית
+      ctx.fillStyle = '#f6a67e';
+      ctx.font = 'bold 20px Arial';
+      ctx.fillText('omertai.net/blog', 1170, 590);
+
+      // הורד
+      const a = document.createElement('a');
+      a.download = `${post.id || 'post'}.png`;
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+
+      btn.textContent = '✓ התמונה הורדה';
+      setTimeout(() => {
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg> שתף כתמונה';
+        btn.disabled = false;
+      }, 3000);
+    };
+
+    if (imgSrc) {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = () => {
+        ctx.drawImage(img, 0, 8, 600, 622);
+        drawText();
+      };
+      img.onerror = drawText;
+      img.src = imgSrc;
+    } else {
+      drawText();
+    }
+  };
+
+  draw();
+}
+</script>
+<script src="toolbar.js" defer></script>
+</body>
+</html>

@@ -5,8 +5,23 @@
     },
     "api/whatsapp.js": {
       "maxDuration": 10
+    },
+    "api/blog-posts.js": {
+      "maxDuration": 10
+    },
+    "api/blog-post.js": {
+      "maxDuration": 10
+    },
+    "api/blog-feed.js": {
+      "maxDuration": 10
+    },
+    "api/blog-sitemap.js": {
+      "maxDuration": 10
     }
   },
+  "rewrites": [
+    { "source": "/blog/post", "destination": "/api/blog-post" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
