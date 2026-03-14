@@ -9,75 +9,10 @@ const cartSVG   = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" s
 const arrowSVG  = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
 const boltSVG   = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>';
 const stepsSVG  = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
-const shieldSVG = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>';
-
-// ===== LOAD CONTENT =====
-function renderContent(d) {
-  // כל השדות מכבדים ירידת שורה
-  const set = (sel, val) => {
-    const el = document.querySelector(sel);
-    if (!el || val == null) return;
-    el.innerHTML = String(val).replace(/\n/g, '<br>');
-  };
-
-  // pain section
-  set('.pain-eyebrow', d.page?.eyebrow);
-  set('.pain-title-1', d.page?.title_1);
-  set('.pain-title-2', d.page?.title_2);
-  set('.pain-title-em', d.page?.title_3);
-  set('.pain-sub', d.page?.sub);
-
-  // pain cards
-  (d.pain_cards || []).forEach((c, i) => {
-    set(`.pain-card-title[data-i="${i}"]`, c.title);
-    set(`.pain-card-desc[data-i="${i}"]`, c.desc);
-  });
-
-  // solution
-  set('.pain-solution-label', d.solution?.label);
-  set('.pain-solution-text', d.solution?.title);
-  set('.pain-solution-sub', d.solution?.sub);
-
-  // how
-  set('.how-eyebrow', d.how?.eyebrow);
-  set('.how-title', d.how?.title);
-  set('.how-sub', d.how?.sub);
-  set('.how-note', d.how?.note);
-  (d.how?.steps || []).forEach((s, i) => {
-    set(`.step-title[data-i="${i}"]`, s.title);
-    set(`.step-desc[data-i="${i}"]`, s.desc);
-  });
-
-  // shop
-  set('.shop-eyebrow', d.shop?.eyebrow);
-  set('#shop-title', d.shop?.title);
-  set('.shop-sub', d.shop?.sub);
-
-
-  // faq
-  const faqInner = document.querySelector('.faq-inner');
-  if (faqInner && d.faq?.length) {
-    const existing = faqInner.querySelectorAll('.faq-item');
-    d.faq.forEach((f, i) => {
-      if (existing[i]) {
-        const qEl = existing[i].querySelector('.faq-q');
-        const aEl = existing[i].querySelector('.faq-a');
-        if (qEl) {
-          // keep the icon, update text node
-          const textNode = [...qEl.childNodes].find(n => n.nodeType === 3);
-          if (textNode) textNode.textContent = f.q;
-          else qEl.prepend(document.createTextNode(f.q));
-        }
-        if (aEl) aEl.innerHTML = String(f.a||'').replace(/\n/g,'<br>');
-      }
-    });
-  }
-}
 
 // ===== PRODUCTS =====
 function renderProducts(products) {
   const grid = document.getElementById('shop-grid');
-  const activeCount = products.filter(p => p.status === 'active').length;
 
   grid.innerHTML = products.map((p, i) => {
     const isActive = p.status === 'active';
@@ -128,7 +63,6 @@ function renderProducts(products) {
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.08 });
-document.querySelectorAll('.prod-card').forEach(el => observer.observe(el));
 
 // ===== FAQ =====
 function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
@@ -170,17 +104,51 @@ function goToCheckout(e) {
   if (!cart.length) return;
   const productMap = window._productMap || {};
   if (cart.length === 1) {
-    window.location.href = 'https://omertai.net/pages/checkout/?product=' + (productMap[cart[0].name] || 'vibe');
+    window.location.href = '/pages/checkout/?product=' + (productMap[cart[0].name] || 'vibe');
   } else {
-    window.location.href = 'https://omertai.net/pages/checkout/';
+    window.location.href = '/pages/checkout/';
   }
 }
 
 // ===== INIT =====
-Promise.all([
-  fetch('content.json?v=' + Date.now()).then(r => r.json()).catch(() => null),
-  fetch('products.json?v=' + Date.now()).then(r => r.json()).catch(() => [])
-]).then(([content, products]) => {
-  if (content) renderContent(content);
-  if (products?.length) renderProducts(products);
-});
+renderProducts([
+  {
+    key: "vibe",
+    status: "active",
+    category: "AI · תמלול · Windows",
+    label: "חדש",
+    title: "ישיבות, הרצאות, שיעורים. הופכים לטקסט. בעברית. בחינם. על המחשב שלכם.",
+    desc: "כלי AI שמתמלל כל קובץ שמע ווידאו, בלי לשלוח שום דבר לאינטרנט. אתם לומדים להתקין, להגדיר ולהשתמש בו, עד שזה עובד אצלכם.",
+    includes: [
+      "תומך ב-MP4, MKV, MP3, WAV ועוד. גם קישורי יוטיוב ישירות",
+      "הכל על המחשב שלכם. אף קובץ לא יוצא לאינטרנט ולא מגיע לאף שרת",
+      "בונוס: איך לוקחים את התמלול ל-AI ושואלים אותו שאלות על התוכן"
+    ],
+    steps: 26,
+    price: 97,
+    thumb: "navy",
+    checkout_url: "/pages/checkout/?product=vibe"
+  },
+  {
+    key: "ai",
+    status: "coming_soon",
+    category: "AI · עבודה יומיומית",
+    title: "ChatGPT וקלוד בעבודה: איך לנסח, לסכם ולחשוב יחד עם AI",
+    desc: "לא קורס תיאורטי. הדרכה מעשית שתלמדו להשתמש ב-AI כמו שצריך, עם דוגמאות מהעבודה שלכם.",
+    includes: [],
+    price: 47,
+    thumb: "purple",
+    checkout_url: "/pages/checkout/?product=ai"
+  },
+  {
+    key: "security",
+    status: "coming_soon",
+    category: "אבטחה",
+    title: "סיסמאות, אימות דו-שלבי ואבטחת חשבונות: פעם אחת ולתמיד",
+    desc: "מנהל סיסמאות מאפס, אימות דו-שלבי שעובד, וחשבונות מאובטחים. בלי לשכוח, בלי להינעל בחוץ.",
+    includes: [],
+    price: 47,
+    thumb: "teal",
+    checkout_url: "/pages/checkout/?product=security"
+  }
+]);
