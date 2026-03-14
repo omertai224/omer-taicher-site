@@ -69,12 +69,12 @@ function showLoginError(msg) {
 
 // ===== INIT =====
 function init() {
-  const savedRepo = localStorage.getItem('admin_active_repo') || 'omer-taicher-site';
+  let savedRepo = localStorage.getItem('admin_active_repo') || 'omer-taicher-interactive';
+  if (savedRepo === 'omer-taicher-site') savedRepo = 'omer-taicher-interactive';
   const rawTab    = localStorage.getItem('admin_active_tab') || 'content';
   const validTabs = ['content', 'code', 'gallery', 'download', 'contacts'];
   const savedTab  = validTabs.includes(rawTab) ? rawTab : 'content';
   const btnMap = {
-    'omer-taicher-site':      'repo-btn-site',
     'omer-taicher-interactive': 'repo-btn-tutorials',
     'omer-taicher-blog':      'repo-btn-blog'
   };
@@ -165,37 +165,17 @@ function selectRepo(repoName, btn) {
   switchTab('content');
 
   // הצג/הסתר תוכן לפי repo
-  const isSite  = repoName === 'omer-taicher-site';
   const isBlog  = repoName === 'omer-taicher-blog';
   const isTutos = repoName === 'omer-taicher-interactive';
 
-  const siteBlocks    = document.getElementById('site-content-blocks');
   const blogMgr       = document.getElementById('blog-manager');
   const tutosContent  = document.getElementById('tutorials-content');
-  if (siteBlocks)   siteBlocks.style.display   = isSite  ? 'block' : 'none';
   if (blogMgr)      blogMgr.style.display       = isBlog  ? 'block' : 'none';
   if (tutosContent) tutosContent.style.display  = isTutos ? 'block' : 'none';
 
-  // כפתור שמור ופרסם — גלוי רק באתר ראשי
-  const saveBtn = document.getElementById('save-content-btn');
-  if (saveBtn) {
-    saveBtn.style.visibility = isSite ? 'visible' : 'hidden';
-    saveBtn.disabled = true;
-  }
-
-  // status
-  const statusDot  = document.getElementById('status-dot-content');
-  const statusText = document.getElementById('status-text-content');
-  if (statusDot)  statusDot.className  = 'status-dot loading';
-  if (statusText) statusText.textContent = 'טוען...';
-
   // טען נתונים
-  if (isSite)  loadContent();
   if (isBlog)  setTimeout(loadBlogManager, 50);
-  if (isTutos) {
-    setTimeout(loadInteractiveManager, 50);
-    setTimeout(loadInteractiveContent, 80);
-  }
+  if (isTutos) setTimeout(loadInteractiveManager, 50);
 }
 
 // ===== HELPERS =====
