@@ -146,24 +146,6 @@ async function loadBlogManager() {
     blogSha = data.sha;
     const parsed = JSON.parse(decode(data.content));
     blogPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    // טעינת תזמונים
-    try {
-      const schedRes = await fetch(`https://api.github.com/repos/${GITHUB_USER}/omer-taicher-site/contents/scheduled.json?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
-        headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
-      });
-      const sched = await schedRes.json();
-      blogScheduled = JSON.parse(decode(sched.content)).filter(s => !s.sent);
-    } catch(e) { blogScheduled = []; }
-
-    // שחזור מצב עריכה אחרי רענון
-    const savedId = localStorage.getItem('blog_editing_id');
-    if (savedId) {
-      const post = blogPosts.find(p => p.id === savedId);
-      if (post) { blogEditingId = savedId; showBlogForm(post); return; }
-      localStorage.removeItem('blog_editing_id');
-    }
-
     renderBlogList();
     setStatus('content', 'ok', blogPosts.length + ' פוסטים נטענו');
   } catch(e) {
@@ -229,52 +211,14 @@ function renderBlogList() {
   const container = document.getElementById('blog-manager');
   if (!container) return;
 
-  const listHTML = blogPosts.length === 0
-    ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">אין פוסטים עדיין</div>`
-    : blogPosts.map(p => {
-      const sched = blogScheduled.find(s => s.postId === p.id);
-      const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${sched.sendAt.replace('T',' ').slice(0,16)}</div>` : '';
-      return `
-      <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;">
-        ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
-        <div style="flex:1;min-width:0">
-          <div style="font-size:0.92rem;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${p.title}</div>
-          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}</div>
-          ${schedTag}
-        </div>
-        <div style="display:flex;gap:8px;flex-shrink:0">
-          <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
-          <button onclick="window.open(BLOG_ORIGIN+'/blog/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
-          <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
-          <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
-          <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
-          ${sched ? `<button onclick="blogCancelSchedule('${p.id}')" style="background:#fff3cd;color:#856404;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">בטל תזמון</button>` : ''}
-          <button onclick="blogDeletePost('${p.id}')" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
-        </div>
-      </div>`;
-    }).join('');
-
   container.innerHTML = `
-    <div style="margin-bottom:14px">
-      <input
-        type="text"
-        placeholder="חיפוש לפי כותרת..."
-        oninput="filterBlogList(this.value)"
-        style="width:100%;padding:10px 16px;border:1px solid var(--border);border-radius:50px;font-size:0.88rem;font-family:inherit;outline:none;background:var(--cream);direction:rtl;box-sizing:border-box"
-      >
-    </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-      <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
-      <div style="display:flex;gap:8px">
-        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptNew()">הנחיה לפוסט חדש</button>
-        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptUpgrade()">הנחיה לשדרוג פוסט</button>
-        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptImage()">הנחיה ליצירת תמונה</button>
-        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
-        <button onclick="blogPasteFromClipboard()" style="background:var(--navy-light);color:var(--navy);border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">הדבק פוסט</button>
-        <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:20px;padding:48px 20px;">
+      <div style="font-size:0.88rem;color:var(--text-light);font-weight:600;">${blogPosts.length} פוסטים בבלוג</div>
+      <div style="display:flex;gap:12px;">
+        <button onclick="blogCopyAll()" style="background:var(--navy);color:#fff;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s;" onmouseenter="this.style.opacity='0.85'" onmouseleave="this.style.opacity='1'">העתק הכל</button>
+        <button onclick="blogCopyPromptImage()" style="background:var(--cream);color:var(--navy);border:1.5px solid var(--border);padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .15s;" onmouseenter="this.style.opacity='0.75'" onmouseleave="this.style.opacity='1'">הנחיה ליצירת תמונה</button>
       </div>
-    </div>
-    <div id="blog-list-items">${listHTML}</div>`;
+    </div>`;
 }
 
 function blogNewPost() {
