@@ -62,14 +62,6 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         גלריה
       </button>
-      <button onclick="switchTab('code', this)" id="tab-btn-code" title="עורך קוד" style="display:inline-flex;align-items:center;gap:7px;background:#553c9a;color:#fff;border:none;padding:8px 18px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;" onmouseenter="this.style.background='#44337a'" onmouseleave="this.style.background='#553c9a'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        קוד
-      </button>
-      <button onclick="switchTab('download', this)" id="tab-btn-download" title="גיבוי האתר" style="display:inline-flex;align-items:center;gap:7px;background:#c05621;color:#fff;border:none;padding:8px 18px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;" onmouseenter="this.style.background='#9c4221'" onmouseleave="this.style.background='#c05621'">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        גיבוי אתר
-      </button>
     </div>
   </div>
 
@@ -271,47 +263,6 @@
 
   </div>
 
-  <!-- TAB: CODE -->
-  <div class="tab-panel" id="tab-code">
-    <div style="display:flex;gap:8px;margin-bottom:14px;align-items:center;">
-      <span style="font-size:0.78rem;font-weight:700;color:var(--text-mid);">ריפוזיטורי:</span>
-      <button class="code-repo-btn active" id="code-repo-site" onclick="switchCodeRepo('omer-taicher-site', this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> דף ראשי</button>
-      <button class="code-repo-btn" id="code-repo-interactive" onclick="switchCodeRepo('omer-taicher-interactive', this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> אינטראקטיבי</button>
-      <button class="code-repo-btn" id="code-repo-blog" onclick="switchCodeRepo('omer-taicher-blog', this)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> בלוג</button>
-    </div>
-    <div class="status-bar">
-      <div class="status-dot" id="status-dot-code"></div>
-      <div class="status-text" id="status-text-code">טוען קבצים...</div>
-      <input type="file" id="upload-file-input" multiple style="display:none" onchange="handleUploadInput(this)">
-      <button class="editor-btn" onclick="document.getElementById('upload-file-input').click()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg> העלה קובץ</button>
-      <button class="editor-btn" onclick="newFolderPrompt()" style="background:var(--navy-light);color:var(--navy);font-size:0.75rem;padding:5px 14px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg> תיקייה חדשה</button>
-      <button class="editor-btn" onclick="loadFileTree(currentTreePath||'')" style="background:var(--cream);color:var(--text-mid);font-size:0.75rem;padding:5px 14px;">↻ רענן</button>
-    </div>
-    <div class="code-layout">
-      <div class="file-list">
-        <div class="file-list-title" style="display:flex;align-items:center;justify-content:space-between;">
-          <span>קבצים ותיקיות</span>
-          <button onclick="copyFullRepo()" id="copy-tree-btn" style="background:var(--navy-light);color:var(--navy);border:none;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;cursor:pointer;font-family:inherit;">העתק עץ</button>
-        </div>
-        <div id="file-items"></div>
-        <div id="dropzone" ondragover="event.preventDefault();this.classList.add('drag-over')" ondragleave="this.classList.remove('drag-over')" ondrop="handleDrop(event)" style="margin:12px;border:2px dashed var(--border);border-radius:10px;padding:16px;text-align:center;font-size:0.75rem;color:var(--text-light);cursor:pointer;transition:all 0.2s;">
-          גרור קובץ לכאן להעלאה<br><span style="font-size:0.65rem;">מחליף קובץ קיים באותו שם</span>
-        </div>
-      </div>
-      <div class="editor-wrap">
-        <div class="editor-topbar">
-          <div class="editor-filename" id="editor-filename">— בחר קובץ —</div>
-          <div class="editor-actions">
-            <button class="editor-btn" id="paste-publish-btn" onclick="pasteAndPublish()" disabled style="background:var(--navy);color:#fff;border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> הדבק ופרסם</button>
-            <button class="editor-btn" id="save-code-btn" onclick="saveCode()" style="background:var(--orange-deep);color:#fff;border-radius:20px;border:none;cursor:pointer;font-size:0.75rem;font-weight:600;padding:5px 14px;font-family:inherit;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> שמור ופרסם</button>
-          </div>
-        </div>
-        <textarea id="code-editor" placeholder="בחר קובץ מהרשימה משמאל..."></textarea>
-      </div>
-    </div>
-  </div>
-
-    <!-- TAB: DOWNLOAD -->
 <!-- TAB: CONTACTS -->
   <div class="tab-panel" id="tab-contacts">
 
@@ -452,30 +403,6 @@
 
   </div>
 
-  <!-- TAB: DOWNLOAD -->
-  <div class="tab-panel" id="tab-download">
-    <div class="backups-header">
-      <div class="backups-title"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> הורדת גיבוי מלא</div>
-    </div>
-    <div class="status-bar">
-      <div class="status-dot" id="status-dot-download"></div>
-      <div class="status-text" id="status-text-download">בחר ריפוזיטורי להורדה</div>
-    </div>
-
-    <div id="download-repo-list" style="display:flex;flex-direction:column;gap:12px;margin-top:16px;"></div>
-
-    <div style="margin-top:24px;padding:16px;background:var(--bg,#f8fafc);border-radius:12px;border:1px solid var(--border,#e2e8f0);">
-      <div style="font-size:0.8rem;font-weight:700;margin-bottom:10px;color:var(--navy,#1e3a5f);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> הורד את כולם בבת אחת</div>
-      <button onclick="downloadAllRepos()" style="background:var(--orange,#f97316);color:white;border:none;padding:10px 24px;border-radius:20px;font-family:inherit;font-weight:700;font-size:0.9rem;cursor:pointer;width:100%;">
-        הורד את כל הריפוזיטוריז
-      </button>
-    </div>
-
-    <div style="margin-top:16px;padding:14px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;font-size:0.78rem;color:#166534;line-height:1.7;">
-      💡 <strong>איך זה עובד:</strong> כל ריפוזיטורי מוריד כ-ZIP ישירות מ-GitHub — הקבצים נשמרים אצלך בתיקיית ההורדות.
-      אתה אף פעם לא יכול ליפול — יש לך גיבוי מלא על המחשב.
-    </div>
-  </div>
 
 </div>
 
