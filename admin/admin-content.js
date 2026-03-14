@@ -564,6 +564,41 @@ function escapeHtml(str) {
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+function toggleBlogPreview() {
+  const body = document.getElementById('bf-body');
+  const preview = document.getElementById('bf-preview');
+  const btn = document.getElementById('bf-preview-toggle');
+  if (!body || !preview) return;
+
+  const isPreview = preview.style.display !== 'none';
+  if (isPreview) {
+    // חזרה לעריכה
+    preview.style.display = 'none';
+    body.style.display = 'block';
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> תצוגה מקדימה';
+    btn.style.background = 'var(--navy)';
+  } else {
+    // הצג תצוגה מקדימה עם העיצוב של הבלוג
+    const title = document.getElementById('bf-title')?.innerHTML || '';
+    const excerpt = document.getElementById('bf-excerpt')?.innerHTML || '';
+    const image = document.getElementById('bf-image')?.value || '';
+    const date = document.getElementById('bf-date')?.value || '';
+
+    let previewHTML = '';
+    if (image) previewHTML += `<div style="margin:-28px -32px 28px;border-radius:14px 14px 0 0;overflow:hidden"><img src="${image}" style="width:100%;max-height:340px;object-fit:cover;display:block"></div>`;
+    if (date) previewHTML += `<div style="font-size:0.78rem;color:#999;margin-bottom:8px">${formatBlogDate(date)}</div>`;
+    previewHTML += `<h1 style="font-size:1.6rem;font-weight:900;color:#1a4a6b;line-height:1.4;margin-bottom:16px">${title}</h1>`;
+    if (excerpt) previewHTML += `<div style="font-size:1rem;line-height:1.7;color:#555;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid #e8e0d6">${excerpt}</div>`;
+    previewHTML += body.innerHTML;
+
+    preview.innerHTML = previewHTML;
+    preview.style.display = 'block';
+    body.style.display = 'none';
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> חזרה לעריכה';
+    btn.style.background = 'var(--orange-deep)';
+  }
+}
+
 function showBlogForm(post) {
 
   const container = document.getElementById('blog-manager');
@@ -600,16 +635,23 @@ function showBlogForm(post) {
 
     <div class="field">
       <label class="field-label">גוף הפוסט *</label>
-      <div style="display:flex;gap:6px;margin-bottom:6px;align-items:center">
-        <button type="button" onmousedown="event.preventDefault();document.execCommand('bold')"
-          style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-weight:900;cursor:pointer;font-family:inherit">B</button>
-        <button type="button" onmousedown="event.preventDefault();document.execCommand('italic')"
-          style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-style:italic;font-weight:700;cursor:pointer;font-family:inherit">I</button>
-        <button type="button" onmousedown="event.preventDefault();document.execCommand('underline')"
-          style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:underline;cursor:pointer;font-family:inherit">U</button>
-        <button type="button" onmousedown="event.preventDefault();document.execCommand('insertUnorderedList')"
-          title="רשימת בולטים — לחץ שוב לביטול"
-          style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:1rem;cursor:pointer;font-family:inherit">•≡</button>
+      <div style="display:flex;gap:6px;margin-bottom:6px;align-items:center;justify-content:space-between">
+        <div style="display:flex;gap:6px;align-items:center">
+          <button type="button" onmousedown="event.preventDefault();document.execCommand('bold')"
+            style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-weight:900;cursor:pointer;font-family:inherit">B</button>
+          <button type="button" onmousedown="event.preventDefault();document.execCommand('italic')"
+            style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-style:italic;font-weight:700;cursor:pointer;font-family:inherit">I</button>
+          <button type="button" onmousedown="event.preventDefault();document.execCommand('underline')"
+            style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;font-weight:700;text-decoration:underline;cursor:pointer;font-family:inherit">U</button>
+          <button type="button" onmousedown="event.preventDefault();document.execCommand('insertUnorderedList')"
+            title="רשימת בולטים — לחץ שוב לביטול"
+            style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:1rem;cursor:pointer;font-family:inherit">•≡</button>
+        </div>
+        <button type="button" id="bf-preview-toggle" onclick="toggleBlogPreview()"
+          style="background:var(--navy);color:#fff;border:none;padding:7px 18px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          תצוגה מקדימה
+        </button>
       </div>
       <div
         id="bf-body"
@@ -617,11 +659,29 @@ function showBlogForm(post) {
         oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"
         style="min-height:420px;height:auto;padding:18px 20px;border:1px solid var(--border);border-radius:10px;background:#fff;font-size:0.88rem;line-height:1.75;outline:none;cursor:text;font-family:inherit;overflow:hidden"
       >${post.body || ''}</div>
+      <div id="bf-preview" style="display:none;min-height:420px;padding:28px 32px;border:1.5px solid var(--navy);border-radius:14px;background:var(--cream);direction:rtl;font-family:'Rubik',sans-serif;"></div>
       <style>
         #bf-body, #bf-body * { font-size:0.88rem!important; line-height:1.75!important; font-family:inherit!important; }
         #bf-body p  { margin-bottom: 1.1em; }
         #bf-body h2 { font-size:1rem!important; font-weight:800!important; margin: 1.2em 0 0.4em; color:#1a4a6b; }
         #bf-body br { display:block; content:""; margin-top:0.3em; }
+
+        /* Blog post preview — mirrors post.html styling */
+        #bf-preview { font-size:1rem; line-height:1.85; color:#1e1e1e; }
+        #bf-preview h2 { font-size:1.25rem; font-weight:900; color:#1a4a6b; margin:36px 0 14px; letter-spacing:-0.01em; }
+        #bf-preview h3 { font-size:1.05rem; font-weight:700; color:#1a4a6b; margin:28px 0 10px; }
+        #bf-preview p { margin-bottom:18px; }
+        #bf-preview strong { color:#1a4a6b; font-weight:700; }
+        #bf-preview a { color:#e8854a; text-decoration:underline; }
+        #bf-preview ul, #bf-preview ol { margin:0 0 18px 0; padding-right:24px; }
+        #bf-preview li { margin-bottom:8px; }
+        #bf-preview br { line-height:2.4; }
+        #bf-preview blockquote { margin:28px 0; padding:20px 24px; border-right:4px solid #e8854a; background:#fdeede; border-radius:0 12px 12px 0; font-size:1.05rem; line-height:1.9; color:#1a4a6b; font-weight:500; }
+        #bf-preview .post-insight { margin:32px 0; padding:22px 28px; background:#1a4a6b; color:#fff; border-radius:14px; font-size:1.1rem; font-weight:700; line-height:1.7; letter-spacing:-0.01em; }
+        #bf-preview .post-tool-card { margin:28px 0; padding:22px 26px; background:#fff; border:1.5px solid #e8e0d6; border-radius:14px; display:flex; flex-direction:column; gap:6px; box-shadow:0 2px 12px rgba(30,30,30,0.06); }
+        #bf-preview .post-tool-name { font-size:1rem; font-weight:800; color:#1a4a6b; }
+        #bf-preview .post-tool-by { font-size:0.82rem; color:#666; }
+        #bf-preview .post-tool-link { margin-top:8px; font-size:0.88rem; font-weight:700; color:#e8854a; text-decoration:none; display:inline-flex; align-items:center; gap:4px; }
       </style>
     </div>
 
