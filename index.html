@@ -285,21 +285,25 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
   fetch('/interactive/products.json')
     .then(r => r.json())
     .then(products => {
-      const active = products.filter(p => p.status === 'active');
       const grid = document.getElementById('ws-grid');
-      if (!grid || !active.length) return;
+      if (!grid || !products.length) return;
 
-      grid.innerHTML = active.map(p => `
-        <div class="ws-card">
+      grid.innerHTML = products.map(p => {
+        const isSoon = p.status === 'coming_soon';
+        const badge = isSoon ? '<div class="ws-soon-badge">בקרוב</div>' : (p.label ? `<div class="ws-new-badge">${p.label}</div>` : '');
+        const btn = isSoon
+          ? '<span class="ws-btn ws-btn-soon">בקרוב</span>'
+          : `<a href="${p.checkout_url}" class="ws-btn"><span class="btn-arrow">להצטרפות ${joinSVG}</span></a>`;
+        return `<div class="ws-card${isSoon ? ' ws-card-soon' : ''}">
+          ${badge}
           <div class="ws-title">${p.title}</div>
           <div class="ws-desc"><p>${p.desc}</p></div>
           <div class="ws-footer">
             <div class="ws-price">₪${p.price} <span>חד פעמי</span></div>
-            <a href="${p.checkout_url}" class="ws-btn">
-              <span class="btn-arrow">להצטרפות ${joinSVG}</span>
-            </a>
+            ${btn}
           </div>
-        </div>`).join('');
+        </div>`;
+      }).join('');
     })
     .catch(() => {});
 })();
@@ -348,7 +352,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
     </div>
     <div class="lecture-box">
       <div class="lecture-img-col">
-        <img id="img-lecture" src="" alt="מיומנו של טכנאי מחשבים, החשוד העיקרי" width="420" height="280" loading="lazy">
+        <img id="img-lecture" src="" alt="מיומנו של טכנאי מחשבים, החשוד העיקרי" width="420" height="420" loading="lazy" style="aspect-ratio:1/1; object-fit:cover;">
       </div>
       <div class="lecture-content-col">
         <div class="lecture-badge" data-content="lecture.badge">
@@ -439,46 +443,59 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
     return Math.max(1, Math.round(words / 200));
   }
 
+  function renderBlogCards(posts) {
+    const grid = document.getElementById('blog-grid');
+    if (!grid || !posts.length) return;
+    grid.innerHTML = posts.slice(0, 3).map((p, index) => {
+      const plainTitle = stripHTML(p.title || '');
+      const plainExcerpt = stripHTML(p.excerpt || '');
+      const excerpt = plainExcerpt.substring(0, 100).trim() + (plainExcerpt.length > 100 ? '...' : '');
+      const readTime = estimateReadTime(stripHTML(p.body || p.excerpt || ''));
+      const meta = readTime + ' דקות קריאה · ' + formatDate(p.date);
+      const link = 'https://omertai.net/blog/post.html?id=' + p.id;
+      const imgHtml = p.image
+        ? `<div class="blog-thumb" style="background-image:url('${p.image}')"></div>`
+        : `<div class="blog-thumb blog-thumb-empty"></div>`;
+      const titleHtml = plainTitle.replace(/([.?!]) /g, '$1<br>');
+      const newBadge = index === 0 ? `<div class="blog-new-badge">חדש</div>` : '';
+      return `<a class="blog-card" href="${link}">
+        ${imgHtml}
+        <div class="blog-card-body">
+          ${newBadge}
+          <div class="blog-title">${titleHtml}</div>
+          <div class="blog-excerpt">${excerpt}</div>
+          <div class="blog-meta">${meta}</div>
+        </div>
+      </a>`;
+    }).join('');
+  }
+
   fetch('/api/blog-feed')
-    .then(r => r.text())
+    .then(r => { if (!r.ok) throw new Error(); return r.text(); })
     .then(xml => {
       const parser = new DOMParser();
       const doc = parser.parseFromString(xml, 'text/xml');
       const items = Array.from(doc.querySelectorAll('item')).slice(0, 3);
-      const grid = document.getElementById('blog-grid');
-      if (!grid || !items.length) return;
-
-      grid.innerHTML = items.map((item, index) => {
-        const title = item.querySelector('title')?.textContent || '';
-        const link  = item.querySelector('guid')?.textContent || 'https://omertai.net/blog';
-        const date  = item.querySelector('pubDate')?.textContent || '';
-        const rawDesc = item.querySelector('description')?.textContent || '';
-        const plain = stripHTML(rawDesc);
-        const excerpt = plain.substring(0, 100).trim() + (plain.length > 100 ? '...' : '');
-        const readTime = estimateReadTime(plain);
-        const cats = Array.from(item.querySelectorAll('category'));
-        const tag = cats.length ? cats[0].textContent : 'טיפ';
-        const meta = readTime + ' דקות קריאה · ' + formatDate(date);
-        const enclosure = item.querySelector('enclosure');
-        const imgUrl = enclosure ? enclosure.getAttribute('url') : '';
-        const imgHtml = imgUrl
-          ? `<div class="blog-thumb" style="background-image:url('${imgUrl}')"></div>`
-          : `<div class="blog-thumb blog-thumb-empty"></div>`;
-        const titleHtml = title.replace(/([.?!]) /g, '$1<br>');
-        const newBadge = index === 0 ? `<div class="blog-new-badge">חדש</div>` : '';
-
-        return `<a class="blog-card" href="${link}">
-          ${imgHtml}
-          <div class="blog-card-body">
-            ${newBadge}
-            <div class="blog-title">${titleHtml}</div>
-            <div class="blog-excerpt">${excerpt}</div>
-            <div class="blog-meta">${meta}</div>
-          </div>
-        </a>`;
-      }).join('');
+      if (!items.length) throw new Error();
+      const posts = items.map(item => ({
+        id: (item.querySelector('guid')?.textContent || '').split('id=')[1] || '',
+        title: item.querySelector('title')?.textContent || '',
+        excerpt: item.querySelector('description')?.textContent || '',
+        body: item.querySelector('description')?.textContent || '',
+        date: item.querySelector('pubDate')?.textContent || '',
+        image: item.querySelector('enclosure')?.getAttribute('url') || ''
+      }));
+      renderBlogCards(posts);
     })
-    .catch(() => {});
+    .catch(() => {
+      fetch('/blog/posts.json')
+        .then(r => r.json())
+        .then(data => {
+          const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+          renderBlogCards(posts);
+        })
+        .catch(() => {});
+    });
 })();
 </script>
 

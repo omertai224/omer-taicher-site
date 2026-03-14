@@ -302,3 +302,10 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
 .blog-thumb-empty { display: none; }
 .blog-card-body { padding: 22px; }
 .blog-new-badge { display: inline-block; background: var(--orange); color: #fff; border-radius: 50px; font-size: 0.65rem; font-weight: 800; padding: 3px 10px; margin-bottom: 10px; }
+
+/* ===== WS BADGES ===== */
+.ws-card { position: relative; }
+.ws-card-soon { opacity: 0.75; }
+.ws-soon-badge { position: absolute; top: 14px; left: 14px; background: var(--navy); color: #fff; border-radius: 50px; font-size: 0.65rem; font-weight: 800; padding: 4px 12px; }
+.ws-new-badge { display: inline-block; background: var(--orange); color: #fff; border-radius: 50px; font-size: 0.65rem; font-weight: 800; padding: 3px 10px; margin-bottom: 8px; }
+.ws-btn-soon { background: var(--border); color: var(--text-light); cursor: default; pointer-events: none; }
