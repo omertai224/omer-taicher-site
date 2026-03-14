@@ -178,8 +178,8 @@ function goToCheckout(e) {
 
 // ===== INIT =====
 Promise.all([
-  fetch('content.json?v=' + Date.now()).then(r => r.json()).catch(() => null),
-  fetch('products.json?v=' + Date.now()).then(r => r.json()).catch(() => [])
+  fetch('/interactive/content.json?v=' + Date.now()).then(r => r.json()).catch(() => null),
+  fetch('/interactive/products.json?v=' + Date.now()).then(r => r.json()).catch(() => [])
 ]).then(([content, products]) => {
   if (content) renderContent(content);
   if (products?.length) renderProducts(products);
