@@ -840,11 +840,10 @@ async function blogSendWhatsapp(postId) {
 
   try {
     setStatus('content', 'loading', 'שולח לוואטסאפ...');
-    const res = await fetch('/api/whatsapp', {
+    const res = await fetch('https://omertai-scheduler.omertai224.workers.dev', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `token ${GITHUB_TOKEN}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ chatId, message })
     });
