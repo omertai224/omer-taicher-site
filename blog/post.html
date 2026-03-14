@@ -424,7 +424,7 @@ async function init() {
       if (!res.ok) throw new Error(res.status);
       data = await res.json();
     } catch {
-      const res = await fetch('posts.json');
+      const res = await fetch('/blog/posts.json');
       const raw = await res.json();
       const posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
       const post = posts.find(p => p.id === id);
@@ -497,13 +497,13 @@ async function init() {
     if (prev || next) {
       navHTML = `<div class="post-nav">`;
       if (next) {
-        navHTML += `<a class="post-nav-btn" href="post.html?id=${next.id}">
+        navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${next.id}">
           <span class="nav-direction">הפוסט הבא ←</span>
           <span class="nav-title">${next.title}</span>
         </a>`;
       }
       if (prev) {
-        navHTML += `<a class="post-nav-btn" href="post.html?id=${prev.id}">
+        navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${prev.id}">
           <span class="nav-direction">→ הפוסט הקודם</span>
           <span class="nav-title">${prev.title}</span>
         </a>`;
@@ -711,6 +711,6 @@ function shareAsImage() {
   draw();
 }
 </script>
-<script src="toolbar.js" defer></script>
+<script src="/blog/toolbar.js" defer></script>
 </body>
 </html>

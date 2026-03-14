@@ -373,7 +373,7 @@ function renderHero(post) {
     ? `<img src="${post.image}" alt="${post.image_alt || post.title}" fetchpriority="high" width="380" height="380" sizes="(max-width:768px) calc(100vw - 40px), 330px">`
     : post.emoji;
   document.getElementById('hero-container').innerHTML = `
-    <a class="hero" href="post.html?id=${post.id}">
+    <a class="hero" href="/blog/post.html?id=${post.id}">
       <div class="hero-content">
         <div class="hero-label">הפוסט האחרון</div>
         <h1>${post.title}</h1>
@@ -393,7 +393,7 @@ function renderPostRow(post, index, colorClass) {
     ? `<img src="${post.image}" alt="${post.image_alt || post.title}" loading="lazy" width="260" height="260" sizes="(max-width:768px) calc(100vw - 32px), 220px">`
     : post.emoji;
   return `
-    <a class="post-row ${colorClass}" href="post.html?id=${post.id}">
+    <a class="post-row ${colorClass}" href="/blog/post.html?id=${post.id}">
       <div class="post-row-body">
         <span class="row-num">${String(index + 2).padStart(2,'0')}</span>
         <h3>${post.title}</h3>
@@ -420,7 +420,7 @@ async function loadMore() {
       if (!res.ok) throw new Error(res.status);
       data = await res.json();
     } catch {
-      const res = await fetch('posts.json');
+      const res = await fetch('/blog/posts.json');
       const raw = await res.json();
       const posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
       const slice = posts.slice(offset, offset + POSTS_PER_PAGE).map(({ body, ...rest }) => rest);
@@ -456,7 +456,7 @@ async function fetchPosts(limit) {
     if (!res.ok) throw new Error(res.status);
     return await res.json();
   } catch {
-    const res = await fetch('posts.json');
+    const res = await fetch('/blog/posts.json');
     const data = await res.json();
     const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
     const slice = posts.slice(0, limit).map(({ body, ...rest }) => rest);
@@ -503,6 +503,6 @@ async function init() {
 
 init();
 </script>
-<script src="toolbar.js" defer></script>
+<script src="/blog/toolbar.js" defer></script>
 </body>
 </html>
