@@ -840,11 +840,10 @@ async function blogSendWhatsapp(postId) {
 
   try {
     setStatus('content', 'loading', 'שולח לוואטסאפ...');
-    const res = await fetch('/api/whatsapp', {
+    const res = await fetch('https://omertai-scheduler.omertai224.workers.dev', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `token ${GITHUB_TOKEN}`
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({ chatId, message })
     });
@@ -1472,7 +1471,10 @@ async function loadGalleryManager() {
       gallerySha = null;
     }
     // קבצים מה-Worker בלבד
-    const res = await fetch(WORKER_URL);
+    const res = await fetch(WORKER_URL).catch(err => {
+      console.error('Worker fetch failed:', err);
+      return { ok: false, status: 'CORS/Network error' };
+    });
     if (res.ok) {
       const workerData = await res.json();
       const workerItems = workerData.items || [];
@@ -1507,7 +1509,7 @@ async function loadGalleryManager() {
   } catch(e) {
     galleryItems = [];
     renderGallery();
-    setStatus('gallery', 'error', 'שגיאה בטעינה');
+    setStatus('gallery', 'error', 'שגיאה בטעינה: ' + e.message);
   }
 }
 
