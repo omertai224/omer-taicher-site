@@ -564,6 +564,68 @@ function stripHtmlAdmin(str) {
   return tmp.textContent || tmp.innerText || '';
 }
 
+// Sanitize pasted HTML: keep only safe tags, strip inline styles/classes/font tags
+function sanitizePastedHtml(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  // Allowed tags in body
+  const ALLOWED = new Set(['P','BR','B','STRONG','I','EM','U','A','H2','H3','UL','OL','LI','BLOCKQUOTE','DIV','SPAN']);
+  function cleanNode(node) {
+    if (node.nodeType === 3) return; // text node - keep
+    if (node.nodeType !== 1) { node.remove(); return; }
+    const tag = node.tagName;
+    // Remove completely: script, style, meta, link, img (from paste), svg, font
+    if (['SCRIPT','STYLE','META','LINK','SVG','FONT','IFRAME','OBJECT','EMBED'].includes(tag)) {
+      // For FONT: unwrap children instead of removing
+      if (tag === 'FONT') {
+        while (node.firstChild) node.parentNode.insertBefore(node.firstChild, node);
+        node.remove();
+        return;
+      }
+      node.remove();
+      return;
+    }
+    // Strip all attributes except href on <a> and class on protected elements
+    const attrs = Array.from(node.attributes);
+    attrs.forEach(a => {
+      if (tag === 'A' && a.name === 'href') return; // keep href
+      if (a.name === 'class' && (node.classList.contains('post-insight') || node.classList.contains('post-tool-card') || node.classList.contains('post-tool-name') || node.classList.contains('post-tool-by') || node.classList.contains('post-tool-link'))) return;
+      node.removeAttribute(a.name);
+    });
+    // Unwrap SPAN (keep children, remove wrapper)
+    if (tag === 'SPAN' && !node.classList.length) {
+      while (node.firstChild) node.parentNode.insertBefore(node.firstChild, node);
+      node.remove();
+      return;
+    }
+    // Recurse into children
+    Array.from(node.childNodes).forEach(cleanNode);
+  }
+  Array.from(tmp.childNodes).forEach(cleanNode);
+  return tmp.innerHTML;
+}
+
+// Clean HTML before save: remove empty tags, junk spans, normalize
+function cleanHtmlForSave(html) {
+  if (!html) return '';
+  let clean = html;
+  // Remove empty spans: <span></span>, <span> </span>
+  clean = clean.replace(/<span[^>]*>\s*<\/span>/gi, '');
+  // Unwrap spans with no attributes
+  clean = clean.replace(/<span>([\s\S]*?)<\/span>/gi, '$1');
+  // Remove inline style attributes from all tags
+  clean = clean.replace(/ style="[^"]*"/gi, '');
+  // Remove empty paragraphs (but keep <p><br></p> as spacer)
+  clean = clean.replace(/<p>\s*<\/p>/gi, '');
+  // Remove font tags (unwrap)
+  clean = clean.replace(/<\/?font[^>]*>/gi, '');
+  // Collapse multiple <br> into one
+  clean = clean.replace(/(<br\s*\/?>){3,}/gi, '<br><br>');
+  // Remove class="" (empty class attributes)
+  clean = clean.replace(/ class=""/gi, '');
+  return clean.trim();
+}
+
 function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -668,10 +730,24 @@ function showBlogForm(post) {
       <style>
         #bf-title p, #bf-excerpt p { margin:0 0 0.3em; }
         #bf-title br, #bf-excerpt br { display:none; }
-        #bf-body, #bf-body * { font-size:0.88rem!important; line-height:1.75!important; font-family:inherit!important; }
+        #bf-body { font-size:0.88rem; line-height:1.75; font-family:inherit; }
         #bf-body p  { margin-bottom: 1.1em; }
         #bf-body h2 { font-size:1rem!important; font-weight:800!important; margin: 1.2em 0 0.4em; color:#1a4a6b; }
+        #bf-body h3 { font-size:0.92rem!important; font-weight:700!important; margin: 1em 0 0.3em; color:#1a4a6b; }
         #bf-body br { display:block; content:""; margin-top:0.3em; }
+        #bf-body strong { color:#1a4a6b; }
+        #bf-body a { color:#e8854a; }
+        #bf-body ul, #bf-body ol { margin:0 0 1em 0; padding-right:20px; }
+        #bf-body li { margin-bottom:6px; }
+        #bf-body blockquote { margin:16px 0; padding:30px 18px 14px; border-right:3px solid #e8854a; background:#fdeede; border-radius:0 10px 10px 0; color:#1a4a6b; font-weight:500; position:relative; }
+        #bf-body blockquote::before { content:'ציטוט 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#e8854a; background:#fff3e0; padding:1px 8px; border-radius:8px; pointer-events:none; }
+        #bf-body .post-insight { margin:16px 0; padding:30px 18px 14px; background:#1a4a6b; color:#fff; border-radius:10px; font-weight:700; position:relative; }
+        #bf-body .post-insight::before { content:'תובנה 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#8ec5fc; background:rgba(255,255,255,0.15); padding:1px 8px; border-radius:8px; pointer-events:none; }
+        #bf-body .post-tool-card { margin:16px 0; padding:30px 18px 14px; background:#fff; border:1.5px solid #e8e0d6; border-radius:10px; display:flex; flex-direction:column; gap:4px; position:relative; }
+        #bf-body .post-tool-card::before { content:'כרטיס כלי 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#1a4a6b; background:#e8f4f8; padding:1px 8px; border-radius:8px; pointer-events:none; }
+        #bf-body .post-tool-name { font-weight:800; color:#1a4a6b; }
+        #bf-body .post-tool-by { font-size:0.82rem; color:#666; }
+        #bf-body .post-tool-link { font-weight:700; color:#e8854a; text-decoration:none; }
 
         /* Blog post preview — mirrors post.html styling */
         #bf-preview { font-size:1rem; line-height:1.85; color:#1e1e1e; }
@@ -758,6 +834,132 @@ function showBlogForm(post) {
       el.innerHTML = '<p>' + html.trim() + '</p>';
     }
   });
+
+  // ===== PASTE PROTECTION =====
+  // Title & Excerpt: paste as plain text only (no formatting)
+  ['bf-title', 'bf-excerpt'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('paste', e => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, text);
+    });
+  });
+
+  // Body: paste with clean HTML (strip inline styles, classes, font tags, spans)
+  const bodyEl = document.getElementById('bf-body');
+  if (bodyEl) {
+    bodyEl.addEventListener('paste', e => {
+      const html = (e.clipboardData || window.clipboardData).getData('text/html');
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      if (!html) return; // plain text paste - let browser handle
+      e.preventDefault();
+      const clean = sanitizePastedHtml(html);
+      document.execCommand('insertHTML', false, clean);
+    });
+
+    // Block drag-and-drop of external content into body (prevents junk HTML)
+    bodyEl.addEventListener('drop', e => {
+      const html = e.dataTransfer?.getData('text/html');
+      if (html) {
+        e.preventDefault();
+        const clean = sanitizePastedHtml(html);
+        document.execCommand('insertHTML', false, clean);
+      }
+    });
+  }
+
+  // Protect special elements from accidental deletion
+  const body = document.getElementById('bf-body');
+  if (body) {
+    const PROTECTED_SEL = 'blockquote, .post-insight, .post-tool-card';
+
+    // --- Snapshot: remember all protected elements to restore if deleted ---
+    let protectedSnapshot = [];
+    function takeSnapshot() {
+      protectedSnapshot = [];
+      body.querySelectorAll(PROTECTED_SEL).forEach(el => {
+        protectedSnapshot.push({ html: el.outerHTML, next: el.nextElementSibling, parent: el.parentElement });
+      });
+    }
+    takeSnapshot();
+
+    // --- MutationObserver: detect removal and restore ---
+    let restoring = false;
+    const observer = new MutationObserver(() => {
+      if (restoring) return;
+      const current = body.querySelectorAll(PROTECTED_SEL);
+      if (current.length < protectedSnapshot.length) {
+        restoring = true;
+        // Find which ones are missing and restore them
+        protectedSnapshot.forEach(snap => {
+          const tmp = document.createElement('div');
+          tmp.innerHTML = snap.html;
+          const tag = tmp.firstElementChild;
+          // Check if this element still exists by matching outerHTML
+          const stillExists = Array.from(current).some(el => el.outerHTML === snap.html);
+          if (!stillExists) {
+            if (snap.next && snap.next.parentElement === body) {
+              body.insertBefore(tag, snap.next);
+            } else if (snap.parent === body) {
+              body.appendChild(tag);
+            } else {
+              body.appendChild(tag);
+            }
+          }
+        });
+        takeSnapshot();
+        restoring = false;
+      }
+    });
+    observer.observe(body, { childList: true, subtree: true });
+
+    // Update snapshot when content is intentionally changed (e.g. paste, toolbar)
+    body.addEventListener('input', () => { if (!restoring) takeSnapshot(); });
+
+    // --- Keydown: block deletion at protected element boundaries ---
+    body.addEventListener('keydown', e => {
+      if (e.key !== 'Backspace' && e.key !== 'Delete') return;
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      const range = sel.getRangeAt(0);
+
+      // Block Ctrl+A then delete (select-all that includes protected)
+      if (!range.collapsed) {
+        const frag = range.cloneContents();
+        if (frag.querySelector(PROTECTED_SEL)) {
+          e.preventDefault();
+          return;
+        }
+      }
+
+      // Block backspace/delete at boundaries of protected elements
+      if (range.collapsed) {
+        const node = sel.anchorNode;
+        const el = node.nodeType === 3 ? node.parentElement : node;
+        const prot = el.closest(PROTECTED_SEL);
+        if (!prot) return;
+        const offset = sel.anchorOffset;
+        const text = node.textContent || '';
+        if (e.key === 'Backspace' && offset === 0 && prot.firstChild === node) e.preventDefault();
+        if (e.key === 'Delete' && offset >= text.length && prot.lastChild === node) e.preventDefault();
+      }
+    });
+
+    // --- Block cut on protected elements ---
+    body.addEventListener('cut', e => {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      const range = sel.getRangeAt(0);
+      if (!range.collapsed) {
+        const frag = range.cloneContents();
+        if (frag.querySelector(PROTECTED_SEL)) {
+          e.preventDefault();
+        }
+      }
+    });
+  }
 }
 
 // ===== CLOUDINARY =====
@@ -1056,9 +1258,13 @@ async function blogScheduleWhatsapp(postId) {
 async function blogSavePost() {
   const btn = document.getElementById('bf-save-btn') || document.getElementById('bf-save-btn-bottom');
   const alertEl = document.getElementById('bf-alert');
-  const title   = document.getElementById('bf-title')?.innerHTML?.trim();
-  const excerpt = document.getElementById('bf-excerpt')?.innerHTML?.trim();
-  const body    = document.getElementById('bf-body')?.innerHTML.trim();
+  const title   = cleanHtmlForSave(document.getElementById('bf-title')?.innerHTML?.trim());
+  let excerpt = cleanHtmlForSave(document.getElementById('bf-excerpt')?.innerHTML?.trim());
+  // Normalize: ensure excerpt uses <p> tags for consistent rendering
+  if (excerpt && !excerpt.includes('<p>') && !excerpt.includes('<p ')) {
+    excerpt = excerpt.split(/<br\s*\/?>/gi).filter(s => s.trim()).map(s => '<p>' + s.trim() + '</p>').join('');
+  }
+  const body    = cleanHtmlForSave(document.getElementById('bf-body')?.innerHTML.trim());
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
   const id = document.getElementById('bf-id')?.value.trim() || blogEditingId || titleToSlug(title);
