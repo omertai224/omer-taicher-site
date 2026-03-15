@@ -148,18 +148,15 @@ function blogSaveLocal() {
   blogDirty = true;
   localStorage.setItem('blog_draft_posts', JSON.stringify(blogPosts));
   updatePublishIndicator();
+  updateGlobalPushUI();
 }
 function blogClearLocal() {
   blogDirty = false;
   localStorage.removeItem('blog_draft_posts');
   updatePublishIndicator();
+  updateGlobalPushUI();
 }
-function updatePublishIndicator() {
-  const btn = document.getElementById('blog-publish-btn');
-  if (btn) btn.style.display = blogDirty ? '' : 'none';
-  const badge = document.getElementById('blog-dirty-badge');
-  if (badge) badge.style.display = blogDirty ? '' : 'none';
-}
+function updatePublishIndicator() {}
 
 async function loadBlogManager() {
   setStatus('content', 'loading', 'טוען פוסטים...');
@@ -304,46 +301,13 @@ function renderBlogList() {
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px">
       <div style="display:flex;align-items:center;gap:10px">
         <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
-        <span id="blog-dirty-badge" style="display:${blogDirty ? '' : 'none'};background:#fff3cd;color:#856404;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px">שינויים ממתינים</span>
       </div>
       <div style="display:flex;gap:8px">
-        <button id="blog-publish-btn" onclick="blogPublishAll()" style="display:${blogDirty ? '' : 'none'};background:#27ae60;color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;animation:pulse 2s infinite">דחיפה ל-GitHub</button>
-        <button onclick="blogDiscardLocal()" id="blog-discard-btn" style="display:${blogDirty ? '' : 'none'};background:#fde8e8;color:#c0392b;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">בטל שינויים</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptImage()">הנחיה ליצירת תמונה</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
       </div>
     </div>
     <div id="blog-list-items">${listHTML}</div>`;
-}
-
-// דחיפה מרוכזת ל-GitHub
-async function blogPublishAll() {
-  const btn = document.getElementById('blog-publish-btn');
-  if (btn) { btn.disabled = true; btn.textContent = 'דוחף...'; }
-  setStatus('content', 'loading', 'דוחף שינויים ל-GitHub...');
-  try {
-    const fresh = await ghGet('posts.json');
-    blogSha = fresh.sha;
-    const result = await ghPut('posts.json', JSON.stringify({ posts: blogPosts }, null, 2), blogSha, 'עדכון פוסטים מרוכז');
-    if (result.content) {
-      blogSha = result.content.sha;
-      blogClearLocal();
-      setStatus('content', 'ok', '✓ כל השינויים פורסמו! GitHub Pages בונה...');
-      renderBlogList();
-    } else {
-      throw new Error(result.message || 'שגיאה לא ידועה');
-    }
-  } catch(e) {
-    setStatus('content', 'error', 'שגיאה בדחיפה: ' + e.message);
-    if (btn) { btn.disabled = false; btn.textContent = 'דחיפה ל-GitHub'; }
-  }
-}
-
-// ביטול שינויים מקומיים וחזרה לגרסת GitHub
-async function blogDiscardLocal() {
-  blogClearLocal();
-  setStatus('content', 'loading', 'טוען מחדש מ-GitHub...');
-  await loadBlogManager();
 }
 
 function blogNewPost() {
@@ -569,10 +533,9 @@ async function openPromptEditor(type) {
     btn.disabled = true;
     try {
       promptsData[type] = txt;
-      const result = await ghPut('prompts.json', JSON.stringify(promptsData, null, 2), promptsSha, 'עדכון הנחיה: ' + type);
-      if (result.content) promptsSha = result.content.sha;
+      setPending(resolveRepoPath('prompts.json'), JSON.stringify(promptsData, null, 2), 'עדכון הנחיה: ' + type);
       await navigator.clipboard.writeText(txt);
-      setStatus('content', 'ok', '✓ ההנחיה נשמרה ב-GitHub והועתקה');
+      setStatus('content', 'ok', '✓ נשמר מקומית והועתק — לחץ "דחוף הכל" לפרסום');
       document.getElementById('prompt-editor-overlay').remove();
     } catch(e) {
       setStatus('content', 'error', 'שגיאה בשמירה: ' + e.message);
@@ -766,6 +729,13 @@ function showBlogForm(post) {
           <button type="button" onmousedown="event.preventDefault();document.execCommand('insertUnorderedList')"
             title="רשימת בולטים — לחץ שוב לביטול"
             style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:1rem;cursor:pointer;font-family:inherit">•≡</button>
+          <div style="width:1px;height:22px;background:var(--border);margin:0 2px"></div>
+          <button type="button" onmousedown="event.preventDefault();document.execCommand('undo')"
+            title="ביטול פעולה אחרונה"
+            style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;cursor:pointer;font-family:inherit">↩</button>
+          <button type="button" onmousedown="event.preventDefault();document.execCommand('redo')"
+            title="חזרה על פעולה"
+            style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;cursor:pointer;font-family:inherit">↪</button>
         </div>
         <button type="button" id="bf-preview-toggle" onclick="toggleBlogPreview()"
           style="background:var(--navy);color:#fff;border:none;padding:7px 18px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;">
@@ -1573,7 +1543,7 @@ async function saveInteractiveContent() {
     });
     const result = await ghPut('content.json', JSON.stringify(newData, null, 2), icSha, 'עדכון תוכן אינטראקטיבי');
     if (result.content) {
-      icSha  = result.content.sha;
+      icSha = result.content.sha;
       icData = newData;
       setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
     } else {
@@ -1592,7 +1562,15 @@ async function loadInteractiveManager() {
   try {
     const data = await ghGet('interactive.json');
     interactiveSha = data.sha;
-    interactiveItems = JSON.parse(decode(data.content));
+    // אם יש שינויים ממתינים ב-localStorage, נשתמש בהם
+    const pendingKey = resolveRepoPath('interactive.json');
+    const pending = getPendingChanges();
+    if (pending[pendingKey]) {
+      try { interactiveItems = JSON.parse(pending[pendingKey].data); }
+      catch(e) { interactiveItems = JSON.parse(decode(data.content)); }
+    } else {
+      interactiveItems = JSON.parse(decode(data.content));
+    }
     renderInteractiveList();
     setStatus('content', 'ok', interactiveItems.length + ' הדרכות נטענו');
   } catch(e) {
@@ -1698,10 +1676,6 @@ async function interactiveSaveItem() {
   setStatus('content', 'loading', 'שומר הדרכה...');
 
   try {
-    const fresh = await ghGet('interactive.json');
-    interactiveSha = fresh.sha;
-    interactiveItems = JSON.parse(decode(fresh.content));
-
     const newItem = { title, desc, steps, url, price: price ? parseInt(price) : null, category, status };
 
     if (interactiveEditingIndex !== null) {
@@ -1710,16 +1684,10 @@ async function interactiveSaveItem() {
       interactiveItems.push(newItem);
     }
 
-    const result = await ghPut('interactive.json', JSON.stringify(interactiveItems, null, 2), interactiveSha,
-      (interactiveEditingIndex !== null ? 'עריכת הדרכה: ' : 'הדרכה חדשה: ') + title);
-
-    if (result.content) {
-      interactiveSha = result.content.sha;
-      setStatus('content', 'ok', '✓ נשמר! Vercel מפרסם...');
-      loadInteractiveManager();
-    } else {
-      throw new Error(result.message || 'שגיאה לא ידועה');
-    }
+    const commitMsg = (interactiveEditingIndex !== null ? 'עריכת הדרכה: ' : 'הדרכה חדשה: ') + title;
+    setPending(resolveRepoPath('interactive.json'), JSON.stringify(interactiveItems, null, 2), commitMsg);
+    setStatus('content', 'ok', '✓ נשמר מקומית — לחץ "דחוף הכל" לפרסום');
+    renderInteractiveList();
   } catch(e) {
     alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + escapeHtml(e.message) + '</div>';
     setStatus('content', 'error', 'שגיאה: ' + e.message);
@@ -1736,23 +1704,10 @@ function interactiveDeleteItem(index) {
   modal.style.display = 'flex';
   document.getElementById('confirm-modal-yes').onclick = async () => {
     modal.style.display = 'none';
-    setStatus('content', 'loading', 'מוחק הדרכה...');
-    try {
-      const fresh = await ghGet('interactive.json');
-      interactiveSha = fresh.sha;
-      const items = JSON.parse(decode(fresh.content)).filter((_, i) => i !== index);
-      const result = await ghPut('interactive.json', JSON.stringify(items, null, 2), interactiveSha, 'מחיקת הדרכה: ' + item.title);
-      if (result.content) {
-        interactiveSha = result.content.sha;
-        interactiveItems = items;
-        setStatus('content', 'ok', '✓ ההדרכה נמחקה');
-        renderInteractiveList();
-      } else {
-        throw new Error(result.message || 'שגיאה');
-      }
-    } catch(e) {
-      setStatus('content', 'error', 'שגיאה: ' + e.message);
-    }
+    interactiveItems.splice(index, 1);
+    setPending('interactive.json', JSON.stringify(interactiveItems, null, 2), 'מחיקת הדרכה: ' + item.title);
+    setStatus('content', 'ok', '✓ נמחק מקומית — לחץ "דחוף הכל" לפרסום');
+    renderInteractiveList();
   };
   document.getElementById('confirm-modal-no').onclick = () => { modal.style.display = 'none'; };
 }
@@ -1772,19 +1727,31 @@ async function loadGalleryManager() {
   _galleryLoading = true;
   setStatus('gallery', 'loading', 'טוען...');
   try {
-    // טעינת קטגוריות מ-gallery.json
+    // טעינת קטגוריות מ-localStorage (אם יש שינויים ממתינים) או מ-gallery.json
     let categories = {};
     let order = [];
-    try {
-      const data = await ghGet('gallery.json');
-      gallerySha = data.sha;
-      let saved;
-      try { saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))))); }
-      catch(pe) { console.error('gallery.json לא תקין:', pe); saved = {}; }
-      categories = saved.categories || {};
-      order = saved.order || [];
-    } catch(e) {
-      gallerySha = null;
+    const pending = getPendingChanges();
+    const galleryPendingKey = resolveRepoPath('gallery.json');
+    if (pending[galleryPendingKey]) {
+      try {
+        const local = JSON.parse(pending[galleryPendingKey].data);
+        categories = local.categories || {};
+        order = local.order || [];
+      } catch(e) {}
+      // עדיין צריך SHA לדחיפה עתידית
+      try { const data = await ghGet('gallery.json'); gallerySha = data.sha; } catch(e) { gallerySha = null; }
+    } else {
+      try {
+        const data = await ghGet('gallery.json');
+        gallerySha = data.sha;
+        let saved;
+        try { saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))))); }
+        catch(pe) { console.error('gallery.json לא תקין:', pe); saved = {}; }
+        categories = saved.categories || {};
+        order = saved.order || [];
+      } catch(e) {
+        gallerySha = null;
+      }
     }
     // קבצים מה-Worker בלבד
     const res = await fetch(WORKER_URL).catch(err => {
@@ -2062,56 +2029,25 @@ async function uploadGalleryFiles(input) {
   input.value = '';
 }
 
-let _gallerySaving = false;
-async function autoSaveGallery() {
-  if (_gallerySaving) return;
-  _gallerySaving = true;
-  try {
-    // תמיד רענן SHA לפני שמירה + מזג עם קטגוריות קיימות
-    let existingCategories = {};
-    let existingOrder = [];
-    try {
-      const fresh = await ghGet('gallery.json');
-      gallerySha = fresh.sha;
-      try {
-        const saved = JSON.parse(decodeURIComponent(escape(atob(fresh.content.replace(/\n/g, '')))));
-        existingCategories = saved.categories || {};
-        existingOrder = saved.order || [];
-      } catch(pe) {}
-    } catch(e) { gallerySha = null; }
-    const memoryKeys = new Set(galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0));
-    let categories, order;
-    if (_galleryFullyLoaded) {
-      // הגלריה נטענה מלאה — galleryItems מכיל הכל, אפשר להחליף בבטחה
-      categories = {};
-      galleryItems.forEach(item => {
-        if (item.key && item.category) categories[item.key] = item.category;
-      });
-      order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
-    } else {
-      // הגלריה לא נטענה — מזג עם קיים כדי לא לדרוס
-      categories = { ...existingCategories };
-      galleryItems.forEach(item => {
-        if (item.key && item.category) categories[item.key] = item.category;
-      });
-      const existingOrderSet = new Set(existingOrder);
-      const newKeys = [...memoryKeys].filter(k => !existingOrderSet.has(k));
-      order = [...newKeys, ...existingOrder];
-    }
-    const json = JSON.stringify({ categories, order }, null, 2);
-    const result = await ghPut('gallery.json', json, gallerySha, 'עדכון קטגוריות גלריה');
-    if (result.content) {
-      gallerySha = result.content.sha;
-      setStatus('gallery', 'ok', '✓ נשמר');
-    } else {
-      setStatus('gallery', 'error', 'שגיאה בשמירה: ' + (result.message || ''));
-    }
-  } catch(e) {
-    setStatus('gallery', 'error', 'שגיאה בשמירה');
-    console.error(e);
-  } finally {
-    _gallerySaving = false;
+function autoSaveGallery() {
+  // בנה את ה-JSON של הגלריה ושמור ב-localStorage
+  let categories = {};
+  let order = [];
+  if (_galleryFullyLoaded) {
+    galleryItems.forEach(item => {
+      if (item.key && item.category) categories[item.key] = item.category;
+    });
+    order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
+  } else {
+    // אם הגלריה לא נטענה מלאה, שמור רק את מה שיש בזיכרון
+    galleryItems.forEach(item => {
+      if (item.key && item.category) categories[item.key] = item.category;
+    });
+    order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
   }
+  const json = JSON.stringify({ categories, order }, null, 2);
+  setPending(resolveRepoPath('gallery.json'), json, 'עדכון קטגוריות גלריה');
+  setStatus('gallery', 'ok', '✓ נשמר מקומית — לחץ "דחוף הכל" לפרסום');
 }
 
 function copyGalleryUrl(url) {

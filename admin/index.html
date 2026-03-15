@@ -68,6 +68,14 @@
   <!-- ENVIRONMENT INDICATOR -->
   <div id="env-bar"></div>
 
+  <!-- GLOBAL PUSH BAR -->
+  <div id="global-push-bar" style="display:none;align-items:center;justify-content:center;gap:12px;padding:8px 16px;background:#fff8e1;border-bottom:2px solid #f9a825;font-family:inherit;font-size:0.82rem;font-weight:600;color:#6d4c00;direction:rtl;">
+    <span style="font-size:1.1rem">⚠</span>
+    <span id="global-push-label">שינויים ממתינים לדחיפה</span>
+    <button id="global-push-btn" onclick="globalPushAll()" style="background:#27ae60;color:#fff;border:none;padding:6px 18px;border-radius:50px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;animation:pulse 2s infinite">דחוף הכל ל-GitHub</button>
+    <button onclick="if(confirm('לבטל את כל השינויים הממתינים?')){clearAllPending();blogDiscardLocal?.();}" style="background:#fde8e8;color:#c0392b;border:none;padding:6px 14px;border-radius:50px;font-size:0.78rem;font-weight:600;cursor:pointer;font-family:inherit">בטל הכל</button>
+  </div>
+
   <!-- TAB: CONTENT -->
   <div class="tab-panel active" id="tab-content">
     <!-- STATUS BAR -->
