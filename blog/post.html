@@ -440,7 +440,7 @@ async function init() {
     } catch {
       let postsUrl = '/blog/posts.json';
       if (branch && branch !== 'main') {
-        postsUrl = `https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts.json`;
+        postsUrl = `https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts.json?t=${Date.now()}`;
       }
       const res = await fetch(postsUrl);
       const raw = await res.json();
