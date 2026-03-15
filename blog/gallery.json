@@ -1,4 +1,26 @@
 {
-  "categories": {},
-  "order": []
+  "categories": {
+    "1772846439490_hero.webp": "דפי נחיתה",
+    "1772846483393_working.webp": "דפי נחיתה",
+    "1772846496056_lecture.webp": "דפי נחיתה",
+    "1772846506243_remote.webp": "דפי נחיתה",
+    "1773136239986_yomano-main-suspect.webp": "דפי נחיתה",
+    "disk-full-solution_hero.webp": "כללי",
+    "messy-desktop-rescue_hero.webp": "כללי",
+    "ont-turn-off-during-update_hero.webp": "כללי",
+    "printer-wifi-vs-cable_hero.webp": "כללי",
+    "youtube-video-ends-with-pizza_hero.webp": "כללי"
+  },
+  "order": [
+    "1772846439490_hero.webp",
+    "1772846483393_working.webp",
+    "1772846496056_lecture.webp",
+    "1772846506243_remote.webp",
+    "1773136239986_yomano-main-suspect.webp",
+    "disk-full-solution_hero.webp",
+    "messy-desktop-rescue_hero.webp",
+    "ont-turn-off-during-update_hero.webp",
+    "printer-wifi-vs-cable_hero.webp",
+    "youtube-video-ends-with-pizza_hero.webp"
+  ]
 }
