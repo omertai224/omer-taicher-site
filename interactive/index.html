@@ -562,6 +562,130 @@
   </div>
 </footer>
 <script src="/assets/js/toolbar.js" defer></script>
-<script src="interactive.js"></script>
+<script>
+// thumb SVG icons per theme
+var thumbIcons = {
+  navy: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>',
+  purple: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>',
+  teal: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>'
+};
+var checkSVG  = '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+var cartSVG   = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>';
+var arrowSVG  = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
+var boltSVG   = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>';
+var stepsSVG  = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+
+function renderProducts(products) {
+  var grid = document.getElementById('shop-grid');
+  if (!grid) return;
+  grid.innerHTML = products.map(function(p, i) {
+    var isActive = p.status === 'active';
+    var delay = (i * 0.07) + 's';
+    var thumbClass = 'thumb-' + (p.thumb || 'navy');
+    var iconStyle = isActive ? '' : 'border-color:rgba(255,255,255,0.1);';
+    var labelHTML = isActive && p.label
+      ? '<div class="prod-label label-new">' + boltSVG + ' ' + p.label + '</div>'
+      : '<div class="prod-label" style="background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.38);border:1px solid rgba(255,255,255,0.1);">בקרוב</div>';
+    var stepsHTML = isActive && p.steps
+      ? '<div class="steps-pill">' + stepsSVG + ' ' + p.steps + ' שלבים</div>' : '';
+    var includesHTML = '';
+    if (isActive && p.includes && p.includes.length) {
+      includesHTML = '<div class="prod-includes">' + p.includes.map(function(inc) {
+        return '<div class="prod-include-item"><div class="include-check">' + checkSVG + '</div>' + inc + '</div>';
+      }).join('') + '</div>';
+    }
+    var footerHTML = isActive
+      ? '<div class="prod-footer"><div class="prod-price">' + p.price + ' &#8362;<span>תשלום חד פעמי</span></div><div class="prod-actions"><button class="btn-add-cart" onclick="addToCart(this, \'' + p.title.substring(0,20) + '\', ' + p.price + ')">' + cartSVG + ' הוספה לסל</button><a href="' + p.checkout_url + '" class="btn-quick-buy">קנייה מהירה ' + arrowSVG + '</a></div></div>'
+      : '<div class="prod-footer" style="justify-content:center;"><div style="font-size:0.8rem;color:rgba(255,255,255,0.3);font-weight:600;">בקרוב</div></div>';
+    var cardStyle = isActive
+      ? 'style="transition-delay:' + delay + ';"' : 'style="opacity:0.38;pointer-events:none;transition-delay:' + delay + ';"';
+    return '<div class="prod-card visible" ' + cardStyle + '><div class="prod-thumb ' + thumbClass + ' grid-lines">' + labelHTML + stepsHTML + '<div class="thumb-icon"' + (iconStyle ? ' style="' + iconStyle + '"' : '') + '>' + (thumbIcons[p.thumb] || thumbIcons.navy) + '</div></div><div class="prod-body"><div class="prod-category"' + (isActive ? '' : ' style="color:rgba(255,255,255,0.3);"') + '>' + p.category + '</div><div class="prod-title">' + p.title + '</div><div class="prod-desc">' + p.desc + '</div>' + includesHTML + footerHTML + '</div></div>';
+  }).join('');
+  window._productMap = {};
+  products.forEach(function(p) { window._productMap[p.title.substring(0,20)] = p.key; });
+}
+
+function toggleFaq(el) { el.parentElement.classList.toggle('open'); }
+
+var cart = [];
+function addToCart(btn, name, price) {
+  var exists = cart.find(function(i) { return i.name === name; });
+  if (exists) {
+    btn.innerHTML = cartSVG + ' כבר בסל'; btn.classList.add('added');
+    setTimeout(function() { btn.innerHTML = cartSVG + ' הוספה לסל'; btn.classList.remove('added'); }, 1500);
+    return;
+  }
+  cart.push({ name: name, price: price });
+  btn.innerHTML = checkSVG + ' נוסף לסל'; btn.classList.add('added');
+  setTimeout(function() { btn.innerHTML = cartSVG + ' הוספה לסל'; btn.classList.remove('added'); }, 1500);
+  updateCart();
+}
+function updateCart() {
+  var total = cart.reduce(function(s, i) { return s + i.price; }, 0);
+  var count = cart.length;
+  document.getElementById('cart-count').textContent = count;
+  document.getElementById('cart-summary').innerHTML = count === 1
+    ? '<strong>' + total + ' ₪</strong> · הדרכה אחת בסל'
+    : '<strong>' + total + ' ₪</strong> · ' + count + ' הדרכות בסל';
+  document.getElementById('cart-bar').classList.toggle('visible', count > 0);
+}
+function clearCart() {
+  cart = [];
+  updateCart();
+  document.getElementById('cart-bar').classList.remove('visible');
+}
+function goToCheckout(e) {
+  e.preventDefault();
+  if (!cart.length) return;
+  var productMap = window._productMap || {};
+  if (cart.length === 1) {
+    window.location.href = '/pages/checkout/?product=' + (productMap[cart[0].name] || 'vibe');
+  } else {
+    window.location.href = '/pages/checkout/';
+  }
+}
+
+renderProducts([
+  {
+    key: "vibe",
+    status: "active",
+    category: "AI · תמלול · Windows",
+    label: "חדש",
+    title: "ישיבות, הרצאות, שיעורים. הופכים לטקסט. בעברית. בחינם. על המחשב שלכם.",
+    desc: "כלי AI שמתמלל כל קובץ שמע ווידאו, בלי לשלוח שום דבר לאינטרנט. אתם לומדים להתקין, להגדיר ולהשתמש בו, עד שזה עובד אצלכם.",
+    includes: [
+      "תומך ב-MP4, MKV, MP3, WAV ועוד. גם קישורי יוטיוב ישירות",
+      "הכל על המחשב שלכם. אף קובץ לא יוצא לאינטרנט ולא מגיע לאף שרת",
+      "בונוס: איך לוקחים את התמלול ל-AI ושואלים אותו שאלות על התוכן"
+    ],
+    steps: 26,
+    price: 97,
+    thumb: "navy",
+    checkout_url: "/pages/checkout/?product=vibe"
+  },
+  {
+    key: "ai",
+    status: "coming_soon",
+    category: "AI · עבודה יומיומית",
+    title: "ChatGPT וקלוד בעבודה: איך לנסח, לסכם ולחשוב יחד עם AI",
+    desc: "לא קורס תיאורטי. הדרכה מעשית שתלמדו להשתמש ב-AI כמו שצריך, עם דוגמאות מהעבודה שלכם.",
+    includes: [],
+    price: 47,
+    thumb: "purple",
+    checkout_url: "/pages/checkout/?product=ai"
+  },
+  {
+    key: "security",
+    status: "coming_soon",
+    category: "אבטחה",
+    title: "סיסמאות, אימות דו-שלבי ואבטחת חשבונות: פעם אחת ולתמיד",
+    desc: "מנהל סיסמאות מאפס, אימות דו-שלבי שעובד, וחשבונות מאובטחים. בלי לשכוח, בלי להינעל בחוץ.",
+    includes: [],
+    price: 47,
+    thumb: "teal",
+    checkout_url: "/pages/checkout/?product=security"
+  }
+]);
+</script>
 </body>
 </html>
