@@ -1361,14 +1361,12 @@ function blogDeletePost(id) {
   const modal = document.getElementById('confirm-modal');
   document.getElementById('confirm-modal-text').textContent = 'למחוק את הפוסט "' + post.title + '"?';
   modal.style.display = 'flex';
-  document.getElementById('confirm-modal-yes').onclick = async () => {
+  document.getElementById('confirm-modal-yes').onclick = () => {
     modal.style.display = 'none';
-    setStatus('content', 'loading', 'מוחק פוסט...');
-    try {
-      blogPosts = blogPosts.filter(p => p.id !== id);
-      blogSaveLocal();
-      setStatus('content', 'ok', '✓ הפוסט נמחק מקומית — לחצו "דחיפה ל-GitHub" לפרסום');
-      renderBlogList();
+    blogPosts = blogPosts.filter(p => p.id !== id);
+    blogSaveLocal();
+    setStatus('content', 'ok', '✓ הפוסט נמחק מקומית — לחצו "דחיפה ל-GitHub" לפרסום');
+    renderBlogList();
   };
   document.getElementById('confirm-modal-no').onclick = () => { modal.style.display = 'none'; };
 }
