@@ -40,7 +40,7 @@ function renderProducts(products) {
     const cardStyle = isActive
       ? `style="transition-delay:${delay};"` : `style="opacity:0.38;pointer-events:none;transition-delay:${delay};"`;
 
-    return `<div class="prod-card" ${cardStyle}>
+    return `<div class="prod-card visible" ${cardStyle}>
       <div class="prod-thumb ${thumbClass} grid-lines">
         ${labelHTML}${stepsHTML}
         <div class="thumb-icon"${iconStyle ? ' style="'+iconStyle+'"' : ''}>${thumbIcons[p.thumb] || thumbIcons.navy}</div>
@@ -53,8 +53,6 @@ function renderProducts(products) {
       </div>
     </div>`;
   }).join('');
-
-  document.querySelectorAll('.prod-card').forEach(el => observer.observe(el));
   window._productMap = {};
   products.forEach(p => { window._productMap[p.title.substring(0,20)] = p.key; });
 }
