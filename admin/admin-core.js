@@ -1,6 +1,8 @@
 // ===== GLOBALS =====
 const GITHUB_USER = 'omertai224';
-let GITHUB_BRANCH = new URLSearchParams(location.search).get('branch') || localStorage.getItem('admin_branch') || 'main';
+const _isGitHubPages = location.hostname.endsWith('.github.io');
+const _explicitBranch = new URLSearchParams(location.search).get('branch');
+let GITHUB_BRANCH = _explicitBranch || (_isGitHubPages ? (localStorage.getItem('admin_branch') || 'main') : 'main');
 const WORKER_URL = 'https://media-worker.omertai224.workers.dev';
 const REPOS = {
   'omer-taicher-site':      { name: 'דף ראשי' },
@@ -67,57 +69,40 @@ function showLoginError(msg) {
   el.textContent = msg;
 }
 
-// ===== BRANCH SELECTOR =====
+// ===== BRANCH AUTO-DETECT =====
 function initBranchSelector() {
-  const sel = document.getElementById('branch-select');
-  if (!sel) return;
-  sel.innerHTML = '<option value="main">main</option>';
-  sel.value = GITHUB_BRANCH;
   updateBranchBadge();
-
-  // fetch branches from GitHub
+  if (!_isGitHubPages || _explicitBranch) return;
   fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/branches?per_page=50`, {
     headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
   })
   .then(r => r.ok ? r.json() : [])
   .then(branches => {
-    sel.innerHTML = '';
-    branches
-      .sort((a, b) => a.name === 'main' ? -1 : b.name === 'main' ? 1 : a.name.localeCompare(b.name))
-      .forEach(b => {
-        const opt = document.createElement('option');
-        opt.value = b.name;
-        opt.textContent = b.name;
-        sel.appendChild(opt);
-      });
-    sel.value = GITHUB_BRANCH;
-    // if current branch not in list, add it
-    if (sel.value !== GITHUB_BRANCH) {
-      const opt = document.createElement('option');
-      opt.value = GITHUB_BRANCH;
-      opt.textContent = GITHUB_BRANCH + ' (?)';
-      sel.prepend(opt);
-      sel.value = GITHUB_BRANCH;
+    const claudeBranches = branches.filter(b => b.name.startsWith('claude/'));
+    if (claudeBranches.length > 0) {
+      const latest = claudeBranches.sort((a, b) => b.name.localeCompare(a.name))[0];
+      if (latest.name !== GITHUB_BRANCH) {
+        GITHUB_BRANCH = latest.name;
+        localStorage.setItem('admin_branch', latest.name);
+        updateBranchBadge();
+        contentSha = null; currentData = null;
+        init();
+      }
     }
   });
 }
 
-function switchBranch(newBranch) {
-  if (newBranch === GITHUB_BRANCH) return;
-  GITHUB_BRANCH = newBranch;
-  localStorage.setItem('admin_branch', newBranch);
-  updateBranchBadge();
-  // reload current data from the new branch
-  contentSha = null; currentData = null;
-  init();
-}
-
 function updateBranchBadge() {
-  const badge = document.getElementById('branch-badge');
-  if (!badge) return;
+  const bar = document.getElementById('env-bar');
+  if (!bar) return;
   const isMain = GITHUB_BRANCH === 'main';
-  badge.textContent = isMain ? '' : GITHUB_BRANCH;
-  badge.style.display = isMain ? 'none' : 'inline-block';
+  bar.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:8px;padding:6px 16px;font-family:inherit;font-size:0.78rem;font-weight:700;letter-spacing:0.02em;direction:ltr;' +
+    (isMain
+      ? 'background:#e6f4ea;color:#1e7e34;border-bottom:2px solid #1e7e34;'
+      : 'background:#fff3e0;color:#c46a2a;border-bottom:2px solid #e8854a;');
+  bar.innerHTML = isMain
+    ? '<span style="width:8px;height:8px;border-radius:50%;background:#1e7e34;display:inline-block"></span> production · main'
+    : '<span style="width:8px;height:8px;border-radius:50%;background:#e8854a;display:inline-block;animation:pulse 2s infinite"></span> preview · ' + GITHUB_BRANCH;
 }
 
 // ===== INIT =====

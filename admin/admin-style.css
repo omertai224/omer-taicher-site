@@ -427,3 +427,5 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 }
 .code-repo-btn:hover { border-color: var(--navy); color: var(--navy); }
 .code-repo-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
