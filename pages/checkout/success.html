@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <script>(function(){var m=location.pathname.match(/^(\/omer-taicher-site)\b/);if(!m)return;var B=m[1];function r(root){(root||document).querySelectorAll('a[href^="/"]').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='/'&&!h.startsWith(B))a.setAttribute('href',B+h)});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){r()});else r();if(typeof MutationObserver!=='undefined')new MutationObserver(function(muts){muts.forEach(function(mu){mu.addedNodes.forEach(function(n){if(n.nodeType===1)r(n.parentElement||n)})})}).observe(document.documentElement,{childList:true,subtree:true});var _f=window.fetch;window.fetch=function(u,o){if(typeof u==='string'&&u.charAt(0)==='/'&&!u.startsWith(B))u=B+u;return _f.call(this,u,o)}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>תשלום בוצע · עומר טייכר</title>
+<title>התשלום בוצע בהצלחה · עומר טייכר</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/main.css">
@@ -104,25 +104,77 @@
   width: 100%; padding: 18px 28px;
   background: var(--orange-deep); color: #fff;
   border-radius: 50px; font-family: var(--font);
-  font-size: 1rem; font-weight: 800;
+  font-size: 1.05rem; font-weight: 800;
   text-decoration: none; border: none; cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 8px 24px rgba(232,133,74,0.35);
+  animation: pulse 2s ease-in-out 1s infinite;
 }
-.btn-go:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(26,74,107,0.25); }
-.btn-go svg { transition: transform 0.2s; }
-.btn-go:hover svg { transform: translateX(-4px); }
+.btn-go:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(26,74,107,0.25); animation: none; }
+@keyframes pulse { 0%,100% { box-shadow: 0 8px 24px rgba(232,133,74,0.35); } 50% { box-shadow: 0 8px 36px rgba(232,133,74,0.55); } }
 
-/* הודעת מייל */
-.email-note {
-  background: var(--navy-light);
-  border-right: 4px solid var(--navy);
-  border-radius: 0 14px 14px 0;
-  padding: 14px 18px;
-  font-size: 0.82rem; color: var(--navy); font-weight: 600; line-height: 1.7;
+/* דרכים נוספות */
+.delivery-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
   margin-bottom: 20px;
 }
-.email-note em { font-style: normal; color: var(--orange-deep); }
+.delivery-title {
+  font-size: 0.8rem; font-weight: 700; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;
+}
+.delivery-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 0;
+}
+.delivery-item + .delivery-item {
+  border-top: 1px solid var(--border);
+}
+.delivery-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.delivery-icon.email { background: #ede9fe; }
+.delivery-icon.whatsapp { background: #dcfce7; }
+.delivery-icon.link { background: var(--orange-light); }
+.delivery-text {
+  flex: 1;
+}
+.delivery-text strong {
+  display: block; font-size: 0.85rem; color: var(--navy); font-weight: 700;
+}
+.delivery-text small {
+  font-size: 0.75rem; color: var(--text-light); line-height: 1.5;
+}
+
+/* כפתור העתקת קישור */
+.btn-copy {
+  background: none; border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 6px 12px;
+  font-family: var(--font); font-size: 0.72rem; font-weight: 700;
+  color: var(--navy); cursor: pointer;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.btn-copy:hover { border-color: var(--navy); background: var(--navy-light); }
+.btn-copy.copied { border-color: #16a34a; color: #16a34a; background: #dcfce7; }
+
+/* הודעת ביטחון */
+.reassure-note {
+  background: linear-gradient(135deg, #f0f9ff, #e8f4f8);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.reassure-note p {
+  font-size: 0.82rem; color: var(--navy); font-weight: 600; line-height: 1.7;
+  margin: 0;
+}
+.reassure-note .highlight { color: var(--orange-deep); font-weight: 800; }
 
 /* שאלות */
 .help-row {
@@ -131,9 +183,17 @@
 }
 .help-row a { color: var(--navy); font-weight: 700; text-decoration: none; }
 .help-row a:hover { color: var(--orange-deep); }
+
+/* קונפטי */
+.confetti-canvas {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 200;
+}
 </style>
 </head>
 <body>
+<canvas class="confetti-canvas" id="confetti"></canvas>
+
 <div class="success-page">
 
 <nav class="success-nav">
@@ -150,9 +210,10 @@
     </div>
   </div>
 
-  <h1 class="success-title">התשלום בוצע בהצלחה</h1>
-  <p class="success-sub">ההדרכה שלכם מוכנה ומחכה.<br>אפשר להתחיל עכשיו.</p>
+  <h1 class="success-title">התשלום בוצע בהצלחה!</h1>
+  <p class="success-sub">הכל מוכן, אפשר להתחיל מיד.</p>
 
+  <!-- כרטיס מוצר + כפתור ראשי -->
   <div class="success-product-card">
     <div class="success-product-label">מה קניתם</div>
     <div class="success-product-row">
@@ -169,20 +230,64 @@
       </div>
     </div>
 
-    <a class="btn-go" id="btn-go" href="#">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <a class="btn-go" id="btn-go" href="#" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
         <polygon points="5 3 19 12 5 21 5 3"/>
       </svg>
-      עברו להדרכה עכשיו
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
+      התחילו את ההדרכה עכשיו
     </a>
   </div>
 
-  <div class="email-note">
-    שלחנו לכם מייל עם קישור להדרכה וקבלה פורמלית על התשלום.
-    לא קיבלתם? בדקו את תיקיית <em>הספאם</em> — לפעמים הוא מגיע לשם.
+  <!-- דרכים לגשת להדרכה -->
+  <div class="delivery-card">
+    <div class="delivery-title">שלחנו לכם את הקישור גם ב...</div>
+
+    <div class="delivery-item">
+      <div class="delivery-icon email">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="22 7 12 13 2 7"/>
+        </svg>
+      </div>
+      <div class="delivery-text">
+        <strong>מייל</strong>
+        <small>עם קישור ישיר + קבלה. לא מצאתם? בדקו ספאם</small>
+      </div>
+    </div>
+
+    <div class="delivery-item">
+      <div class="delivery-icon whatsapp">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+        </svg>
+      </div>
+      <div class="delivery-text">
+        <strong>WhatsApp</strong>
+        <small>הודעה עם קישור ישיר (אם השארתם טלפון)</small>
+      </div>
+    </div>
+
+    <div class="delivery-item">
+      <div class="delivery-icon link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+          <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+        </svg>
+      </div>
+      <div class="delivery-text">
+        <strong>העתיקו את הקישור</strong>
+        <small>שמרו אותו במקום נוח לכם</small>
+      </div>
+      <button class="btn-copy" id="btn-copy">העתק</button>
+    </div>
+  </div>
+
+  <!-- הודעת ביטחון -->
+  <div class="reassure-note">
+    <p>
+      הגישה להדרכה היא <span class="highlight">לצמיתות</span>.<br>
+      תמיד אפשר לחזור ולצפות שוב בכל זמן.
+    </p>
   </div>
 
   <div class="help-row">
@@ -206,14 +311,76 @@ const PRODUCTS = {
 const params  = new URLSearchParams(window.location.search);
 const key     = params.get('product');
 const product = key && PRODUCTS[key] ? PRODUCTS[key] : null;
+const tutorialUrl = product ? window.location.origin + product.url : '/interactive';
 
 if (product) {
   document.getElementById('product-name').textContent = product.name;
   document.getElementById('btn-go').href = product.url;
 } else {
-  // לא ידוע — שולחים לדף ההדרכות הכללי
   document.getElementById('btn-go').href = '/interactive';
 }
+
+// העתקת קישור
+document.getElementById('btn-copy').addEventListener('click', function() {
+  const btn = this;
+  navigator.clipboard.writeText(tutorialUrl).then(function() {
+    btn.textContent = 'הועתק!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = 'העתק';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+});
+
+// קונפטי קצר
+(function confetti() {
+  var canvas = document.getElementById('confetti');
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  var colors = ['#e8854a','#1a4a6b','#22c55e','#f6a67e','#7c3aed','#f59e0b'];
+  var pieces = [];
+  for (var i = 0; i < 60; i++) {
+    pieces.push({
+      x: Math.random() * canvas.width,
+      y: -20 - Math.random() * 200,
+      w: 6 + Math.random() * 6,
+      h: 4 + Math.random() * 4,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      vx: (Math.random() - 0.5) * 3,
+      vy: 2 + Math.random() * 3,
+      rot: Math.random() * 360,
+      vr: (Math.random() - 0.5) * 10,
+      opacity: 1
+    });
+  }
+
+  var startTime = Date.now();
+  function draw() {
+    var elapsed = Date.now() - startTime;
+    if (elapsed > 3000) { canvas.remove(); return; }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var fadeStart = 2000;
+    pieces.forEach(function(p) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.rot += p.vr;
+      p.vy += 0.05;
+      if (elapsed > fadeStart) p.opacity = Math.max(0, 1 - (elapsed - fadeStart) / 1000);
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot * Math.PI / 180);
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+      ctx.restore();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 </script>
 
 <script src="/assets/js/toolbar.js" defer></script>

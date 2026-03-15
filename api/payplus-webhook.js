@@ -3,15 +3,126 @@
  * מקבל התראות IPN מ-PayPlus כשתשלום מתבצע
  *
  * PayPlus שולח POST עם פרטי העסקה לאחר תשלום מוצלח/נכשל.
- * ה-endpoint הזה מאמת את העסקה מול PayPlus API ומלוג את התוצאה.
+ * ה-endpoint הזה מאמת את העסקה מול PayPlus API, שולח מייל עם קישור להדרכה
+ * ושולח הודעת WhatsApp אם הלקוח השאיר טלפון.
  */
 
 const PAYPLUS_BASE_URL = process.env.PAYPLUS_ENV === 'production'
   ? 'https://restapi.payplus.co.il'
   : 'https://restapidev.payplus.co.il';
 
-const API_KEY    = process.env.PAYPLUS_API_KEY;
-const SECRET_KEY = process.env.PAYPLUS_SECRET_KEY;
+const API_KEY      = process.env.PAYPLUS_API_KEY;
+const SECRET_KEY   = process.env.PAYPLUS_SECRET_KEY;
+const BREVO_KEY    = process.env.BREVO_API_KEY;
+const WA_INSTANCE  = process.env.GREENAPI_INSTANCE_ID;
+const WA_TOKEN     = process.env.GREENAPI_TOKEN;
+
+const PRODUCTS = {
+  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/Vibe/' },
+  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://omertai.net/interactive/AI/' },
+  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: 'https://omertai.net/interactive/Files/' },
+  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: 'https://omertai.net/interactive/Security/' },
+  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', url: 'https://omertai.net/interactive/Google/' }
+};
+
+async function sendTutorialEmail(customerEmail, customerName, product) {
+  if (!BREVO_KEY || !customerEmail) return;
+
+  const htmlContent = `
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:#fdf8f2;direction:rtl;">
+<div style="max-width:520px;margin:0 auto;padding:32px 16px;">
+  <div style="text-align:center;margin-bottom:24px;">
+    <span style="font-size:1.2rem;font-weight:800;color:#1a4a6b;">עומר <span style="color:#e8854a;">טייכר</span></span>
+  </div>
+  <div style="background:#fff;border-radius:16px;padding:28px 24px;border:1px solid #e8e0d5;">
+    <div style="text-align:center;margin-bottom:20px;">
+      <div style="width:56px;height:56px;background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
+        <span style="color:#fff;font-size:28px;">✓</span>
+      </div>
+    </div>
+    <h1 style="text-align:center;color:#1a4a6b;font-size:1.4rem;margin:0 0 8px;">התשלום התקבל בהצלחה</h1>
+    <p style="text-align:center;color:#8a7f72;font-size:0.9rem;margin:0 0 24px;">
+      ${customerName ? customerName + ',' : ''} ההדרכה שלכם מוכנה ומחכה.
+    </p>
+    <div style="background:#fdf8f2;border-radius:12px;padding:16px;margin-bottom:20px;">
+      <p style="margin:0 0 4px;font-size:0.75rem;color:#8a7f72;font-weight:700;">מה קניתם</p>
+      <p style="margin:0;font-size:0.95rem;color:#1a4a6b;font-weight:800;">${product.name}</p>
+    </div>
+    <div style="text-align:center;">
+      <a href="${product.url}" style="display:inline-block;background:#e8854a;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;">
+        עברו להדרכה עכשיו →
+      </a>
+    </div>
+    <p style="text-align:center;color:#8a7f72;font-size:0.78rem;margin-top:16px;">
+      הקישור הזה שלכם לצמיתות. שמרו את המייל הזה.
+    </p>
+  </div>
+  <p style="text-align:center;color:#8a7f72;font-size:0.75rem;margin-top:20px;">
+    שאלות? <a href="mailto:omer@omertai.net" style="color:#1a4a6b;font-weight:700;">omer@omertai.net</a>
+  </p>
+</div>
+</body>
+</html>`;
+
+  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'api-key': BREVO_KEY
+    },
+    body: JSON.stringify({
+      sender: { name: 'עומר טייכר', email: 'omer@omertai.net' },
+      to: [{ email: customerEmail, name: customerName || '' }],
+      subject: `ההדרכה שלכם מוכנה — ${product.name}`,
+      htmlContent
+    })
+  });
+
+  if (!response.ok) {
+    const err = await response.text();
+    console.error('Brevo email error:', response.status, err);
+  } else {
+    console.log('Tutorial email sent to:', customerEmail);
+  }
+}
+
+function formatPhone(phone) {
+  if (!phone) return null;
+  // מסיר מקפים, רווחים וסוגריים
+  let clean = phone.replace(/[\s\-()]/g, '');
+  // ישראלי שמתחיל ב-0 → 972
+  if (clean.startsWith('0')) clean = '972' + clean.slice(1);
+  // מוסיף 972 אם חסר קידומת
+  if (!clean.startsWith('972') && clean.length === 9) clean = '972' + clean;
+  return clean + '@c.us';
+}
+
+async function sendWhatsApp(customerPhone, customerName, product) {
+  if (!WA_INSTANCE || !WA_TOKEN || !customerPhone) return;
+
+  const chatId = formatPhone(customerPhone);
+  if (!chatId) return;
+
+  const name = customerName ? ` ${customerName}` : '';
+  const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}\n\nשאלות? פשוט תענו להודעה הזו 😊\nעומר טייכר`;
+
+  const apiUrl = `https://7105.api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chatId, message })
+  });
+
+  const data = await response.json();
+  if (data.idMessage) {
+    console.log('WhatsApp sent to:', customerPhone);
+  } else {
+    console.error('WhatsApp send error:', data);
+  }
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -54,8 +165,28 @@ export default async function handler(req, res) {
         page_request_uid,
         verified_status: paymentStatus,
         amount: verifyData?.data?.amount,
-        customer_email: verifyData?.data?.customer_email
+        customer_email: verifyData?.data?.customer_email,
+        more_info: verifyData?.data?.more_info
       });
+
+      // שליחת מייל עם קישור להדרכה רק אם התשלום אושר
+      if (paymentStatus === 'approved') {
+        const customerEmail = verifyData?.data?.customer_email;
+        const customerName  = verifyData?.data?.customer_name;
+        const productKey    = verifyData?.data?.more_info;
+        const product       = productKey && PRODUCTS[productKey] ? PRODUCTS[productKey] : null;
+
+        const customerPhone = verifyData?.data?.customer_phone;
+
+        if (product) {
+          const tasks = [];
+          if (customerEmail) tasks.push(sendTutorialEmail(customerEmail, customerName, product));
+          if (customerPhone) tasks.push(sendWhatsApp(customerPhone, customerName, product));
+          if (tasks.length) await Promise.allSettled(tasks);
+        } else {
+          console.warn('Cannot send notifications:', { customerEmail, customerPhone, productKey, hasProduct: !!product });
+        }
+      }
     }
 
     return res.status(200).json({ received: true });

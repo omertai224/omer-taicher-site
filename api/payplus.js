@@ -92,6 +92,7 @@ export default async function handler(req, res) {
         email: customerEmail || '',
         phone: customerPhone || ''
       },
+      more_info: productKey,
       success_url: successUrl,
       fail_url: failUrl,
       cancel_url: cancelUrl,
