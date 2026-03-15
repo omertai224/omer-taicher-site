@@ -349,12 +349,6 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
   }
   alertEl.className = 'alert';
 
-  const total = cart.reduce((s, i) => s + i.price, 0);
-  const productName = cart.length === 1
-    ? cart[0].name
-    : cart.map(i => i.name).join(', ');
-  const productKey = cart.length === 1 ? productParam : null;
-
   const btn = document.getElementById('pay-btn');
   btn.classList.add('loading');
   btn.disabled = true;
@@ -364,9 +358,7 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        productName,
-        productKey,
-        amount: total,
+        productKey: productParam,
         customerName: name,
         customerEmail: email,
         customerPhone: phone

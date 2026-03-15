@@ -15,6 +15,14 @@ const API_KEY    = process.env.PAYPLUS_API_KEY;
 const SECRET_KEY = process.env.PAYPLUS_SECRET_KEY;
 const PAGE_UID   = process.env.PAYPLUS_PAGE_UID;
 
+const PRODUCTS = {
+  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
+  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
+  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
+  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
+  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
+};
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://omertai.net');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -25,52 +33,39 @@ export default async function handler(req, res) {
 
   try {
     const {
-      productName,
       productKey,
-      amount,
       customerName,
       customerEmail,
       customerPhone
     } = req.body;
 
-    if (!productName || !amount) {
-      return res.status(400).json({ error: 'חסרים פרטי מוצר' });
+    if (!productKey || !PRODUCTS[productKey]) {
+      return res.status(400).json({ error: 'מוצר לא תקין' });
     }
 
-    const parsedAmount = parseFloat(amount);
-    if (!Number.isFinite(parsedAmount) || parsedAmount <= 0 || parsedAmount > 10000) {
-      return res.status(400).json({ error: 'סכום לא תקין' });
-    }
+    const product = PRODUCTS[productKey];
 
     if (customerEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
       return res.status(400).json({ error: 'כתובת אימייל לא תקינה' });
     }
 
-    const successUrl = productKey
-      ? `https://omertai.net/pages/checkout/success.html?product=${productKey}`
-      : 'https://omertai.net/pages/checkout/success.html';
-
-    const failUrl = productKey
-      ? `https://omertai.net/pages/checkout/?product=${productKey}&status=failed`
-      : 'https://omertai.net/pages/checkout/?status=failed';
-
-    const cancelUrl = productKey
-      ? `https://omertai.net/pages/checkout/?product=${productKey}&status=cancelled`
-      : 'https://omertai.net/pages/checkout/?status=cancelled';
+    const successUrl = `https://omertai.net/pages/checkout/success.html?product=${productKey}`;
+    const failUrl    = `https://omertai.net/pages/checkout/?product=${productKey}&status=failed`;
+    const cancelUrl  = `https://omertai.net/pages/checkout/?product=${productKey}&status=cancelled`;
 
     const payload = {
       payment_page_uid: PAGE_UID,
       charge_method: 1,
-      amount: parsedAmount,
+      amount: product.price,
       currency_code: 'ILS',
       sendEmailApproval: true,
-      sendEmailFailure: false,
+      sendEmailFailure: true,
       initial_invoice: true,
       products: [
         {
-          name: productName,
+          name: product.name,
           quantity: 1,
-          price: parsedAmount
+          price: product.price
         }
       ],
       customer: {
@@ -80,7 +75,8 @@ export default async function handler(req, res) {
       },
       success_url: successUrl,
       fail_url: failUrl,
-      cancel_url: cancelUrl
+      cancel_url: cancelUrl,
+      ipn_url: 'https://omertai.net/api/payplus-webhook'
     };
 
     const response = await fetch(`${PAYPLUS_BASE_URL}/api/v1.0/PaymentPages/generateLink`, {
@@ -97,7 +93,7 @@ export default async function handler(req, res) {
 
     if (!response.ok || (status !== '1' && status !== 'success')) {
       console.error('PayPlus error:', data);
-      return res.status(502).json({ error: 'שגיאה ביצירת קישור תשלום', details: data });
+      return res.status(502).json({ error: 'שגיאה ביצירת קישור תשלום' });
     }
 
     return res.status(200).json({
