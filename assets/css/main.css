@@ -120,10 +120,10 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 .ws-icon { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--orange-light); border-radius: 12px; margin-bottom: 14px; }
 .ws-title { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.4; }
 .ws-desc { font-size: 0.8rem; color: var(--text-mid); line-height: 1.75; margin-bottom: 0; flex: 1; }
-.ws-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+.ws-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; gap: 10px; flex-wrap: wrap; }
 .ws-price { font-size: 1.1rem; font-weight: 800; color: var(--orange-deep); }
 .ws-price span { font-size: 0.7rem; color: var(--text-light); font-weight: 400; }
-.ws-btn { background: var(--orange-deep); color: #fff; border: none; padding: 9px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background 0.2s; }
+.ws-btn { background: var(--orange-deep); color: #fff; border: none; padding: 9px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background 0.2s; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; }
 .ws-btn:hover { background: var(--navy); }
 
 /* ===== ABOUT ===== */
