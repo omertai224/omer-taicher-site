@@ -1312,7 +1312,7 @@ async function blogSavePost() {
       throw new Error(result.message || 'שגיאה לא ידועה');
     }
   } catch(e) {
-    alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + e.message + '</div>';
+    alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + escapeHtml(e.message) + '</div>';
     setStatus('content', 'error', 'שגיאה: ' + e.message);
     btn.disabled = false;
     btn.textContent = blogEditingId ? 'שמור שינויים' : 'פרסם';
@@ -1575,7 +1575,7 @@ async function loadInteractiveManager() {
     setStatus('content', 'ok', interactiveItems.length + ' הדרכות נטענו');
   } catch(e) {
     setStatus('content', 'error', 'שגיאה: ' + e.message);
-    container.innerHTML = '<div style="text-align:center;padding:40px;color:#c0392b;font-size:0.88rem">שגיאה בטעינת הדרכות: ' + e.message + '</div>';
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:#c0392b;font-size:0.88rem">שגיאה בטעינת הדרכות: ' + escapeHtml(e.message) + '</div>';
   }
 }
 
@@ -1699,7 +1699,7 @@ async function interactiveSaveItem() {
       throw new Error(result.message || 'שגיאה לא ידועה');
     }
   } catch(e) {
-    alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + e.message + '</div>';
+    alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + escapeHtml(e.message) + '</div>';
     setStatus('content', 'error', 'שגיאה: ' + e.message);
     btn.disabled = false;
     btn.textContent = interactiveEditingIndex !== null ? 'שמור שינויים' : 'הוסף הדרכה';
@@ -2389,7 +2389,7 @@ async function loadContacts() {
     renderContactStats();
     renderContacts();
   } catch(e) {
-    if (bar) bar.innerHTML = `<div style="grid-column:1/-1;padding:20px;color:#c0392b;font-size:0.85rem;text-align:center;">שגיאה בטעינה: ${e.message}</div>`;
+    if (bar) bar.innerHTML = `<div style="grid-column:1/-1;padding:20px;color:#c0392b;font-size:0.85rem;text-align:center;">שגיאה בטעינה: ${escapeHtml(e.message)}</div>`;
     allContacts = [];
     filteredContacts = [];
     renderContacts();
