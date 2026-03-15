@@ -108,8 +108,8 @@ function updateBranchBadge() {
 // ===== INIT =====
 function init() {
   initBranchSelector();
-  let savedRepo = localStorage.getItem('admin_active_repo') || 'omer-taicher-interactive';
-  if (savedRepo === 'omer-taicher-site') savedRepo = 'omer-taicher-interactive';
+  let savedRepo = localStorage.getItem('admin_active_repo') || 'omer-taicher-blog';
+  if (savedRepo === 'omer-taicher-site') savedRepo = 'omer-taicher-blog';
   const rawTab    = localStorage.getItem('admin_active_tab') || 'content';
   const validTabs = ['content', 'code', 'gallery', 'download', 'contacts'];
   const savedTab  = validTabs.includes(rawTab) ? rawTab : 'content';
