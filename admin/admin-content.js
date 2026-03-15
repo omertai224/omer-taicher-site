@@ -1033,7 +1033,7 @@ function openBlogGalleryPicker() {
         return `
         <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:#f5f5f5;aspect-ratio:1;cursor:pointer;"
              onclick="selectImageFromGalleryPicker('${item.url}')">
-          <img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="${item.name}">
+          <img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="${escapeHtml(item.name)}">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;flex-direction:column;justify-content:flex-end;padding:6px;gap:3px;opacity:0;transition:all 0.2s;"
                onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
                onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
@@ -1740,10 +1740,14 @@ function interactiveDeleteItem(index) {
 
 let galleryItems = []; // [{url, type, name, date, category}]
 let galleryFilter = 'הכל';
+let _galleryFullyLoaded = false; // האם הגלריה נטענה מלאה מה-Worker
+let _galleryLoading = false; // הגנה מטעינה כפולה
 
 let gallerySha = null;
 
 async function loadGalleryManager() {
+  if (_galleryLoading) return;
+  _galleryLoading = true;
   setStatus('gallery', 'loading', 'טוען...');
   try {
     // טעינת קטגוריות מ-gallery.json
@@ -1790,6 +1794,7 @@ async function loadGalleryManager() {
         });
       }
       galleryItems = mapped;
+      _galleryFullyLoaded = true;
     } else {
       galleryItems = [];
     }
@@ -1800,6 +1805,8 @@ async function loadGalleryManager() {
     galleryItems = [];
     renderGallery();
     setStatus('gallery', 'error', 'שגיאה בטעינה: ' + e.message);
+  } finally {
+    _galleryLoading = false;
   }
 }
 
@@ -1851,10 +1858,10 @@ function renderGallery() {
       ${item.type === 'video'
         ? `<video src="${item.url}" style="width:100%;height:100%;object-fit:cover;" muted preload="metadata"></video>
            <div style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,0.6);color:#fff;font-size:0.6rem;padding:2px 6px;border-radius:6px;font-weight:700;">וידאו</div>`
-        : `<img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="${item.name}">`
+        : `<img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="${escapeHtml(item.name)}">`
       }
       ${isSelected ? `<div style="position:absolute;top:6px;right:6px;background:var(--orange-deep);color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:700;">✓</div>` : ''}
-      <div style="position:absolute;top:6px;left:6px;background:var(--orange-deep);color:#fff;font-size:0.58rem;padding:2px 7px;border-radius:50px;font-weight:700;">${item.category || ''}</div>
+      <div style="position:absolute;top:6px;left:6px;background:var(--orange-deep);color:#fff;font-size:0.58rem;padding:2px 7px;border-radius:50px;font-weight:700;">${escapeHtml(item.category) || ''}</div>
       <div style="position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;flex-direction:column;justify-content:flex-end;padding:8px;gap:4px;opacity:0;transition:all 0.2s;"
            onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
            onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
@@ -1956,18 +1963,28 @@ async function deleteSelectedGalleryItems() {
   if (!confirm(`למחוק ${selectedGalleryItems.size} קבצים לצמיתות?`)) return;
 
   const indices = Array.from(selectedGalleryItems).sort((a, b) => b - a);
+  let failed = 0;
   for (const index of indices) {
     const item = galleryItems[index];
+    if (!item) continue;
     try {
-      const key = item.url.replace('https://media.omertai.net/', '');
-      await fetch(`${WORKER_URL}/${key}`, { method: 'DELETE' });
-    } catch(e) { console.error(e); }
-    galleryItems.splice(index, 1);
+      const delKey = item.key || item.url.replace('https://media.omertai.net/', '');
+      const res = await fetch(`${WORKER_URL}/${delKey}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error(res.status);
+      galleryItems.splice(index, 1);
+    } catch(e) {
+      console.error('שגיאה במחיקת', item.key, e);
+      failed++;
+    }
   }
 
   selectedGalleryItems.clear();
   renderGallery();
-  setStatus('gallery', 'loading', 'שומר...');
+  if (failed) {
+    setStatus('gallery', 'error', `${failed} קבצים לא נמחקו — נסה שוב`);
+  } else {
+    setStatus('gallery', 'loading', 'שומר...');
+  }
   await autoSaveGallery();
 }
 
@@ -2040,18 +2057,25 @@ async function autoSaveGallery() {
         existingOrder = saved.order || [];
       } catch(pe) {}
     } catch(e) { gallerySha = null; }
-    // מזג: קטגוריות קיימות + עדכונים מהזיכרון
-    const categories = { ...existingCategories };
-    galleryItems.forEach(item => {
-      if (item.key && item.category) {
-        categories[item.key] = item.category;
-      }
-    });
-    // סדר: שמור סדר קיים, הוסף חדשים בהתחלה
-    const memoryKeys = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
-    const existingOrderSet = new Set(existingOrder);
-    const newKeys = memoryKeys.filter(k => !existingOrderSet.has(k));
-    const order = [...newKeys, ...existingOrder];
+    const memoryKeys = new Set(galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0));
+    let categories, order;
+    if (_galleryFullyLoaded) {
+      // הגלריה נטענה מלאה — galleryItems מכיל הכל, אפשר להחליף בבטחה
+      categories = {};
+      galleryItems.forEach(item => {
+        if (item.key && item.category) categories[item.key] = item.category;
+      });
+      order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
+    } else {
+      // הגלריה לא נטענה — מזג עם קיים כדי לא לדרוס
+      categories = { ...existingCategories };
+      galleryItems.forEach(item => {
+        if (item.key && item.category) categories[item.key] = item.category;
+      });
+      const existingOrderSet = new Set(existingOrder);
+      const newKeys = [...memoryKeys].filter(k => !existingOrderSet.has(k));
+      order = [...newKeys, ...existingOrder];
+    }
     const json = JSON.stringify({ categories, order }, null, 2);
     const result = await ghPut('gallery.json', json, gallerySha, 'עדכון קטגוריות גלריה');
     if (result.content) {
@@ -2081,12 +2105,16 @@ function copyGalleryUrl(url) {
 async function deleteGalleryItem(index) {
   if (!confirm('למחוק את הקובץ לצמיתות?')) return;
   const item = galleryItems[index];
+  if (!item) return;
 
   try {
-    const key = item.url.replace('https://media.omertai.net/', '');
-    await fetch(`${WORKER_URL}/${key}`, { method: 'DELETE' });
+    const delKey = item.key || item.url.replace('https://media.omertai.net/', '');
+    const res = await fetch(`${WORKER_URL}/${delKey}`, { method: 'DELETE' });
+    if (!res.ok) throw new Error(res.status);
   } catch(e) {
     console.error('שגיאה במחיקה', e);
+    setStatus('gallery', 'error', 'שגיאה במחיקה מהשרת — נסה שוב');
+    return;
   }
 
   galleryItems.splice(index, 1);
