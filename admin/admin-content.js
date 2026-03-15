@@ -625,12 +625,12 @@ function showBlogForm(post) {
 
     <div class="field">
       <label class="field-label">כותרת *</label>
-      <div id="bf-title" contenteditable="true" oninput="blogAutoSlug()" style="min-height:2.2em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:1rem;font-family:inherit;line-height:1.6;background:#fff;outline:none;direction:rtl">${escapeHtml(post.title)}</div>
+      <div id="bf-title" contenteditable="true" oninput="blogAutoSlug()" style="min-height:2.2em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:1rem;font-family:inherit;line-height:1.6;background:#fff;outline:none;direction:rtl">${post.title || ''}</div>
     </div>
 
     <div class="field">
       <label class="field-label">תקציר *</label>
-      <div id="bf-excerpt" contenteditable="true" style="min-height:4em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:0.95rem;font-family:inherit;line-height:1.7;background:#fff;outline:none;direction:rtl">${escapeHtml(post.excerpt)}</div>
+      <div id="bf-excerpt" contenteditable="true" style="min-height:4em;border:1px solid var(--border);border-radius:10px;padding:10px 14px;font-size:0.95rem;font-family:inherit;line-height:1.7;background:#fff;outline:none;direction:rtl">${post.excerpt || ''}</div>
     </div>
 
     <div class="field">
@@ -661,6 +661,8 @@ function showBlogForm(post) {
       >${post.body || ''}</div>
       <div id="bf-preview" style="display:none;min-height:420px;padding:28px 32px;border:1.5px solid var(--navy);border-radius:14px;background:var(--cream);direction:rtl;font-family:'Rubik',sans-serif;"></div>
       <style>
+        #bf-title p, #bf-excerpt p { margin:0 0 0.3em; }
+        #bf-title br, #bf-excerpt br { display:none; }
         #bf-body, #bf-body * { font-size:0.88rem!important; line-height:1.75!important; font-family:inherit!important; }
         #bf-body p  { margin-bottom: 1.1em; }
         #bf-body h2 { font-size:1rem!important; font-weight:800!important; margin: 1.2em 0 0.4em; color:#1a4a6b; }
@@ -731,6 +733,26 @@ function showBlogForm(post) {
       <button onclick="blogCancelForm()" style="background:transparent;color:var(--text-mid);border:1px solid var(--border);padding:11px 24px;border-radius:50px;font-size:0.88rem;font-weight:600;cursor:pointer;font-family:inherit">ביטול</button>
     </div>
     <div id="bf-alert" style="margin-top:14px"></div>`;
+
+  // Use <p> instead of <br> when pressing Enter in contenteditable fields
+  document.execCommand('defaultParagraphSeparator', false, 'p');
+
+  // Convert existing <br> tags to <p> in title and excerpt
+  ['bf-title', 'bf-excerpt'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    let html = el.innerHTML;
+    if (html.includes('<br>') || html.includes('<br/>') || html.includes('<br />')) {
+      const parts = html.split(/<br\s*\/?>/gi).filter(p => p.trim());
+      el.innerHTML = parts.map(p => {
+        const stripped = p.trim();
+        if (stripped.startsWith('<p')) return stripped;
+        return '<p>' + stripped + '</p>';
+      }).join('');
+    } else if (el.textContent.trim() && !html.trim().startsWith('<p')) {
+      el.innerHTML = '<p>' + html.trim() + '</p>';
+    }
+  });
 }
 
 // ===== CLOUDINARY =====
@@ -849,7 +871,7 @@ function clearPostImage() {
 }
 
 function blogAutoSlug() {
-  const title = document.getElementById('bf-title')?.innerHTML || '';
+  const title = document.getElementById('bf-title')?.innerText || '';
   const slug = titleToSlug(title);
   const idField = document.getElementById('bf-id');
   if (idField && !blogEditingId && !idField.value.trim() && idField.dataset.cleared !== '1') idField.value = slug;
@@ -858,8 +880,8 @@ function blogAutoSlug() {
 }
 
 function blogAutoSeo() {
-  const title = document.getElementById('bf-title')?.innerHTML || '';
-  const excerpt = document.getElementById('bf-excerpt')?.innerHTML || '';
+  const title = document.getElementById('bf-title')?.innerText || '';
+  const excerpt = document.getElementById('bf-excerpt')?.innerText || '';
   const seoTitle = document.getElementById('bf-seo-title');
   const seoDesc = document.getElementById('bf-seo-desc');
   if (seoTitle && !seoTitle.dataset.edited && seoTitle.dataset.cleared !== '1') seoTitle.value = title ? title + ' | עומר טייכר' : '';
