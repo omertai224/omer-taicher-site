@@ -1005,7 +1005,7 @@ async function uploadToCloudinary(input) {
       status.style.color = 'var(--green)';
       status.textContent = '✓ הועלה בהצלחה';
       // הוספה אוטומטית לגלריה קטגוריית בלוג
-      galleryItems.unshift({ url: data.url, type: 'image', name: key, date: new Date().toISOString(), category: 'בלוג' });
+      galleryItems.unshift({ url: data.url, type: 'image', name: key, key: key, date: new Date().toISOString(), category: 'בלוג' });
       await autoSaveGallery();
     } else {
       throw new Error(data.error || 'שגיאה לא ידועה');
@@ -2028,18 +2028,30 @@ async function autoSaveGallery() {
   if (_gallerySaving) return;
   _gallerySaving = true;
   try {
-    // תמיד רענן SHA לפני שמירה
+    // תמיד רענן SHA לפני שמירה + מזג עם קטגוריות קיימות
+    let existingCategories = {};
+    let existingOrder = [];
     try {
       const fresh = await ghGet('gallery.json');
       gallerySha = fresh.sha;
+      try {
+        const saved = JSON.parse(decodeURIComponent(escape(atob(fresh.content.replace(/\n/g, '')))));
+        existingCategories = saved.categories || {};
+        existingOrder = saved.order || [];
+      } catch(pe) {}
     } catch(e) { gallerySha = null; }
-    const categories = {};
-    const order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
+    // מזג: קטגוריות קיימות + עדכונים מהזיכרון
+    const categories = { ...existingCategories };
     galleryItems.forEach(item => {
       if (item.key && item.category) {
         categories[item.key] = item.category;
       }
     });
+    // סדר: שמור סדר קיים, הוסף חדשים בהתחלה
+    const memoryKeys = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
+    const existingOrderSet = new Set(existingOrder);
+    const newKeys = memoryKeys.filter(k => !existingOrderSet.has(k));
+    const order = [...newKeys, ...existingOrder];
     const json = JSON.stringify({ categories, order }, null, 2);
     const result = await ghPut('gallery.json', json, gallerySha, 'עדכון קטגוריות גלריה');
     if (result.content) {
