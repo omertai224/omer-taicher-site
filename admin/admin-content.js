@@ -141,6 +141,25 @@ let blogPosts = [];
 let blogSha = null;
 let blogEditingId = null; // null = פוסט חדש, string = עריכה
 let blogScheduled = []; // תזמונים פעילים
+let blogDirty = false;  // שינויים מקומיים שטרם נדחפו ל-GitHub
+
+// שמירה מקומית של טיוטות (localStorage)
+function blogSaveLocal() {
+  blogDirty = true;
+  localStorage.setItem('blog_draft_posts', JSON.stringify(blogPosts));
+  updatePublishIndicator();
+}
+function blogClearLocal() {
+  blogDirty = false;
+  localStorage.removeItem('blog_draft_posts');
+  updatePublishIndicator();
+}
+function updatePublishIndicator() {
+  const btn = document.getElementById('blog-publish-btn');
+  if (btn) btn.style.display = blogDirty ? '' : 'none';
+  const badge = document.getElementById('blog-dirty-badge');
+  if (badge) badge.style.display = blogDirty ? '' : 'none';
+}
 
 async function loadBlogManager() {
   setStatus('content', 'loading', 'טוען פוסטים...');
@@ -149,8 +168,21 @@ async function loadBlogManager() {
   try {
     const data = await ghGet('posts.json');
     blogSha = data.sha;
-    const parsed = JSON.parse(decode(data.content));
-    blogPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+    // אם יש טיוטה מקומית, נשתמש בה במקום בגרסת GitHub
+    const localDraft = localStorage.getItem('blog_draft_posts');
+    if (localDraft) {
+      try {
+        blogPosts = JSON.parse(localDraft);
+        blogDirty = true;
+      } catch(e) {
+        localStorage.removeItem('blog_draft_posts');
+        const parsed = JSON.parse(decode(data.content));
+        blogPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+      }
+    } else {
+      const parsed = JSON.parse(decode(data.content));
+      blogPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
 
     // טעינת תזמונים
     try {
@@ -170,7 +202,8 @@ async function loadBlogManager() {
     }
 
     renderBlogList();
-    setStatus('content', 'ok', blogPosts.length + ' פוסטים נטענו');
+    updatePublishIndicator();
+    setStatus('content', 'ok', blogPosts.length + ' פוסטים נטענו' + (blogDirty ? ' (יש שינויים לא מפורסמים)' : ''));
   } catch(e) {
     setStatus('content', 'error', 'שגיאה בטעינת פוסטים: ' + e.message);
   }
@@ -268,14 +301,49 @@ function renderBlogList() {
         style="width:100%;padding:10px 16px;border:1px solid var(--border);border-radius:50px;font-size:0.88rem;font-family:inherit;outline:none;background:var(--cream);direction:rtl;box-sizing:border-box"
       >
     </div>
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px">
-      <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
+        <span id="blog-dirty-badge" style="display:${blogDirty ? '' : 'none'};background:#fff3cd;color:#856404;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px">שינויים ממתינים</span>
+      </div>
       <div style="display:flex;gap:8px">
+        <button id="blog-publish-btn" onclick="blogPublishAll()" style="display:${blogDirty ? '' : 'none'};background:#27ae60;color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;animation:pulse 2s infinite">דחיפה ל-GitHub</button>
+        <button onclick="blogDiscardLocal()" id="blog-discard-btn" style="display:${blogDirty ? '' : 'none'};background:#fde8e8;color:#c0392b;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">בטל שינויים</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptImage()">הנחיה ליצירת תמונה</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
       </div>
     </div>
     <div id="blog-list-items">${listHTML}</div>`;
+}
+
+// דחיפה מרוכזת ל-GitHub
+async function blogPublishAll() {
+  const btn = document.getElementById('blog-publish-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'דוחף...'; }
+  setStatus('content', 'loading', 'דוחף שינויים ל-GitHub...');
+  try {
+    const fresh = await ghGet('posts.json');
+    blogSha = fresh.sha;
+    const result = await ghPut('posts.json', JSON.stringify({ posts: blogPosts }, null, 2), blogSha, 'עדכון פוסטים מרוכז');
+    if (result.content) {
+      blogSha = result.content.sha;
+      blogClearLocal();
+      setStatus('content', 'ok', '✓ כל השינויים פורסמו! GitHub Pages בונה...');
+      renderBlogList();
+    } else {
+      throw new Error(result.message || 'שגיאה לא ידועה');
+    }
+  } catch(e) {
+    setStatus('content', 'error', 'שגיאה בדחיפה: ' + e.message);
+    if (btn) { btn.disabled = false; btn.textContent = 'דחיפה ל-GitHub'; }
+  }
+}
+
+// ביטול שינויים מקומיים וחזרה לגרסת GitHub
+async function blogDiscardLocal() {
+  blogClearLocal();
+  setStatus('content', 'loading', 'טוען מחדש מ-GitHub...');
+  await loadBlogManager();
 }
 
 function blogNewPost() {
@@ -318,25 +386,10 @@ async function blogPasteDesignById(postId) {
 async function applyDesignById(postId) {
   const idx = blogPosts.findIndex(p => p.id === postId);
   if (idx === -1) return;
-  setStatus('content', 'loading', 'שומר...');
-  try {
-    const fresh = await ghGet('posts.json');
-    blogSha = fresh.sha;
-    const freshData = JSON.parse(decode(fresh.content));
-    let posts = freshData.posts || [];
-    const postIdx = posts.findIndex(p => p.id === postId);
-    if (postIdx === -1) throw new Error('פוסט לא נמצא');
-    posts[postIdx] = blogPosts[idx];
-    const result = await ghPut('posts.json', JSON.stringify({ posts }, null, 2), blogSha, 'עדכון עיצוב: ' + postId);
-    if (result.content) {
-      blogSha = result.content.sha;
-      blogPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      setStatus('content', 'ok', '✓ עיצוב הוחל ונשמר');
-      loadBlogManager();
-    } else throw new Error(result.message || 'שגיאה');
-  } catch(e) {
-    setStatus('content', 'error', 'שגיאה: ' + e.message);
-  }
+  // blogPosts[idx].body was already updated by blogPasteDesignById
+  blogSaveLocal();
+  setStatus('content', 'ok', '✓ עיצוב הוחל — לחצו "דחיפה ל-GitHub" לפרסום');
+  renderBlogList();
 }
 
 function blogPasteDesign() {
@@ -789,6 +842,10 @@ function showBlogForm(post) {
         SEO וסושיאל
       </div>
       <div class="field" style="margin-bottom:12px">
+        <label class="field-label">תיאור תמונה (image_alt)</label>
+        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור התמונה לנגישות ו-SEO" style="direction:rtl">
+      </div>
+      <div class="field" style="margin-bottom:12px">
         <label class="field-label">כותרת SEO (לשונית + שיתוף)</label>
         <input id="bf-seo-title" type="text" value="${post.seo_title || ''}" oninput="this.dataset.edited='1';this.dataset.cleared=this.value===''?'1':'';document.getElementById('bf-seo-title-count').textContent=this.value.length+' תווים'" placeholder="כותרת | עומר טייכר" style="direction:rtl">
         <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-title-count">${(post.seo_title||'').length} תווים</div>
@@ -797,10 +854,6 @@ function showBlogForm(post) {
         <label class="field-label">תיאור SEO (גוגל + שיתוף)</label>
         <textarea id="bf-seo-desc" rows="2" oninput="this.dataset.edited='1';this.dataset.cleared=this.value===''?'1':'';document.getElementById('bf-seo-desc-count').textContent=this.value.length+' / 155 תווים'" placeholder="תיאור קצר עד 155 תווים" style="direction:rtl;resize:vertical">${post.seo_desc || ''}</textarea>
         <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-desc-count">${(post.seo_desc||'').length} / 155 תווים</div>
-      </div>
-      <div class="field">
-        <label class="field-label">תיאור תמונה (image_alt)</label>
-        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור התמונה לנגישות ו-SEO" style="direction:rtl">
       </div>
       <div class="field" style="margin-top:12px">
         <label class="field-label">URL Slug (אנגלית בלבד)</label>
@@ -1278,23 +1331,13 @@ async function blogSavePost() {
   if (!date)    { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תאריך הוא שדה חובה</div>'; return; }
   if (!id)      { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">URL Slug הוא שדה חובה — מלאו אותו באנגלית</div>'; document.getElementById("bf-id")?.focus(); return; }
 
-  btn.disabled = true;
-  btn.textContent = 'שומר...';
-  setStatus('content', 'loading', 'מפרסם פוסט...');
-
   try {
-    // טעינה מחדש לקבלת SHA עדכני
-    const fresh = await ghGet('posts.json');
-    blogSha = fresh.sha;
-    const freshData = JSON.parse(decode(fresh.content));
-    let posts = freshData.posts || [];
-
     const post = { id, title, excerpt, body, date, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc };
+    let posts = [...blogPosts];
 
     if (blogEditingId) {
       const idx = posts.findIndex(p => p.id === blogEditingId);
       if (idx === -1) throw new Error('הפוסט לא נמצא');
-      // בדיקה שה-ID החדש לא שייך לפוסט אחר
       if (id !== blogEditingId && posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט אחר עם ID: ' + id);
       posts[idx] = post;
     } else {
@@ -1302,20 +1345,13 @@ async function blogSavePost() {
       posts.unshift(post);
     }
 
-    const result = await ghPut('posts.json', JSON.stringify({ posts }, null, 2), blogSha, (blogEditingId ? 'עריכת' : 'פוסט חדש:') + ' ' + title);
-    if (result.content) {
-      blogSha = result.content.sha;
-      blogPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-      setStatus('content', 'ok', '✓ ' + (blogEditingId ? 'הפוסט עודכן' : 'הפוסט פורסם') + '! Vercel מפרסם...');
-      loadBlogManager();
-    } else {
-      throw new Error(result.message || 'שגיאה לא ידועה');
-    }
+    blogPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    blogSaveLocal();
+    setStatus('content', 'ok', '✓ ' + (blogEditingId ? 'הפוסט עודכן' : 'הפוסט נשמר') + ' מקומית — לחצו "דחיפה ל-GitHub" לפרסום');
+    renderBlogList();
   } catch(e) {
     alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">שגיאה: ' + escapeHtml(e.message) + '</div>';
     setStatus('content', 'error', 'שגיאה: ' + e.message);
-    btn.disabled = false;
-    btn.textContent = blogEditingId ? 'שמור שינויים' : 'פרסם';
   }
 }
 
@@ -1329,22 +1365,10 @@ function blogDeletePost(id) {
     modal.style.display = 'none';
     setStatus('content', 'loading', 'מוחק פוסט...');
     try {
-      const fresh = await ghGet('posts.json');
-      blogSha = fresh.sha;
-      const freshData = JSON.parse(decode(fresh.content));
-      const posts = (freshData.posts || []).filter(p => p.id !== id);
-      const result = await ghPut('posts.json', JSON.stringify({ posts }, null, 2), blogSha, 'מחיקת פוסט: ' + id);
-      if (result.content) {
-        blogSha = result.content.sha;
-        blogPosts = posts;
-        setStatus('content', 'ok', '✓ הפוסט נמחק');
-        renderBlogList();
-      } else {
-        throw new Error(result.message || 'שגיאה');
-      }
-    } catch(e) {
-      setStatus('content', 'error', 'שגיאה: ' + e.message);
-    }
+      blogPosts = blogPosts.filter(p => p.id !== id);
+      blogSaveLocal();
+      setStatus('content', 'ok', '✓ הפוסט נמחק מקומית — לחצו "דחיפה ל-GitHub" לפרסום');
+      renderBlogList();
   };
   document.getElementById('confirm-modal-no').onclick = () => { modal.style.display = 'none'; };
 }
