@@ -564,6 +564,68 @@ function stripHtmlAdmin(str) {
   return tmp.textContent || tmp.innerText || '';
 }
 
+// Sanitize pasted HTML: keep only safe tags, strip inline styles/classes/font tags
+function sanitizePastedHtml(html) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html;
+  // Allowed tags in body
+  const ALLOWED = new Set(['P','BR','B','STRONG','I','EM','U','A','H2','H3','UL','OL','LI','BLOCKQUOTE','DIV','SPAN']);
+  function cleanNode(node) {
+    if (node.nodeType === 3) return; // text node - keep
+    if (node.nodeType !== 1) { node.remove(); return; }
+    const tag = node.tagName;
+    // Remove completely: script, style, meta, link, img (from paste), svg, font
+    if (['SCRIPT','STYLE','META','LINK','SVG','FONT','IFRAME','OBJECT','EMBED'].includes(tag)) {
+      // For FONT: unwrap children instead of removing
+      if (tag === 'FONT') {
+        while (node.firstChild) node.parentNode.insertBefore(node.firstChild, node);
+        node.remove();
+        return;
+      }
+      node.remove();
+      return;
+    }
+    // Strip all attributes except href on <a> and class on protected elements
+    const attrs = Array.from(node.attributes);
+    attrs.forEach(a => {
+      if (tag === 'A' && a.name === 'href') return; // keep href
+      if (a.name === 'class' && (node.classList.contains('post-insight') || node.classList.contains('post-tool-card') || node.classList.contains('post-tool-name') || node.classList.contains('post-tool-by') || node.classList.contains('post-tool-link'))) return;
+      node.removeAttribute(a.name);
+    });
+    // Unwrap SPAN (keep children, remove wrapper)
+    if (tag === 'SPAN' && !node.classList.length) {
+      while (node.firstChild) node.parentNode.insertBefore(node.firstChild, node);
+      node.remove();
+      return;
+    }
+    // Recurse into children
+    Array.from(node.childNodes).forEach(cleanNode);
+  }
+  Array.from(tmp.childNodes).forEach(cleanNode);
+  return tmp.innerHTML;
+}
+
+// Clean HTML before save: remove empty tags, junk spans, normalize
+function cleanHtmlForSave(html) {
+  if (!html) return '';
+  let clean = html;
+  // Remove empty spans: <span></span>, <span> </span>
+  clean = clean.replace(/<span[^>]*>\s*<\/span>/gi, '');
+  // Unwrap spans with no attributes
+  clean = clean.replace(/<span>([\s\S]*?)<\/span>/gi, '$1');
+  // Remove inline style attributes from all tags
+  clean = clean.replace(/ style="[^"]*"/gi, '');
+  // Remove empty paragraphs (but keep <p><br></p> as spacer)
+  clean = clean.replace(/<p>\s*<\/p>/gi, '');
+  // Remove font tags (unwrap)
+  clean = clean.replace(/<\/?font[^>]*>/gi, '');
+  // Collapse multiple <br> into one
+  clean = clean.replace(/(<br\s*\/?>){3,}/gi, '<br><br>');
+  // Remove class="" (empty class attributes)
+  clean = clean.replace(/ class=""/gi, '');
+  return clean.trim();
+}
+
 function escapeHtml(str) {
   if (!str) return '';
   return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -772,6 +834,41 @@ function showBlogForm(post) {
       el.innerHTML = '<p>' + html.trim() + '</p>';
     }
   });
+
+  // ===== PASTE PROTECTION =====
+  // Title & Excerpt: paste as plain text only (no formatting)
+  ['bf-title', 'bf-excerpt'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('paste', e => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, text);
+    });
+  });
+
+  // Body: paste with clean HTML (strip inline styles, classes, font tags, spans)
+  const bodyEl = document.getElementById('bf-body');
+  if (bodyEl) {
+    bodyEl.addEventListener('paste', e => {
+      const html = (e.clipboardData || window.clipboardData).getData('text/html');
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      if (!html) return; // plain text paste - let browser handle
+      e.preventDefault();
+      const clean = sanitizePastedHtml(html);
+      document.execCommand('insertHTML', false, clean);
+    });
+
+    // Block drag-and-drop of external content into body (prevents junk HTML)
+    bodyEl.addEventListener('drop', e => {
+      const html = e.dataTransfer?.getData('text/html');
+      if (html) {
+        e.preventDefault();
+        const clean = sanitizePastedHtml(html);
+        document.execCommand('insertHTML', false, clean);
+      }
+    });
+  }
 
   // Protect special elements from accidental deletion
   const body = document.getElementById('bf-body');
@@ -1161,13 +1258,13 @@ async function blogScheduleWhatsapp(postId) {
 async function blogSavePost() {
   const btn = document.getElementById('bf-save-btn') || document.getElementById('bf-save-btn-bottom');
   const alertEl = document.getElementById('bf-alert');
-  const title   = document.getElementById('bf-title')?.innerHTML?.trim();
-  let excerpt = document.getElementById('bf-excerpt')?.innerHTML?.trim();
+  const title   = cleanHtmlForSave(document.getElementById('bf-title')?.innerHTML?.trim());
+  let excerpt = cleanHtmlForSave(document.getElementById('bf-excerpt')?.innerHTML?.trim());
   // Normalize: ensure excerpt uses <p> tags for consistent rendering
   if (excerpt && !excerpt.includes('<p>') && !excerpt.includes('<p ')) {
     excerpt = excerpt.split(/<br\s*\/?>/gi).filter(s => s.trim()).map(s => '<p>' + s.trim() + '</p>').join('');
   }
-  const body    = document.getElementById('bf-body')?.innerHTML.trim();
+  const body    = cleanHtmlForSave(document.getElementById('bf-body')?.innerHTML.trim());
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
   const id = document.getElementById('bf-id')?.value.trim() || blogEditingId || titleToSlug(title);
