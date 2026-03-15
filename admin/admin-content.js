@@ -677,9 +677,12 @@ function showBlogForm(post) {
         #bf-body a { color:#e8854a; }
         #bf-body ul, #bf-body ol { margin:0 0 1em 0; padding-right:20px; }
         #bf-body li { margin-bottom:6px; }
-        #bf-body blockquote { margin:16px 0; padding:14px 18px; border-right:3px solid #e8854a; background:#fdeede; border-radius:0 10px 10px 0; color:#1a4a6b; font-weight:500; }
-        #bf-body .post-insight { margin:16px 0; padding:14px 18px; background:#1a4a6b; color:#fff; border-radius:10px; font-weight:700; }
-        #bf-body .post-tool-card { margin:16px 0; padding:14px 18px; background:#fff; border:1.5px solid #e8e0d6; border-radius:10px; display:flex; flex-direction:column; gap:4px; }
+        #bf-body blockquote { margin:16px 0; padding:30px 18px 14px; border-right:3px solid #e8854a; background:#fdeede; border-radius:0 10px 10px 0; color:#1a4a6b; font-weight:500; position:relative; }
+        #bf-body blockquote::before { content:'ציטוט 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#e8854a; background:#fff3e0; padding:1px 8px; border-radius:8px; pointer-events:none; }
+        #bf-body .post-insight { margin:16px 0; padding:30px 18px 14px; background:#1a4a6b; color:#fff; border-radius:10px; font-weight:700; position:relative; }
+        #bf-body .post-insight::before { content:'תובנה 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#8ec5fc; background:rgba(255,255,255,0.15); padding:1px 8px; border-radius:8px; pointer-events:none; }
+        #bf-body .post-tool-card { margin:16px 0; padding:30px 18px 14px; background:#fff; border:1.5px solid #e8e0d6; border-radius:10px; display:flex; flex-direction:column; gap:4px; position:relative; }
+        #bf-body .post-tool-card::before { content:'כרטיס כלי 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#1a4a6b; background:#e8f4f8; padding:1px 8px; border-radius:8px; pointer-events:none; }
         #bf-body .post-tool-name { font-weight:800; color:#1a4a6b; }
         #bf-body .post-tool-by { font-size:0.82rem; color:#666; }
         #bf-body .post-tool-link { font-weight:700; color:#e8854a; text-decoration:none; }
@@ -773,29 +776,91 @@ function showBlogForm(post) {
   // Protect special elements from accidental deletion
   const body = document.getElementById('bf-body');
   if (body) {
-    const PROTECTED = 'blockquote, .post-insight, .post-tool-card';
+    const PROTECTED_SEL = 'blockquote, .post-insight, .post-tool-card';
+
+    // --- Snapshot: remember all protected elements to restore if deleted ---
+    let protectedSnapshot = [];
+    function takeSnapshot() {
+      protectedSnapshot = [];
+      body.querySelectorAll(PROTECTED_SEL).forEach(el => {
+        protectedSnapshot.push({ html: el.outerHTML, next: el.nextElementSibling, parent: el.parentElement });
+      });
+    }
+    takeSnapshot();
+
+    // --- MutationObserver: detect removal and restore ---
+    let restoring = false;
+    const observer = new MutationObserver(() => {
+      if (restoring) return;
+      const current = body.querySelectorAll(PROTECTED_SEL);
+      if (current.length < protectedSnapshot.length) {
+        restoring = true;
+        // Find which ones are missing and restore them
+        protectedSnapshot.forEach(snap => {
+          const tmp = document.createElement('div');
+          tmp.innerHTML = snap.html;
+          const tag = tmp.firstElementChild;
+          // Check if this element still exists by matching outerHTML
+          const stillExists = Array.from(current).some(el => el.outerHTML === snap.html);
+          if (!stillExists) {
+            if (snap.next && snap.next.parentElement === body) {
+              body.insertBefore(tag, snap.next);
+            } else if (snap.parent === body) {
+              body.appendChild(tag);
+            } else {
+              body.appendChild(tag);
+            }
+          }
+        });
+        takeSnapshot();
+        restoring = false;
+      }
+    });
+    observer.observe(body, { childList: true, subtree: true });
+
+    // Update snapshot when content is intentionally changed (e.g. paste, toolbar)
+    body.addEventListener('input', () => { if (!restoring) takeSnapshot(); });
+
+    // --- Keydown: block deletion at protected element boundaries ---
     body.addEventListener('keydown', e => {
       if (e.key !== 'Backspace' && e.key !== 'Delete') return;
       const sel = window.getSelection();
       if (!sel.rangeCount) return;
       const range = sel.getRangeAt(0);
-      // Block deletion of entire protected elements
+
+      // Block Ctrl+A then delete (select-all that includes protected)
       if (!range.collapsed) {
         const frag = range.cloneContents();
-        if (frag.querySelector(PROTECTED)) {
+        if (frag.querySelector(PROTECTED_SEL)) {
+          e.preventDefault();
+          return;
+        }
+      }
+
+      // Block backspace/delete at boundaries of protected elements
+      if (range.collapsed) {
+        const node = sel.anchorNode;
+        const el = node.nodeType === 3 ? node.parentElement : node;
+        const prot = el.closest(PROTECTED_SEL);
+        if (!prot) return;
+        const offset = sel.anchorOffset;
+        const text = node.textContent || '';
+        if (e.key === 'Backspace' && offset === 0 && prot.firstChild === node) e.preventDefault();
+        if (e.key === 'Delete' && offset >= text.length && prot.lastChild === node) e.preventDefault();
+      }
+    });
+
+    // --- Block cut on protected elements ---
+    body.addEventListener('cut', e => {
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      const range = sel.getRangeAt(0);
+      if (!range.collapsed) {
+        const frag = range.cloneContents();
+        if (frag.querySelector(PROTECTED_SEL)) {
           e.preventDefault();
         }
-        return;
       }
-      // Block backspace/delete at boundaries of protected elements
-      const node = sel.anchorNode;
-      const el = node.nodeType === 3 ? node.parentElement : node;
-      const prot = el.closest(PROTECTED);
-      if (!prot) return;
-      const offset = sel.anchorOffset;
-      const text = node.textContent || '';
-      if (e.key === 'Backspace' && offset === 0 && prot.firstChild === node) e.preventDefault();
-      if (e.key === 'Delete' && offset >= text.length && prot.lastChild === node) e.preventDefault();
     });
   }
 }
