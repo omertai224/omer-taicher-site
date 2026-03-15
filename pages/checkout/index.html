@@ -242,34 +242,25 @@
 </div>
 
 <script>
-// ===== מאגר מוצרים =====
-const PRODUCTS = {
-  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
-  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
-  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
-  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
-  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
-};
-
-// ===== קריאת URL params =====
+// ===== טוען מוצרים מ-interactive.json =====
 const params = new URLSearchParams(window.location.search);
-let cart = []; // [{ name, price }]
-
-// מוצר יחיד
 const productParam = params.get('product');
-if (productParam && PRODUCTS[productParam]) {
-  cart = [PRODUCTS[productParam]];
-}
-
-// סל (לעתיד: ?cart=vibe,ai)
 const cartParam = params.get('cart');
-if (cartParam) {
-  cartParam.split(',').forEach(key => {
-    if (PRODUCTS[key]) cart.push(PRODUCTS[key]);
-  });
+let cart = [];
+let PRODUCTS = {};
+
+function buildCart() {
+  cart = [];
+  if (productParam && PRODUCTS[productParam]) {
+    cart = [PRODUCTS[productParam]];
+  }
+  if (cartParam) {
+    cartParam.split(',').forEach(function(key) {
+      if (PRODUCTS[key]) cart.push(PRODUCTS[key]);
+    });
+  }
 }
 
-// ===== הצגת הזמנה =====
 function renderOrder() {
   const itemsEl = document.getElementById('order-items');
   const totalEl = document.getElementById('order-total');
@@ -304,7 +295,28 @@ function renderOrder() {
   totalEl.textContent = '₪' + total;
 }
 
-renderOrder();
+// טוען מחירים מ-interactive.json ומעדכן
+fetch('/interactive/interactive.json')
+  .then(function(r) { return r.json(); })
+  .then(function(products) {
+    products.forEach(function(p) {
+      PRODUCTS[p.key] = { name: p.title, price: p.price };
+    });
+    buildCart();
+    renderOrder();
+  })
+  .catch(function() {
+    // fallback אם הטעינה נכשלה
+    PRODUCTS = {
+      vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
+      ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
+      files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
+      security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
+      google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
+    };
+    buildCart();
+    renderOrder();
+  });
 
 // ===== סטטוס URL =====
 const status = params.get('status');

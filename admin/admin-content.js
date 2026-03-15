@@ -1582,28 +1582,32 @@ function renderInteractiveList() {
     return;
   }
 
-  container.innerHTML = interactiveItems.map((item, i) => `
+  container.innerHTML = interactiveItems.map((item, i) => {
+    const statusLabels = { active: '🟢 פעיל', coming_soon: '🟡 בקרוב', hidden: '⚫ מוסתר' };
+    const statusLabel = statusLabels[item.status] || statusLabels.active;
+    const priceLabel = item.price ? item.price + ' ₪' : 'ללא מחיר';
+    return `
     <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;">
       <div style="width:44px;height:44px;background:linear-gradient(135deg,#1a4a6b,#1e5f74);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
       </div>
       <div style="flex:1;min-width:0;">
         <div style="font-size:0.92rem;font-weight:700;color:var(--navy);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${item.title}</div>
-        <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${item.steps} שלבים · ${item.desc}</div>
-        <div style="font-size:0.68rem;color:var(--text-light);direction:ltr;text-align:right;margin-top:2px">${item.url}</div>
+        <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${statusLabel} · ${priceLabel} · ${item.steps || 0} שלבים</div>
+        <div style="font-size:0.68rem;color:var(--text-light);margin-top:2px">${item.desc}</div>
       </div>
       <div style="display:flex;gap:8px;flex-shrink:0;">
         <button onclick="interactiveEditItem(${i})" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
-        <button onclick="window.open('${item.url}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">פתח</button>
+        ${item.url ? '<button onclick="window.open(\'' + item.url + '\',\'_blank\')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">פתח</button>' : ''}
         <button onclick="interactiveDeleteItem(${i})" style="background:#fde8e8;color:#c0392b;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 function interactiveNewItem() {
   interactiveEditingIndex = null;
-  showInteractiveForm({ title: '', desc: '', steps: '', url: '', price: '', category: '' });
+  showInteractiveForm({ title: '', desc: '', steps: '', url: '', price: '', category: '', key: '', thumb: 'navy', label: '', includes: [], status: 'active' });
 }
 
 function interactiveEditItem(index) {
@@ -1616,21 +1620,26 @@ function showInteractiveForm(item) {
   const count = document.getElementById('interactive-count');
   if (count) count.style.display = 'none';
 
+  const includesText = (item.includes && item.includes.length) ? item.includes.join('\n') : '';
+
   container.innerHTML = `
     <div style="margin-bottom:18px;display:flex;align-items:center;gap:12px">
       <button onclick="loadInteractiveManager()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
       <div style="font-size:0.95rem;font-weight:800;color:var(--navy)">${interactiveEditingIndex !== null ? 'עריכת הדרכה' : 'הדרכה חדשה'}</div>
     </div>
 
-    <div class="field"><label class="field-label">כותרת *</label><textarea id="if-title" rows="2">${item.title}</textarea></div>
+    <div class="fields-row">
+      <div class="field" style="flex:2"><label class="field-label">כותרת *</label><textarea id="if-title" rows="2">${item.title}</textarea></div>
+      <div class="field" style="flex:1"><label class="field-label">מזהה (key) *</label><input id="if-key" type="text" value="${item.key || ''}" style="direction:ltr;text-align:left" placeholder="vibe"></div>
+    </div>
     <div class="field"><label class="field-label">תיאור קצר *</label><textarea id="if-desc" rows="2">${item.desc}</textarea></div>
     <div class="fields-row">
-      <div class="field"><label class="field-label">מספר שלבים *</label><input id="if-steps" type="number" min="1" value="${item.steps}" style="direction:ltr;text-align:left"></div>
+      <div class="field"><label class="field-label">מספר שלבים *</label><input id="if-steps" type="number" min="0" value="${item.steps}" style="direction:ltr;text-align:left"></div>
       <div class="field"><label class="field-label">קטגוריה</label><input id="if-category" type="text" value="${item.category || ''}" placeholder="לדוגמה: AI · תמלול · Windows"></div>
     </div>
-    <div class="field"><label class="field-label">קישור להדרכה *</label><input id="if-url" type="text" value="${item.url}" style="direction:ltr;text-align:left" placeholder="./Vibe/index.html"></div>
+    <div class="field"><label class="field-label">קישור להדרכה</label><input id="if-url" type="text" value="${item.url || ''}" style="direction:ltr;text-align:left" placeholder="./Vibe/index.html"></div>
     <div class="fields-row">
-      <div class="field"><label class="field-label">מחיר (₪)</label><input id="if-price" type="number" min="0" value="${item.price || ''}" style="direction:ltr;text-align:left" placeholder="97"></div>
+      <div class="field"><label class="field-label">מחיר (₪) *</label><input id="if-price" type="number" min="0" value="${item.price || ''}" style="direction:ltr;text-align:left" placeholder="97"></div>
       <div class="field"><label class="field-label">סטטוס</label>
         <select id="if-status" style="padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:0.88rem;background:#fff;">
           <option value="active" ${(item.status||'active')==='active'?'selected':''}>פעיל — זמין לרכישה</option>
@@ -1639,6 +1648,17 @@ function showInteractiveForm(item) {
         </select>
       </div>
     </div>
+    <div class="fields-row">
+      <div class="field"><label class="field-label">תגית (label)</label><input id="if-label" type="text" value="${item.label || ''}" placeholder="חדש"></div>
+      <div class="field"><label class="field-label">צבע כרטיס (thumb)</label>
+        <select id="if-thumb" style="padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:0.88rem;background:#fff;">
+          <option value="navy" ${(item.thumb||'navy')==='navy'?'selected':''}>כחול כהה (navy)</option>
+          <option value="purple" ${item.thumb==='purple'?'selected':''}>סגול (purple)</option>
+          <option value="teal" ${item.thumb==='teal'?'selected':''}>ירקרק (teal)</option>
+        </select>
+      </div>
+    </div>
+    <div class="field"><label class="field-label">כולל (שורה לכל פריט)</label><textarea id="if-includes" rows="3" placeholder="תומך ב-MP4, MKV, MP3&#10;הכל על המחשב שלכם&#10;בונוס: ...">${includesText}</textarea></div>
 
     <div style="margin-top:24px;display:flex;gap:12px;align-items:center">
       <button onclick="interactiveSaveItem()" id="if-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit">${interactiveEditingIndex !== null ? 'שמור שינויים' : 'הוסף הדרכה'}</button>
@@ -1651,25 +1671,30 @@ function showInteractiveForm(item) {
 async function interactiveSaveItem() {
   const btn = document.getElementById('if-save-btn');
   const alertEl = document.getElementById('if-alert');
+  const key      = document.getElementById('if-key')?.value.trim();
   const title    = document.getElementById('if-title')?.value.trim();
   const desc     = document.getElementById('if-desc')?.value.trim();
-  const steps    = parseInt(document.getElementById('if-steps')?.value);
+  const steps    = parseInt(document.getElementById('if-steps')?.value) || 0;
   const url      = document.getElementById('if-url')?.value.trim();
   const price    = document.getElementById('if-price')?.value.trim();
   const category = document.getElementById('if-category')?.value.trim();
   const status   = document.getElementById('if-status')?.value;
+  const label    = document.getElementById('if-label')?.value.trim();
+  const thumb    = document.getElementById('if-thumb')?.value;
+  const includesRaw = document.getElementById('if-includes')?.value.trim();
+  const includes = includesRaw ? includesRaw.split('\n').map(function(s) { return s.trim(); }).filter(Boolean) : [];
 
+  if (!key)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">מזהה (key) הוא שדה חובה</div>'; return; }
   if (!title) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">כותרת היא שדה חובה</div>'; return; }
   if (!desc)  { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">תיאור הוא שדה חובה</div>'; return; }
-  if (!steps) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">מספר שלבים הוא שדה חובה</div>'; return; }
-  if (!url)   { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">קישור להדרכה הוא שדה חובה</div>'; return; }
+  if (!price) { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">מחיר הוא שדה חובה</div>'; return; }
 
   btn.disabled = true;
   btn.textContent = 'שומר...';
   setStatus('content', 'loading', 'שומר הדרכה...');
 
   try {
-    const newItem = { title, desc, steps, url, price: price ? parseInt(price) : null, category, status };
+    const newItem = { key: key, title: title, desc: desc, steps: steps, url: url || '', price: parseInt(price), category: category, status: status, label: label || '', thumb: thumb || 'navy', includes: includes };
 
     if (interactiveEditingIndex !== null) {
       interactiveItems[interactiveEditingIndex] = newItem;

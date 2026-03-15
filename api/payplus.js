@@ -15,13 +15,30 @@ const API_KEY    = process.env.PAYPLUS_API_KEY;
 const SECRET_KEY = process.env.PAYPLUS_SECRET_KEY;
 const PAGE_UID   = process.env.PAYPLUS_PAGE_UID;
 
-const PRODUCTS = {
-  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
-  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
-  files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
-  security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
-  google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
-};
+import { readFileSync } from 'fs';
+import { join } from 'path';
+
+// טוען מוצרים מ-interactive.json (מקור אמת יחיד)
+function loadProducts() {
+  try {
+    const raw = readFileSync(join(process.cwd(), 'interactive', 'interactive.json'), 'utf8');
+    const items = JSON.parse(raw);
+    const map = {};
+    items.forEach(function(item) {
+      if (item.key) map[item.key] = { name: item.title, price: item.price };
+    });
+    return map;
+  } catch(e) {
+    // fallback אם הקובץ לא נמצא
+    return {
+      vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
+      ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
+      files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
+      security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
+      google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
+    };
+  }
+}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://omertai.net');
@@ -38,6 +55,8 @@ export default async function handler(req, res) {
       customerEmail,
       customerPhone
     } = req.body;
+
+    const PRODUCTS = loadProducts();
 
     if (!productKey || !PRODUCTS[productKey]) {
       return res.status(400).json({ error: 'מוצר לא תקין' });
