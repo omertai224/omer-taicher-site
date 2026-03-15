@@ -156,12 +156,7 @@ function blogClearLocal() {
   updatePublishIndicator();
   updateGlobalPushUI();
 }
-function updatePublishIndicator() {
-  const btn = document.getElementById('blog-publish-btn');
-  if (btn) btn.style.display = blogDirty ? '' : 'none';
-  const badge = document.getElementById('blog-dirty-badge');
-  if (badge) badge.style.display = blogDirty ? '' : 'none';
-}
+function updatePublishIndicator() {}
 
 async function loadBlogManager() {
   setStatus('content', 'loading', 'טוען פוסטים...');
@@ -306,46 +301,13 @@ function renderBlogList() {
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px">
       <div style="display:flex;align-items:center;gap:10px">
         <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
-        <span id="blog-dirty-badge" style="display:${blogDirty ? '' : 'none'};background:#fff3cd;color:#856404;font-size:0.72rem;font-weight:700;padding:3px 10px;border-radius:20px">שינויים ממתינים</span>
       </div>
       <div style="display:flex;gap:8px">
-        <button id="blog-publish-btn" onclick="blogPublishAll()" style="display:${blogDirty ? '' : 'none'};background:#27ae60;color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit;animation:pulse 2s infinite">דחיפה ל-GitHub</button>
-        <button onclick="blogDiscardLocal()" id="blog-discard-btn" style="display:${blogDirty ? '' : 'none'};background:#fde8e8;color:#c0392b;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">בטל שינויים</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyPromptImage()">הנחיה ליצירת תמונה</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
       </div>
     </div>
     <div id="blog-list-items">${listHTML}</div>`;
-}
-
-// דחיפה מרוכזת ל-GitHub
-async function blogPublishAll() {
-  const btn = document.getElementById('blog-publish-btn');
-  if (btn) { btn.disabled = true; btn.textContent = 'דוחף...'; }
-  setStatus('content', 'loading', 'דוחף שינויים ל-GitHub...');
-  try {
-    const fresh = await ghGet('posts.json');
-    blogSha = fresh.sha;
-    const result = await ghPut('posts.json', JSON.stringify({ posts: blogPosts }, null, 2), blogSha, 'עדכון פוסטים מרוכז');
-    if (result.content) {
-      blogSha = result.content.sha;
-      blogClearLocal();
-      setStatus('content', 'ok', '✓ כל השינויים פורסמו! GitHub Pages בונה...');
-      renderBlogList();
-    } else {
-      throw new Error(result.message || 'שגיאה לא ידועה');
-    }
-  } catch(e) {
-    setStatus('content', 'error', 'שגיאה בדחיפה: ' + e.message);
-    if (btn) { btn.disabled = false; btn.textContent = 'דחיפה ל-GitHub'; }
-  }
-}
-
-// ביטול שינויים מקומיים וחזרה לגרסת GitHub
-async function blogDiscardLocal() {
-  blogClearLocal();
-  setStatus('content', 'loading', 'טוען מחדש מ-GitHub...');
-  await loadBlogManager();
 }
 
 function blogNewPost() {
