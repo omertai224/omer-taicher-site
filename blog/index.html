@@ -80,7 +80,11 @@ nav {
   margin-bottom:16px; letter-spacing:-0.02em;
 }
 .hero h1 em { font-style:normal; color:var(--orange-deep); }
+.hero h1 p { margin:0; }
+.post-row-body h3 p { margin:0; }
 .hero-excerpt { font-size:0.92rem; color:var(--text-mid); line-height:1.75; margin-bottom:28px; max-width:440px; }
+.hero-excerpt p { margin:0 0 0.25em; }
+.hero-excerpt p:last-child { margin-bottom:0; }
 .hero-read {
   display:inline-flex; align-items:center; gap:10px;
   color:var(--navy); font-weight:700; font-size:0.9rem;
@@ -179,10 +183,12 @@ nav {
   font-size:1.1rem; font-weight:900;
   color:var(--navy); line-height:1.38; letter-spacing:-0.01em;
 }
-.post-row-body p {
+.post-excerpt {
   font-size:0.85rem; line-height:1.7;
   color:var(--text-mid); max-width:500px;
 }
+.post-excerpt p { margin:0 0 0.25em; }
+.post-excerpt p:last-child { margin-bottom:0; }
 .row-footer {
   display:flex; align-items:center; justify-content:space-between; margin-top:4px;
 }
@@ -369,6 +375,12 @@ function formatDate(dateStr) {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
+function normText(html) {
+  if (!html) return '';
+  if (html.includes('<p>') || html.includes('<p ')) return html;
+  return html.split(/<br\s*\/?>/gi).filter(s => s.trim()).map(s => '<p>' + s.trim() + '</p>').join('');
+}
+
 function renderHero(post) {
   const imgContent = post.image
     ? `<img src="${post.image}" alt="${post.image_alt || post.title}" fetchpriority="high" width="380" height="380" sizes="(max-width:768px) calc(100vw - 40px), 330px">`
@@ -377,8 +389,8 @@ function renderHero(post) {
     <a class="hero" href="/blog/post.html?id=${post.id}">
       <div class="hero-content">
         <div class="hero-label">הפוסט האחרון</div>
-        <h1>${post.title}</h1>
-        <p class="hero-excerpt">${post.excerpt}</p>
+        <h1 class="hero-title">${normText(post.title)}</h1>
+        <div class="hero-excerpt">${normText(post.excerpt)}</div>
         <span class="hero-read">קרא את הפוסט ←</span>
         <div class="hero-meta">
           <strong>עומר טייכר</strong>
@@ -397,8 +409,8 @@ function renderPostRow(post, index, colorClass) {
     <a class="post-row ${colorClass}" href="/blog/post.html?id=${post.id}">
       <div class="post-row-body">
         <span class="row-num">${String(index + 2).padStart(2,'0')}</span>
-        <h3>${post.title}</h3>
-        <p>${post.excerpt}</p>
+        <h3 class="post-title">${normText(post.title)}</h3>
+        <div class="post-excerpt">${normText(post.excerpt)}</div>
         <div class="row-footer">
           <span class="row-time">${formatDate(post.date)}</span>
           <div class="row-arrow">←</div>

@@ -1097,7 +1097,11 @@ async function blogSavePost() {
   const btn = document.getElementById('bf-save-btn') || document.getElementById('bf-save-btn-bottom');
   const alertEl = document.getElementById('bf-alert');
   const title   = document.getElementById('bf-title')?.innerHTML?.trim();
-  const excerpt = document.getElementById('bf-excerpt')?.innerHTML?.trim();
+  let excerpt = document.getElementById('bf-excerpt')?.innerHTML?.trim();
+  // Normalize: ensure excerpt uses <p> tags for consistent rendering
+  if (excerpt && !excerpt.includes('<p>') && !excerpt.includes('<p ')) {
+    excerpt = excerpt.split(/<br\s*\/?>/gi).filter(s => s.trim()).map(s => '<p>' + s.trim() + '</p>').join('');
+  }
   const body    = document.getElementById('bf-body')?.innerHTML.trim();
   const date    = document.getElementById('bf-date')?.value;
   const image   = document.getElementById('bf-image')?.value.trim() || '';
