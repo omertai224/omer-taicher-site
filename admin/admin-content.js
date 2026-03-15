@@ -789,6 +789,10 @@ function showBlogForm(post) {
         SEO וסושיאל
       </div>
       <div class="field" style="margin-bottom:12px">
+        <label class="field-label">תיאור תמונה (image_alt)</label>
+        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור התמונה לנגישות ו-SEO" style="direction:rtl">
+      </div>
+      <div class="field" style="margin-bottom:12px">
         <label class="field-label">כותרת SEO (לשונית + שיתוף)</label>
         <input id="bf-seo-title" type="text" value="${post.seo_title || ''}" oninput="this.dataset.edited='1';this.dataset.cleared=this.value===''?'1':'';document.getElementById('bf-seo-title-count').textContent=this.value.length+' תווים'" placeholder="כותרת | עומר טייכר" style="direction:rtl">
         <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-title-count">${(post.seo_title||'').length} תווים</div>
@@ -797,10 +801,6 @@ function showBlogForm(post) {
         <label class="field-label">תיאור SEO (גוגל + שיתוף)</label>
         <textarea id="bf-seo-desc" rows="2" oninput="this.dataset.edited='1';this.dataset.cleared=this.value===''?'1':'';document.getElementById('bf-seo-desc-count').textContent=this.value.length+' / 155 תווים'" placeholder="תיאור קצר עד 155 תווים" style="direction:rtl;resize:vertical">${post.seo_desc || ''}</textarea>
         <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-desc-count">${(post.seo_desc||'').length} / 155 תווים</div>
-      </div>
-      <div class="field">
-        <label class="field-label">תיאור תמונה (image_alt)</label>
-        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור התמונה לנגישות ו-SEO" style="direction:rtl">
       </div>
       <div class="field" style="margin-top:12px">
         <label class="field-label">URL Slug (אנגלית בלבד)</label>
