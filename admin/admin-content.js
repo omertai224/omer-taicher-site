@@ -190,14 +190,7 @@ async function loadBlogManager() {
       blogScheduled = JSON.parse(decode(sched.content)).filter(s => !s.sent);
     } catch(e) { blogScheduled = []; }
 
-    // שחזור מצב עריכה אחרי רענון
-    const savedId = localStorage.getItem('blog_editing_id');
-    if (savedId) {
-      const post = blogPosts.find(p => p.id === savedId);
-      if (post) { blogEditingId = savedId; showBlogForm(post); return; }
-      localStorage.removeItem('blog_editing_id');
-    }
-
+    localStorage.removeItem('blog_editing_id');
     renderBlogList();
     updatePublishIndicator();
     setStatus('content', 'ok', blogPosts.length + ' פוסטים נטענו' + (blogDirty ? ' (יש שינויים לא מפורסמים)' : ''));
