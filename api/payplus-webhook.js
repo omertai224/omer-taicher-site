@@ -3,16 +3,19 @@
  * מקבל התראות IPN מ-PayPlus כשתשלום מתבצע
  *
  * PayPlus שולח POST עם פרטי העסקה לאחר תשלום מוצלח/נכשל.
- * ה-endpoint הזה מאמת את העסקה מול PayPlus API ושולח מייל עם קישור להדרכה.
+ * ה-endpoint הזה מאמת את העסקה מול PayPlus API, שולח מייל עם קישור להדרכה
+ * ושולח הודעת WhatsApp אם הלקוח השאיר טלפון.
  */
 
 const PAYPLUS_BASE_URL = process.env.PAYPLUS_ENV === 'production'
   ? 'https://restapi.payplus.co.il'
   : 'https://restapidev.payplus.co.il';
 
-const API_KEY    = process.env.PAYPLUS_API_KEY;
-const SECRET_KEY = process.env.PAYPLUS_SECRET_KEY;
-const BREVO_KEY  = process.env.BREVO_API_KEY;
+const API_KEY      = process.env.PAYPLUS_API_KEY;
+const SECRET_KEY   = process.env.PAYPLUS_SECRET_KEY;
+const BREVO_KEY    = process.env.BREVO_API_KEY;
+const WA_INSTANCE  = process.env.GREENAPI_INSTANCE_ID;
+const WA_TOKEN     = process.env.GREENAPI_TOKEN;
 
 const PRODUCTS = {
   vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/Vibe/' },
@@ -86,6 +89,41 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
   }
 }
 
+function formatPhone(phone) {
+  if (!phone) return null;
+  // מסיר מקפים, רווחים וסוגריים
+  let clean = phone.replace(/[\s\-()]/g, '');
+  // ישראלי שמתחיל ב-0 → 972
+  if (clean.startsWith('0')) clean = '972' + clean.slice(1);
+  // מוסיף 972 אם חסר קידומת
+  if (!clean.startsWith('972') && clean.length === 9) clean = '972' + clean;
+  return clean + '@c.us';
+}
+
+async function sendWhatsApp(customerPhone, customerName, product) {
+  if (!WA_INSTANCE || !WA_TOKEN || !customerPhone) return;
+
+  const chatId = formatPhone(customerPhone);
+  if (!chatId) return;
+
+  const name = customerName ? ` ${customerName}` : '';
+  const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}\n\nשאלות? פשוט תענו להודעה הזו 😊\nעומר טייכר`;
+
+  const apiUrl = `https://7105.api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
+  const response = await fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chatId, message })
+  });
+
+  const data = await response.json();
+  if (data.idMessage) {
+    console.log('WhatsApp sent to:', customerPhone);
+  } else {
+    console.error('WhatsApp send error:', data);
+  }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -138,10 +176,15 @@ export default async function handler(req, res) {
         const productKey    = verifyData?.data?.more_info;
         const product       = productKey && PRODUCTS[productKey] ? PRODUCTS[productKey] : null;
 
-        if (customerEmail && product) {
-          await sendTutorialEmail(customerEmail, customerName, product);
+        const customerPhone = verifyData?.data?.customer_phone;
+
+        if (product) {
+          const tasks = [];
+          if (customerEmail) tasks.push(sendTutorialEmail(customerEmail, customerName, product));
+          if (customerPhone) tasks.push(sendWhatsApp(customerPhone, customerName, product));
+          if (tasks.length) await Promise.allSettled(tasks);
         } else {
-          console.warn('Cannot send tutorial email:', { customerEmail, productKey, hasProduct: !!product });
+          console.warn('Cannot send notifications:', { customerEmail, customerPhone, productKey, hasProduct: !!product });
         }
       }
     }
