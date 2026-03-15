@@ -46,7 +46,7 @@
 
   <!-- HEADER — קבוע, לא זז -->
   <div class="header">
-    <div class="header-logo"><a href="/" style="color:inherit;text-decoration:none">עומר <span>טייכר</span></a> <span style="font-weight:400;font-size:0.78rem;color:var(--text-light);margin-right:6px">· פאנל ניהול</span></div>
+    <div class="header-logo"><a href="/" style="color:inherit;text-decoration:none">עומר <span>טייכר</span></a> <span style="font-weight:400;font-size:0.78rem;color:var(--text-light);margin-right:6px">· פאנל ניהול</span><span id="branch-badge" style="display:none;background:#f6a67e;color:#1a4a6b;font-size:0.68rem;font-weight:800;padding:3px 10px;border-radius:50px;margin-right:6px;vertical-align:middle;"></span></div>
     <div class="header-center">
       <div class="repo-pills">
         <button class="repo-pill active" id="repo-btn-tutorials" onclick="selectRepo('omer-taicher-interactive', this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> אינטראקטיבי</button>
@@ -54,6 +54,9 @@
       </div>
     </div>
     <div class="header-right" style="display:flex;justify-content:flex-end;gap:10px;align-items:center;flex-wrap:wrap;">
+      <select id="branch-select" onchange="switchBranch(this.value)" title="ענף עבודה" style="padding:7px 12px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.75rem;font-weight:600;color:var(--navy);background:#fff;cursor:pointer;outline:none;max-width:180px;direction:ltr;text-align:left;">
+        <option value="main">main</option>
+      </select>
       <button onclick="switchTab('contacts', this)" id="tab-btn-contacts" title="אנשי קשר" style="display:inline-flex;align-items:center;gap:7px;background:#2d6a4f;color:#fff;border:none;padding:8px 18px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;" onmouseenter="this.style.background='#1b4332'" onmouseleave="this.style.background='#2d6a4f'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         אנשי קשר

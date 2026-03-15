@@ -1,6 +1,6 @@
 // ===== GLOBALS =====
 const GITHUB_USER = 'omertai224';
-const GITHUB_BRANCH = 'main';
+let GITHUB_BRANCH = new URLSearchParams(location.search).get('branch') || localStorage.getItem('admin_branch') || 'main';
 const WORKER_URL = 'https://media-worker.omertai224.workers.dev';
 const REPOS = {
   'omer-taicher-site':      { name: 'דף ראשי' },
@@ -67,8 +67,62 @@ function showLoginError(msg) {
   el.textContent = msg;
 }
 
+// ===== BRANCH SELECTOR =====
+function initBranchSelector() {
+  const sel = document.getElementById('branch-select');
+  if (!sel) return;
+  sel.innerHTML = '<option value="main">main</option>';
+  sel.value = GITHUB_BRANCH;
+  updateBranchBadge();
+
+  // fetch branches from GitHub
+  fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/branches?per_page=50`, {
+    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+  })
+  .then(r => r.ok ? r.json() : [])
+  .then(branches => {
+    sel.innerHTML = '';
+    branches
+      .sort((a, b) => a.name === 'main' ? -1 : b.name === 'main' ? 1 : a.name.localeCompare(b.name))
+      .forEach(b => {
+        const opt = document.createElement('option');
+        opt.value = b.name;
+        opt.textContent = b.name;
+        sel.appendChild(opt);
+      });
+    sel.value = GITHUB_BRANCH;
+    // if current branch not in list, add it
+    if (sel.value !== GITHUB_BRANCH) {
+      const opt = document.createElement('option');
+      opt.value = GITHUB_BRANCH;
+      opt.textContent = GITHUB_BRANCH + ' (?)';
+      sel.prepend(opt);
+      sel.value = GITHUB_BRANCH;
+    }
+  });
+}
+
+function switchBranch(newBranch) {
+  if (newBranch === GITHUB_BRANCH) return;
+  GITHUB_BRANCH = newBranch;
+  localStorage.setItem('admin_branch', newBranch);
+  updateBranchBadge();
+  // reload current data from the new branch
+  contentSha = null; currentData = null;
+  init();
+}
+
+function updateBranchBadge() {
+  const badge = document.getElementById('branch-badge');
+  if (!badge) return;
+  const isMain = GITHUB_BRANCH === 'main';
+  badge.textContent = isMain ? '' : GITHUB_BRANCH;
+  badge.style.display = isMain ? 'none' : 'inline-block';
+}
+
 // ===== INIT =====
 function init() {
+  initBranchSelector();
   let savedRepo = localStorage.getItem('admin_active_repo') || 'omer-taicher-interactive';
   if (savedRepo === 'omer-taicher-site') savedRepo = 'omer-taicher-interactive';
   const rawTab    = localStorage.getItem('admin_active_tab') || 'content';
