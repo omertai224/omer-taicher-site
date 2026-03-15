@@ -729,6 +729,13 @@ function showBlogForm(post) {
           <button type="button" onmousedown="event.preventDefault();document.execCommand('insertUnorderedList')"
             title="רשימת בולטים — לחץ שוב לביטול"
             style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:1rem;cursor:pointer;font-family:inherit">•≡</button>
+          <div style="width:1px;height:22px;background:var(--border);margin:0 2px"></div>
+          <button type="button" onmousedown="event.preventDefault();document.execCommand('undo')"
+            title="ביטול פעולה אחרונה"
+            style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;cursor:pointer;font-family:inherit">↩</button>
+          <button type="button" onmousedown="event.preventDefault();document.execCommand('redo')"
+            title="חזרה על פעולה"
+            style="background:var(--cream);border:1px solid var(--border);width:34px;height:34px;border-radius:8px;font-size:0.95rem;cursor:pointer;font-family:inherit">↪</button>
         </div>
         <button type="button" id="bf-preview-toggle" onclick="toggleBlogPreview()"
           style="background:var(--navy);color:#fff;border:none;padding:7px 18px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;">
