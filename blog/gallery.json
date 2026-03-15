@@ -10,9 +10,11 @@
     "ont-turn-off-during-update_hero.webp": "בלוג",
     "printer-wifi-vs-cable_hero.webp": "בלוג",
     "youtube-video-ends-with-pizza_hero.webp": "בלוג",
-    "wifi-in-safe-room_hero.webp": "בלוג"
+    "wifi-in-safe-room_hero.webp": "בלוג",
+    "gmail-storage-full_hero.webp": "בלוג"
   },
   "order": [
+    "gmail-storage-full_hero.webp",
     "wifi-in-safe-room_hero.webp",
     "1772846439490_hero.webp",
     "1772846483393_working.webp",
