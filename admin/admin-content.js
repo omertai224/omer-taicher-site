@@ -1,6 +1,11 @@
 // ===== TAB: CONTENT =====
 const BLOG_ORIGIN = location.origin + ((location.pathname.match(/^(\/omer-taicher-site)\b/) || [])[1] || '');
 
+function blogViewUrl(postId) {
+  const base = BLOG_ORIGIN + '/blog/post.html?id=' + postId;
+  return GITHUB_BRANCH === 'main' ? base : base + '&branch=' + encodeURIComponent(GITHUB_BRANCH);
+}
+
 // ===== SITE CONTENT (אתר ראשי) =====
 async function loadContent() {
   if (GITHUB_REPO !== 'omer-taicher-site') return;
@@ -214,7 +219,7 @@ function filterBlogList(query) {
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0">
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
-          <button onclick="window.open(BLOG_ORIGIN+'/blog/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
+          <button onclick="window.open(blogViewUrl('${p.id}'),'_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
           <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
           <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
@@ -244,7 +249,7 @@ function renderBlogList() {
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0">
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
-          <button onclick="window.open(BLOG_ORIGIN+'/blog/post.html?id=${p.id}','_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
+          <button onclick="window.open(blogViewUrl('${p.id}'),'_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
           <button onclick="blogSendWhatsapp('${p.id}')" style="background:#25d366;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">שלח עכשיו</button>
           <button onclick="blogScheduleWhatsapp('${p.id}')" style="background:#128c7e;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
@@ -616,7 +621,7 @@ function showBlogForm(post) {
           <input id="bf-date" type="date" value="${post.date || todayISO()}" style="max-width:200px">
         </div>
         <div style="display:flex;gap:8px;padding-bottom:2px;flex-wrap:wrap">
-          ${blogEditingId ? `<button onclick="window.open(BLOG_ORIGIN+'/blog/post.html?id=${blogEditingId}','_blank')" style="background:var(--navy-light);color:var(--navy);border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>` : ''}
+          ${blogEditingId ? `<button onclick="window.open(blogViewUrl('${blogEditingId}'),'_blank')" style="background:var(--navy-light);color:var(--navy);border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>` : ''}
           ${blogEditingId ? `<button onclick="blogDeletePost('${blogEditingId}')" style="background:#fde8e8;color:#c0392b;border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>` : ''}
           <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
         </div>
@@ -663,10 +668,21 @@ function showBlogForm(post) {
       <style>
         #bf-title p, #bf-excerpt p { margin:0 0 0.3em; }
         #bf-title br, #bf-excerpt br { display:none; }
-        #bf-body, #bf-body * { font-size:0.88rem!important; line-height:1.75!important; font-family:inherit!important; }
+        #bf-body { font-size:0.88rem; line-height:1.75; font-family:inherit; }
         #bf-body p  { margin-bottom: 1.1em; }
         #bf-body h2 { font-size:1rem!important; font-weight:800!important; margin: 1.2em 0 0.4em; color:#1a4a6b; }
+        #bf-body h3 { font-size:0.92rem!important; font-weight:700!important; margin: 1em 0 0.3em; color:#1a4a6b; }
         #bf-body br { display:block; content:""; margin-top:0.3em; }
+        #bf-body strong { color:#1a4a6b; }
+        #bf-body a { color:#e8854a; }
+        #bf-body ul, #bf-body ol { margin:0 0 1em 0; padding-right:20px; }
+        #bf-body li { margin-bottom:6px; }
+        #bf-body blockquote { margin:16px 0; padding:14px 18px; border-right:3px solid #e8854a; background:#fdeede; border-radius:0 10px 10px 0; color:#1a4a6b; font-weight:500; }
+        #bf-body .post-insight { margin:16px 0; padding:14px 18px; background:#1a4a6b; color:#fff; border-radius:10px; font-weight:700; }
+        #bf-body .post-tool-card { margin:16px 0; padding:14px 18px; background:#fff; border:1.5px solid #e8e0d6; border-radius:10px; display:flex; flex-direction:column; gap:4px; }
+        #bf-body .post-tool-name { font-weight:800; color:#1a4a6b; }
+        #bf-body .post-tool-by { font-size:0.82rem; color:#666; }
+        #bf-body .post-tool-link { font-weight:700; color:#e8854a; text-decoration:none; }
 
         /* Blog post preview — mirrors post.html styling */
         #bf-preview { font-size:1rem; line-height:1.85; color:#1e1e1e; }
@@ -753,6 +769,35 @@ function showBlogForm(post) {
       el.innerHTML = '<p>' + html.trim() + '</p>';
     }
   });
+
+  // Protect special elements from accidental deletion
+  const body = document.getElementById('bf-body');
+  if (body) {
+    const PROTECTED = 'blockquote, .post-insight, .post-tool-card';
+    body.addEventListener('keydown', e => {
+      if (e.key !== 'Backspace' && e.key !== 'Delete') return;
+      const sel = window.getSelection();
+      if (!sel.rangeCount) return;
+      const range = sel.getRangeAt(0);
+      // Block deletion of entire protected elements
+      if (!range.collapsed) {
+        const frag = range.cloneContents();
+        if (frag.querySelector(PROTECTED)) {
+          e.preventDefault();
+        }
+        return;
+      }
+      // Block backspace/delete at boundaries of protected elements
+      const node = sel.anchorNode;
+      const el = node.nodeType === 3 ? node.parentElement : node;
+      const prot = el.closest(PROTECTED);
+      if (!prot) return;
+      const offset = sel.anchorOffset;
+      const text = node.textContent || '';
+      if (e.key === 'Backspace' && offset === 0 && prot.firstChild === node) e.preventDefault();
+      if (e.key === 'Delete' && offset >= text.length && prot.lastChild === node) e.preventDefault();
+    });
+  }
 }
 
 // ===== CLOUDINARY =====
@@ -1899,7 +1944,7 @@ function renderDownloadList() {
 }
 
 async function downloadRepo(repoKey, repoName) {
-  const url = `https://github.com/omertai224/${repoKey}/archive/refs/heads/main.zip`;
+  const url = `https://github.com/omertai224/${repoKey}/archive/refs/heads/${GITHUB_BRANCH}.zip`;
   const a = document.createElement('a');
   a.href = url;
   document.body.appendChild(a);

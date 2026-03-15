@@ -427,13 +427,19 @@ async function init() {
   }
 
   try {
+    const branch = params.get('branch');
     let data;
     try {
+      if (branch && branch !== 'main') throw new Error('use-branch');
       const res = await fetch(`/api/blog-posts?id=${encodeURIComponent(id)}`);
       if (!res.ok) throw new Error(res.status);
       data = await res.json();
     } catch {
-      const res = await fetch('/blog/posts.json');
+      let postsUrl = '/blog/posts.json';
+      if (branch && branch !== 'main') {
+        postsUrl = `https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts.json`;
+      }
+      const res = await fetch(postsUrl);
       const raw = await res.json();
       const posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
       const post = posts.find(p => p.id === id);
@@ -502,17 +508,18 @@ async function init() {
       : `<span style="position:relative;z-index:1">${post.emoji}</span>`;
 
     // Prev/Next nav
+    const branchParam = branch && branch !== 'main' ? '&branch=' + encodeURIComponent(branch) : '';
     let navHTML = '';
     if (prev || next) {
       navHTML = `<div class="post-nav">`;
       if (next) {
-        navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${next.id}">
+        navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${next.id}${branchParam}">
           <span class="nav-direction">הפוסט הבא ←</span>
           <span class="nav-title">${next.title}</span>
         </a>`;
       }
       if (prev) {
-        navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${prev.id}">
+        navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${prev.id}${branchParam}">
           <span class="nav-direction">→ הפוסט הקודם</span>
           <span class="nav-title">${prev.title}</span>
         </a>`;
