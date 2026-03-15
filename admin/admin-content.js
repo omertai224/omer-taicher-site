@@ -1,5 +1,5 @@
 // ===== TAB: CONTENT =====
-const BLOG_ORIGIN = location.origin;
+const BLOG_ORIGIN = location.origin + ((location.pathname.match(/^(\/omer-taicher-site)\b/) || [])[1] || '');
 
 // ===== SITE CONTENT (אתר ראשי) =====
 async function loadContent() {

@@ -63,7 +63,7 @@ function renderTree(items, currentPath) {
     const desc = FILE_DESCRIPTIONS[item.name] || '';
     const descTag = desc ? `<span class="file-item-desc">${desc}</span>` : '';
     const delBtn = `<button class="delete-img-btn" onclick="confirmDelete('${escAttr(item.path)}','${escAttr(item.sha || '')}','${escAttr(item.type)}')" title="מחק">🗑</button>`;
-    const repoDomain = location.origin;
+    const repoDomain = location.origin + ((location.pathname.match(/^(\/omer-taicher-site)\b/) || [])[1] || '');
     const previewBtn = (item.type === 'file' && ext === 'html') ? `<button class="delete-img-btn" onclick="window.open('${escAttr(repoDomain + '/' + item.path)}','_blank')" title="תצוגה מקדימה">👁</button>` : '';
     if (item.type === 'dir') {
       html += `<div class="file-item"><span class="file-item-icon" onclick="loadFileTree('${escAttr(item.path)}')" style="cursor:pointer">${icon}</span><span class="file-item-name" onclick="loadFileTree('${escAttr(item.path)}')" style="cursor:pointer">${escAttr(item.name)}/</span>${descTag}${delBtn}</div>`;
