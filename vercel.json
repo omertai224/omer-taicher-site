@@ -1,9 +1,5 @@
 {
-  "git": {
-    "deploymentEnabled": {
-      "main": true
-    }
-  },
+  "ignoreCommand": "[ \"$VERCEL_GIT_COMMIT_REF\" != \"main\" ]",
   "functions": {
     "api/payplus.js": {
       "maxDuration": 10
