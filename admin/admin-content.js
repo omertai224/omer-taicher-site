@@ -1740,10 +1740,14 @@ function interactiveDeleteItem(index) {
 
 let galleryItems = []; // [{url, type, name, date, category}]
 let galleryFilter = 'הכל';
+let _galleryFullyLoaded = false; // האם הגלריה נטענה מלאה מה-Worker
+let _galleryLoading = false; // הגנה מטעינה כפולה
 
 let gallerySha = null;
 
 async function loadGalleryManager() {
+  if (_galleryLoading) return;
+  _galleryLoading = true;
   setStatus('gallery', 'loading', 'טוען...');
   try {
     // טעינת קטגוריות מ-gallery.json
@@ -1790,6 +1794,7 @@ async function loadGalleryManager() {
         });
       }
       galleryItems = mapped;
+      _galleryFullyLoaded = true;
     } else {
       galleryItems = [];
     }
@@ -1800,6 +1805,8 @@ async function loadGalleryManager() {
     galleryItems = [];
     renderGallery();
     setStatus('gallery', 'error', 'שגיאה בטעינה: ' + e.message);
+  } finally {
+    _galleryLoading = false;
   }
 }
 
@@ -2040,18 +2047,25 @@ async function autoSaveGallery() {
         existingOrder = saved.order || [];
       } catch(pe) {}
     } catch(e) { gallerySha = null; }
-    // מזג: קטגוריות קיימות + עדכונים מהזיכרון
-    const categories = { ...existingCategories };
-    galleryItems.forEach(item => {
-      if (item.key && item.category) {
-        categories[item.key] = item.category;
-      }
-    });
-    // סדר: שמור סדר קיים, הוסף חדשים בהתחלה
-    const memoryKeys = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
-    const existingOrderSet = new Set(existingOrder);
-    const newKeys = memoryKeys.filter(k => !existingOrderSet.has(k));
-    const order = [...newKeys, ...existingOrder];
+    const memoryKeys = new Set(galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0));
+    let categories, order;
+    if (_galleryFullyLoaded) {
+      // הגלריה נטענה מלאה — galleryItems מכיל הכל, אפשר להחליף בבטחה
+      categories = {};
+      galleryItems.forEach(item => {
+        if (item.key && item.category) categories[item.key] = item.category;
+      });
+      order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
+    } else {
+      // הגלריה לא נטענה — מזג עם קיים כדי לא לדרוס
+      categories = { ...existingCategories };
+      galleryItems.forEach(item => {
+        if (item.key && item.category) categories[item.key] = item.category;
+      });
+      const existingOrderSet = new Set(existingOrder);
+      const newKeys = [...memoryKeys].filter(k => !existingOrderSet.has(k));
+      order = [...newKeys, ...existingOrder];
+    }
     const json = JSON.stringify({ categories, order }, null, 2);
     const result = await ghPut('gallery.json', json, gallerySha, 'עדכון קטגוריות גלריה');
     if (result.content) {
