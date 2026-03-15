@@ -119,6 +119,7 @@ function init() {
   };
   selectRepo(savedRepo, document.getElementById(btnMap[savedRepo]));
   if (savedTab !== 'content') switchTab(savedTab);
+  updateGlobalPushUI();
 }
 
 // ===== TABS =====
@@ -253,8 +254,122 @@ async function ghPut(path, content, sha, message) {
   return res.json();
 }
 
+// גישה ישירה ל-GitHub עם נתיב מלא (ללא resolveRepoPath)
+async function ghGetDirect(fullPath) {
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${fullPath}?ref=${GITHUB_BRANCH}&t=${Date.now()}`, {
+    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json' }
+  });
+  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
+  return res.json();
+}
+
+async function ghPutDirect(fullPath, content, sha, message) {
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${fullPath}`, {
+    method: 'PUT',
+    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, content: btoa(unescape(encodeURIComponent(content))), sha, branch: GITHUB_BRANCH })
+  });
+  if (!res.ok) throw new Error('GitHub API error: ' + res.status);
+  return res.json();
+}
+
 function decode(b64) {
   return decodeURIComponent(escape(atob(b64.replace(/\n/g, ''))));
+}
+
+// ===== GLOBAL PENDING CHANGES =====
+const PENDING_KEY = 'admin_pending_changes';
+
+function getPendingChanges() {
+  try { return JSON.parse(localStorage.getItem(PENDING_KEY) || '{}'); } catch { return {}; }
+}
+
+function setPending(fileKey, data, commitMsg) {
+  const pending = getPendingChanges();
+  pending[fileKey] = { data, commitMsg, ts: Date.now() };
+  localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
+  updateGlobalPushUI();
+}
+
+function clearPending(fileKey) {
+  const pending = getPendingChanges();
+  delete pending[fileKey];
+  localStorage.setItem(PENDING_KEY, JSON.stringify(pending));
+  updateGlobalPushUI();
+}
+
+function clearAllPending() {
+  localStorage.removeItem(PENDING_KEY);
+  updateGlobalPushUI();
+}
+
+function countPending() {
+  return Object.keys(getPendingChanges()).length + (typeof blogDirty !== 'undefined' && blogDirty ? 1 : 0);
+}
+
+function updateGlobalPushUI() {
+  const count = countPending();
+  const bar = document.getElementById('global-push-bar');
+  if (!bar) return;
+  if (count === 0) {
+    bar.style.display = 'none';
+  } else {
+    bar.style.display = 'flex';
+    const label = document.getElementById('global-push-label');
+    if (label) label.textContent = count + ' קבצים ממתינים לדחיפה';
+    const btn = document.getElementById('global-push-btn');
+    if (btn) { btn.disabled = false; btn.textContent = 'דחוף הכל ל-GitHub'; }
+  }
+}
+
+async function globalPushAll() {
+  const btn = document.getElementById('global-push-btn');
+  const label = document.getElementById('global-push-label');
+  if (btn) { btn.disabled = true; btn.textContent = 'דוחף...'; }
+
+  const pending = getPendingChanges();
+  const keys = Object.keys(pending);
+  const hasBlog = typeof blogDirty !== 'undefined' && blogDirty;
+  const total = keys.length + (hasBlog ? 1 : 0);
+  let done = 0;
+  let errors = [];
+
+  // Push blog first (it has its own SHA tracking)
+  if (hasBlog) {
+    try {
+      if (label) label.textContent = 'דוחף בלוג... (' + (++done) + '/' + total + ')';
+      const blogPath = 'blog/posts.json';
+      const fresh = await ghGetDirect(blogPath);
+      blogSha = fresh.sha;
+      const result = await ghPutDirect(blogPath, JSON.stringify({ posts: blogPosts }, null, 2), blogSha, 'עדכון פוסטים מרוכז');
+      if (result.content) {
+        blogSha = result.content.sha;
+        blogClearLocal();
+      } else throw new Error(result.message || 'שגיאה');
+    } catch(e) { errors.push('posts.json: ' + e.message); }
+  }
+
+  // Push all other pending files (keys are already resolved paths)
+  for (const fileKey of keys) {
+    const entry = pending[fileKey];
+    if (label) label.textContent = 'דוחף ' + fileKey + '... (' + (++done) + '/' + total + ')';
+    try {
+      const fresh = await ghGetDirect(fileKey);
+      const sha = fresh.sha;
+      const result = await ghPutDirect(fileKey, entry.data, sha, entry.commitMsg);
+      if (result.content) {
+        clearPending(fileKey);
+      } else throw new Error(result.message || 'שגיאה');
+    } catch(e) { errors.push(fileKey + ': ' + e.message); }
+  }
+
+  if (errors.length) {
+    setStatus('content', 'error', 'שגיאות: ' + errors.join(', '));
+    if (btn) { btn.disabled = false; btn.textContent = 'נסה שוב'; }
+  } else {
+    setStatus('content', 'ok', '✓ כל השינויים נדחפו! Vercel מפרסם...');
+    updateGlobalPushUI();
+  }
 }
 
 // ===== INTERACTIVE SUB-TABS =====
