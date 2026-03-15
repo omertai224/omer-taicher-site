@@ -1,9 +1,4 @@
 {
-  "git": {
-    "deploymentEnabled": {
-      "main": true
-    }
-  },
   "functions": {
     "api/payplus.js": {
       "maxDuration": 10
