@@ -68,7 +68,14 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'כתובת אימייל לא תקינה' });
     }
 
-    const successUrl = `https://omertai.net/pages/checkout/success.html?product=${productKey}`;
+    const TUTORIAL_URLS = {
+      vibe: 'https://omertai.net/interactive/Vibe/',
+      ai: 'https://omertai.net/interactive/AI/',
+      files: 'https://omertai.net/interactive/Files/',
+      security: 'https://omertai.net/interactive/Security/',
+      google: 'https://omertai.net/interactive/Google/'
+    };
+    const successUrl = TUTORIAL_URLS[productKey] || 'https://omertai.net/interactive/';
     const failUrl    = `https://omertai.net/pages/checkout/?product=${productKey}&status=failed`;
     const cancelUrl  = `https://omertai.net/pages/checkout/?product=${productKey}&status=cancelled`;
 
