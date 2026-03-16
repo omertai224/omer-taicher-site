@@ -673,11 +673,11 @@ function showBlogForm(post) {
       </div>
       <div class="field" style="margin-bottom:12px">
         <label class="field-label">תיאור תמונה (image_alt)</label>
-        <input id="bf-image-alt" type="text" value="${post.image_alt || ''}" placeholder="תיאור התמונה לנגישות ו-SEO" style="direction:rtl">
+        <input id="bf-image-alt" type="text" value="${escapeHtml(post.image_alt || '')}" placeholder="תיאור התמונה לנגישות ו-SEO" style="direction:rtl">
       </div>
       <div class="field" style="margin-bottom:12px">
         <label class="field-label">כותרת SEO (לשונית + שיתוף)</label>
-        <input id="bf-seo-title" type="text" value="${post.seo_title || ''}" oninput="this.dataset.edited='1';this.dataset.cleared=this.value===''?'1':'';document.getElementById('bf-seo-title-count').textContent=this.value.length+' תווים'" placeholder="כותרת | עומר טייכר" style="direction:rtl">
+        <input id="bf-seo-title" type="text" value="${escapeHtml(post.seo_title || '')}" oninput="this.dataset.edited='1';this.dataset.cleared=this.value===''?'1':'';document.getElementById('bf-seo-title-count').textContent=this.value.length+' תווים'" placeholder="כותרת | עומר טייכר" style="direction:rtl">
         <div style="font-size:0.72rem;color:var(--text-light);margin-top:4px" id="bf-seo-title-count">${(post.seo_title||'').length} תווים</div>
       </div>
       <div class="field" style="margin-bottom:12px">
@@ -1506,7 +1506,7 @@ function showInteractiveForm(item) {
     <div class="field"><label class="field-label">תיאור קצר *</label><textarea id="if-desc" rows="2">${item.desc}</textarea></div>
     <div class="fields-row">
       <div class="field"><label class="field-label">מספר שלבים *</label><input id="if-steps" type="number" min="0" value="${item.steps}" style="direction:ltr;text-align:left"></div>
-      <div class="field"><label class="field-label">קטגוריה</label><input id="if-category" type="text" value="${item.category || ''}" placeholder="לדוגמה: AI · תמלול · Windows"></div>
+      <div class="field"><label class="field-label">קטגוריה</label><input id="if-category" type="text" value="${escapeHtml(item.category || '')}" placeholder="לדוגמה: AI · תמלול · Windows"></div>
     </div>
     <div class="field"><label class="field-label">קישור להדרכה</label><input id="if-url" type="text" value="${item.url || ''}" style="direction:ltr;text-align:left" placeholder="./Vibe/index.html"></div>
     <div class="fields-row">
@@ -1520,7 +1520,7 @@ function showInteractiveForm(item) {
       </div>
     </div>
     <div class="fields-row">
-      <div class="field"><label class="field-label">תגית (label)</label><input id="if-label" type="text" value="${item.label || ''}" placeholder="חדש"></div>
+      <div class="field"><label class="field-label">תגית (label)</label><input id="if-label" type="text" value="${escapeHtml(item.label || '')}" placeholder="חדש"></div>
       <div class="field"><label class="field-label">צבע כרטיס (thumb)</label>
         <select id="if-thumb" style="padding:10px 14px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:0.88rem;background:#fff;">
           <option value="navy" ${(item.thumb||'navy')==='navy'?'selected':''}>כחול כהה (navy)</option>
