@@ -273,6 +273,16 @@ async function ghPutDirect(fullPath, content, sha, message) {
   return res.json();
 }
 
+async function ghDeleteDirect(fullPath, sha, message) {
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${fullPath}`, {
+    method: 'DELETE',
+    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, sha, branch: GITHUB_BRANCH })
+  });
+  if (!res.ok && res.status !== 404) throw new Error('GitHub API error: ' + res.status);
+  return res.json();
+}
+
 function decode(b64) {
   return decodeURIComponent(escape(atob(b64.replace(/\n/g, ''))));
 }
@@ -334,19 +344,62 @@ async function globalPushAll() {
   let done = 0;
   let errors = [];
 
-  // Push blog first (it has its own SHA tracking)
+  // Push blog files (posts.json + posts-index.json + individual changed/deleted posts)
   if (hasBlog) {
+    // 1. Push posts.json (full, with body)
     try {
-      if (label) label.textContent = 'דוחף בלוג... (' + (++done) + '/' + total + ')';
+      if (label) label.textContent = 'דוחף posts.json... (' + (++done) + '/' + total + ')';
       const blogPath = 'blog/posts.json';
       const fresh = await ghGetDirect(blogPath);
       blogSha = fresh.sha;
       const result = await ghPutDirect(blogPath, JSON.stringify({ posts: blogPosts }, null, 2), blogSha, 'עדכון פוסטים מרוכז');
       if (result.content) {
         blogSha = result.content.sha;
-        blogClearLocal();
       } else throw new Error(result.message || 'שגיאה');
     } catch(e) { errors.push('posts.json: ' + e.message); }
+
+    // 2. Push posts-index.json (lightweight, no body)
+    try {
+      if (label) label.textContent = 'דוחף posts-index.json...';
+      const indexPath = 'blog/posts-index.json';
+      const indexPosts = blogPosts.map(({ body, ...rest }) => rest);
+      let indexSha;
+      try {
+        const freshIdx = await ghGetDirect(indexPath);
+        indexSha = freshIdx.sha;
+      } catch(e) { indexSha = undefined; } // קובץ חדש
+      await ghPutDirect(indexPath, JSON.stringify({ posts: indexPosts }, null, 2), indexSha, 'עדכון אינדקס פוסטים');
+    } catch(e) { errors.push('posts-index.json: ' + e.message); }
+
+    // 3. Push individual post files that changed
+    const dirtyIds = typeof blogDirtyIds !== 'undefined' ? [...blogDirtyIds] : [];
+    for (const postId of dirtyIds) {
+      const post = blogPosts.find(p => p.id === postId);
+      if (!post) continue;
+      try {
+        if (label) label.textContent = 'דוחף posts/' + postId + '.json...';
+        const postPath = 'blog/posts/' + postId + '.json';
+        let postSha;
+        try {
+          const freshPost = await ghGetDirect(postPath);
+          postSha = freshPost.sha;
+        } catch(e) { postSha = undefined; } // קובץ חדש
+        await ghPutDirect(postPath, JSON.stringify(post, null, 2), postSha, 'עדכון פוסט: ' + postId);
+      } catch(e) { errors.push(postId + '.json: ' + e.message); }
+    }
+
+    // 4. Delete individual post files for deleted posts
+    const deletedIds = typeof blogDeletedIds !== 'undefined' ? [...blogDeletedIds] : [];
+    for (const postId of deletedIds) {
+      try {
+        if (label) label.textContent = 'מוחק posts/' + postId + '.json...';
+        const postPath = 'blog/posts/' + postId + '.json';
+        const freshPost = await ghGetDirect(postPath);
+        await ghDeleteDirect(postPath, freshPost.sha, 'מחיקת פוסט: ' + postId);
+      } catch(e) { /* ignore - file might not exist */ }
+    }
+
+    blogClearLocal();
   }
 
   // Push all other pending files (keys are already resolved paths)

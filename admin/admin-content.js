@@ -142,17 +142,25 @@ let blogSha = null;
 let blogEditingId = null; // null = פוסט חדש, string = עריכה
 let blogScheduled = []; // תזמונים פעילים
 let blogDirty = false;  // שינויים מקומיים שטרם נדחפו ל-GitHub
+let blogDirtyIds = new Set();    // פוסטים שהשתנו (לעדכון קבצים בודדים)
+let blogDeletedIds = new Set();  // פוסטים שנמחקו (למחיקת קבצים בודדים)
 
 // שמירה מקומית של טיוטות (localStorage)
 function blogSaveLocal() {
   blogDirty = true;
   localStorage.setItem('blog_draft_posts', JSON.stringify(blogPosts));
+  localStorage.setItem('blog_dirty_ids', JSON.stringify([...blogDirtyIds]));
+  localStorage.setItem('blog_deleted_ids', JSON.stringify([...blogDeletedIds]));
   updatePublishIndicator();
   updateGlobalPushUI();
 }
 function blogClearLocal() {
   blogDirty = false;
+  blogDirtyIds.clear();
+  blogDeletedIds.clear();
   localStorage.removeItem('blog_draft_posts');
+  localStorage.removeItem('blog_dirty_ids');
+  localStorage.removeItem('blog_deleted_ids');
   updatePublishIndicator();
   updateGlobalPushUI();
 }
@@ -171,6 +179,8 @@ async function loadBlogManager() {
       try {
         blogPosts = JSON.parse(localDraft);
         blogDirty = true;
+        try { blogDirtyIds = new Set(JSON.parse(localStorage.getItem('blog_dirty_ids') || '[]')); } catch(e2) {}
+        try { blogDeletedIds = new Set(JSON.parse(localStorage.getItem('blog_deleted_ids') || '[]')); } catch(e2) {}
       } catch(e) {
         localStorage.removeItem('blog_draft_posts');
         const parsed = JSON.parse(decode(data.content));
@@ -1303,11 +1313,16 @@ async function blogSavePost() {
       if (idx === -1) throw new Error('הפוסט לא נמצא');
       if (id !== blogEditingId && posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט אחר עם ID: ' + id);
       posts[idx] = post;
+      // אם שינו את ה-slug, צריך למחוק את הקובץ הישן
+      if (id !== blogEditingId) {
+        blogDeletedIds.add(blogEditingId);
+      }
     } else {
       if (posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט עם ID: ' + id);
       posts.unshift(post);
     }
 
+    blogDirtyIds.add(id);
     blogPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
     blogSaveLocal();
     setStatus('content', 'ok', '✓ ' + (blogEditingId ? 'הפוסט עודכן' : 'הפוסט נשמר') + ' מקומית — לחצו "דחיפה ל-GitHub" לפרסום');
@@ -1326,6 +1341,8 @@ function blogDeletePost(id) {
   modal.style.display = 'flex';
   document.getElementById('confirm-modal-yes').onclick = () => {
     modal.style.display = 'none';
+    blogDeletedIds.add(id);
+    blogDirtyIds.delete(id);
     blogPosts = blogPosts.filter(p => p.id !== id);
     blogSaveLocal();
     setStatus('content', 'ok', '✓ הפוסט נמחק מקומית — לחצו "דחיפה ל-GitHub" לפרסום');
