@@ -505,7 +505,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       renderBlogCards(posts);
     })
     .catch(() => {
-      fetch('/blog/posts.json')
+      fetch('/blog/posts-index.json')
         .then(r => { if (!r.ok) throw new Error(); return r.json(); })
         .then(data => {
           const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));

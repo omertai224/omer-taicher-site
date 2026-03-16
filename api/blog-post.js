@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
 function stripHtml(str) {
@@ -22,8 +22,15 @@ export default function handler(req, res) {
 
   if (id) {
     try {
-      const data = JSON.parse(readFileSync(join(cwd, 'blog', 'posts.json'), 'utf-8'));
-      const post = (data.posts || []).find(p => p.id === id);
+      // Prefer individual post file, fallback to full posts.json
+      let post;
+      const postPath = join(cwd, 'blog', 'posts', id + '.json');
+      if (existsSync(postPath)) {
+        post = JSON.parse(readFileSync(postPath, 'utf-8'));
+      } else {
+        const data = JSON.parse(readFileSync(join(cwd, 'blog', 'posts.json'), 'utf-8'));
+        post = (data.posts || []).find(p => p.id === id);
+      }
 
       if (post) {
         const title = escapeAttr(stripHtml(post.seo_title || post.title) + ' | עומר טייכר');
