@@ -159,42 +159,25 @@ export default async function handler(req, res) {
     // status_code "000" = עסקה מוצלחת
     const isApproved = transaction.status_code === '000';
 
-    if (isApproved && pageRequestUid) {
-      // אימות העסקה מול PayPlus API
-      const verifyResponse = await fetch(`${PAYPLUS_BASE_URL}/api/v1.0/PaymentPages/ipn`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': JSON.stringify({ api_key: API_KEY, secret_key: SECRET_KEY })
-        },
-        body: JSON.stringify({ page_request_uid: pageRequestUid })
+    if (isApproved) {
+      // שימוש בנתונים ישירות מה-callback (כבר יש לנו הכל)
+      const customerEmail = callbackData.customer_email;
+      const customerName  = callbackData.customer_name;
+      const customerPhone = callbackData.customer_phone;
+      const productKey    = transaction.more_info;
+      const product       = productKey && PRODUCTS[productKey] ? PRODUCTS[productKey] : null;
+
+      console.log('Transaction approved, sending notifications:', {
+        customerEmail, customerName, customerPhone, productKey, hasProduct: !!product
       });
 
-      const verifyData = await verifyResponse.json();
-      const paymentStatus = verifyData?.data?.status_description;
-
-      console.log('PayPlus IPN verification:', {
-        page_request_uid: pageRequestUid,
-        verified_status: paymentStatus,
-        amount: verifyData?.data?.amount
-      });
-
-      // שליחת מייל והודעת WhatsApp רק אם התשלום אומת כמאושר
-      if (paymentStatus === 'approved') {
-        const customerEmail = callbackData.customer_email || verifyData?.data?.customer_email;
-        const customerName  = callbackData.customer_name || verifyData?.data?.customer_name;
-        const customerPhone = callbackData.customer_phone || verifyData?.data?.customer_phone;
-        const productKey    = transaction.more_info || verifyData?.data?.more_info;
-        const product       = productKey && PRODUCTS[productKey] ? PRODUCTS[productKey] : null;
-
-        if (product) {
-          const tasks = [];
-          if (customerEmail) tasks.push(sendTutorialEmail(customerEmail, customerName, product));
-          if (customerPhone) tasks.push(sendWhatsApp(customerPhone, customerName, product));
-          if (tasks.length) await Promise.allSettled(tasks);
-        } else {
-          console.warn('Cannot send notifications:', { customerEmail, customerPhone, productKey, hasProduct: !!product });
-        }
+      if (product) {
+        const tasks = [];
+        if (customerEmail) tasks.push(sendTutorialEmail(customerEmail, customerName, product));
+        if (customerPhone) tasks.push(sendWhatsApp(customerPhone, customerName, product));
+        if (tasks.length) await Promise.allSettled(tasks);
+      } else {
+        console.warn('Cannot send notifications:', { customerEmail, customerPhone, productKey, hasProduct: !!product });
       }
     }
 
