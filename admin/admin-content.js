@@ -872,7 +872,7 @@ async function uploadToCloudinary(input) {
   try {
     const slug = getPostSlug();
     const ext = file.name.split('.').pop().toLowerCase();
-    const key = (slug || Date.now()) + '_hero.' + ext;
+    const key = (slug || Date.now()) + '.' + ext;
     const res = await fetch(`${WORKER_URL}/${key}`, {
       method: 'PUT',
       headers: { 'Content-Type': file.type },
