@@ -1,3 +1,40 @@
+// ===== MODAL HELPERS =====
+function showConfirm(text, onYes, opts = {}) {
+  const modal = document.getElementById('app-modal');
+  const icon = document.getElementById('app-modal-icon');
+  const textEl = document.getElementById('app-modal-text');
+  const subEl = document.getElementById('app-modal-sub');
+  const btns = document.getElementById('app-modal-buttons');
+  icon.innerHTML = opts.icon || '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+  textEl.textContent = text;
+  subEl.textContent = opts.sub || '';
+  subEl.style.display = opts.sub ? 'block' : 'none';
+  const yesText = opts.yes || 'כן';
+  const noText = opts.no || 'ביטול';
+  const yesColor = opts.color || '#ef4444';
+  btns.innerHTML = `<button id="modal-yes" style="background:${yesColor};color:#fff;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">${yesText}</button><button id="modal-no" style="background:#eef4f8;color:#1a4a6b;border:none;padding:12px 28px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">${noText}</button>`;
+  modal.style.display = 'flex';
+  document.getElementById('modal-yes').onclick = () => { modal.style.display = 'none'; onYes(); };
+  document.getElementById('modal-no').onclick = () => { modal.style.display = 'none'; if (opts.onNo) opts.onNo(); };
+}
+
+function showAlert(text, opts = {}) {
+  const modal = document.getElementById('app-modal');
+  const icon = document.getElementById('app-modal-icon');
+  const textEl = document.getElementById('app-modal-text');
+  const subEl = document.getElementById('app-modal-sub');
+  const btns = document.getElementById('app-modal-buttons');
+  const isError = opts.type === 'error';
+  const isSuccess = opts.type === 'success';
+  icon.innerHTML = opts.icon || (isError ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>' : isSuccess ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>' : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a4a6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>');
+  textEl.textContent = text;
+  subEl.textContent = opts.sub || '';
+  subEl.style.display = opts.sub ? 'block' : 'none';
+  btns.innerHTML = `<button id="modal-ok" style="background:${isError ? '#ef4444' : isSuccess ? '#27ae60' : '#1a4a6b'};color:#fff;border:none;padding:12px 32px;border-radius:50px;font-size:0.9rem;font-weight:700;cursor:pointer;font-family:inherit;">${opts.ok || 'הבנתי'}</button>`;
+  modal.style.display = 'flex';
+  document.getElementById('modal-ok').onclick = () => { modal.style.display = 'none'; if (opts.onClose) opts.onClose(); };
+}
+
 // ===== GLOBALS =====
 const GITHUB_USER = 'omertai224';
 const _isGitHubPages = location.hostname.endsWith('.github.io');
@@ -273,6 +310,16 @@ async function ghPutDirect(fullPath, content, sha, message) {
   return res.json();
 }
 
+async function ghDeleteDirect(fullPath, sha, message) {
+  const res = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${UNIFIED_REPO}/contents/${fullPath}`, {
+    method: 'DELETE',
+    headers: { 'Authorization': `token ${GITHUB_TOKEN}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, sha, branch: GITHUB_BRANCH })
+  });
+  if (!res.ok && res.status !== 404) throw new Error('GitHub API error: ' + res.status);
+  return res.json();
+}
+
 function decode(b64) {
   return decodeURIComponent(escape(atob(b64.replace(/\n/g, ''))));
 }
@@ -334,19 +381,50 @@ async function globalPushAll() {
   let done = 0;
   let errors = [];
 
-  // Push blog first (it has its own SHA tracking)
+  // Push blog files (posts-index.json + individual changed/deleted posts)
   if (hasBlog) {
+    // 1. Push posts-index.json (lightweight, no body)
     try {
-      if (label) label.textContent = 'דוחף בלוג... (' + (++done) + '/' + total + ')';
-      const blogPath = 'blog/posts.json';
-      const fresh = await ghGetDirect(blogPath);
-      blogSha = fresh.sha;
-      const result = await ghPutDirect(blogPath, JSON.stringify({ posts: blogPosts }, null, 2), blogSha, 'עדכון פוסטים מרוכז');
-      if (result.content) {
-        blogSha = result.content.sha;
-        blogClearLocal();
-      } else throw new Error(result.message || 'שגיאה');
-    } catch(e) { errors.push('posts.json: ' + e.message); }
+      if (label) label.textContent = 'דוחף posts-index.json...';
+      const indexPath = 'blog/posts-index.json';
+      const indexPosts = blogPosts.map(({ body, ...rest }) => rest);
+      let indexSha;
+      try {
+        const freshIdx = await ghGetDirect(indexPath);
+        indexSha = freshIdx.sha;
+      } catch(e) { indexSha = undefined; } // קובץ חדש
+      await ghPutDirect(indexPath, JSON.stringify({ posts: indexPosts }, null, 2), indexSha, 'עדכון אינדקס פוסטים');
+    } catch(e) { errors.push('posts-index.json: ' + e.message); }
+
+    // 3. Push individual post files that changed
+    const dirtyIds = typeof blogDirtyIds !== 'undefined' ? [...blogDirtyIds] : [];
+    for (const postId of dirtyIds) {
+      const post = blogPosts.find(p => p.id === postId);
+      if (!post) continue;
+      try {
+        if (label) label.textContent = 'דוחף posts/' + postId + '.json...';
+        const postPath = 'blog/posts/' + postId + '.json';
+        let postSha;
+        try {
+          const freshPost = await ghGetDirect(postPath);
+          postSha = freshPost.sha;
+        } catch(e) { postSha = undefined; } // קובץ חדש
+        await ghPutDirect(postPath, JSON.stringify(post, null, 2), postSha, 'עדכון פוסט: ' + postId);
+      } catch(e) { errors.push(postId + '.json: ' + e.message); }
+    }
+
+    // 4. Delete individual post files for deleted posts
+    const deletedIds = typeof blogDeletedIds !== 'undefined' ? [...blogDeletedIds] : [];
+    for (const postId of deletedIds) {
+      try {
+        if (label) label.textContent = 'מוחק posts/' + postId + '.json...';
+        const postPath = 'blog/posts/' + postId + '.json';
+        const freshPost = await ghGetDirect(postPath);
+        await ghDeleteDirect(postPath, freshPost.sha, 'מחיקת פוסט: ' + postId);
+      } catch(e) { /* ignore - file might not exist */ }
+    }
+
+    blogClearLocal();
   }
 
   // Push all other pending files (keys are already resolved paths)

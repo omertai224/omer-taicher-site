@@ -1,12 +1,20 @@
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
-export default function handler(req, res) {
-  const data = JSON.parse(
-    readFileSync(join(process.cwd(), 'blog', 'posts.json'), 'utf-8')
-  );
+function loadIndex(cwd) {
+  const indexPath = join(cwd, 'blog', 'posts-index.json');
+  const data = JSON.parse(readFileSync(indexPath, 'utf-8'));
+  return (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+}
 
-  const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+function loadPost(cwd, id) {
+  const postPath = join(cwd, 'blog', 'posts', id + '.json');
+  return JSON.parse(readFileSync(postPath, 'utf-8'));
+}
+
+export default function handler(req, res) {
+  const cwd = process.cwd();
+  const posts = loadIndex(cwd);
 
   const page = Math.max(1, parseInt(req.query.page) || 1);
   const limit = Math.min(50, Math.max(1, parseInt(req.query.limit) || 10));
@@ -14,14 +22,14 @@ export default function handler(req, res) {
 
   // Single post with full body
   if (full) {
-    const post = posts.find(p => p.id === full);
+    const post = loadPost(cwd, full);
     if (!post) {
       res.status(404).json({ error: 'not found' });
       return;
     }
-    const idx = posts.indexOf(post);
-    const prev = posts[idx + 1] ? { id: posts[idx + 1].id, title: posts[idx + 1].title } : null;
-    const next = posts[idx - 1] ? { id: posts[idx - 1].id, title: posts[idx - 1].title } : null;
+    const idx = posts.findIndex(p => p.id === full);
+    const prev = idx >= 0 && posts[idx + 1] ? { id: posts[idx + 1].id, title: posts[idx + 1].title } : null;
+    const next = idx >= 0 && posts[idx - 1] ? { id: posts[idx - 1].id, title: posts[idx - 1].title } : null;
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=600');
     res.json({ post, prev, next, total: posts.length });
     return;

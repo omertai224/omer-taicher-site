@@ -438,22 +438,38 @@ async function init() {
       if (!res.ok) throw new Error(res.status);
       data = await res.json();
     } catch {
-      let postsUrl = '/blog/posts.json';
+      // Try individual post file, then index for prev/next navigation
+      let post = null, posts = [];
       if (branch && branch !== 'main') {
-        postsUrl = `https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts.json?t=${Date.now()}`;
+        const postsUrl = `https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts-index.json?t=${Date.now()}`;
+        const res = await fetch(postsUrl);
+        const raw = await res.json();
+        posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+        // טוען body מקובץ בודד
+        try {
+          const postRes = await fetch(`https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts/${encodeURIComponent(id)}.json?t=${Date.now()}`);
+          if (postRes.ok) post = await postRes.json();
+        } catch {}
+        if (!post) post = posts.find(p => p.id === id);
+      } else {
+        try {
+          const res = await fetch(`/blog/posts/${encodeURIComponent(id)}.json`);
+          if (res.ok) post = await res.json();
+        } catch {}
+        try {
+          const idxRes = await fetch('/blog/posts-index.json');
+          const idxData = await idxRes.json();
+          posts = (idxData.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+        } catch {}
       }
-      const res = await fetch(postsUrl);
-      const raw = await res.json();
-      const posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
-      const post = posts.find(p => p.id === id);
       if (!post) {
         container.innerHTML = `<div class="not-found"><h2>פוסט לא נמצא</h2><p>הפוסט המבוקש לא קיים.</p><a href="/blog/">חזרה לבלוג</a></div>`;
         return;
       }
-      const idx = posts.indexOf(post);
-      const prev = posts[idx + 1] ? { id: posts[idx + 1].id, title: posts[idx + 1].title } : null;
-      const next = posts[idx - 1] ? { id: posts[idx - 1].id, title: posts[idx - 1].title } : null;
-      data = { post, prev, next, total: posts.length };
+      const idx = posts.findIndex(p => p.id === id);
+      const prev = idx >= 0 && posts[idx + 1] ? { id: posts[idx + 1].id, title: posts[idx + 1].title } : null;
+      const next = idx >= 0 && posts[idx - 1] ? { id: posts[idx - 1].id, title: posts[idx - 1].title } : null;
+      data = { post, prev, next, total: posts.length || 1 };
     }
     if (!data.post) {
       container.innerHTML = `<div class="not-found"><h2>פוסט לא נמצא</h2><p>הפוסט המבוקש לא קיים.</p><a href="/blog/">חזרה לבלוג</a></div>`;

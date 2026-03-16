@@ -433,7 +433,7 @@ async function loadMore() {
       if (!res.ok) throw new Error(res.status);
       data = await res.json();
     } catch {
-      const res = await fetch('/blog/posts.json');
+      const res = await fetch('/blog/posts-index.json');
       const raw = await res.json();
       const posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
       const slice = posts.slice(offset, offset + POSTS_PER_PAGE).map(({ body, ...rest }) => rest);
@@ -469,7 +469,7 @@ async function fetchPosts(limit) {
     if (!res.ok) throw new Error(res.status);
     return await res.json();
   } catch {
-    const res = await fetch('/blog/posts.json');
+    const res = await fetch('/blog/posts-index.json');
     const data = await res.json();
     const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
     const slice = posts.slice(0, limit).map(({ body, ...rest }) => rest);

@@ -142,17 +142,25 @@ let blogSha = null;
 let blogEditingId = null; // null = פוסט חדש, string = עריכה
 let blogScheduled = []; // תזמונים פעילים
 let blogDirty = false;  // שינויים מקומיים שטרם נדחפו ל-GitHub
+let blogDirtyIds = new Set();    // פוסטים שהשתנו (לעדכון קבצים בודדים)
+let blogDeletedIds = new Set();  // פוסטים שנמחקו (למחיקת קבצים בודדים)
 
 // שמירה מקומית של טיוטות (localStorage)
 function blogSaveLocal() {
   blogDirty = true;
   localStorage.setItem('blog_draft_posts', JSON.stringify(blogPosts));
+  localStorage.setItem('blog_dirty_ids', JSON.stringify([...blogDirtyIds]));
+  localStorage.setItem('blog_deleted_ids', JSON.stringify([...blogDeletedIds]));
   updatePublishIndicator();
   updateGlobalPushUI();
 }
 function blogClearLocal() {
   blogDirty = false;
+  blogDirtyIds.clear();
+  blogDeletedIds.clear();
   localStorage.removeItem('blog_draft_posts');
+  localStorage.removeItem('blog_dirty_ids');
+  localStorage.removeItem('blog_deleted_ids');
   updatePublishIndicator();
   updateGlobalPushUI();
 }
@@ -163,22 +171,36 @@ async function loadBlogManager() {
   const container = document.getElementById('blog-manager');
   if (!container) return;
   try {
-    const data = await ghGet('posts.json');
-    blogSha = data.sha;
+    // טוען אינדקס (בלי body) + body לכל פוסט מקבצים בודדים
+    const indexData = await ghGet('posts-index.json');
+    blogSha = indexData.sha;
     // אם יש טיוטה מקומית, נשתמש בה במקום בגרסת GitHub
     const localDraft = localStorage.getItem('blog_draft_posts');
     if (localDraft) {
       try {
         blogPosts = JSON.parse(localDraft);
         blogDirty = true;
+        try { blogDirtyIds = new Set(JSON.parse(localStorage.getItem('blog_dirty_ids') || '[]')); } catch(e2) {}
+        try { blogDeletedIds = new Set(JSON.parse(localStorage.getItem('blog_deleted_ids') || '[]')); } catch(e2) {}
       } catch(e) {
         localStorage.removeItem('blog_draft_posts');
-        const parsed = JSON.parse(decode(data.content));
+        const parsed = JSON.parse(decode(indexData.content));
         blogPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
       }
     } else {
-      const parsed = JSON.parse(decode(data.content));
-      blogPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+      const parsed = JSON.parse(decode(indexData.content));
+      const indexPosts = (parsed.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+      // טוען body לכל פוסט מקבצים בודדים
+      const withBody = await Promise.all(indexPosts.map(async (p) => {
+        try {
+          const postData = await ghGet('posts/' + p.id + '.json');
+          const full = JSON.parse(decode(postData.content));
+          return full;
+        } catch(e) {
+          return p; // אם אין קובץ בודד, נשתמש בפוסט בלי body
+        }
+      }));
+      blogPosts = withBody;
     }
 
     // טעינת תזמונים
@@ -1161,8 +1183,10 @@ async function blogSendWhatsapp(postId) {
 }
 
 
-async function blogCancelSchedule(postId) {
-  if (!confirm('לבטל את התזמון לפוסט זה?')) return;
+function blogCancelSchedule(postId) {
+  showConfirm('לבטל את התזמון לפוסט זה?', () => _blogCancelScheduleExec(postId), { yes: 'כן, בטל', color: '#e8854a' });
+}
+async function _blogCancelScheduleExec(postId) {
   try {
     setStatus('content', 'loading', 'מבטל תזמון...');
     const SITE_REPO = 'omer-taicher-site';
@@ -1303,11 +1327,16 @@ async function blogSavePost() {
       if (idx === -1) throw new Error('הפוסט לא נמצא');
       if (id !== blogEditingId && posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט אחר עם ID: ' + id);
       posts[idx] = post;
+      // אם שינו את ה-slug, צריך למחוק את הקובץ הישן
+      if (id !== blogEditingId) {
+        blogDeletedIds.add(blogEditingId);
+      }
     } else {
       if (posts.some(p => p.id === id)) throw new Error('כבר קיים פוסט עם ID: ' + id);
       posts.unshift(post);
     }
 
+    blogDirtyIds.add(id);
     blogPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
     blogSaveLocal();
     setStatus('content', 'ok', '✓ ' + (blogEditingId ? 'הפוסט עודכן' : 'הפוסט נשמר') + ' מקומית — לחצו "דחיפה ל-GitHub" לפרסום');
@@ -1321,17 +1350,14 @@ async function blogSavePost() {
 function blogDeletePost(id) {
   const post = blogPosts.find(p => p.id === id);
   if (!post) return;
-  const modal = document.getElementById('confirm-modal');
-  document.getElementById('confirm-modal-text').textContent = 'למחוק את הפוסט "' + post.title + '"?';
-  modal.style.display = 'flex';
-  document.getElementById('confirm-modal-yes').onclick = () => {
-    modal.style.display = 'none';
+  showConfirm('למחוק את הפוסט?', () => {
+    blogDeletedIds.add(id);
+    blogDirtyIds.delete(id);
     blogPosts = blogPosts.filter(p => p.id !== id);
     blogSaveLocal();
     setStatus('content', 'ok', '✓ הפוסט נמחק מקומית — לחצו "דחיפה ל-GitHub" לפרסום');
     renderBlogList();
-  };
-  document.getElementById('confirm-modal-no').onclick = () => { modal.style.display = 'none'; };
+  }, { yes: 'מחק', color: '#ef4444', sub: post.id });
 }
 
 // ─── הדבק פוסט מהלוח (ממיר טקסט Wix ל-HTML) ───────────────────────────────
@@ -1454,12 +1480,12 @@ async function blogPasteFromClipboard() {
   try {
     text = await navigator.clipboard.readText();
   } catch(e) {
-    alert('לא ניתן לקרוא מהלוח. ודאו שאישרתם גישה ללוח בדפדפן.');
+    showAlert('לא ניתן לקרוא מהלוח', { sub: 'ודאו שאישרתם גישה ללוח בדפדפן.', type: 'error' });
     return;
   }
 
   if (!text || !text.trim()) {
-    alert('הלוח ריק. העתיקו את הפוסט ונסו שוב.');
+    showAlert('הלוח ריק', { sub: 'העתיקו את הפוסט ונסו שוב.', type: 'error' });
     return;
   }
 
@@ -1965,10 +1991,11 @@ function updateMultiDeleteBtn() {
   }
 }
 
-async function deleteSelectedGalleryItems() {
+function deleteSelectedGalleryItems() {
   if (!selectedGalleryItems.size) return;
-  if (!confirm(`למחוק ${selectedGalleryItems.size} קבצים לצמיתות?`)) return;
-
+  showConfirm(`למחוק ${selectedGalleryItems.size} קבצים לצמיתות?`, _deleteSelectedGalleryExec, { yes: 'מחק', color: '#ef4444' });
+}
+async function _deleteSelectedGalleryExec() {
   const indices = Array.from(selectedGalleryItems).sort((a, b) => b - a);
   let failed = 0;
   for (const index of indices) {
@@ -2078,8 +2105,10 @@ function copyGalleryUrl(url) {
   }
 }
 
-async function deleteGalleryItem(index) {
-  if (!confirm('למחוק את הקובץ לצמיתות?')) return;
+function deleteGalleryItem(index) {
+  showConfirm('למחוק את הקובץ לצמיתות?', () => _deleteGalleryItemExec(index), { yes: 'מחק', color: '#ef4444' });
+}
+async function _deleteGalleryItemExec(index) {
   const item = galleryItems[index];
   if (!item) return;
 
@@ -2640,12 +2669,13 @@ function filterContacts() {
 }
 
 function deleteContact(email) {
-  if (!confirm('למחוק את ' + email + '?')) return;
-  allContacts      = allContacts.filter(c => c.email !== email);
-  filteredContacts = filteredContacts.filter(c => c.email !== email);
-  renderContactStats();
-  renderContacts();
-  deleteContactFromSB(email);
+  showConfirm('למחוק את ' + email + '?', () => {
+    allContacts      = allContacts.filter(c => c.email !== email);
+    filteredContacts = filteredContacts.filter(c => c.email !== email);
+    renderContactStats();
+    renderContacts();
+    deleteContactFromSB(email);
+  }, { yes: 'מחק', color: '#ef4444' });
 }
 
 
@@ -2734,7 +2764,7 @@ async function saveEditContact(originalEmail, btn) {
   } catch(e) {
     btn.textContent = 'שמור';
     btn.disabled = false;
-    alert('שגיאה בשמירה. נסה שוב.');
+    showAlert('שגיאה בשמירה', { sub: 'נסה שוב.', type: 'error' });
   }
 }
 
@@ -2772,7 +2802,7 @@ async function importLecture(input) {
   const iLast  = header.findIndex(h => h.includes('lastname')  || h.includes('last_name')  || h === 'שם משפחה');
   const iPhone = header.findIndex(h => h.includes('phone') || h === 'טלפון');
 
-  if (iEmail === -1) { alert('לא נמצאה עמודת Email בקובץ.'); loadContacts(); return; }
+  if (iEmail === -1) { showAlert('לא נמצאה עמודת Email בקובץ', { type: 'error' }); loadContacts(); return; }
 
   const parseRow = line => {
     const cols = [];
@@ -2817,7 +2847,7 @@ async function importLecture(input) {
   filteredContacts = [...allContacts];
   renderContactStats();
   filterContacts();
-  alert(`ייבוא הושלם.\n${added} נרשמים חדשים נוספו.\n${updated} נרשמים קיימים עודכנו.\n${skipped} שורות דולגו.`);
+  showAlert('ייבוא הושלם', { sub: `${added} נרשמים חדשים נוספו\n${updated} נרשמים קיימים עודכנו\n${skipped} שורות דולגו`, type: 'success' });
 }
 
 async function importNotes() {
@@ -2841,7 +2871,7 @@ async function importNotes() {
     } catch(e) { errors++; }
   }
   filterContacts();
-  alert(`עודכנו ${updated} הערות בהצלחה.${errors ? ' ' + errors + ' שגיאות.' : ''}`);
+  showAlert(`עודכנו ${updated} הערות בהצלחה`, { sub: errors ? errors + ' שגיאות' : '', type: errors ? 'error' : 'success' });
 }
 
 function exportContacts() {

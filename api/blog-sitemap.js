@@ -10,8 +10,9 @@ function xmlEscape(str) {
 }
 
 export default function handler(req, res) {
+  const cwd = process.cwd();
   const data = JSON.parse(
-    readFileSync(join(process.cwd(), 'blog', 'posts.json'), 'utf-8')
+    readFileSync(join(cwd, 'blog', 'posts-index.json'), 'utf-8')
   );
 
   const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
