@@ -33,7 +33,11 @@ export default function handler(req, res) {
   const slice = posts.slice(start, start + limit).map(({ body, ...rest }) => rest);
 
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=60');
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  const origin = req.headers.origin || '';
+  const allowed = ['https://omertai.net', 'https://www.omertai.net'];
+  if (allowed.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
   res.json({
     posts: slice,
     total: posts.length,

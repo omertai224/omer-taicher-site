@@ -444,6 +444,9 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || '';
   }
+  function escapeHTML(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
   function estimateReadTime(text) {
     const words = text.trim().split(/\s+/).length;
     return Math.max(1, Math.round(words / 200));
@@ -460,17 +463,17 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       const meta = readTime + ' דקות קריאה · ' + formatDate(p.date);
       const link = '/blog/post.html?id=' + p.id;
       const imgHtml = p.image
-        ? `<div class="blog-thumb" style="background-image:url('${p.image}')"></div>`
+        ? `<div class="blog-thumb" style="background-image:url('${escapeHTML(p.image)}')"></div>`
         : `<div class="blog-thumb blog-thumb-empty"></div>`;
-      const titleHtml = plainTitle.replace(/([.?!]) /g, '$1<br>');
+      const titleHtml = escapeHTML(plainTitle).replace(/([.?!]) /g, '$1<br>');
       const newBadge = index === 0 ? `<div class="blog-new-badge">חדש</div>` : '';
-      return `<a class="blog-card" href="${link}">
+      return `<a class="blog-card" href="${escapeHTML(link)}">
         ${imgHtml}
         <div class="blog-card-body">
           ${newBadge}
           <div class="blog-title">${titleHtml}</div>
-          <div class="blog-excerpt">${excerpt}</div>
-          <div class="blog-meta">${meta}</div>
+          <div class="blog-excerpt">${escapeHTML(excerpt)}</div>
+          <div class="blog-meta">${escapeHTML(meta)}</div>
         </div>
       </a>`;
     }).join('');
@@ -508,7 +511,12 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
           const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
           renderBlogCards(posts);
         })
-        .catch(() => {});
+        .catch(() => {
+          const grid = document.getElementById('blog-grid');
+          if (grid && !grid.children.length) {
+            grid.innerHTML = '<div style="text-align:center;padding:2rem;color:#888;">לא הצלחנו לטעון את הבלוג. <a href="/blog/" style="color:#1a4a6b;text-decoration:underline;">נסו כאן</a></div>';
+          }
+        });
     });
 })();
 </script>
