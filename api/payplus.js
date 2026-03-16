@@ -118,6 +118,8 @@ export default async function handler(req, res) {
     const data = await response.json();
     const status = data?.results?.status;
 
+    console.log('PayPlus generateLink response:', JSON.stringify(data, null, 2));
+
     if (!response.ok || (status !== '1' && status !== 'success')) {
       console.error('PayPlus error:', data);
       return res.status(502).json({ error: 'שגיאה ביצירת קישור תשלום' });
