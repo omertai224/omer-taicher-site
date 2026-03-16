@@ -1,8 +1,14 @@
 {
   "categories": {
+    "file-naming-organization.webp": "בלוג",
+    "windows11-snap-layouts.webp": "בלוג",
+    "duplicate-files-cleanup.webp": "בלוג",
     "router-restart-explained.webp": "בלוג"
   },
   "order": [
+    "file-naming-organization.webp",
+    "windows11-snap-layouts.webp",
+    "duplicate-files-cleanup.webp",
     "router-restart-explained.webp"
   ]
 }
