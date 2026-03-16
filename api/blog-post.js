@@ -18,7 +18,7 @@ export default function handler(req, res) {
   const id = String(req.query.id || '').replace(/[^a-zA-Z0-9_-]/g, '');
   const cwd = process.cwd();
 
-  let html = readFileSync(join(cwd, 'blog', 'post.html'), 'utf-8');
+  let html = readFileSync(join(cwd, 'blog', 'post-template.html'), 'utf-8');
 
   if (id) {
     try {
