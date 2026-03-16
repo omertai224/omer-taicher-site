@@ -533,13 +533,13 @@ async function init() {
       navHTML = `<div class="post-nav">`;
       if (next) {
         navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${next.id}${branchParam}">
-          <span class="nav-direction">הפוסט הבא ←</span>
+          <span class="nav-direction">הפוסט הבא <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
           <span class="nav-title">${next.title}</span>
         </a>`;
       }
       if (prev) {
         navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${prev.id}${branchParam}">
-          <span class="nav-direction">→ הפוסט הקודם</span>
+          <span class="nav-direction"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg> הפוסט הקודם</span>
           <span class="nav-title">${prev.title}</span>
         </a>`;
       }
