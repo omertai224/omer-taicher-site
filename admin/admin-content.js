@@ -973,21 +973,26 @@ async function blogSendWhatsapp(postId) {
 
   const excerpt = post.excerpt.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').trim();
   const url = 'https://omertai.net/blog/post.html?id=' + post.id;
-  const message = 'היי חברים, בוקר טוב ☀️\nפוסט חדש עלה:\n\n' + excerpt + '\n\n' + url;
+  const caption = '☀️ פוסט חדש עלה:\n\n' + excerpt + '\n\n👇 לקריאה המלאה:\n' + url;
   const chatId = '972526587420@c.us';
 
   try {
-    setStatus('content', 'loading', 'שולח לוואטסאפ...');
-    const res = await fetch('https://omertai-scheduler.omertai224.workers.dev', {
+    setStatus('content', 'loading', 'שולח לוואטסאפ עם תמונה...');
+    const res = await fetch('/api/whatsapp', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'token ' + GITHUB_TOKEN
       },
-      body: JSON.stringify({ chatId, message })
+      body: JSON.stringify({
+        chatId,
+        imageUrl: post.image,
+        caption
+      })
     });
     const data = await res.json();
     if (data.success) {
-      setStatus('content', 'ok', '✓ נשלח לוואטסאפ');
+      setStatus('content', 'ok', '✓ נשלח לוואטסאפ עם תמונה');
     } else {
       setStatus('content', 'error', 'שגיאה: ' + (data.error || 'לא ידוע'));
     }

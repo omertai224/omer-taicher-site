@@ -1,6 +1,7 @@
 /**
  * api/whatsapp.js — Vercel Serverless Function
  * שליחת הודעות WhatsApp דרך Green API בצד השרת
+ * תומך בשליחת טקסט, תמונה עם כיתוב, או טקסט עם link preview
  *
  * Environment Variables ב-Vercel:
  *   GREENAPI_INSTANCE_ID, GREENAPI_TOKEN
@@ -8,6 +9,7 @@
 
 const INSTANCE_ID = process.env.GREENAPI_INSTANCE_ID;
 const API_TOKEN   = process.env.GREENAPI_TOKEN;
+const BASE_URL    = `https://7105.api.greenapi.com/waInstance${INSTANCE_ID}`;
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', 'https://omertai.net');
@@ -32,20 +34,42 @@ export default async function handler(req, res) {
       return res.status(401).json({ error: 'טוקן GitHub לא תקין' });
     }
 
-    const { chatId, message } = req.body;
-    if (!chatId || !message) {
-      return res.status(400).json({ error: 'חסרים chatId או message' });
+    const { chatId, message, imageUrl, caption } = req.body;
+    if (!chatId) {
+      return res.status(400).json({ error: 'חסר chatId' });
     }
 
     if (!INSTANCE_ID || !API_TOKEN) {
       return res.status(500).json({ error: 'חסרים הגדרות WhatsApp בשרת' });
     }
 
-    const apiUrl = `https://7105.api.greenapi.com/waInstance${INSTANCE_ID}/sendMessage/${API_TOKEN}`;
+    let apiUrl, body;
+
+    if (imageUrl) {
+      // שליחת תמונה עם כיתוב
+      apiUrl = `${BASE_URL}/sendFileByUrl/${API_TOKEN}`;
+      body = {
+        chatId,
+        urlFile: imageUrl,
+        fileName: 'post.webp',
+        caption: caption || ''
+      };
+    } else if (message) {
+      // שליחת טקסט עם link preview
+      apiUrl = `${BASE_URL}/sendMessage/${API_TOKEN}`;
+      body = {
+        chatId,
+        message,
+        linkPreview: true
+      };
+    } else {
+      return res.status(400).json({ error: 'חסרים message או imageUrl' });
+    }
+
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chatId, message })
+      body: JSON.stringify(body)
     });
 
     const data = await response.json();
