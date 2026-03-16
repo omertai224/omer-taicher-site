@@ -1,5 +1,14 @@
 {
   "categories": {
+    "start-menu-cleanup.webp": "בלוג",
+    "stop-using-ccleaner.webp": "בלוג",
+    "taskbar-hidden-programs.webp": "בלוג",
+    "windows-storage-sense.webp": "בלוג",
+    "ups-power-backup.webp": "בלוג",
+    "dont-turn-off-during-update.webp": "בלוג",
+    "wet-paint-windows-popups.webp": "בלוג",
+    "vpn-when-to-use.webp": "בלוג",
+    "wifi-in-safe-room.webp": "בלוג",
     "youtube-video-ends-with-pizza.webp": "בלוג",
     "word-save-single-page-pdf.webp": "בלוג",
     "word-default-font-fix.webp": "בלוג",
@@ -33,6 +42,15 @@
     "ai-prompt-clear-goal.webp": "בלוג"
   },
   "order": [
+    "start-menu-cleanup.webp",
+    "stop-using-ccleaner.webp",
+    "taskbar-hidden-programs.webp",
+    "windows-storage-sense.webp",
+    "ups-power-backup.webp",
+    "dont-turn-off-during-update.webp",
+    "wet-paint-windows-popups.webp",
+    "vpn-when-to-use.webp",
+    "wifi-in-safe-room.webp",
     "youtube-video-ends-with-pizza.webp",
     "word-save-single-page-pdf.webp",
     "word-default-font-fix.webp",
