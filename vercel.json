@@ -27,7 +27,8 @@
     }
   },
   "rewrites": [
-    { "source": "/blog/post", "destination": "/api/blog-post" }
+    { "source": "/blog/post", "destination": "/api/blog-post" },
+    { "source": "/blog/post.html", "destination": "/api/blog-post" }
   ],
   "headers": [
     {
