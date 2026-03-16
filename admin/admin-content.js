@@ -903,14 +903,14 @@ async function uploadToCloudinary(input) {
 }
 
 function openBlogGalleryPicker() {
-  const blogImages = galleryItems.filter(i => i.category === 'בלוג' && i.type !== 'video');
+  const blogImages = galleryItems.filter(i => i.type !== 'video');
 
   const overlay = document.createElement('div');
   overlay.id = 'blog-gallery-picker';
   overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;';
 
   const gridHTML = blogImages.length === 0
-    ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">אין תמונות בקטגוריית בלוג</div>`
+    ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">אין תמונות בגלריה</div>`
     : blogImages.map((item, i) => {
         const realIndex = galleryItems.indexOf(item);
         return `
@@ -929,7 +929,7 @@ function openBlogGalleryPicker() {
   overlay.innerHTML = `
     <div style="background:#fff;border-radius:16px;padding:24px;width:100%;max-width:780px;max-height:88vh;display:flex;flex-direction:column;gap:16px;direction:rtl;box-shadow:0 8px 40px rgba(0,0,0,0.2);">
       <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="font-size:1.05rem;font-weight:800;color:var(--navy)">בחירה מגלריית בלוג</div>
+        <div style="font-size:1.05rem;font-weight:800;color:var(--navy)">בחירה מגלריה</div>
         <button onclick="document.getElementById('blog-gallery-picker').remove()" style="background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--text-mid);line-height:1;">✕</button>
       </div>
       <div style="font-size:0.78rem;color:var(--text-light)">לחצו על תמונה כדי לבחור אותה</div>
