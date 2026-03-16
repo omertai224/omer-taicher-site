@@ -75,7 +75,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
     },
     body: JSON.stringify({
       sender: { name: 'עומר טייכר', email: 'omertai224@gmail.com' },
-      to: [{ email: customerEmail, name: customerName || '' }],
+      to: [{ email: customerEmail, name: customerName || customerEmail }],
       subject: `ההדרכה שלכם מוכנה — ${product.name}`,
       htmlContent
     })
