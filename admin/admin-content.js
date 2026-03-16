@@ -547,7 +547,7 @@ function showBlogForm(post) {
   const container = document.getElementById('blog-manager');
   container.innerHTML = `
     <div style="margin-bottom:18px;display:flex;align-items:center;justify-content:space-between;gap:12px">
-      <button onclick="blogCancelForm()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
+      <button onclick="blogCancelForm()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg> חזרה לרשימה</button>
       <div style="font-size:0.95rem;font-weight:800;color:var(--navy);text-align:center">${blogEditingId ? 'עריכת פוסט' : 'פוסט חדש'}</div>
       <div></div>
     </div>
@@ -1495,7 +1495,7 @@ function showInteractiveForm(item) {
 
   container.innerHTML = `
     <div style="margin-bottom:18px;display:flex;align-items:center;gap:12px">
-      <button onclick="loadInteractiveManager()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">→ חזרה לרשימה</button>
+      <button onclick="loadInteractiveManager()" style="background:var(--cream);color:var(--navy);border:1px solid var(--border);padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg> חזרה לרשימה</button>
       <div style="font-size:0.95rem;font-weight:800;color:var(--navy)">${interactiveEditingIndex !== null ? 'עריכת הדרכה' : 'הדרכה חדשה'}</div>
     </div>
 
