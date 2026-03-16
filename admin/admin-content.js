@@ -902,7 +902,8 @@ async function uploadToCloudinary(input) {
   input.value = '';
 }
 
-function openBlogGalleryPicker() {
+async function openBlogGalleryPicker() {
+  if (!galleryItems.length) await loadGalleryManager();
   const blogImages = galleryItems.filter(i => i.type !== 'video');
 
   const overlay = document.createElement('div');
