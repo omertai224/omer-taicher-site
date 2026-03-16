@@ -99,6 +99,8 @@ export default async function handler(req, res) {
         phone: customerPhone || ''
       },
       more_info: productKey,
+      more_info_1: customerPhone || '',
+      more_info_2: customerName || '',
       refURL_success: successUrl,
       refURL_failure: failUrl,
       refURL_callback: 'https://omertai.net/api/payplus-webhook',

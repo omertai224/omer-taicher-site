@@ -160,10 +160,11 @@ export default async function handler(req, res) {
     const isApproved = transaction.status_code === '000';
 
     if (isApproved) {
-      // שימוש בנתונים ישירות מה-callback (כבר יש לנו הכל)
+      // שימוש בנתונים ישירות מה-callback
+      // PayPlus לא מחזיר phone/name ב-data, אז שומרים אותם ב-more_info_1/more_info_2
       const customerEmail = callbackData.customer_email;
-      const customerName  = callbackData.customer_name;
-      const customerPhone = callbackData.customer_phone;
+      const customerName  = transaction.more_info_2 || callbackData.customer_name;
+      const customerPhone = transaction.more_info_1 || callbackData.customer_phone;
       const productKey    = transaction.more_info;
       const product       = productKey && PRODUCTS[productKey] ? PRODUCTS[productKey] : null;
 
