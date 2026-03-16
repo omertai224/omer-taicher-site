@@ -29,7 +29,8 @@ export default function handler(req, res) {
       }
 
       if (post) {
-        const title = escapeAttr(stripHtml(post.seo_title || post.title) + ' | עומר טייכר');
+        const rawTitle = stripHtml(post.seo_title || post.title);
+        const title = escapeAttr(rawTitle.includes('עומר טייכר') ? rawTitle : rawTitle + ' | עומר טייכר');
         const desc = escapeAttr(stripHtml(post.seo_desc || post.excerpt));
         const baseUrl = `https://${req.headers.host}`;
         const url = `${baseUrl}/blog/post.html?id=${encodeURIComponent(id)}`;
