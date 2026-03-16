@@ -666,7 +666,7 @@ function initShareButtons() {
   const url = window.location.href;
   const post = window._currentPost;
   const postTitle = post ? post.title.replace(/<\/p>\s*<p>/gi, '\n').replace(/<[^>]+>/g, '').trim() : document.title;
-  const waText = encodeURIComponent('קראתי פוסט מעניין ורציתי לשתף אותך 😊\n\n' + postTitle + '\n\nלקריאה המלאה 👇\n' + url);
+  const waText = encodeURIComponent('\u05e7\u05e8\u05d0\u05ea\u05d9 \u05e4\u05d5\u05e1\u05d8 \u05de\u05e2\u05e0\u05d9\u05d9\u05df \u05d5\u05e8\u05e6\u05d9\u05ea\u05d9 \u05dc\u05e9\u05ea\u05e3 \u05d0\u05d5\u05ea\u05da \ud83d\ude0a\n\n' + postTitle + '\n\n\u05dc\u05e7\u05e8\u05d9\u05d0\u05d4 \u05d4\u05de\u05dc\u05d0\u05d4 \ud83d\udc47\n' + url);
   const waBtn = document.getElementById('share-wa');
   const fbBtn = document.getElementById('share-fb');
   if (waBtn) waBtn.href = `https://wa.me/?text=${waText}`;
