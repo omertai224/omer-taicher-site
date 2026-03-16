@@ -189,10 +189,6 @@
       </button>
       <select id="gallery-category-select" style="padding:10px 16px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.85rem;font-weight:600;color:var(--navy);background:#fff;cursor:pointer;outline:none;">
         <option value="בלוג">✍️ בלוג</option>
-        <option value="אינטראקטיבי">🎓 אינטראקטיבי</option>
-        <option value="דף ראשי">🏠 דף ראשי</option>
-        <option value="דפי נחיתה">📄 דפי נחיתה</option>
-        <option value="הרצאות">📽️ הרצאות</option>
         <option value="כללי">📁 כללי</option>
       </select>
       <input type="file" id="gallery-file-input" accept="image/*,video/*" multiple style="display:none" onchange="uploadGalleryFiles(this)">
@@ -203,10 +199,6 @@
     <div id="gallery-filter-bar" style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;align-items:center;">
       <button onclick="filterGallery('הכל')" class="gallery-filter-btn gallery-filter-active" data-cat="הכל">הכל</button>
       <button onclick="filterGallery('בלוג')" class="gallery-filter-btn" data-cat="בלוג">✍️ בלוג</button>
-      <button onclick="filterGallery('אינטראקטיבי')" class="gallery-filter-btn" data-cat="אינטראקטיבי">🎓 אינטראקטיבי</button>
-      <button onclick="filterGallery('דף ראשי')" class="gallery-filter-btn" data-cat="דף ראשי">🏠 דף ראשי</button>
-      <button onclick="filterGallery('דפי נחיתה')" class="gallery-filter-btn" data-cat="דפי נחיתה">📄 דפי נחיתה</button>
-      <button onclick="filterGallery('הרצאות')" class="gallery-filter-btn" data-cat="הרצאות">📽️ הרצאות</button>
       <button onclick="filterGallery('כללי')" class="gallery-filter-btn" data-cat="כללי">📁 כללי</button>
       <button id="gallery-select-all" onclick="toggleSelectAll()" style="display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--navy);border:1.5px solid var(--border);padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;margin-right:auto;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
@@ -220,10 +212,6 @@
         <select id="gallery-move-select" style="padding:7px 14px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.8rem;font-weight:600;color:var(--navy);background:#fff;cursor:pointer;outline:none;">
           <option value="">העבר ל...</option>
           <option value="בלוג">בלוג</option>
-          <option value="אינטראקטיבי">אינטראקטיבי</option>
-          <option value="דף ראשי">דף ראשי</option>
-          <option value="דפי נחיתה">דפי נחיתה</option>
-          <option value="הרצאות">הרצאות</option>
           <option value="כללי">כללי</option>
         </select>
         <button onclick="moveSelectedToCategory()" style="background:var(--orange-deep);color:#fff;border:none;padding:7px 16px;border-radius:50px;font-family:inherit;font-size:0.8rem;font-weight:700;cursor:pointer;">העבר</button>

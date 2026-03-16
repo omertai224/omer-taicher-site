@@ -1869,25 +1869,32 @@ async function uploadGalleryFiles(input) {
   input.value = '';
 }
 
-function autoSaveGallery() {
-  // בנה את ה-JSON של הגלריה ושמור ב-localStorage
+async function autoSaveGallery() {
+  // בנה את ה-JSON של הגלריה ושמור ישירות ל-GitHub
   let categories = {};
   let order = [];
-  if (_galleryFullyLoaded) {
-    galleryItems.forEach(item => {
-      if (item.key && item.category) categories[item.key] = item.category;
-    });
-    order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
-  } else {
-    // אם הגלריה לא נטענה מלאה, שמור רק את מה שיש בזיכרון
-    galleryItems.forEach(item => {
-      if (item.key && item.category) categories[item.key] = item.category;
-    });
-    order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
-  }
+  galleryItems.forEach(item => {
+    if (item.key && item.category) categories[item.key] = item.category;
+  });
+  order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
   const json = JSON.stringify({ categories, order }, null, 2);
-  setPending('gallery.json', json, 'עדכון קטגוריות גלריה');
-  setStatus('gallery', 'ok', '✓ נשמר מקומית — לחץ "דחוף הכל" לפרסום');
+  try {
+    setStatus('gallery', 'loading', 'שומר...');
+    const result = await ghPutDirect('gallery.json', json, gallerySha, 'עדכון קטגוריות גלריה');
+    gallerySha = result.content.sha;
+    // הסר מהשינויים הממתינים אם היה שם
+    const pending = getPendingChanges();
+    if (pending['gallery.json']) {
+      delete pending['gallery.json'];
+      localStorage.setItem('admin_pending_changes', JSON.stringify(pending));
+    }
+    setStatus('gallery', 'ok', '✓ נשמר');
+  } catch(e) {
+    console.error('שגיאה בשמירת gallery.json:', e);
+    // fallback: שמור ב-localStorage כגיבוי
+    setPending('gallery.json', json, 'עדכון קטגוריות גלריה');
+    setStatus('gallery', 'error', 'שגיאה בשמירה — נשמר מקומית, לחץ "דחוף הכל"');
+  }
 }
 
 function copyGalleryUrl(url) {
@@ -2061,9 +2068,7 @@ async function uploadPickerImage(input, key) {
     if (data.url) {
       // שמירה גם בגלריה עם קטגוריה לפי ריפו
       const repoCategories = {
-        'omer-taicher-site': 'דף ראשי',
-        'omer-taicher-blog': 'בלוג',
-        'omer-taicher-interactive': 'אינטראקטיבי'
+        'omer-taicher-blog': 'בלוג'
       };
       const category = repoCategories[GITHUB_REPO] || 'כללי';
       const resourceType = file.type.startsWith('video') ? 'video' : 'image';
