@@ -1620,7 +1620,7 @@ async function loadGalleryManager() {
     let categories = {};
     let order = [];
     const pending = getPendingChanges();
-    const galleryPendingKey = resolveRepoPath('gallery.json');
+    const galleryPendingKey = 'gallery.json';
     if (pending[galleryPendingKey]) {
       try {
         const local = JSON.parse(pending[galleryPendingKey].data);
@@ -1628,10 +1628,10 @@ async function loadGalleryManager() {
         order = local.order || [];
       } catch(e) {}
       // עדיין צריך SHA לדחיפה עתידית
-      try { const data = await ghGet('gallery.json'); gallerySha = data.sha; } catch(e) { gallerySha = null; }
+      try { const data = await ghGetDirect('gallery.json'); gallerySha = data.sha; } catch(e) { gallerySha = null; }
     } else {
       try {
-        const data = await ghGet('gallery.json');
+        const data = await ghGetDirect('gallery.json');
         gallerySha = data.sha;
         let saved;
         try { saved = JSON.parse(decodeURIComponent(escape(atob(data.content.replace(/\n/g, ''))))); }
@@ -1936,7 +1936,7 @@ function autoSaveGallery() {
     order = galleryItems.map(i => i.key).filter(k => typeof k === 'string' && k.length > 0);
   }
   const json = JSON.stringify({ categories, order }, null, 2);
-  setPending(resolveRepoPath('gallery.json'), json, 'עדכון קטגוריות גלריה');
+  setPending('gallery.json', json, 'עדכון קטגוריות גלריה');
   setStatus('gallery', 'ok', '✓ נשמר מקומית — לחץ "דחוף הכל" לפרסום');
 }
 
