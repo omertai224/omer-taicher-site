@@ -77,7 +77,6 @@ export default async function handler(req, res) {
     };
     const successUrl = TUTORIAL_URLS[productKey] || 'https://omertai.net/interactive/';
     const failUrl    = `https://omertai.net/pages/checkout/?product=${productKey}&status=failed`;
-    const cancelUrl  = `https://omertai.net/pages/checkout/?product=${productKey}&status=cancelled`;
 
     const payload = {
       payment_page_uid: PAGE_UID,
@@ -100,10 +99,10 @@ export default async function handler(req, res) {
         phone: customerPhone || ''
       },
       more_info: productKey,
-      success_url: successUrl,
-      fail_url: failUrl,
-      cancel_url: cancelUrl,
-      ipn_url: 'https://omertai.net/api/payplus-webhook'
+      refURL_success: successUrl,
+      refURL_failure: failUrl,
+      refURL_callback: 'https://omertai.net/api/payplus-webhook',
+      send_failure_callback: true
     };
 
     const response = await fetch(`${PAYPLUS_BASE_URL}/api/v1.0/PaymentPages/generateLink`, {
