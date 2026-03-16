@@ -971,9 +971,9 @@ async function blogSendWhatsapp(postId) {
   const post = blogPosts.find(p => p.id === postId);
   if (!post) return;
 
-  const excerpt = post.excerpt.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').trim();
+  const title = post.title.replace(/<\/p>\s*<p>/gi, '\n').replace(/<[^>]+>/g, '').trim();
   const url = 'https://omertai.net/blog/post.html?id=' + post.id;
-  const caption = '☀️ פוסט חדש עלה:\n\n' + excerpt + '\n\n👇 לקריאה המלאה:\n' + url;
+  const caption = '☀️ פוסט חדש עלה:\n\n' + title + '\n\n👇 לקריאה המלאה:\n' + url;
   const chatId = '972526587420@c.us';
 
   try {
