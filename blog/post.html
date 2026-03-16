@@ -173,6 +173,68 @@ nav {
   letter-spacing: -0.01em;
 }
 
+/* STEPS */
+.post-body .post-steps {
+  margin: 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--navy);
+}
+.post-body .post-steps .post-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  line-height: 1.7;
+}
+.post-body .post-steps .post-step:last-child {
+  border-bottom: none;
+}
+.post-body .post-steps .post-step-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--orange-deep);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+.post-body .post-steps .post-step-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(246,166,126,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+.post-body .post-steps .post-step-content {
+  flex: 1;
+}
+.post-body .post-steps .post-step-title {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--orange);
+  margin-bottom: 2px;
+}
+.post-body .post-steps .post-step-text {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 400;
+}
+
 /* TOOL CARD */
 .post-body .post-tool-card {
   margin: 28px 0;
