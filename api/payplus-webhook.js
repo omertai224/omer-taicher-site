@@ -74,7 +74,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
       'api-key': BREVO_KEY
     },
     body: JSON.stringify({
-      sender: { name: 'עומר טייכר', email: 'omer@omertai.net' },
+      sender: { name: 'עומר טייכר', email: 'omertai224@gmail.com' },
       to: [{ email: customerEmail, name: customerName || '' }],
       subject: `ההדרכה שלכם מוכנה — ${product.name}`,
       htmlContent
