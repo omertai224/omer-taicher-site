@@ -101,7 +101,12 @@ function formatPhone(phone) {
 }
 
 async function sendWhatsApp(customerPhone, customerName, product) {
-  if (!WA_INSTANCE || !WA_TOKEN || !customerPhone) return;
+  console.log('sendWhatsApp called:', { customerPhone, hasInstance: !!WA_INSTANCE, hasToken: !!WA_TOKEN });
+
+  if (!WA_INSTANCE || !WA_TOKEN || !customerPhone) {
+    console.warn('sendWhatsApp skipped:', { hasInstance: !!WA_INSTANCE, hasToken: !!WA_TOKEN, hasPhone: !!customerPhone });
+    return;
+  }
 
   const chatId = formatPhone(customerPhone);
   if (!chatId) return;
@@ -109,18 +114,23 @@ async function sendWhatsApp(customerPhone, customerName, product) {
   const name = customerName ? ` ${customerName}` : '';
   const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}\n\nשאלות? פשוט תענו להודעה הזו 😊\nעומר טייכר`;
 
-  const apiUrl = `https://7105.api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ chatId, message })
-  });
+  try {
+    const apiUrl = `https://7105.api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
+    console.log('WhatsApp sending to chatId:', chatId);
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chatId, message })
+    });
 
-  const data = await response.json();
-  if (data.idMessage) {
-    console.log('WhatsApp sent to:', customerPhone);
-  } else {
-    console.error('WhatsApp send error:', data);
+    const data = await response.json();
+    if (data.idMessage) {
+      console.log('WhatsApp sent to:', customerPhone);
+    } else {
+      console.error('WhatsApp send error:', response.status, data);
+    }
+  } catch (err) {
+    console.error('WhatsApp fetch error:', err.message);
   }
 }
 
