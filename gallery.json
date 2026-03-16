@@ -1,5 +1,6 @@
 {
   "categories": {
+    "ups-power-backup.webp": "בלוג",
     "start-menu-cleanup.webp": "בלוג",
     "stop-using-ccleaner.webp": "בלוג",
     "taskbar-hidden-programs.webp": "בלוג",
@@ -46,6 +47,7 @@
     "1773136239986_yomano-main-suspect.webp": "כללי"
   },
   "order": [
+    "ups-power-backup.webp",
     "start-menu-cleanup.webp",
     "stop-using-ccleaner.webp",
     "taskbar-hidden-programs.webp",
