@@ -2452,7 +2452,7 @@ function switchInsightTab(i) {
 function toggleCountSort() {
   contactSortDir = contactSortDir === 'desc' ? 'asc' : 'desc';
   const arrow = document.getElementById('sort-arrow');
-  if (arrow) arrow.textContent = contactSortDir === 'desc' ? '↓' : '↑';
+  if (arrow) arrow.innerHTML = contactSortDir === 'desc' ? '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 5 12 19"/><polyline points="8 15 12 19 16 15"/></svg>' : '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 19 12 5"/><polyline points="8 9 12 5 16 9"/></svg>';
   filterContacts();
 }
 

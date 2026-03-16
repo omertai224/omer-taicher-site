@@ -86,12 +86,8 @@ nav {
 .tag-auto { background: #e8f5e9; color: #2e7d32; }
 .tag-you { background: var(--orange-light); color: var(--orange-deep); }
 .flow-arrow {
-  width: 2px; height: 28px; background: var(--border); position: relative;
-}
-.flow-arrow::after {
-  content: ''; position: absolute; bottom: -4px; left: 50%; transform: translateX(-50%);
-  border-left: 6px solid transparent; border-right: 6px solid transparent;
-  border-top: 6px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  padding: 4px 0; color: var(--orange-deep);
 }
 
 /* SECTIONS */
@@ -206,7 +202,7 @@ footer {
       <div class="flow-desc">מסבירים מה רוצים. Claude Code עובד על הקבצים.</div>
     </div>
   </div>
-  <div class="flow-arrow"></div>
+  <div class="flow-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div>
   <div class="flow-step">
     <div class="flow-num">2</div>
     <div class="flow-content">
@@ -215,7 +211,7 @@ footer {
       <span class="flow-tag tag-auto">אוטומטי</span>
     </div>
   </div>
-  <div class="flow-arrow"></div>
+  <div class="flow-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div>
   <div class="flow-step">
     <div class="flow-num you">3</div>
     <div class="flow-content">
@@ -224,7 +220,7 @@ footer {
       <span class="flow-tag tag-you">אתה עושה</span>
     </div>
   </div>
-  <div class="flow-arrow"></div>
+  <div class="flow-arrow"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/></svg></div>
   <div class="flow-step">
     <div class="flow-num">4</div>
     <div class="flow-content">
