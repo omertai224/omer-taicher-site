@@ -318,6 +318,7 @@ function renderBlogList() {
         <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
       </div>
       <div style="display:flex;gap:8px">
+        <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogDownloadAll()">הורד הכל</button>
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogCopyAll()">העתק הכל</button>
       </div>
     </div>
@@ -412,6 +413,24 @@ function blogCopyById(id) {
 }
 
 // ברירות מחדל להנחיות
+
+function blogDownloadAll() {
+  const lines = blogPosts.map(p => {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = p.body || '';
+    const bodyText = tmp.textContent || tmp.innerText || '';
+    return `===== ${p.title} =====\nתאריך: ${p.date || ''}\nתקציר: ${p.excerpt || ''}\n\n${bodyText}`;
+  });
+  const text = lines.join('\n\n' + '='.repeat(50) + '\n\n');
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'blog-posts.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+  setStatus('content', 'ok', '✓ ' + blogPosts.length + ' פוסטים הורדו כקובץ TXT');
+}
 
 function blogCopyAll() {
   const text = JSON.stringify({ posts: blogPosts }, null, 2);
