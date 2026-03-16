@@ -2061,9 +2061,7 @@ async function uploadPickerImage(input, key) {
     if (data.url) {
       // שמירה גם בגלריה עם קטגוריה לפי ריפו
       const repoCategories = {
-        'omer-taicher-site': 'דף ראשי',
-        'omer-taicher-blog': 'בלוג',
-        'omer-taicher-interactive': 'אינטראקטיבי'
+        'omer-taicher-blog': 'בלוג'
       };
       const category = repoCategories[GITHUB_REPO] || 'כללי';
       const resourceType = file.type.startsWith('video') ? 'video' : 'image';
