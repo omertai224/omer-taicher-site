@@ -130,56 +130,62 @@ export default async function handler(req, res) {
   }
 
   try {
-    // PayPlus sends callback as GET (query params) or POST (body) depending on dashboard settings
-    const data = req.method === 'GET' ? req.query : (req.body || {});
-    const { transaction_uid, page_request_uid } = data;
+    // PayPlus sends callback as POST with nested structure:
+    // { transaction_type, transaction: { uid, payment_page_request_uid, ... }, data: { customer_email, ... } }
+    const body = req.method === 'GET' ? req.query : (req.body || {});
+    const transaction = body.transaction || {};
+    const callbackData = body.data || {};
 
-    if (!transaction_uid && !page_request_uid) {
-      console.error('Webhook: missing transaction identifiers', { method: req.method, data });
+    const transactionUid = transaction.uid || body.transaction_uid;
+    const pageRequestUid = transaction.payment_page_request_uid || body.page_request_uid;
+
+    if (!transactionUid && !pageRequestUid) {
+      console.error('Webhook: missing transaction identifiers', { method: req.method, body });
       return res.status(400).json({ error: 'Missing transaction data' });
     }
 
     console.log('PayPlus webhook received:', {
       method: req.method,
-      transaction_uid,
-      page_request_uid,
-      status: data?.status,
-      status_description: data?.status_description,
-      amount: data?.amount,
-      currency_code: data?.currency_code,
-      type: data?.type
+      transaction_type: body.transaction_type,
+      transaction_uid: transactionUid,
+      page_request_uid: pageRequestUid,
+      status_code: transaction.status_code,
+      amount: transaction.amount,
+      currency: transaction.currency,
+      more_info: transaction.more_info,
+      customer_email: callbackData.customer_email
     });
 
-    // אימות העסקה מול PayPlus API
-    if (page_request_uid) {
+    // status_code "000" = עסקה מוצלחת
+    const isApproved = transaction.status_code === '000';
+
+    if (isApproved && pageRequestUid) {
+      // אימות העסקה מול PayPlus API
       const verifyResponse = await fetch(`${PAYPLUS_BASE_URL}/api/v1.0/PaymentPages/ipn`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Authorization': JSON.stringify({ api_key: API_KEY, secret_key: SECRET_KEY })
         },
-        body: JSON.stringify({ page_request_uid })
+        body: JSON.stringify({ page_request_uid: pageRequestUid })
       });
 
       const verifyData = await verifyResponse.json();
       const paymentStatus = verifyData?.data?.status_description;
 
       console.log('PayPlus IPN verification:', {
-        page_request_uid,
+        page_request_uid: pageRequestUid,
         verified_status: paymentStatus,
-        amount: verifyData?.data?.amount,
-        customer_email: verifyData?.data?.customer_email,
-        more_info: verifyData?.data?.more_info
+        amount: verifyData?.data?.amount
       });
 
-      // שליחת מייל עם קישור להדרכה רק אם התשלום אושר
+      // שליחת מייל והודעת WhatsApp רק אם התשלום אומת כמאושר
       if (paymentStatus === 'approved') {
-        const customerEmail = verifyData?.data?.customer_email;
-        const customerName  = verifyData?.data?.customer_name;
-        const productKey    = verifyData?.data?.more_info;
+        const customerEmail = callbackData.customer_email || verifyData?.data?.customer_email;
+        const customerName  = callbackData.customer_name || verifyData?.data?.customer_name;
+        const customerPhone = callbackData.customer_phone || verifyData?.data?.customer_phone;
+        const productKey    = transaction.more_info || verifyData?.data?.more_info;
         const product       = productKey && PRODUCTS[productKey] ? PRODUCTS[productKey] : null;
-
-        const customerPhone = verifyData?.data?.customer_phone;
 
         if (product) {
           const tasks = [];
