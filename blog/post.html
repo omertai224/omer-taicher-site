@@ -438,32 +438,29 @@ async function init() {
       if (!res.ok) throw new Error(res.status);
       data = await res.json();
     } catch {
-      // Try individual post file first (lightweight), then full posts.json as last resort
+      // Try individual post file, then index for prev/next navigation
       let post = null, posts = [];
       if (branch && branch !== 'main') {
-        const postsUrl = `https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts.json?t=${Date.now()}`;
+        const postsUrl = `https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts-index.json?t=${Date.now()}`;
         const res = await fetch(postsUrl);
         const raw = await res.json();
         posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
-        post = posts.find(p => p.id === id);
+        // טוען body מקובץ בודד
+        try {
+          const postRes = await fetch(`https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts/${encodeURIComponent(id)}.json?t=${Date.now()}`);
+          if (postRes.ok) post = await postRes.json();
+        } catch {}
+        if (!post) post = posts.find(p => p.id === id);
       } else {
         try {
           const res = await fetch(`/blog/posts/${encodeURIComponent(id)}.json`);
           if (res.ok) post = await res.json();
         } catch {}
-        if (!post) {
-          const res = await fetch('/blog/posts.json');
-          const raw = await res.json();
-          posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
-          post = posts.find(p => p.id === id);
-        }
-        if (post && !posts.length) {
-          try {
-            const idxRes = await fetch('/blog/posts-index.json');
-            const idxData = await idxRes.json();
-            posts = (idxData.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
-          } catch {}
-        }
+        try {
+          const idxRes = await fetch('/blog/posts-index.json');
+          const idxData = await idxRes.json();
+          posts = (idxData.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+        } catch {}
       }
       if (!post) {
         container.innerHTML = `<div class="not-found"><h2>פוסט לא נמצא</h2><p>הפוסט המבוקש לא קיים.</p><a href="/blog/">חזרה לבלוג</a></div>`;

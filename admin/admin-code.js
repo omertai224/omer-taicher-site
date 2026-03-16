@@ -219,10 +219,13 @@ async function createNewFile(filepath, isFolderInit) {
   }
 }
 
-async function deleteFile() {
+function deleteFile() {
   if (!currentCodeFile) return;
   const filename = currentCodeFile.split('/').pop();
-  if (!confirm('למחוק את ' + filename + '?\nגיבוי אוטומטי ייצור לפני המחיקה.')) return;
+  showConfirm('למחוק את ' + filename + '?', () => _deleteFileExec(), { yes: 'מחק', color: '#ef4444', sub: 'גיבוי אוטומטי ייצור לפני המחיקה' });
+}
+async function _deleteFileExec() {
+  const filename = currentCodeFile.split('/').pop();
   setStatus('code', 'loading', 'מוחק ' + filename + '...');
   try {
     const resolvedDelPath = resolveRepoPath(currentCodeFile);
@@ -486,13 +489,5 @@ async function collectAllFiles(path, result, rootOnly = false) {
 }
 
 function showWarnModal(onConfirm) {
-  const modal = document.getElementById('warn-modal');
-  modal.style.display = 'flex';
-  document.getElementById('warn-modal-yes').onclick = () => {
-    modal.style.display = 'none';
-    onConfirm();
-  };
-  document.getElementById('warn-modal-no').onclick = () => {
-    modal.style.display = 'none';
-  };
+  showConfirm('שינוי דף הבית הראשי', onConfirm, { yes: 'כן, המשך', color: '#1e5f74', sub: 'בטוח שזה לא index.html של האדמין?', icon: '⚠️' });
 }

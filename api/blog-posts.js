@@ -2,22 +2,14 @@ import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 
 function loadIndex(cwd) {
-  // Prefer lightweight index (no body), fallback to full posts.json
   const indexPath = join(cwd, 'blog', 'posts-index.json');
-  const fullPath = join(cwd, 'blog', 'posts.json');
-  const src = existsSync(indexPath) ? indexPath : fullPath;
-  const data = JSON.parse(readFileSync(src, 'utf-8'));
+  const data = JSON.parse(readFileSync(indexPath, 'utf-8'));
   return (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 function loadPost(cwd, id) {
-  // Prefer individual post file, fallback to full posts.json
   const postPath = join(cwd, 'blog', 'posts', id + '.json');
-  if (existsSync(postPath)) {
-    return JSON.parse(readFileSync(postPath, 'utf-8'));
-  }
-  const data = JSON.parse(readFileSync(join(cwd, 'blog', 'posts.json'), 'utf-8'));
-  return (data.posts || []).find(p => p.id === id) || null;
+  return JSON.parse(readFileSync(postPath, 'utf-8'));
 }
 
 export default function handler(req, res) {

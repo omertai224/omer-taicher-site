@@ -22,14 +22,10 @@ export default function handler(req, res) {
 
   if (id) {
     try {
-      // Prefer individual post file, fallback to full posts.json
       let post;
       const postPath = join(cwd, 'blog', 'posts', id + '.json');
       if (existsSync(postPath)) {
         post = JSON.parse(readFileSync(postPath, 'utf-8'));
-      } else {
-        const data = JSON.parse(readFileSync(join(cwd, 'blog', 'posts.json'), 'utf-8'));
-        post = (data.posts || []).find(p => p.id === id);
       }
 
       if (post) {

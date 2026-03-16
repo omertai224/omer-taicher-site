@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from 'fs';
+import { readFileSync } from 'fs';
 import { join } from 'path';
 
 function xmlEscape(str) {
@@ -24,10 +24,8 @@ function formatDate(dateStr) {
 
 export default function handler(req, res) {
   const cwd = process.cwd();
-  const indexPath = join(cwd, 'blog', 'posts-index.json');
-  const fullPath = join(cwd, 'blog', 'posts.json');
   const data = JSON.parse(
-    readFileSync(existsSync(indexPath) ? indexPath : fullPath, 'utf-8')
+    readFileSync(join(cwd, 'blog', 'posts-index.json'), 'utf-8')
   );
 
   const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
