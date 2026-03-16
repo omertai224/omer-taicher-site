@@ -125,26 +125,29 @@ async function sendWhatsApp(customerPhone, customerName, product) {
 }
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
+  if (req.method !== 'POST' && req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { transaction_uid, page_request_uid } = req.body || {};
+    // PayPlus sends callback as GET (query params) or POST (body) depending on dashboard settings
+    const data = req.method === 'GET' ? req.query : (req.body || {});
+    const { transaction_uid, page_request_uid } = data;
 
     if (!transaction_uid && !page_request_uid) {
-      console.error('Webhook: missing transaction identifiers', req.body);
+      console.error('Webhook: missing transaction identifiers', { method: req.method, data });
       return res.status(400).json({ error: 'Missing transaction data' });
     }
 
     console.log('PayPlus webhook received:', {
+      method: req.method,
       transaction_uid,
       page_request_uid,
-      status: req.body?.status,
-      status_description: req.body?.status_description,
-      amount: req.body?.amount,
-      currency_code: req.body?.currency_code,
-      type: req.body?.type
+      status: data?.status,
+      status_description: data?.status_description,
+      amount: data?.amount,
+      currency_code: data?.currency_code,
+      type: data?.type
     });
 
     // אימות העסקה מול PayPlus API
