@@ -656,7 +656,7 @@ function showBlogForm(post) {
       <div style="display:flex;gap:8px;align-items:center;margin-top:4px;flex-wrap:wrap">
         <input id="bf-image" type="text" value="${post.image || ''}" placeholder="URL של תמונה" style="direction:ltr;text-align:left;flex:1;min-width:0">
         <button onclick="triggerImageUpload()" id="bf-upload-btn" style="background:var(--navy);color:#fff;border:none;padding:10px 16px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0">העלאת תמונה</button>
-        <button onclick="openBlogGalleryPicker()" style="background:var(--cream);color:var(--navy);border:1.5px solid var(--navy);padding:10px 16px;border-radius:20px;font-size:0.8rem;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap;flex-shrink:0">בחירה מגלריה</button>
+
         <input type="file" id="bf-image-file" accept="image/*,video/*" style="display:none" onchange="uploadToCloudinary(this)">
       </div>
       <div id="bf-image-preview" style="margin-top:8px;${post.image ? '' : 'display:none'}">
@@ -902,57 +902,6 @@ async function uploadToCloudinary(input) {
   input.value = '';
 }
 
-async function openBlogGalleryPicker() {
-  if (!galleryItems.length) await loadGalleryManager();
-  const blogImages = galleryItems.filter(i => i.type !== 'video');
-
-  const overlay = document.createElement('div');
-  overlay.id = 'blog-gallery-picker';
-  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;';
-
-  const gridHTML = blogImages.length === 0
-    ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">אין תמונות בגלריה</div>`
-    : blogImages.map((item, i) => {
-        const realIndex = galleryItems.indexOf(item);
-        return `
-        <div style="position:relative;border-radius:10px;overflow:hidden;border:1px solid var(--border);background:#f5f5f5;aspect-ratio:1;cursor:pointer;"
-             onclick="selectImageFromGalleryPicker('${item.url}')">
-          <img src="${item.url}" style="width:100%;height:100%;object-fit:cover;" loading="lazy" alt="${escapeHtml(item.name)}">
-          <div style="position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;flex-direction:column;justify-content:flex-end;padding:6px;gap:3px;opacity:0;transition:all 0.2s;"
-               onmouseenter="this.style.background='rgba(0,0,0,0.55)';this.style.opacity='1'"
-               onmouseleave="this.style.background='rgba(0,0,0,0)';this.style.opacity='0'">
-            <button onclick="event.stopPropagation();copyGalleryUrl('${item.url}')" style="background:var(--orange-deep);color:#fff;border:none;width:100%;padding:6px;border-radius:6px;font-family:inherit;font-size:0.72rem;font-weight:700;cursor:pointer;">העתק קישור</button>
-            <button onclick="event.stopPropagation();deleteGalleryItem(${realIndex});document.getElementById('blog-gallery-picker').remove();setTimeout(openBlogGalleryPicker,300)" style="background:rgba(220,38,38,0.85);color:#fff;border:none;width:100%;padding:5px;border-radius:6px;font-family:inherit;font-size:0.68rem;font-weight:600;cursor:pointer;">מחק</button>
-          </div>
-        </div>`;
-      }).join('');
-
-  overlay.innerHTML = `
-    <div style="background:#fff;border-radius:16px;padding:24px;width:100%;max-width:780px;max-height:88vh;display:flex;flex-direction:column;gap:16px;direction:rtl;box-shadow:0 8px 40px rgba(0,0,0,0.2);">
-      <div style="display:flex;align-items:center;justify-content:space-between;">
-        <div style="font-size:1.05rem;font-weight:800;color:var(--navy)">בחירה מגלריה</div>
-        <button onclick="document.getElementById('blog-gallery-picker').remove()" style="background:none;border:none;cursor:pointer;font-size:1.3rem;color:var(--text-mid);line-height:1;">✕</button>
-      </div>
-      <div style="font-size:0.78rem;color:var(--text-light)">לחצו על תמונה כדי לבחור אותה</div>
-      <div style="overflow-y:auto;flex:1;">
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;">
-          ${gridHTML}
-        </div>
-      </div>
-    </div>`;
-
-  document.body.appendChild(overlay);
-}
-
-function selectImageFromGalleryPicker(url) {
-  document.getElementById('bf-image').value = url;
-  const preview = document.getElementById('bf-image-preview');
-  if (preview) {
-    preview.style.display = 'block';
-    preview.querySelector('img').src = url;
-  }
-  document.getElementById('blog-gallery-picker')?.remove();
-}
 
 function clearPostImage() {
   document.getElementById('bf-image').value = '';
