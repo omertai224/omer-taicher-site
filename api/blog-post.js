@@ -9,12 +9,13 @@ function escapeAttr(str) {
   return String(str || '')
     .replace(/&/g, '&amp;')
     .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 }
 
 export default function handler(req, res) {
-  const id = req.query.id || '';
+  const id = String(req.query.id || '').replace(/[^a-zA-Z0-9_-]/g, '');
   const cwd = process.cwd();
 
   let html = readFileSync(join(cwd, 'blog', 'post.html'), 'utf-8');
