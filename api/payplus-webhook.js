@@ -92,7 +92,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
 function formatPhone(phone) {
   if (!phone) return null;
   // מסיר מקפים, רווחים וסוגריים
-  let clean = phone.replace(/[\s\-()]/g, '');
+  let clean = phone.replace(/[\s\-()+]/g, '');
   // ישראלי שמתחיל ב-0 → 972
   if (clean.startsWith('0')) clean = '972' + clean.slice(1);
   // מוסיף 972 אם חסר קידומת
@@ -153,6 +153,8 @@ export default async function handler(req, res) {
       amount: transaction.amount,
       currency: transaction.currency,
       more_info: transaction.more_info,
+      more_info_1_phone: transaction.more_info_1,
+      more_info_2_name: transaction.more_info_2,
       customer_email: callbackData.customer_email
     });
 
