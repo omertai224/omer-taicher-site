@@ -2,7 +2,7 @@
   "posts": [
     {
       "id": "youtube-video-ends-with-pizza",
-      "title": "<p>ראיתם סרטון מדהים ביוטיוב?1</p><p>רוב הסיכויים שהוא ייגמר בפיצה.</p>",
+      "title": "<p>ראיתם סרטון מדהים ביוטיוב?</p><p>רוב הסיכויים שהוא ייגמר בפיצה.</p>",
       "excerpt": "<p>רואים סרטון מבריק.</p><p>מרגישים חכמים יותר.</p><p>ואז לא עושים כלום עם זה.</p>",
       "date": "2025-12-28",
       "image": "https://media.omertai.net/youtube-video-ends-with-pizza_hero.webp",
@@ -12,7 +12,7 @@
     },
     {
       "id": "ont-turn-off-during-update",
-      "title": "<p>המחשב שלכם בניתוח עדין.1</p><p>אל תנתקו אותו באמצע.</p>",
+      "title": "<p>המחשב שלכם בניתוח עדין.</p><p>אל תנתקו אותו באמצע.</p>",
       "excerpt": "<p>כתוב על המסך לא לכבות.</p><p>אתם מכבים.</p><p>זה בדיוק הרגע שבו הכל יכול להישבר.</p>",
       "date": "2025-12-24",
       "image": "https://media.omertai.net/ont-turn-off-during-update_hero.webp",
@@ -22,7 +22,7 @@
     },
     {
       "id": "messy-desktop-rescue",
-      "title": "<p>כששולחן העבודה לוחש \"הצילו\"1</p>",
+      "title": "<p>כששולחן העבודה לוחש \"הצילו\"</p>",
       "excerpt": "<p>אייקונים בכל מקום.</p><p>קבצים מהשנה שעברה.</p><p>צילומי מסך שאין מושג מאיפה הגיעו.</p><p>הגיע הזמן לסדר.</p>",
       "date": "2025-12-23",
       "image": "https://media.omertai.net/messy-desktop-rescue_hero.webp",
