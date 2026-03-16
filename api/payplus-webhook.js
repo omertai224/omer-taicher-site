@@ -115,19 +115,26 @@ async function sendWhatsApp(customerPhone, customerName, product) {
   const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}\n\nשאלות? פשוט תענו להודעה הזו 😊\nעומר טייכר`;
 
   try {
-    const apiUrl = `https://7105.api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
-    console.log('WhatsApp sending to chatId:', chatId);
+    const apiHost = process.env.GREENAPI_API_URL || 'https://api.greenapi.com';
+    const apiUrl = `${apiHost}/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
+    console.log('WhatsApp sending to chatId:', chatId, 'url:', apiUrl);
     const response = await fetch(apiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chatId, message })
     });
 
-    const data = await response.json();
+    const text = await response.text();
+    if (!response.ok) {
+      console.error('WhatsApp API error:', response.status, text.slice(0, 200));
+      return;
+    }
+
+    const data = JSON.parse(text);
     if (data.idMessage) {
       console.log('WhatsApp sent to:', customerPhone);
     } else {
-      console.error('WhatsApp send error:', response.status, data);
+      console.error('WhatsApp send error:', data);
     }
   } catch (err) {
     console.error('WhatsApp fetch error:', err.message);
