@@ -663,12 +663,14 @@ async function init() {
 init();
 
 function initShareButtons() {
-  const url = encodeURIComponent(window.location.href);
-  const title = encodeURIComponent(document.title);
+  const url = window.location.href;
+  const post = window._currentPost;
+  const postTitle = post ? post.title.replace(/<\/p>\s*<p>/gi, '\n').replace(/<[^>]+>/g, '').trim() : document.title;
+  const waText = encodeURIComponent('קראתי פוסט מעניין ורציתי לשתף אותך 😊\n\n' + postTitle + '\n\nלקריאה המלאה 👇\n' + url);
   const waBtn = document.getElementById('share-wa');
   const fbBtn = document.getElementById('share-fb');
-  if (waBtn) waBtn.href = `https://wa.me/?text=${title}%20${url}`;
-  if (fbBtn) fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+  if (waBtn) waBtn.href = `https://wa.me/?text=${waText}`;
+  if (fbBtn) fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
 }
 
 function copyLink(btn) {
