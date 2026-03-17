@@ -290,7 +290,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       const isSoon = p.status === 'coming_soon';
       const badge = isSoon ? '<div class="ws-soon-badge">בקרוב</div>' : (p.label ? `<div class="ws-new-badge">${p.label}</div>` : '');
       const btn = isSoon
-        ? '<span class="ws-btn ws-btn-soon">בקרוב</span>'
+        ? ''
         : `<a href="${p.checkout_url}" class="ws-btn"><span class="btn-arrow">להצטרפות ${joinSVG}</span></a>`;
       return `<div class="ws-card${isSoon ? ' ws-card-soon' : ''}">
         ${badge}
