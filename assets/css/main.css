@@ -72,7 +72,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 .hero-lead p { margin-bottom: 0; }
 .hero-client-quote { background: var(--navy-light); border-right: 4px solid var(--orange-deep); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 28px 0; font-size: 0.97rem; color: var(--navy); font-style: italic; line-height: 1.65; }
 .hero-client-name { display: block; margin-top: 8px; font-style: normal; font-size: 0.75rem; color: var(--text-light); font-weight: 600; }
-.hero-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.hero-actions { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; margin-bottom: 24px; }
 .hero-actions .btn-primary { display: none; }
 .hero-actions .btn-secondary { padding: 12px 28px; font-size: 0.9rem; width: auto; display: inline-block; }
 
@@ -159,7 +159,7 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 .testi-section { background: var(--orange-light); }
 .featured-quote-wrap { background: var(--navy); border-radius: 18px; padding: 32px; margin-bottom: 24px; }
 .featured-img-col { display: block; margin-bottom: 24px; }
-.featured-img-col img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; display: block; }
+.featured-img-col img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 12px; display: block; }
 .featured-text-col { display: flex; flex-direction: column; justify-content: center; }
 .featured-quote-text { font-size: 1.1rem; color: #fff; font-style: italic; line-height: 1.75; margin-bottom: 12px; }
 .featured-quote-attr { font-size: 0.75rem; color: var(--orange); font-weight: 600; }
@@ -199,7 +199,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   .pain-section { padding: 72px 32px; }
   .section-wrap { padding: 72px 32px; }
   footer { padding: 16px 32px; }
-  .hero-actions { flex-direction: row; }
+  .hero-actions { flex-direction: row; margin-bottom: 0; }
   .hero-actions .btn-primary { display: inline-block; }
   .hero-actions .btn-secondary { padding: 15px 32px; font-size: 1rem; }
   .btn-full { width: auto; display: inline-block; }
@@ -237,7 +237,7 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   .lecture-photo-wrap { width: 240px; height: 240px; border-radius: 50%; aspect-ratio: 1; margin-bottom: 0; }
   .featured-quote-wrap { display: grid; grid-template-columns: 420px 1fr; gap: 48px; align-items: center; }
   .featured-img-col { width: 100%; display: block; flex-shrink: 0; }
-  .featured-img-col img { aspect-ratio: auto; object-fit: contain; background: #0f2a3a; }
+  .featured-img-col img { aspect-ratio: 3/2; }
   .featured-text-col { flex: 1; }
   .testi-grid { grid-template-columns: repeat(3, 1fr); }
   .blog-grid { grid-template-columns: repeat(3, 1fr); }
