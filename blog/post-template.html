@@ -74,10 +74,9 @@ nav {
 /* POST HEADER */
 .post-header {
   background:var(--cream2);
-  padding:48px 60px;
+  padding:48px max(60px, calc((100% - 640px) / 2));
   border-bottom:1px solid var(--border);
-  max-width:760px;
-  margin:60px auto 0;
+  margin-top:60px;
   display:grid;
   grid-template-columns:1fr 200px;
   gap:32px;
@@ -133,7 +132,6 @@ nav {
   max-width:680px;
   margin:0 auto;
   padding:52px 60px 60px;
-  border-bottom:1px solid var(--border);
 }
 .post-body { font-size:1rem; line-height:1.85; color:var(--text); }
 .post-body h2 {
@@ -276,11 +274,8 @@ nav {
 
 /* NAV PREV/NEXT */
 .post-nav {
-  max-width:760px;
-  margin:0 auto;
-  padding:36px 60px;
+  padding:36px max(60px, calc((100% - 640px) / 2));
   display:flex; gap:16px;
-  margin-bottom:48px;
   border-bottom:1px solid var(--border);
   background:var(--cream2);
 }
@@ -302,9 +297,7 @@ nav {
 
 /* SHARE BUTTONS */
 .share-bar {
-  max-width:760px;
-  margin:0 auto;
-  padding:28px 60px;
+  padding:28px max(60px, calc((100% - 640px) / 2));
   background:var(--cream2);
   border-bottom:1px solid var(--border);
 }
@@ -355,9 +348,7 @@ nav {
 
 /* WHATSAPP JOIN BLOCK */
 .wa-join {
-  max-width:760px;
-  margin:0 auto;
-  padding:40px 60px;
+  padding:40px max(60px, calc((100% - 640px) / 2));
   background:var(--cream2);
   border-bottom:1px solid var(--border);
   display:flex; align-items:center; justify-content:space-between; gap:32px;
@@ -434,7 +425,8 @@ footer {
 /* MOBILE */
 @media(max-width:768px){
   nav { padding:0 20px; }
-  .post-header, .post-body-wrap, .post-nav { padding-right:20px; padding-left:20px; }
+  .post-header, .post-nav, .share-bar, .wa-join { padding-right:20px; padding-left:20px; }
+  .post-body-wrap { padding-right:20px; padding-left:20px; }
   .post-header { padding-top:36px; margin-top:0; grid-template-columns:1fr; }
   .post-image-box { width:100%; max-width:280px; margin:0 auto; }
   .post-body-wrap { padding-top:32px; padding-bottom:40px; }
@@ -629,7 +621,6 @@ async function init() {
       </div>
       <div class="post-body-wrap">
         <div class="post-body">${post.body}</div>
-      </div>
       </div>
       <div class="share-bar">
         <p class="share-intro">אם זה עזר לכם, אולי יעזור גם למישהו שאתם מכירים.</p>
