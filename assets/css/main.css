@@ -116,7 +116,6 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 
 /* ===== WORKSHOPS ===== */
 .workshops-section { background: var(--white); }
-.workshops-section .section-wrap { padding-bottom: 36px; }
 .ws-grid { display: flex; flex-direction: column; gap: 16px; }
 .ws-card { border: 1.5px solid var(--border); border-radius: 18px; padding: 24px; background: var(--cream); transition: all 0.25s; display: flex; flex-direction: column; }
 .ws-card:hover { box-shadow: 0 12px 32px var(--shadow); border-color: var(--orange-deep); background: var(--white); }
@@ -131,7 +130,6 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 
 /* ===== ABOUT ===== */
 .about-section { background: var(--cream); }
-.about-section .section-wrap { padding-top: 36px; }
 .about-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 12px 40px var(--shadow); margin-bottom: 36px; }
 .about-img-wrap img { width:100%; height:auto; aspect-ratio:3/4; object-fit:cover; object-position:center top; display:block; }
 .about-title { font-size: clamp(1.7rem, 6vw, 2.5rem); font-weight: 900; color: var(--navy); line-height: 1.2; margin-bottom: 20px; }
@@ -204,8 +202,6 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   .hero-actions { margin-bottom: 0; gap: 12px; }
   .hero-actions .btn-primary { padding: 15px 32px; font-size: 1rem; }
   .hero-actions .btn-secondary { padding: 15px 32px; font-size: 1rem; }
-  .workshops-section .section-wrap { padding-bottom: 72px; }
-  .about-section .section-wrap { padding-top: 72px; }
   .btn-full { width: auto; display: inline-block; }
   .ws-grid { grid-template-columns: 1fr 1fr; display: grid; }
   .testi-grid { display: grid; grid-template-columns: 1fr 1fr; }
@@ -232,8 +228,6 @@ footer { background: var(--white); border-top: 1px solid var(--border); padding:
   .pain-section { padding: 90px 60px; }
   .pain-grid { grid-template-columns: repeat(4, 1fr); }
   .section-wrap { padding: 90px 60px; }
-  .workshops-section .section-wrap { padding-bottom: 90px; }
-  .about-section .section-wrap { padding-top: 90px; }
   .ws-grid { grid-template-columns: repeat(4, 1fr); }
   .about-inner { display: grid; grid-template-columns: 380px 1fr; gap: 56px; align-items: start; }
   .about-img-wrap { margin-bottom: 0; max-width: 380px; }
