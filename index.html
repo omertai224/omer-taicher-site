@@ -44,9 +44,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @media(min-width:600px){.hero-actions{margin-bottom:0;gap:12px}.hero-actions .btn-primary{padding:15px 32px;font-size:1rem}.hero-actions .btn-secondary{padding:15px 32px;font-size:1rem}}
 @media(min-width:960px){.hamburger{display:none}.nav-links{display:flex;gap:28px;list-style:none;align-items:center}.nav-links a{color:#1a4a6b;text-decoration:none;font-size:0.85rem;font-weight:600;padding:7px 14px;border-radius:50px;background:#eef4f8;transition:background 0.2s,color 0.2s;display:inline-flex;align-items:center;gap:6px}.nav-mobile-cta{display:none}.hero{padding:20px 60px 80px;display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center;min-height:100vh}.profile-card{margin-top:0}nav{padding:0 60px}}
-#ws-grid{min-height:400px}#blog-grid{min-height:420px}
-@media(min-width:600px){#ws-grid{min-height:400px}#blog-grid{min-height:340px}}
-@media(min-width:960px){#ws-grid{min-height:220px}#blog-grid{min-height:300px}}
+#ws-grid{min-height:0}#blog-grid{min-height:0}
 </style>
   <meta name="description" content="עומר טייכר, טכנאי ומדריך מחשבים עם 25 שנות ניסיון. עורכי דין, מטפלים ועצמאים שרוצים שקט נפשי מהמחשב שלהם — מגיעים לעומר.">
   <meta property="og:title" content="עומר טייכר | טכנאי ומדריך מחשבים">
@@ -303,6 +301,14 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       </div>`;
     }).join('');
   }
+
+  var inlineProducts = [
+    { key:"vibe", status:"coming_soon", title:"ישיבות, הרצאות, שיעורים. הופכים לטקסט. בעברית. בחינם. על המחשב שלכם.", desc:"כלי AI שמתמלל כל קובץ שמע ווידאו, בלי לשלוח שום דבר לאינטרנט. אתם לומדים להתקין, להגדיר ולהשתמש בו, עד שזה עובד אצלכם.", price:47 },
+    { key:"ai", status:"coming_soon", title:"ChatGPT וקלוד בעבודה: איך לנסח, לסכם ולחשוב יחד עם AI", desc:"לא קורס תיאורטי. הדרכה מעשית שתלמדו להשתמש ב-AI כמו שצריך, עם דוגמאות מהעבודה שלכם.", price:47 },
+    { key:"security", status:"coming_soon", title:"סיסמאות, אימות דו-שלבי ואבטחת חשבונות: פעם אחת ולתמיד", desc:"מנהל סיסמאות מאפס, אימות דו-שלבי שעובד, וחשבונות מאובטחים. בלי לשכוח, בלי להינעל בחוץ.", price:47 }
+  ];
+  inlineProducts.forEach(function(p) { if (!p.checkout_url) p.checkout_url = '/pages/checkout/?product=' + p.key; });
+  renderProducts(inlineProducts);
 
   fetch('/interactive/interactive.json')
     .then(r => r.json())
