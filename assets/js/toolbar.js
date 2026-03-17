@@ -9,11 +9,16 @@
   // טעינת הגדרות שמורות
   try { const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); if (saved) Object.assign(settings, saved); } catch(e) {}
 
-  // ===== LOAD DYSLEXIA FONT =====
-  const fontLink = document.createElement('link');
-  fontLink.rel = 'stylesheet';
-  fontLink.href = 'https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap';
-  document.head.appendChild(fontLink);
+  // ===== LOAD DYSLEXIA FONT (lazy) =====
+  var lexendLoaded = false;
+  function loadLexend() {
+    if (lexendLoaded) return;
+    lexendLoaded = true;
+    var fontLink = document.createElement('link');
+    fontLink.rel = 'stylesheet';
+    fontLink.href = 'https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&display=swap';
+    document.head.appendChild(fontLink);
+  }
 
   // ===== STYLES =====
   const style = document.createElement('style');
@@ -378,7 +383,8 @@
 
   function applyScale(s) {
     settings.scale = Math.min(1.5, Math.max(0.8, parseFloat(s.toFixed(1))));
-    document.documentElement.style.fontSize = (settings.scale * 16) + 'px';
+    if (settings.scale === 1) document.documentElement.style.fontSize = '';
+    else document.documentElement.style.fontSize = (settings.scale * 16) + 'px';
     save();
   }
 
@@ -392,6 +398,7 @@
     html.classList.toggle('a11y-cursor', settings.cursor);
     html.classList.toggle('a11y-spacing', settings.spacing);
     html.classList.toggle('a11y-dyslexia', settings.dyslexia);
+    if (settings.dyslexia) loadLexend();
     html.classList.toggle('a11y-invert', settings.invert);
     html.classList.toggle('a11y-hide-images', settings.hideImages);
     html.classList.toggle('a11y-focus-highlight', settings.focusHighlight);
