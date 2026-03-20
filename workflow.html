@@ -192,7 +192,7 @@ nav {
 .tab-content.active { display: block; }
 .download-bar {
   max-width: 700px; margin: 20px auto 0; padding: 0 24px;
-  display: flex; justify-content: flex-end;
+  display: flex; justify-content: flex-end; gap: 10px;
 }
 .download-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -205,6 +205,15 @@ nav {
   background: var(--orange-deep); color: #fff;
 }
 .download-btn svg { flex-shrink: 0; }
+.copy-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border: 2px solid var(--navy);
+  background: #fff; color: var(--navy); border-radius: 10px;
+  font-family: 'Rubik', sans-serif; font-size: 0.88rem; font-weight: 700;
+  cursor: pointer; transition: all 0.2s;
+}
+.copy-btn:hover { background: var(--navy); color: #fff; }
+.copy-btn svg { flex-shrink: 0; }
 
 /* FORMULA TABLES */
 .formula-table {
@@ -313,6 +322,10 @@ footer {
   <button class="download-btn" onclick="downloadTab('workflow')">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
     הורד כטקסט
+  </button>
+  <button class="copy-btn" onclick="copyTab('workflow')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    העתק ללוח
   </button>
 </div>
 
@@ -541,6 +554,10 @@ footer {
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
     הורד כטקסט
   </button>
+  <button class="copy-btn" onclick="copyTab('posts')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    העתק ללוח
+  </button>
 </div>
   <div class="section">
     <div class="section-title">
@@ -674,6 +691,10 @@ footer {
   <button class="download-btn" onclick="downloadTab('interactive')">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
     הורד כטקסט
+  </button>
+  <button class="copy-btn" onclick="copyTab('interactive')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    העתק ללוח
   </button>
 </div>
   <div class="section">
@@ -849,11 +870,29 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+function copyTab(tabId) {
+  var el = document.getElementById('tab-' + tabId);
+  var text = el.innerText
+    .replace(/הורד כטקסט\n?/g, '')
+    .replace(/העתק ללוח\n?/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+  navigator.clipboard.writeText(text).then(function() {
+    var btn = el.querySelector('.copy-btn');
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> הועתק!';
+    btn.style.background = 'var(--navy)';
+    btn.style.color = '#fff';
+    setTimeout(function() { btn.innerHTML = orig; btn.style.background = ''; btn.style.color = ''; }, 2000);
+  });
+}
+
 function downloadTab(tabId) {
   var el = document.getElementById('tab-' + tabId);
   var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות' };
   var text = el.innerText
     .replace(/הורד כטקסט\n?/g, '')
+    .replace(/העתק ללוח\n?/g, '')
     .replace(/\n{3,}/g, '\n\n')
     .trim();
   var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
