@@ -381,7 +381,7 @@
     display: inline-flex; align-items: center; justify-content: center; gap: 7px;
     background: rgba(246,166,126,0.12);
     color: var(--orange);
-    padding: 9px 16px; border-radius: 10px;
+    padding: 9px 16px; border-radius: 50px;
     font-family: 'Rubik', sans-serif; font-size: 0.75rem; font-weight: 700;
     border: 1px solid rgba(246,166,126,0.3); cursor: pointer;
     transition: all 0.2s;
@@ -391,18 +391,18 @@
   .btn-prereqs:hover { background: rgba(246,166,126,0.25); border-color: rgba(246,166,126,0.5); }
   .prod-card { position: relative; overflow: visible; }
   .prereqs-popup {
-    display: none; position: absolute; left: 50%; top: 100%;
+    display: none; position: absolute; left: 50%; bottom: calc(100% + 8px);
     transform: translateX(-50%);
     background: #0d1b2a; border: 1px solid rgba(246,166,126,0.3); border-radius: 14px;
     padding: 18px 22px; width: 290px; z-index: 50;
     box-shadow: 0 12px 40px rgba(0,0,0,0.5);
-    margin-top: 8px;
   }
   .prereqs-popup.show { display: block; }
-  .prereqs-popup-title { font-size: 0.85rem; font-weight: 800; color: var(--orange); margin-bottom: 12px; }
+  .prereqs-popup-title { font-size: 0.85rem; font-weight: 800; color: var(--orange); margin-bottom: 12px; text-align: center; }
   .prereqs-popup-item {
     font-size: 0.8rem; color: rgba(255,255,255,0.85); line-height: 1.7;
     padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
   }
   .prereqs-popup-item:last-child { border-bottom: none; }
   </style>
