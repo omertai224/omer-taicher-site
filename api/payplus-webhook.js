@@ -32,7 +32,8 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head><meta charset="UTF-8"></head>
-<body style="margin:0;padding:0;font-family:Arial,Helvetica,sans-serif;background:#fdf8f2;direction:rtl;">
+<body style="margin:0;padding:0;font-family:'Rubik',Arial,Helvetica,sans-serif;background:#fdf8f2;direction:rtl;">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;800&subset=hebrew&display=swap" rel="stylesheet">
 <div style="max-width:520px;margin:0 auto;padding:32px 16px;">
   <div style="text-align:center;margin-bottom:24px;">
     <span style="font-size:1.2rem;font-weight:800;color:#1a4a6b;">עומר <span style="color:#e8854a;">טייכר</span></span>
@@ -40,7 +41,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
   <div style="background:#fff;border-radius:16px;padding:28px 24px;border:1px solid #e8e0d5;">
     <div style="text-align:center;margin-bottom:20px;">
       <div style="width:56px;height:56px;background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
-        <span style="color:#fff;font-size:28px;">✓</span>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
     </div>
     <h1 style="text-align:center;color:#1a4a6b;font-size:1.4rem;margin:0 0 8px;">התשלום התקבל בהצלחה</h1>
@@ -68,7 +69,8 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
     ` : ''}
     <div style="text-align:center;">
       <a href="${product.url}" style="display:inline-block;background:#e8854a;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;">
-        עברו להדרכה עכשיו →
+        עברו להדרכה עכשיו
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px;"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
       </a>
     </div>
     <p style="text-align:center;color:#8a7f72;font-size:0.78rem;margin-top:16px;">
@@ -76,7 +78,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
     </p>
   </div>
   <p style="text-align:center;color:#8a7f72;font-size:0.75rem;margin-top:20px;">
-    שאלות? <a href="mailto:omer@omertai.net" style="color:#1a4a6b;font-weight:700;">omer@omertai.net</a>
+    שאלות? <a href="mailto:omertai224@gmail.com" style="color:#1a4a6b;font-weight:700;">omertai224@gmail.com</a>
   </p>
 </div>
 </body>
@@ -91,7 +93,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
     body: JSON.stringify({
       sender: { name: 'עומר טייכר', email: 'omertai224@gmail.com' },
       to: [{ email: customerEmail, name: customerName || customerEmail }],
-      subject: `ההדרכה שלכם מוכנה — ${product.name}`,
+      subject: `ההדרכה שלכם מוכנה - ${product.name}`,
       htmlContent
     })
   });
