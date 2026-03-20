@@ -40,9 +40,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
   </div>
   <div style="background:#fff;border-radius:16px;padding:28px 24px;border:1px solid #e8e0d5;">
     <div style="text-align:center;margin-bottom:20px;">
-      <div style="width:56px;height:56px;background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
+      <div style="width:56px;height:56px;background:linear-gradient(135deg,#16a34a,#22c55e);border-radius:50%;display:inline-block;line-height:56px;text-align:center;font-size:28px;color:#fff;">&#10003;</div>
     </div>
     <h1 style="text-align:center;color:#1a4a6b;font-size:1.4rem;margin:0 0 8px;">התשלום התקבל בהצלחה</h1>
     <p style="text-align:center;color:#8a7f72;font-size:0.9rem;margin:0 0 24px;">
@@ -65,12 +63,12 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
           <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.pass}</td>
         </tr>
       </table>
+      <p style="margin:10px 0 0;font-size:0.75rem;color:#b0a090;line-height:1.5;">פרטי הכניסה אישיים ואינם ניתנים להעברה.</p>
     </div>
     ` : ''}
     <div style="text-align:center;">
       <a href="${product.url}" style="display:inline-block;background:#e8854a;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;">
-        עברו להדרכה עכשיו
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px;"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
+        &#8592; עברו להדרכה עכשיו
       </a>
     </div>
     <p style="text-align:center;color:#8a7f72;font-size:0.78rem;margin-top:16px;">
@@ -125,7 +123,7 @@ async function sendWhatsApp(customerPhone, customerName, product) {
 
   const name = customerName ? ` ${customerName}` : '';
   const loginBlock = product.user && product.pass
-    ? `\n\nפרטי הכניסה שלכם:\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
+    ? `\n\nפרטי הכניסה שלכם:\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*\nפרטי הכניסה אישיים ואינם ניתנים להעברה.`
     : '';
   const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\n\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}${loginBlock}\n\nשאלות?\nפשוט תענו להודעה הזו 😊\nעומר טייכר`;
 
