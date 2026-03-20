@@ -68,7 +68,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
     ` : ''}
     <div style="text-align:center;">
       <a href="${product.url}" style="display:inline-block;background:#e8854a;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;">
-        &#8594; עברו להדרכה עכשיו &#8592;
+        עברו להדרכה עכשיו &#8592;
       </a>
     </div>
     <p style="text-align:center;color:#8a7f72;font-size:0.78rem;margin-top:16px;">
