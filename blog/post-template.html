@@ -504,7 +504,7 @@ async function init() {
         const postsUrl = `https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts-index.json?t=${Date.now()}`;
         const res = await fetch(postsUrl);
         const raw = await res.json();
-        posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+        posts = (raw.posts || []).filter(p => (p.status || 'published') === 'published').sort((a, b) => new Date(b.date) - new Date(a.date));
         // טוען body מקובץ בודד
         try {
           const postRes = await fetch(`https://raw.githubusercontent.com/omertai224/omer-taicher-site/${encodeURIComponent(branch)}/blog/posts/${encodeURIComponent(id)}.json?t=${Date.now()}`);
@@ -519,7 +519,7 @@ async function init() {
         try {
           const idxRes = await fetch('/blog/posts-index.json');
           const idxData = await idxRes.json();
-          posts = (idxData.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+          posts = (idxData.posts || []).filter(p => (p.status || 'published') === 'published').sort((a, b) => new Date(b.date) - new Date(a.date));
         } catch {}
       }
       if (!post) {

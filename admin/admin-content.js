@@ -223,6 +223,7 @@ async function loadBlogManager() {
 
 
 let blogImageFilter = 'all'; // 'all' | 'with' | 'without'
+let blogStatusFilter = 'published'; // 'published' | 'draft'
 
 function setBlogImageFilter(val) {
   blogImageFilter = val;
@@ -233,18 +234,33 @@ function setBlogImageFilter(val) {
   filterBlogList(document.querySelector('#blog-manager input[type=text]')?.value || '');
 }
 
+function setBlogStatusFilter(val) {
+  blogStatusFilter = val;
+  document.querySelectorAll('.blog-status-tab').forEach(btn => {
+    const isActive = btn.dataset.status === val;
+    btn.style.background = isActive ? 'var(--navy)' : 'transparent';
+    btn.style.color = isActive ? '#fff' : 'var(--text-mid)';
+    btn.style.borderColor = isActive ? 'var(--navy)' : 'var(--border)';
+  });
+  filterBlogList(document.querySelector('#blog-manager input[type=text]')?.value || '');
+}
+
 function filterBlogList(query) {
   const q = query.trim().toLowerCase();
   const items = document.getElementById('blog-list-items');
   if (!items) return;
-  let filtered = q
-    ? blogPosts.filter(p =>
+  let filtered = blogPosts.filter(p => {
+    const status = p.status || 'published';
+    return status === blogStatusFilter;
+  });
+  if (q) {
+    filtered = filtered.filter(p =>
         (p.title || '').toLowerCase().includes(q) ||
         (p.id || '').toLowerCase().includes(q) ||
         (p.body || '').toLowerCase().includes(q) ||
         (p.excerpt || '').toLowerCase().includes(q)
-      )
-    : blogPosts;
+      );
+  }
   if (blogImageFilter === 'with') filtered = filtered.filter(p => p.image);
   if (blogImageFilter === 'without') filtered = filtered.filter(p => !p.image);
   const counter = document.getElementById('blog-search-count');
@@ -254,6 +270,11 @@ function filterBlogList(query) {
     : filtered.map(p => {
       const sched = blogScheduled.find(s => s.postId === p.id);
       const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${sched.sendAt.replace('T',' ').slice(0,16)}</div>` : '';
+      const isDraft = p.status === 'draft';
+      const statusToggleLabel = isDraft ? 'פרסם' : 'העבר לטיוטה';
+      const statusToggleStyle = isDraft
+        ? 'background:#27ae60;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit'
+        : 'background:#fff3cd;color:#856404;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit';
       return `
       <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;">
         ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
@@ -262,7 +283,8 @@ function filterBlogList(query) {
           <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${q && !(p.title||"").toLowerCase().includes(q) && !(p.id||"").toLowerCase().includes(q) && !(p.excerpt||"").toLowerCase().includes(q) ? ' · <span style="color:#f6a67e;font-weight:700">נמצא בתוכן</span>' : ""}</div>
           ${schedTag}
         </div>
-        <div style="display:flex;gap:8px;flex-shrink:0">
+        <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
+          <button onclick="blogToggleStatus('${p.id}')" style="${statusToggleStyle}">${statusToggleLabel}</button>
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open(blogViewUrl('${p.id}'),'_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
@@ -279,11 +301,21 @@ function renderBlogList() {
   const container = document.getElementById('blog-manager');
   if (!container) return;
 
-  const listHTML = blogPosts.length === 0
-    ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">אין פוסטים עדיין</div>`
-    : blogPosts.map(p => {
+  const publishedCount = blogPosts.filter(p => (p.status || 'published') === 'published').length;
+  const draftCount = blogPosts.filter(p => p.status === 'draft').length;
+
+  const filteredPosts = blogPosts.filter(p => (p.status || 'published') === blogStatusFilter);
+
+  const listHTML = filteredPosts.length === 0
+    ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">${blogStatusFilter === 'draft' ? 'אין טיוטות' : 'אין פוסטים עדיין'}</div>`
+    : filteredPosts.map(p => {
       const sched = blogScheduled.find(s => s.postId === p.id);
       const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${sched.sendAt.replace('T',' ').slice(0,16)}</div>` : '';
+      const isDraft = p.status === 'draft';
+      const statusToggleLabel = isDraft ? 'פרסם' : 'העבר לטיוטה';
+      const statusToggleStyle = isDraft
+        ? 'background:#27ae60;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit'
+        : 'background:#fff3cd;color:#856404;border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit';
       return `
       <div style="background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px;display:flex;align-items:center;gap:14px;">
         ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
@@ -292,7 +324,8 @@ function renderBlogList() {
           <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}</div>
           ${schedTag}
         </div>
-        <div style="display:flex;gap:8px;flex-shrink:0">
+        <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
+          <button onclick="blogToggleStatus('${p.id}')" style="${statusToggleStyle}">${statusToggleLabel}</button>
           <button onclick="blogEditPost('${p.id}')" style="background:var(--navy-light);color:var(--navy);border:none;padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">ערוך</button>
           <button onclick="window.open(blogViewUrl('${p.id}'),'_blank')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>
           <button onclick="blogCopyById('${p.id}')" style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:7px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;cursor:pointer;font-family:inherit">העתק</button>
@@ -304,7 +337,22 @@ function renderBlogList() {
       </div>`;
     }).join('');
 
+  const tabActive = 'background:var(--navy);color:#fff;border-color:var(--navy)';
+  const tabInactive = 'background:transparent;color:var(--text-mid);border-color:var(--border)';
+
   container.innerHTML = `
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+      <button class="blog-status-tab" data-status="published" onclick="setBlogStatusFilter('published')"
+        style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:50px;font-family:inherit;font-size:0.85rem;font-weight:700;cursor:pointer;border:1.5px solid var(--navy);transition:all 0.2s;${blogStatusFilter === 'published' ? tabActive : tabInactive}">
+        פורסמו <span style="font-size:0.75rem;opacity:0.8">(${publishedCount})</span>
+      </button>
+      <button class="blog-status-tab" data-status="draft" onclick="setBlogStatusFilter('draft')"
+        style="display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:50px;font-family:inherit;font-size:0.85rem;font-weight:700;cursor:pointer;border:1.5px solid var(--border);transition:all 0.2s;${blogStatusFilter === 'draft' ? tabActive : tabInactive}">
+        טיוטות <span style="font-size:0.75rem;opacity:0.8">(${draftCount})</span>
+      </button>
+      <div style="flex:1"></div>
+      <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
+    </div>
     <div style="margin-bottom:14px">
       <input
         type="text"
@@ -315,7 +363,7 @@ function renderBlogList() {
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:8px">
       <div style="display:flex;align-items:center;gap:10px">
-        <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${blogPosts.length} פוסטים</div>
+        <div id="blog-search-count" style="font-size:0.82rem;color:var(--text-light)">${filteredPosts.length} פוסטים</div>
       </div>
       <div style="display:flex;gap:8px">
         <button style="background:var(--cream);color:var(--text-mid);border:1px solid var(--border);padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit" onclick="blogDownloadAll()">הורד הכל</button>
@@ -325,11 +373,26 @@ function renderBlogList() {
     <div id="blog-list-items">${listHTML}</div>`;
 }
 
+function blogToggleStatus(id) {
+  const post = blogPosts.find(p => p.id === id);
+  if (!post) return;
+  const currentStatus = post.status || 'published';
+  const newStatus = currentStatus === 'published' ? 'draft' : 'published';
+  const label = newStatus === 'published' ? 'לפרסם' : 'להעביר לטיוטה';
+  showConfirm(label + ' את הפוסט?', () => {
+    post.status = newStatus;
+    blogDirtyIds.add(id);
+    blogSaveLocal();
+    setStatus('content', 'ok', '✓ הפוסט ' + (newStatus === 'published' ? 'פורסם' : 'הועבר לטיוטה') + ' — לחצו "דחיפה ל-GitHub" לעדכון');
+    renderBlogList();
+  }, { yes: newStatus === 'published' ? 'פרסם' : 'העבר לטיוטה', color: newStatus === 'published' ? '#27ae60' : '#f59e0b' });
+}
+
 function blogNewPost() {
   blogEditingId = null;
   localStorage.removeItem('blog_editing_id');
   showBlogForm({
-    id: '', title: '', excerpt: '', body: '', date: todayISO(), emoji: '📝', image: '', image_alt: '', seo_title: '', seo_desc: ''
+    id: '', title: '', excerpt: '', body: '', date: todayISO(), emoji: '📝', image: '', image_alt: '', seo_title: '', seo_desc: '', status: 'draft'
   });
 }
 
@@ -344,7 +407,8 @@ function postToJSON(post) {
     image:     post.image     || '',
     image_alt: post.image_alt || '',
     seo_title: post.seo_title || '',
-    seo_desc:  post.seo_desc  || ''
+    seo_desc:  post.seo_desc  || '',
+    status:    post.status    || 'published'
   });
 }
 
@@ -577,10 +641,17 @@ function showBlogForm(post) {
           <label class="field-label">תאריך *</label>
           <input id="bf-date" type="date" value="${post.date || todayISO()}" style="max-width:200px">
         </div>
+        <div>
+          <label class="field-label">סטטוס</label>
+          <select id="bf-status" style="padding:8px 14px;border-radius:50px;border:1.5px solid var(--border);font-family:inherit;font-size:0.85rem;font-weight:700;color:var(--navy);outline:none;">
+            <option value="published" ${(post.status || 'published') === 'published' ? 'selected' : ''}>מפורסם</option>
+            <option value="draft" ${post.status === 'draft' ? 'selected' : ''}>טיוטה</option>
+          </select>
+        </div>
         <div style="display:flex;gap:8px;padding-bottom:2px;flex-wrap:wrap">
           ${blogEditingId ? `<button onclick="window.open(blogViewUrl('${blogEditingId}'),'_blank')" style="background:var(--navy-light);color:var(--navy);border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">צפה</button>` : ''}
           ${blogEditingId ? `<button onclick="blogDeletePost('${blogEditingId}')" style="background:#fde8e8;color:#c0392b;border:none;padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:700;cursor:pointer;font-family:inherit">מחק</button>` : ''}
-          <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'פרסם'}</button>
+          <button onclick="blogSavePost()" id="bf-save-btn" style="background:var(--orange-deep);color:#fff;border:none;padding:10px 28px;border-radius:50px;font-size:0.88rem;font-weight:700;cursor:pointer;font-family:inherit">${blogEditingId ? 'שמור שינויים' : 'שמור'}</button>
         </div>
       </div>
     </div>
@@ -1138,7 +1209,8 @@ async function blogSavePost() {
   if (!id)      { alertEl.innerHTML = '<div style="color:#c0392b;font-size:0.85rem">URL Slug הוא שדה חובה — מלאו אותו באנגלית</div>'; document.getElementById("bf-id")?.focus(); return; }
 
   try {
-    const post = { id, title, excerpt, body, date, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc };
+    const status = document.getElementById('bf-status')?.value || 'published';
+    const post = { id, title, excerpt, body, date, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc, status };
     let posts = [...blogPosts];
 
     if (blogEditingId) {

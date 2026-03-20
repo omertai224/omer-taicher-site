@@ -440,7 +440,7 @@ async function loadMore() {
     } catch {
       const res = await fetch('/blog/posts-index.json');
       const raw = await res.json();
-      const posts = (raw.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+      const posts = (raw.posts || []).filter(p => (p.status || 'published') === 'published').sort((a, b) => new Date(b.date) - new Date(a.date));
       const slice = posts.slice(offset, offset + POSTS_PER_PAGE).map(({ body, ...rest }) => rest);
       data = { posts: slice, total: posts.length };
     }
@@ -476,7 +476,7 @@ async function fetchPosts(limit) {
   } catch {
     const res = await fetch('/blog/posts-index.json');
     const data = await res.json();
-    const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+    const posts = (data.posts || []).filter(p => (p.status || 'published') === 'published').sort((a, b) => new Date(b.date) - new Date(a.date));
     const slice = posts.slice(0, limit).map(({ body, ...rest }) => rest);
     return { posts: slice, total: posts.length };
   }
