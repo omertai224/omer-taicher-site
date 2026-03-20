@@ -139,6 +139,19 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 .ws-btn { background: var(--orange-deep); color: #fff; border: none; padding: 9px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; cursor: pointer; font-family: var(--font); transition: background 0.2s; white-space: nowrap; text-decoration: none; display: inline-flex; align-items: center; }
 .ws-btn:hover { background: var(--navy); }
 
+/* ===== PREREQ NOTE ===== */
+.prereq-note {
+  margin-top: 28px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-right: 4px solid var(--orange-deep);
+  border-radius: 0 12px 12px 0;
+  padding: 18px 22px;
+}
+.prereq-title { font-size: 0.95rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.prereq-list { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; color: var(--navy); font-weight: 600; line-height: 1.6; }
+.prereq-sub { margin-top: 10px; font-size: 0.78rem; color: var(--text-mid); line-height: 1.5; }
+
 /* ===== ABOUT ===== */
 .about-section { background: var(--cream); }
 .about-img-wrap { border-radius: 20px; overflow: hidden; box-shadow: 0 12px 40px var(--shadow); margin-bottom: 36px; }
