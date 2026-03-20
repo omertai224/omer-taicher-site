@@ -172,6 +172,33 @@ nav {
 .rule-text { font-size: 0.92rem; }
 .rule-text strong { color: var(--navy); }
 
+/* IDEA CATEGORIES */
+.idea-category { margin-bottom: 12px; }
+.idea-category summary {
+  font-weight: 800; font-size: 1rem; color: var(--navy);
+  cursor: pointer; padding: 14px 20px; background: #fff;
+  border-radius: 12px; box-shadow: 0 2px 6px var(--shadow);
+  list-style: none; display: flex; align-items: center; gap: 10px;
+}
+.idea-category summary::-webkit-details-marker { display: none; }
+.idea-category summary::before {
+  content: '◀'; font-size: 0.7rem; color: var(--orange-deep);
+  transition: transform 0.2s;
+}
+.idea-category[open] summary::before { transform: rotate(-90deg); }
+.idea-category summary .idea-cat-count {
+  font-size: 0.75rem; font-weight: 600; color: #fff;
+  background: var(--orange-deep); border-radius: 10px;
+  padding: 2px 8px; margin-right: auto;
+}
+.idea-category .glossary { padding: 12px 0 0 0; }
+.idea-tip {
+  background: var(--orange-light); border-radius: 12px; padding: 16px 20px;
+  font-size: 0.9rem; color: var(--navy); margin-top: 16px;
+  border-right: 3px solid var(--orange-deep);
+}
+.idea-tip strong { color: var(--orange-deep); }
+
 /* TABS */
 .tabs-bar {
   display: flex; flex-wrap: wrap; gap: 6px; padding: 24px 24px 0;
@@ -1145,34 +1172,96 @@ footer {
     </div>
   </div>
 
-  <!-- מוצרים חדשים -->
+  <!-- מוצרים חדשים - מאגר רעיונות לפי קטגוריות -->
   <div class="section">
     <div class="section-title">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-      רעיונות למוצרים חדשים
+      מאגר רעיונות למוצרים חדשים
     </div>
-    <div class="glossary">
-      <div class="glossary-card">
-        <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">גיבוי שלא נשכח</span>
-        <div class="glossary-meaning">₪47 - הדרכה אינטראקטיבית</div>
-        <div class="glossary-desc">הבלוג מלא בפוסטים על פחד מאובדן קבצים. הדרכה שמלמדת להגדיר גיבוי אוטומטי ל-Google Drive / OneDrive צעד אחרי צעד. הפחד כבר קיים אצל הלקוחות - צריך רק לתת להם פתרון.</div>
-      </div>
-      <div class="glossary-card">
-        <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">אקסל בלי פחד</span>
-        <div class="glossary-meaning">₪47-67 - הדרכה אינטראקטיבית</div>
-        <div class="glossary-desc">עורכי דין, רואי חשבון ומטפלים משתמשים באקסל כל יום ומפחדים ממנו. הדרכה מעשית עם נוסחאות בסיסיות, מיון, סינון וטבלאות - פונה לאותו קהל בדיוק.</div>
-      </div>
-      <div class="glossary-card">
-        <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">זום בלי בושה</span>
-        <div class="glossary-meaning">₪47 - הדרכה אינטראקטיבית</div>
-        <div class="glossary-desc">הגדרות מצלמה, מיקרופון, רקע, שיתוף מסך. מתאים מאוד למטפלים ויועצים שמעבירים פגישות אונליין.</div>
-      </div>
-      <div class="glossary-card">
-        <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">מחשב חדש מאפס</span>
-        <div class="glossary-meaning">₪147 - הדרכה + שעת תמיכה</div>
-        <div class="glossary-desc">מלווה את הרוכש מרגע פתיחת הקופסה עד מחשב מוגדר ומוכן. מוצר "פרימיום" ראשון שכולל גם שעת תמיכה מרחוק.</div>
-      </div>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">כל רעיון שעולה נרשם כאן. לפתוח קטגוריה, לבחור רעיון, לבנות.</p>
+
+    <div class="idea-tip">
+      <strong>💡 טיפ:</strong> אפשר להעלות ל-NotebookLM את כל תמלילי הלקוחות ולשאול: "איזה מוצרים חדשים אפשר לפתח שלא ידרשו ממני המון עבודה?" — אלפי שעות שיחות = מכרה זהב של רעיונות.
     </div>
+
+    <!-- קטגוריה: מיני-הדרכות "3 טיפים" -->
+    <details class="idea-category" open>
+      <summary>
+        🎯 מיני-הדרכות "3 טיפים" (₪47)
+        <span class="idea-cat-count">3</span>
+      </summary>
+      <p style="color: var(--text-mid); font-size: 0.85rem; padding: 8px 20px 0;">פורמט קבוע: כל הדרכה = 3 טיפים מעשיים בנושא מסוים. קצר, ממוקד, קל לייצר. בן אדם קונה "3 טיפים" בלי לחשוב פעמיים.</p>
+      <div class="glossary">
+        <div class="glossary-card">
+          <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">3 טיפים לנגישות דיגיטלית</span>
+          <div class="glossary-meaning">₪47 - מיני-הדרכה</div>
+          <div class="glossary-desc">נגישות היא חובה חוקית ורוב בעלי העסקים לא יודעים מה לעשות. 3 דברים מעשיים שאפשר לתקן לבד.</div>
+        </div>
+        <div class="glossary-card">
+          <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">3 טיפים לביטחון במחשב</span>
+          <div class="glossary-meaning">₪47 - מיני-הדרכה</div>
+          <div class="glossary-desc">אנטי-וירוס, עדכונים, זיהוי פישינג. דברים שכל אחד חייב לדעת ורוב האנשים לא עושים.</div>
+        </div>
+        <div class="glossary-card">
+          <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">3 טיפים לסדר בקבצים</span>
+          <div class="glossary-meaning">₪47 - מיני-הדרכה</div>
+          <div class="glossary-desc">שמות קבצים, מבנה תיקיות, חיפוש מהיר. אנשים מבזבזים שעות על חיפוש קבצים.</div>
+        </div>
+      </div>
+    </details>
+
+    <!-- קטגוריה: הדרכות אינטראקטיביות מלאות -->
+    <details class="idea-category">
+      <summary>
+        🖥️ הדרכות אינטראקטיביות מלאות (₪47-67)
+        <span class="idea-cat-count">3</span>
+      </summary>
+      <div class="glossary">
+        <div class="glossary-card">
+          <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">גיבוי שלא נשכח</span>
+          <div class="glossary-meaning">₪47 - הדרכה אינטראקטיבית</div>
+          <div class="glossary-desc">הבלוג מלא בפוסטים על פחד מאובדן קבצים. הדרכה שמלמדת להגדיר גיבוי אוטומטי ל-Google Drive / OneDrive צעד אחרי צעד. הפחד כבר קיים אצל הלקוחות - צריך רק לתת להם פתרון.</div>
+        </div>
+        <div class="glossary-card">
+          <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">אקסל בלי פחד</span>
+          <div class="glossary-meaning">₪47-67 - הדרכה אינטראקטיבית</div>
+          <div class="glossary-desc">עורכי דין, רואי חשבון ומטפלים משתמשים באקסל כל יום ומפחדים ממנו. הדרכה מעשית עם נוסחאות בסיסיות, מיון, סינון וטבלאות - פונה לאותו קהל בדיוק.</div>
+        </div>
+        <div class="glossary-card">
+          <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">זום בלי בושה</span>
+          <div class="glossary-meaning">₪47 - הדרכה אינטראקטיבית</div>
+          <div class="glossary-desc">הגדרות מצלמה, מיקרופון, רקע, שיתוף מסך. מתאים מאוד למטפלים ויועצים שמעבירים פגישות אונליין.</div>
+        </div>
+      </div>
+    </details>
+
+    <!-- קטגוריה: מוצרי פרימיום -->
+    <details class="idea-category">
+      <summary>
+        ⭐ מוצרי פרימיום (₪100+)
+        <span class="idea-cat-count">1</span>
+      </summary>
+      <div class="glossary">
+        <div class="glossary-card">
+          <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">מחשב חדש מאפס</span>
+          <div class="glossary-meaning">₪147 - הדרכה + שעת תמיכה</div>
+          <div class="glossary-desc">מלווה את הרוכש מרגע פתיחת הקופסה עד מחשב מוגדר ומוכן. מוצר "פרימיום" ראשון שכולל גם שעת תמיכה מרחוק.</div>
+        </div>
+      </div>
+    </details>
+
+    <!-- קטגוריה: רעיונות מתמלילי לקוחות -->
+    <details class="idea-category">
+      <summary>
+        🎤 רעיונות מתמלילי לקוחות
+        <span class="idea-cat-count">0</span>
+      </summary>
+      <p style="color: var(--text-mid); font-size: 0.85rem; padding: 12px 20px;">להעלות תמלילים ל-NotebookLM או ל-Claude ולשאול מה הבעיות שחוזרות. כל בעיה שחוזרת = מוצר פוטנציאלי.</p>
+      <div class="glossary">
+        <!-- רעיונות מתמלילים יתווספו כאן -->
+      </div>
+    </details>
+
   </div>
 
   <!-- שיפורי מכירות -->
