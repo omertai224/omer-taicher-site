@@ -190,6 +190,21 @@ nav {
 }
 .tab-content { display: none; }
 .tab-content.active { display: block; }
+.download-bar {
+  max-width: 700px; margin: 20px auto 0; padding: 0 24px;
+  display: flex; justify-content: flex-end;
+}
+.download-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border: 2px solid var(--orange-deep);
+  background: #fff; color: var(--orange-deep); border-radius: 10px;
+  font-family: 'Rubik', sans-serif; font-size: 0.88rem; font-weight: 700;
+  cursor: pointer; transition: all 0.2s;
+}
+.download-btn:hover {
+  background: var(--orange-deep); color: #fff;
+}
+.download-btn svg { flex-shrink: 0; }
 
 /* FORMULA TABLES */
 .formula-table {
@@ -294,6 +309,12 @@ footer {
 </div>
 
 <div id="tab-workflow" class="tab-content active">
+<div class="download-bar">
+  <button class="download-btn" onclick="downloadTab('workflow')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    הורד כטקסט
+  </button>
+</div>
 
 <!-- FLOW DIAGRAM -->
 <div class="flow">
@@ -515,6 +536,12 @@ footer {
 
 <!-- TAB 2: נוסחת-על לפוסטים -->
 <div id="tab-posts" class="tab-content">
+<div class="download-bar">
+  <button class="download-btn" onclick="downloadTab('posts')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    הורד כטקסט
+  </button>
+</div>
   <div class="section">
     <div class="section-title">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
@@ -643,6 +670,12 @@ footer {
 
 <!-- TAB 3: נוסחת-על להדרכות -->
 <div id="tab-interactive" class="tab-content">
+<div class="download-bar">
+  <button class="download-btn" onclick="downloadTab('interactive')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    הורד כטקסט
+  </button>
+</div>
   <div class="section">
     <div class="section-title">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
@@ -815,6 +848,21 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
   });
 });
+
+function downloadTab(tabId) {
+  var el = document.getElementById('tab-' + tabId);
+  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות' };
+  var text = el.innerText
+    .replace(/הורד כטקסט\n?/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+  var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = (names[tabId] || tabId) + '.txt';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
 </script>
 
 </body>
