@@ -637,7 +637,7 @@ function showPrereqsModal(btn) {
     overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('show'); });
     document.body.appendChild(overlay);
   }
-  overlay.innerHTML = '<div class="prereqs-modal"><button class="prereqs-modal-close" onclick="document.getElementById(\'prereqs-overlay\').classList.remove(\'show\')">&times;</button><div class="prereqs-modal-title">לפני שקונים — ודאו שיש לכם:</div>' + prereqs.map(function(r) { return '<div class="prereqs-modal-item">' + r + '</div>'; }).join('') + '</div>';
+  overlay.innerHTML = '<div class="prereqs-modal"><button class="prereqs-modal-close" onclick="document.getElementById(\'prereqs-overlay\').classList.remove(\'show\')">&times;</button><div class="prereqs-modal-title">לפני שקונים - ודאו שיש לכם:</div>' + prereqs.map(function(r) { return '<div class="prereqs-modal-item">' + r + '</div>'; }).join('') + '</div>';
   overlay.classList.add('show');
 }
 
