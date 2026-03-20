@@ -332,7 +332,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
         ? ''
         : `<a href="${p.checkout_url}" class="ws-btn"><span class="btn-arrow">להצטרפות ${joinSVG}</span></a>`;
       const prereqBtn = (!isSoon && p.prereqs && p.prereqs.length)
-        ? `<div class="ws-prereqs-wrap"><button class="ws-prereqs-btn" onclick="toggleWsPrereqs(this)">${warnSVG} דרישות מקדימות</button><div class="ws-prereqs-popup"><div class="ws-prereqs-title">לפני שקונים — ודאו שיש לכם:</div>${p.prereqs.map(r => `<div class="ws-prereqs-item">${r}</div>`).join('')}</div></div>`
+        ? `<button class="prereqs-modal-btn" onclick="showPrereqsModal(this)" data-prereqs='${JSON.stringify(p.prereqs)}'>${warnSVG} דרישות מקדימות</button>`
         : '';
       const icon = wsIcons[p.key] || '';
       const iconHTML = icon ? `<div style="text-align:center;margin-bottom:12px;">${icon}</div>` : '';
@@ -350,18 +350,19 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
     }).join('');
   }
 
-  window.toggleWsPrereqs = function(btn) {
-    const wrap = btn.closest('.ws-prereqs-wrap');
-    const popup = wrap.querySelector('.ws-prereqs-popup');
-    const isOpen = popup.classList.contains('show');
-    document.querySelectorAll('.ws-prereqs-popup.show').forEach(p => p.classList.remove('show'));
-    if (!isOpen) popup.classList.add('show');
-  };
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.ws-prereqs-btn') && !e.target.closest('.ws-prereqs-popup')) {
-      document.querySelectorAll('.ws-prereqs-popup.show').forEach(p => p.classList.remove('show'));
+  window.showPrereqsModal = function(btn) {
+    const prereqs = JSON.parse(btn.dataset.prereqs);
+    let overlay = document.getElementById('prereqs-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.id = 'prereqs-overlay';
+      overlay.className = 'prereqs-overlay';
+      overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('show'); });
+      document.body.appendChild(overlay);
     }
-  });
+    overlay.innerHTML = `<div class="prereqs-modal"><button class="prereqs-modal-close" onclick="document.getElementById('prereqs-overlay').classList.remove('show')">&times;</button><div class="prereqs-modal-title">לפני שקונים — ודאו שיש לכם:</div>${prereqs.map(r => '<div class="prereqs-modal-item">' + r + '</div>').join('')}</div>`;
+    overlay.classList.add('show');
+  };
 
   fetch('/interactive/interactive.json')
     .then(r => r.json())
