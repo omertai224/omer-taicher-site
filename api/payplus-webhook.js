@@ -65,6 +65,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
           <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.pass}</td>
         </tr>
       </table>
+      <p style="margin:10px 0 0;font-size:0.75rem;color:#b0a090;line-height:1.5;">פרטי הכניסה אישיים ואינם ניתנים להעברה.</p>
     </div>
     ` : ''}
     <div style="text-align:center;">
@@ -125,7 +126,7 @@ async function sendWhatsApp(customerPhone, customerName, product) {
 
   const name = customerName ? ` ${customerName}` : '';
   const loginBlock = product.user && product.pass
-    ? `\n\nפרטי הכניסה שלכם:\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
+    ? `\n\nפרטי הכניסה שלכם:\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*\nפרטי הכניסה אישיים ואינם ניתנים להעברה.`
     : '';
   const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\n\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}${loginBlock}\n\nשאלות?\nפשוט תענו להודעה הזו 😊\nעומר טייכר`;
 
