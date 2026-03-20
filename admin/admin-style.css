@@ -372,20 +372,21 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
     width: 100% !important;
     text-align: center !important;
     border-radius: 10px !important;
+    min-height: 40px !important;
   }
 
-  /* blog toolbar */
-  #blog-manager > div:nth-child(2) {
+  /* blog toolbar — download/copy buttons row */
+  #blog-manager > div[style*="justify-content:space-between"] {
     flex-direction: column !important;
     align-items: stretch !important;
     gap: 8px !important;
   }
-  #blog-manager > div:nth-child(2) > div {
+  #blog-manager > div[style*="justify-content:space-between"] > div {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 6px !important;
   }
-  #blog-manager > div:nth-child(2) > div button {
+  #blog-manager > div[style*="justify-content:space-between"] > div button {
     padding: 10px 6px !important;
     font-size: 0.76rem !important;
     width: 100% !important;
@@ -393,6 +394,16 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
+  }
+
+  /* blog status tabs row */
+  #blog-manager > div:first-child {
+    flex-wrap: wrap !important;
+  }
+  #blog-manager > div:first-child > button[onclick*="blogNewPost"] {
+    width: 100% !important;
+    text-align: center !important;
+    order: 3 !important;
   }
 
   /* download repo list */
@@ -429,3 +440,103 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 .code-repo-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
 
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* ============================================
+   MOBILE — תיקונים נוספים
+   ============================================ */
+@media (max-width: 768px) {
+
+  /* BLOG STATUS TABS */
+  .blog-status-tab {
+    flex: 1 !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 8px 10px !important;
+    font-size: 0.8rem !important;
+  }
+
+  /* BLOG FORM — שורת תאריך + סטטוס + כפתורים */
+  #blog-manager .field > div[style*="flex"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  #blog-manager .field > div[style*="flex"] > div {
+    width: 100% !important;
+  }
+  #blog-manager .field > div[style*="flex"] input[type="date"],
+  #blog-manager .field > div[style*="flex"] select {
+    width: 100% !important;
+    max-width: none !important;
+  }
+  #blog-manager .field > div[style*="flex"] > div[style*="gap:8px"] {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+  }
+  #blog-manager .field > div[style*="flex"] > div[style*="gap:8px"] button {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  /* BLOG EDITOR TOOLBAR — B/I/U buttons */
+  #blog-manager button[onmousedown*="execCommand"] {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+  }
+
+  /* GLOBAL PUSH BAR */
+  #global-push-bar {
+    flex-wrap: wrap !important;
+    padding: 10px 14px !important;
+    gap: 8px !important;
+    font-size: 0.78rem !important;
+  }
+  #global-push-bar button {
+    flex: 1 !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    min-width: 80px !important;
+  }
+
+  /* MODALS — מודל אישור */
+  #app-modal > div {
+    max-width: 92% !important;
+    padding: 24px 20px !important;
+  }
+  #app-modal-buttons {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+  #app-modal-buttons button {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+
+  /* BLOG SEARCH — רוחב מלא */
+  #blog-manager input[type="text"][placeholder*="חיפוש"] {
+    font-size: 16px !important; /* מונע זום אוטומטי ב-iOS */
+  }
+
+  /* CONTACTS SEARCH — מונע זום ב-iOS */
+  #contacts-search {
+    font-size: 16px !important;
+  }
+
+  /* GALLERY UPLOAD BAR */
+  #tab-gallery > div[style*="margin-bottom:20px"] {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  #tab-gallery > div[style*="margin-bottom:20px"] button,
+  #tab-gallery > div[style*="margin-bottom:20px"] select {
+    width: 100% !important;
+  }
+
+  /* ENV BAR */
+  #env-bar {
+    font-size: 0.72rem !important;
+    padding: 6px 12px !important;
+  }
+}

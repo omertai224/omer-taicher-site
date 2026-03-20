@@ -1119,7 +1119,7 @@ async function blogScheduleWhatsapp(postId) {
   const defaultDate = tomorrow.toISOString().slice(0,10);
 
   overlay.innerHTML = `
-    <div style="background:#fff;border-radius:16px;padding:28px;width:320px;direction:rtl;font-family:Rubik,sans-serif">
+    <div style="background:#fff;border-radius:16px;padding:28px;width:90%;max-width:320px;direction:rtl;font-family:Rubik,sans-serif">
       <div style="font-size:1rem;font-weight:700;color:#1a4a6b;margin-bottom:4px">תזמון הודעה לוואטסאפ</div>
       <div style="font-size:0.82rem;color:#888;margin-bottom:20px">${post.title.replace(/<[^>]+>/g,'')}</div>
       <label style="font-size:0.82rem;font-weight:600;color:#555;display:block;margin-bottom:6px">תאריך</label>
