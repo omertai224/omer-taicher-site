@@ -177,10 +177,12 @@ nav {
   display: flex; gap: 8px; padding: 24px 24px 0;
   max-width: 700px; margin: 0 auto;
   border-bottom: 2px solid var(--border);
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .tab-btn {
   padding: 10px 20px; border: none; background: none;
   font-family: 'Rubik', sans-serif; font-size: 0.95rem;
+  white-space: nowrap; flex-shrink: 0;
   color: var(--text-mid); cursor: pointer; border-radius: 8px 8px 0 0;
   font-weight: 600; transition: all 0.2s;
 }
@@ -313,8 +315,11 @@ footer {
 <!-- TABS -->
 <div class="tabs-bar">
   <button class="tab-btn active" data-tab="workflow">תהליך עבודה</button>
-  <button class="tab-btn" data-tab="posts">נוסחת-על: פוסטים</button>
-  <button class="tab-btn" data-tab="interactive">נוסחת-על: הדרכות</button>
+  <button class="tab-btn" data-tab="posts">פוסטים</button>
+  <button class="tab-btn" data-tab="interactive">הדרכות</button>
+  <button class="tab-btn" data-tab="payments">מוצרים ותשלומים</button>
+  <button class="tab-btn" data-tab="sitemap">מבנה האתר</button>
+  <button class="tab-btn" data-tab="ideas">רעיונות להמשך</button>
 </div>
 
 <div id="tab-workflow" class="tab-content active">
@@ -890,6 +895,380 @@ footer {
   </div>
 </div><!-- /tab-interactive -->
 
+<!-- TAB 4: מוצרים ותשלומים -->
+<div id="tab-payments" class="tab-content">
+<div class="download-bar">
+  <button class="download-btn" onclick="downloadTab('payments')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    הורד כטקסט
+  </button>
+  <button class="copy-btn" onclick="copyTab('payments')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    העתק ללוח
+  </button>
+</div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+      איך עובד התשלום
+    </div>
+    <p style="color: var(--text-mid); margin-bottom: 24px; font-size: 0.95rem;">מה קורה מהרגע שלקוח לוחץ "קנייה" ועד שהוא מקבל את ההדרכה.</p>
+    <div class="formula-list">
+      <div class="formula-list-item">
+        <div class="formula-list-num">1</div>
+        <div class="formula-list-text"><strong>לקוח בוחר הדרכה</strong> - באתר הבית או בדף ההדרכות. לוחץ "הוספה לסל" או "קנייה מהירה".</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">2</div>
+        <div class="formula-list-text"><strong>דף תשלום</strong> - הלקוח ממלא שם, אימייל וטלפון (אופציונלי). לוחץ "לתשלום מאובטח".</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">3</div>
+        <div class="formula-list-text"><strong>PayPlus</strong> - הלקוח מועבר לדף תשלום מאובטח של PayPlus. משלם בכרטיס אשראי.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">4</div>
+        <div class="formula-list-text"><strong>אוטומטי: מייל + וואטסאפ</strong> - ברגע שהתשלום עובר, המערכת שולחת אוטומטית:<br>- <strong>מייל</strong> (דרך Brevo) עם קישור להדרכה + פרטי כניסה<br>- <strong>וואטסאפ</strong> (דרך GreenAPI) עם אותו מידע, אם הלקוח השאיר טלפון</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">5</div>
+        <div class="formula-list-text"><strong>הלקוח מתחיל ללמוד</strong> - נכנס עם שם משתמש וסיסמה, ומתחיל את ההדרכה.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+      מוצרים קיימים
+    </div>
+    <table class="formula-table">
+      <tr><th>מוצר</th><th>מפתח</th><th>מחיר</th><th>סטטוס</th><th>כניסה</th></tr>
+      <tr><td class="tool-name">תמלול עם Vibe</td><td><code>vibe</code></td><td>₪47</td><td>פעיל</td><td>student / Sv8472t</td></tr>
+      <tr><td>ChatGPT וקלוד</td><td><code>ai</code></td><td>₪47</td><td>בקרוב</td><td>-</td></tr>
+      <tr><td>אבטחת חשבונות</td><td><code>security</code></td><td>₪47</td><td>בקרוב</td><td>-</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+      איך מוסיפים מוצר חדש
+    </div>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">כשרוצים להוסיף הדרכה חדשה למכירה, צריך לעדכן 3 מקומות:</p>
+    <div class="formula-list">
+      <div class="formula-list-item">
+        <div class="formula-list-num">1</div>
+        <div class="formula-list-text"><strong>interactive.json</strong> - הוספת המוצר עם כל הפרטים: מפתח, שם, תיאור, מחיר, סטטוס, דרישות מקדימות. <em>זה מה שנראה באתר.</em></div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">2</div>
+        <div class="formula-list-text"><strong>api/payplus.js</strong> - הוספה לרשימת TUTORIAL_URLS עם ה-URL של ההדרכה. <em>בלי זה, PayPlus לא ידע לאן להפנות.</em></div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">3</div>
+        <div class="formula-list-text"><strong>api/payplus-webhook.js</strong> - הוספה לרשימת PRODUCTS עם שם, URL, ופרטי כניסה. <em>בלי זה, המייל והוואטסאפ לא יישלחו.</em></div>
+      </div>
+    </div>
+    <div class="rules" style="margin-top: 16px;">
+      <div class="rule">
+        <div class="rule-icon red">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c62828" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        </div>
+        <div class="rule-text"><strong>שלושת הקבצים חייבים להיות מסונכרנים.</strong> אם שכחת לעדכן אחד מהם, הלקוח ישלם אבל לא יקבל מייל או שהמחיר יהיה שגוי.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+      שירותים חיצוניים
+    </div>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">המערכת משתמשת ב-3 שירותים חיצוניים. כולם מוגדרים בהגדרות של Vercel:</p>
+    <div class="glossary">
+      <div class="glossary-card">
+        <span class="glossary-term">PayPlus</span>
+        <div class="glossary-meaning">סליקת אשראי</div>
+        <div class="glossary-desc">מקבל את התשלום מהלקוח. הגדרות: PAYPLUS_API_KEY, PAYPLUS_SECRET_KEY, PAYPLUS_PAGE_UID</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">Brevo</span>
+        <div class="glossary-meaning">שליחת מיילים</div>
+        <div class="glossary-desc">שולח מייל ללקוח אחרי תשלום עם קישור וסיסמה. הגדרה: BREVO_API_KEY</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">GreenAPI</span>
+        <div class="glossary-meaning">שליחת וואטסאפ</div>
+        <div class="glossary-desc">שולח הודעת וואטסאפ ללקוח אחרי תשלום. הגדרות: GREENAPI_INSTANCE_ID, GREENAPI_TOKEN</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-payments -->
+
+<!-- TAB 5: מבנה האתר -->
+<div id="tab-sitemap" class="tab-content">
+<div class="download-bar">
+  <button class="download-btn" onclick="downloadTab('sitemap')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    הורד כטקסט
+  </button>
+  <button class="copy-btn" onclick="copyTab('sitemap')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    העתק ללוח
+  </button>
+</div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      תיקיות ראשיות
+    </div>
+    <div class="glossary">
+      <div class="glossary-card">
+        <span class="glossary-term">/</span>
+        <div class="glossary-meaning">שורש האתר</div>
+        <div class="glossary-desc">דף הבית (index.html), תהליכי עבודה (workflow.html), הגדרות (CLAUDE.md, vercel.json)</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/interactive/</span>
+        <div class="glossary-meaning">הדרכות אינטראקטיביות</div>
+        <div class="glossary-desc">דף ההדרכות (index.html), קטלוג מוצרים (interactive.json), תיקייה לכל הדרכה (Vibe/, AI/ וכו')</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/blog/</span>
+        <div class="glossary-meaning">בלוג</div>
+        <div class="glossary-desc">דף ראשי (index.html), תבנית פוסט (post-template.html), אינדקס (posts-index.json), תיקיית פוסטים (posts/)</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/api/</span>
+        <div class="glossary-meaning">שרת (Vercel Functions)</div>
+        <div class="glossary-desc">payplus.js (תשלום), payplus-webhook.js (מה קורה אחרי תשלום), blog-posts.js (API בלוג)</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/admin/</span>
+        <div class="glossary-meaning">פאנל ניהול</div>
+        <div class="glossary-desc">ממשק ניהול דרך הדפדפן. עריכת קבצים, ניהול פוסטים, העלאת תמונות. דורש GitHub Token.</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/assets/</span>
+        <div class="glossary-meaning">קבצי עיצוב</div>
+        <div class="glossary-desc">CSS (main.css), גופנים (fonts/), JavaScript (js/toolbar.js, js/base-path.js)</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/pages/</span>
+        <div class="glossary-meaning">דפים נוספים</div>
+        <div class="glossary-desc">checkout/ (דף תשלום), legal/ (תקנון, פרטיות, החזרים, נגישות)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+      קבצי JSON שחשוב להכיר
+    </div>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">קבצי JSON הם "מקור האמת" של האתר. הם שולטים על מה שמוצג.</p>
+    <table class="formula-table">
+      <tr><th>קובץ</th><th>מה הוא שולט</th></tr>
+      <tr><td class="tool-name">interactive.json</td><td>כל ההדרכות: שמות, מחירים, תיאורים, דרישות, סטטוס</td></tr>
+      <tr><td class="tool-name">posts-index.json</td><td>רשימת כל הפוסטים בבלוג (בלי התוכן עצמו)</td></tr>
+      <tr><td class="tool-name">posts/xxx.json</td><td>תוכן של פוסט בודד (כותרת, תקציר, גוף, SEO)</td></tr>
+      <tr><td class="tool-name">vercel.json</td><td>הגדרות שרת: ראוטינג, headers, cache, functions</td></tr>
+      <tr><td class="tool-name">CLAUDE.md</td><td>הנחיות לקלוד: כללי ברזל, דברים שחשוב לזכור</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+      איך הכל מתחבר
+    </div>
+    <div class="formula-list">
+      <div class="formula-list-item">
+        <div class="formula-list-num">1</div>
+        <div class="formula-list-text"><strong>GitHub</strong> - כל הקוד נמצא שם. Claude Code דוחף שינויים לבראנץ', ואתה ממזג ל-main.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">2</div>
+        <div class="formula-list-text"><strong>Vercel</strong> - עוקב אחרי main. ברגע שממזגים, Vercel בונה גרסה חדשה ומעלה לאוויר תוך דקה. גם מריץ את ה-API (תשלומים, webhook, בלוג).</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">3</div>
+        <div class="formula-list-text"><strong>GitHub Pages</strong> - משמש לתצוגה מקדימה (Preview). מציג את הבראנץ' הנוכחי לפני שממזגים. גם משמש את פאנל הניהול.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">4</div>
+        <div class="formula-list-text"><strong>omertai.net</strong> - הדומיין שמצביע על Vercel. זה מה שהלקוחות רואים.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-sitemap -->
+
+<!-- TAB 6: רעיונות להמשך -->
+<div id="tab-ideas" class="tab-content">
+<div class="download-bar">
+  <button class="download-btn" onclick="downloadTab('ideas')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    הורד כטקסט
+  </button>
+  <button class="copy-btn" onclick="copyTab('ideas')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    העתק ללוח
+  </button>
+</div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      מה כדאי לעשות קודם
+    </div>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">לפי סדר עדיפויות - השינויים עם ההחזר הכי גדול על ההשקעה:</p>
+    <div class="formula-list">
+      <div class="formula-list-item">
+        <div class="formula-list-num">1</div>
+        <div class="formula-list-text"><strong>CTA בסוף כל פוסט בבלוג</strong> - יש 30+ פוסטים ואף אחד לא מקשר להדרכה. שעת עבודה, אפקט מיידי.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">2</div>
+        <div class="formula-list-text"><strong>חבילת "שקט נפשי"</strong> - 3 הדרכות ב-119 שקל במקום 141. הקוד כבר תומך בסל, צריך רק כרטיס.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">3</div>
+        <div class="formula-list-text"><strong>איסוף מיילים בבלוג</strong> - Brevo כבר מחובר. טופס קטן בסוף כל פוסט. בסיס לכל שיווק עתידי.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">4</div>
+        <div class="formula-list-text"><strong>באנר הרצאה בדף הבית</strong> - הרצאות חינמיות הן משפך מכירות מוכח. צריך לתת להן יותר חשיפה.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- מוצרים חדשים -->
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+      רעיונות למוצרים חדשים
+    </div>
+    <div class="glossary">
+      <div class="glossary-card">
+        <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">גיבוי שלא נשכח</span>
+        <div class="glossary-meaning">₪47 - הדרכה אינטראקטיבית</div>
+        <div class="glossary-desc">הבלוג מלא בפוסטים על פחד מאובדן קבצים. הדרכה שמלמדת להגדיר גיבוי אוטומטי ל-Google Drive / OneDrive צעד אחרי צעד. הפחד כבר קיים אצל הלקוחות - צריך רק לתת להם פתרון.</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">אקסל בלי פחד</span>
+        <div class="glossary-meaning">₪47-67 - הדרכה אינטראקטיבית</div>
+        <div class="glossary-desc">עורכי דין, רואי חשבון ומטפלים משתמשים באקסל כל יום ומפחדים ממנו. הדרכה מעשית עם נוסחאות בסיסיות, מיון, סינון וטבלאות - פונה לאותו קהל בדיוק.</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">זום בלי בושה</span>
+        <div class="glossary-meaning">₪47 - הדרכה אינטראקטיבית</div>
+        <div class="glossary-desc">הגדרות מצלמה, מיקרופון, רקע, שיתוף מסך. מתאים מאוד למטפלים ויועצים שמעבירים פגישות אונליין.</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term" style="font-family:'Rubik',sans-serif;direction:rtl;">מחשב חדש מאפס</span>
+        <div class="glossary-meaning">₪147 - הדרכה + שעת תמיכה</div>
+        <div class="glossary-desc">מלווה את הרוכש מרגע פתיחת הקופסה עד מחשב מוגדר ומוכן. מוצר "פרימיום" ראשון שכולל גם שעת תמיכה מרחוק.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- שיפורי מכירות -->
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+      שיפורי מכירות
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>באנדל "חבילת שקט נפשי"</strong> - 3 הדרכות ב-119 שקל במקום 141. הקוד כבר תומך בפרמטר cart. צריך רק להוסיף כרטיס חבילה בדף ההדרכות.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>"תוספת: שעת תמיכה" בצ'קאאוט</strong> - צ'קבוקס בדף התשלום: "רוצה שעת תמיכה מרחוק? +79 שקל". רשת ביטחון = יותר מכירות.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>מייל מעקב 3 ימים אחרי רכישה</strong> - "נהנית מההדרכה? הנה עוד אחת ב-20% הנחה." Brevo כבר מחובר ותומך ב-automations.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>מערכת קופונים</strong> - שדה "קוד הנחה" בצ'קאאוט. מאפשר הנחות ללקוחות חוזרים, למשתתפי הרצאה, לחברי קבוצת פייסבוק.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- שיפורי אתר -->
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+      שיפורי אתר
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>CTA בסוף כל פוסט בבלוג</strong> - כל פוסט צריך להסתיים בקישור להדרכה רלוונטית. "רוצים לסדר את כל הסיסמאות? יש הדרכה בדיוק על זה." שינוי קטן, אפקט מיידי.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>איסוף מיילים בבלוג</strong> - טופס "רוצים טיפ כזה כל שבוע?" בסוף כל פוסט. Brevo כבר מחובר. כל מבקר בבלוג שלא משאיר מייל = ליד שנעלם.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>עמוד "תודה" אחרי רכישה</strong> - אחרי תשלום, הלקוח מועבר ישירות להדרכה. להוסיף עמוד ביניים עם הזמנה להרצאה, קישור לוואטסאפ, והצעה להדרכה נוספת. הרגע אחרי רכישה = הסיכוי הגבוה ביותר לעוד רכישה.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>באנר הרצאה חינמית בדף הבית</strong> - ההרצאה מוסתרת בתפריט. להוסיף באנר בולט עם ספירה לאחור: "ההרצאה הקרובה בעוד X ימים". הרצאות חינמיות = משפך מכירות מוכח.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- שיווק ותוכן -->
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      שיווק ותוכן
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>"שאלות שאני שומע כל שבוע"</strong> - כל שאלה שחוזרת בקבוצת הפייסבוק = פוסט בבלוג + קישור להדרכה. תוכן שלא צריך להמציא. Claude Code יכול לעזור ליצור אותם מהר.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>עמוד "הרצאות לארגונים"</strong> - אין דף שמציע הרצאות לחברות וארגונים. עמוד אחד עם 3-4 נושאים + טופס פנייה = הזמנות ב-2,000-5,000 שקל להרצאה.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-ideas -->
+
 <footer>
   עומר טייכר · מדריך פנימי · עדכון אחרון: 20 מרץ 2026
 </footer>
@@ -923,7 +1302,7 @@ function copyTab(tabId) {
 
 function downloadTab(tabId) {
   var el = document.getElementById('tab-' + tabId);
-  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות' };
+  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות', payments: 'מוצרים-ותשלומים', sitemap: 'מבנה-האתר', ideas: 'רעיונות-להמשך' };
   var text = el.innerText
     .replace(/הורד כטקסט\n?/g, '')
     .replace(/העתק ללוח\n?/g, '')
