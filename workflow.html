@@ -174,15 +174,13 @@ nav {
 
 /* TABS */
 .tabs-bar {
-  display: flex; gap: 8px; padding: 24px 24px 0;
+  display: flex; flex-wrap: wrap; gap: 6px; padding: 24px 24px 0;
   max-width: 700px; margin: 0 auto;
   border-bottom: 2px solid var(--border);
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
 }
 .tab-btn {
-  padding: 10px 20px; border: none; background: none;
-  font-family: 'Rubik', sans-serif; font-size: 0.95rem;
-  white-space: nowrap; flex-shrink: 0;
+  padding: 10px 16px; border: none; background: none;
+  font-family: 'Rubik', sans-serif; font-size: 0.9rem;
   color: var(--text-mid); cursor: pointer; border-radius: 8px 8px 0 0;
   font-weight: 600; transition: all 0.2s;
 }
@@ -294,8 +292,8 @@ footer {
   .hero { padding: 40px 16px 28px; }
   .section { padding: 32px 16px; }
   .flow { padding: 28px 16px; }
-  .tabs-bar { padding: 16px 16px 0; gap: 4px; }
-  .tab-btn { padding: 8px 12px; font-size: 0.8rem; }
+  .tabs-bar { padding: 16px 16px 0; gap: 4px; flex-wrap: wrap; }
+  .tab-btn { padding: 7px 10px; font-size: 0.75rem; }
 }
 </style>
 </head>
