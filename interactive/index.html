@@ -173,25 +173,6 @@
     padding: 14px 18px;
     font-size: 0.85rem; color: var(--navy); font-weight: 600; line-height: 1.65;
   }
-  .prereq-note {
-    margin-top: 32px;
-    background: #fff;
-    border: 1px solid #e0d8cf;
-    border-right: 4px solid var(--orange-deep);
-    border-radius: 0 12px 12px 0;
-    padding: 18px 22px;
-  }
-  .prereq-title {
-    font-size: 0.95rem; font-weight: 800; color: var(--navy); margin-bottom: 10px;
-  }
-  .prereq-list {
-    display: flex; flex-direction: column; gap: 6px;
-    font-size: 0.85rem; color: var(--navy); font-weight: 600; line-height: 1.6;
-  }
-  .prereq-sub {
-    margin-top: 10px;
-    font-size: 0.78rem; color: var(--text-mid); line-height: 1.5;
-  }
   .shop-section { background: var(--cream); padding: 64px 20px 80px; }
   .shop-inner { max-width: 1100px; margin: 0 auto; }
   .shop-header { margin-bottom: 36px; }
@@ -372,7 +353,7 @@
     text-decoration: none; white-space: nowrap;
   }
   .cart-checkout-btn:hover { background: #d4733a; transform: translateY(-1px); }
-  .prod-actions { display: flex; flex-direction: column; gap: 8px; }
+  .prod-actions { display: flex; flex-direction: column; gap: 8px; position: relative; }
   .btn-add-cart {
     display: inline-flex; align-items: center; justify-content: center; gap: 7px;
     background: var(--orange-deep); color: #fff;
@@ -396,6 +377,32 @@
     text-decoration: none;
   }
   .btn-quick-buy:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+  .btn-prereqs {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+    background: rgba(255,200,50,0.12);
+    color: #ffd54f;
+    padding: 8px 16px; border-radius: 50px;
+    font-family: 'Rubik', sans-serif; font-size: 0.75rem; font-weight: 700;
+    border: 1px solid rgba(255,200,50,0.25); cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap; width: 100%;
+    text-decoration: none;
+  }
+  .btn-prereqs:hover { background: rgba(255,200,50,0.2); border-color: rgba(255,200,50,0.45); }
+  .prereqs-popup {
+    display: none; position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+    background: #1a1a2e; border: 1px solid rgba(255,200,50,0.3); border-radius: 14px;
+    padding: 16px 20px; width: 280px; z-index: 50;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    margin-bottom: 8px;
+  }
+  .prereqs-popup.show { display: block; }
+  .prereqs-popup-title { font-size: 0.82rem; font-weight: 800; color: #ffd54f; margin-bottom: 10px; }
+  .prereqs-popup-item {
+    font-size: 0.78rem; color: rgba(255,255,255,0.75); line-height: 1.6;
+    display: flex; align-items: flex-start; gap: 8px; margin-bottom: 4px;
+  }
+  .prereqs-popup-item::before { content: "⚠"; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -505,14 +512,6 @@
     <div class="shop-grid" id="shop-grid">
     </div>
 
-    <div class="prereq-note">
-      <div class="prereq-title">⚙ דרישות מקדימות</div>
-      <div class="prereq-list">
-        <span>🖥 מחשב עם מערכת הפעלה Windows בלבד</span>
-        <span>⚡ מחשב שאינו ישן מדי — מומלץ מחשב מ-5 השנים האחרונות</span>
-      </div>
-      <div class="prereq-sub">ההדרכות לא עובדות על טלפון, טאבלט או מחשבי Mac.</div>
-    </div>
   </div>
 </section>
 
@@ -612,6 +611,19 @@ var cartSVG   = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" str
 var arrowSVG  = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>';
 var boltSVG   = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>';
 var stepsSVG  = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
+var warnSVG   = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
+
+function togglePrereqs(btn) {
+  var popup = btn.nextElementSibling;
+  var isOpen = popup.classList.contains('show');
+  document.querySelectorAll('.prereqs-popup.show').forEach(function(p) { p.classList.remove('show'); });
+  if (!isOpen) popup.classList.add('show');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.btn-prereqs') && !e.target.closest('.prereqs-popup')) {
+    document.querySelectorAll('.prereqs-popup.show').forEach(function(p) { p.classList.remove('show'); });
+  }
+});
 
 function renderProducts(products) {
   var grid = document.getElementById('shop-grid');
@@ -632,8 +644,15 @@ function renderProducts(products) {
         return '<div class="prod-include-item"><div class="include-check">' + checkSVG + '</div>' + inc + '</div>';
       }).join('') + '</div>';
     }
+    var prereqsHTML = '';
+    if (isActive && p.prereqs && p.prereqs.length) {
+      prereqsHTML = '<button class="btn-prereqs" onclick="togglePrereqs(this)">' + warnSVG + ' דרישות מקדימות</button>'
+        + '<div class="prereqs-popup"><div class="prereqs-popup-title">לפני שקונים — ודאו שיש לכם:</div>'
+        + p.prereqs.map(function(r) { return '<div class="prereqs-popup-item">' + r + '</div>'; }).join('')
+        + '</div>';
+    }
     var footerHTML = isActive
-      ? '<div class="prod-footer"><div class="prod-price">' + p.price + ' &#8362;<span>תשלום חד פעמי</span></div><div class="prod-actions"><button class="btn-add-cart" onclick="addToCart(this, \'' + p.title.substring(0,20) + '\', ' + p.price + ')">' + cartSVG + ' הוספה לסל</button><a href="' + p.checkout_url + '" class="btn-quick-buy">קנייה מהירה ' + arrowSVG + '</a></div></div>'
+      ? '<div class="prod-footer"><div class="prod-price">' + p.price + ' &#8362;<span>תשלום חד פעמי</span></div><div class="prod-actions"><button class="btn-add-cart" onclick="addToCart(this, \'' + p.title.substring(0,20) + '\', ' + p.price + ')">' + cartSVG + ' הוספה לסל</button><a href="' + p.checkout_url + '" class="btn-quick-buy">קנייה מהירה ' + arrowSVG + '</a>' + prereqsHTML + '</div></div>'
       : '<div class="prod-footer" style="justify-content:center;"><div style="font-size:0.8rem;color:rgba(255,255,255,0.3);font-weight:600;">בקרוב</div></div>';
     var cardStyle = isActive
       ? 'style="transition-delay:' + delay + ';"' : 'style="opacity:0.38;pointer-events:none;transition-delay:' + delay + ';"';
