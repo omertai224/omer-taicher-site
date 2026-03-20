@@ -389,22 +389,34 @@
     text-decoration: none;
   }
   .btn-prereqs:hover { background: rgba(246,166,126,0.25); border-color: rgba(246,166,126,0.5); }
-  .prod-card { position: relative; overflow: visible; }
-  .prereqs-popup {
-    display: none; position: absolute; left: 50%; bottom: calc(100% + 8px);
-    transform: translateX(-50%);
-    background: #0d1b2a; border: 1px solid rgba(246,166,126,0.3); border-radius: 14px;
-    padding: 18px 22px; width: 290px; z-index: 50;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  .prereqs-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center;
   }
-  .prereqs-popup.show { display: block; }
-  .prereqs-popup-title { font-size: 0.85rem; font-weight: 800; color: var(--orange); margin-bottom: 12px; text-align: center; }
-  .prereqs-popup-item {
-    font-size: 0.8rem; color: rgba(255,255,255,0.85); line-height: 1.7;
-    padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
-    text-align: center;
+  .prereqs-overlay.show { display: flex; }
+  .prereqs-modal {
+    background: var(--navy); color: #fff; border-radius: 20px;
+    padding: 28px 32px; width: 320px; max-width: 90vw;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    text-align: center; position: relative;
+    animation: prereqsIn 0.2s ease;
   }
-  .prereqs-popup-item:last-child { border-bottom: none; }
+  @keyframes prereqsIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+  .prereqs-modal-close {
+    position: absolute; top: 12px; left: 12px;
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: none; color: #fff;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; transition: background 0.2s;
+  }
+  .prereqs-modal-close:hover { background: rgba(255,255,255,0.2); }
+  .prereqs-modal-title { font-size: 1rem; font-weight: 800; color: var(--orange); margin-bottom: 18px; }
+  .prereqs-modal-item {
+    font-size: 0.88rem; color: rgba(255,255,255,0.9); line-height: 1.7;
+    padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .prereqs-modal-item:last-child { border-bottom: none; }
   </style>
 </head>
 <body>
@@ -615,19 +627,19 @@ var boltSVG   = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" str
 var stepsSVG  = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>';
 var warnSVG   = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
 
-function togglePrereqs(btn) {
-  var card = btn.closest('.prod-card');
-  var popup = card.querySelector('.prereqs-popup');
-  if (!popup) return;
-  var isOpen = popup.classList.contains('show');
-  document.querySelectorAll('.prereqs-popup.show').forEach(function(p) { p.classList.remove('show'); });
-  if (!isOpen) popup.classList.add('show');
-}
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.btn-prereqs') && !e.target.closest('.prereqs-popup')) {
-    document.querySelectorAll('.prereqs-popup.show').forEach(function(p) { p.classList.remove('show'); });
+function showPrereqsModal(btn) {
+  var prereqs = JSON.parse(btn.getAttribute('data-prereqs'));
+  var overlay = document.getElementById('prereqs-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.id = 'prereqs-overlay';
+    overlay.className = 'prereqs-overlay';
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('show'); });
+    document.body.appendChild(overlay);
   }
-});
+  overlay.innerHTML = '<div class="prereqs-modal"><button class="prereqs-modal-close" onclick="document.getElementById(\'prereqs-overlay\').classList.remove(\'show\')">&times;</button><div class="prereqs-modal-title">לפני שקונים — ודאו שיש לכם:</div>' + prereqs.map(function(r) { return '<div class="prereqs-modal-item">' + r + '</div>'; }).join('') + '</div>';
+  overlay.classList.add('show');
+}
 
 function renderProducts(products) {
   var grid = document.getElementById('shop-grid');
@@ -649,15 +661,11 @@ function renderProducts(products) {
       }).join('') + '</div>';
     }
     var prereqsBtnHTML = '';
-    var prereqsPopupHTML = '';
     if (isActive && p.prereqs && p.prereqs.length) {
-      prereqsBtnHTML = '<button class="btn-prereqs" onclick="togglePrereqs(this)">' + warnSVG + ' דרישות מקדימות</button>';
-      prereqsPopupHTML = '<div class="prereqs-popup"><div class="prereqs-popup-title">לפני שקונים — ודאו שיש לכם:</div>'
-        + p.prereqs.map(function(r) { return '<div class="prereqs-popup-item">' + r + '</div>'; }).join('')
-        + '</div>';
+      prereqsBtnHTML = '<button class="btn-prereqs" onclick="showPrereqsModal(this)" data-prereqs=\'' + JSON.stringify(p.prereqs) + '\'>' + warnSVG + ' דרישות מקדימות</button>';
     }
     var footerHTML = isActive
-      ? '<div class="prod-footer"><div class="prod-price">' + p.price + ' &#8362;<span>תשלום חד פעמי</span></div><div class="prod-actions"><button class="btn-add-cart" onclick="addToCart(this, \'' + p.title.substring(0,20) + '\', ' + p.price + ')">' + cartSVG + ' הוספה לסל</button><a href="' + p.checkout_url + '" class="btn-quick-buy">קנייה מהירה ' + arrowSVG + '</a>' + prereqsBtnHTML + '</div></div>' + prereqsPopupHTML
+      ? '<div class="prod-footer"><div class="prod-price">' + p.price + ' &#8362;<span>תשלום חד פעמי</span></div><div class="prod-actions"><button class="btn-add-cart" onclick="addToCart(this, \'' + p.title.substring(0,20) + '\', ' + p.price + ')">' + cartSVG + ' הוספה לסל</button><a href="' + p.checkout_url + '" class="btn-quick-buy">קנייה מהירה ' + arrowSVG + '</a>' + prereqsBtnHTML + '</div></div>'
       : '<div class="prod-footer" style="justify-content:center;"><div style="font-size:0.8rem;color:rgba(255,255,255,0.3);font-weight:600;">בקרוב</div></div>';
     var cardStyle = isActive
       ? 'style="transition-delay:' + delay + ';"' : 'style="opacity:0.38;pointer-events:none;transition-delay:' + delay + ';"';
