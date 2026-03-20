@@ -203,9 +203,15 @@ export default async function handler(req, res) {
       });
 
       if (product) {
+        // URL אישי עם שם הלקוח — מרגיש כמו חשבון אישי
+        const personalProduct = { ...product };
+        if (customerName) {
+          const sep = product.url.includes('?') ? '&' : '?';
+          personalProduct.url = product.url + sep + 'u=' + encodeURIComponent(customerName);
+        }
         const tasks = [];
-        if (customerEmail) tasks.push(sendTutorialEmail(customerEmail, customerName, product));
-        if (customerPhone) tasks.push(sendWhatsApp(customerPhone, customerName, product));
+        if (customerEmail) tasks.push(sendTutorialEmail(customerEmail, customerName, personalProduct));
+        if (customerPhone) tasks.push(sendWhatsApp(customerPhone, customerName, personalProduct));
         if (tasks.length) await Promise.allSettled(tasks);
       } else {
         console.warn('Cannot send notifications:', { customerEmail, customerPhone, productKey, hasProduct: !!product });
