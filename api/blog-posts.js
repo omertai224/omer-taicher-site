@@ -4,7 +4,9 @@ import { join } from 'path';
 function loadIndex(cwd) {
   const indexPath = join(cwd, 'blog', 'posts-index.json');
   const data = JSON.parse(readFileSync(indexPath, 'utf-8'));
-  return (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+  return (data.posts || [])
+    .filter(p => (p.status || 'published') === 'published')
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 function loadPost(cwd, id) {
