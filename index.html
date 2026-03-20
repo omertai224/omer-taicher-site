@@ -313,6 +313,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
 <script>
 (function() {
   const joinSVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>';
+  const warnSVG = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>';
 
   // Phosphor Icons (duotone) — https://phosphoricons.com
   const wsIcons = {
@@ -330,6 +331,9 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       const btn = isSoon
         ? ''
         : `<a href="${p.checkout_url}" class="ws-btn"><span class="btn-arrow">להצטרפות ${joinSVG}</span></a>`;
+      const prereqBtn = (!isSoon && p.prereqs && p.prereqs.length)
+        ? `<button class="ws-prereqs-btn" onclick="toggleWsPrereqs(this)">${warnSVG} דרישות מקדימות</button><div class="ws-prereqs-popup"><div class="ws-prereqs-title">לפני שקונים — ודאו שיש לכם:</div>${p.prereqs.map(r => `<div class="ws-prereqs-item">${r}</div>`).join('')}</div>`
+        : '';
       const icon = wsIcons[p.key] || '';
       const iconHTML = icon ? `<div style="text-align:center;margin-bottom:12px;">${icon}</div>` : '';
       return `<div class="ws-card${isSoon ? ' ws-card-soon' : ''}">
@@ -341,9 +345,22 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
           <div class="ws-price">₪${p.price} <span>חד פעמי</span></div>
           ${btn}
         </div>
+        ${prereqBtn}
       </div>`;
     }).join('');
   }
+
+  window.toggleWsPrereqs = function(btn) {
+    const popup = btn.nextElementSibling;
+    const isOpen = popup.classList.contains('show');
+    document.querySelectorAll('.ws-prereqs-popup.show').forEach(p => p.classList.remove('show'));
+    if (!isOpen) popup.classList.add('show');
+  };
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.ws-prereqs-btn') && !e.target.closest('.ws-prereqs-popup')) {
+      document.querySelectorAll('.ws-prereqs-popup.show').forEach(p => p.classList.remove('show'));
+    }
+  });
 
   fetch('/interactive/interactive.json')
     .then(r => r.json())
