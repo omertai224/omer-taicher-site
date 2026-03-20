@@ -127,7 +127,7 @@ async function sendWhatsApp(customerPhone, customerName, product) {
   const loginBlock = product.user && product.pass
     ? `\n\nפרטי הכניסה שלכם:\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
     : '';
-  const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\n\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}${loginBlock}\n\nשאלות? פשוט תענו להודעה הזו 😊\nעומר טייכר`;
+  const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\n\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}${loginBlock}\n\nשאלות?\nפשוט תענו להודעה הזו 😊\nעומר טייכר`;
 
   try {
     const apiUrl = `https://api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
