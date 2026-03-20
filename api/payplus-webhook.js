@@ -18,7 +18,7 @@ const WA_INSTANCE  = process.env.GREENAPI_INSTANCE_ID;
 const WA_TOKEN     = process.env.GREENAPI_TOKEN;
 
 const PRODUCTS = {
-  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/Vibe/' },
+  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/Vibe/', user: 'student', pass: 'Sv8472t' },
   ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://omertai.net/interactive/AI/' },
   files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: 'https://omertai.net/interactive/Files/' },
   security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: 'https://omertai.net/interactive/Security/' },
@@ -51,6 +51,21 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
       <p style="margin:0 0 4px;font-size:0.75rem;color:#8a7f72;font-weight:700;">מה קניתם</p>
       <p style="margin:0;font-size:0.95rem;color:#1a4a6b;font-weight:800;">${product.name}</p>
     </div>
+    ${product.user && product.pass ? `
+    <div style="background:#f0f7ff;border-radius:12px;padding:16px;margin-bottom:20px;border:1px solid #d0e3f5;">
+      <p style="margin:0 0 10px;font-size:0.75rem;color:#8a7f72;font-weight:700;">פרטי הכניסה שלכם</p>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr>
+          <td style="padding:4px 0;font-size:0.85rem;color:#8a7f72;width:90px;">שם משתמש</td>
+          <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.user}</td>
+        </tr>
+        <tr>
+          <td style="padding:4px 0;font-size:0.85rem;color:#8a7f72;">סיסמה</td>
+          <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.pass}</td>
+        </tr>
+      </table>
+    </div>
+    ` : ''}
     <div style="text-align:center;">
       <a href="${product.url}" style="display:inline-block;background:#e8854a;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;">
         עברו להדרכה עכשיו →
@@ -107,7 +122,10 @@ async function sendWhatsApp(customerPhone, customerName, product) {
   if (!chatId) return;
 
   const name = customerName ? ` ${customerName}` : '';
-  const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}\n\nשאלות? פשוט תענו להודעה הזו 😊\nעומר טייכר`;
+  const loginBlock = product.user && product.pass
+    ? `\n\nפרטי הכניסה שלכם:\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
+    : '';
+  const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}${loginBlock}\n\nשאלות? פשוט תענו להודעה הזו 😊\nעומר טייכר`;
 
   try {
     const apiUrl = `https://api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
