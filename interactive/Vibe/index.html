@@ -75,7 +75,43 @@
 </div>
 
 <script>
+function getPersonalName() {
+  // קודם מה-URL, אחרת מ-localStorage
+  var params = new URLSearchParams(window.location.search);
+  var name = params.get('u');
+  if (name) {
+    localStorage.setItem('vibe_user_display', name);
+    return name;
+  }
+  return localStorage.getItem('vibe_user_display') || '';
+}
+
+function showPersonalBadge() {
+  var name = getPersonalName();
+  if (!name) return;
+
+  // badge "מחובר כ:" בפינה
+  var badge = document.createElement('div');
+  badge.id = 'user-badge';
+  badge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5b8fa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' +
+    '<span style="color:#ffffffaa;font-size:11px;">מחובר כ:</span> ' +
+    '<span style="color:white;font-weight:700;font-size:12px;">' + name + '</span>';
+  badge.style.cssText = 'position:fixed;top:12px;left:12px;z-index:9000;background:#0f1a2eee;border:1px solid #ffffff22;border-radius:20px;padding:6px 14px;font-family:Rubik,sans-serif;display:flex;align-items:center;gap:4px;backdrop-filter:blur(8px);box-shadow:0 4px 16px #00000044;';
+  document.body.appendChild(badge);
+
+  // הודעת רישיון בתחתית
+  var license = document.createElement('div');
+  license.id = 'license-notice';
+  license.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:4px;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>' +
+    'הרישיון רשום על שם <strong>' + name + '</strong> · רישיון אישי · 1 מכשיר פעיל';
+  license.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9000;background:#0a0f1aee;border-top:1px solid #ffffff15;padding:6px 20px;font-family:Rubik,sans-serif;font-size:11px;color:#ffffff88;text-align:center;backdrop-filter:blur(8px);';
+  document.body.appendChild(license);
+}
+
 function initApp() {
+  // שמירת שם מה-URL ל-localStorage גם לפני לוגין
+  getPersonalName();
+
   // בדיקת מכשיר לפי User Agent בלבד
   var ua = navigator.userAgent || navigator.vendor || window.opera;
   var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua);
@@ -109,6 +145,7 @@ function doLogin() {
 }
 
 function showTutorial() {
+  showPersonalBadge();
   setNavBarColor(1);
   showSlides(1);
 }
