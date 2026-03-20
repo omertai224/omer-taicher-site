@@ -332,7 +332,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
         ? ''
         : `<a href="${p.checkout_url}" class="ws-btn"><span class="btn-arrow">להצטרפות ${joinSVG}</span></a>`;
       const prereqBtn = (!isSoon && p.prereqs && p.prereqs.length)
-        ? `<button class="ws-prereqs-btn" onclick="toggleWsPrereqs(this)">${warnSVG} דרישות מקדימות</button><div class="ws-prereqs-popup"><div class="ws-prereqs-title">לפני שקונים — ודאו שיש לכם:</div>${p.prereqs.map(r => `<div class="ws-prereqs-item">${r}</div>`).join('')}</div>`
+        ? `<div class="ws-prereqs-wrap"><button class="ws-prereqs-btn" onclick="toggleWsPrereqs(this)">${warnSVG} דרישות מקדימות</button><div class="ws-prereqs-popup"><div class="ws-prereqs-title">לפני שקונים — ודאו שיש לכם:</div>${p.prereqs.map(r => `<div class="ws-prereqs-item">${r}</div>`).join('')}</div></div>`
         : '';
       const icon = wsIcons[p.key] || '';
       const iconHTML = icon ? `<div style="text-align:center;margin-bottom:12px;">${icon}</div>` : '';
@@ -351,7 +351,8 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
   }
 
   window.toggleWsPrereqs = function(btn) {
-    const popup = btn.nextElementSibling;
+    const wrap = btn.closest('.ws-prereqs-wrap');
+    const popup = wrap.querySelector('.ws-prereqs-popup');
     const isOpen = popup.classList.contains('show');
     document.querySelectorAll('.ws-prereqs-popup.show').forEach(p => p.classList.remove('show'));
     if (!isOpen) popup.classList.add('show');
