@@ -52,6 +52,17 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
 @media(min-width:600px){.hero-actions{margin-bottom:0;gap:12px}.hero-actions .btn-primary{padding:15px 32px;font-size:1rem}.hero-actions .btn-secondary{padding:15px 32px;font-size:1rem}}
 @media(min-width:960px){.hamburger{display:none}.nav-links{display:flex;gap:28px;list-style:none;align-items:center}.nav-links a{color:#1a4a6b;text-decoration:none;font-size:0.85rem;font-weight:600;padding:7px 14px;border-radius:50px;background:#eef4f8;transition:background 0.2s,color 0.2s;display:inline-flex;align-items:center;gap:6px}.nav-mobile-cta{display:none}.hero{padding:20px 60px 80px;display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:center;min-height:100vh}.profile-card{margin-top:0}nav{padding:0 60px}}
 #ws-grid{min-height:0}#blog-grid{min-height:0}
+.prereqs-modal-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin-top:12px;padding:9px 14px;background:var(--orange-light);color:var(--orange-deep);border:1.5px solid var(--orange);border-radius:50px;font-family:var(--font);font-size:0.78rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.prereqs-modal-btn:hover{background:var(--orange);color:#fff}
+.prereqs-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center}
+.prereqs-overlay.show{display:flex}
+.prereqs-modal{background:var(--navy);color:#fff;border-radius:20px;padding:28px 32px;width:320px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,0.4);text-align:center;position:relative;animation:prereqsIn 0.2s ease}
+@keyframes prereqsIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+.prereqs-modal-close{position:absolute;top:12px;left:12px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.1);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem}
+.prereqs-modal-close:hover{background:rgba(255,255,255,0.2)}
+.prereqs-modal-title{font-size:1rem;font-weight:800;color:var(--orange);margin-bottom:18px}
+.prereqs-modal-item{font-size:0.88rem;color:rgba(255,255,255,0.9);line-height:1.7;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
+.prereqs-modal-item:last-child{border-bottom:none}
 </style>
   <meta name="description" content="עומר טייכר, טכנאי ומדריך מחשבים עם 25 שנות ניסיון. עורכי דין, מטפלים ועצמאים שרוצים שקט נפשי מהמחשב שלהם — מגיעים לעומר.">
   <meta property="og:title" content="עומר טייכר | טכנאי ומדריך מחשבים">
@@ -360,7 +371,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       overlay.addEventListener('click', function(e) { if (e.target === overlay) overlay.classList.remove('show'); });
       document.body.appendChild(overlay);
     }
-    overlay.innerHTML = `<div class="prereqs-modal"><button class="prereqs-modal-close" onclick="document.getElementById('prereqs-overlay').classList.remove('show')">&times;</button><div class="prereqs-modal-title">לפני שקונים — ודאו שיש לכם:</div>${prereqs.map(r => '<div class="prereqs-modal-item">' + r + '</div>').join('')}</div>`;
+    overlay.innerHTML = `<div class="prereqs-modal"><button class="prereqs-modal-close" onclick="document.getElementById('prereqs-overlay').classList.remove('show')">&times;</button><div class="prereqs-modal-title">לפני שקונים - ודאו שיש לכם:</div>${prereqs.map(r => '<div class="prereqs-modal-item">' + r + '</div>').join('')}</div>`;
     overlay.classList.add('show');
   };
 
