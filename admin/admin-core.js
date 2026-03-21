@@ -161,7 +161,7 @@ function init() {
 
 // ===== TABS =====
 function switchTab(name, btn) {
-  const utilityTabs = ['code', 'gallery', 'download', 'contacts'];
+  const utilityTabs = ['code', 'gallery', 'download', 'contacts', 'workflow'];
   const isUtility = utilityTabs.includes(name);
 
   // הסתר את כל הפאנלים
@@ -176,7 +176,7 @@ function switchTab(name, btn) {
   }
 
   // הדגשת כפתורי עזר
-  const utilBtns = { download: 'tab-btn-download', gallery: 'tab-btn-gallery', contacts: 'tab-btn-contacts', code: 'tab-btn-code' };
+  const utilBtns = { download: 'tab-btn-download', gallery: 'tab-btn-gallery', contacts: 'tab-btn-contacts', code: 'tab-btn-code', workflow: 'tab-btn-workflow' };
   for (const [key, id] of Object.entries(utilBtns)) {
     const b = document.getElementById(id);
     if (b) {
