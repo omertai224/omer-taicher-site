@@ -58,7 +58,7 @@ nav {
 /* FLOW DIAGRAM */
 .flow {
   display: flex; flex-direction: column; align-items: center;
-  gap: 0; padding: 40px 24px; max-width: 600px; margin: 0 auto;
+  gap: 0; padding: 40px 24px; max-width: 960px; margin: 0 auto;
 }
 .flow-step {
   display: flex; align-items: center; gap: 16px;
@@ -88,7 +88,7 @@ nav {
 }
 
 /* SECTIONS */
-.section { max-width: 700px; margin: 0 auto; padding: 40px 24px; }
+.section { max-width: 960px; margin: 0 auto; padding: 40px 24px; }
 .section-title {
   font-size: 1.4rem; font-weight: 900; color: var(--navy);
   margin-bottom: 24px; display: flex; align-items: center; gap: 10px;
@@ -165,7 +165,7 @@ nav {
 /* TABS */
 .tabs-bar {
   display: flex; flex-wrap: wrap; gap: 6px; padding: 24px 24px 0;
-  max-width: 700px; margin: 0 auto;
+  max-width: 960px; margin: 0 auto;
   border-bottom: 2px solid var(--border);
 }
 .tab-btn {
@@ -181,7 +181,7 @@ nav {
 .tab-content { display: none; }
 .tab-content.active { display: block; }
 .download-bar {
-  max-width: 700px; margin: 20px auto 0; padding: 0 24px;
+  max-width: 960px; margin: 20px auto 0; padding: 0 24px;
   display: flex; justify-content: flex-end; gap: 10px;
 }
 .download-btn {
