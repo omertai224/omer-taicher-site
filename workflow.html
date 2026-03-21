@@ -345,6 +345,7 @@ footer {
   <button class="tab-btn" data-tab="payments">מוצרים ותשלומים</button>
   <button class="tab-btn" data-tab="sitemap">מבנה האתר</button>
   <button class="tab-btn" data-tab="ideas">רעיונות להמשך</button>
+  <button class="tab-btn" data-tab="calls">ניתוח שיחות</button>
 </div>
 
 <div id="tab-workflow" class="tab-content active">
@@ -1356,8 +1357,161 @@ footer {
 
 </div><!-- /tab-ideas -->
 
+<div id="tab-calls" class="tab-content">
+<div class="download-bar">
+  <button class="download-btn" onclick="downloadTab('calls')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    הורד כטקסט
+  </button>
+  <button class="copy-btn" onclick="copyTab('calls')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    העתק ללוח
+  </button>
+</div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      מה זה הפרויקט הזה?
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>מאגר תמלולי שיחות לקוחות</strong> - 667 תמלולים, 1,249,336 מילים, 115 לקוחות. מתוך תיקיית ההקלטות במחשב. כל שיחה מתומללת ל-txt ומועלית לניתוח.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>המטרה:</strong> Claude מנתח כל תמלול, שואב תובנות, מזהה דפוסים, ומארגן הכל בקטגוריות דינמיות. התמלילים הם הזהב — מידע אמיתי מהשטח.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+      מבנה הקבצים
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>GitHub repo: omertai224/clients-calls</strong> — branch: claude/work-in-progress-0znqP</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>insights/catalog.json</strong> — קטלוג דינמי של כל התובנות, מאורגן בקטגוריות. קטגוריות חדשות נוצרות אוטומטית לפי הצורך.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>analysis_log.json</strong> — לוג של כל תמלול שנותח: תאריך, שם לקוח, שם קובץ, hash, תובנות שהופקו.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>scan_transcripts.py</strong> — סקריפט פייתון שסורק את תיקיית ההקלטות ומייצר דוח סטטוס. יושב ב: <code>C:\Users\Demo\האחסון שלי\הקלטות\scan_transcripts.py</code></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+      תהליך עבודה — שלב אחרי שלב
+    </div>
+    <div class="formula-list">
+      <div class="formula-list-item">
+        <div class="formula-list-num">1</div>
+        <div class="formula-list-text"><strong>הרצת סקריפט סריקה</strong> — מריצים <code>scan_transcripts.py</code> (לחיצה כפולה או בטרמינל). הפלט: <code>C:\Users\Demo\Downloads\פלט.txt</code> — דוח מלא של מה נותח ומה ממתין.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">2</div>
+        <div class="formula-list-text"><strong>בחירת תמלילים</strong> — בוחרים לקוח אחד או כמה תמלילים קצרים. לא להעמיס — כמה בכל פעם כדי שהניתוח יהיה מדויק.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">3</div>
+        <div class="formula-list-text"><strong>העתקה ל-Claude</strong> — מעתיקים את תוכן קובץ ה-txt ושולחים לצ'אט. Claude מנתח, מזהה תובנות, מארגן בקטגוריות.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">4</div>
+        <div class="formula-list-text"><strong>עדכון אוטומטי</strong> — Claude מעדכן את catalog.json (תובנות) ואת analysis_log.json (מעקב). בסריקה הבאה, הקבצים שנותחו יסומנו V.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">5</div>
+        <div class="formula-list-text"><strong>חזרה לשלב 1</strong> — מריצים שוב את הסקריפט, רואים מה ממתין, ממשיכים. ככה עד שכל 667 התמלולים מנותחים.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+      מה לתת ל-Claude בתחילת סשן חדש
+    </div>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">אם הסשן נגמר או קרס, פותחים סשן חדש ומעתיקים לו את ההודעה הבאה:</p>
+    <div style="background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 20px; font-size: 0.9rem; line-height: 1.9; direction: rtl;">
+      <p><strong>הנה הקונטקסט שלך:</strong></p>
+      <p>אני עומר טייכר. יש לי פרויקט ניתוח תמלולי שיחות לקוחות.</p>
+      <p>• <strong>repo:</strong> omertai224/clients-calls, branch: claude/work-in-progress-0znqP</p>
+      <p>• <strong>insights/catalog.json</strong> — קטלוג התובנות שלי (קטגוריות דינמיות)</p>
+      <p>• <strong>analysis_log.json</strong> — לוג מה כבר נותח</p>
+      <p>• <strong>scan_transcripts.py</strong> — סקריפט סריקה, יושב בתיקיית ההקלטות</p>
+      <p>• <strong>הסקריפט סורק:</strong> C:\Users\Demo\האחסון שלי\הקלטות\לקוחות</p>
+      <p>• <strong>פלט ל:</strong> C:\Users\Demo\Downloads\פלט.txt</p>
+      <p>• סה"כ: 115 לקוחות, 667 תמלולים, 1,249,336 מילים</p>
+      <p>• <strong>קטגוריות דינמיות</strong> — אם אתה מזהה תובנה שלא מתאימה לקטגוריה קיימת, תפתח חדשה</p>
+      <p>• <strong>תמלילים לא נשמרים</strong> — אחרי ניתוח, התובנות נשמרות ב-catalog.json והתמלול נמחק</p>
+      <p>• אני אעתיק לך תמלילים כמה בכל פעם, תנתח ותעדכן את הקבצים</p>
+      <p><strong>תקרא קודם את catalog.json ואת analysis_log.json מה-repo כדי לדעת איפה עצרנו.</strong></p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+      עקרונות חשובים
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>קטגוריות דינמיות, לא סגורות</strong> — אין רשימה קבועה מראש. קטגוריות חדשות נולדות מתוך התמלולים. אם Claude מזהה דפוס חדש, הוא פותח קטגוריה.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>התמלילים הם רגישים</strong> — שיחות אישיות עם לקוחות. לא נשמרים ב-repo, רק התובנות המזוקקות.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>לא להעמיס</strong> — כמה תמלילים בכל פעם. ניתוח מדויק עדיף על כמות.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>הסקריפט עוקב</strong> — מריצים scan_transcripts.py מדי פעם לראות סטטוס, פערים, ומה השתנה.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /tab-calls -->
+
 <footer>
-  עומר טייכר · מדריך פנימי · עדכון אחרון: 20 מרץ 2026
+  עומר טייכר · מדריך פנימי · עדכון אחרון: 21 מרץ 2026
 </footer>
 
 <script>
@@ -1389,7 +1543,7 @@ function copyTab(tabId) {
 
 function downloadTab(tabId) {
   var el = document.getElementById('tab-' + tabId);
-  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות', payments: 'מוצרים-ותשלומים', sitemap: 'מבנה-האתר', ideas: 'רעיונות-להמשך' };
+  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות', payments: 'מוצרים-ותשלומים', sitemap: 'מבנה-האתר', ideas: 'רעיונות-להמשך', calls: 'ניתוח-שיחות' };
   var text = el.innerText
     .replace(/הורד כטקסט\n?/g, '')
     .replace(/העתק ללוח\n?/g, '')
