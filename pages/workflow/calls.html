@@ -124,15 +124,57 @@
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">3</div>
-        <div class="formula-list-text"><strong>דגש על מה שעושה כסף!</strong> סדר עדיפויות: (1) הדרכות אינטראקטיביות — שם הכסף, כל בעיה שחוזרת = רעיון להדרכה (2) מוצרים ושירותים — חבילות, ריטיינר, שירותי פרימיום (3) שיפורי מכירות ואתר (4) פוסטים לבלוג — חשוב אבל לא העיקר, רק לקדם הדרכות.</div>
+        <div class="formula-list-text"><strong>דגש על מה שעושה כסף!</strong> סדר עדיפויות:<br>
+          <strong>(1) הדרכות אינטראקטיביות</strong> — שם הכסף! 27-97 ש"ח, חטיפים. כל בעיה שחוזרת = רעיון להדרכה. מהדרכות אפשר לגזור פוסטים.<br>
+          <strong>(2) פוסטים לבלוג</strong> — מקדמים הדרכות ומביאים תנועה. מפוסטים אפשר לגזור הדרכות. עצמאיים או מקדמי הדרכה.<br>
+          <strong>(3) מוצרים ושירותים</strong> — חבילות, ריטיינר, שירותי פרימיום. nice to have.<br>
+          <strong>(4) שיפורי מכירות, אתר, שיווק</strong> — nice to have.<br>
+          <em>כלל אצבע: דברים שמכניסים כסף = עדיפות ראשונה. רעיונות נחמדים = עדיפות שנייה.</em></div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">4</div>
-        <div class="formula-list-text"><strong>מעדכן catalog.json</strong> — כל תובנה נכנסת לקטגוריה המתאימה. קטגוריה חדשה נוצרת אם צריך.</div>
+        <div class="formula-list-text"><strong>בונה כרטיסיית רעיון</strong> — כל רעיון כולל:<br>
+          • <strong>כותרת</strong> (למשל "איך לסדר סיסמאות")<br>
+          • <strong>משפט</strong> שמסביר למה זה רלוונטי<br>
+          • <strong>ציטוט מהשיחה</strong> שמוכיח שהבעיה אמיתית<br>
+          • <strong>ספירת ביקוש</strong> — כמה פעמים הבעיה עלתה בשיחות שונות<br>
+          • <strong>תיוג דחיפות</strong> — "ביקוש מוכח" (עלה כמה פעמים) או "רעיון חדש" (עלה פעם אחת)<br>
+          • <strong>קישור להדרכה קיימת</strong> אם רלוונטי (למשל Vibe)</div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">5</div>
+        <div class="formula-list-text"><strong>מעדכן catalog.json</strong> — כל תובנה נכנסת לקטגוריה המתאימה. קטגוריה חדשה נוצרת אם צריך. כולל גם <strong>פרופילי לקוחות</strong> — מידע כללי בלבד (גיל, מקצוע, כמה זמן לקוח, העדפות טכנולוגיות). בלי פרטים רגישים.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">6</div>
         <div class="formula-list-text"><strong>מתעד ב-analysis_log.json</strong> — שם לקוח, שם קובץ, תאריך, hash, תובנות שהופקו.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"></path><path d="M6 6l12 12"></path></svg>
+      מה לדלג עליו?
+    </div>
+    <div class="rules">
+      <div class="rule">
+        <div class="rule-icon red">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c62828" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        </div>
+        <div class="rule-text"><strong>שיחות אישיות / לא טכניות</strong> — לפי שיקול דעת. אם השיחה לא רלוונטית לעסק — לסמן בלוג שדולגה ולהמשיך.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon red">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c62828" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+        </div>
+        <div class="rule-text"><strong>תמלולים מתחת ל-200 מילים</strong> — קצר מדי, אין מספיק חומר. לסמן בלוג שדולגו.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon green">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+        </div>
+        <div class="rule-text"><strong>השיחות עצמן הן מקור האמת</strong> — לא להניח כלום מראש. לא לבוא עם הנחות. לקרוא את השיחה ולתת לתובנות לעלות מהתמלול עצמו.</div>
       </div>
     </div>
   </div>
