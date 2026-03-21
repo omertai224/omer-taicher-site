@@ -148,7 +148,7 @@ function init() {
   let savedRepo = localStorage.getItem('admin_active_repo') || 'omer-taicher-blog';
   if (savedRepo === 'omer-taicher-site') savedRepo = 'omer-taicher-blog';
   const rawTab    = localStorage.getItem('admin_active_tab') || 'content';
-  const validTabs = ['content', 'code', 'gallery', 'download', 'contacts'];
+  const validTabs = ['content', 'code', 'gallery', 'download', 'contacts', 'workflow'];
   const savedTab  = validTabs.includes(rawTab) ? rawTab : 'content';
   const btnMap = {
     'omer-taicher-interactive': 'repo-btn-tutorials',
