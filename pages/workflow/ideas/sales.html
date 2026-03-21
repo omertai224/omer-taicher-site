@@ -1,32 +1,153 @@
 <div class="section">
   <div class="section-title">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-    שיפורי מכירות
+    רעיונות לשיפורי מכירות
   </div>
-  <div class="rules">
-    <div class="rule">
-      <div class="rule-icon green">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">שינויים שיכולים להעלות מכירות — מבאנדלים ועד אוטומציות. לחצו על כרטיסייה לפירוט מלא.</p>
+
+  <div class="idea-cards">
+
+    <div class="idea-card" data-tags="באנדל,חבילה,מכירות,הדרכות">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-hot">מוכן ליישום</span>
+        <div class="idea-card-title">באנדל "חבילת שקט נפשי"</div>
       </div>
-      <div class="rule-text"><strong>באנדל "חבילת שקט נפשי"</strong> - 3 הדרכות ב-119 שקל במקום 141. הקוד כבר תומך בפרמטר cart. צריך רק להוסיף כרטיס חבילה בדף ההדרכות.</div>
-    </div>
-    <div class="rule">
-      <div class="rule-icon green">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">הרעיון בקצרה</div>
+          <p>3 הדרכות (סיסמאות + גיבוי + אנטי-וירוס) ב-119₪ במקום 141₪. שם שמדבר לרגש — "שקט נפשי" = אני מוגן.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה זה יעבוד</div>
+          <ul>
+            <li>הקוד כבר תומך בפרמטר cart — צריך רק כרטיס בדף</li>
+            <li>באנדל מעלה ערך עסקה ממוצע ב-70%+</li>
+            <li>הנחה קטנה (22₪) אבל מרגישה כמו "מציאה"</li>
+            <li>3 מוצרים שמשלימים אחד את השני = הגיוני לקנות ביחד</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">איך ליישם</div>
+          <ul>
+            <li>הוספת כרטיס "חבילת שקט נפשי" בדף ההדרכות — עיצוב בולט, תגית "הכי פופולרי"</li>
+            <li>הגדרת פרמטר cart עם 3 ההדרכות</li>
+            <li>בדיקה שה-checkout תומך בכמה מוצרים ביחד</li>
+          </ul>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">באנדל</span>
+          <span class="idea-tag">מכירות</span>
+          <span class="idea-tag">מוכן ליישום</span>
+        </div>
       </div>
-      <div class="rule-text"><strong>"תוספת: שעת תמיכה" בצ'קאאוט</strong> - צ'קבוקס בדף התשלום: "רוצה שעת תמיכה מרחוק? +79 שקל". רשת ביטחון = יותר מכירות.</div>
     </div>
-    <div class="rule">
-      <div class="rule-icon blue">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+
+    <div class="idea-card" data-tags="צ'קאאוט,אפסייל,תמיכה מרחוק">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-ready">אפסייל</span>
+        <div class="idea-card-title">"תוספת: שעת תמיכה" בצ'קאאוט</div>
       </div>
-      <div class="rule-text"><strong>מייל מעקב 3 ימים אחרי רכישה</strong> - "נהנית מההדרכה? הנה עוד אחת ב-20% הנחה." Brevo כבר מחובר ותומך ב-automations.</div>
-    </div>
-    <div class="rule">
-      <div class="rule-icon blue">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">הרעיון בקצרה</div>
+          <p>צ'קבוקס בדף התשלום: "רוצה שעת תמיכה מרחוק? +79₪". רשת ביטחון שנותנת ביטחון = יותר מכירות.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה זה יעבוד</div>
+          <ul>
+            <li>הקהל מפחד "מה אם לא אצליח לבד?" — התמיכה מורידה את החסם</li>
+            <li>79₪ = זול מטכנאי. אבל רוב האנשים לא ישתמשו — רווח נקי</li>
+            <li>אפסייל ברגע התשלום = הרגע הכי טוב למכירה נוספת</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">איך ליישם</div>
+          <ul>
+            <li>צ'קבוקס מעוצב בדף ה-checkout: "הוסף שעת תמיכה מרחוק (+79₪)"</li>
+            <li>אם נבחר — הוספת מוצר נוסף לעסקה</li>
+            <li>מייל אוטומטי עם לינק לתיאום שעת תמיכה</li>
+          </ul>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">אפסייל</span>
+          <span class="idea-tag">צ'קאאוט</span>
+          <span class="idea-tag">תמיכה מרחוק</span>
+        </div>
       </div>
-      <div class="rule-text"><strong>מערכת קופונים</strong> - שדה "קוד הנחה" בצ'קאאוט. מאפשר הנחות ללקוחות חוזרים, למשתתפי הרצאה, לחברי קבוצת פייסבוק.</div>
     </div>
+
+    <div class="idea-card" data-tags="מייל,אוטומציה,Brevo,מכירות חוזרות">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-idea">אוטומציה</span>
+        <div class="idea-card-title">מייל מעקב 3 ימים אחרי רכישה</div>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">הרעיון בקצרה</div>
+          <p>"נהנית מההדרכה? הנה עוד אחת ב-20% הנחה." מייל אוטומטי ש-Brevo שולח 3 ימים אחרי רכישה.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה זה יעבוד</div>
+          <ul>
+            <li>Brevo כבר מחובר ותומך ב-automations — אפס עלות</li>
+            <li>3 ימים = מספיק זמן לסיים את ההדרכה, מוקדם מספיק שהחוויה עדיין חיובית</li>
+            <li>20% הנחה על המוצר הבא = תמריץ חזק למכירה חוזרת</li>
+            <li>מייל אחד = הכנסה פסיבית לנצח</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">איך ליישם</div>
+          <ul>
+            <li>Brevo: יצירת automation trigger — 3 ימים אחרי רכישה</li>
+            <li>עיצוב מייל פשוט: "תודה שרכשת [שם הדרכה]. הנה עוד אחת שתתאים לך."</li>
+            <li>קוד הנחה ייחודי שפג תוקף אחרי 7 ימים = דחיפות</li>
+          </ul>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">Brevo</span>
+          <span class="idea-tag">אוטומציה</span>
+          <span class="idea-tag">מכירות חוזרות</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card" data-tags="קופונים,הנחות,שיווק,לקוחות חוזרים">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-idea">תשתית</span>
+        <div class="idea-card-title">מערכת קופונים בצ'קאאוט</div>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">הרעיון בקצרה</div>
+          <p>שדה "קוד הנחה" בדף התשלום. תשתית שמאפשרת הנחות ללקוחות חוזרים, למשתתפי הרצאה, לחברי קבוצת פייסבוק.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה זה יעבוד</div>
+          <ul>
+            <li>מאפשר פרומושנים ממוקדים — "הרצאה שלי בשבוע הבא? הנה קוד 15% הנחה"</li>
+            <li>לקוחות חוזרים מרגישים VIP — מגדיל נאמנות</li>
+            <li>מאפשר למדוד מאיפה מגיעות מכירות (כל קוד = מקור שיווקי)</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">איך ליישם</div>
+          <ul>
+            <li>שדה קלט בדף ה-checkout: "יש לך קוד הנחה?"</li>
+            <li>JSON פשוט עם קודים + אחוזי הנחה + תאריך תפוגה</li>
+            <li>בדיקת תקינות בצד שרת (Vercel function)</li>
+          </ul>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">קופונים</span>
+          <span class="idea-tag">תשתית</span>
+          <span class="idea-tag">שיווק</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
