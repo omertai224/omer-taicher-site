@@ -39,15 +39,58 @@ TOKEN=$(get_access_token)
 case "$1" in
   list|ls)
     LIMIT="${3:-20}"
-    if [ -n "$2" ] && [ "$2" != "--limit" ]; then
+    if [ -n "$2" ] && [ "$2" != "--limit" ] && [ "$2" != "--all" ]; then
       QUERY="$2"
       ENCODED=$(python3 -c "import urllib.parse; print(urllib.parse.quote('''$QUERY'''))")
-      curl -s "$API_BASE/files?pageSize=$LIMIT&fields=files(id,name,mimeType,modifiedTime,size,parents)&orderBy=modifiedTime%20desc&q=$ENCODED" \
-        -H "Authorization: Bearer $TOKEN"
+      if [ "$2" = "--all" ] || [ "$4" = "--all" ]; then
+        # Paginated fetch - get ALL results
+        python3 -c "
+import urllib.request, urllib.parse, json
+token='$TOKEN'
+q='$ENCODED'
+base='$API_BASE'
+all_files=[]
+page_token=''
+while True:
+    url=f'{base}/files?pageSize=1000&fields=nextPageToken,files(id,name,mimeType,modifiedTime,size,parents)&orderBy=modifiedTime%20desc&q={q}'
+    if page_token: url+=f'&pageToken={page_token}'
+    req=urllib.request.Request(url, headers={'Authorization':f'Bearer {token}'})
+    data=json.loads(urllib.request.urlopen(req).read())
+    all_files.extend(data.get('files',[]))
+    page_token=data.get('nextPageToken','')
+    if not page_token: break
+print(json.dumps({'files':all_files}))
+"
+      else
+        curl -s "$API_BASE/files?pageSize=$LIMIT&fields=files(id,name,mimeType,modifiedTime,size,parents)&orderBy=modifiedTime%20desc&q=$ENCODED" \
+          -H "Authorization: Bearer $TOKEN"
+      fi
     else
+      ALL_MODE=false
+      if [ "$2" = "--all" ]; then ALL_MODE=true; fi
       if [ "$2" = "--limit" ]; then LIMIT="$3"; fi
-      curl -s "$API_BASE/files?pageSize=$LIMIT&fields=files(id,name,mimeType,modifiedTime,size,parents)&orderBy=modifiedTime%20desc" \
-        -H "Authorization: Bearer $TOKEN"
+      if [ "$4" = "--all" ] || [ "$ALL_MODE" = true ]; then
+        # Paginated fetch - get ALL results
+        python3 -c "
+import urllib.request, json
+token='$TOKEN'
+base='$API_BASE'
+all_files=[]
+page_token=''
+while True:
+    url=f'{base}/files?pageSize=1000&fields=nextPageToken,files(id,name,mimeType,modifiedTime,size,parents)&orderBy=modifiedTime%20desc'
+    if page_token: url+=f'&pageToken={page_token}'
+    req=urllib.request.Request(url, headers={'Authorization':f'Bearer {token}'})
+    data=json.loads(urllib.request.urlopen(req).read())
+    all_files.extend(data.get('files',[]))
+    page_token=data.get('nextPageToken','')
+    if not page_token: break
+print(json.dumps({'files':all_files}))
+"
+      else
+        curl -s "$API_BASE/files?pageSize=$LIMIT&fields=files(id,name,mimeType,modifiedTime,size,parents)&orderBy=modifiedTime%20desc" \
+          -H "Authorization: Bearer $TOKEN"
+      fi
     fi
     ;;
   search)
