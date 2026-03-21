@@ -3,23 +3,149 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
     מה כדאי לעשות קודם
   </div>
-  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">לפי סדר עדיפויות - השינויים עם ההחזר הכי גדול על ההשקעה:</p>
-  <div class="formula-list">
-    <div class="formula-list-item">
-      <div class="formula-list-num">1</div>
-      <div class="formula-list-text"><strong>CTA בסוף כל פוסט בבלוג</strong> - יש 30+ פוסטים ואף אחד לא מקשר להדרכה. שעת עבודה, אפקט מיידי.</div>
+  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">לפי סדר עדיפויות — השינויים עם ההחזר הכי גדול על ההשקעה. לחצו על כרטיסייה לפרטים.</p>
+
+  <div class="idea-cards">
+
+    <div class="idea-card" data-tags="אתר,מכירות,בלוג,CTA">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-hot">עדיפות 1</span>
+        <div class="idea-card-title">CTA בסוף כל פוסט בבלוג</div>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">הרעיון בקצרה</div>
+          <p>יש 30+ פוסטים בבלוג ואף אחד לא מקשר להדרכה רלוונטית. כל פוסט צריך להסתיים בהזמנה לפעולה — "רוצים לסדר את כל הסיסמאות? יש הדרכה בדיוק על זה."</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה זה יעבוד</div>
+          <ul>
+            <li>מי שקורא פוסט על סיסמאות כבר מתעניין בנושא — CTA מדויק</li>
+            <li>30 פוסטים = 30 משפכי מכירות בחינם</li>
+            <li>שעת עבודה, אפקט מיידי על מכירות</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">איך ליישם</div>
+          <ul>
+            <li>רשימת פוסטים + ההדרכה הרלוונטית לכל אחד</li>
+            <li>בלוק HTML קבוע (כפתור + משפט) שנוסף לסוף כל פוסט</li>
+            <li>Claude Code יכול לעשות את כל זה אוטומטית</li>
+          </ul>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">בלוג</span>
+          <span class="idea-tag">מכירות</span>
+          <span class="idea-tag">שינוי מהיר</span>
+        </div>
+      </div>
     </div>
-    <div class="formula-list-item">
-      <div class="formula-list-num">2</div>
-      <div class="formula-list-text"><strong>חבילת "שקט נפשי"</strong> - 3 הדרכות ב-119 שקל במקום 141. הקוד כבר תומך בסל, צריך רק כרטיס.</div>
+
+    <div class="idea-card" data-tags="מוצרים,מכירות,חבילה,באנדל">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-hot">עדיפות 2</span>
+        <div class="idea-card-title">חבילת "שקט נפשי" — 3 הדרכות ב-119₪</div>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">הרעיון בקצרה</div>
+          <p>חבילה של 3 הדרכות (סיסמאות + גיבוי + אנטי-וירוס) ב-119₪ במקום 141₪. שם שמדבר לקהל — "שקט נפשי" = אני מוגן, הקבצים שלי בטוחים, הסיסמאות מסודרות.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה זה יעבוד</div>
+          <ul>
+            <li>הקוד כבר תומך בפרמטר cart — צריך רק להוסיף כרטיס</li>
+            <li>באנדל מעלה ערך עסקה ממוצע</li>
+            <li>השם "שקט נפשי" פונה לרגש ולא למוצר</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">איך ליישם</div>
+          <ul>
+            <li>הוספת כרטיס חבילה בדף ההדרכות האינטראקטיביות</li>
+            <li>הגדרת פרמטר cart עם 3 ההדרכות</li>
+            <li>עיצוב הכרטיס כ-"בחירה פופולרית"</li>
+          </ul>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">מוצרים</span>
+          <span class="idea-tag">מכירות</span>
+          <span class="idea-tag">באנדל</span>
+        </div>
+      </div>
     </div>
-    <div class="formula-list-item">
-      <div class="formula-list-num">3</div>
-      <div class="formula-list-text"><strong>איסוף מיילים בבלוג</strong> - Brevo כבר מחובר. טופס קטן בסוף כל פוסט. בסיס לכל שיווק עתידי.</div>
+
+    <div class="idea-card" data-tags="שיווק,מיילים,Brevo,בלוג">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-priority">עדיפות 3</span>
+        <div class="idea-card-title">איסוף מיילים בבלוג</div>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">הרעיון בקצרה</div>
+          <p>טופס "רוצים טיפ כזה כל שבוע?" בסוף כל פוסט. Brevo כבר מחובר. כל מבקר בבלוג שלא משאיר מייל = ליד שנעלם לתמיד.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה זה יעבוד</div>
+          <ul>
+            <li>הבלוג כבר מושך תנועה מגוגל</li>
+            <li>Brevo מחובר ותומך ב-automations</li>
+            <li>רשימת מיילים = הבסיס לכל שיווק עתידי</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">איך ליישם</div>
+          <ul>
+            <li>יצירת טופס ב-Brevo</li>
+            <li>הטמעת הטופס בסוף כל פוסט בבלוג (בלוק HTML)</li>
+            <li>הגדרת automation: מייל ברוכים הבאים + טיפ שבועי</li>
+          </ul>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">שיווק</span>
+          <span class="idea-tag">Brevo</span>
+          <span class="idea-tag">בלוג</span>
+        </div>
+      </div>
     </div>
-    <div class="formula-list-item">
-      <div class="formula-list-num">4</div>
-      <div class="formula-list-text"><strong>באנר הרצאה בדף הבית</strong> - הרצאות חינמיות הן משפך מכירות מוכח. צריך לתת להן יותר חשיפה.</div>
+
+    <div class="idea-card" data-tags="אתר,הרצאה,משפך,דף הבית">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-priority">עדיפות 4</span>
+        <div class="idea-card-title">באנר הרצאה חינמית בדף הבית</div>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">הרעיון בקצרה</div>
+          <p>ההרצאה מוסתרת בתפריט. באנר בולט עם ספירה לאחור "ההרצאה הקרובה בעוד X ימים" ישים את ההרצאה במרכז הבמה.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה זה יעבוד</div>
+          <ul>
+            <li>הרצאות חינמיות = משפך מכירות מוכח</li>
+            <li>ספירה לאחור יוצרת דחיפות</li>
+            <li>דף הבית הוא הדף עם הכי הרבה תנועה</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">איך ליישם</div>
+          <ul>
+            <li>באנר מעוצב עם תאריך ההרצאה הקרובה</li>
+            <li>JS לספירה לאחור (ימים/שעות)</li>
+            <li>כפתור הרשמה ישיר</li>
+          </ul>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">דף הבית</span>
+          <span class="idea-tag">הרצאה</span>
+          <span class="idea-tag">משפך מכירות</span>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>

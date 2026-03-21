@@ -3,13 +3,45 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
     רעיונות להדרכות אינטראקטיביות
   </div>
-  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">כל רעיון להדרכה אינטראקטיבית חדשה — מתמלולי לקוחות, מבעיות שחוזרות, מנושאים שאנשים מוכנים לשלם עליהם. כשמגיע הזמן לבנות הדרכה חדשה, בוחרים מכאן.</p>
+  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">כל רעיון להדרכה אינטראקטיבית חדשה — מתמלולי לקוחות, מבעיות שחוזרות, מנושאים שאנשים מוכנים לשלם עליהם. לחצו על כרטיסייה לפרטים.</p>
 
   <div class="idea-tip">
-    <strong>💡 איך זה עובד:</strong> Claude מנתח תמלולי שיחות → מזהה בעיות טכניות שחוזרות ודורשות הדרכה צעד-אחרי-צעד → מתרגם לרעיונות להדרכות עם הערכת מחיר ותיאור.
+    <strong>איך זה עובד:</strong> Claude מנתח תמלולי שיחות ← מזהה בעיות טכניות שחוזרות ודורשות הדרכה צעד-אחרי-צעד ← מתרגם לרעיונות להדרכות עם מבנה, מחיר מומלץ, ותיאור מפורט.
   </div>
 
-  <div class="glossary">
-    <!-- רעיונות להדרכות יתווספו כאן אוטומטית מניתוח שיחות -->
+  <div class="idea-cards" style="margin-top: 16px;">
+    <!-- רעיונות להדרכות יתווספו כאן אוטומטית מניתוח שיחות.
+         כל רעיון בפורמט:
+
+         <div class="idea-card" data-tags="תגיות,רלוונטיות">
+           <div class="idea-card-header" onclick="toggleIdea(this)">
+             <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+             <span class="idea-card-badge badge-idea">₪XX</span>
+             <div class="idea-card-title">שם ההדרכה</div>
+             <span class="idea-card-source">מקור: שם הלקוח/שיחה</span>
+           </div>
+           <div class="idea-card-body">
+             <div class="idea-card-section">
+               <div class="idea-card-section-title">מה ההדרכה מלמדת</div>
+               <p>תיאור מפורט...</p>
+             </div>
+             <div class="idea-card-section">
+               <div class="idea-card-section-title">מבנה ההדרכה (צעדים)</div>
+               <ul><li>צעד 1: ...</li></ul>
+             </div>
+             <div class="idea-card-section">
+               <div class="idea-card-section-title">למה ישלמו על זה</div>
+               <p>...</p>
+             </div>
+             <div class="idea-card-section">
+               <div class="idea-card-section-title">קהל יעד</div>
+               <p>...</p>
+             </div>
+             <div class="idea-card-tags">
+               <span class="idea-tag">תגית</span>
+             </div>
+           </div>
+         </div>
+    -->
   </div>
 </div>

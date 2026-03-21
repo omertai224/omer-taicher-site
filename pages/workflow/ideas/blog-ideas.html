@@ -3,13 +3,45 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
     רעיונות לפוסטים בבלוג
   </div>
-  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">כל רעיון לפוסט שעולה מתמלילי לקוחות, משאלות בקבוצת פייסבוק, או מנושאים שחוזרים — נרשם כאן. כשמגיע הזמן לכתוב פוסט, פשוט בוחרים מהרשימה.</p>
+  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">כל רעיון לפוסט שעולה מתמלילי לקוחות, משאלות בקבוצת פייסבוק, או מנושאים שחוזרים. לחצו על כרטיסייה לראות את הפירוט המלא.</p>
 
   <div class="idea-tip">
-    <strong>💡 איך זה עובד:</strong> Claude מנתח תמלולי שיחות לקוחות → מזהה שאלות, בעיות וצרכים שחוזרים → מתרגם אותם לרעיונות לפוסטים שיעניינו את הקהל.
+    <strong>איך זה עובד:</strong> Claude מנתח תמלולי שיחות לקוחות ← מזהה שאלות, בעיות וצרכים שחוזרים ← מתרגם אותם לרעיונות מזוקקים לפוסטים עם מספיק בשר ליצור מהם פוסט בקלות.
   </div>
 
-  <div class="glossary">
-    <!-- רעיונות לפוסטים יתווספו כאן אוטומטית מניתוח שיחות -->
+  <div class="idea-cards" style="margin-top: 16px;">
+    <!-- רעיונות לפוסטים יתווספו כאן אוטומטית מניתוח שיחות.
+         כל רעיון בפורמט:
+
+         <div class="idea-card" data-tags="תגיות,רלוונטיות">
+           <div class="idea-card-header" onclick="toggleIdea(this)">
+             <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+             <span class="idea-card-badge badge-idea">רעיון</span>
+             <div class="idea-card-title">שם הפוסט</div>
+             <span class="idea-card-source">מקור: שם הלקוח/שיחה</span>
+           </div>
+           <div class="idea-card-body">
+             <div class="idea-card-section">
+               <div class="idea-card-section-title">על מה הפוסט</div>
+               <p>תיאור מפורט...</p>
+             </div>
+             <div class="idea-card-section">
+               <div class="idea-card-section-title">נקודות מפתח לפוסט</div>
+               <ul><li>...</li></ul>
+             </div>
+             <div class="idea-card-section">
+               <div class="idea-card-section-title">למה הקהל צריך את זה</div>
+               <p>...</p>
+             </div>
+             <div class="idea-card-section">
+               <div class="idea-card-section-title">CTA מומלץ</div>
+               <p>...</p>
+             </div>
+             <div class="idea-card-tags">
+               <span class="idea-tag">תגית</span>
+             </div>
+           </div>
+         </div>
+    -->
   </div>
 </div>

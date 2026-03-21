@@ -82,6 +82,32 @@ function initSubTabs() {
   switchSubTab('priorities');
 }
 
+// --- Idea Cards (Accordion + Search) ---
+function toggleIdea(header) {
+  var card = header.closest('.idea-card');
+  card.classList.toggle('open');
+}
+
+function filterIdeas() {
+  var input = document.getElementById('ideas-search');
+  if (!input) return;
+  var query = input.value.trim().toLowerCase();
+  var parent = document.getElementById('tab-ideas');
+  var cards = parent.querySelectorAll('.idea-card');
+  var visible = 0;
+  cards.forEach(function(card) {
+    var text = card.textContent.toLowerCase();
+    var tags = (card.dataset.tags || '').toLowerCase();
+    var match = !query || text.indexOf(query) !== -1 || tags.indexOf(query) !== -1;
+    card.classList.toggle('hidden', !match);
+    if (match) visible++;
+  });
+  var counter = document.getElementById('ideas-count');
+  if (counter) {
+    counter.textContent = query ? visible + ' רעיונות נמצאו' : '';
+  }
+}
+
 // --- Copy & Download ---
 function copyTab(tabId) {
   var el = document.getElementById('tab-' + tabId);
