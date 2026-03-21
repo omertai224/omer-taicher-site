@@ -1,0 +1,94 @@
+  <button class="download-btn" onclick="downloadTab('sitemap')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+    הורד כטקסט
+  </button>
+  <button class="copy-btn" onclick="copyTab('sitemap')">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+    העתק ללוח
+  </button>
+</div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+      תיקיות ראשיות
+    </div>
+    <div class="glossary">
+      <div class="glossary-card">
+        <span class="glossary-term">/</span>
+        <div class="glossary-meaning">שורש האתר</div>
+        <div class="glossary-desc">דף הבית (index.html), תהליכי עבודה (pages/workflow/), הגדרות (CLAUDE.md, vercel.json)</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/interactive/</span>
+        <div class="glossary-meaning">הדרכות אינטראקטיביות</div>
+        <div class="glossary-desc">דף ההדרכות (index.html), קטלוג מוצרים (interactive.json), תיקייה לכל הדרכה (Vibe/, AI/ וכו')</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/blog/</span>
+        <div class="glossary-meaning">בלוג</div>
+        <div class="glossary-desc">דף ראשי (index.html), תבנית פוסט (post-template.html), אינדקס (posts-index.json), תיקיית פוסטים (posts/)</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/api/</span>
+        <div class="glossary-meaning">שרת (Vercel Functions)</div>
+        <div class="glossary-desc">payplus.js (תשלום), payplus-webhook.js (מה קורה אחרי תשלום), blog-posts.js (API בלוג)</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/admin/</span>
+        <div class="glossary-meaning">פאנל ניהול</div>
+        <div class="glossary-desc">ממשק ניהול דרך הדפדפן. עריכת קבצים, ניהול פוסטים, העלאת תמונות. דורש GitHub Token.</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/assets/</span>
+        <div class="glossary-meaning">קבצי עיצוב</div>
+        <div class="glossary-desc">CSS (main.css), גופנים (fonts/), JavaScript (js/toolbar.js, js/base-path.js)</div>
+      </div>
+      <div class="glossary-card">
+        <span class="glossary-term">/pages/</span>
+        <div class="glossary-meaning">דפים נוספים</div>
+        <div class="glossary-desc">checkout/ (דף תשלום), legal/ (תקנון, פרטיות, החזרים, נגישות)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path></svg>
+      קבצי JSON שחשוב להכיר
+    </div>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">קבצי JSON הם "מקור האמת" של האתר. הם שולטים על מה שמוצג.</p>
+    <table class="formula-table">
+      <tr><th>קובץ</th><th>מה הוא שולט</th></tr>
+      <tr><td class="tool-name">interactive.json</td><td>כל ההדרכות: שמות, מחירים, תיאורים, דרישות, סטטוס</td></tr>
+      <tr><td class="tool-name">posts-index.json</td><td>רשימת כל הפוסטים בבלוג (בלי התוכן עצמו)</td></tr>
+      <tr><td class="tool-name">posts/xxx.json</td><td>תוכן של פוסט בודד (כותרת, תקציר, גוף, SEO)</td></tr>
+      <tr><td class="tool-name">vercel.json</td><td>הגדרות שרת: ראוטינג, headers, cache, functions</td></tr>
+      <tr><td class="tool-name">CLAUDE.md</td><td>הנחיות לקלוד: כללי ברזל, דברים שחשוב לזכור</td></tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+      איך הכל מתחבר
+    </div>
+    <div class="formula-list">
+      <div class="formula-list-item">
+        <div class="formula-list-num">1</div>
+        <div class="formula-list-text"><strong>GitHub</strong> - כל הקוד נמצא שם. Claude Code דוחף שינויים לבראנץ', ואתה ממזג ל-main.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">2</div>
+        <div class="formula-list-text"><strong>Vercel</strong> - עוקב אחרי main. ברגע שממזגים, Vercel בונה גרסה חדשה ומעלה לאוויר תוך דקה. גם מריץ את ה-API (תשלומים, webhook, בלוג).</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">3</div>
+        <div class="formula-list-text"><strong>GitHub Pages</strong> - משמש לתצוגה מקדימה (Preview). מציג את הבראנץ' הנוכחי לפני שממזגים. גם משמש את פאנל הניהול.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">4</div>
+        <div class="formula-list-text"><strong>omertai.net</strong> - הדומיין שמצביע על Vercel. זה מה שהלקוחות רואים.</div>
+      </div>
+    </div>
+  </div>
