@@ -189,6 +189,9 @@ function switchTab(name, btn) {
   const saveBtn = document.getElementById('save-content-btn');
   if (saveBtn) saveBtn.style.visibility = (!isUtility && GITHUB_REPO === 'omer-taicher-site') ? 'visible' : 'hidden';
 
+  // workflow tab: hide outer scroll
+  document.body.style.overflow = name === 'workflow' ? 'hidden' : '';
+
   localStorage.setItem('admin_active_tab', name);
   if (name === 'download') initDownloadTab();
   if (name === 'gallery') loadGalleryManager();
