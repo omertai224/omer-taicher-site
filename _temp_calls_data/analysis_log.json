@@ -1,0 +1,1332 @@
+{
+  "description": "לוג של תמלילים שנותחו - לבקרה ומעקב",
+  "analyzed": [
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240104_194931.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240104_194931.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "70f2cbd8a28225c1f268b22c8f0a60fc",
+      "words": 810,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240219_100339.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240219_100339.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "775be09b178703f700afa23098acc6a0",
+      "words": 2041,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240220_190930.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240220_190930.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e0b0fafe01f29c7ba1065f43a153978c",
+      "words": 606,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240220_193140.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240220_193140.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "6a2d574f72e6a8655edd4e7776e6d732",
+      "words": 1726,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240220_195912.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240220_195912.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "1c091f8b54f7a98716f2c630afa45794",
+      "words": 3930,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240406_210917.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240406_210917.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "9b1b060d0e519472a418be8e6a1577a4",
+      "words": 1004,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240516_123455.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240516_123455.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "008c5b3288a0a27754c890af770e02f1",
+      "words": 4612,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240523_205142.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240523_205142.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e83dd0502b5e40354e65c30c33866ab7",
+      "words": 2158,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240528_111218.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240528_111218.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "2bade4df48a6dc728aca3e80a9140f4b",
+      "words": 1383,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240604_133404.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240604_133404.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e673bc15cbaeed2a15aea42a5df054ca",
+      "words": 973,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240629_100231.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240629_100231.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "5af897188905e435d281f27cfcdc30fb",
+      "words": 4342,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240825_170529.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240825_170529.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "6fe79ae96e12dc151e293dc10ba6d53d",
+      "words": 5125,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240905_074433.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240905_074433.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "dff6201ed00accdc6a98ca2d3a203dce",
+      "words": 642,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240908_090129.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240908_090129.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "f1d75a792ef4d7cfb8c1e8a8cb9063d0",
+      "words": 2771,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_240910_090021.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_240910_090021.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "a7b3e23a50ba22aba1603bf77bff3f1e",
+      "words": 1677,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_241015_180202.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_241015_180202.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "013974efd0b04e0366fb9eedc3cb3e01",
+      "words": 7754,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_241106_130619.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_241106_130619.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "c50380f802108a8d1ddc1f0987546a76",
+      "words": 6749,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250116_092440.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250116_092440.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "6ef922b7f63514945eb38cc4a1440a9e",
+      "words": 4179,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250116_101457.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250116_101457.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "504ae901a9f847fd815f776e62de8bc9",
+      "words": 980,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250226_181057.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250226_181057.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "6080b8b893735c017d3cb13f99e36e82",
+      "words": 3922,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250226_190112.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250226_190112.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "053289c4d9ca5fded7a97aac0786f330",
+      "words": 768,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250614_112331.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250614_112331.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "ed5becf8f6fbd1bbfdb15daf465ac844",
+      "words": 5902,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250625_174757.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250625_174757.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "31ff206816f93f45fad1556a27a1b66a",
+      "words": 2147,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250717_220936.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250717_220936.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "aee06e65210ac903ba41f08ea764b9ba",
+      "words": 1795,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250805_120833.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250805_120833.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "1f6a5e3611cf3212699b1c78ebb2a6be",
+      "words": 1947,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250821_203000.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250821_203000.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e15475c01c27be927a4af61948e16ff3",
+      "words": 5121,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250822_092625.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250822_092625.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "f45bf1fdebb6579583bbc1143f9fdea7",
+      "words": 1382,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250827_135400.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250827_135400.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "1ce1038c3cddc642a4d5f46722eed399",
+      "words": 1901,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250827_142739.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_250827_142739.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "9a9dc5f4362fad04d7dcedd579a42a5d",
+      "words": 613,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_251010_115047.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_251010_115047.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "bcf7f1ff5b0fd4049833ddc8ee76b240",
+      "words": 1346,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_251019_192645.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_251019_192645.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "603b1d90c8df1d75031475b3e615016a",
+      "words": 3826,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_251019_194858.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_251019_194858.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "c84b40d7db548530135545014c81897e",
+      "words": 1401,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_251024_105306.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_251024_105306.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "ac87321d56c13f3c144f19741dd475a9",
+      "words": 531,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_251024_123221.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_251024_123221.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "ff56de73e33cff1d5e1ab0d818079be8",
+      "words": 843,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260104_115550.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260104_115550.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "cc6ed6633b0615b7435f94fad2b9fd4d",
+      "words": 756,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260104_120646.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260104_120646.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "5845395938b08014c7026b35e3cc35ae",
+      "words": 866,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260112_165025.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260112_165025.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "3583e0a5597ef15d76e2ab0472179b67",
+      "words": 2365,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260112_180300.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260112_180300.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "24ee29638ed9deeebf1e7702dd4ed96f",
+      "words": 1051,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260217_125501.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260217_125501.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "0b120319fb6af985e1eb380c695f581b",
+      "words": 2114,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260217_180347.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260217_180347.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "d6dee5bf736af39f801236d9e9a1fc50",
+      "words": 950,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260217_185552.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260217_185552.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "10f70d9f35e91f0f006799f8c493708f",
+      "words": 730,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260217_190337.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260217_190337.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "476b3ea100cfe008e71b15c573987013",
+      "words": 5212,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260306_100224.txt",
+      "source_file": "inbox/הקלטת שיחה מרתה דגן_260306_100224.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "c4e77434c0d149ad6df5471767ec0314",
+      "words": 1063,
+      "status": "analyzed"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250822_092520.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260104_120628.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260112_164944.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260112_180248.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250821_202945.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_251019_192631.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_251019_194844.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260112_171357.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250827_135348.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260217_182001.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260217_125438.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250822_092612.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260108_081920.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_251024_123152.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260306_100152.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260217_185508.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260108_082027.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260306_103636.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260108_123831.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_250226_185503.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "מרתה דגן",
+      "filename": "הקלטת שיחה מרתה דגן_260306_111958.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250425_110927.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250425_110927.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "aa05c9461665f72e4b76e15bfb89f61d",
+      "words": 597,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250425_111654.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250425_111654.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e6269eee8fbdea0bea0e9563e4420007",
+      "words": 1639,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250619_130748.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250619_130748.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "1f37b600b3c5c576874645e5e7ea43cc",
+      "words": 9630,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250623_111736.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250623_111736.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "6dc8ffb81b18db377dae401eae83a39e",
+      "words": 1132,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250623_182945.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250623_182945.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "899952e2d25e4bd33dfb17675c50db31",
+      "words": 978,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250623_185916.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250623_185916.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "b71ff8e28b8e96c4a6f1f9ad5f01674c",
+      "words": 721,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250623_191442.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250623_191442.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "a43f16f9738286eb9a04972ad8de2675",
+      "words": 2922,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250706_164430.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250706_164430.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "057eb48f97f2bae7186312cca34c6967",
+      "words": 1828,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_250821_130112.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_250821_130112.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "5d04c6460d63f760bafb9acacf52aa6f",
+      "words": 11277,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_251103_105954.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_251103_105954.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "b0e597e01e9099b15a2a0e0e7b9a6ddf",
+      "words": 4501,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_251103_130913.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_251103_130913.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "83305441a87b44418d9c746bd34159f0",
+      "words": 466,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_251103_165743.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_251103_165743.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "d709902bcf13bb1428d18664820d0590",
+      "words": 534,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_251104_155516.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_251104_155516.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "6ad7069a5e56bcbd705ee1f1685140de",
+      "words": 1944,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_251105_160419.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_251105_160419.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "817cdcac97df186dcd957dd9d3b4700b",
+      "words": 2275,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260105_115433.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_260105_115433.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "3c8904f3ba849867cf7680312331cc79",
+      "words": 1628,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260209_171642.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_260209_171642.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "ace9a31a1c3ebf74871b6747a4f25f36",
+      "words": 5847,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260212_103955.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_260212_103955.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "4dbfc3ead6c9ea0f183b9b6c715c179c",
+      "words": 942,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260212_135841.txt",
+      "source_file": "inbox/הקלטת שיחה אורנה אדריאנסן_260212_135841.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "a09736c057c6b140c14e93c4c7a64f51",
+      "words": 660,
+      "status": "analyzed"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260216_215155.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260217_091335.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260217_114515.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260217_133312.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260217_133721.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_251103_154143.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "אורנה אדריאנסן",
+      "filename": "הקלטת שיחה אורנה אדריאנסן_260212_133511.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_240103_120015.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_240103_120015.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "a9796dc5e8c35531798ba879b802e694",
+      "words": 1376,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_240103_122327.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_240103_122327.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "39394dd5fc2154228d267eaea205c147",
+      "words": 2639,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_240114_120126.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_240114_120126.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "c1db9d4b6d73d9bb66784cddd8848137",
+      "words": 2643,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_240702_121541.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_240702_121541.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "938500ff1988922f471baa6e6b2897e8",
+      "words": 1457,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_240702_123222.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_240702_123222.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "f989783fcc3f313ceb20e901949622be",
+      "words": 4715,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_240711_120456.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_240711_120456.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "f20df50a520f5f3f8260c5b3c32fcee1",
+      "words": 507,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_240904_134834.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_240904_134834.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "725b6a36c4babddb67a53b2ac451034f",
+      "words": 1137,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_241103_115832.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_241103_115832.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "3e042a944ff9e81e4e863dca6d71166b",
+      "words": 8048,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_241227_113147.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_241227_113147.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "864cce04952342a19f20ba615a47201f",
+      "words": 2723,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_241227_121228.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_241227_121228.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "7c634976faa078cd37f0046773fa9b23",
+      "words": 3977,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_250207_120029.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_250207_120029.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "2aee97fca54f1a4c8c88086657adbe2f",
+      "words": 2784,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_250720_124130.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_250720_124130.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "b1e2e7070162a3d8f3016fe1ae7ab1c8",
+      "words": 7465,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_251019_120359.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_251019_120359.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e0984ed9636f7ad11ec5390b394fa2ea",
+      "words": 4978,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_251217_104638.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_251217_104638.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "3f19918ab2d2b3312e6df649de1df556",
+      "words": 786,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_251219_122902.txt",
+      "source_file": "inbox/הקלטת שיחה פנינה אולי_251219_122902.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "5a3f3ff403d9427bcbda6a26ee2a5599",
+      "words": 859,
+      "status": "analyzed"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_251218_113850.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "פנינה אולי",
+      "filename": "הקלטת שיחה פנינה אולי_251019_115952.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_240822_121959.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_240822_121959.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e44ce4d4df1c974eb4e8f1bdfefe48b5",
+      "words": 968,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_240826_142230.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_240826_142230.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "d1267e3b18c3f10b0c0952466f2aa12f",
+      "words": 608,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_240826_191637.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_240826_191637.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "bd4a080baedad1c9079bd8ad87ad4870",
+      "words": 2475,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_240827_154034.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_240827_154034.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "9077b05a1aa5a967d031a2180ae30dfd",
+      "words": 459,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_240908_184256.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_240908_184256.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "579c2dfbe58208852bda9c9e14f0d3b4",
+      "words": 555,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_240909_100124.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_240909_100124.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "5cb3604855c6e78d5601ae2db21020dd",
+      "words": 2263,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_241011_083120.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_241011_083120.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "2fd7dfee3969d2e899580209660a1af4",
+      "words": 894,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_241108_110003.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_241108_110003.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "4c44d617be52163a1e379a53ab68ad3f",
+      "words": 712,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_241111_175611.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_241111_175611.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "bf47da415b28781aa0c82c9162031b37",
+      "words": 2079,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_241227_100536.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_241227_100536.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "13d0f70ac05afa68b7197c5f71374718",
+      "words": 3517,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250116_103145.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250116_103145.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "75c57085af61004126f8f3d05f859f02",
+      "words": 799,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250424_201239.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250424_201239.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "3db5a5df133b11eb27fae3ef41183aeb",
+      "words": 2915,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250424_210826.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250424_210826.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e21467e212cccdfc83c9c6c2b31bd78d",
+      "words": 534,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250425_083639.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250425_083639.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "a953963e9d48ff1601edb4435523db88",
+      "words": 854,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250425_085811.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250425_085811.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "31a62f9236bd3c6c0cdb74e5f8e1200b",
+      "words": 351,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250425_091138.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250425_091138.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "3bf20cb80a4cce4ff00e4058f069389d",
+      "words": 523,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250425_092840.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250425_092840.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "0540e4e13c1d6a6c2e5ce9a178ffbcf7",
+      "words": 1974,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250601_130019.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250601_130019.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "bbcc6ad11b765e9118ef664ab31a4f0e",
+      "words": 1545,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250601_135947.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250601_135947.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "edbee7997f9bc32810b65b484cc90dd4",
+      "words": 1832,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250609_111931.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250609_111931.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "0dda42fcbe6382958c6d7f42ace68464",
+      "words": 829,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250609_113448.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250609_113448.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "b64039b16b9e016fd56328f38c4df0e5",
+      "words": 726,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250721_105758.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250721_105758.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "954274adfbb70eb4474cf7d35bc8e5d7",
+      "words": 646,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250822_100420.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250822_100420.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "c16174bf586c9f721e233327d5f13a95",
+      "words": 1721,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250822_102941.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250822_102941.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "dfebf410db617bd8b4dd2deace688d32",
+      "words": 287,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250824_124001.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250824_124001.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "e8cca53254feaba94eeffa20d0c4417c",
+      "words": 1704,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250824_140625.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250824_140625.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "896835d1f0a97b4fae55c4d4dd0d8d1b",
+      "words": 608,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250901_192049.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_250901_192049.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "6b9729487817ca77ca39bd2254a58eb0",
+      "words": 1459,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251112_163539.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_251112_163539.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "c290442f8318f8e25252578b4cea35cc",
+      "words": 1958,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251115_112706.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_251115_112706.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "6803edb169cf14f2f97750d1b5207821",
+      "words": 772,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251215_182400.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_251215_182400.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "5c61123e29d33dbbfe6749977ff0a6a7",
+      "words": 768,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251218_153648.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_251218_153648.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "ce42250ab569464ac4da8b3ee36575ca",
+      "words": 438,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251219_111002.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_251219_111002.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "0f495d93ed6973dbc53141dae1806ac8",
+      "words": 1908,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251230_123425.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_251230_123425.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "cec12c8d28333a38af3157550a5090eb",
+      "words": 980,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_260105_140540.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_260105_140540.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "ade61244f8bd422738f8568fb65f0d7f",
+      "words": 345,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_260118_112942.txt",
+      "source_file": "inbox/הקלטת שיחה זאב אבן חן_260118_112942.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "c09a33743fd6d948a9a24b54a599bf9d",
+      "words": 312,
+      "status": "analyzed"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251112_142438.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251217_170128.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_260114_135825.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251218_204352.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251218_173536.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251217_144857.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251221_121414.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_250822_104324.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251210_115414.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251113_194727.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    },
+    {
+      "client": "זאב אבן חן",
+      "filename": "הקלטת שיחה זאב אבן חן_251217_145124.txt",
+      "date_analyzed": "2026-03-21",
+      "file_hash": "skipped",
+      "words": 0,
+      "status": "skipped_too_short"
+    }
+  ]
+}
