@@ -31,7 +31,7 @@
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>הזרימה:</strong> עומר שם ClientStatus.txt בשורש הריפו של claude ← Claude קורא ומבין את הסטטוס ← עומר מעביר תמלולים לתיקיית inbox ← Claude מנתח ← תובנות ל-catalog.json ← רעיונות ל-"רעיונות להמשך" ← הכל מתועד ב-analysis_log.json</div>
+        <div class="rule-text"><strong>הזרימה (שני ריפוס!):</strong> עומר דוחף תמלולים ל-inbox בבראנצ׳ ב-<code>clients-calls</code> (ריפו פרטי) ← Claude מנתח ← תובנות ל-catalog.json + analysis_log.json (נשאר ב-clients-calls) ← רעיונות מזוקקים נכתבים לכרטיסיות אקורדיון ב-<code>omer-taicher-site</code> (תיקיית ideas/) ← תמלול נמחק מ-inbox</div>
       </div>
     </div>
   </div>
@@ -46,13 +46,25 @@
         <div class="rule-icon blue">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <div class="rule-text"><strong>GitHub repo: omertai224/clients-calls</strong> — <strong>הכל יושב על הבראנצ׳ של claude (השם משתנה בין סשנים). אין מיזוג ל-main. כל התמלולים, הסטטוסים, הניתוחים — הכל על הבראנצ׳ שלך. עומר דוחף קבצים לבראנצ׳ שלך ואתה עובד משם.</strong></div>
+        <div class="rule-text"><strong>שני ריפוס במקביל בכל סשן ניתוח:</strong></div>
       </div>
       <div class="rule">
         <div class="rule-icon blue">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <div class="rule-text"><strong>ClientStatus.txt</strong> — דוח סטטוס מלא ומתעדכן: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>נמצא בשורש הבראנצ׳ שלך. זה הקובץ הראשון שאתה קורא.</strong></div>
+        <div class="rule-text"><strong>ריפו 1 — omertai224/clients-calls (פרטי!)</strong> — תמלולים רגישים, ClientStatus.txt, catalog.json, analysis_log.json. הכל על הבראנצ׳ של claude. אין מיזוג ל-main. עומר דוחף קבצים לבראנצ׳ שלך ואתה עובד משם.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>ריפו 2 — omertai224/omer-taicher-site</strong> — לכאן זורמים הרעיונות המזוקקים. כרטיסיות אקורדיון ב-<code>pages/workflow/ideas/</code>. שום דבר רגיש לא מגיע לכאן — רק רעיונות נקיים.</div>
+      </div>
+      <div class="rule">
+        <div class="rule-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+        </div>
+        <div class="rule-text"><strong>ClientStatus.txt</strong> — דוח סטטוס מלא ומתעדכן: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>נמצא בשורש הבראנצ׳ שלך ב-clients-calls. זה הקובץ הראשון שאתה קורא.</strong></div>
       </div>
       <div class="rule">
         <div class="rule-icon blue">
@@ -91,14 +103,22 @@
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">3</div>
-        <div class="formula-list-text"><strong>Claude מנתח</strong> — קורא את התמלולים מ-inbox, מנתח, מזהה תובנות, מזקק רעיונות.</div>
+        <div class="formula-list-text"><strong>Claude מנתח</strong> — קורא את התמלולים מ-inbox, מנתח, מזהה תובנות, מזקק רעיונות. <strong>חשוב:</strong> בודק קודם ב-analysis_log.json אם הקובץ כבר נותח — אם כן, מדלג ומודיע לעומר.</div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">4</div>
-        <div class="formula-list-text"><strong>עדכון אוטומטי</strong> — Claude מעדכן: catalog.json (תובנות), analysis_log.json (מעקב), ו-"רעיונות להמשך" בתהליכי עבודה (רעיונות לפוסטים, להדרכות, למוצרים, שיפורים).</div>
+        <div class="formula-list-text"><strong>עדכון ב-clients-calls</strong> — Claude מעדכן את catalog.json (תובנות) ו-analysis_log.json (מעקב) בריפו הפרטי.</div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">5</div>
+        <div class="formula-list-text"><strong>עדכון ב-omer-taicher-site</strong> — רעיונות מזוקקים הולכים לכרטיסיות אקורדיון ב-"רעיונות להמשך" (תיקיית <code>pages/workflow/ideas/</code>). כל רעיון לתת-הלשונית המתאימה.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">6</div>
+        <div class="formula-list-text"><strong>מחיקת תמלול מ-inbox</strong> — אחרי שנותח ותועד, הקובץ נמחק מ-inbox. הלוג שומר את ה-hash, אז אם עומר יעלה אותו שוב בטעות — Claude ידלג.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">7</div>
         <div class="formula-list-text"><strong>חזרה לשלב 1</strong> — מריצים שוב את הסקריפט, מעלים ClientStatus.txt מעודכן, ממשיכים עד שכל התמלולים הממתינים מנותחים.</div>
       </div>
     </div>
@@ -175,7 +195,7 @@
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>התמלילים רגישים</strong> — שיחות אישיות עם לקוחות. לא נשמרים ב-repo, רק התובנות המזוקקות.</div>
+        <div class="rule-text"><strong>התמלילים רגישים</strong> — שיחות אישיות עם לקוחות. אחרי ניתוח, התמלול נמחק מ-inbox. רק התובנות המזוקקות נשארות (ב-catalog.json). שום מידע אישי של לקוחות לא עובר ל-omer-taicher-site.</div>
       </div>
       <div class="rule">
         <div class="rule-icon green">
