@@ -3,45 +3,243 @@
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
     רעיונות להדרכות אינטראקטיביות
   </div>
-  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">כל רעיון להדרכה אינטראקטיבית חדשה — מתמלולי לקוחות, מבעיות שחוזרות, מנושאים שאנשים מוכנים לשלם עליהם. לחצו על כרטיסייה לפרטים.</p>
-
-  <div class="idea-tip">
-    <strong>איך זה עובד:</strong> Claude מנתח תמלולי שיחות ← מזהה בעיות טכניות שחוזרות ודורשות הדרכה צעד-אחרי-צעד ← מתרגם לרעיונות להדרכות עם מבנה, מחיר מומלץ, ותיאור מפורט.
-  </div>
+  <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">רעיונות שעלו מניתוח 64 תמלולי שיחות עם לקוחות. כל הדרכה = צעד-אחרי-צעד שהלקוח עושה לבד. לחצו על כרטיסייה לפירוט.</p>
 
   <div class="idea-cards" style="margin-top: 16px;">
-    <!-- רעיונות להדרכות יתווספו כאן אוטומטית מניתוח שיחות.
-         כל רעיון בפורמט:
 
-         <div class="idea-card" data-tags="תגיות,רלוונטיות">
-           <div class="idea-card-header" onclick="toggleIdea(this)">
-             <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
-             <span class="idea-card-badge badge-idea">₪XX</span>
-             <div class="idea-card-title">שם ההדרכה</div>
-             <span class="idea-card-source">מקור: שם הלקוח/שיחה</span>
-           </div>
-           <div class="idea-card-body">
-             <div class="idea-card-section">
-               <div class="idea-card-section-title">מה ההדרכה מלמדת</div>
-               <p>תיאור מפורט...</p>
-             </div>
-             <div class="idea-card-section">
-               <div class="idea-card-section-title">מבנה ההדרכה (צעדים)</div>
-               <ul><li>צעד 1: ...</li></ul>
-             </div>
-             <div class="idea-card-section">
-               <div class="idea-card-section-title">למה ישלמו על זה</div>
-               <p>...</p>
-             </div>
-             <div class="idea-card-section">
-               <div class="idea-card-section-title">קהל יעד</div>
-               <p>...</p>
-             </div>
-             <div class="idea-card-tags">
-               <span class="idea-tag">תגית</span>
-             </div>
-           </div>
-         </div>
-    -->
+    <div class="idea-card" data-tags="Gmail,תגיות,ארכיון,ארגון,מייל">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-hot">47-67</span>
+        <div class="idea-card-title">Gmail בלי בלגן — תגיות, ארכיון, וסדר</div>
+        <span class="idea-card-source">מקור: מרתה דגן</span>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מה ההדרכה מלמדת</div>
+          <p>מרתה שאלה על Gmail labels, ארכיון, ומחיקת מיילים בכמעט כל שיחה. הנושא שחזר הכי הרבה. הדרכה אינטראקטיבית שמלמדת את 3 הפעולות שפותרות 90% מבלגן המייל: תגיות צבעוניות, ארכיון (לא מחיקה!), וחיפוש.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מבנה ההדרכה (צעדים)</div>
+          <ul>
+            <li>צעד 1: מה זה תגיות (labels) — לא תיקיות! כמו סימניות צבעוניות על מעטפות</li>
+            <li>צעד 2: יצירת 3-5 תגיות בסיסיות (עבודה, משפחה, כספים, חשוב)</li>
+            <li>צעד 3: ארכיון במקום מחיקה — למה מחיקה שוברת קישורים לצרופות</li>
+            <li>צעד 4: חיפוש ב-Gmail — למצוא כל מייל ב-3 שניות</li>
+            <li>צעד 5: Inbox Zero — תיבה נקייה בלי לאבד שום דבר</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה ישלמו על זה</div>
+          <p>כל אדם מעל 50 עם אלפי מיילים לא מסודרים. מרתה — עורכת דין חדה — לא הבינה את ההבדל בין labels ותיקיות אחרי הסבר חוזר. הדרכה צעד-צעד שהיא עושה לבד = סוף סוף נכנס.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">קהל יעד</div>
+          <p>כל מי שהתיבה שלו מלאה ומפחד למחוק. עורכי דין, רואי חשבון, פנסיונרים — כל מי שמקבל מיילים חשובים ולא יודע לארגן.</p>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">Gmail</span>
+          <span class="idea-tag">תגיות</span>
+          <span class="idea-tag">ארכיון</span>
+          <span class="idea-tag">ארגון</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card" data-tags="קבצים,הורדות,תיקיות,ארגון,ZIP">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-hot">47</span>
+        <div class="idea-card-title">סדר בקבצים — פעם אחת ולתמיד</div>
+        <span class="idea-card-source">מקור: מרתה דגן</span>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מה ההדרכה מלמדת</div>
+          <p>מרתה אמרה: "מה שהכי מפריע זה אי הסדר במחשב." קבצים בכל מקום, כפילויות, תיקיית הורדות מלאה, קבצי ZIP שלא נפתחו. הדרכה שמלמדת מבנה תיקיות פשוט, שם קובץ נכון, ואיך למצוא כל קובץ בשנייה.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מבנה ההדרכה (צעדים)</div>
+          <ul>
+            <li>צעד 1: הגדרת תיקיית הורדות קבועה — כל דבר שיורד הולך למקום אחד</li>
+            <li>צעד 2: 5 תיקיות בסיסיות (מסמכים, תמונות, עבודה, כספים, זמני)</li>
+            <li>צעד 3: שם קובץ נכון — "חשבונית-חשמל-מרץ-2026" ולא "download(3).pdf"</li>
+            <li>צעד 4: קבצי ZIP — מה זה, איך פותחים, ולמה למחוק את ה-ZIP אחרי חילוץ</li>
+            <li>צעד 5: חיפוש מהיר — Everything או חיפוש Windows</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה ישלמו על זה</div>
+          <p>ארגון קבצים עלה בכל שיחה עם מרתה. עומר הסביר את אותם דברים שוב ושוב. הדרכה אינטראקטיבית שהלקוח עושה לבד = הפתרון שנדבק. חוסכת שעות כל שבוע.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">קהל יעד</div>
+          <p>כל מי ששולחן העבודה שלו מלא באייקונים ותיקיית ההורדות מתפוצצת. בעלי עסקים, פנסיונרים, כל מי שאומר "אני לא מוצא את הקובץ."</p>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">קבצים</span>
+          <span class="idea-tag">תיקיות</span>
+          <span class="idea-tag">ארגון</span>
+          <span class="idea-tag">ZIP</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card" data-tags="PDF,Word,עברית,המרה,מסמכים">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-idea">47</span>
+        <div class="idea-card-title">PDF בעברית — המרה, חתימה, ועריכה</div>
+        <span class="idea-card-source">מקור: מרתה דגן</span>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מה ההדרכה מלמדת</div>
+          <p>מרתה עורכת דין — PDF זה הלחם שלה. עלה בשיחות: המרת PDF לוורד (בעיית OCR בעברית), חתימה דיגיטלית ב-Adobe (לאפוטרופוס הכללי), SmallPDF vs PDF Gear vs Adobe. הדרכה שמלמדת את 3 הדברים שצריך לדעת על PDF.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מבנה ההדרכה (צעדים)</div>
+          <ul>
+            <li>צעד 1: פתיחת PDF — איזה תוכנה להשתמש (Adobe Reader חינם)</li>
+            <li>צעד 2: המרת PDF לוורד — פתיחה ישירות ב-Word (הדרך הפשוטה ביותר)</li>
+            <li>צעד 3: חתימה דיגיטלית — איך לחתום ב-Adobe Reader בלי לשלם</li>
+            <li>צעד 4: PDF מוגן בסיסמה — איך לפתוח (קבצי בנק)</li>
+            <li>צעד 5: בחירת הכלי הנכון — מתי Adobe, מתי PDF Gear, מתי Word</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה ישלמו על זה</div>
+          <p>עורכי דין, רואי חשבון, ומטפלים עובדים עם PDF כל יום. מרתה שילמה $12/חודש ל-SmallPDF בלי לדעת. הדרכה שמלמדת לעשות הכל בחינם = חוסכת כסף ותסכול.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">קהל יעד</div>
+          <p>בעלי מקצועות חופשיים שעובדים עם מסמכים: עורכי דין, רואי חשבון, יועצים. כל מי שמקבל PDF ולא יודע מה לעשות איתו.</p>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">PDF</span>
+          <span class="idea-tag">Word</span>
+          <span class="idea-tag">עברית</span>
+          <span class="idea-tag">חתימה דיגיטלית</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card" data-tags="ניקוי,אפליקציות,טלפון,אנדרואיד">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-ready">47</span>
+        <div class="idea-card-title">ניקוי טלפון — מחיקת אפליקציות וביטול חיובים</div>
+        <span class="idea-card-source">מקור: מרתה דגן</span>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מה ההדרכה מלמדת</div>
+          <p>לטלפון של מרתה היו עשרות אפליקציות מיותרות — "מנקים" מזויפים, adware, כפילויות, אפליקציות מטיולים ישנים. בנוסף חיובים אוטומטיים ב-PayPal שלא ידעה עליהם. הדרכה שמלמדת לנקות את הטלפון ולבדוק חיובים.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מבנה ההדרכה (צעדים)</div>
+          <ul>
+            <li>צעד 1: זיהוי אפליקציות מיותרות — "מנקים", כפילויות, אפליקציות שלא פתחת חודשים</li>
+            <li>צעד 2: מחיקה בטוחה — מה מותר למחוק ומה לא</li>
+            <li>צעד 3: בדיקת חיובים — PayPal, Google Play, App Store</li>
+            <li>צעד 4: ביטול מנויים שלא צריך — שלב-שלב עם צילומי מסך</li>
+            <li>צעד 5: הגדרות שמונעות בלגן עתידי — כיבוי הורדה אוטומטית ב-WhatsApp, כיבוי התראות מיותרות</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה ישלמו על זה</div>
+          <p>כל טלפון מעל שנה צובר זבל. מרתה חסכה $12/חודש רק מביטול SmallPDF שלא ידעה עליו. אנשים ישלמו 47 שקל על הדרכה שחוסכת להם מאות שקלים בשנה.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">קהל יעד</div>
+          <p>כל מי שהטלפון שלו "איטי" או "אין מקום". בני 50+, הורים שילדים התקינו להם אפליקציות, כל מי שמקבל התראות שלא מבין.</p>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">טלפון</span>
+          <span class="idea-tag">ניקוי</span>
+          <span class="idea-tag">אפליקציות</span>
+          <span class="idea-tag">חיובים</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card" data-tags="ממשלה,אתרים,טאבו,אפוטרופוס,טפסים">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-idea">47-67</span>
+        <div class="idea-card-title">אתרי ממשלה בלי דרמה — טאבו, מס הכנסה, ביטוח לאומי</div>
+        <span class="idea-card-source">מקור: מרתה דגן</span>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מה ההדרכה מלמדת</div>
+          <p>מרתה נאבקה עם אתר האפוטרופוס הכללי (חתימה דיגיטלית, כרטיס חכם), אתר הטאבו (שמירת טיוטות), וטפסים ממשלתיים שמתרעננים ומוחקים מה שמילאה. הדרכה שמלמדת לנווט באתרי ממשלה בלי להשתגע.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מבנה ההדרכה (צעדים)</div>
+          <ul>
+            <li>צעד 1: התחברות לאתרי ממשלה — מה צריך (תעודת זהות, סיסמה, קוד SMS)</li>
+            <li>צעד 2: מילוי טפסים — להכין הכל מראש לפני שמתחילים (כי האתר עושה refresh)</li>
+            <li>צעד 3: שמירת טיוטות ומציאת "אזור אישי"</li>
+            <li>צעד 4: חתימה דיגיטלית — מה צריך ואיך עושים</li>
+            <li>צעד 5: מה לעשות כשנתקעים — איך לפנות לתמיכה ולקבל מענה</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה ישלמו על זה</div>
+          <p>מרתה אמרה: "כשאני לא רואה דברים כאלה, מבהילים אותי." אתרי ממשלה מפחידים את כולם — גם צעירים. עורכי דין, רואי חשבון, ואנשים פרטיים שצריכים להתנהל מול המדינה. הדרכה שמורידה את הפחד = ערך עצום.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">קהל יעד</div>
+          <p>כל מי שנכנס לאתר ממשלתי ומרגיש אבוד. עורכי דין שצריכים את הטאבו והאפוטרופוס, פנסיונרים שצריכים ביטוח לאומי, בעלי עסקים שצריכים מס הכנסה.</p>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">ממשלה</span>
+          <span class="idea-tag">טאבו</span>
+          <span class="idea-tag">טפסים</span>
+          <span class="idea-tag">חתימה דיגיטלית</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="idea-card" data-tags="Google Drive,OneDrive,ענן,אחסון,קבצים">
+      <div class="idea-card-header" onclick="toggleIdea(this)">
+        <svg class="idea-card-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span class="idea-card-badge badge-idea">47</span>
+        <div class="idea-card-title">Google Drive בלי בלבול — ארגון, שיתוף, ומקום</div>
+        <span class="idea-card-source">מקור: מרתה דגן</span>
+      </div>
+      <div class="idea-card-body">
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מה ההדרכה מלמדת</div>
+          <p>מרתה הייתה עם שני עננים פעילים (Google Drive + OneDrive) בלי להבין אף אחד. קבצים של הבת מעורבבים עם שלה. מקום אוזל. הדרכה שמלמדת לארגן את Google Drive פעם אחת — תיקיות, שיתוף, ובדיקת מקום.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">מבנה ההדרכה (צעדים)</div>
+          <ul>
+            <li>צעד 1: מה כבר יש ב-Drive שלך — סקירה מהירה</li>
+            <li>צעד 2: יצירת מבנה תיקיות (עבודה, אישי, משפחה, ארכיון)</li>
+            <li>צעד 3: העברת קבצים לתיקיות הנכונות</li>
+            <li>צעד 4: שיתוף קבצים עם בני משפחה — קישור או הרשאה</li>
+            <li>צעד 5: בדיקת מקום וניקוי — מה תופס הכי הרבה ומה למחוק</li>
+          </ul>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">למה ישלמו על זה</div>
+          <p>מרתה שילמה על שדרוג נפח כי Drive היה מלא. ניקוי + ארגון היה חוסך לה את הכסף. כל מי שקיבל פעם "אין מקום ב-Drive" ישלם על הדרכה שפותרת את זה.</p>
+        </div>
+        <div class="idea-card-section">
+          <div class="idea-card-section-title">קהל יעד</div>
+          <p>כל מי שיש לו חשבון Gmail (= כולם). במיוחד מי שקיבל התרעה על מקום אוזל, או שלא יודע איפה הקבצים שלו נמצאים.</p>
+        </div>
+        <div class="idea-card-tags">
+          <span class="idea-tag">Google Drive</span>
+          <span class="idea-tag">ענן</span>
+          <span class="idea-tag">ארגון</span>
+          <span class="idea-tag">אחסון</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
