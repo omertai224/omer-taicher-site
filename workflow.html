@@ -1397,7 +1397,7 @@ footer {
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>מאגר תמלולי שיחות לקוחות</strong> — 667 תמלולים, 1,249,336 מילים, 115 לקוחות. כל שיחה מתומללת ל-txt ומועלית לניתוח.</div>
+        <div class="rule-text"><strong>מאגר תמלולי שיחות לקוחות</strong> — המספרים (כמה לקוחות, כמה תמלולים, כמה מילים) לא קבועים. <strong>תמיד תקרא את <code>ClientStatus.txt</code> מהשורש של repo: omertai224/clients-calls כדי לקבל את הנתונים העדכניים.</strong></div>
       </div>
       <div class="rule">
         <div class="rule-icon green">
@@ -1409,7 +1409,7 @@ footer {
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>הזרימה:</strong> תמלולים נכנסים → Claude מנתח → תובנות ל-catalog.json → רעיונות מופקים ל-"רעיונות להמשך" → הכל מתועד ב-analysis_log.json</div>
+        <div class="rule-text"><strong>הזרימה:</strong> עומר שם ClientStatus.txt בריפו → Claude קורא ומבין את הסטטוס → עומר מדביק תמלולים → Claude מנתח → תובנות ל-catalog.json → רעיונות ל-"רעיונות להמשך" → הכל מתועד ב-analysis_log.json</div>
       </div>
     </div>
   </div>
@@ -1424,13 +1424,13 @@ footer {
         <div class="rule-icon blue">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <div class="rule-text"><strong>GitHub repo: omertai224/clients-calls</strong> — branch: claude/add-chat-feature-GgYjZ</div>
+        <div class="rule-text"><strong>GitHub repo: omertai224/clients-calls</strong> — הבראנצ׳ משתנה לפי סשן. בדוק מול עומר מה הבראנצ׳ הנוכחי.</div>
       </div>
       <div class="rule">
         <div class="rule-icon blue">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <div class="rule-text"><strong>ClientStatus.txt</strong> — דוח סטטוס מלא: 115 לקוחות, 667 תמלולים, מה נותח ומה ממתין. נמצא בשורש ה-repo.</div>
+        <div class="rule-text"><strong>ClientStatus.txt</strong> — דוח סטטוס מלא ומתעדכן: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>נמצא בשורש ה-repo. זה הקובץ הראשון שאתה קורא.</strong></div>
       </div>
       <div class="rule">
         <div class="rule-icon blue">
@@ -1477,7 +1477,7 @@ footer {
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">5</div>
-        <div class="formula-list-text"><strong>חזרה לשלב 1</strong> — מריצים שוב את הסקריפט, מעלים ClientStatus.txt מעודכן, ממשיכים עד שכל 667 התמלולים מנותחים.</div>
+        <div class="formula-list-text"><strong>חזרה לשלב 1</strong> — מריצים שוב את הסקריפט, מעלים ClientStatus.txt מעודכן, ממשיכים עד שכל התמלולים הממתינים מנותחים.</div>
       </div>
     </div>
   </div>
@@ -1514,22 +1514,26 @@ footer {
   <div class="section">
     <div class="section-title">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-      מה לתת ל-Claude בתחילת סשן חדש
+      מה Claude עושה בתחילת סשן חדש
     </div>
-    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">אם הסשן נגמר או קרס, פותחים סשן חדש ומעתיקים לו את ההודעה הבאה:</p>
-    <div style="background: #fff; border: 2px solid var(--border); border-radius: 12px; padding: 20px; font-size: 0.9rem; line-height: 1.9; direction: rtl;">
-      <p><strong>הנה הקונטקסט שלך:</strong></p>
-      <p>אני עומר טייכר. יש לי פרויקט ניתוח תמלולי שיחות לקוחות.</p>
-      <p>• <strong>repo:</strong> omertai224/clients-calls, branch: claude/add-chat-feature-GgYjZ</p>
-      <p>• <strong>ClientStatus.txt</strong> — דוח סטטוס התמלולים, נמצא בשורש ה-repo. תקרא אותו כדי לדעת מה ממתין.</p>
-      <p>• <strong>insights/catalog.json</strong> — קטלוג התובנות שלי (קטגוריות דינמיות)</p>
-      <p>• <strong>analysis_log.json</strong> — לוג מה כבר נותח</p>
-      <p>• סה"כ: 115 לקוחות, 667 תמלולים, 1,249,336 מילים</p>
-      <p>• <strong>קטגוריות דינמיות</strong> — אם אתה מזהה תובנה שלא מתאימה לקטגוריה קיימת, תפתח חדשה</p>
-      <p>• <strong>תמלילים לא נשמרים</strong> — אחרי ניתוח, התובנות נשמרות ב-catalog.json והתמלול נמחק</p>
-      <p>• <strong>רעיונות</strong> — כל רעיון שעולה מהניתוח (הדרכה, פוסט, מוצר, שיפור) הולך לטאב "רעיונות להמשך" ב-workflow.html באתר (repo: omer-taicher-site)</p>
-      <p>• אני אעתיק לך תמלילים כמה בכל פעם, תנתח ותעדכן את הקבצים</p>
-      <p><strong>תקרא קודם את catalog.json, analysis_log.json, ו-ClientStatus.txt מה-repo כדי לדעת איפה עצרנו.</strong></p>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">כשקלוד קורא את הטאב הזה בסשן חדש, הוא יודע בדיוק מה לעשות:</p>
+    <div class="formula-list">
+      <div class="formula-list-item">
+        <div class="formula-list-num">1</div>
+        <div class="formula-list-text"><strong>קרא את <code>ClientStatus.txt</code> מהשורש של repo: omertai224/clients-calls</strong> — זה נותן לך את כל הנתונים: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>אם הקובץ לא קיים — בקש מעומר לשים אותו בשורש הריפו.</strong></div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">2</div>
+        <div class="formula-list-text"><strong>קרא את <code>insights/catalog.json</code></strong> — כדי לדעת אילו קטגוריות ותובנות כבר קיימות.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">3</div>
+        <div class="formula-list-text"><strong>קרא את <code>analysis_log.json</code></strong> — כדי לדעת אילו תמלולים כבר נותחו ולא לחזור עליהם.</div>
+      </div>
+      <div class="formula-list-item">
+        <div class="formula-list-num">4</div>
+        <div class="formula-list-text"><strong>תגיד לעומר מה הסטטוס</strong> — כמה נותחו, כמה ממתינים, ותבקש ממנו להדביק תמלולים לניתוח.</div>
+      </div>
     </div>
   </div>
 
