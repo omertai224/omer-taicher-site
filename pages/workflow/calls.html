@@ -19,7 +19,7 @@
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>מאגר תמלולי שיחות לקוחות</strong> — הכל יושב על הבראנצ׳ שלך ב-omertai224/clients-calls. המספרים לא קבועים — <strong>תמיד תקרא את <code>ClientStatus.txt</code> מהשורש של הבראנצ׳ שלך כדי לקבל את הנתונים העדכניים.</strong></div>
+        <div class="rule-text"><strong>מאגר תמלולי שיחות לקוחות</strong> — הכל יושב על הבראנצ׳ שלך ב-omertai224/clients-calls. המספרים לא קבועים — <strong>תמיד תקרא את <code>status_data.json</code> מהשורש של הבראנצ׳ שלך כדי לקבל את הנתונים העדכניים.</strong></div>
       </div>
       <div class="rule">
         <div class="rule-icon green">
@@ -31,7 +31,7 @@
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>הזרימה (שני ריפוס!):</strong> עומר דוחף תמלולים ל-inbox בבראנצ׳ ב-<code>clients-calls</code> (ריפו פרטי) ← Claude מנתח ← תובנות ל-catalog.json + analysis_log.json (נשאר ב-clients-calls) ← רעיונות מזוקקים נכתבים לכרטיסיות אקורדיון ב-<code>omer-taicher-site</code> (תיקיית ideas/) ← תמלול נמחק מ-inbox</div>
+        <div class="rule-text"><strong>הזרימה (שני ריפוס!):</strong> עומר מריץ סקריפט ← דוחף <code>status_data.json</code> + תמלולים ל-inbox בבראנצ׳ ב-<code>clients-calls</code> (ריפו פרטי) ← Claude קורא JSON, מנתח תמלולים ← תובנות ל-catalog.json + analysis_log.json (נשאר ב-clients-calls) ← רעיונות מזוקקים ב-<code>omer-taicher-site</code> (תיקיית ideas/) ← תמלול נמחק מ-inbox</div>
       </div>
     </div>
   </div>
@@ -64,7 +64,7 @@
         <div class="rule-icon blue">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <div class="rule-text"><strong>ClientStatus.txt</strong> — דוח סטטוס מלא ומתעדכן: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>נמצא בשורש הבראנצ׳ שלך ב-clients-calls. זה הקובץ הראשון שאתה קורא.</strong></div>
+        <div class="rule-text"><strong>status_data.json</strong> — קובץ JSON מובנה עם כל הנתונים: לקוחות, תמלולים, מילים, hash, תאריכים. <strong>נמצא בשורש הבראנצ׳ שלך ב-clients-calls. זה הקובץ הראשון שאתה קורא.</strong> מאפשר סינון לפי מילים, לקוח, תאריך. תמלולים מתחת ל-200 מילים = קצר מדי, לדלג.</div>
       </div>
       <div class="rule">
         <div class="rule-icon blue">
@@ -95,11 +95,11 @@
     <div class="formula-list">
       <div class="formula-list-item">
         <div class="formula-list-num">1</div>
-        <div class="formula-list-text"><strong>סריקה ועדכון סטטוס</strong> — מריצים <code>scan_transcripts.py</code> מהמחשב. הסקריפט מעדכן את <code>ClientStatus.txt</code>. מעלים את הקובץ המעודכן ל-repo.</div>
+        <div class="formula-list-text"><strong>סריקה ועדכון סטטוס</strong> — עומר מריץ <code>scan_transcripts.py</code> מהמחשב. הסקריפט מייצר <code>status_data.json</code> (ו-ClientStatus.txt לקריאה אנושית). עומר דוחף את ה-JSON לשורש הבראנצ׳.</div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">2</div>
-        <div class="formula-list-text"><strong>העברת תמלולים ל-inbox</strong> — עומר בוחר תמלולים לפי ClientStatus.txt ודוחף אותם לתיקיית <code>inbox/</code> בבראנצ׳ של claude.</div>
+        <div class="formula-list-text"><strong>העברת תמלולים ל-inbox</strong> — עומר בוחר לקוח אחד ודוחף את התמלולים שלו (עד 20) לתיקיית <code>inbox/</code> בבראנצ׳ של claude. שמות הקבצים כמו בסריקה (למשל <code>הקלטת שיחה מרתה דגן_260118_160015.txt</code>).</div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">3</div>
@@ -162,7 +162,7 @@
     <div class="formula-list">
       <div class="formula-list-item">
         <div class="formula-list-num">1</div>
-        <div class="formula-list-text"><strong>קרא את <code>ClientStatus.txt</code> מהשורש של הבראנצ׳ שלך ב-omertai224/clients-calls</strong> — זה נותן לך את כל הנתונים: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>אם הקובץ לא קיים — בקש מעומר לדחוף אותו לבראנצ׳ שלך.</strong></div>
+        <div class="formula-list-text"><strong>קרא את <code>status_data.json</code> מהשורש של הבראנצ׳ שלך ב-omertai224/clients-calls</strong> — JSON מובנה עם כל הנתונים: כמה לקוחות, כמה תמלולים, מילים, hash, מה נותח ומה ממתין. תמלולים מתחת ל-200 מילים = קצר מדי, לדלג. <strong>אם הקובץ לא קיים — בקש מעומר להריץ את הסקריפט ולדחוף.</strong></div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">2</div>
@@ -207,7 +207,7 @@
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>לא להעמיס</strong> — כמה תמלילים בכל פעם. ניתוח מדויק עדיף על כמות.</div>
+        <div class="rule-text"><strong>מקסימום 20 תמלולים בסשן.</strong> עומר מעלה לקוח אחד בכל פעם (מתחיל מהגדולים). אם ללקוח יש 64 תמלולים — מנתחים 20, מוחקים, ממשיכים בסשן הבא. אם נתקעים — לעצור ולא לכפות.</div>
       </div>
       <div class="rule">
         <div class="rule-icon red">
