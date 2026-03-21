@@ -1,4 +1,5 @@
 var loaded = {};
+var subLoaded = {};
 
 function loadTab(tabName) {
   if (loaded[tabName]) return Promise.resolve();
@@ -11,6 +12,8 @@ function loadTab(tabName) {
     .then(function(html) {
       container.innerHTML = html;
       loaded[tabName] = true;
+      // If this tab has sub-tabs, initialize them
+      if (tabName === 'ideas') initSubTabs();
     })
     .catch(function() {
       container.innerHTML = '<div class="section"><p style="color:#c62828;">שגיאה בטעינת הטאב. נסה לרענן.</p></div>';
@@ -39,6 +42,47 @@ var hash = location.hash.replace('#', '');
 var initialTab = (hash && document.getElementById('tab-' + hash)) ? hash : 'workflow';
 switchTab(initialTab);
 
+// --- Sub-tabs for ideas ---
+function loadSubTab(name) {
+  if (subLoaded[name]) return Promise.resolve();
+  var container = document.getElementById('subtab-' + name);
+  return fetch('ideas/' + name + '.html')
+    .then(function(resp) {
+      if (!resp.ok) throw new Error(resp.status);
+      return resp.text();
+    })
+    .then(function(html) {
+      container.innerHTML = html;
+      subLoaded[name] = true;
+    })
+    .catch(function() {
+      container.innerHTML = '<div class="section"><p style="color:#c62828;">שגיאה בטעינה. נסה לרענן.</p></div>';
+    });
+}
+
+function switchSubTab(name) {
+  var parent = document.getElementById('tab-ideas');
+  parent.querySelectorAll('.sub-tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  parent.querySelectorAll('.sub-tab-content').forEach(function(c) { c.classList.remove('active'); });
+  var btn = parent.querySelector('.sub-tab-btn[data-subtab="' + name + '"]');
+  if (btn) {
+    btn.classList.add('active');
+    var el = document.getElementById('subtab-' + name);
+    el.classList.add('active');
+    loadSubTab(name);
+  }
+}
+
+function initSubTabs() {
+  var parent = document.getElementById('tab-ideas');
+  parent.querySelectorAll('.sub-tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() { switchSubTab(btn.dataset.subtab); });
+  });
+  // Load first sub-tab
+  switchSubTab('priorities');
+}
+
+// --- Copy & Download ---
 function copyTab(tabId) {
   var el = document.getElementById('tab-' + tabId);
   var text = el.innerText
@@ -58,7 +102,7 @@ function copyTab(tabId) {
 
 function downloadTab(tabId) {
   var el = document.getElementById('tab-' + tabId);
-  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות', payments: 'מוצרים-ותשלומים', sitemap: 'מבנה-האתר', calls: 'ניתוח-שיחות' };
+  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות', payments: 'מוצרים-ותשלומים', sitemap: 'מבנה-האתר', ideas: 'רעיונות-להמשך', calls: 'ניתוח-שיחות' };
   var text = el.innerText
     .replace(/הורד כטקסט\n?/g, '')
     .replace(/העתק ללוח\n?/g, '')
