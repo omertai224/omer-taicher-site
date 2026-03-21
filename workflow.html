@@ -1397,19 +1397,19 @@ footer {
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>מאגר תמלולי שיחות לקוחות</strong> — המספרים (כמה לקוחות, כמה תמלולים, כמה מילים) לא קבועים. <strong>תמיד תקרא את <code>ClientStatus.txt</code> מהשורש של repo: omertai224/clients-calls כדי לקבל את הנתונים העדכניים.</strong></div>
+        <div class="rule-text"><strong>מאגר תמלולי שיחות לקוחות</strong> — הכל יושב על הבראנצ׳ שלך ב-omertai224/clients-calls. המספרים לא קבועים — <strong>תמיד תקרא את <code>ClientStatus.txt</code> מהשורש של הבראנצ׳ שלך כדי לקבל את הנתונים העדכניים.</strong></div>
       </div>
       <div class="rule">
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>המטרה:</strong> Claude מנתח כל תמלול, מזקק תובנות ורעיונות, ומארגן הכל בקטגוריות דינמיות. התובנות מזינות ישירות את "רעיונות להמשך" — הדרכות חדשות, פוסטים, מוצרים, שיפורי מכירות ואתר.</div>
+        <div class="rule-text"><strong>המטרה:</strong> Claude מנתח כל תמלול ומזקק תובנות בקטגוריות דינמיות. התובנות מזינות ישירות את "רעיונות להמשך" — מאגר רעיונות למוצרים חדשים: בלוג, הדרכות אינטראקטיביות, מוצרי פרימיום, שיפורי מכירות, שיפורי אתר, שיווק ותוכן.</div>
       </div>
       <div class="rule">
         <div class="rule-icon green">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2e7d32" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
         </div>
-        <div class="rule-text"><strong>הזרימה:</strong> עומר שם ClientStatus.txt בריפו → Claude קורא ומבין את הסטטוס → עומר מדביק תמלולים → Claude מנתח → תובנות ל-catalog.json → רעיונות ל-"רעיונות להמשך" → הכל מתועד ב-analysis_log.json</div>
+        <div class="rule-text"><strong>הזרימה:</strong> עומר שם ClientStatus.txt בשורש הריפו של claude ← Claude קורא ומבין את הסטטוס ← עומר מעביר תמלולים לתיקיית inbox ← Claude מנתח ← תובנות ל-catalog.json ← רעיונות ל-"רעיונות להמשך" ← הכל מתועד ב-analysis_log.json</div>
       </div>
     </div>
   </div>
@@ -1424,13 +1424,13 @@ footer {
         <div class="rule-icon blue">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <div class="rule-text"><strong>GitHub repo: omertai224/clients-calls</strong> — הבראנצ׳ משתנה לפי סשן. בדוק מול עומר מה הבראנצ׳ הנוכחי.</div>
+        <div class="rule-text"><strong>GitHub repo: omertai224/clients-calls</strong> — <strong>הכל יושב על הבראנצ׳ של claude (השם משתנה בין סשנים). אין מיזוג ל-main. כל התמלולים, הסטטוסים, הניתוחים — הכל על הבראנצ׳ שלך. עומר דוחף קבצים לבראנצ׳ שלך ואתה עובד משם.</strong></div>
       </div>
       <div class="rule">
         <div class="rule-icon blue">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1565c0" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
         </div>
-        <div class="rule-text"><strong>ClientStatus.txt</strong> — דוח סטטוס מלא ומתעדכן: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>נמצא בשורש ה-repo. זה הקובץ הראשון שאתה קורא.</strong></div>
+        <div class="rule-text"><strong>ClientStatus.txt</strong> — דוח סטטוס מלא ומתעדכן: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>נמצא בשורש הבראנצ׳ שלך. זה הקובץ הראשון שאתה קורא.</strong></div>
       </div>
       <div class="rule">
         <div class="rule-icon blue">
@@ -1465,11 +1465,11 @@ footer {
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">2</div>
-        <div class="formula-list-text"><strong>בחירת תמלילים</strong> — בוחרים לקוח אחד או כמה תמלילים קצרים לפי ClientStatus.txt. לא להעמיס — כמה בכל פעם כדי שהניתוח יהיה מדויק.</div>
+        <div class="formula-list-text"><strong>העברת תמלולים ל-inbox</strong> — עומר בוחר תמלולים לפי ClientStatus.txt ודוחף אותם לתיקיית <code>inbox/</code> בבראנצ׳ של claude.</div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">3</div>
-        <div class="formula-list-text"><strong>שליחת תמלול ל-Claude</strong> — מדביקים את תוכן ה-txt בצ'אט. Claude מנתח, מזהה תובנות, מזקק רעיונות.</div>
+        <div class="formula-list-text"><strong>Claude מנתח</strong> — קורא את התמלולים מ-inbox, מנתח, מזהה תובנות, מזקק רעיונות.</div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">4</div>
@@ -1520,7 +1520,7 @@ footer {
     <div class="formula-list">
       <div class="formula-list-item">
         <div class="formula-list-num">1</div>
-        <div class="formula-list-text"><strong>קרא את <code>ClientStatus.txt</code> מהשורש של repo: omertai224/clients-calls</strong> — זה נותן לך את כל הנתונים: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>אם הקובץ לא קיים — בקש מעומר לשים אותו בשורש הריפו.</strong></div>
+        <div class="formula-list-text"><strong>קרא את <code>ClientStatus.txt</code> מהשורש של הבראנצ׳ שלך ב-omertai224/clients-calls</strong> — זה נותן לך את כל הנתונים: כמה לקוחות, כמה תמלולים, מה נותח ומה ממתין. <strong>אם הקובץ לא קיים — בקש מעומר לדחוף אותו לבראנצ׳ שלך.</strong></div>
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">2</div>
@@ -1532,7 +1532,7 @@ footer {
       </div>
       <div class="formula-list-item">
         <div class="formula-list-num">4</div>
-        <div class="formula-list-text"><strong>תגיד לעומר מה הסטטוס</strong> — כמה נותחו, כמה ממתינים, ותבקש ממנו להדביק תמלולים לניתוח.</div>
+        <div class="formula-list-text"><strong>בדוק את תיקיית <code>inbox/</code> בבראנצ׳ שלך</strong> — עומר דוחף לשם תמלולים לניתוח. אם יש קבצים — תנתח. אם ריק — תגיד לעומר מה הסטטוס ותבקש ממנו לדחוף תמלולים ל-inbox בבראנצ׳ שלך.</div>
       </div>
     </div>
   </div>
