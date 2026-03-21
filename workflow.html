@@ -1577,14 +1577,26 @@ footer {
 </footer>
 
 <script>
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+function switchTab(tabName) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  var btn = document.querySelector('.tab-btn[data-tab="' + tabName + '"]');
+  if (btn) {
     btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-  });
+    document.getElementById('tab-' + tabName).classList.add('active');
+    history.replaceState(null, '', '#' + tabName);
+  }
+}
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => switchTab(btn.dataset.tab));
 });
+
+// restore tab from URL hash on load
+var hash = location.hash.replace('#', '');
+if (hash && document.getElementById('tab-' + hash)) {
+  switchTab(hash);
+}
 
 function copyTab(tabId) {
   var el = document.getElementById('tab-' + tabId);
