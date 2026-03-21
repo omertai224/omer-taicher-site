@@ -43,19 +43,6 @@
 - זה כולל: באגים שחוזרים, פתרונות שעובדים, שיטות עבודה חדשות
 - הקבצים האלה הם הזיכרון בין סשנים - מה שכתוב שם ישרת סשנים עתידיים
 
-## Google Drive — גישה ישירה
-- **בתחילת כל סשן חדש**, הרץ: `bash scripts/setup-gdrive.sh` (או שה-SessionStart hook יריץ אוטומטית)
-- הסקריפט קורא credentials מקודדים מ-`.gdrive-creds` (gitignored), מרענן טוקן, ומתקין `gdrive`
-- **אם `.gdrive-creds` לא קיים**, צור אותו: `echo 'GDRIVE_B64' > .gdrive-creds` (ה-B64 למטה)
-- **חשוב:** `www.googleapis.com` חסום — משתמשים ב-`clients6.google.com` במקום
-- אם הטוקן פג תוקף (refresh token expired), צריך לבקש מעומר OAuth מחדש
-- פקודות: `gdrive list`, `gdrive read <id>`, `gdrive search "query"`, `gdrive upload`, `gdrive create-doc`, `gdrive mkdir`
-
-### Credentials (base64)
-```
-eyJjbGllbnRfaWQiOiAiNDI2MDU5MTU3ODQ5LTRnOGswZ2hkOWFiYnByNTUzZTd0dDFjZDRzM2djdDJjLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwgImNsaWVudF9zZWNyZXQiOiAiR09DU1BYLVpRWEdvalFJSEd6QmFlTjlxaWl1RmM4ZDF2SmIiLCAicmVmcmVzaF90b2tlbiI6ICIxLy8wNHpSTkl1ZHhPWWVKQ2dZSUFSQUFHQVFTTndGLUw5SXJIVjNhYi1vY3VPR3hHbWhyT3YtSmVfd1g4bWtrSkEzeERJekdmekdBOXZnMllUcDQzNFdhWGtSX0M4OVRoNUZfNW0wIiwgInByb2plY3RfaWQiOiAib21lci13b3Jrc3BhY2UifQ==
-```
-
 ## דף הבית (index.html) - CSS אינליין!
 דף הבית טוען את `main.css` **אסינכרונית** (`media="print" onload="this.media='all'"`).
 - כל CSS לרכיבים דינמיים חדשים חייב להיכתב **בתוך ה-`<style>` האינליין** בראש הדף
