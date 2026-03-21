@@ -11,15 +11,28 @@ CREDS_FILE="$REPO_DIR/.gdrive-creds"
 
 mkdir -p "$CONFIG_DIR"
 
-# Read base64 credentials from env var or file
+# Read base64 credentials from env var, file, or extract from CLAUDE.md
 CREDS_B64=""
 if [ -n "$GDRIVE_CREDS_B64" ]; then
   CREDS_B64="$GDRIVE_CREDS_B64"
 elif [ -f "$CREDS_FILE" ]; then
   CREDS_B64=$(cat "$CREDS_FILE")
-else
+elif [ -f "$REPO_DIR/CLAUDE.md" ]; then
+  # Auto-extract credentials from CLAUDE.md
+  CREDS_B64=$(python3 -c "
+import re
+with open('$REPO_DIR/CLAUDE.md') as f: text = f.read()
+m = re.search(r'### Credentials \(base64\)\s*\n\`\`\`\s*\n(.+?)\s*\n\`\`\`', text)
+if m: print(m.group(1))
+" 2>/dev/null)
+  if [ -n "$CREDS_B64" ]; then
+    echo "$CREDS_B64" > "$CREDS_FILE"
+    echo "Google Drive: created .gdrive-creds from CLAUDE.md"
+  fi
+fi
+
+if [ -z "$CREDS_B64" ]; then
   echo "ERROR: No credentials found. Set GDRIVE_CREDS_B64 env var or create $CREDS_FILE"
-  echo "See CLAUDE.md for the encoded credentials."
   exit 1
 fi
 
