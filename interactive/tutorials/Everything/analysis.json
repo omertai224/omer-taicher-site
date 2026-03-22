@@ -1,7 +1,7 @@
 {
   "tutorial": "Everything",
   "total_images": 37,
-  "analyzed": 25,
+  "analyzed": 37,
   "steps": [
     {
       "image_num": 1,
@@ -202,6 +202,102 @@
       "action_he": "הקלידו <span style=\"color:#f6a67e;\">מסמכים</span> בשורת החיפוש למעלה — Everything מוצא מיד את כל הקבצים שמכילים את המילה",
       "click_area": "top-left",
       "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 28,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_28.png",
+      "description_en": "Everything search for Hebrew query showing one result in Documents.",
+      "action_he": "הקלידו <span style=\"color:#f6a67e;\">מסמכים</span> — התוכנה מציגה מיד את התוצאה. זה כוח החיפוש המיידי של Everything",
+      "click_area": "top-left",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 29,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_29.png",
+      "description_en": "Everything with Tools menu open showing Options at bottom.",
+      "action_he": "לחצו על <span style=\"color:#f6a67e;\">כלים</span> בתפריט העליון, ואז בחרו <span style=\"color:#f6a67e;\">אפשרויות</span> בתחתית התפריט כדי להגדיר את התוכנה",
+      "click_area": "top-center",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 30,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_30.png",
+      "description_en": "Everything showing file preview in bottom pane with Hebrew text content.",
+      "action_he": "לחצו על <span style=\"color:#f6a67e;\">קובץ טקסט</span> ברשימה כדי לראות את התוכן שלו למטה בלי לפתוח אותו",
+      "click_area": "top-left",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 31,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_31.png",
+      "description_en": "Everything with result count showing '1 result' in top-right.",
+      "action_he": "שימו לב שבפינה הימנית העליונה כתוב <span style=\"color:#f6a67e;\">1 תוצאה</span> — זה אומר שהחיפוש מצא בדיוק קובץ אחד שתואם",
+      "click_area": "top-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 32,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_32.png",
+      "description_en": "Everything showing file preview in preview pane.",
+      "action_he": "בחלונית התצוגה המקדימה אפשר לראות את <span style=\"color:#f6a67e;\">תוכן הקובץ</span> בלי לפתוח אותו — ככה אפשר לבדוק במהירות אם זה הקובץ שחיפשתם",
+      "click_area": "center-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 33,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_33.png",
+      "description_en": "Everything with video search filter showing one mp4 result.",
+      "action_he": "הקלידו <span style=\"color:#f6a67e;\">וידאו</span> בשורת החיפוש — Everything מיד מסנן ומציג רק קבצי וידאו שמתאימים לחיפוש",
+      "click_area": "top-left",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 34,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_34.png",
+      "description_en": "Everything with video file selected, about to right-click.",
+      "action_he": "לחצו <span style=\"color:#f6a67e;\">קליק ימני</span> על הקובץ שנמצא כדי לפתוח את תפריט ההקשר",
+      "click_area": "center-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 35,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_35.png",
+      "description_en": "Right-click context menu with Open, Open Path, Copy options.",
+      "action_he": "תפריט קליק ימני נפתח — אפשר לבחור <span style=\"color:#f6a67e;\">פתח</span> לפתיחת הקובץ, <span style=\"color:#f6a67e;\">פתח נתיב</span> לפתיחת התיקייה, או <span style=\"color:#f6a67e;\">העתק שם מלא</span> להעתקת הנתיב",
+      "click_area": "center-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 36,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_36.png",
+      "description_en": "Right-click context menu with options including Open, Copy, scan with antivirus.",
+      "action_he": "שימו לב שאפשר לעשות פעולות ישירות מתוך Everything — כמו <span style=\"color:#f6a67e;\">פתיחה</span>, העתקה, מחיקה ועוד",
+      "click_area": "center-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 37,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_37.png",
+      "description_en": "Windows File Explorer showing the file location after navigating from Everything.",
+      "action_he": "התיקייה נפתחה בסייר הקבצים. אפשר לראות את הקובץ <span style=\"color:#f6a67e;\">שף פרטי</span> בתוך תיקיית הסרטונים. Everything מאפשר לנווט ישירות למיקום הקובץ",
+      "click_area": "center",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 38,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_38.png",
+      "description_en": "Everything with empty search bar showing all indexed files.",
+      "action_he": "כשסרגל החיפוש ריק, Everything מציג את <span style=\"color:#f6a67e;\">כל הקבצים</span> שנמצאים במחשב עם הנתיב, הגודל ותאריך השינוי",
+      "click_area": "top-center",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 39,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_39.png",
+      "description_en": "Everything with popup showing options to pin to taskbar.",
+      "action_he": "לחצו על <span style=\"color:#f6a67e;\">הצמד לשורת המשימות</span> כדי ש-Everything יהיה נגיש תמיד בלחיצה אחת",
+      "click_area": "bottom-left",
+      "arrow_direction": "arrow-bottom-left"
     }
   ]
 }
