@@ -1,7 +1,7 @@
 {
   "tutorial": "Everything",
   "total_images": 37,
-  "analyzed": 20,
+  "analyzed": 25,
   "steps": [
     {
       "image_num": 1,
@@ -161,6 +161,46 @@
       "description_en": "Everything search results showing files found.",
       "action_he": "אפשר ללחוץ פעמיים על כל קובץ כדי <span style=\"color:#f6a67e;\">לפתוח אותו</span> ישירות מהתוצאות",
       "click_area": "center-left",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 23,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_23.png",
+      "description_en": "Everything search tool showing search results for Hebrew text.",
+      "action_he": "הקלידו מילת חיפוש ב<span style=\"color:#f6a67e;\">שורת החיפוש</span> למעלה, והתוצאות יופיעו מיד — הרבה יותר מהר מחיפוש רגיל של Windows",
+      "click_area": "top-center",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 24,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_24.png",
+      "description_en": "Everything search results for Hebrew query showing video file found.",
+      "action_he": "בשורת החיפוש כתבנו <span style=\"color:#f6a67e;\">וידאו</span> והתוכנה מצאה מיד קובץ וידאו. ככה Everything מוצאת כל קובץ במחשב תוך שנייה",
+      "click_area": "top-left",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 25,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_25.png",
+      "description_en": "Everything search window for Hebrew query with one result found.",
+      "action_he": "הקלידו מילת חיפוש, למשל <span style=\"color:#f6a67e;\">וידאו</span>. התוכנה מוצאת מיד את כל הקבצים התואמים במחשב",
+      "click_area": "top-left",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 26,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_26.png",
+      "description_en": "Everything search results showing file with name, size, path and date.",
+      "action_he": "אפשר לראות את <span style=\"color:#f6a67e;\">שם הקובץ</span>, הגודל, הנתיב ותאריך השינוי. לחיצה כפולה על הקובץ תפתח אותו",
+      "click_area": "center",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 27,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_27.png",
+      "description_en": "Everything search window showing search for documents with results.",
+      "action_he": "הקלידו <span style=\"color:#f6a67e;\">מסמכים</span> בשורת החיפוש למעלה — Everything מוצא מיד את כל הקבצים שמכילים את המילה",
+      "click_area": "top-left",
       "arrow_direction": "arrow-left"
     }
   ]
