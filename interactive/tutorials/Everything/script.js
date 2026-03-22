@@ -62,11 +62,8 @@ function buildNavDots() {
   let container = document.querySelector('.nav-dots');
   if (!container) return;
 
-  let half = Math.ceil(slides.length / 2);
-  let row1 = document.createElement('div');
-  let row2 = document.createElement('div');
-  row1.className = 'nav-row';
-  row2.className = 'nav-row';
+  var cols = Math.ceil(slides.length / 2);
+  container.style.gridTemplateColumns = 'repeat(' + cols + ', 26px)';
 
   for (let i = 0; i < slides.length; i++) {
     let dot = document.createElement('button');
@@ -82,11 +79,8 @@ function buildNavDots() {
         showSlides(index + 1);
       });
     })(i);
-    if (i < half) { row1.appendChild(dot); } else { row2.appendChild(dot); }
+    container.appendChild(dot);
   }
-
-  container.appendChild(row1);
-  container.appendChild(row2);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
