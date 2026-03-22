@@ -39,7 +39,7 @@ document.querySelectorAll('.tab-btn').forEach(function(btn) {
 
 // Load initial tab
 var hash = location.hash.replace('#', '');
-var initialTab = (hash && document.getElementById('tab-' + hash)) ? hash : 'workflow';
+var initialTab = (hash && document.getElementById('tab-' + hash)) ? hash : 'ideas';
 switchTab(initialTab);
 
 // --- Sub-tabs for ideas ---
