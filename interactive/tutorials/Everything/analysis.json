@@ -1,7 +1,7 @@
 {
   "tutorial": "Everything",
   "total_images": 37,
-  "analyzed": 5,
+  "analyzed": 10,
   "steps": [
     {
       "image_num": 1,
@@ -42,6 +42,46 @@
       "action_he": "לחצו על <span style=\"color:#f6a67e;\">קובץ ההתקנה שירד</span> בפינה השמאלית העליונה של המסך כדי להפעיל אותו",
       "click_area": "top-left",
       "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 6,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_6.png",
+      "description_en": "Windows File Explorer showing Downloads folder with Everything setup file. Right-click context menu open with 'Open' highlighted.",
+      "action_he": "לחצו על <span style=\"color:#f6a67e;\">פתיחה</span> כדי להריץ את קובץ ההתקנה",
+      "click_area": "center-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 7,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_7.png",
+      "description_en": "Windows File Explorer showing Downloads folder with the Everything installer file visible.",
+      "action_he": "לחצו פעמיים על <span style=\"color:#f6a67e;\">קובץ ההתקנה של Everything</span> כדי להתחיל את ההתקנה",
+      "click_area": "center",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 9,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_9.png",
+      "description_en": "Windows UAC dialog asking permission for Everything by voidtools to make changes, with Yes/No buttons.",
+      "action_he": "יופיע חלון בקרת חשבון משתמש. לחצו על <span style=\"color:#f6a67e;\">כן</span> כדי לאשר את ההתקנה",
+      "click_area": "bottom-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 10,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_10.png",
+      "description_en": "Everything Setup dialog asking to select installer language, dropdown showing Hebrew, OK/Cancel buttons.",
+      "action_he": "בחרו שפה מהרשימה ולחצו על <span style=\"color:#f6a67e;\">OK</span>",
+      "click_area": "center-left",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 11,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_11.png",
+      "description_en": "Everything installer showing License Agreement with MIT license text and I Agree button.",
+      "action_he": "קראו את הסכם הרישיון ולחצו על <span style=\"color:#f6a67e;\">I Agree</span> כדי להמשיך בהתקנה",
+      "click_area": "bottom-center",
+      "arrow_direction": "arrow-bottom-left"
     }
   ]
 }
