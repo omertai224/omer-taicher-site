@@ -71,8 +71,12 @@ function buildNavDots() {
   for (let i = 0; i < slides.length; i++) {
     let dot = document.createElement('button');
     dot.className = 'nav-dot';
-    dot.title = (i + 1).toString();
-    dot.textContent = (i + 1).toString();
+    var skipStart = 3; // מסכי פתיחה בלי מספר
+    var skipEnd = 1;   // מסך סיום בלי מספר
+    var isNumbered = (i >= skipStart && i < slides.length - skipEnd);
+    var stepNum = isNumbered ? (i - skipStart + 1) : '';
+    dot.title = isNumbered ? stepNum.toString() : (i < skipStart ? ['פתיחה','סרטון','הסבר'][i] : 'סיום');
+    dot.textContent = stepNum.toString();
     (function(index) {
       dot.addEventListener('click', function() {
         showSlides(index + 1);
