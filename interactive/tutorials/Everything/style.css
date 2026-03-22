@@ -58,32 +58,54 @@ a { word-break: break-all; }
 }
 
 /* ─── סרגל ניווט תחתון ─── */
-.nav {
-  position: fixed;
-  top: calc(100% - 42px);
-  bottom: 20px;
-  background-color: #1e5f74;
-  z-index: 2;
-  border-radius: 4px;
-  transition: background-color 0.2s, transform 0.15s;
-  opacity: 1;
-}
-
-.nav:hover {
-  background-color: #1e5f74;
-  opacity: 1;
-  transform: scaleY(1.3);
-}
-
 .nav-background {
   background: #ffffff;
   border-top: 2px solid #a8c5d6;
   position: fixed;
-  top: calc(100% - 62px);
-  bottom: 0%;
-  left: 0%;
-  right: 0%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 62px;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 100px 0 80px; /* לוגו משמאל, חיצים מימין */
+}
+
+.nav-dots {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  gap: 2px;
+}
+
+.nav-dot {
+  flex: 1;
+  max-width: 16px;
+  height: 8px;
+  background-color: #a8c5d6;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+  border: none;
+  padding: 0;
+  min-width: 3px;
+}
+
+.nav-dot:hover {
+  background-color: #1e5f74;
+  transform: scaleY(1.5);
+}
+
+.nav-dot.active {
+  background-color: #1e5f74;
+}
+
+/* Hide old nav elements */
+.nav {
+  display: none;
 }
 
 /* ─── בועות טקסט ─── */
