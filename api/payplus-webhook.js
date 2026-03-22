@@ -18,7 +18,7 @@ const WA_INSTANCE  = process.env.GREENAPI_INSTANCE_ID;
 const WA_TOKEN     = process.env.GREENAPI_TOKEN;
 
 const PRODUCTS = {
-  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/Vibe/', user: 'student', pass: 'Sv8472t' },
+  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/', user: 'student', pass: 'Sv8472t' },
   ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://omertai.net/interactive/AI/' },
   files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: 'https://omertai.net/interactive/Files/' },
   security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: 'https://omertai.net/interactive/Security/' },

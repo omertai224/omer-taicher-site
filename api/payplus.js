@@ -69,7 +69,7 @@ export default async function handler(req, res) {
     }
 
     const TUTORIAL_URLS = {
-      vibe: 'https://omertai.net/interactive/Vibe/',
+      vibe: 'https://omertai.net/interactive/tutorials/Vibe/',
       ai: 'https://omertai.net/interactive/AI/',
       files: 'https://omertai.net/interactive/Files/',
       security: 'https://omertai.net/interactive/Security/',
