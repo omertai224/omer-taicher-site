@@ -1,7 +1,7 @@
 {
   "tutorial": "Everything",
   "total_images": 37,
-  "analyzed": 10,
+  "analyzed": 15,
   "steps": [
     {
       "image_num": 1,
@@ -82,6 +82,46 @@
       "action_he": "קראו את הסכם הרישיון ולחצו על <span style=\"color:#f6a67e;\">I Agree</span> כדי להמשיך בהתקנה",
       "click_area": "bottom-center",
       "arrow_direction": "arrow-bottom-left"
+    },
+    {
+      "image_num": 12,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_12.png",
+      "description_en": "Everything installer showing installation options with checkboxes and Install button.",
+      "action_he": "בחלון ההתקנה, וודאו שההגדרות מתאימות לכם ולחצו על <span style=\"color:#f6a67e;\">Install</span>",
+      "click_area": "bottom-left",
+      "arrow_direction": "arrow-bottom-left"
+    },
+    {
+      "image_num": 13,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_13.png",
+      "description_en": "Everything installer showing options including Explorer integration, Start Menu shortcuts, Desktop shortcut.",
+      "action_he": "השאירו את כל ההגדרות כמו שהן ולחצו על <span style=\"color:#f6a67e;\">Install</span>",
+      "click_area": "bottom-left",
+      "arrow_direction": "arrow-bottom-left"
+    },
+    {
+      "image_num": 14,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_14.png",
+      "description_en": "Everything Setup showing installation options with checkboxes for NTFS indexing, ETP/FTP server etc.",
+      "action_he": "השאירו את כל האפשרויות מסומנות כברירת מחדל ולחצו על <span style=\"color:#f6a67e;\">Install</span>",
+      "click_area": "bottom-left",
+      "arrow_direction": "arrow-bottom-left"
+    },
+    {
+      "image_num": 15,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_15.png",
+      "description_en": "Everything installer showing installation complete screen with Finish button.",
+      "action_he": "ההתקנה הסתיימה! ודאו שהתיבה מסומנת ולחצו על <span style=\"color:#f6a67e;\">סיום</span> כדי להפעיל את Everything",
+      "click_area": "bottom-center",
+      "arrow_direction": "arrow-bottom-left"
+    },
+    {
+      "image_num": 17,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_17.png",
+      "description_en": "Everything search tool open showing search results with files, paths, dates and sizes.",
+      "action_he": "התוכנה מותקנת ומוכנה לשימוש. הקלידו בשורת החיפוש למעלה את שם הקובץ שאתם מחפשים, והתוצאות יופיעו <span style=\"color:#f6a67e;\">מיידית</span>",
+      "click_area": "top-center",
+      "arrow_direction": "arrow-right"
     }
   ]
 }
