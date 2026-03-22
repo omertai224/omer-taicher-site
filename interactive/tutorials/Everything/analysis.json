@@ -1,0 +1,47 @@
+{
+  "tutorial": "Everything",
+  "total_images": 37,
+  "analyzed": 5,
+  "steps": [
+    {
+      "image_num": 1,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_1.png",
+      "description_en": "Windows 11 desktop with taskbar visible at the bottom. The Google Chrome icon is highlighted in the taskbar.",
+      "action_he": "פתחו את הדפדפן — לחצו על <span style=\"color:#f6a67e;\">Google Chrome</span> בשורת המשימות",
+      "click_area": "bottom-center",
+      "arrow_direction": "arrow-bottom-left"
+    },
+    {
+      "image_num": 2,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_2.png",
+      "description_en": "Google search page with 'everything' typed in the search bar, showing autocomplete suggestions.",
+      "action_he": "הקלידו <span style=\"color:#f6a67e;\">everything search</span> בשורת החיפוש של גוגל ולחצו על התוצאה",
+      "click_area": "center-right",
+      "arrow_direction": "arrow-left"
+    },
+    {
+      "image_num": 3,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_3.png",
+      "description_en": "Google search results page for 'everything' showing the voidtools.com website with Downloads link.",
+      "action_he": "בתוצאות החיפוש, לחצו על <span style=\"color:#f6a67e;\">Downloads</span> מתחת לתוצאה של voidtools",
+      "click_area": "top-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 4,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_4.png",
+      "description_en": "The voidtools Downloads page showing download options for Everything 1.4.1.1032.",
+      "action_he": "לחצו על <span style=\"color:#f6a67e;\">Download Installer 64-bit</span> כדי להוריד את הגרסה המתאימה",
+      "click_area": "center-right",
+      "arrow_direction": "arrow-right"
+    },
+    {
+      "image_num": 5,
+      "image_file": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_5.png",
+      "description_en": "Downloads page with the installer file visible in the browser's download bar at top-left.",
+      "action_he": "לחצו על <span style=\"color:#f6a67e;\">קובץ ההתקנה שירד</span> בפינה השמאלית העליונה של המסך כדי להפעיל אותו",
+      "click_area": "top-left",
+      "arrow_direction": "arrow-left"
+    }
+  ]
+}
