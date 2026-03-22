@@ -163,4 +163,65 @@
       <tr><td class="problem-cell">סרטון לא עולה</td><td>לבדוק קישור Cloudinary</td></tr>
       <tr><td class="problem-cell">מסך מובייל קטן מדי</td><td>לוודא viewport meta tag</td></tr>
       <tr><td class="problem-cell">כפתור הנגשה מופיע</td><td>להסיר Enable script</td></tr>
+      <tr><td class="problem-cell">טקסט באנגלית נשאר</td><td>לבדוק שכל הטקסט בבועות הוחלף לעברי מ-analysis.json</td></tr>
     </table>
+  </div>
+
+  <div class="section">
+    <div class="section-title">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange-deep)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+      נוסחת שדרוג: מגולמי למושלם
+    </div>
+    <p style="color: var(--text-mid); margin-bottom: 16px; font-size: 0.92rem;">איך להפוך הדרכה גולמית מ-FlowShare (כמו Everything) להדרכה מעוצבת כמו Vibe.</p>
+    <div class="steps-box">
+      <div class="steps-header">שלב 1: ניתוח תמונות — הבשר!</div>
+      <div class="step-item">
+        <div class="step-num-sm">1</div>
+        <div class="step-text"><strong>סבבים של 10 תמונות</strong> — 5 אייג'נטים במקביל, כל אחד מנתח 2 תמונות</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-sm">2</div>
+        <div class="step-text"><strong>כל אייג'נט מחזיר JSON:</strong> image_num, image_file, description_en, action_he (עם <code style="background: rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 4px;">&lt;span color:#f6a67e&gt;</code> להדגשה), click_area, arrow_direction</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-sm">3</div>
+        <div class="step-text"><strong>דחיפה אחרי כל סבב!</strong> — שומרים ל-<code style="background: rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 4px;">analysis.json</code> בתיקיית ההדרכה, commit + push. אם נתקעים — ממשיכים מאיפה שעצרנו</div>
+      </div>
+    </div>
+    <div class="steps-box" style="margin-top: 16px;">
+      <div class="steps-header">שלב 2: עדכון ה-HTML</div>
+      <div class="step-item">
+        <div class="step-num-sm">4</div>
+        <div class="step-text">להחליף את הטקסט האנגלי ב-index.html עם הטקסט העברי מ-analysis.json</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-sm">5</div>
+        <div class="step-text">לוודא <code style="background: rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 4px;">text-align: right</code> בבועות, מספור נכון (1/N), ו-<code style="background: rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 4px;">dir="rtl"</code></div>
+      </div>
+    </div>
+    <div class="steps-box" style="margin-top: 16px;">
+      <div class="steps-header">שלב 3: הלבשת עיצוב Vibe</div>
+      <div class="step-item">
+        <div class="step-num-sm">6</div>
+        <div class="step-text">מסך פתיחה + סרטון + סיום — לפי תבנית Vibe. style.css ו-script.js מועתקים מ-Vibe</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-sm">7</div>
+        <div class="step-text">תמונות ניווט (right.png, left.png) — <strong>תמיד מ-Vibe, לא מ-FlowShare</strong></div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-sm">8</div>
+        <div class="step-text">להסיר כל אזכור של FlowShare מהטקסט שנראה ללקוחות</div>
+      </div>
+    </div>
+    <div class="steps-box" style="margin-top: 16px;">
+      <div class="steps-header">שלב 4: בדיקה ופרסום</div>
+      <div class="step-item">
+        <div class="step-num-sm">9</div>
+        <div class="step-text">בדיקה: מסך פתיחה, סרטון, כל השלבים, מסגרות כתומות, כפתורי ניווט, מסך סיום</div>
+      </div>
+      <div class="step-item">
+        <div class="step-num-sm">10</div>
+        <div class="step-text">העלאה ל-<code style="background: rgba(255,255,255,0.15); padding: 2px 6px; border-radius: 4px;">/interactive/[שם]/</code> + עדכון interactive.json</div>
+      </div>
+    </div>
