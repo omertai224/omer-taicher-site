@@ -66,6 +66,7 @@ function buildNavDots() {
     let dot = document.createElement('button');
     dot.className = 'nav-dot';
     dot.title = (i + 1).toString();
+    dot.textContent = (i + 1).toString();
     (function(index) {
       dot.addEventListener('click', function() {
         showSlides(index + 1);
