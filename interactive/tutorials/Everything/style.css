@@ -84,9 +84,12 @@ a { word-break: break-all; }
 
 .nav-row {
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   direction: ltr;
   gap: 4px;
   justify-content: center;
+  width: 100%;
 }
 
 .nav-dot {
