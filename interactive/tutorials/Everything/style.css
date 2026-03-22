@@ -87,8 +87,7 @@ a { word-break: break-all; }
   flex-direction: row;
   flex-wrap: nowrap;
   direction: ltr;
-  gap: 4px;
-  justify-content: center;
+  justify-content: space-evenly;
   width: 100%;
 }
 
