@@ -86,7 +86,7 @@ export default async function handler(req, res) {
     // אם מוצר בודד — הפניה ישירה להדרכה. כמה מוצרים — לדף ההדרכות
     const successUrl = validKeys.length === 1
       ? (TUTORIAL_URLS[validKeys[0]] || 'https://omertai.net/interactive/')
-      : 'https://omertai.net/interactive/';
+      : 'https://omertai.net/pages/thank-you/';
     const failUrl = validKeys.length === 1
       ? `https://omertai.net/pages/checkout/?product=${validKeys[0]}&status=failed`
       : `https://omertai.net/pages/checkout/?cart=${validKeys.join(',')}&status=failed`;
