@@ -9,8 +9,9 @@ body {
 .mySlides {
   display: none;
   position: relative;
-  overflow: visible;
+  overflow: hidden;
   min-height: calc(100vh - 80px);
+  max-height: calc(100vh - 80px);
 }
 
 img { vertical-align: middle; }
@@ -22,7 +23,7 @@ a { word-break: break-all; }
   width: 100%;
   position: relative;
   margin: auto;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
 }
 
 .image {
