@@ -33,6 +33,16 @@ a { word-break: break-all; }
 
 .image-center {
   position: relative;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-center img {
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
 }
 
 /* ─── כפתורי ניווט ─── */
