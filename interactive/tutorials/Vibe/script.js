@@ -79,8 +79,9 @@ var slideMap = {
   1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
   2:  { icon: 'mic',      title: 'הכירו את Vibe' },
   3:  { icon: 'download', title: 'הורידו את Vibe' },
-  14: { icon: 'monitor',  title: 'השתמשו ב-Vibe' },
-  30: { icon: 'finish',   title: 'סיום' }
+  6:  { icon: 'install',  title: 'התקנה' },
+  15: { icon: 'monitor',  title: 'השתמשו ב-Vibe' },
+  31: { icon: 'finish',   title: 'סיום' }
 };
 
 // יצירת נקודות ניווט דינמית
