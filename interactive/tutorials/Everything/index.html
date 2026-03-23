@@ -202,11 +202,10 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
 .uac-point-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;}
 .uac-point-green{background:rgba(76,175,80,0.2);color:#66bb6a;}
 .uac-point-blue{background:rgba(30,95,116,0.3);color:#5b8fa8;}
-.uac-bottom{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#f6a67e,#e8956e);padding:20px 28px;border-radius:16px;cursor:pointer;box-shadow:0 8px 32px rgba(246,166,126,0.45);transition:transform 0.2s,box-shadow 0.2s;animation:uac-glow 2s ease-in-out infinite;}
-.uac-bottom:hover{transform:scale(1.03);box-shadow:0 12px 40px rgba(246,166,126,0.6);}
-@keyframes uac-glow{0%,100%{box-shadow:0 8px 32px rgba(246,166,126,0.45);}50%{box-shadow:0 8px 40px rgba(246,166,126,0.7);}}
-.uac-bottom-text{color:#1a1a2e;font-size:20px;font-weight:800;}
-.uac-bottom-arrow{flex-shrink:0;width:44px;height:44px;background:rgba(26,26,46,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.uac-bottom{display:flex;align-items:center;gap:10px;background:rgba(246,166,126,0.15);border:1.5px solid rgba(246,166,126,0.4);padding:12px 18px;border-radius:12px;cursor:pointer;transition:background 0.2s;}
+.uac-bottom:hover{background:rgba(246,166,126,0.25);}
+.uac-bottom-text{color:#f6a67e;font-size:15px;font-weight:700;}
+.uac-bottom-arrow{flex-shrink:0;display:flex;align-items:center;}
 @media(max-width:900px){.uac-wrap{flex-direction:column;}.uac-left{max-height:40vh;}.uac-right{padding:20px;}}
 </style>
 <div class="uac-wrap">
@@ -234,7 +233,7 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
       </div>
     </div>
     <div class="uac-bottom" onclick="nextSlide()">
-      <div class="uac-bottom-arrow"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/></svg></div>
+      <div class="uac-bottom-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66bb6a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
       <div class="uac-bottom-text">בכל פעם שהחלון קופץ - לחצו "כן"</div>
     </div>
   </div>
