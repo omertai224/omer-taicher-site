@@ -362,6 +362,21 @@ a { word-break: break-all; }
   cursor: none;
 }
 
+.magnifier-esc-hint {
+  position: fixed;
+  z-index: 10;
+  background: rgba(15, 42, 58, 0.85);
+  color: #a8c5d6;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #5b8fa844;
+  text-align: center;
+  display: none;
+  direction: rtl;
+}
+
 /* ─── הקראה בקול ─── */
 .tts-btn {
   position: fixed;

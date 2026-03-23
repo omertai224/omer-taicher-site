@@ -141,22 +141,51 @@ function initMagnifier() {
   lens.id = 'magnifier-lens';
   document.body.appendChild(lens);
 
+  // Create escape hint (shown only when magnifier active)
+  var escHint = document.createElement('div');
+  escHint.className = 'magnifier-esc-hint';
+  escHint.id = 'magnifier-esc-hint';
+  escHint.innerHTML = 'ניתן ללחוץ<br>Escape<br>לביטול';
+  document.body.appendChild(escHint);
 }
 
 function toggleMagnifier() {
   magnifierActive = !magnifierActive;
   var btn = document.getElementById('magnifier-btn');
   var lens = document.getElementById('magnifier-lens');
+  var escHint = document.getElementById('magnifier-esc-hint');
 
   if (magnifierActive) {
     btn.classList.add('active');
     document.body.classList.add('magnifier-active');
+    if (escHint) escHint.style.display = 'block';
+    positionEscHint();
   } else {
     btn.classList.remove('active');
     lens.style.display = 'none';
     document.body.classList.remove('magnifier-active');
+    if (escHint) escHint.style.display = 'none';
     if (magnifierClone) { magnifierClone.remove(); magnifierClone = null; }
   }
+}
+
+function positionEscHint() {
+  var escHint = document.getElementById('magnifier-esc-hint');
+  var btn = document.getElementById('magnifier-btn');
+  if (!escHint || !btn) return;
+  var btnRect = btn.getBoundingClientRect();
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  if (!slide) return;
+  var img = slide.querySelector('.image-center > img');
+  if (!img) return;
+  var imgRect = img.getBoundingClientRect();
+  var blackLeft = imgRect.left;
+
+  // Center hint horizontally in the black area, below button
+  escHint.style.maxWidth = Math.max(60, blackLeft - 8) + 'px';
+  var hintLeft = Math.max(4, blackLeft / 2 - escHint.offsetWidth / 2);
+  escHint.style.left = hintLeft + 'px';
+  escHint.style.top = (btnRect.bottom + 12) + 'px';
 }
 
 // Position button centered in the VISIBLE black area (excluding 80px nav bar)
