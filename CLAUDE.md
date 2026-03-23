@@ -507,11 +507,11 @@ function buildNavDots() {
 5. **הגדלה ×2** — שכפול DOM של כל ה-image-center (לא background-image!), כך שגם טקסט וגם תמונות מוגדלים
 6. **לחיצה נוספת** או **Escape** מכבה
 7. **מופיע רק בשקפי צעדים** — לא במסך פתיחה/סיום/מעבר
-8. **בלי הודעת טקסט** — עומר מסביר על הכפתור בסרטון הפתיחה
+8. **Esc hint** מופיע מתחת לכפתור כשהזכוכית פעילה — "ניתן ללחוץ Esc במקלדת לביטול"
 
 #### מפרט טכני:
-- **CSS classes:** `magnifier-btn`, `magnifier-lens`, `magnifier-active`
-- **JS functions:** `initMagnifier()`, `toggleMagnifier()`, `updateMagnifierVisibility()`, `positionMagnifierBtn()`, `refreshMagnifierClone()`
+- **CSS classes:** `magnifier-btn`, `magnifier-lens`, `magnifier-active`, `magnifier-esc-hint`
+- **JS functions:** `initMagnifier()`, `toggleMagnifier()`, `positionEscHint()`, `updateMagnifierVisibility()`, `positionMagnifierBtn()`, `refreshMagnifierClone()`
 - **`updateMagnifierVisibility()`** נקרא מתוך `showSlides()` — מסתיר/מציג לפי סוג השקף
 - **`positionMagnifierBtn()`** נקרא אחרי כל שינוי שקף + על resize
 - **שכפול DOM:** העדשה מכילה clone של כל ה-`.image-center` מוגדל ב-`transform: scale(2)` — כך גם תמונות וגם בועות טקסט מוגדלים
@@ -521,6 +521,50 @@ function buildNavDots() {
 - **אל תגדיל בועות בלחיצה** — זה תופס מקום על המסך ומסתיר כפתורים
 - **background-image לא עובד על טקסט** — לכן עברנו לשכפול DOM
 - **מירכוז חייב להתחשב בפס ניווט** — `(window.innerHeight - 80) / 2` ולא `50%`
+
+#### Esc Hint — הודעת ביטול:
+- **טקסט:** "ניתן ללחוץ / Esc / במקלדת לביטול" (3 שורות עם `<br>`)
+- **מיקום:** מתחת לכפתור הזכוכית, ממורכז באזור השחור
+- **CSS class:** `magnifier-esc-hint`
+- **JS functions:** `positionEscHint()` — נקרא מתוך `toggleMagnifier()`
+- **מופיע רק כשהזכוכית פעילה** — נעלם כשמכבים
+
+### הקראה בקול (TTS) — חובה בכל הדרכה!
+**פיצ'ר נגישות למבוגרים.** כפתור שמקריא את טקסט הבועה בעברית.
+
+#### איך זה עובד:
+1. **כפתור 80px** עם אייקון רמקול — ממורכז בחלק השחור שמימין לתמונה
+2. **לחיצה** מפעילה הקראה — הכפתור נצבע כתום
+3. **Web Speech API** עם שפה `he-IL` וקצב `0.85` (איטי יותר למבוגרים)
+4. **מחלץ טקסט נקי** — מסיר מונה צעדים (regex `/^\d+\/\d+\s*/`)
+5. **לחיצה נוספת** עוצרת הקראה
+6. **מופיע רק בשקפי צעדים** — לא במסך פתיחה/סיום/מעבר
+7. **נעצר אוטומטית** כשמעבירים שקף
+
+#### מפרט טכני:
+- **CSS class:** `tts-btn`
+- **JS functions:** `initTts()`, `toggleTts()`, `positionTtsBtn()`, `updateTtsVisibility()`
+- **`updateTtsVisibility()`** נקרא מתוך `showSlides()` — מסתיר/מציג לפי סוג השקף
+- **`positionTtsBtn()`** נקרא אחרי כל שינוי שקף + על resize
+- **עובד אוטומטית** — לא צריך לשנות HTML, הכל דינמי מ-script.js + style.css
+
+### תהליך העברת הנגשה להדרכה חדשה (צ'קליסט)
+**כל הנגשה (זכוכית מגדלת + הקראה + Esc hint) מגיעה אוטומטית עם העתקת style.css + script.js מ-Everything.**
+
+כשמעתיקים את הקבצים בשלב 1 של שדרוג הדרכה:
+```bash
+cp interactive/tutorials/Everything/style.css interactive/tutorials/[שם]/style.css
+cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/script.js
+```
+הנגשה כלולה! אין צורך בשום שינוי ידני. לוודא:
+- [ ] כפתור זכוכית מגדלת מופיע בשקפי צעדים (שמאל)
+- [ ] כפתור הקראה מופיע בשקפי צעדים (ימין)
+- [ ] Esc hint מופיע מתחת לזכוכית כשפעילה
+- [ ] הקראה בעברית עובדת (נבדק בדפדפן)
+- [ ] שני הכפתורים נעלמים בשקפי פתיחה/סיום/מעבר
+- [ ] resize לא שובר מיקום כפתורים
+
+**כל הנגשה = חלק מתבנית Everything. לא צריך לכתוב קוד חדש — רק להעתיק ולוודא.**
 
 ### תקלות ופתרונות - קובץ נפרד!
 **קרא את `TROUBLESHOOTING.md` בתחילת כל עבודה על הדרכות!**
