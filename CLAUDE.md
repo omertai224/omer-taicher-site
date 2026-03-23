@@ -288,6 +288,34 @@ num_steps = total_slides - len(slideMap)
 - [ ] מסגרות כתומות פועלות (box-pulse animation)
 - [ ] חיצי ניווט עובדים
 - [ ] מסך סיום תקין
+- [ ] חסימת מובייל עובדת (מסך "הדרכה זו מיועדת למחשב Windows בלבד")
+
+### חסימת מובייל — חובה בכל הדרכה!
+**ההדרכות מיועדות למחשב בלבד.** כל הדרכה חייבת לחסום גישה ממובייל.
+
+**HTML — מסך חסימה (בתוך ה-body, לפני הכל):**
+```html
+<div id="mobile-block" style="display:none;position:fixed;inset:0;background:#1a1a2e;z-index:9999;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;font-family:'Rubik',sans-serif;">
+  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:20px;">
+    <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+  </svg>
+  <div style="color:white;font-size:24px;font-weight:900;margin-bottom:14px;line-height:1.3;">הדרכה זו מיועדת למחשב Windows בלבד</div>
+  <div style="color:#ffffffcc;font-size:16px;line-height:1.8;margin-bottom:20px;">כדי לתרגל את השלבים תוך כדי,<br>יש לפתוח הדרכה זו במחשב Windows שלכם.</div>
+  <div style="background:#f6a67e22;border:2px solid #f6a67e88;border-radius:14px;padding:14px 20px;">
+    <div style="color:#f6a67e;font-size:14px;font-weight:700;">טיפ</div>
+    <div style="color:#ffffffaa;font-size:14px;margin-top:6px;line-height:1.6;">פתחו את הקישור שקיבלתם<br>במחשב Windows שלכם.</div>
+  </div>
+</div>
+```
+
+**JS — בתוך initApp(), לפני בדיקת לוגין:**
+```javascript
+var ua = navigator.userAgent || navigator.vendor || window.opera;
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
+  document.getElementById('mobile-block').style.display = 'flex';
+  return;
+}
+```
 
 ### פס ניווט תחתון — מפרט מדויק (מקור האמת!)
 **זה המפרט הסופי והמדויק. כל הדרכה חדשה חייבת לעמוד בו בדיוק.**
