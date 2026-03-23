@@ -129,7 +129,7 @@ function initMagnifier() {
   var btn = document.createElement('button');
   btn.className = 'magnifier-btn';
   btn.id = 'magnifier-btn';
-  btn.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>';
+  btn.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>';
   btn.title = 'זכוכית מגדלת';
   btn.addEventListener('click', toggleMagnifier);
   document.body.appendChild(btn);
@@ -140,30 +140,20 @@ function initMagnifier() {
   lens.id = 'magnifier-lens';
   document.body.appendChild(lens);
 
-  // Create hint
-  var hint = document.createElement('div');
-  hint.className = 'magnifier-hint';
-  hint.id = 'magnifier-hint';
-  hint.textContent = 'הזיזו את העכבר על התמונה להגדלה';
-  document.body.appendChild(hint);
 }
 
 function toggleMagnifier() {
   magnifierActive = !magnifierActive;
   var btn = document.getElementById('magnifier-btn');
   var lens = document.getElementById('magnifier-lens');
-  var hint = document.getElementById('magnifier-hint');
 
   if (magnifierActive) {
     btn.classList.add('active');
-    hint.style.display = 'block';
     document.body.classList.add('magnifier-active');
   } else {
     btn.classList.remove('active');
     lens.style.display = 'none';
-    hint.style.display = 'none';
     document.body.classList.remove('magnifier-active');
-    // Clean up clone
     if (magnifierClone) { magnifierClone.remove(); magnifierClone = null; }
   }
 }
@@ -181,7 +171,7 @@ function positionMagnifierBtn() {
   var rect = img.getBoundingClientRect();
   var blackLeft = rect.left; // width of black area on the left
   var visibleHeight = window.innerHeight - 80; // subtract nav bar
-  var btnSize = 64;
+  var btnSize = 80;
 
   if (blackLeft > 70) {
     // Center button in the visible black area
@@ -195,21 +185,6 @@ function positionMagnifierBtn() {
     btn.style.transform = '';
   }
 
-  // Position hint below button, constrained to black area
-  var hint = document.getElementById('magnifier-hint');
-  if (hint) {
-    var btnRect = btn.getBoundingClientRect();
-    // Constrain hint width to fit in the black area
-    hint.style.maxWidth = Math.max(80, blackLeft - 16) + 'px';
-    hint.style.whiteSpace = blackLeft > 200 ? 'nowrap' : 'normal';
-    var hintLeft = Math.max(8, blackLeft / 2 - hint.offsetWidth / 2);
-    // Never let hint overflow past the black area
-    if (hintLeft + hint.offsetWidth > blackLeft) {
-      hintLeft = Math.max(8, blackLeft - hint.offsetWidth - 8);
-    }
-    hint.style.left = hintLeft + 'px';
-    hint.style.top = (btnRect.bottom + 12) + 'px';
-  }
 }
 
 function updateMagnifierVisibility() {

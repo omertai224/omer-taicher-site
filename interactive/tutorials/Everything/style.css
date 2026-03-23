@@ -319,8 +319,8 @@ a { word-break: break-all; }
 .magnifier-btn {
   position: fixed;
   z-index: 10;
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 2px solid #a8c5d6;
   background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
@@ -362,20 +362,6 @@ a { word-break: break-all; }
   cursor: none;
 }
 
-.magnifier-hint {
-  position: fixed;
-  z-index: 10;
-  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
-  color: #fff;
-  font-size: 13px;
-  padding: 8px 14px;
-  border-radius: 12px;
-  border: 1px solid #5b8fa855;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  display: none;
-  direction: rtl;
-  white-space: nowrap;
-}
 
 /* ─── responsive ─── */
 @media only screen and (max-width: 300px) {
