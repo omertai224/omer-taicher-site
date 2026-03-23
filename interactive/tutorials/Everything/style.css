@@ -354,9 +354,8 @@ a { word-break: break-all; }
   pointer-events: none;
   z-index: 9;
   display: none;
-  background-repeat: no-repeat;
+  overflow: hidden;
   background-color: #1a1a2e;
-  cursor: none;
 }
 
 .magnifier-active .image-center {

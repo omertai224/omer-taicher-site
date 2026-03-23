@@ -163,6 +163,8 @@ function toggleMagnifier() {
     lens.style.display = 'none';
     hint.style.display = 'none';
     document.body.classList.remove('magnifier-active');
+    // Clean up clone
+    if (magnifierClone) { magnifierClone.remove(); magnifierClone = null; }
   }
 }
 
@@ -206,38 +208,67 @@ function updateMagnifierVisibility() {
   var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
   var img = slide ? slide.querySelector('.image-center > img') : null;
   btn.style.display = img ? 'flex' : 'none';
-  // Hide lens & restore text when changing slides
+  // Hide lens when changing slides
   if (magnifierActive && !img) {
     toggleMagnifier();
   }
+  // Clean up old clone on slide change
+  if (magnifierClone) { magnifierClone.remove(); magnifierClone = null; }
   // Reposition after display change
   if (img) {
     setTimeout(positionMagnifierBtn, 50);
   }
 }
 
+// Clone slide content into lens for magnification (images + text + boxes)
+var magnifierClone = null;
+
+function refreshMagnifierClone() {
+  var lens = document.getElementById('magnifier-lens');
+  if (!lens) return;
+  // Remove old clone
+  if (magnifierClone) { magnifierClone.remove(); magnifierClone = null; }
+
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  if (!slide) return;
+  var imageCenter = slide.querySelector('.image-center');
+  if (!imageCenter) return;
+
+  magnifierClone = imageCenter.cloneNode(true);
+  magnifierClone.style.position = 'absolute';
+  magnifierClone.style.top = '0';
+  magnifierClone.style.left = '0';
+  magnifierClone.style.transform = 'scale(' + magnifierZoom + ')';
+  magnifierClone.style.transformOrigin = '0 0';
+  magnifierClone.style.pointerEvents = 'none';
+  // Remove animations from cloned boxes
+  var clonedBoxes = magnifierClone.querySelectorAll('.box');
+  for (var i = 0; i < clonedBoxes.length; i++) {
+    clonedBoxes[i].style.animation = 'none';
+  }
+  lens.appendChild(magnifierClone);
+}
+
 document.addEventListener('mousemove', function(e) {
   if (!magnifierActive) return;
   var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
   if (!slide) return;
-  var img = slide.querySelector('.image-center > img');
-  if (!img) return;
+  var imageCenter = slide.querySelector('.image-center');
+  if (!imageCenter) return;
 
   var lens = document.getElementById('magnifier-lens');
-  var rect = img.getBoundingClientRect();
+  var containerRect = imageCenter.getBoundingClientRect();
 
-  // Work on both the image AND text bubbles
-  var textEl = slide.querySelector('.text');
-  var textRect = textEl ? textEl.getBoundingClientRect() : null;
-
-  var overImage = (e.clientX >= rect.left && e.clientX <= rect.right &&
-                   e.clientY >= rect.top && e.clientY <= rect.bottom);
-  var overText = textRect && (e.clientX >= textRect.left && e.clientX <= textRect.right &&
-                  e.clientY >= textRect.top && e.clientY <= textRect.bottom);
-
-  if (!overImage && !overText) {
+  // Check if mouse is over the slide content area
+  if (e.clientX < containerRect.left || e.clientX > containerRect.right ||
+      e.clientY < containerRect.top || e.clientY > containerRect.bottom) {
     lens.style.display = 'none';
     return;
+  }
+
+  // Create clone if needed
+  if (!magnifierClone || !lens.contains(magnifierClone)) {
+    refreshMagnifierClone();
   }
 
   lens.style.display = 'block';
@@ -248,24 +279,17 @@ document.addEventListener('mousemove', function(e) {
   lens.style.left = lensX + 'px';
   lens.style.top = lensY + 'px';
 
-  // Calculate background from image
-  var imgW = img.naturalWidth;
-  var imgH = img.naturalHeight;
-  var scaleX = imgW / rect.width;
-  var scaleY = imgH / rect.height;
+  // Position the clone inside the lens so the zoomed area under cursor is centered
+  var relX = e.clientX - containerRect.left;
+  var relY = e.clientY - containerRect.top;
 
-  var relX = e.clientX - rect.left;
-  var relY = e.clientY - rect.top;
+  var cloneX = -(relX * magnifierZoom - magnifierLensW / 2);
+  var cloneY = -(relY * magnifierZoom - magnifierLensH / 2);
 
-  var bgW = imgW * magnifierZoom;
-  var bgH = imgH * magnifierZoom;
-
-  var bgX = -(relX * scaleX * magnifierZoom - magnifierLensW / 2);
-  var bgY = -(relY * scaleY * magnifierZoom - magnifierLensH / 2);
-
-  lens.style.backgroundImage = 'url("' + img.src + '")';
-  lens.style.backgroundSize = bgW + 'px ' + bgH + 'px';
-  lens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+  if (magnifierClone) {
+    magnifierClone.style.left = cloneX + 'px';
+    magnifierClone.style.top = cloneY + 'px';
+  }
 });
 
 window.addEventListener('resize', positionMagnifierBtn);
