@@ -133,12 +133,12 @@
 
 ## שדרוג הדרכות אינטראקטיביות — מגולמי למושלם (עדכון מרץ 2026)
 המטרה: להפוך הדרכה גולמית מ-FlowShare להדרכה מעוצבת בסגנון Vibe.
+**הדרכת הייחוס:** `interactive/tutorials/Everything/` — כל הדרכה חדשה צריכה להגיע למצב הזה.
 
 ### כלל הברזל: דחיפות = ביטוח חיים!
 **הדחיפות הן הדבר הכי חשוב בתהליך.** לא הניתוח, לא העיצוב — הדחיפות.
-- **למה?** כי סשנים נתקעים. אייג'נטים נופלים. דברים נשברים. וכשנתקעים בלי שדחפנו — מתחילים מהתחלה. וזה מתיש.
 - **דחיפה אחרי כל פעולה משמעותית.** לא אחרי שגומרים הכל — אחרי כל סבב, כל שלב, כל שינוי.
-- **אם נתקעים — ממשיכים מאיפה שדחפנו.** הסשן הבא קורא את מה שנדחף וממשיך. אפס מאמץ כפול.
+- **אם נתקעים — ממשיכים מאיפה שדחפנו.** אפס מאמץ כפול.
 - **עדיף 10 דחיפות קטנות מדחיפה אחת גדולה שלא מגיעה.**
 
 ### שלב 1: ניתוח תמונות — זה הבשר! זה השלב הכבד!
@@ -147,23 +147,111 @@
 - **כל אייג'נט מחזיר JSON** עם: `image_num`, `image_file`, `description_en`, `action_he` (טקסט עברי עם `<span style="color:#f6a67e;">` להדגשת אלמנט ללחיצה), `click_area`, `arrow_direction`
 - **דחיפה אחרי כל סבב!** שומרים ל-`analysis.json` בתיקיית ההדרכה, commit + push
 - **אם נתקעים — בודקים `analyzed` ב-analysis.json וממשיכים מהתמונה הבאה**
-- **אל תמחק קבצי `.flow` ו-`.fss`** — אלה קבצי עבודה של FlowShare, לא אזכורים למחיקה
+- **אל תמחק קבצי `.flow` ו-`.fss`** — אלה קבצי עבודה של FlowShare
 
 ### שלב 2: עדכון ה-HTML — דחיפה!
 - להחליף את הטקסט האנגלי הגולמי ב-`index.html` עם הטקסט העברי מ-`analysis.json` (סקריפט Python)
 - לוודא: `text-align: right`, מספור נכון (1/N), `dir="rtl"`
 - **commit + push מיד!**
 
-### שלב 3: הלבשת עיצוב Vibe — דחיפה!
-- מסך פתיחה, מסך סרטון, מסך סיום — לפי תבנית Vibe
-- `style.css` ו-`script.js` — להעתיק מ-Vibe
-- תמונות ניווט (`right.png`, `left.png`) — מ-Vibe, לא מ-FlowShare
-- מסך כניסה (login), חסימת מובייל — להעתיק מ-Vibe ולהתאים
-- להסיר כל אזכור של FlowShare מהטקסט שנראה ללקוחות
-- **commit + push מיד!**
+### שלב 3: הלבשת עיצוב — פס ניווט ממוספר + תמונות מותאמות — דחיפה!
+**זה השלב שמביא את ההדרכה מגולמית למושלמת. להעתיק מ-Everything כתבנית.**
+
+#### 3.1 style.css — להעתיק מ-Everything ולהתאים
+מפרט טכני מדויק (Everything כתבנית):
+```css
+/* פס ניווט */
+.nav-background { height: 80px; padding: 4px 130px 4px 90px; }
+/* גריד עיגולים — שתי שורות מיושרות */
+.nav-dots { display: grid; direction: ltr; gap: 4px; align-content: center; }
+/* עיגול בודד — 26px עם מספר */
+.nav-dot { width: 26px; height: 26px; border-radius: 50%; font-size: 11px; font-weight: 600; color: #fff; background-color: #a8c5d6; }
+.nav-dot.active { background-color: #1e5f74; }
+/* חיצי ניווט — ממורכזים בפס 80px */
+.prev, .next { bottom: 20px; }
+```
+
+#### 3.2 script.js — לוגיקת ניווט ממוספר
+- **buildNavDots()** בונה גריד דינמי:
+  - `cols = Math.ceil(slides.length / 2)` — חצי מהשקפים = מספר העמודות
+  - `gridTemplateColumns = 'repeat(' + cols + ', 26px)'` — עמודות קבועות, שורות מיושרות
+  - **3 עיגולים ראשונים ריקים** (skipStart=3): פתיחה, סרטון, הסבר על התוכנה
+  - **עיגול אחרון ריק** (skipEnd=1): מסך סיום
+  - **כל השאר ממוספרים** מ-1 עד N (מספר הצעדים בפועל)
+- כיוון: **משמאל לימין** (direction: ltr על הגריד) — מספר 1 בשמאל
+
+#### 3.3 index.html — גובה תמונות ומסכי פתיחה
+- **כל תמונה**: `height:calc(100vh - 80px)` — כדי שפס הניווט לא ידרוס
+- **מסכי פתיחה/סיום**: `height:calc(100vh - 80px)` — אותו עיקרון
+- **לוגו**: `bottom:17px` — ממורכז אנכית בפס 80px
+- **מונה צעדים בבועת טקסט**: `X/N` כשN = מספר הצעדים בלבד (בלי שקפי פתיחה/סיום)
+
+#### 3.4 מבנה שקפים (סדר קבוע)
+1. **שקף פתיחה** — מסך כניסה עם שם ההדרכה, תיאור, כפתור "בואו נתחיל" (עיגול ריק)
+2. **שקף סרטון** — "צפו בסרטון איך עובדים עם ההדרכה" (עיגול ריק)
+3. **שקף הסבר** — placeholder לסרטון הסבר על התוכנה הספציפית (עיגול ריק)
+4-N. **צעדי ההדרכה** — ממוספרים 1 עד (N-4), כל צעד עם תמונה + בועת טקסט + מסגרת כתומה
+N+1. **שקף סיום** (עיגול ריק)
+
+#### 3.5 שקפי מעבר (TODO — עוד לא מיושם)
+- בין חלקי ההדרכה (למשל "הורדה" → "התקנה" → "שימוש") צריך שקפי מעבר
+- שקף מעבר = עיגול ריק (בלי מספר), עם כותרת של החלק הבא
+- עומר יגדיר איפה בדיוק לשים אותם
+
+### קוד מדויק — להעתיק בעת שדרוג הדרכה חדשה
+
+#### style.css מלא (להעתיק מ-Everything ולהתאים שם בלבד):
+```css
+/* הנקודות הקריטיות: */
+.mySlides { min-height: calc(100vh - 80px); }
+.nav-background { height: 80px; padding: 4px 130px 4px 90px; }
+.nav-dots { display: grid; direction: ltr; gap: 4px; width: 100%; height: 100%; align-content: center; justify-items: center; }
+.nav-dot { width: 26px; height: 26px; border-radius: 50%; font-family: 'Rubik', Arial, sans-serif; font-size: 11px; font-weight: 600; color: #fff; background-color: #a8c5d6; display: flex; align-items: center; justify-content: center; }
+.nav-dot.active { background-color: #1e5f74; }
+.prev, .next { bottom: 20px; }
+```
+
+#### script.js — פונקציית buildNavDots (להעתיק כמו שהיא):
+```javascript
+function buildNavDots() {
+  let slides = document.getElementsByClassName("mySlides");
+  let container = document.querySelector('.nav-dots');
+  if (!container) return;
+  var cols = Math.ceil(slides.length / 2);
+  container.style.gridTemplateColumns = 'repeat(' + cols + ', 26px)';
+  for (let i = 0; i < slides.length; i++) {
+    let dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    var skipStart = 3; // 3 שקפי פתיחה בלי מספר
+    var skipEnd = 1;   // שקף סיום בלי מספר
+    var isNumbered = (i >= skipStart && i < slides.length - skipEnd);
+    var stepNum = isNumbered ? (i - skipStart + 1) : '';
+    dot.title = isNumbered ? stepNum.toString() : (i < skipStart ? ['פתיחה','סרטון','הסבר'][i] : 'סיום');
+    dot.textContent = stepNum.toString();
+    (function(index) {
+      dot.addEventListener('click', function() { showSlides(index + 1); });
+    })(i);
+    container.appendChild(dot);
+  }
+}
+```
+
+#### index.html — כל תמונת שלב חייבת:
+```html
+<!-- גובה תמונה מותאם לפס 80px -->
+style="height:calc(100vh - 80px);width:auto;"
+<!-- לוגו ממורכז בפס -->
+style="bottom:17px;left:30px;height:46px;"
+<!-- מונה צעדים בבועה — N = מספר צעדים בלבד, לא כולל פתיחה/סיום -->
+<div style="text-align: right;">1<div style="color: #ffffffbb;display: inline;">/39</div></div>
+```
 
 ### שלב 4: בדיקה ופרסום
 - לבדוק: מסך פתיחה, סרטון, כל השלבים, מסך סיום, כפתורי ניווט, מסגרות כתומות
+- **לוודא שהמספור נכון** — עיגולים ריקים בהתחלה ובסוף, ממוספרים באמצע
+- **לוודא שתמונות לא נחתכות** — calc(100vh - 80px) בכל מקום
+- **לוודא שהעיגולים מיושרים** — שתי שורות בגריד, אחד מתחת לשני
+- **לוודא כיוון** — מספרים משמאל לימין (direction: ltr)
 - `npx vercel --prod --yes` לבדיקה
 - להעלות ל-`/interactive/[שם]/` ולעדכן `interactive.json`
 
