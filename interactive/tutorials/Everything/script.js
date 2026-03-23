@@ -70,10 +70,13 @@ var specialIcons = {
 // ─── מפת שקפים: אינדקס (0-based) → {icon, title} ───
 // שקפים שלא במפה = ממוספרים אוטומטית
 var slideMap = {
-  0:  { icon: 'home',   title: 'פתיחה' },
-  1:  { icon: 'play',   title: 'איך עובדים עם ההדרכה' },
-  2:  { icon: 'search', title: 'הכירו את Everything' },
-  42: { icon: 'finish', title: 'סיום' }
+  0:  { icon: 'home',     title: 'פתיחה' },
+  1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
+  2:  { icon: 'search',   title: 'הכירו את Everything' },
+  3:  { icon: 'download', title: 'הורידו את Everything' },
+  4:  { icon: 'monitor',  title: 'התקנה' },
+  12: { icon: 'monitor',  title: 'שימוש בתוכנה' },
+  36: { icon: 'finish',   title: 'סיום' }
 };
 
 // יצירת נקודות ניווט דינמית
