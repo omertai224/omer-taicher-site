@@ -10,7 +10,7 @@ body {
   display: none;
   position: relative;
   overflow: visible;
-  min-height: calc(100vh - 62px);
+  min-height: calc(100vh - 80px);
 }
 
 img { vertical-align: middle; }
@@ -42,7 +42,7 @@ a { word-break: break-all; }
   width: auto;
   margin-top: 0px;
   user-select: none;
-  bottom: 11px;
+  bottom: 20px;
   z-index: 2;
   transition: transform 0.2s, filter 0.2s;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
@@ -58,32 +58,77 @@ a { word-break: break-all; }
 }
 
 /* ─── סרגל ניווט תחתון ─── */
-.nav {
-  position: fixed;
-  top: calc(100% - 42px);
-  bottom: 20px;
-  background-color: #1e5f74;
-  z-index: 2;
-  border-radius: 4px;
-  transition: background-color 0.2s, transform 0.15s;
-  opacity: 1;
-}
-
-.nav:hover {
-  background-color: #1e5f74;
-  opacity: 1;
-  transform: scaleY(1.3);
-}
-
 .nav-background {
   background: #ffffff;
   border-top: 2px solid #a8c5d6;
   position: fixed;
-  top: calc(100% - 62px);
-  bottom: 0%;
-  left: 0%;
-  right: 0%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 4px 130px 4px 90px; /* לוגו משמאל, חיצים מימין */
+}
+
+.nav-dots {
+  display: grid;
+  direction: ltr;
+  gap: 4px;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  justify-items: center;
+}
+
+.nav-dot {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  background-color: #a8c5d6;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+  border: none;
+  padding: 0;
+  font-family: 'Rubik', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.nav-dot:hover {
+  background-color: #1e5f74;
+  transform: scale(1.15);
+}
+
+.nav-dot.active {
+  background-color: #1e5f74;
+}
+
+/* עיגול עם אייקון SVG — שקפי מעבר (כתום!) */
+.nav-dot-icon {
+  padding: 0;
+  background-color: #f6a67e;
+}
+.nav-dot-icon:hover {
+  background-color: #e8834e;
+}
+.nav-dot-icon.active {
+  background-color: #e8834e;
+}
+.nav-dot-icon svg {
+  display: block;
+}
+
+/* Hide old nav elements */
+.nav {
+  display: none;
 }
 
 /* ─── בועות טקסט ─── */
@@ -269,6 +314,98 @@ a { word-break: break-all; }
   from { opacity: 0.6; }
   to   { opacity: 1; }
 }
+
+/* ─── זכוכית מגדלת ─── */
+.magnifier-btn {
+  position: fixed;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #a8c5d6;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  cursor: pointer;
+  display: none; /* shown + positioned by JS */
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.magnifier-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+}
+.magnifier-btn.active {
+  border-color: #f6a67e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+}
+.magnifier-btn svg {
+  pointer-events: none;
+}
+
+.magnifier-lens {
+  position: fixed;
+  width: 420px;
+  height: 300px;
+  border-radius: 12px;
+  border: 3px solid #f6a67e;
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.3), 0 8px 32px rgba(0,0,0,0.5);
+  pointer-events: none;
+  z-index: 9;
+  display: none;
+  overflow: hidden;
+  background-color: #1a1a2e;
+}
+
+.magnifier-active .image-center {
+  cursor: none;
+}
+
+.magnifier-esc-hint {
+  position: fixed;
+  z-index: 10;
+  background: rgba(15, 42, 58, 0.85);
+  color: #a8c5d6;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #5b8fa844;
+  text-align: center;
+  display: none;
+  direction: rtl;
+}
+
+/* ─── הקראה בקול ─── */
+.tts-btn {
+  position: fixed;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #a8c5d6;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.tts-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+}
+.tts-btn.active {
+  border-color: #f6a67e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+}
+.tts-btn svg {
+  pointer-events: none;
+}
+
 
 /* ─── responsive ─── */
 @media only screen and (max-width: 300px) {

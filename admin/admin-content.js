@@ -1554,7 +1554,7 @@ function showInteractiveForm(item) {
       <div class="field"><label class="field-label">מספר שלבים *</label><input id="if-steps" type="number" min="0" value="${item.steps}" style="direction:ltr;text-align:left"></div>
       <div class="field"><label class="field-label">קטגוריה</label><input id="if-category" type="text" value="${escapeHtml(item.category || '')}" placeholder="לדוגמה: AI · תמלול · Windows"></div>
     </div>
-    <div class="field"><label class="field-label">קישור להדרכה</label><input id="if-url" type="text" value="${item.url || ''}" style="direction:ltr;text-align:left" placeholder="./Vibe/index.html"></div>
+    <div class="field"><label class="field-label">קישור להדרכה</label><input id="if-url" type="text" value="${item.url || ''}" style="direction:ltr;text-align:left" placeholder="./tutorials/Vibe/index.html"></div>
     <div class="fields-row">
       <div class="field"><label class="field-label">מחיר (₪) *</label><input id="if-price" type="number" min="0" value="${item.price || ''}" style="direction:ltr;text-align:left" placeholder="97"></div>
       <div class="field"><label class="field-label">סטטוס</label>
