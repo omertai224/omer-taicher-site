@@ -132,40 +132,168 @@
 - הקבצים האלה הם הזיכרון בין סשנים - מה שכתוב שם ישרת סשנים עתידיים
 
 ## שדרוג הדרכות אינטראקטיביות — מגולמי למושלם (עדכון מרץ 2026)
-המטרה: להפוך הדרכה גולמית מ-FlowShare להדרכה מעוצבת בסגנון Vibe.
+**המטרה:** עומר אומר "תשדרג לי את X" — והתוצאה מושלמת בלי שאלות.
+**הדרכת הייחוס:** `interactive/tutorials/Everything/` — להעתיק משם style.css ו-script.js.
 
 ### כלל הברזל: דחיפות = ביטוח חיים!
-**הדחיפות הן הדבר הכי חשוב בתהליך.** לא הניתוח, לא העיצוב — הדחיפות.
-- **למה?** כי סשנים נתקעים. אייג'נטים נופלים. דברים נשברים. וכשנתקעים בלי שדחפנו — מתחילים מהתחלה. וזה מתיש.
-- **דחיפה אחרי כל פעולה משמעותית.** לא אחרי שגומרים הכל — אחרי כל סבב, כל שלב, כל שינוי.
-- **אם נתקעים — ממשיכים מאיפה שדחפנו.** הסשן הבא קורא את מה שנדחף וממשיך. אפס מאמץ כפול.
-- **עדיף 10 דחיפות קטנות מדחיפה אחת גדולה שלא מגיעה.**
+- **דחיפה אחרי כל שלב.** לא אחרי שגומרים — אחרי כל פעולה.
+- **אם נתקעים — ממשיכים מאיפה שדחפנו.** אפס מאמץ כפול.
 
-### שלב 1: ניתוח תמונות — זה הבשר! זה השלב הכבד!
-**ניתוח התמונות הוא החלק הכבד ביותר.** ברגע שהוא עובר — השאר זורם בקלות.
-- **סבבים של 10 תמונות:** 5 אייג'נטים במקביל, כל אייג'נט מנתח 2 תמונות
-- **כל אייג'נט מחזיר JSON** עם: `image_num`, `image_file`, `description_en`, `action_he` (טקסט עברי עם `<span style="color:#f6a67e;">` להדגשת אלמנט ללחיצה), `click_area`, `arrow_direction`
-- **דחיפה אחרי כל סבב!** שומרים ל-`analysis.json` בתיקיית ההדרכה, commit + push
-- **אם נתקעים — בודקים `analyzed` ב-analysis.json וממשיכים מהתמונה הבאה**
-- **אל תמחק קבצי `.flow` ו-`.fss`** — אלה קבצי עבודה של FlowShare, לא אזכורים למחיקה
+### תהליך שדרוג אוטומטי — "תשדרג לי את X"
+כשעומר נותן הדרכה גולמית, הסדר הוא:
 
-### שלב 2: עדכון ה-HTML — דחיפה!
-- להחליף את הטקסט האנגלי הגולמי ב-`index.html` עם הטקסט העברי מ-`analysis.json` (סקריפט Python)
-- לוודא: `text-align: right`, מספור נכון (1/N), `dir="rtl"`
-- **commit + push מיד!**
+#### שלב 1: העתקת תבנית
+```bash
+# להעתיק style.css ו-script.js מ-Everything לתיקיית ההדרכה החדשה
+cp interactive/tutorials/Everything/style.css interactive/tutorials/[שם]/style.css
+cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/script.js
+# להעתיק תמונות ניווט
+cp interactive/tutorials/Everything/images/right.png interactive/tutorials/[שם]/images/
+cp interactive/tutorials/Everything/images/left.png interactive/tutorials/[שם]/images/
+cp interactive/tutorials/Everything/images/right-disabled.png interactive/tutorials/[שם]/images/
+cp interactive/tutorials/Everything/images/left-disabled.png interactive/tutorials/[שם]/images/
+cp interactive/tutorials/Everything/images/logo.png interactive/tutorials/[שם]/images/
+```
+**דחיפה!**
 
-### שלב 3: הלבשת עיצוב Vibe — דחיפה!
-- מסך פתיחה, מסך סרטון, מסך סיום — לפי תבנית Vibe
-- `style.css` ו-`script.js` — להעתיק מ-Vibe
-- תמונות ניווט (`right.png`, `left.png`) — מ-Vibe, לא מ-FlowShare
-- מסך כניסה (login), חסימת מובייל — להעתיק מ-Vibe ולהתאים
-- להסיר כל אזכור של FlowShare מהטקסט שנראה ללקוחות
-- **commit + push מיד!**
+#### שלב 2: ניתוח תמונות (השלב הכבד)
+- **5 אייג'נטים במקביל**, כל אחד מנתח 2 תמונות (סבבים של 10)
+- כל אייג'נט מחזיר JSON: `image_num`, `image_file`, `description_en`, `action_he`, `click_area`, `arrow_direction`
+- `action_he` = טקסט עברי עם `<span style="color:#f6a67e;">` להדגשת אלמנט ללחיצה
+- שומרים ל-`analysis.json`, **דחיפה אחרי כל סבב!**
+- אל תמחק קבצי `.flow` ו-`.fss`
 
-### שלב 4: בדיקה ופרסום
-- לבדוק: מסך פתיחה, סרטון, כל השלבים, מסך סיום, כפתורי ניווט, מסגרות כתומות
-- `npx vercel --prod --yes` לבדיקה
-- להעלות ל-`/interactive/[שם]/` ולעדכן `interactive.json`
+#### שלב 3: עדכון HTML — 5 פעולות מדויקות
+בסדר הזה, על `index.html` של ההדרכה:
+
+**פעולה 1 — החלפת טקסט לעברית:**
+- סקריפט Python שלוקח מ-analysis.json ומחליף את הטקסט האנגלי הגולמי
+- כל בועת טקסט: `text-align: right`, `dir="rtl"`
+
+**פעולה 2 — תיקון גובה כל תמונה:**
+```python
+# Replace ALL image heights to match 80px nav bar
+# חיפוש: height:calc(100vh - XXpx)  (כל ערך ישן)
+# החלפה ב:
+"height:calc(100vh - 80px)"
+```
+
+**פעולה 3 — תיקון מונה צעדים:**
+```python
+# לספור כמה צעדים יש (שקפים - 3 פתיחה - 1 סיום)
+num_steps = total_slides - 4
+# להחליף את המונה בכל בועה:
+# מ: /XX  (כל מספר ישן)
+# ל: /num_steps
+```
+
+**פעולה 4 — הוספת 3 שקפי פתיחה:**
+לפני שקף הצעד הראשון, להוסיף (בסדר הזה):
+1. **שקף פתיחה** — העתקה מ-Everything, שינוי שם תוכנה + תיאור
+2. **שקף סרטון** — "צפו בסרטון איך עובדים עם ההדרכה" (העתקה מ-Everything)
+3. **שקף הסבר** — placeholder (העתקה מ-Everything, שינוי שם תוכנה)
+
+**פעולה 5 — לוגו:**
+```html
+<img src=".//images//logo.png" style="z-index:3;position:fixed;bottom:17px;left:30px;height:46px;">
+```
+
+**דחיפה!**
+
+#### שלב 4: בדיקת תקינות (צ'קליסט)
+- [ ] מסך פתיחה נטען עם שם ההדרכה
+- [ ] סרטון "איך עובדים" מופיע בשקף 2
+- [ ] שקף הסבר (placeholder) בשקף 3
+- [ ] צעדים ממוספרים מ-1 עד N בבועות
+- [ ] פס ניווט: שתי שורות מיושרות, 3 ריקים בהתחלה + 1 ריק בסוף
+- [ ] מספרים משמאל לימין (direction: ltr)
+- [ ] תמונות לא נחתכות (calc(100vh - 80px))
+- [ ] לוגו ממורכז בפס (bottom:17px)
+- [ ] מסגרות כתומות פועלות (box-pulse animation)
+- [ ] חיצי ניווט עובדים
+- [ ] מסך סיום תקין
+
+### מפרט טכני קריטי (קוד מדויק)
+
+#### CSS — הנקודות הקריטיות ב-style.css:
+```css
+.mySlides { min-height: calc(100vh - 80px); }
+
+.nav-background {
+  height: 80px;
+  padding: 4px 130px 4px 90px; /* לוגו משמאל, חיצים מימין */
+}
+
+.nav-dots {
+  display: grid;
+  direction: ltr;
+  gap: 4px;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  justify-items: center;
+}
+
+.nav-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  font-family: 'Rubik', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  background-color: #a8c5d6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.nav-dot.active { background-color: #1e5f74; }
+.nav-dot:hover { background-color: #1e5f74; transform: scale(1.15); }
+.prev, .next { bottom: 20px; }
+```
+
+#### JS — פונקציית buildNavDots (להעתיק כמו שהיא):
+```javascript
+function buildNavDots() {
+  let slides = document.getElementsByClassName("mySlides");
+  let container = document.querySelector('.nav-dots');
+  if (!container) return;
+  var cols = Math.ceil(slides.length / 2);
+  container.style.gridTemplateColumns = 'repeat(' + cols + ', 26px)';
+  for (let i = 0; i < slides.length; i++) {
+    let dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    var skipStart = 3; // 3 שקפי פתיחה בלי מספר
+    var skipEnd = 1;   // שקף סיום בלי מספר
+    var isNumbered = (i >= skipStart && i < slides.length - skipEnd);
+    var stepNum = isNumbered ? (i - skipStart + 1) : '';
+    dot.title = isNumbered ? stepNum.toString() : (i < skipStart ? ['פתיחה','סרטון','הסבר'][i] : 'סיום');
+    dot.textContent = stepNum.toString();
+    (function(index) {
+      dot.addEventListener('click', function() { showSlides(index + 1); });
+    })(i);
+    container.appendChild(dot);
+  }
+}
+```
+
+#### HTML — תבנית בועת טקסט לכל צעד:
+```html
+<div class="text arrow-right" style="left:calc(X% - 315px);top:calc(Y% - 25px);position:absolute;width:300; height: fit-content;">
+  <div style="text-align: right;">1<div style="color: #ffffffbb;display: inline;">/N</div></div>
+  <b style="font-size:24px;padding: 8px 0px;"></b>
+  <div>טקסט ההוראה עם <span style="color:#f6a67e;">אלמנט ללחיצה</span></div>
+</div>
+```
+
+#### שקפי מעבר (TODO — עוד לא מיושם)
+- בין חלקי ההדרכה (למשל "הורדה" → "התקנה" → "שימוש") צריך שקפי מעבר
+- שקף מעבר = עיגול ריק (בלי מספר), עם כותרת של החלק הבא
+- עומר יגדיר איפה בדיוק לשים אותם
 
 ## כלל קבצים קטנים
 - **קובץ גדול וקשה לקריאה = מחלקים אותו.** לא דוחפים הכל לקובץ אחד.
