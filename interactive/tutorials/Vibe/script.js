@@ -1,5 +1,4 @@
 let slideIndex = 1;
-showSlides(slideIndex);
 
 function nextSlide() {
   showSlides(slideIndex + 1);
@@ -14,17 +13,16 @@ function currentSlide(n) {
 }
 
 function showSlides(n) {
-  let i;
   let slides = document.getElementsByClassName("mySlides");
-  
+
   if (n > slides.length) {return}
   if (n < 1) {return}
-  
+
   slideIndex = n;
-  
-  next = document.getElementById("right-arrow");
-  previous = document.getElementById("left-arrow");
-  
+
+  let next = document.getElementById("right-arrow");
+  let previous = document.getElementById("left-arrow");
+
   if (n == slides.length) {
     next.src = ".//images//right-disabled.png";
     next.style.cursor = "default";
@@ -39,8 +37,8 @@ function showSlides(n) {
     previous.src = ".//images//left.png";
     previous.style.cursor = "pointer";
   }
-  
-  for (i = 0; i < slides.length; i++) {
+
+  for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
   slides[slideIndex - 1].style.display = "block";
@@ -48,28 +46,47 @@ function showSlides(n) {
 }
 
 function setNavBarColor(n) {
-  let navbars = document.getElementsByClassName("nav");
-  for (i = 0; i < navbars.length; i++) {
-    navbars[i].style.backgroundColor = "#a8c5d6";
-    navbars[i].style.cursor = "pointer";
-    if (navbars[i].id <= n - 1) {
-      navbars[i].style.backgroundColor = "#1e5f74";
+  let dots = document.getElementsByClassName("nav-dot");
+  for (let i = 0; i < dots.length; i++) {
+    if (i <= n - 1) {
+      dots[i].classList.add('active');
+    } else {
+      dots[i].classList.remove('active');
     }
   }
 }
 
-// לחיצה על ריבוע ניווט לקפיצה ישירה לשקף
-function initNavClick() {
-  let navbars = document.getElementsByClassName("nav");
-  for (let i = 0; i < navbars.length; i++) {
+// יצירת נקודות ניווט דינמית
+function buildNavDots() {
+  let slides = document.getElementsByClassName("mySlides");
+  let container = document.querySelector('.nav-dots');
+  if (!container) return;
+
+  var cols = Math.ceil(slides.length / 2);
+  container.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+
+  for (let i = 0; i < slides.length; i++) {
+    let dot = document.createElement('button');
+    dot.className = 'nav-dot';
+    var skipStart = 3; // מסכי פתיחה בלי מספר
+    var skipEnd = 1;   // מסך סיום בלי מספר
+    var isNumbered = (i >= skipStart && i < slides.length - skipEnd);
+    var stepNum = isNumbered ? (i - skipStart + 1) : '';
+    dot.title = isNumbered ? stepNum.toString() : (i < skipStart ? ['פתיחה','סרטון','הסבר'][i] : 'סיום');
+    dot.textContent = stepNum.toString();
     (function(index) {
-      navbars[index].addEventListener("click", function() {
+      dot.addEventListener('click', function() {
         showSlides(index + 1);
       });
     })(i);
+    container.appendChild(dot);
   }
 }
-document.addEventListener("DOMContentLoaded", initNavClick);
+
+document.addEventListener("DOMContentLoaded", function() {
+  buildNavDots();
+  showSlides(slideIndex);
+});
 
 // ניווט במקלדת
 document.addEventListener('keydown', function(event) {
