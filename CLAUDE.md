@@ -213,20 +213,66 @@ num_steps = total_slides - 4
 - [ ] חיצי ניווט עובדים
 - [ ] מסך סיום תקין
 
-### מפרט טכני קריטי (קוד מדויק)
+### פס ניווט תחתון — מפרט מדויק (מקור האמת!)
+**זה המפרט הסופי והמדויק. כל הדרכה חדשה חייבת לעמוד בו בדיוק.**
 
-#### CSS — הנקודות הקריטיות ב-style.css:
+#### מבנה הפס — 3 רכיבים קבועים:
+```
+[לוגו]  [════════ עיגולי ניווט ════════]  [◄ ►]
+ שמאל        מתפרשים על כל הרוחב         ימין
+```
+1. **לוגו** — קבוע בשמאל למטה
+2. **עיגולי ניווט** — גריד דינמי שתופס את כל הרוחב הפנוי
+3. **חיצי ניווט** — קבועים בימין למטה
+
+#### חוקי עיגולים — שתי שורות מרווחות:
+- **עמודות = ceil(סה"כ_עיגולים / 2)** — תמיד מחלקים ל-2 שורות
+- **אי-זוגי:** שורה עליונה ארוכה יותר ב-1, שורה תחתונה קצרה ב-1
+- **זוגי:** שתי שורות שוות, אחד מתחת לשני בדיוק
+- **כיוון: שמאל→ימין** (direction: ltr) — מספר 1 בשמאל
+- **3 עיגולים ריקים בהתחלה** (פתיחה, סרטון, הסבר) — בלי מספר
+- **עיגול ריק אחד בסוף** (מסך סיום) — בלי מספר
+- **כל השאר ממוספרים** מ-1 עד N (N = סה"כ שקפים - 4)
+- **עיגולים מתפרשים על כל הרוחב** בין הלוגו לחיצים (1fr, לא 26px!)
+- **צבע active:** כל העיגולים עד המיקום הנוכחי = כהה (#1e5f74), אחרי = בהיר (#a8c5d6)
+
+#### HTML — מבנה פס הניווט ב-index.html:
+```html
+<!-- אחרי כל ה-mySlides, לפני ה-scripts -->
+
+<!-- לוגו -->
+<img src=".//images//logo.png" style="z-index:3;position:fixed;bottom:17px;left:30px;height:46px;">
+
+<!-- חיצי ניווט -->
+<a class="prev" onclick="prevSlide()"><img id="left-arrow" src=".//images//left.png" style="height:40px"></a>
+<a class="next" onclick="nextSlide()"><img id="right-arrow" src=".//images//right.png" style="height:40px"></a>
+
+<!-- סקריפט -->
+<script type="text/javascript" src="script.js"></script>
+
+<!-- פס ניווט — העיגולים נבנים דינמית ב-JS -->
+<div class="nav-background"><div class="nav-dots"></div></div>
+```
+
+#### CSS — style.css (להעתיק מ-Everything):
 ```css
-.mySlides { min-height: calc(100vh - 80px); }
-
+/* פס ניווט תחתון — רקע לבן, 80px גובה */
 .nav-background {
+  background: #ffffff;
+  border-top: 2px solid #a8c5d6;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
   height: 80px;
-  padding: 4px 130px 4px 90px; /* לוגו משמאל, חיצים מימין */
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 4px 130px 4px 90px; /* 90px ללוגו בשמאל, 130px לחיצים בימין */
 }
 
+/* גריד עיגולים — מתפרש על כל הרוחב */
 .nav-dots {
   display: grid;
-  direction: ltr;
+  direction: ltr;        /* מספרים משמאל לימין! */
   gap: 4px;
   width: 100%;
   height: 100%;
@@ -234,41 +280,59 @@ num_steps = total_slides - 4
   justify-items: center;
 }
 
+/* עיגול בודד — 26px, עגול, עם מספר */
 .nav-dot {
   width: 26px;
   height: 26px;
+  flex: 0 0 26px;
+  background-color: #a8c5d6;  /* בהיר = לא visited */
   border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+  border: none;
+  padding: 0;
   font-family: 'Rubik', Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   color: #fff;
-  background-color: #a8c5d6;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  border: none;
-  padding: 0;
+  line-height: 1;
 }
-
-.nav-dot.active { background-color: #1e5f74; }
 .nav-dot:hover { background-color: #1e5f74; transform: scale(1.15); }
-.prev, .next { bottom: 20px; }
+.nav-dot.active { background-color: #1e5f74; } /* כהה = visited */
+
+/* שקפים — גובה מותאם לפס 80px */
+.mySlides { min-height: calc(100vh - 80px); }
+
+/* חיצי ניווט — קבועים בימין למטה */
+.prev, .next {
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;  /* ממורכז אנכית בפס 80px */
+  z-index: 2;
+}
+.next { right: 20px; }
+.prev { right: 68px; }
 ```
 
-#### JS — פונקציית buildNavDots (להעתיק כמו שהיא):
+#### JS — script.js (להעתיק מ-Everything):
+**buildNavDots — הפונקציה הקריטית:**
 ```javascript
 function buildNavDots() {
   let slides = document.getElementsByClassName("mySlides");
   let container = document.querySelector('.nav-dots');
   if (!container) return;
+  // חישוב עמודות: חצי מסה"כ העיגולים (עיגול = שקף)
   var cols = Math.ceil(slides.length / 2);
+  // 1fr = מתפרש על כל הרוחב! לא 26px!
   container.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
   for (let i = 0; i < slides.length; i++) {
     let dot = document.createElement('button');
     dot.className = 'nav-dot';
-    var skipStart = 3; // 3 שקפי פתיחה בלי מספר
-    var skipEnd = 1;   // שקף סיום בלי מספר
+    var skipStart = 3; // 3 שקפי פתיחה — עיגולים ריקים (בלי מספר)
+    var skipEnd = 1;   // שקף סיום — עיגול ריק (בלי מספר)
     var isNumbered = (i >= skipStart && i < slides.length - skipEnd);
     var stepNum = isNumbered ? (i - skipStart + 1) : '';
     dot.title = isNumbered ? stepNum.toString() : (i < skipStart ? ['פתיחה','סרטון','הסבר'][i] : 'סיום');
@@ -281,6 +345,59 @@ function buildNavDots() {
 }
 ```
 
+**setNavBarColor — צביעת progress:**
+```javascript
+function setNavBarColor(n) {
+  let dots = document.getElementsByClassName("nav-dot");
+  for (let i = 0; i < dots.length; i++) {
+    if (i <= n - 1) {
+      dots[i].classList.add('active');    // כהה = עברנו כאן
+    } else {
+      dots[i].classList.remove('active'); // בהיר = עוד לא
+    }
+  }
+}
+```
+
+**showSlides — ניווט + חיצים disabled:**
+```javascript
+function showSlides(n) {
+  let slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length || n < 1) return;
+  slideIndex = n;
+  // חץ ימין disabled בשקף אחרון
+  let next = document.getElementById("right-arrow");
+  next.src = (n == slides.length) ? ".//images//right-disabled.png" : ".//images//right.png";
+  next.style.cursor = (n == slides.length) ? "default" : "pointer";
+  // חץ שמאל disabled בשקף ראשון
+  let previous = document.getElementById("left-arrow");
+  previous.src = (n == 1) ? ".//images//left-disabled.png" : ".//images//left.png";
+  previous.style.cursor = (n == 1) ? "default" : "pointer";
+  // הצגת השקף הנוכחי
+  for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+  slides[n - 1].style.display = "block";
+  setNavBarColor(n);
+}
+```
+
+#### תמונות נדרשות בתיקיית images/:
+- `logo.png` — לוגו עומר טייכר
+- `right.png` — חץ ימינה (פעיל)
+- `left.png` — חץ שמאלה (פעיל)
+- `right-disabled.png` — חץ ימינה (מושבת, שקף אחרון)
+- `left-disabled.png` — חץ שמאלה (מושבת, שקף ראשון)
+
+#### דוגמה מספרית:
+- **43 שקפים** (3 פתיחה + 39 צעדים + 1 סיום) = 43 עיגולים
+  - עמודות: ceil(43/2) = 22
+  - שורה עליונה: 22 עיגולים, שורה תחתונה: 21 עיגולים
+  - 3 ריקים בהתחלה, מספרים 1-39, ריק אחד בסוף
+- **20 שקפים** (3 + 16 צעדים + 1) = 20 עיגולים
+  - עמודות: ceil(20/2) = 10
+  - שתי שורות של 10, אחד מתחת לשני בדיוק
+
+### מפרט נוסף — בועות טקסט ותמונות
+
 #### HTML — תבנית בועת טקסט לכל צעד:
 ```html
 <div class="text arrow-right" style="left:calc(X% - 315px);top:calc(Y% - 25px);position:absolute;width:300; height: fit-content;">
@@ -289,6 +406,9 @@ function buildNavDots() {
   <div>טקסט ההוראה עם <span style="color:#f6a67e;">אלמנט ללחיצה</span></div>
 </div>
 ```
+
+#### גובה תמונות:
+כל תמונת שלב: `height:calc(100vh - 80px)` — כדי שפס הניווט לא ידרוס
 
 #### שקפי מעבר (TODO — עוד לא מיושם)
 - בין חלקי ההדרכה (למשל "הורדה" → "התקנה" → "שימוש") צריך שקפי מעבר
