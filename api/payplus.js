@@ -31,11 +31,9 @@ function loadProducts() {
   } catch(e) {
     // fallback אם הקובץ לא נמצא
     return {
-      vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
-      ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
-      files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
-      security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
-      google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
+      vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 47 },
+      everything: { name: 'Everything — חיפוש מיידי בכל הקבצים במחשב', price: 47 },
+      security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', price: 47 }
     };
   }
 }
@@ -71,10 +69,7 @@ export default async function handler(req, res) {
     const TUTORIAL_URLS = {
       vibe: 'https://omertai.net/interactive/tutorials/Vibe/',
       everything: 'https://omertai.net/interactive/tutorials/Everything/',
-      ai: 'https://omertai.net/interactive/AI/',
-      files: 'https://omertai.net/interactive/Files/',
-      security: 'https://omertai.net/interactive/Security/',
-      google: 'https://omertai.net/interactive/Google/'
+      security: 'https://omertai.net/interactive/tutorials/Security/'
     };
     const successUrl = TUTORIAL_URLS[productKey] || 'https://omertai.net/interactive/';
     const failUrl    = `https://omertai.net/pages/checkout/?product=${productKey}&status=failed`;

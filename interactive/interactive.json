@@ -34,18 +34,6 @@
     ]
   },
   {
-    "key": "ai",
-    "status": "coming_soon",
-    "category": "AI · עבודה יומיומית",
-    "title": "ChatGPT וקלוד בעבודה: איך לנסח, לסכם ולחשוב יחד עם AI",
-    "desc": "לא קורס תיאורטי. הדרכה מעשית שתלמדו להשתמש ב-AI כמו שצריך, עם דוגמאות מהעבודה שלכם.",
-    "includes": [],
-    "steps": 0,
-    "price": 47,
-    "thumb": "purple",
-    "url": ""
-  },
-  {
     "key": "security",
     "status": "coming_soon",
     "category": "אבטחה",
