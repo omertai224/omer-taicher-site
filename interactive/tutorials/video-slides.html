@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סרטון הדרכה - איך עובדים עם ההדרכה האינטראקטיבית</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Rubik', sans-serif;
+    background: #0f2a3a;
+    color: white;
+    direction: rtl;
+    overflow: hidden;
+  }
+
+  .slide {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0; left: 0;
+    overflow: hidden;
+  }
+  .slide.active { display: flex; }
+
+  /* shared grid lines */
+  .grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 70px 70px;
+    pointer-events: none;
+  }
+
+  /* shared glow */
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* badge top-right */
+  .step-badge {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    background: #f6a67e22;
+    border: 1px solid #f6a67e55;
+    color: #f6a67e;
+    padding: 8px 22px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 5;
+  }
+
+  /* layout: text right, visual left */
+  .split {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 100px;
+    background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 100%);
+  }
+
+  .text-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    z-index: 2;
+  }
+
+  .big-title {
+    font-size: clamp(52px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 1.1;
+  }
+  .big-title span { color: #f6a67e; }
+
+  .desc {
+    font-size: clamp(20px, 2vw, 26px);
+    color: #ffffffcc;
+    line-height: 1.7;
+    max-width: 540px;
+  }
+
+  .visual-col {
+    flex: 0 0 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  /* ========== SLIDE 1 - INTRO ========== */
+  #s1 {
+    background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 60%, #0f2a3a 100%);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 28px;
+    text-align: center;
+  }
+
+  #s1 .glow {
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, #1e5f7435 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #s1 .top-badge {
+    background: #f6a67e22;
+    border: 1px solid #f6a67e55;
+    color: #f6a67e;
+    padding: 8px 26px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    position: relative; z-index: 2;
+    animation: fadeInDown 0.7s ease both;
+  }
+
+  #s1 .title {
+    font-size: clamp(42px, 5.5vw, 74px);
+    font-weight: 900;
+    line-height: 1.1;
+    position: relative; z-index: 2;
+    animation: fadeInDown 0.8s ease 0.15s both;
+  }
+  #s1 .title span { color: #f6a67e; }
+
+  #s1 .sub {
+    font-size: clamp(18px, 2vw, 26px);
+    color: #ffffffbb;
+    max-width: 680px;
+    line-height: 1.65;
+    position: relative; z-index: 2;
+    animation: fadeInUp 0.8s ease 0.3s both;
+  }
+
+  #s1 .author {
+    position: absolute;
+    bottom: 44px; left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff44;
+    font-size: 17px;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
+
+  /* ========== SLIDE 2 - מה זה אינטראקטיבי ========== */
+  #s2 {
+    background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 100%);
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 100px;
+  }
+
+  .concept-visual {
+    width: 460px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .concept-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #ff444418;
+    border: 1.5px solid #ff444466;
+    border-radius: 18px;
+    padding: 22px 28px;
+    transition: all 0.3s;
+  }
+
+  .concept-row.highlight {
+    background: #22c55e18;
+    border-color: #22c55e66;
+    box-shadow: 0 0 30px #22c55e22;
+  }
+
+  .concept-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .concept-icon.gray { background: #ff444428; }
+  .concept-icon.orange { background: #22c55e28; }
+
+  .concept-text-wrap { flex: 1; }
+  .concept-label { font-size: 13px; color: #ff8888; margin-bottom: 4px; }
+  .concept-label.green { color: #22c55e; }
+  .concept-val { font-size: 20px; font-weight: 700; color: #ff9999; }
+  .concept-row.highlight .concept-val { color: #4ade80; }
+
+  .vs-divider {
+    text-align: center;
+    color: #ffffff33;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  /* ========== SLIDE 3 - הסדר הנכון ========== */
+  #s3 {
+    background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 100%);
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 100px;
+  }
+
+  .flow-visual {
+    width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 20px 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .flow-num {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 900;
+    flex-shrink: 0;
+    position: relative; z-index: 1;
+  }
+
+  .flow-num.blue { background: linear-gradient(135deg, #1e5f74, #5b8fa8); }
+  .flow-num.orange {
+    background: linear-gradient(135deg, #f6a67e, #ff8c5a);
+    box-shadow: 0 0 20px #f6a67e55;
+    animation: pulse-orange 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-orange {
+    0%, 100% { box-shadow: 0 0 20px #f6a67e55; }
+    50% { box-shadow: 0 0 36px #f6a67e99; }
+  }
+
+  .flow-connector {
+    width: 2px; height: 28px;
+    background: linear-gradient(180deg, #1e5f74, #f6a67e44);
+    margin-right: 23px;
+  }
+
+  .flow-text .flow-title { font-size: 20px; font-weight: 700; color: white; }
+  .flow-text .flow-sub { font-size: 15px; color: #ffffffaa; margin-top: 4px; line-height: 1.5; }
+
+  /* ========== SLIDE 4 - החצים ========== */
+  #s4 {
+    background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 100%);
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 100px;
+  }
+
+  .arrows-visual {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+    align-items: center;
+    direction: ltr;
+  }
+
+  .arrow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .arrow-btn {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #1e5f74, #1a4a6b);
+    border: 3px solid #5b8fa8;
+    box-shadow: 0 0 30px #1e5f7433;
+  }
+
+  .arrow-btn.active {
+    background: linear-gradient(135deg, #f6a67e, #ff8c5a);
+    border-color: #f6a67e;
+    box-shadow: 0 0 40px #f6a67e66, 0 0 80px #f6a67e22;
+    animation: pulse-btn 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-btn {
+    0%, 100% { box-shadow: 0 0 40px #f6a67e66, 0 0 80px #f6a67e22; }
+    50% { box-shadow: 0 0 60px #f6a67eaa, 0 0 110px #f6a67e44; }
+  }
+
+  .arrow-label { font-size: 20px; color: #ffffffaa; }
+  .arrow-label.active { color: #f6a67e; font-weight: 700; }
+
+  /* ========== SLIDE 5 - פס הניווט ========== */
+  #s5 {
+    background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 100%);
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 100px;
+  }
+
+  .nav-demo-box {
+    width: 460px;
+    background: #0f2a3a;
+    border-radius: 20px;
+    border: 2px solid #1e5f74;
+    padding: 28px;
+    box-shadow: 0 20px 70px #00000055;
+  }
+
+  .nav-demo-label {
+    text-align: center;
+    font-size: 15px;
+    color: #ffffff44;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+  }
+
+  .nav-bar-demo {
+    display: flex;
+    gap: 7px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 14px;
+    background: #1a1a2e;
+    border-radius: 10px;
+  }
+
+  .nav-dot {
+    width: 26px; height: 26px;
+    border-radius: 6px;
+    background: #1e5f74;
+  }
+  .nav-dot.done { background: #a8c5d6; }
+  .nav-dot.current {
+    background: #f6a67e;
+    box-shadow: 0 0 14px #f6a67e88;
+    animation: nav-pulse 1.5s ease-in-out infinite;
+    transform: scale(1.2);
+  }
+
+  @keyframes nav-pulse {
+    0%, 100% { box-shadow: 0 0 14px #f6a67e88; }
+    50% { box-shadow: 0 0 26px #f6a67ecc; }
+  }
+
+  .nav-legend {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 18px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 14px;
+    color: #ffffffaa;
+  }
+
+  .legend-dot {
+    width: 14px; height: 14px;
+    border-radius: 4px;
+  }
+
+  /* ========== SLIDE 6 - מינוס לא X ========== */
+  #s6 {
+    background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 100%);
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 100px;
+  }
+
+  .window-demo {
+    width: 460px;
+    background: #1a1a2e;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 80px #00000088;
+    border: 1px solid #ffffff1a;
+  }
+
+  .win-titlebar {
+    background: #2d2d44;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .win-title-text { font-size: 14px; color: #ffffffaa; }
+
+  .win-btns {
+    display: flex;
+    gap: 14px;
+    align-items: flex-end;
+  }
+
+  .win-btn-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .win-btn {
+    width: 42px; height: 30px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    color: #ffffffbb;
+  }
+
+  .win-btn.minimize {
+    background: #f6a67e;
+    color: white;
+    font-weight: 900;
+    font-size: 22px;
+    box-shadow: 0 0 18px #f6a67e88;
+    animation: pulse-btn 2s ease-in-out infinite;
+  }
+
+  .win-btn.close { background: #ff444422; color: #ff8888; }
+
+  .win-btn-label {
+    font-size: 11px;
+    color: #ffffff66;
+    text-align: center;
+  }
+  .win-btn-label.orange { color: #f6a67e; font-weight: 700; }
+  .win-btn-label.red { color: #ff8888aa; }
+
+  .win-content {
+    height: 200px;
+    background: linear-gradient(180deg, #1a4a6b18, #0f2a3a);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .win-content-text {
+    font-size: 18px;
+    color: #ffffff33;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .warning-box {
+    background: #f6a67e12;
+    border: 1.5px solid #f6a67e44;
+    border-radius: 14px;
+    padding: 18px 22px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    max-width: 520px;
+  }
+
+  .warning-box p { font-size: 20px; color: #ffffffcc; line-height: 1.6; }
+  .warning-box strong { color: white; }
+
+  /* ========== SLIDE 7 - OUTRO ========== */
+  #s7 {
+    background: linear-gradient(135deg, #0f1a2e 0%, #1a4a6b 50%, #0f2a3a 100%);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    text-align: center;
+  }
+
+  #s7 .glow {
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, #f6a67e12 0%, transparent 65%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #s7 .main-text {
+    font-size: clamp(64px, 7vw, 100px);
+    font-weight: 900;
+    position: relative; z-index: 2;
+    line-height: 1.1;
+  }
+  #s7 .main-text span { color: #f6a67e; }
+
+  #s7 .divider {
+    width: 100px; height: 3px;
+    background: linear-gradient(90deg, transparent, #f6a67e, transparent);
+    position: relative; z-index: 2;
+  }
+
+  #s7 .sub-text {
+    font-size: clamp(20px, 2vw, 28px);
+    color: #ffffffaa;
+    position: relative; z-index: 2;
+    letter-spacing: 1px;
+  }
+
+  #s7 .author {
+    position: absolute;
+    bottom: 44px; left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff33;
+    font-size: 17px;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
+
+  /* nav controls */
+  .nav-controls {
+    position: fixed;
+    bottom: 14px; left: 14px;
+    z-index: 999;
+    display: flex;
+    gap: 6px;
+    opacity: 0.45;
+  }
+
+  .nav-controls button {
+    background: #1e5f74;
+    color: white;
+    border: none;
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    font-size: 14px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .nav-controls button:hover { opacity: 1; background: #f6a67e; }
+
+  /* animations */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SLIDE 1: פתיחה ===== -->
+<div class="slide active" id="s1">
+  <div class="grid-lines"></div>
+  <div class="glow"></div>
+  <div class="top-badge">סרטון הדרכה</div>
+  <div class="title">איך עובדים עם<br><span>ההדרכה האינטראקטיבית</span></div>
+  <div class="sub">
+    שלום, כאן עומר טייכר.<br>
+    לפני שמתחילים, שלושים שניות שיחסכו לכם הרבה בלבול.
+  </div>
+  <div class="author">עומר טייכר · מדריך וטכנאי מחשבים</div>
+</div>
+
+<!-- ===== SLIDE 2: מה זה אינטראקטיבי ===== -->
+<div class="slide" id="s2">
+  <div class="step-badge">מה זה בכלל</div>
+  <div class="split" style="height:100vh;">
+    <div class="text-col">
+      <div class="big-title">זה לא סרטון.<br><span>זו סימולציה.</span></div>
+      <div class="desc">
+        אתם רואים צילומי מסך של המחשב, עם חץ שמראה בדיוק איפה ללחוץ.<br>
+        אתם לוחצים - ועוברים לשלב הבא.<br><br>
+        אבל חשוב להבין: זה לא קורה על המחשב שלכם.<br>
+        זה קורה בתוך ההדרכה עצמה.<br>
+        <strong style="color:white;">בבטחה. בלי שום דבר שבאמת משתנה.</strong>
+      </div>
+    </div>
+    <div class="visual-col">
+      <div class="concept-visual">
+        <div class="concept-row">
+          <div class="concept-icon gray">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="concept-text-wrap">
+            <div class="concept-label">לא זה</div>
+            <div class="concept-val">סרטון שצופים בו</div>
+          </div>
+        </div>
+        <div class="vs-divider">VS</div>
+        <div class="concept-row">
+          <div class="concept-icon gray">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff6666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          </div>
+          <div class="concept-text-wrap">
+            <div class="concept-label">לא זה</div>
+            <div class="concept-val">מסמך PDF שקוראים</div>
+          </div>
+        </div>
+        <div class="vs-divider">אלא</div>
+        <div class="concept-row highlight">
+          <div class="concept-icon orange">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="concept-text-wrap">
+            <div class="concept-label green">זה</div>
+            <div class="concept-val">סימולציה - עושים תוך כדי</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 3: הסדר הנכון ===== -->
+<div class="slide" id="s3">
+  <div class="step-badge">הסדר הנכון</div>
+  <div class="split" style="height:100vh;">
+    <div class="text-col">
+      <div class="big-title">קודם<br><span>הסימולציה.</span><br>אחר כך המחשב.</div>
+      <div class="desc">
+        ההדרכה תגיד לכם בדיוק<br>
+        מתי לעבור למחשב ולנסות.
+      </div>
+    </div>
+    <div class="visual-col">
+      <div class="flow-visual">
+        <div class="flow-step">
+          <div class="flow-num" style="background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 0 20px #22c55e55;">1</div>
+          <div class="flow-text">
+            <div class="flow-title" style="color:#22c55e;">עוברים את הסימולציה</div>
+            <div class="flow-sub">צעד אחרי צעד, מהתחלה עד הסוף</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:linear-gradient(135deg,#ff4444,#cc2222);box-shadow:0 0 20px #ff444455;">✕</div>
+          <div class="flow-text">
+            <div class="flow-title" style="color:#ff6666;">לא יורדים למחשב תוך כדי</div>
+            <div class="flow-sub">לא מקפצים בין שלבים</div>
+          </div>
+        </div>
+        <div class="flow-connector"></div>
+        <div class="flow-step">
+          <div class="flow-num" style="background:linear-gradient(135deg,#22c55e,#16a34a);box-shadow:0 0 20px #22c55e55;">2</div>
+          <div class="flow-text">
+            <div class="flow-title" style="color:#22c55e;">ההדרכה אומרת - עכשיו תורכם</div>
+            <div class="flow-sub">אז יורדים למחשב ומתרגלים</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 4: החצים ===== -->
+<div class="slide" id="s4">
+  <div class="step-badge">ניווט 1 מתוך 2</div>
+  <div class="split" style="height:100vh;">
+    <div class="text-col">
+      <div class="big-title">שני חצים<br><span>בצד ימין למטה</span></div>
+      <div class="desc">
+        החץ הימני מתקדם שלב.<br>
+        החץ השמאלי חוזר אחורה.<br><br>
+        אפשר גם עם מקשי החצים במקלדת.
+      </div>
+    </div>
+    <div class="visual-col">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:28px;">
+        <div class="arrows-visual">
+          <div class="arrow-item">
+            <div class="arrow-btn">
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </div>
+            <div class="arrow-label">אחורה</div>
+          </div>
+          <div class="arrow-item">
+            <div class="arrow-btn active">
+              <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+            <div class="arrow-label active">קדימה</div>
+          </div>
+        </div>
+
+        <div style="color:#ffffff33;font-size:13px;letter-spacing:2px;">או</div>
+
+        <!-- מקלדת -->
+        <div style="background:#0f2a3a;border:2px solid #1e5f74;border-radius:16px;padding:16px 20px;box-shadow:0 8px 32px #00000055;">
+          <!-- שורה 1 -->
+          <div style="display:flex;gap:6px;margin-bottom:6px;direction:ltr;">
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+          </div>
+          <!-- שורה 2 -->
+          <div style="display:flex;gap:6px;margin-bottom:6px;direction:ltr;">
+            <div style="width:44px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+          </div>
+          <!-- שורה 3 - space -->
+          <div style="display:flex;gap:6px;margin-bottom:6px;direction:ltr;">
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="flex:1;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            <div style="width:28px;height:28px;border-radius:5px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+          </div>
+          <!-- שורה 4 - חצים -->
+          <div style="display:flex;gap:6px;justify-content:flex-end;direction:ltr;">
+            <div style="width:28px;height:28px;border-radius:5px;background:linear-gradient(135deg,#f6a67e,#ff8c5a);border:1px solid #f6a67e;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px #f6a67e66;animation:pulse-btn 2s ease-in-out infinite;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:3px;">
+              <div style="width:28px;height:12px;border-radius:4px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+              <div style="width:28px;height:12px;border-radius:4px;background:#1e3a4a;border:1px solid #ffffff15;"></div>
+            </div>
+            <div style="width:28px;height:28px;border-radius:5px;background:linear-gradient(135deg,#f6a67e,#ff8c5a);border:1px solid #f6a67e;display:flex;align-items:center;justify-content:center;box-shadow:0 0 14px #f6a67e66;animation:pulse-btn 2s ease-in-out infinite;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 5: פס הניווט ===== -->
+<div class="slide" id="s5">
+  <div class="step-badge">ניווט 2 מתוך 2</div>
+  <div class="split" style="height:100vh;">
+    <div class="text-col">
+      <div class="big-title">פס הניווט<br><span>בתחתית</span></div>
+      <div class="desc">
+        כל ריבוע הוא שלב אחד.<br>
+        הכהים - עברתם. הבהירים - נשאר.<br><br>
+        אפשר ללחוץ על כל ריבוע<br>
+        ולקפוץ ישירות לאותו שלב.
+      </div>
+    </div>
+    <div class="visual-col">
+      <div class="nav-demo-box">
+        <div class="nav-demo-label">פס הניווט</div>
+        <div class="nav-bar-demo">
+          <div class="nav-dot done"></div>
+          <div class="nav-dot done"></div>
+          <div class="nav-dot done"></div>
+          <div class="nav-dot done"></div>
+          <div class="nav-dot done"></div>
+          <div class="nav-dot current"></div>
+          <div class="nav-dot"></div>
+          <div class="nav-dot"></div>
+          <div class="nav-dot"></div>
+          <div class="nav-dot"></div>
+          <div class="nav-dot"></div>
+          <div class="nav-dot"></div>
+        </div>
+        <div class="nav-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#1e5f74;"></div>
+            <span>שלבים שעברו</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#f6a67e;"></div>
+            <span>שלב נוכחי</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#a8c5d6;"></div>
+            <span>שלבים שנשארו</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 6: מינוס לא X ===== -->
+<div class="slide" id="s6">
+  <div class="step-badge">כשעוברים למחשב</div>
+  <div class="split" style="height:100vh;">
+    <div class="text-col">
+      <div class="big-title">לוחצים<br><span>מינוס.</span><br>לא X.</div>
+      <div class="desc">
+        כשההדרכה תגיד לכם לעבור למחשב -<br>
+        מקטינים את החלון.<br>
+        לוחצים על המינוס. לא על ה-X.
+      </div>
+      <div class="warning-box">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>ה-X <strong>סוגר הכל.</strong><br>המינוס שומר את ההדרכה ממוזערת.<br>כשמסיימים - לוחצים עליה בשורת המשימות וחוזרים.</p>
+      </div>
+    </div>
+    <div class="visual-col">
+      <div class="window-demo">
+        <div class="win-titlebar">
+          <div class="win-title-text">הדרכה אינטראקטיבית - Vibe</div>
+          <div class="win-btns">
+            <div class="win-btn-wrap">
+              <div class="win-btn minimize">&#8722;</div>
+              <div class="win-btn-label orange">לוחצים כאן</div>
+            </div>
+            <div class="win-btn-wrap">
+              <div class="win-btn" style="background:#ffffff11;">&#9633;</div>
+              <div class="win-btn-label"></div>
+            </div>
+            <div class="win-btn-wrap">
+              <div class="win-btn close">&#10005;</div>
+              <div class="win-btn-label red">לא!</div>
+            </div>
+          </div>
+        </div>
+        <div class="win-content">
+          <div class="win-content-text">תוכן ההדרכה<br><span style="font-size:14px;color:#ffffff22;">שמור ומוכן לחזרה</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SLIDE 7: סיום ===== -->
+<div class="slide" id="s7">
+  <div class="grid-lines"></div>
+  <div class="glow"></div>
+  <div class="main-text">צעד אחרי <span>צעד.</span></div>
+  <div class="divider"></div>
+  <div class="sub-text">זהו, מוכנים. בהצלחה.</div>
+  <div class="author">עומר טייכר · מדריך וטכנאי מחשבים</div>
+</div>
+
+<!-- controls -->
+<div class="nav-controls">
+  <button onclick="changeSlide(1)">&#8594;</button>
+  <button onclick="changeSlide(-1)">&#8592;</button>
+</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+
+  function changeSlide(dir) {
+    slides[current].classList.remove('active');
+    current = (current + dir + slides.length) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowLeft')  changeSlide(1);
+    if (e.key === 'ArrowRight') changeSlide(-1);
+  });
+</script>
+</body>
+</html>
