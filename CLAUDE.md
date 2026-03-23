@@ -200,6 +200,7 @@ cp interactive/tutorials/Everything/images/logo.png interactive/tutorials/[שם]
 - **5 אייג'נטים במקביל**, כל אחד מנתח 2 תמונות (סבבים של 10)
 - כל אייג'נט מחזיר JSON: `image_num`, `image_file`, `description_en`, `action_he`, `click_area`, `arrow_direction`
 - `action_he` = טקסט עברי עם `<span style="color:#f6a67e;">` להדגשת אלמנט ללחיצה
+- **זיהוי קליק ימני / לחיצה כפולה:** בניתוח התמונות, אם הפעולה דורשת **קליק ימני** או **לחיצה כפולה (double-click)** — חובה לסמן ב-slide-map (`type: "right-click"` או `type: "double-click"`) ולהוסיף הבהרה בבועת הטקסט: `<br><span style="font-size:13px;"><span style="color:#f6a67e;font-weight:700;">במחשב שלכם:</span> [קליק ימני / לחיצה כפולה]. <span style="color:#f6a67e;font-weight:700;">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>`. בהדרכה אין קליק ימני ואין לחיצה כפולה — רק לחיצה רגילה!
 - שומרים ל-`analysis.json`, **דחיפה אחרי כל סבב!**
 - אל תמחק קבצי `.flow` ו-`.fss`
 
@@ -222,10 +223,11 @@ cp interactive/tutorials/Everything/images/logo.png interactive/tutorials/[שם]
 }
 ```
 
-**שלושה סוגי צעדים:**
+**ארבעה סוגי צעדים:**
 - **`click`** — המשתמש צריך ללחוץ על הסימון הכתום (box עם אנימציה)
 - **`view`** — צפייה בלבד, אין לחיצה. מוסיפים עיגול "המשך" (כפתור כחול עגול עם חץ, onclick=nextSlide). אם יש סימון — מסגרת כתומה סטטית (בלי אנימציה, pointer-events:none)
 - **`right-click`** — קליק ימני עם העכבר. box רגיל + הבהרה: "במחשב שלכם: קליק ימני. כאן בהדרכה: לחצו רגיל על הסימון הכתום"
+- **`double-click`** — לחיצה כפולה (למשל פתיחת קובץ התקנה). box רגיל + הבהרה: "במחשב שלכם: לחיצה כפולה. כאן בהדרכה: לחצו רגיל על הסימון הכתום"
 
 **למה slide-map חשוב:**
 - מקור אמת אחד — שינוי טקסט = עדכון slide-map ואז HTML
