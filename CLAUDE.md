@@ -537,11 +537,11 @@ function buildNavDots() {
 <div class="uac-left">
   <div style="position:relative;display:inline-block;">
     <img src=".//images//uac-dialog.png" alt="בקרת חשבון משתמש">
-    <div class="box" style="top:86.8%;left:51.8%;right:6.5%;bottom:3.8%;cursor:pointer;" onclick="nextSlide()"></div>
+    <div class="box" style="top:85.5%;left:50.5%;right:5.5%;bottom:5.2%;cursor:pointer;" onclick="nextSlide()"></div>
   </div>
 </div>
 ```
-- **הקואורדינטות קבועות** כי התמונה תמיד אותה תמונה — `top:86.8%;left:51.8%;right:6.5%;bottom:3.8%`
+- **הקואורדינטות קבועות ומכוילות בדיוק** (אושר ע"י עומר!) — `top:85.5%;left:50.5%;right:5.5%;bottom:5.2%`
 - **לחיצה על ה-box** = מעבר לשקף הבא (כמו כל box רגיל בהדרכה)
 - **למה זה חשוב:** חלון UAC קופץ בהתקנת כמעט כל תוכנה. תמונה אחת גנרית + שקף מוכן = חוסכים עבודה בכל הדרכה חדשה
 
