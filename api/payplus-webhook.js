@@ -19,7 +19,7 @@ const WA_TOKEN     = process.env.GREENAPI_TOKEN;
 
 const PRODUCTS = {
   vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/', user: 'student', pass: 'Sv8472t' },
-  everything: { name: 'Everything — חיפוש מיידי בכל הקבצים במחשב', url: 'https://omertai.net/interactive/tutorials/Everything/', user: 'student', pass: 'Ex9183k' },
+  everything: { name: 'Everything - חיפוש מיידי בכל הקבצים במחשב', url: 'https://omertai.net/interactive/tutorials/Everything/', user: 'student', pass: 'Ex9183k' },
   security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', url: 'https://omertai.net/interactive/tutorials/Security/' }
 };
 
@@ -141,8 +141,8 @@ async function sendWhatsApp(customerPhone, customerName, products) {
     const loginBlock = product.user && product.pass
       ? `\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
       : '';
-    return `*${product.name}*\nלחצו כאן: ${product.url}${loginBlock}`;
-  }).join('\n\n───────────\n\n');
+    return `*${product.name}*\n\nלחצו כאן: ${product.url}${loginBlock}`;
+  }).join('\n\n\n');
 
   const intro = isMulti
     ? `התשלום התקבל בהצלחה ✅\n\n${products.length} הדרכות מוכנות עבורכם:`

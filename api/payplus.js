@@ -32,7 +32,7 @@ function loadProducts() {
     // fallback אם הקובץ לא נמצא
     return {
       vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 47 },
-      everything: { name: 'Everything — חיפוש מיידי בכל הקבצים במחשב', price: 47 },
+      everything: { name: 'Everything - חיפוש מיידי בכל הקבצים במחשב', price: 47 },
       security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', price: 47 }
     };
   }
