@@ -27,10 +27,8 @@ a { word-break: break-all; }
 
 .image {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  height: calc(100vh - 80px);
-  overflow: hidden;
 }
 
 .image-center {
