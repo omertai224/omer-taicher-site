@@ -491,6 +491,15 @@ function buildNavDots() {
 - **CSS classes:** `uac-wrap`, `uac-left`, `uac-right`, `uac-badge`, `uac-point`, `uac-bottom`
 - דוגמה מלאה: `Everything/index.html` שקף 7
 
+### זכוכית מגדלת (Magnifier) — נגישות למבוגרים
+**כפתור מובנה בכל הדרכה** שמאפשר הגדלת תמונות צעדים ×2.5.
+- **כפתור** קבוע בפינה שמאלית עליונה (מופיע רק בשקפי צעדים עם תמונה)
+- **לחיצה** מפעילה מצב הגדלה — עדשה עגולה עוקבת אחרי העכבר
+- **לחיצה נוספת** או **Escape** מכבה
+- **מימוש:** CSS ב-style.css (classes: `magnifier-btn`, `magnifier-lens`, `magnifier-hint`), JS ב-script.js (`initMagnifier`, `toggleMagnifier`, `updateMagnifierVisibility`)
+- **חשוב:** `updateMagnifierVisibility()` נקרא מתוך `showSlides()` — מסתיר/מציג את הכפתור לפי סוג השקף
+- **עובד אוטומטית** — לא צריך לשנות HTML, הכל דינמי
+
 ### תקלות ופתרונות - קובץ נפרד!
 **קרא את `TROUBLESHOOTING.md` בתחילת כל עבודה על הדרכות!**
 הקובץ מכיל את כל התקלות שכבר קרו + פתרונות מוכחים + צ'קליסט לפני דחיפה.

@@ -43,6 +43,7 @@ function showSlides(n) {
   }
   slides[slideIndex - 1].style.display = "block";
   setNavBarColor(slideIndex);
+  updateMagnifierVisibility();
 }
 
 function setNavBarColor(n) {
@@ -117,8 +118,115 @@ function buildNavDots() {
   }
 }
 
+// ─── זכוכית מגדלת ───
+var magnifierActive = false;
+var magnifierZoom = 2.5;
+var magnifierLensSize = 180;
+
+function initMagnifier() {
+  // Create button
+  var btn = document.createElement('button');
+  btn.className = 'magnifier-btn';
+  btn.id = 'magnifier-btn';
+  btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>';
+  btn.title = 'זכוכית מגדלת';
+  btn.addEventListener('click', toggleMagnifier);
+  document.body.appendChild(btn);
+
+  // Create lens
+  var lens = document.createElement('div');
+  lens.className = 'magnifier-lens';
+  lens.id = 'magnifier-lens';
+  document.body.appendChild(lens);
+
+  // Create hint
+  var hint = document.createElement('div');
+  hint.className = 'magnifier-hint';
+  hint.id = 'magnifier-hint';
+  hint.textContent = 'הזיזו את העכבר על התמונה להגדלה';
+  document.body.appendChild(hint);
+}
+
+function toggleMagnifier() {
+  magnifierActive = !magnifierActive;
+  var btn = document.getElementById('magnifier-btn');
+  var lens = document.getElementById('magnifier-lens');
+  var hint = document.getElementById('magnifier-hint');
+  if (magnifierActive) {
+    btn.classList.add('active');
+    hint.style.display = 'block';
+    document.body.classList.add('magnifier-active');
+  } else {
+    btn.classList.remove('active');
+    lens.style.display = 'none';
+    hint.style.display = 'none';
+    document.body.classList.remove('magnifier-active');
+  }
+}
+
+function updateMagnifierVisibility() {
+  var btn = document.getElementById('magnifier-btn');
+  if (!btn) return;
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  var img = slide ? slide.querySelector('.image-center > img') : null;
+  btn.style.display = img ? 'flex' : 'none';
+  // Hide lens when changing slides
+  if (magnifierActive && !img) {
+    toggleMagnifier();
+  }
+}
+
+document.addEventListener('mousemove', function(e) {
+  if (!magnifierActive) return;
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  if (!slide) return;
+  var img = slide.querySelector('.image-center > img');
+  if (!img) return;
+
+  var lens = document.getElementById('magnifier-lens');
+  var rect = img.getBoundingClientRect();
+
+  // Check if mouse is over the image
+  if (e.clientX < rect.left || e.clientX > rect.right ||
+      e.clientY < rect.top || e.clientY > rect.bottom) {
+    lens.style.display = 'none';
+    return;
+  }
+
+  lens.style.display = 'block';
+
+  // Position lens centered on cursor
+  var lensX = e.clientX - magnifierLensSize / 2;
+  var lensY = e.clientY - magnifierLensSize / 2;
+  lens.style.left = lensX + 'px';
+  lens.style.top = lensY + 'px';
+
+  // Calculate background position
+  var imgW = img.naturalWidth;
+  var imgH = img.naturalHeight;
+  var scaleX = imgW / rect.width;
+  var scaleY = imgH / rect.height;
+
+  // Mouse position relative to image
+  var relX = e.clientX - rect.left;
+  var relY = e.clientY - rect.top;
+
+  // Background size = natural image size * zoom
+  var bgW = imgW * magnifierZoom;
+  var bgH = imgH * magnifierZoom;
+
+  // Background position: center the zoomed area in the lens
+  var bgX = -(relX * scaleX * magnifierZoom - magnifierLensSize / 2);
+  var bgY = -(relY * scaleY * magnifierZoom - magnifierLensSize / 2);
+
+  lens.style.backgroundImage = 'url("' + img.src + '")';
+  lens.style.backgroundSize = bgW + 'px ' + bgH + 'px';
+  lens.style.backgroundPosition = bgX + 'px ' + bgY + 'px';
+});
+
 document.addEventListener("DOMContentLoaded", function() {
   buildNavDots();
+  initMagnifier();
   showSlides(slideIndex);
 });
 
@@ -126,4 +234,5 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener('keydown', function(event) {
   if (event.key === 'ArrowRight') { nextSlide(); }
   else if (event.key === 'ArrowLeft') { prevSlide(); }
+  else if (event.key === 'Escape' && magnifierActive) { toggleMagnifier(); }
 });
