@@ -33,16 +33,6 @@ a { word-break: break-all; }
 
 .image-center {
   position: relative;
-  height: calc(100vh - 80px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.image-center img {
-  max-height: 100%;
-  width: auto;
-  max-width: 100%;
 }
 
 /* ─── כפתורי ניווט ─── */
@@ -323,6 +313,73 @@ a { word-break: break-all; }
 @keyframes fade {
   from { opacity: 0.6; }
   to   { opacity: 1; }
+}
+
+/* ─── זכוכית מגדלת ─── */
+.magnifier-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #a8c5d6;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  cursor: pointer;
+  display: none; /* shown by JS on step slides */
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.magnifier-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+}
+.magnifier-btn.active {
+  border-color: #f6a67e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+}
+.magnifier-btn svg {
+  pointer-events: none;
+}
+
+.magnifier-lens {
+  position: fixed;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px solid #f6a67e;
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.3), 0 8px 32px rgba(0,0,0,0.5);
+  pointer-events: none;
+  z-index: 9;
+  display: none;
+  background-repeat: no-repeat;
+  background-color: #1a1a2e;
+  cursor: none;
+}
+
+.magnifier-active .image-center {
+  cursor: none;
+}
+
+.magnifier-hint {
+  position: fixed;
+  top: 72px;
+  left: 16px;
+  z-index: 10;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  color: #fff;
+  font-size: 13px;
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid #5b8fa855;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  display: none;
+  direction: rtl;
+  white-space: nowrap;
 }
 
 /* ─── responsive ─── */
