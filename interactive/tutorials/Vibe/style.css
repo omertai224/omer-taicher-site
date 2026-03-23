@@ -9,9 +9,8 @@ body {
 .mySlides {
   display: none;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   min-height: calc(100vh - 80px);
-  max-height: calc(100vh - 80px);
 }
 
 img { vertical-align: middle; }
@@ -23,7 +22,7 @@ a { word-break: break-all; }
   width: 100%;
   position: relative;
   margin: auto;
-  min-height: calc(100vh - 80px);
+  min-height: 100vh;
 }
 
 .image {
@@ -34,6 +33,16 @@ a { word-break: break-all; }
 
 .image-center {
   position: relative;
+  height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-center img {
+  max-height: 100%;
+  width: auto;
+  max-width: 100%;
 }
 
 /* ─── כפתורי ניווט ─── */
