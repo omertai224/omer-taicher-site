@@ -144,7 +144,7 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
 <div class="mySlides fade">
 <style>
 .uac-wrap{display:flex;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);overflow:hidden;}
-.uac-left{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;}
+.uac-left{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;}
 .uac-left img{max-height:80vh;max-width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.5);}
 .uac-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;direction:rtl;text-align:right;gap:20px;}
 .uac-badge{display:inline-flex;align-items:center;gap:8px;background:#f6a67e22;border:1px solid #f6a67e55;color:#f6a67e;padding:6px 16px;border-radius:50px;font-size:13px;font-weight:700;width:fit-content;}
@@ -163,7 +163,10 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
 </style>
 <div class="uac-wrap">
   <div class="uac-left">
-    <img src=".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_9.png" alt="בקרת חשבון משתמש">
+    <div style="position:relative;display:inline-block;">
+      <img src=".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_9.png" alt="בקרת חשבון משתמש">
+      <div class="box" style="top:86.8%;left:51.8%;right:6.5%;bottom:3.8%;cursor:pointer;" onclick="nextSlide()"></div>
+    </div>
   </div>
   <div class="uac-right">
     <div class="uac-badge">
