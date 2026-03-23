@@ -8,7 +8,7 @@
     { "index": 1, "type": "special", "icon": "play", "title": "איך עובדים עם ההדרכה" },
     { "index": 2, "type": "special", "icon": "download", "title": "הורידו את Everything" },
     { "index": 3, "step": 1, "type": "click", "image": "How_to_Sort_Your_Downloads_Folder_by_Name_in_Windows_Explorer_1.png", "text_he": "פתחו את סייר הקבצים ולחצו על הורדות כדי לראות את הקבצים שהורדתם", "highlight": "הורדות" },
-    { "index": 4, "step": 2, "type": "click", "image": "How_to_Sort_Your_Downloads_Folder_by_Name_in_Windows_Explorer_2.png", "text_he": "לחצו על שם כדי למיין את הקבצים לפי שם — ככה קל למצוא את קובץ ההתקנה", "highlight": "שם" },
+    { "index": 4, "step": 2, "type": "double-click", "image": "How_to_Sort_Your_Downloads_Folder_by_Name_in_Windows_Explorer_2.png", "text_he": "לחצו לחיצה כפולה על קובץ ההתקנה Everything כדי להתחיל את ההתקנה", "highlight": "Everything", "note": "בהדרכה: לחיצה רגילה" },
     { "index": 5, "type": "special", "icon": "warning", "title": "בקרת חשבון משתמש (UAC)" },
     { "index": 6, "step": 3, "type": "click", "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_9.png", "text_he": "בחרו שפה ולחצו OK", "highlight": "OK" },
     { "index": 7, "step": 4, "type": "click", "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_10.png", "text_he": "סמנו את תיבת ההסכמה ולחצו הבא", "highlight": "I Agree" },
