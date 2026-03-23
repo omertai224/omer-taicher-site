@@ -77,7 +77,7 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
 <div class="intro-wrap">
 <div class="intro-badge">חינמי. מהיר. חיוני.</div>
 <div class="intro-title">לא מוצאים קובץ במחשב?<br><span>Everything מוצא הכל תוך שנייה</span></div>
-<div class="intro-subtitle">חיפוש מיידי בכל הקבצים במחשב שלכם.<br>במקום לחכות דקות לחיפוש של Windows - Everything מוצא בפחות משנייה.</div>
+<div class="intro-subtitle">חיפוש מיידי בכל הקבצים במחשב שלכם.<br>במקום לחכות דקות לחיפוש של Windows -<br>Everything מוצא בפחות משנייה.</div>
 <div class="intro-author">עומר טייכר · מדריך וטכנאי מחשבים</div>
 <div class="intro-cards">
 <div class="intro-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div class="label">חיפוש מיידי בכל הקבצים</div></div>
@@ -118,23 +118,22 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
 .parta-sub{color:#ffffffaa;font-size:clamp(13px,1.2vw,16px);line-height:1.6;}
 .parta-dl-btn{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;border:none;padding:18px 48px;border-radius:50px;font-size:clamp(16px,1.6vw,22px);font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:transform 0.2s,opacity 0.2s;}
 .parta-dl-btn:hover{opacity:0.9;transform:scale(1.03);}
+.parta-dl-version{color:#ffffff55;font-size:12px;}
 .parta-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:460px;}
 .parta-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}
 .parta-note span{color:#f6a67e;font-weight:700;}
 </style>
 <div class="parta-wrap">
-  <div class="parta-badge">הורדה</div>
-  <div class="parta-title">הורידו את <span>Everything</span></div>
-  <div class="parta-sub">תוכנת חיפוש מיידי לכל הקבצים במחשב שלכם</div>
+  <div class="parta-badge">חלק א &middot; הורדה והתקנה</div>
+  <div class="parta-title">קודם כל <span>הורידו את Everything</span></div>
+  <div class="parta-sub">הקובץ יורד ישירות למחשב שלכם.<br>לאחר ההורדה חוזרים להדרכה וממשיכים לשלב הבא.</div>
   <a class="parta-dl-btn" href="https://www.voidtools.com/Everything-1.4.1.1024.x64-Setup.exe" download>
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v10M8 11l4 4 4-4"/><path d="M5 19h14"/></svg>
-    הורדה ישירה
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    הורידו את Everything
   </a>
+  <div class="parta-dl-version">הקובץ יורד ישירות למחשב</div>
   <div class="parta-note">
-    <p><span>שימו לב:</span> ההורדה מתחילה אוטומטית. בסיום, עברו לתיקיית ההורדות ולחצו על הקובץ להתקנה.</p>
-  </div>
-  <div style="margin-top:20px;">
-    <button onclick="nextSlide()" style="background:linear-gradient(135deg,#f6a67e,#e8956e);color:#1a1a2e;border:none;padding:10px 32px;border-radius:50px;font-size:16px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;">&#9654;&nbsp;&nbsp;המשך להתקנה</button>
+    <p><span>לאחר ההורדה:</span> חוזרים להדרכה ולוחצים על <span onclick="nextSlide()" style="display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;" title="לחצו להתקדמות"><svg style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span> כדי להתקדם.</p>
   </div>
 </div>
 </div>
@@ -152,30 +151,6 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
 <div style="text-align:right;direction:rtl;">לחצו על <span style="color:#f6a67e;">קובץ ההתקנה</span></div>
 </div>
 </div></div></div>
-<div class="mySlides fade">
-<style>
-.partb-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f2a3a 0%,#1a4a6b 100%);text-align:center;padding:20px 40px;box-sizing:border-box;gap:10px;}
-.partb-check{width:56px;height:56px;background:linear-gradient(135deg,#1e5f74,#5b8fa8);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;}
-.partb-badge{background:#f6a67e22;border:1px solid #f6a67e55;color:#f6a67e;padding:3px 14px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}
-.partb-title{font-size:clamp(18px,2.8vw,36px);font-weight:900;color:white;margin-bottom:0;line-height:1.2;}
-.partb-title span{color:#f6a67e;}
-.partb-sub{color:#ffffffaa;font-size:14px;margin-bottom:0;}
-.partb-btn{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:11px 32px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 8px 32px rgba(246,166,126,0.4);}
-.partb-btn:hover{transform:scale(1.05);}
-</style>
-<div class="partb-wrap">
-  <div class="partb-check">
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v10M8 11l4 4 4-4"/><path d="M5 19h14"/></svg>
-  </div>
-  <div class="partb-badge">חלק א · התקנה</div>
-  <div class="partb-title">בואו נתקין את <span>Everything</span></div>
-  <div class="partb-sub">פתחו את תיקיית ההורדות ולחצו על קובץ ההתקנה</div>
-  <button class="partb-btn" onclick="nextSlide()" style="margin-top:14px;">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:6px;"><polyline points="9 18 15 12 9 6"/></svg>
-    המשך
-  </button>
-</div>
-</div>
 <div class="mySlides fade">
 <style>
 .uac-wrap{display:flex;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);overflow:hidden;}
@@ -228,25 +203,26 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
 </div>
 </div>
 <div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_10.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_10.png" style="height:calc(100vh - 80px);width:auto;"><div class="box 84" style="top:51.7222%;left:41.4186%;right:52.0581%;bottom:44.5%;"></div><div class="text arrow-left" style="left:calc(47.9419% + 15px);top:calc(53.6111% - 25px);position:absolute;width:300; height: fit-content;">
-					 <div style="text-align: right;">3<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בחרו שפה מהרשימה ולחצו על <span style="color:#f6a67e;">OK</span></div></div></div></div></div>
+					 <div style="text-align: right;">3<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>ניתן להשאיר את עברית כברירת מחדל. לחצו על <span style="color:#f6a67e;">OK</span></div></div></div></div></div>
 <div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_11.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_11.png" style="height:calc(100vh - 80px);width:auto;"><div class="box 85" style="top:65.0556%;left:38.5116%;right:54.9651%;bottom:31.1667%;"></div><div class="text arrow-left" style="left:calc(45.0349% + 15px);top:calc(66.9444% - 25px);position:absolute;width:300; height: fit-content;">
-					 <div style="text-align: right;">4<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>קראו את הסכם הרישיון ולחצו על <span style="color:#f6a67e;">I Agree</span> כדי להמשיך בהתקנה</div></div></div></div></div>
+					 <div style="text-align: right;">4<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>לחצו על <span style="color:#f6a67e;">אני מסכים</span> כדי להמשיך</div></div></div></div></div>
 <div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_12.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_12.png" style="height:calc(100vh - 80px);width:auto;"><div class="box 86" style="top:65.0556%;left:38.5116%;right:54.9651%;bottom:31.1667%;"></div><div class="text arrow-left" style="left:calc(45.0349% + 15px);top:calc(66.9444% - 25px);position:absolute;width:300; height: fit-content;">
-					 <div style="text-align: right;">5<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בחלון ההתקנה, וודאו שההגדרות מתאימות לכם ולחצו על <span style="color:#f6a67e;">Install</span></div></div></div></div></div>
+					 <div style="text-align: right;">5<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>אפשר להשאיר את כל ההגדרות כמו שהן ולחצו על <span style="color:#f6a67e;">הבא</span></div></div></div></div></div>
 <div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_13.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_13.png" style="height:calc(100vh - 80px);width:auto;"><div class="box 87" style="top:65.0556%;left:38.5116%;right:54.9651%;bottom:31.1667%;"></div><div class="text arrow-left" style="left:calc(45.0349% + 15px);top:calc(66.9444% - 25px);position:absolute;width:300; height: fit-content;">
-					 <div style="text-align: right;">6<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>השאירו את כל ההגדרות כמו שהן ולחצו על <span style="color:#f6a67e;">Install</span></div></div></div></div></div>
+					 <div style="text-align: right;">6<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>לחצו על <span style="color:#f6a67e;">הבא</span></div></div></div></div></div>
 <div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_14.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_14.png" style="height:calc(100vh - 80px);width:auto;"><div class="box 88" style="top:65.0556%;left:38.5116%;right:54.9651%;bottom:31.1667%;"></div><div class="text arrow-left" style="left:calc(45.0349% + 15px);top:calc(66.9444% - 25px);position:absolute;width:300; height: fit-content;">
-					 <div style="text-align: right;">7<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>השאירו את כל האפשרויות מסומנות כברירת מחדל ולחצו על <span style="color:#f6a67e;">Install</span></div></div></div></div></div>
+					 <div style="text-align: right;">7<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>השאירו את כל האפשרויות מסומנות כברירת מחדל ולחצו על <span style="color:#f6a67e;">התקן</span></div></div></div></div></div>
 <div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_15.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_15.png" style="height:calc(100vh - 80px);width:auto;"><div class="box 89" style="top:65.0556%;left:38.5116%;right:54.9651%;bottom:31.1667%;"></div><div class="text arrow-left" style="left:calc(45.0349% + 15px);top:calc(66.9444% - 25px);position:absolute;width:300; height: fit-content;">
-					 <div style="text-align: right;">8<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>ההתקנה הסתיימה! ודאו שהתיבה מסומנת ולחצו על <span style="color:#f6a67e;">סיום</span> כדי להפעיל את Everything</div></div></div></div></div>
+					 <div style="text-align: right;">8<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>ההתקנה הסתיימה. וודאו שהתיבה מסומנת ולחצו על <span style="color:#f6a67e;">סיום</span> כדי להפעיל את Everything</div></div></div></div></div>
 <div class="mySlides fade">
 <div class="partb-wrap">
   <div class="partb-check">
     <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
   </div>
   <div class="partb-badge">חלק א הושלם</div>
-  <div class="partb-title">Everything מותקן!<br><span>עכשיו נלמד להשתמש</span></div>
-  <div class="partb-sub" style="color:#ffffffcc;margin-top:8px;">חלק ב · שימוש בתוכנה</div>
+  <div class="partb-title">עכשיו תורכם<br>הקטינו את החלון<br><span>והתקינו את Everything בעצמכם</span></div>
+  <div class="partb-sub" style="color:#ffffffcc;margin-top:8px;">כשתסיימו, חזרו להדרכה וממשיכים לחלק ב.</div>
+  <div style="margin-top:24px;color:#f6a67ecc;font-size:13px;font-weight:600;letter-spacing:1px;">חלק ב · שימוש בתוכנה</div>
   <button class="partb-btn" onclick="nextSlide()" style="margin-top:14px;">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:6px;"><polyline points="9 18 15 12 9 6"/></svg>
     המשך לחלק ב

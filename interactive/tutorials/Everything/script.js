@@ -78,10 +78,9 @@ var slideMap = {
   0:  { icon: 'home',     title: 'פתיחה' },
   1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
   2:  { icon: 'download', title: 'הורידו את Everything' },
-  5:  { icon: 'install',  title: 'התקנה' },
-  6:  { icon: 'warning',  title: 'בקרת חשבון משתמש' },
-  13: { icon: 'usage',    title: 'שימוש בתוכנה' },
-  37: { icon: 'finish',   title: 'סיום' }
+  5:  { icon: 'warning',  title: 'בקרת חשבון משתמש' },
+  12: { icon: 'usage',    title: 'שימוש בתוכנה' },
+  36: { icon: 'finish',   title: 'סיום' }
 };
 
 // יצירת נקודות ניווט דינמית
