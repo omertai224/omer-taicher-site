@@ -362,6 +362,35 @@ a { word-break: break-all; }
   cursor: none;
 }
 
+/* ─── הקראה בקול ─── */
+.tts-btn {
+  position: fixed;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #a8c5d6;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.tts-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+}
+.tts-btn.active {
+  border-color: #f6a67e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+}
+.tts-btn svg {
+  pointer-events: none;
+}
+
 
 /* ─── responsive ─── */
 @media only screen and (max-width: 300px) {
