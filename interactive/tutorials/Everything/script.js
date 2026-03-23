@@ -77,12 +77,11 @@ var specialIcons = {
 var slideMap = {
   0:  { icon: 'home',     title: 'פתיחה' },
   1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
-  2:  { icon: 'search',   title: 'הכירו את Everything' },
-  3:  { icon: 'download', title: 'הורידו את Everything' },
-  6:  { icon: 'install',  title: 'התקנה' },
-  7:  { icon: 'warning',  title: 'בקרת חשבון משתמש' },
-  14: { icon: 'usage',    title: 'שימוש בתוכנה' },
-  38: { icon: 'finish',   title: 'סיום' }
+  2:  { icon: 'download', title: 'הורידו את Everything' },
+  5:  { icon: 'install',  title: 'התקנה' },
+  6:  { icon: 'warning',  title: 'בקרת חשבון משתמש' },
+  13: { icon: 'usage',    title: 'שימוש בתוכנה' },
+  37: { icon: 'finish',   title: 'סיום' }
 };
 
 // יצירת נקודות ניווט דינמית
