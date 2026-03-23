@@ -193,12 +193,45 @@ cp interactive/tutorials/Everything/images/logo.png interactive/tutorials/[שם]
 ```
 **דחיפה!**
 
-#### שלב 2: ניתוח תמונות (השלב הכבד)
+#### שלב 2: ניתוח תמונות + יצירת slide-map.json (השלב הקריטי!)
+**הניתוח הוא הבסיס להכל — טעות כאן = תיקונים אינסופיים אחר כך.**
+
+**2א. ניתוח תמונות:**
 - **5 אייג'נטים במקביל**, כל אחד מנתח 2 תמונות (סבבים של 10)
 - כל אייג'נט מחזיר JSON: `image_num`, `image_file`, `description_en`, `action_he`, `click_area`, `arrow_direction`
 - `action_he` = טקסט עברי עם `<span style="color:#f6a67e;">` להדגשת אלמנט ללחיצה
 - שומרים ל-`analysis.json`, **דחיפה אחרי כל סבב!**
 - אל תמחק קבצי `.flow` ו-`.fss`
+
+**2ב. יצירת slide-map.json (חובה!):**
+אחרי ניתוח התמונות, ליצור קובץ `slide-map.json` בתיקיית ההדרכה. זהו **מקור האמת** למיפוי בין תמונות לטקסטים.
+
+**פורמט:**
+```json
+{
+  "tutorial": "שם ההדרכה",
+  "total_slides": 39,
+  "special_slides": 8,
+  "step_slides": 31,
+  "slides": [
+    { "index": 0, "type": "special", "icon": "home", "title": "פתיחה" },
+    { "index": 4, "step": 1, "type": "click", "image": "filename.png", "text_he": "טקסט ההוראה", "highlight": "האלמנט ללחיצה" },
+    { "index": 14, "step": 9, "type": "view", "image": "filename.png", "text_he": "טקסט תצפית", "highlight": "שורת החיפוש", "highlight_type": "static" },
+    { "index": 32, "step": 27, "type": "right-click", "image": "filename.png", "text_he": "טקסט", "highlight": "קליק ימני עם העכבר", "note": "בהדרכה: לחיצה רגילה" }
+  ]
+}
+```
+
+**שלושה סוגי צעדים:**
+- **`click`** — המשתמש צריך ללחוץ על הסימון הכתום (box עם אנימציה)
+- **`view`** — צפייה בלבד, אין לחיצה. מוסיפים עיגול "המשך" (כפתור כחול עגול עם חץ, onclick=nextSlide). אם יש סימון — מסגרת כתומה סטטית (בלי אנימציה, pointer-events:none)
+- **`right-click`** — קליק ימני עם העכבר. box רגיל + הבהרה: "במחשב שלכם: קליק ימני. כאן בהדרכה: לחצו רגיל על הסימון הכתום"
+
+**למה slide-map חשוב:**
+- מקור אמת אחד — שינוי טקסט = עדכון slide-map ואז HTML
+- קל לעשות שינויים אחרי — עומר אומר "שנה את צעד 15" ויש מיד את המיפוי
+- מונע כפילויות ואי-התאמות בין analysis.json ל-HTML
+- דוגמאות: `Everything/slide-map.json`, `Vibe/slide-map.json`
 
 #### שלב 3: עדכון HTML — 5 פעולות מדויקות
 בסדר הזה, על `index.html` של ההדרכה:
