@@ -17,6 +17,23 @@
     ]
   },
   {
+    "key": "everything",
+    "title": "לא מוצאים קובץ במחשב? Everything מוצא הכל תוך שנייה",
+    "desc": "חיפוש מיידי בכל הקבצים במחשב שלכם. במקום לחכות דקות לחיפוש של Windows — Everything מוצא בפחות משנייה. אתם לומדים להתקין, להגדיר ולהשתמש בו.",
+    "steps": 31,
+    "url": "./tutorials/Everything/index.html",
+    "price": 47,
+    "category": "כלים · חיפוש · Windows",
+    "status": "active",
+    "label": "חדש",
+    "thumb": "teal",
+    "includes": [
+      "מוצא כל קובץ, תיקייה ותמונה בפחות משנייה",
+      "מהיר פי אלף מחיפוש Windows הרגיל",
+      "חינמי לחלוטין, קל להתקנה ולשימוש"
+    ]
+  },
+  {
     "key": "ai",
     "status": "coming_soon",
     "category": "AI · עבודה יומיומית",

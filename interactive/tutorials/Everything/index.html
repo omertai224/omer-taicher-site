@@ -41,18 +41,41 @@
 </div>
 
 <script>
+function getPersonalName() {
+  var params = new URLSearchParams(window.location.search);
+  var name = params.get('u');
+  if (name) {
+    localStorage.setItem('everything_user_display', name);
+    return name;
+  }
+  return localStorage.getItem('everything_user_display') || '';
+}
+
+function showPersonalBadge() {
+  var name = getPersonalName();
+  if (!name) return;
+  var badge = document.createElement('div');
+  badge.id = 'user-badge';
+  badge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5b8fa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' +
+    '<span style="color:#ffffffaa;font-size:11px;">מחובר כ:</span> ' +
+    '<span style="color:white;font-weight:700;font-size:12px;">' + name + '</span>';
+  badge.style.cssText = 'position:fixed;top:12px;left:12px;z-index:9000;background:#0f1a2eee;border:1px solid #ffffff22;border-radius:20px;padding:6px 14px;font-family:Rubik,sans-serif;display:flex;align-items:center;gap:4px;backdrop-filter:blur(8px);box-shadow:0 4px 16px #00000044;';
+  document.body.appendChild(badge);
+}
+
 function initApp(){
-var ua=navigator.userAgent||navigator.vendor||window.opera;
-if(/Android|iPhone|iPad|iPod|Mobile|mobile/i.test(ua)){document.getElementById('mobile-block').style.display='flex';return;}
-if(localStorage.getItem('everything_logged_in')==='true'){showTutorial();}
-else{document.getElementById('login-screen').style.display='flex';}
+  getPersonalName();
+  var ua=navigator.userAgent||navigator.vendor||window.opera;
+  if(/Android|iPhone|iPad|iPod|Mobile|mobile/i.test(ua)){document.getElementById('mobile-block').style.display='flex';return;}
+  if(localStorage.getItem('everything_logged_in')==='true'){showTutorial();}
+  else{document.getElementById('login-screen').style.display='flex';}
 }
 function doLogin(){
-var u=document.getElementById('login-user').value.trim(),p=document.getElementById('login-pass').value.trim();
-if(u==='student'&&p==='Ex9183k'){localStorage.setItem('everything_logged_in','true');document.getElementById('login-screen').style.display='none';showTutorial();}
-else{document.getElementById('login-error').style.display='block';document.getElementById('login-pass').value='';document.getElementById('login-pass').focus();}
+  var u=document.getElementById('login-user').value.trim(),p=document.getElementById('login-pass').value.trim();
+  if(u==='student'&&p==='Ex9183k'){localStorage.setItem('everything_logged_in','true');document.getElementById('login-screen').style.display='none';showTutorial();}
+  else{document.getElementById('login-error').style.display='block';document.getElementById('login-pass').value='';document.getElementById('login-pass').focus();}
 }
-function showTutorial(){setNavBarColor(1);showSlides(1);}
+function showTutorial(){showPersonalBadge();setNavBarColor(1);showSlides(1);}
 </script>
 
 <div class="slideshow-container">

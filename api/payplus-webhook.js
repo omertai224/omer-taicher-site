@@ -18,8 +18,9 @@ const WA_INSTANCE  = process.env.GREENAPI_INSTANCE_ID;
 const WA_TOKEN     = process.env.GREENAPI_TOKEN;
 
 const PRODUCTS = {
-  vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/', user: 'student', pass: 'Sv8472t' },
-  ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://omertai.net/interactive/AI/' },
+  vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/', user: 'student', pass: 'Sv8472t' },
+  everything: { name: 'Everything — חיפוש מיידי בכל הקבצים במחשב', url: 'https://omertai.net/interactive/tutorials/Everything/', user: 'student', pass: 'Ex9183k' },
+  ai:         { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  url: 'https://omertai.net/interactive/AI/' },
   files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    url: 'https://omertai.net/interactive/Files/' },
   security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  url: 'https://omertai.net/interactive/Security/' },
   google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', url: 'https://omertai.net/interactive/Google/' }
