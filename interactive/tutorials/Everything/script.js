@@ -120,9 +120,9 @@ function buildNavDots() {
 
 // ─── זכוכית מגדלת ───
 var magnifierActive = false;
-var magnifierZoom = 1.25;      // 125% — עדין ונוח
-var magnifierLensW = 300;
-var magnifierLensH = 220;
+var magnifierZoom = 2;         // ×2 — הגדלה ברורה ונוחה
+var magnifierLensW = 420;
+var magnifierLensH = 300;
 
 function initMagnifier() {
   // Create button
@@ -195,11 +195,19 @@ function positionMagnifierBtn() {
     btn.style.transform = '';
   }
 
-  // Position hint below button, in the black area
+  // Position hint below button, constrained to black area
   var hint = document.getElementById('magnifier-hint');
   if (hint) {
     var btnRect = btn.getBoundingClientRect();
-    hint.style.left = Math.max(8, btnRect.left + btnSize / 2 - hint.offsetWidth / 2) + 'px';
+    // Constrain hint width to fit in the black area
+    hint.style.maxWidth = Math.max(80, blackLeft - 16) + 'px';
+    hint.style.whiteSpace = blackLeft > 200 ? 'nowrap' : 'normal';
+    var hintLeft = Math.max(8, blackLeft / 2 - hint.offsetWidth / 2);
+    // Never let hint overflow past the black area
+    if (hintLeft + hint.offsetWidth > blackLeft) {
+      hintLeft = Math.max(8, blackLeft - hint.offsetWidth - 8);
+    }
+    hint.style.left = hintLeft + 'px';
     hint.style.top = (btnRect.bottom + 12) + 'px';
   }
 }
