@@ -362,9 +362,6 @@ a { word-break: break-all; }
 .magnifier-active .image-center {
   cursor: none;
 }
-.magnifier-active .text {
-  cursor: none;
-}
 
 .magnifier-hint {
   position: fixed;

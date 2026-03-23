@@ -120,7 +120,7 @@ function buildNavDots() {
 
 // ─── זכוכית מגדלת ───
 var magnifierActive = false;
-var magnifierZoom = 1.5;       // 150% — מספיק נוח, לא מטורף
+var magnifierZoom = 1.25;      // 125% — עדין ונוח
 var magnifierLensW = 300;
 var magnifierLensH = 220;
 
@@ -158,30 +158,11 @@ function toggleMagnifier() {
     btn.classList.add('active');
     hint.style.display = 'block';
     document.body.classList.add('magnifier-active');
-    // Enlarge text bubbles for readability
-    var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
-    if (slide) {
-      var textEl = slide.querySelector('.text');
-      if (textEl) {
-        textEl.style.transition = 'transform 0.3s ease';
-        textEl.style.transform = 'scale(1.35)';
-        textEl.style.transformOrigin = 'top right';
-      }
-    }
   } else {
     btn.classList.remove('active');
     lens.style.display = 'none';
     hint.style.display = 'none';
     document.body.classList.remove('magnifier-active');
-    // Restore text bubbles
-    var slides = document.getElementsByClassName('mySlides');
-    for (var i = 0; i < slides.length; i++) {
-      var textEl = slides[i].querySelector('.text');
-      if (textEl) {
-        textEl.style.transform = '';
-        textEl.style.transition = '';
-      }
-    }
   }
 }
 
