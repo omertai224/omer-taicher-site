@@ -230,9 +230,10 @@ num_steps = total_slides - 4
 - **אי-זוגי:** שורה עליונה ארוכה יותר ב-1, שורה תחתונה קצרה ב-1
 - **זוגי:** שתי שורות שוות, אחד מתחת לשני בדיוק
 - **כיוון: שמאל→ימין** (direction: ltr) — מספר 1 בשמאל
-- **3 עיגולים ריקים בהתחלה** (פתיחה, סרטון, הסבר) — בלי מספר
-- **עיגול ריק אחד בסוף** (מסך סיום) — בלי מספר
-- **כל השאר ממוספרים** מ-1 עד N (N = סה"כ שקפים - 4)
+- **שקפים מיוחדים = אייקון SVG** (פתיחה, סרטון, הורדה, שימוש, סיום) — בלי מספר
+- **צעדים רגילים = ממוספרים** מ-1 עד N רציף (רק שקפים עם תמונה+הוראה)
+- **slideMap** מגדיר לכל הדרכה אילו שקפים מיוחדים (אינדקס 0-based → אייקון)
+- **אייקונים זמינים:** home, play, download, monitor, search, finish
 - **עיגולים מתפרשים על כל הרוחב** בין הלוגו לחיצים (1fr, לא 26px!)
 - **צבע active:** כל העיגולים עד המיקום הנוכחי = כהה (#1e5f74), אחרי = בהיר (#a8c5d6)
 
@@ -317,26 +318,66 @@ num_steps = total_slides - 4
 .prev { right: 68px; }
 ```
 
-#### JS — script.js (להעתיק מ-Everything):
-**buildNavDots — הפונקציה הקריטית:**
+#### JS — script.js (מנגנון עיגולים חכמים):
+
+**specialIcons — אייקוני SVG זמינים (12x12px, לבנים):**
+```javascript
+var specialIcons = {
+  home:     '...', // בית — מסך פתיחה
+  play:     '...', // משולש play — סרטון
+  download: '...', // חץ למטה — שקף הורדה
+  monitor:  '...', // מסך — שקף שימוש
+  search:   '...', // זכוכית מגדלת — חיפוש
+  finish:   '...', // לב — מסך סיום
+};
+```
+(הקוד המלא של ה-SVGs נמצא ב-`Everything/script.js` — להעתיק משם)
+
+**slideMap — מפת שקפים מיוחדים (לכל הדרכה בנפרד!):**
+```javascript
+// דוגמה: Everything (43 שקפים)
+var slideMap = {
+  0:  { icon: 'home',   title: 'פתיחה' },
+  1:  { icon: 'play',   title: 'איך עובדים עם ההדרכה' },
+  2:  { icon: 'search', title: 'הכירו את Everything' },
+  42: { icon: 'finish', title: 'סיום' }
+};
+
+// דוגמה: Vibe (30 שקפים, עם שקפי מעבר)
+var slideMap = {
+  0:  { icon: 'home',     title: 'פתיחה' },
+  1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
+  2:  { icon: 'play',     title: 'הכירו את Vibe' },
+  3:  { icon: 'download', title: 'הורידו את Vibe' },
+  14: { icon: 'monitor',  title: 'השתמשו ב-Vibe' },
+  29: { icon: 'finish',   title: 'סיום' }
+};
+```
+
+**buildNavDots — בונה עיגולים חכמים:**
 ```javascript
 function buildNavDots() {
   let slides = document.getElementsByClassName("mySlides");
   let container = document.querySelector('.nav-dots');
   if (!container) return;
-  // חישוב עמודות: חצי מסה"כ העיגולים (עיגול = שקף)
   var cols = Math.ceil(slides.length / 2);
-  // 1fr = מתפרש על כל הרוחב! לא 26px!
   container.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
+  var stepNum = 0;
   for (let i = 0; i < slides.length; i++) {
     let dot = document.createElement('button');
     dot.className = 'nav-dot';
-    var skipStart = 3; // 3 שקפי פתיחה — עיגולים ריקים (בלי מספר)
-    var skipEnd = 1;   // שקף סיום — עיגול ריק (בלי מספר)
-    var isNumbered = (i >= skipStart && i < slides.length - skipEnd);
-    var stepNum = isNumbered ? (i - skipStart + 1) : '';
-    dot.title = isNumbered ? stepNum.toString() : (i < skipStart ? ['פתיחה','סרטון','הסבר'][i] : 'סיום');
-    dot.textContent = stepNum.toString();
+    var special = slideMap[i];
+    if (special) {
+      // שקף מיוחד — אייקון SVG (בלי מספר!)
+      dot.innerHTML = specialIcons[special.icon] || '';
+      dot.title = special.title;
+      dot.classList.add('nav-dot-icon');
+    } else {
+      // צעד רגיל — מספר רציף
+      stepNum++;
+      dot.textContent = stepNum.toString();
+      dot.title = stepNum.toString();
+    }
     (function(index) {
       dot.addEventListener('click', function() { showSlides(index + 1); });
     })(i);
@@ -345,39 +386,12 @@ function buildNavDots() {
 }
 ```
 
-**setNavBarColor — צביעת progress:**
-```javascript
-function setNavBarColor(n) {
-  let dots = document.getElementsByClassName("nav-dot");
-  for (let i = 0; i < dots.length; i++) {
-    if (i <= n - 1) {
-      dots[i].classList.add('active');    // כהה = עברנו כאן
-    } else {
-      dots[i].classList.remove('active'); // בהיר = עוד לא
-    }
-  }
-}
-```
+**כלל חשוב:** כל הדרכה חדשה — להתאים את `slideMap` לפי המבנה שלה! אינדקסים 0-based.
 
-**showSlides — ניווט + חיצים disabled:**
-```javascript
-function showSlides(n) {
-  let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length || n < 1) return;
-  slideIndex = n;
-  // חץ ימין disabled בשקף אחרון
-  let next = document.getElementById("right-arrow");
-  next.src = (n == slides.length) ? ".//images//right-disabled.png" : ".//images//right.png";
-  next.style.cursor = (n == slides.length) ? "default" : "pointer";
-  // חץ שמאל disabled בשקף ראשון
-  let previous = document.getElementById("left-arrow");
-  previous.src = (n == 1) ? ".//images//left-disabled.png" : ".//images//left.png";
-  previous.style.cursor = (n == 1) ? "default" : "pointer";
-  // הצגת השקף הנוכחי
-  for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-  slides[n - 1].style.display = "block";
-  setNavBarColor(n);
-}
+#### CSS נוסף לאייקונים:
+```css
+.nav-dot-icon { padding: 0; }
+.nav-dot-icon svg { display: block; }
 ```
 
 #### תמונות נדרשות בתיקיית images/:
@@ -388,13 +402,10 @@ function showSlides(n) {
 - `left-disabled.png` — חץ שמאלה (מושבת, שקף ראשון)
 
 #### דוגמה מספרית:
-- **43 שקפים** (3 פתיחה + 39 צעדים + 1 סיום) = 43 עיגולים
-  - עמודות: ceil(43/2) = 22
-  - שורה עליונה: 22 עיגולים, שורה תחתונה: 21 עיגולים
-  - 3 ריקים בהתחלה, מספרים 1-39, ריק אחד בסוף
-- **20 שקפים** (3 + 16 צעדים + 1) = 20 עיגולים
-  - עמודות: ceil(20/2) = 10
-  - שתי שורות של 10, אחד מתחת לשני בדיוק
+- **Vibe — 30 שקפים**: 6 מיוחדים (אייקון) + 24 ממוספרים (1-24)
+  - עמודות: ceil(30/2) = 15, שתי שורות של 15
+- **Everything — 43 שקפים**: 4 מיוחדים (אייקון) + 39 ממוספרים (1-39)
+  - עמודות: ceil(43/2) = 22, שורה עליונה 22, תחתונה 21
 
 ### מפרט נוסף — בועות טקסט ותמונות
 
