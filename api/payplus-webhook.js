@@ -23,8 +23,45 @@ const PRODUCTS = {
   security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', url: 'https://omertai.net/interactive/tutorials/Security/' }
 };
 
-async function sendTutorialEmail(customerEmail, customerName, product) {
+// שולח מייל — תומך במוצר בודד או כמה מוצרים (products = מערך)
+async function sendTutorialEmail(customerEmail, customerName, products) {
   if (!BREVO_KEY || !customerEmail) return;
+
+  const isMulti = products.length > 1;
+  const subject = isMulti
+    ? `ההדרכות שלכם מוכנות (${products.length} הדרכות)`
+    : `ההדרכה שלכם מוכנה - ${products[0].name}`;
+
+  const greeting = isMulti ? 'ההדרכות שלכם מוכנות ומחכות.' : 'ההדרכה שלכם מוכנה ומחכה.';
+
+  // בלוק מוצרים — כל מוצר עם שם + credentials + כפתור
+  const productBlocks = products.map(product => `
+    <div style="background:#fdf8f2;border-radius:12px;padding:16px;margin-bottom:12px;">
+      <p style="margin:0 0 4px;font-size:0.75rem;color:#8a7f72;font-weight:700;">מה קניתם</p>
+      <p style="margin:0;font-size:0.95rem;color:#1a4a6b;font-weight:800;">${product.name}</p>
+    </div>
+    ${product.user && product.pass ? `
+    <div style="background:#f0f7ff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #d0e3f5;">
+      <p style="margin:0 0 10px;font-size:0.75rem;color:#8a7f72;font-weight:700;">פרטי הכניסה שלכם</p>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr>
+          <td style="padding:4px 0;font-size:0.85rem;color:#8a7f72;width:90px;">שם משתמש</td>
+          <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.user}</td>
+        </tr>
+        <tr>
+          <td style="padding:4px 0;font-size:0.85rem;color:#8a7f72;">סיסמה</td>
+          <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.pass}</td>
+        </tr>
+      </table>
+      <p style="margin:10px 0 0;font-size:0.75rem;color:#1a4a6b;font-weight:800;line-height:1.5;">פרטי הכניסה אישיים ואינם ניתנים להעברה.</p>
+    </div>
+    ` : ''}
+    <div style="text-align:center;margin-bottom:20px;">
+      <a href="${product.url}" style="display:inline-block;background:#e8854a;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;">
+        עברו להדרכה עכשיו &#8592;
+      </a>
+    </div>
+  `).join('<hr style="border:none;border-top:1px solid #e8e0d5;margin:8px 0 16px;">');
 
   const htmlContent = `
 <!DOCTYPE html>
@@ -42,35 +79,11 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
     </div>
     <h1 style="text-align:center;color:#1a4a6b;font-size:1.4rem;margin:0 0 8px;">התשלום התקבל בהצלחה</h1>
     <p style="text-align:center;color:#8a7f72;font-size:0.9rem;margin:0 0 24px;">
-      ${customerName ? customerName + ',' : ''} ההדרכה שלכם מוכנה ומחכה.
+      ${customerName ? customerName + ',' : ''} ${greeting}
     </p>
-    <div style="background:#fdf8f2;border-radius:12px;padding:16px;margin-bottom:20px;">
-      <p style="margin:0 0 4px;font-size:0.75rem;color:#8a7f72;font-weight:700;">מה קניתם</p>
-      <p style="margin:0;font-size:0.95rem;color:#1a4a6b;font-weight:800;">${product.name}</p>
-    </div>
-    ${product.user && product.pass ? `
-    <div style="background:#f0f7ff;border-radius:12px;padding:16px;margin-bottom:20px;border:1px solid #d0e3f5;">
-      <p style="margin:0 0 10px;font-size:0.75rem;color:#8a7f72;font-weight:700;">פרטי הכניסה שלכם</p>
-      <table style="width:100%;border-collapse:collapse;">
-        <tr>
-          <td style="padding:4px 0;font-size:0.85rem;color:#8a7f72;width:90px;">שם משתמש</td>
-          <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.user}</td>
-        </tr>
-        <tr>
-          <td style="padding:4px 0;font-size:0.85rem;color:#8a7f72;">סיסמה</td>
-          <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.pass}</td>
-        </tr>
-      </table>
-      <p style="margin:10px 0 0;font-size:0.75rem;color:#1a4a6b;font-weight:800;line-height:1.5;">פרטי הכניסה אישיים ואינם ניתנים להעברה.</p>
-    </div>
-    ` : ''}
-    <div style="text-align:center;">
-      <a href="${product.url}" style="display:inline-block;background:#e8854a;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;">
-        עברו להדרכה עכשיו &#8592;
-      </a>
-    </div>
+    ${productBlocks}
     <p style="text-align:center;color:#8a7f72;font-size:0.78rem;margin-top:16px;">
-      הקישור הזה שלכם לצמיתות. שמרו את המייל הזה.
+      ${isMulti ? 'הקישורים האלה שלכם לצמיתות. שמרו את המייל הזה.' : 'הקישור הזה שלכם לצמיתות. שמרו את המייל הזה.'}
     </p>
   </div>
   <p style="text-align:center;color:#8a7f72;font-size:0.75rem;margin-top:20px;">
@@ -89,7 +102,7 @@ async function sendTutorialEmail(customerEmail, customerName, product) {
     body: JSON.stringify({
       sender: { name: 'עומר טייכר', email: 'omertai224@gmail.com' },
       to: [{ email: customerEmail, name: customerName || customerEmail }],
-      subject: `ההדרכה שלכם מוכנה - ${product.name}`,
+      subject,
       htmlContent
     })
   });
@@ -113,17 +126,33 @@ function formatPhone(phone) {
   return clean + '@c.us';
 }
 
-async function sendWhatsApp(customerPhone, customerName, product) {
+// שולח WhatsApp — תומך במוצר בודד או כמה מוצרים (products = מערך)
+async function sendWhatsApp(customerPhone, customerName, products) {
   if (!WA_INSTANCE || !WA_TOKEN || !customerPhone) return;
 
   const chatId = formatPhone(customerPhone);
   if (!chatId) return;
 
   const name = customerName ? ` ${customerName}` : '';
-  const loginBlock = product.user && product.pass
-    ? `\n\nפרטי הכניסה שלכם:\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*\n\nפרטי הכניסה אישיים ואינם ניתנים להעברה.`
+  const isMulti = products.length > 1;
+
+  // בניית בלוק לכל מוצר
+  const productBlocks = products.map(product => {
+    const loginBlock = product.user && product.pass
+      ? `\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
+      : '';
+    return `*${product.name}*\nלחצו כאן: ${product.url}${loginBlock}`;
+  }).join('\n\n───────────\n\n');
+
+  const intro = isMulti
+    ? `התשלום התקבל בהצלחה ✅\n\n${products.length} הדרכות מוכנות עבורכם:`
+    : `התשלום התקבל בהצלחה ✅\n\nההדרכה מוכנה עבורכם:`;
+
+  const credNote = products.some(p => p.user && p.pass)
+    ? '\n\nפרטי הכניסה אישיים ואינם ניתנים להעברה.'
     : '';
-  const message = `היי${name} 👋\n\nהתשלום התקבל בהצלחה ✅\n\nההדרכה *${product.name}* מוכנה עבורכם.\n\nלחצו כאן כדי להתחיל:\n${product.url}${loginBlock}\n\nשאלות?\nפשוט תענו להודעה הזו 😊\nעומר טייכר`;
+
+  const message = `היי${name} 👋\n\n${intro}\n\n${productBlocks}${credNote}\n\nשאלות?\nפשוט תענו להודעה הזו 😊\nעומר טייכר`;
 
   try {
     const apiUrl = `https://api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
@@ -193,26 +222,32 @@ export default async function handler(req, res) {
       const customerEmail = callbackData.customer_email;
       const customerName  = transaction.more_info_2 || callbackData.customer_name;
       const customerPhone = transaction.more_info_1 || callbackData.customer_phone;
-      const productKey    = transaction.more_info;
-      const product       = productKey && PRODUCTS[productKey] ? PRODUCTS[productKey] : null;
+      const moreInfo      = transaction.more_info || '';
+
+      // תמיכה במוצר בודד ("vibe") או כמה מוצרים ("vibe,everything")
+      const productKeys = moreInfo.split(',').filter(k => k && PRODUCTS[k]);
 
       console.log('Transaction approved, sending notifications:', {
-        customerEmail, customerName, customerPhone, productKey, hasProduct: !!product
+        customerEmail, customerName, customerPhone, productKeys
       });
 
-      if (product) {
-        // URL אישי עם שם הלקוח — מרגיש כמו חשבון אישי
-        const personalProduct = { ...product };
-        if (customerName) {
-          const sep = product.url.includes('?') ? '&' : '?';
-          personalProduct.url = product.url + sep + 'u=' + encodeURIComponent(customerName);
-        }
+      if (productKeys.length > 0) {
+        // בניית מערך מוצרים עם URL אישי לכל אחד
+        const personalProducts = productKeys.map(key => {
+          const product = { ...PRODUCTS[key] };
+          if (customerName) {
+            const sep = product.url.includes('?') ? '&' : '?';
+            product.url = product.url + sep + 'u=' + encodeURIComponent(customerName);
+          }
+          return product;
+        });
+
         const tasks = [];
-        if (customerEmail) tasks.push(sendTutorialEmail(customerEmail, customerName, personalProduct));
-        if (customerPhone) tasks.push(sendWhatsApp(customerPhone, customerName, personalProduct));
+        if (customerEmail) tasks.push(sendTutorialEmail(customerEmail, customerName, personalProducts));
+        if (customerPhone) tasks.push(sendWhatsApp(customerPhone, customerName, personalProducts));
         if (tasks.length) await Promise.allSettled(tasks);
       } else {
-        console.warn('Cannot send notifications:', { customerEmail, customerPhone, productKey, hasProduct: !!product });
+        console.warn('Cannot send notifications:', { customerEmail, customerPhone, moreInfo });
       }
     }
 
