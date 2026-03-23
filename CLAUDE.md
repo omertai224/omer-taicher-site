@@ -263,7 +263,7 @@ function buildNavDots() {
   let container = document.querySelector('.nav-dots');
   if (!container) return;
   var cols = Math.ceil(slides.length / 2);
-  container.style.gridTemplateColumns = 'repeat(' + cols + ', 26px)';
+  container.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
   for (let i = 0; i < slides.length; i++) {
     let dot = document.createElement('button');
     dot.className = 'nav-dot';
