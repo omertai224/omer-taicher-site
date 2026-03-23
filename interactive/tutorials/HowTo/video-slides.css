@@ -74,14 +74,14 @@ body {
 }
 
 .big-title {
-  font-size: clamp(42px, 4.5vw, 64px);
+  font-size: clamp(40px, 4.2vw, 62px);
   font-weight: 900;
   line-height: 1.1;
 }
 .big-title span { color: #f6a67e; }
 
 .desc {
-  font-size: clamp(18px, 1.8vw, 24px);
+  font-size: clamp(16px, 1.6vw, 22px);
   color: #ffffffcc;
   line-height: 1.7;
   max-width: 540px;
@@ -126,7 +126,7 @@ body {
 }
 
 .s-intro .title {
-  font-size: clamp(42px, 5.5vw, 74px);
+  font-size: clamp(40px, 5.2vw, 72px);
   font-weight: 900;
   line-height: 1.1;
   position: relative; z-index: 2;
@@ -136,7 +136,7 @@ body {
 .s-intro .title span { color: #f6a67e; }
 
 .s-intro .sub {
-  font-size: clamp(18px, 2vw, 26px);
+  font-size: clamp(16px, 1.8vw, 24px);
   color: #ffffffbb;
   max-width: 680px;
   line-height: 1.65;
@@ -149,7 +149,7 @@ body {
   bottom: 44px; left: 50%;
   transform: translateX(-50%);
   color: #ffffff44;
-  font-size: 17px;
+  font-size: 15px;
   letter-spacing: 1px;
   z-index: 2;
 }
@@ -185,9 +185,9 @@ body {
   flex-shrink: 0;
 }
 
-.concept-val { font-size: 19px; font-weight: 700; color: #ffffffcc; }
+.concept-val { font-size: 17px; font-weight: 700; color: #ffffffcc; }
 .concept-row.highlight .concept-val { color: #f6a67e; }
-.concept-sub { font-size: 14px; color: #ffffff77; margin-top: 4px; line-height: 1.5; }
+.concept-sub { font-size: 12px; color: #ffffff77; margin-top: 4px; line-height: 1.5; }
 
 /* ===== SLIDE 3 - הסדר הנכון ===== */
 .flow-visual {
@@ -218,8 +218,8 @@ body {
   margin-right: 23px;
 }
 
-.flow-text .flow-title { font-size: 20px; font-weight: 700; }
-.flow-text .flow-sub { font-size: 15px; color: #ffffffaa; margin-top: 4px; line-height: 1.5; }
+.flow-text .flow-title { font-size: 18px; font-weight: 700; }
+.flow-text .flow-sub { font-size: 13px; color: #ffffffaa; margin-top: 4px; line-height: 1.5; }
 
 /* ===== SLIDE 4 - חצים ===== */
 .arrows-visual {
@@ -253,7 +253,7 @@ body {
   animation: pulse-btn 2s ease-in-out infinite;
 }
 
-.arrow-label { font-size: 20px; color: #ffffffaa; }
+.arrow-label { font-size: 18px; color: #ffffffaa; }
 .arrow-label.active { color: #f6a67e; font-weight: 700; }
 
 /* ===== SLIDE 5 - פס ניווט ===== */
@@ -488,7 +488,7 @@ body {
 }
 
 .win-content-text {
-  font-size: 18px;
+  font-size: 16px;
   color: #ffffff33;
   text-align: center;
   line-height: 1.6;
@@ -505,7 +505,7 @@ body {
   max-width: 520px;
 }
 
-.warning-box p { font-size: 18px; color: #ffffffcc; line-height: 1.6; }
+.warning-box p { font-size: 16px; color: #ffffffcc; line-height: 1.6; }
 .warning-box strong { color: white; }
 
 /* ===== SLIDE 9 - סיום ===== */
@@ -526,7 +526,7 @@ body {
 }
 
 .s-outro .main-text {
-  font-size: clamp(56px, 6vw, 90px);
+  font-size: clamp(54px, 5.8vw, 88px);
   font-weight: 900;
   position: relative; z-index: 2;
   line-height: 1.1;
@@ -540,7 +540,7 @@ body {
 }
 
 .s-outro .sub-text {
-  font-size: clamp(20px, 2vw, 28px);
+  font-size: clamp(18px, 1.8vw, 26px);
   color: #ffffffaa;
   position: relative; z-index: 2;
   letter-spacing: 1px;
