@@ -129,7 +129,7 @@ function initMagnifier() {
   var btn = document.createElement('button');
   btn.className = 'magnifier-btn';
   btn.id = 'magnifier-btn';
-  btn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>';
+  btn.innerHTML = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>';
   btn.title = 'זכוכית מגדלת';
   btn.addEventListener('click', toggleMagnifier);
   document.body.appendChild(btn);
@@ -168,7 +168,7 @@ function toggleMagnifier() {
   }
 }
 
-// Position button centered in the black area (left of the image)
+// Position button centered in the VISIBLE black area (excluding 80px nav bar)
 function positionMagnifierBtn() {
   var btn = document.getElementById('magnifier-btn');
   if (!btn || btn.style.display === 'none') return;
@@ -180,12 +180,14 @@ function positionMagnifierBtn() {
 
   var rect = img.getBoundingClientRect();
   var blackLeft = rect.left; // width of black area on the left
+  var visibleHeight = window.innerHeight - 80; // subtract nav bar
+  var btnSize = 64;
 
   if (blackLeft > 70) {
-    // Center button in the black area
-    btn.style.left = (blackLeft / 2 - 24) + 'px';
-    btn.style.top = '50%';
-    btn.style.transform = 'translateY(-50%)';
+    // Center button in the visible black area
+    btn.style.left = (blackLeft / 2 - btnSize / 2) + 'px';
+    btn.style.top = (visibleHeight / 2 - btnSize / 2) + 'px';
+    btn.style.transform = '';
   } else {
     // Narrow screen — top-left corner
     btn.style.left = '16px';
@@ -193,12 +195,12 @@ function positionMagnifierBtn() {
     btn.style.transform = '';
   }
 
-  // Position hint below button
+  // Position hint below button, in the black area
   var hint = document.getElementById('magnifier-hint');
   if (hint) {
     var btnRect = btn.getBoundingClientRect();
-    hint.style.left = btnRect.left + 'px';
-    hint.style.top = (btnRect.bottom + 8) + 'px';
+    hint.style.left = Math.max(8, btnRect.left + btnSize / 2 - hint.offsetWidth / 2) + 'px';
+    hint.style.top = (btnRect.bottom + 12) + 'px';
   }
 }
 
