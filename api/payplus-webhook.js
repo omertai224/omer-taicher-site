@@ -139,7 +139,7 @@ async function sendWhatsApp(customerPhone, customerName, products) {
   // בניית בלוק לכל מוצר
   const productBlocks = products.map(product => {
     const loginBlock = product.user && product.pass
-      ? `\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
+      ? `\n\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
       : '';
     return `*${product.name}*\n\nלחצו כאן: ${product.url}${loginBlock}`;
   }).join('\n\n\n');
