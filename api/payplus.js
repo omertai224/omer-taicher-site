@@ -31,11 +31,9 @@ function loadProducts() {
   } catch(e) {
     // fallback אם הקובץ לא נמצא
     return {
-      vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
-      ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
-      files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
-      security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
-      google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
+      vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 47 },
+      everything: { name: 'Everything — חיפוש מיידי בכל הקבצים במחשב', price: 47 },
+      security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', price: 47 }
     };
   }
 }
@@ -51,6 +49,7 @@ export default async function handler(req, res) {
   try {
     const {
       productKey,
+      productKeys,
       customerName,
       customerEmail,
       customerPhone
@@ -58,11 +57,13 @@ export default async function handler(req, res) {
 
     const PRODUCTS = loadProducts();
 
-    if (!productKey || !PRODUCTS[productKey]) {
+    // תמיכה במוצר בודד או כמה מוצרים בסל
+    const keys = (productKeys && productKeys.length) ? productKeys : (productKey ? [productKey] : []);
+    const validKeys = keys.filter(k => PRODUCTS[k]);
+
+    if (validKeys.length === 0) {
       return res.status(400).json({ error: 'מוצר לא תקין' });
     }
-
-    const product = PRODUCTS[productKey];
 
     if (customerEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customerEmail)) {
       return res.status(400).json({ error: 'כתובת אימייל לא תקינה' });
@@ -70,35 +71,44 @@ export default async function handler(req, res) {
 
     const TUTORIAL_URLS = {
       vibe: 'https://omertai.net/interactive/tutorials/Vibe/',
-      ai: 'https://omertai.net/interactive/AI/',
-      files: 'https://omertai.net/interactive/Files/',
-      security: 'https://omertai.net/interactive/Security/',
-      google: 'https://omertai.net/interactive/Google/'
+      everything: 'https://omertai.net/interactive/tutorials/Everything/',
+      security: 'https://omertai.net/interactive/tutorials/Security/'
     };
-    const successUrl = TUTORIAL_URLS[productKey] || 'https://omertai.net/interactive/';
-    const failUrl    = `https://omertai.net/pages/checkout/?product=${productKey}&status=failed`;
+
+    // סכום כולל + רשימת מוצרים ל-PayPlus
+    const totalAmount = validKeys.reduce((sum, k) => sum + PRODUCTS[k].price, 0);
+    const payPlusProducts = validKeys.map(k => ({
+      name: PRODUCTS[k].name,
+      quantity: 1,
+      price: PRODUCTS[k].price
+    }));
+
+    // אם מוצר בודד — הפניה ישירה להדרכה. כמה מוצרים — לדף ההדרכות
+    const successUrl = validKeys.length === 1
+      ? (TUTORIAL_URLS[validKeys[0]] || 'https://omertai.net/interactive/')
+      : 'https://omertai.net/interactive/';
+    const failUrl = validKeys.length === 1
+      ? `https://omertai.net/pages/checkout/?product=${validKeys[0]}&status=failed`
+      : `https://omertai.net/pages/checkout/?cart=${validKeys.join(',')}&status=failed`;
+
+    // more_info שומר את כל ה-keys (מופרד בפסיקים) — ה-webhook יודע לפרסר
+    const allKeys = validKeys.join(',');
 
     const payload = {
       payment_page_uid: PAGE_UID,
       charge_method: 1,
-      amount: product.price,
+      amount: totalAmount,
       currency_code: 'ILS',
       sendEmailApproval: true,
       sendEmailFailure: true,
       initial_invoice: true,
-      products: [
-        {
-          name: product.name,
-          quantity: 1,
-          price: product.price
-        }
-      ],
+      products: payPlusProducts,
       customer: {
         customer_name: customerName || '',
         email: customerEmail || '',
         phone: customerPhone || ''
       },
-      more_info: productKey,
+      more_info: allKeys,
       more_info_1: customerPhone || '',
       more_info_2: customerName || '',
       refURL_success: successUrl,

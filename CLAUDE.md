@@ -650,6 +650,146 @@ cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/scrip
 6. הוספת שקפים מיוחדים (פתיחה, סרטון, הכירו, UAC, מעבר, סיום) → **דחיפה**
 7. עדכון slideMap + לוגו → **דחיפה**
 8. בדיקת תקינות (צ'קליסט) → **דחיפה סופית**
+9. **הכנסה למאגר ולמכירה** (ראו שלב מפורט למטה) → **דחיפה**
+
+### שלב 9: הכנסת הדרכה מוכנה למאגר ולמכירה — צ'קליסט מלא
+
+**Vibe הוא המודל המושלם.** כל הדרכה חדשה חייבת לעבוד בדיוק כמוהו — אותו זרימת קנייה, אותם מיילים, אותו WhatsApp, אותו מנגנון "מחובר כ:".
+
+**כשהדרכה מוכנה (HTML + שקפים + ניווט עובד) — עושים את 5 הצעדים האלה:**
+
+#### צעד 1: הוספה לקטלוג — `interactive/interactive.json`
+```json
+{
+  "key": "everything",
+  "title": "כותרת קצרה ומושכת",
+  "desc": "תיאור של 1-2 משפטים",
+  "steps": 31,
+  "url": "./tutorials/Everything/index.html",
+  "price": 47,
+  "category": "כלים · חיפוש · Windows",
+  "status": "active",
+  "label": "חדש",
+  "thumb": "teal",
+  "includes": ["נקודה 1", "נקודה 2", "נקודה 3"]
+}
+```
+- **`key`** = מזהה ייחודי (אותיות קטנות, בלי רווחים) — משמש בכל המערכת!
+- **`status`**: `"active"` = למכירה, `"coming_soon"` = מוצג עם "בקרוב"
+- **`thumb`**: צבע האייקון — `"navy"` / `"teal"` / `"purple"`
+- **`includes`**: 3 נקודות שמופיעות בכרטיס המוצר
+- **זה מקור האמת!** — דף הבית, פאנל ניהול, ו-checkout כולם קוראים מכאן
+
+#### צעד 2: הוספה למערכת תשלום — `api/payplus.js`
+שני מקומות לעדכן:
+
+**א. TUTORIAL_URLS** (שורה ~71) — לאן הלקוח מופנה אחרי תשלום מוצלח:
+```javascript
+const TUTORIAL_URLS = {
+  vibe: 'https://omertai.net/interactive/tutorials/Vibe/',
+  everything: 'https://omertai.net/interactive/tutorials/Everything/',  // ← הוסף
+  // ...
+};
+```
+
+**ב. Fallback products** (שורה ~33) — גיבוי אם interactive.json לא נטען:
+```javascript
+return {
+  vibe:       { name: '...', price: 47 },
+  everything: { name: '...', price: 47 },  // ← הוסף
+};
+```
+
+#### צעד 3: הוספה ל-webhook — `api/payplus-webhook.js`
+**זה הקובץ הקריטי!** מכאן נשלחים המייל וה-WhatsApp אחרי תשלום.
+
+```javascript
+const PRODUCTS = {
+  vibe:       { name: '...', url: 'https://omertai.net/interactive/tutorials/Vibe/',       user: 'student', pass: 'Sv8472t' },
+  everything: { name: '...', url: 'https://omertai.net/interactive/tutorials/Everything/', user: 'student', pass: 'Ex9183k' },  // ← הוסף
+};
+```
+
+**חובה:**
+- **`user` + `pass`** — בלעדיהם הלקוח לא יקבל credentials במייל ובוואטסאפ!
+- **`url`** — חייב להיות URL מלא (https://omertai.net/...) לא יחסי
+- **`name`** — מופיע בנושא המייל ובהודעת WhatsApp
+
+**מה קורה אחרי תשלום (אוטומטי):**
+1. PayPlus שולח callback ל-`/api/payplus-webhook`
+2. Webhook בודק `status_code === '000'` (אושר)
+3. מוצא את המוצר לפי `more_info` (= productKey)
+4. מוסיף `?u=שם_הלקוח` ל-URL (לינק אישי)
+5. שולח **מייל** עם: שם המוצר, credentials בטבלה, כפתור "עברו להדרכה"
+6. שולח **WhatsApp** עם: שם המוצר, credentials, לינק אישי
+
+#### צעד 4: מנגנון "מחובר כ:" — `index.html` של ההדרכה
+**להוסיף 3 פונקציות לסקריפט הלוגין:**
+
+```javascript
+function getPersonalName() {
+  var params = new URLSearchParams(window.location.search);
+  var name = params.get('u');
+  if (name) {
+    localStorage.setItem('[key]_user_display', name);  // key = מזהה ההדרכה
+    return name;
+  }
+  return localStorage.getItem('[key]_user_display') || '';
+}
+
+function showPersonalBadge() {
+  var name = getPersonalName();
+  if (!name) return;
+  var badge = document.createElement('div');
+  badge.id = 'user-badge';
+  badge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5b8fa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' +
+    '<span style="color:#ffffffaa;font-size:11px;">מחובר כ:</span> ' +
+    '<span style="color:white;font-weight:700;font-size:12px;">' + name + '</span>';
+  badge.style.cssText = 'position:fixed;top:12px;left:12px;z-index:9000;background:#0f1a2eee;border:1px solid #ffffff22;border-radius:20px;padding:6px 14px;font-family:Rubik,sans-serif;display:flex;align-items:center;gap:4px;backdrop-filter:blur(8px);box-shadow:0 4px 16px #00000044;';
+  document.body.appendChild(badge);
+}
+```
+
+**ולעדכן את הפונקציות הקיימות:**
+- `initApp()` — להוסיף `getPersonalName();` בתחילת הפונקציה
+- `showTutorial()` — להוסיף `showPersonalBadge();` לפני `showSlides(1)`
+
+**localStorage keys — חייבים להיות ייחודיים לכל הדרכה!**
+- `[key]_logged_in` — למשל `everything_logged_in`
+- `[key]_user_display` — למשל `everything_user_display`
+
+#### צעד 5: אייקון בדף הבית — `index.html` (ראשי)
+**להוסיף אייקון SVG ל-`wsIcons`** (שורה ~330):
+```javascript
+const wsIcons = {
+  vibe: '<svg ...>...</svg>',
+  everything: '<svg ...>...</svg>',  // ← הוסף: אייקון 56x56 מתאים לנושא
+};
+```
+- הדף הבית טוען מוצרים מ-`interactive.json` ומשתמש ב-`wsIcons[p.key]` לרנדור
+- אם אין אייקון — הכרטיס יופיע בלי תמונה (לא שבור, אבל לא יפה)
+- אייקונים טובים: [Phosphor Icons](https://phosphoricons.com/) — duotone, 256x256 viewBox
+
+#### סיכום — מה הלקוח חווה אחרי הכל:
+```
+לקוח רואה הדרכה בדף הבית
+  → לוחץ "להצטרפות"
+  → מגיע ל-/pages/checkout/?product=[key]
+  → ממלא שם + אימייל + טלפון (אופציונלי)
+  → משלם 47 ש"ח ב-PayPlus
+  → מופנה ישירות להדרכה
+  → מקבל מייל עם: שם המוצר + credentials + כפתור להדרכה עם ?u=שם
+  → מקבל WhatsApp עם: אותו מידע
+  → נכנס להדרכה → מזין student/סיסמה → רואה "מחובר כ: השם שלו"
+  → הפעם הבאה: כבר מחובר (localStorage)
+```
+
+#### מוצרים פעילים (עדכון מרץ 2026):
+| key | שם | מחיר | סטטוס | credentials |
+|-----|----|-------|--------|-------------|
+| `vibe` | תמלול שמע ווידאו | 47 ש"ח | פעיל | student / Sv8472t |
+| `everything` | חיפוש קבצים | 47 ש"ח | פעיל | student / Ex9183k |
+| `security` | סיסמאות ואבטחה | 47 ש"ח | בקרוב | — |
 
 ## כלל קבצים קטנים
 - **קובץ גדול וקשה לקריאה = מחלקים אותו.** לא דוחפים הכל לקובץ אחד.

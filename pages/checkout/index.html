@@ -309,11 +309,9 @@ fetch('/interactive/interactive.json')
   .catch(function() {
     // fallback אם הטעינה נכשלה
     PRODUCTS = {
-      vibe:     { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 97 },
-      ai:       { name: 'AI לכולם, ChatGPT, Claude וגוגל בשפה שלכם',  price: 47 },
-      files:    { name: 'לסדר את המחשב, ארגון קבצים, תיקיות וענן',    price: 47 },
-      security: { name: 'גלישה בטוחה, סיסמאות, הגנה ומה לא ללחוץ',  price: 47 },
-      google:   { name: 'גוגל מאלף עד תו, Docs, Drive, Gmail ו-Slides', price: 97 }
+      vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 47 },
+      everything: { name: 'Everything — חיפוש מיידי בכל הקבצים במחשב', price: 47 },
+      security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', price: 47 }
     };
     buildCart();
     renderOrder();
@@ -367,11 +365,17 @@ document.getElementById('pay-btn').addEventListener('click', async () => {
   btn.disabled = true;
 
   try {
+    // אוסף את כל ה-keys בסל
+    const cartKeys = [];
+    if (productParam && PRODUCTS[productParam]) cartKeys.push(productParam);
+    if (cartParam) cartParam.split(',').forEach(function(k) { if (PRODUCTS[k] && cartKeys.indexOf(k) === -1) cartKeys.push(k); });
+
     const response = await fetch('/api/payplus', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        productKey: productParam,
+        productKey: cartKeys.length === 1 ? cartKeys[0] : cartKeys[0],
+        productKeys: cartKeys,
         customerName: name,
         customerEmail: email,
         customerPhone: phone
