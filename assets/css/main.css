@@ -115,7 +115,8 @@ nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,2
 .pain-section { background: var(--navy); padding: 64px 20px; }
 .pain-inner { max-width: 1100px; margin: 0 auto; }
 .pain-title { font-size: clamp(1.7rem, 6vw, 2.6rem); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 40px; }
-.pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pain-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+@media (min-width: 480px) { .pain-grid { grid-template-columns: 1fr 1fr; } }
 .pain-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 22px; transition: background 0.2s, box-shadow 0.2s; }
 .pain-card:hover { background: rgba(255,255,255,0.1); box-shadow: inset 0 0 0 1px rgba(246,166,126,0.4); }
 .pain-icon { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; background: rgba(246,166,126,0.12); border-radius: 12px; margin-bottom: 14px; }
