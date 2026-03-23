@@ -145,7 +145,7 @@ function initMagnifier() {
   var escHint = document.createElement('div');
   escHint.className = 'magnifier-esc-hint';
   escHint.id = 'magnifier-esc-hint';
-  escHint.innerHTML = 'ניתן ללחוץ<br>Escape<br>לביטול';
+  escHint.innerHTML = 'ניתן ללחוץ<br>Esc<br>במקלדת לביטול';
   document.body.appendChild(escHint);
 }
 
