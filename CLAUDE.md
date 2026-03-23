@@ -265,7 +265,7 @@ num_steps = total_slides - len(slideMap)
 - **slideMap** מגדיר לכל הדרכה אילו שקפים מיוחדים (אינדקס 0-based → אייקון)
 - **אייקונים זמינים:** home, play, download, monitor, search, finish
 - **עיגולים מתפרשים על כל הרוחב** בין הלוגו לחיצים (1fr, לא 26px!)
-- **צבע active:** כל העיגולים עד המיקום הנוכחי = כהה (#1e5f74), אחרי = בהיר (#a8c5d6)
+- **צבע active:** צעדים = כחול כהה (#1e5f74) עד המיקום הנוכחי, בהיר (#a8c5d6) אחרי. **מיוחדים = כתום כהה (#e8834e) עד המיקום, כתום בהיר (#f6a67e) אחרי**
 
 #### HTML — מבנה פס הניווט ב-index.html:
 ```html
@@ -332,7 +332,8 @@ num_steps = total_slides - len(slideMap)
   line-height: 1;
 }
 .nav-dot:hover { background-color: #1e5f74; transform: scale(1.15); }
-.nav-dot.active { background-color: #1e5f74; } /* כהה = visited */
+.nav-dot.active { background-color: #1e5f74; } /* כהה = visited — צעדים בלבד */
+/* עיגולים מיוחדים = כתום! ראו CSS נוסף לאייקונים למטה */
 
 /* שקפים — גובה מותאם לפס 80px */
 .mySlides { min-height: calc(100vh - 80px); }
@@ -426,11 +427,17 @@ function buildNavDots() {
 
 **כלל חשוב:** כל הדרכה חדשה — להתאים את `slideMap` לפי המבנה שלה! אינדקסים 0-based.
 
-#### CSS נוסף לאייקונים:
+#### CSS נוסף לאייקונים — הפרדה כחול/כתום:
+**עיגולי צעדים (1,2,3...) = כחולים. עיגולים מיוחדים (אייקונים) = כתומים.**
 ```css
-.nav-dot-icon { padding: 0; }
+.nav-dot-icon { padding: 0; background-color: #f6a67e; }
+.nav-dot-icon:hover { background-color: #e8834e; }
+.nav-dot-icon.active { background-color: #e8834e; }
 .nav-dot-icon svg { display: block; }
 ```
+- צעדים: `#a8c5d6` (בהיר) → `#1e5f74` (כהה, active)
+- מיוחדים: `#f6a67e` (כתום בהיר) → `#e8834e` (כתום כהה, active)
+- אייקונים לבנים בתוך הכתום
 
 #### תמונות נדרשות בתיקיית images/:
 - `logo.png` — לוגו עומר טייכר
