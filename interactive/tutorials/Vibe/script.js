@@ -66,8 +66,10 @@ var specialIcons = {
   download: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v10M8 11l4 4 4-4"/><path d="M5 19h14"/></svg>',
   // מסך/שימוש — שקף מעבר שימוש
   monitor: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
-  // סיום — לב/צ'ק
-  finish: '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>'
+  // סיום — נורה (רעיונות / מה עכשיו?)
+  finish: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>',
+  // מיקרופון — הכירו את התוכנה (תמלול)
+  mic: '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>'
 };
 
 // ─── מפת שקפים: אינדקס (0-based) → {icon, title} ───
@@ -75,9 +77,9 @@ var specialIcons = {
 var slideMap = {
   0:  { icon: 'home',     title: 'פתיחה' },
   1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
-  2:  { icon: 'play',     title: 'הכירו את Vibe' },
+  2:  { icon: 'mic',      title: 'הכירו את Vibe' },
   3:  { icon: 'download', title: 'הורידו את Vibe' },
-  15: { icon: 'monitor',  title: 'השתמשו ב-Vibe' },
+  14: { icon: 'monitor',  title: 'השתמשו ב-Vibe' },
   30: { icon: 'finish',   title: 'סיום' }
 };
 
