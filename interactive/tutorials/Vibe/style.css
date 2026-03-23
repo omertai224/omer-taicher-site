@@ -33,16 +33,6 @@ a { word-break: break-all; }
 
 .image-center {
   position: relative;
-  height: calc(100vh - 80px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.image-center img {
-  max-height: 100%;
-  width: auto;
-  max-width: 100%;
 }
 
 /* ─── כפתורי ניווט ─── */
@@ -324,6 +314,54 @@ a { word-break: break-all; }
   from { opacity: 0.6; }
   to   { opacity: 1; }
 }
+
+/* ─── זכוכית מגדלת ─── */
+.magnifier-btn {
+  position: fixed;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #a8c5d6;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  cursor: pointer;
+  display: none; /* shown + positioned by JS */
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.magnifier-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+}
+.magnifier-btn.active {
+  border-color: #f6a67e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+}
+.magnifier-btn svg {
+  pointer-events: none;
+}
+
+.magnifier-lens {
+  position: fixed;
+  width: 420px;
+  height: 300px;
+  border-radius: 12px;
+  border: 3px solid #f6a67e;
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.3), 0 8px 32px rgba(0,0,0,0.5);
+  pointer-events: none;
+  z-index: 9;
+  display: none;
+  overflow: hidden;
+  background-color: #1a1a2e;
+}
+
+.magnifier-active .image-center {
+  cursor: none;
+}
+
 
 /* ─── responsive ─── */
 @media only screen and (max-width: 300px) {
