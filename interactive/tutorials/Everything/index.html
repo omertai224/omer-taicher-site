@@ -188,9 +188,56 @@ function showTutorial(){setNavBarColor(1);showSlides(1);}
   </button>
 </div>
 </div>
-<div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_9.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_9.png" style="height:calc(100vh - 80px);width:auto;"><div class="text" style="bottom:5%;left:5%;position:absolute;width:300; height: fit-content;">
-<div style="text-align:right;direction:rtl;"><svg width="18" height="18" viewBox="0 0 24 24" fill="#f6a67e" stroke="#1a1a2e" stroke-width="2" style="vertical-align:middle;margin-left:6px;"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13" stroke="#1a1a2e" stroke-width="2.5"/><line x1="12" y1="17" x2="12.01" y2="17" stroke="#1a1a2e" stroke-width="2.5"/></svg><b style="font-size:18px;color:#f6a67e;"> שימו לב!</b></div>
-<div style="text-align:right;direction:rtl;margin-top:8px;">אם קופץ לכם החלון הזה במהלך ההתקנה — תמיד לחצו על <span style="color:#f6a67e;">כן</span>.</div><a class="button" onclick="nextSlide(1)">Next</a></div></div></div></div>
+<div class="mySlides fade">
+<style>
+.uac-wrap{display:flex;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);overflow:hidden;}
+.uac-left{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;}
+.uac-left img{max-height:80vh;max-width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.5);}
+.uac-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;direction:rtl;text-align:right;gap:20px;}
+.uac-badge{display:inline-flex;align-items:center;gap:8px;background:#f6a67e22;border:1px solid #f6a67e55;color:#f6a67e;padding:6px 16px;border-radius:50px;font-size:13px;font-weight:700;width:fit-content;}
+.uac-title{font-size:clamp(22px,2.5vw,32px);font-weight:900;color:white;line-height:1.3;}
+.uac-title span{color:#f6a67e;}
+.uac-explain{background:rgba(255,255,255,0.06);border-radius:16px;padding:20px 24px;display:flex;flex-direction:column;gap:14px;}
+.uac-point{display:flex;gap:12px;align-items:flex-start;color:#ffffffcc;font-size:15px;line-height:1.6;}
+.uac-point-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.uac-point-green{background:rgba(76,175,80,0.2);color:#66bb6a;}
+.uac-point-blue{background:rgba(30,95,116,0.3);color:#5b8fa8;}
+.uac-bottom{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#1e5f74,#5b8fa8);padding:14px 20px;border-radius:12px;}
+.uac-bottom-text{color:white;font-size:16px;font-weight:700;}
+.uac-bottom-arrow{color:#f6a67e;font-size:22px;}
+@media(max-width:900px){.uac-wrap{flex-direction:column;}.uac-left{max-height:40vh;}.uac-right{padding:20px;}}
+</style>
+<div class="uac-wrap">
+  <div class="uac-left">
+    <img src=".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_9.png" alt="בקרת חשבון משתמש">
+  </div>
+  <div class="uac-right">
+    <div class="uac-badge">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#f6a67e" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      זה בסדר גמור!
+    </div>
+    <div class="uac-title">קופץ לכם <span>חלון כזה?</span><br>אל תפחדו — זה נורמלי.</div>
+    <div class="uac-explain">
+      <div class="uac-point">
+        <div class="uac-point-icon uac-point-blue">🛡</div>
+        <div><b style="color:white;">זה וינדוס ששומר עליכם</b> — כל פעם שמתקינים תוכנה חדשה, וינדוס שואל אם אתם בטוחים. זה סימן טוב!</div>
+      </div>
+      <div class="uac-point">
+        <div class="uac-point-icon uac-point-green">✓</div>
+        <div><b style="color:white;">התוכנה בטוחה</b> — הורדתם אותה מהאתר הרשמי, ממש בשלב הקודם. אין סיבה לדאגה.</div>
+      </div>
+      <div class="uac-point">
+        <div class="uac-point-icon uac-point-blue">🔄</div>
+        <div><b style="color:white;">זה קורה תמיד</b> — בכל התקנה של כל תוכנה. גם תוכנות שאתם כבר מכירים מציגות את החלון הזה.</div>
+      </div>
+    </div>
+    <div class="uac-bottom" style="cursor:pointer;" onclick="nextSlide()">
+      <div class="uac-bottom-arrow">👆</div>
+      <div class="uac-bottom-text">לחצו על "כן" והמשיכו להתקנה</div>
+    </div>
+  </div>
+</div>
+</div>
 <div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_10.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_10.png" style="height:calc(100vh - 80px);width:auto;"><div class="box 84" style="top:51.7222%;left:41.4186%;right:52.0581%;bottom:44.5%;"></div><div class="text arrow-left" style="left:calc(47.9419% + 15px);top:calc(53.6111% - 25px);position:absolute;width:300; height: fit-content;">
 					 <div style="text-align: right;">3<div style="color: #ffffffbb;display: inline;">/31</div></div><b style="font-size:24px;padding: 8px 0px;"></b><div>בחרו שפה מהרשימה ולחצו על <span style="color:#f6a67e;">OK</span></div></div></div></div></div>
 <div class="mySlides fade"><div class="image"><div class="image-center"><img id="How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_11.png" src =".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_11.png" style="height:calc(100vh - 80px);width:auto;"><div class="box 85" style="top:65.0556%;left:38.5116%;right:54.9651%;bottom:31.1667%;"></div><div class="text arrow-left" style="left:calc(45.0349% + 15px);top:calc(66.9444% - 25px);position:absolute;width:300; height: fit-content;">
