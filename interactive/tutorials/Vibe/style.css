@@ -111,9 +111,16 @@ a { word-break: break-all; }
   background-color: #1e5f74;
 }
 
-/* עיגול עם אייקון SVG — שקפי מעבר */
+/* עיגול עם אייקון SVG — שקפי מעבר (כתום!) */
 .nav-dot-icon {
   padding: 0;
+  background-color: #f6a67e;
+}
+.nav-dot-icon:hover {
+  background-color: #e8834e;
+}
+.nav-dot-icon.active {
+  background-color: #e8834e;
 }
 .nav-dot-icon svg {
   display: block;
