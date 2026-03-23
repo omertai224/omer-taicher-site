@@ -44,6 +44,7 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   setNavBarColor(slideIndex);
   updateMagnifierVisibility();
+  updateTtsVisibility();
 }
 
 function setNavBarColor(n) {
@@ -276,11 +277,111 @@ document.addEventListener('mousemove', function(e) {
   }
 });
 
-window.addEventListener('resize', positionMagnifierBtn);
+window.addEventListener('resize', function() {
+  positionMagnifierBtn();
+  positionTtsBtn();
+});
+
+// ─── הקראה בקול (TTS) ───
+var ttsActive = false;
+
+function initTts() {
+  var btn = document.createElement('button');
+  btn.className = 'tts-btn';
+  btn.id = 'tts-btn';
+  btn.innerHTML = '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>';
+  btn.title = 'הקראה בקול';
+  btn.addEventListener('click', toggleTts);
+  document.body.appendChild(btn);
+}
+
+function toggleTts() {
+  var btn = document.getElementById('tts-btn');
+  if (ttsActive) {
+    // Stop speaking
+    speechSynthesis.cancel();
+    ttsActive = false;
+    btn.classList.remove('active');
+    return;
+  }
+
+  // Get current slide text
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  if (!slide) return;
+  var textEl = slide.querySelector('.text');
+  if (!textEl) return;
+
+  // Extract clean text from the bubble
+  var text = textEl.innerText.replace(/^\d+\/\d+\s*/, ''); // remove step counter
+  if (!text.trim()) return;
+
+  var utterance = new SpeechSynthesisUtterance(text.trim());
+  utterance.lang = 'he-IL';
+  utterance.rate = 0.85; // קצת יותר איטי — נוח למבוגרים
+
+  utterance.onstart = function() {
+    ttsActive = true;
+    btn.classList.add('active');
+  };
+  utterance.onend = function() {
+    ttsActive = false;
+    btn.classList.remove('active');
+  };
+  utterance.onerror = function() {
+    ttsActive = false;
+    btn.classList.remove('active');
+  };
+
+  speechSynthesis.cancel(); // cancel any previous
+  speechSynthesis.speak(utterance);
+}
+
+function positionTtsBtn() {
+  var btn = document.getElementById('tts-btn');
+  if (!btn || btn.style.display === 'none') return;
+
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  if (!slide) return;
+  var img = slide.querySelector('.image-center > img');
+  if (!img) return;
+
+  var rect = img.getBoundingClientRect();
+  var blackRight = window.innerWidth - rect.right; // width of black area on the right
+  var visibleHeight = window.innerHeight - 80;
+  var btnSize = 80;
+
+  if (blackRight > 70) {
+    btn.style.right = (blackRight / 2 - btnSize / 2) + 'px';
+    btn.style.left = '';
+    btn.style.top = (visibleHeight / 2 - btnSize / 2) + 'px';
+  } else {
+    btn.style.right = '16px';
+    btn.style.left = '';
+    btn.style.top = '16px';
+  }
+}
+
+function updateTtsVisibility() {
+  var btn = document.getElementById('tts-btn');
+  if (!btn) return;
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  var textEl = slide ? slide.querySelector('.text') : null;
+  btn.style.display = textEl ? 'flex' : 'none';
+  // Stop speaking when changing slides
+  if (ttsActive) {
+    speechSynthesis.cancel();
+    ttsActive = false;
+    btn.classList.remove('active');
+  }
+  if (textEl) {
+    setTimeout(positionTtsBtn, 50);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function() {
   buildNavDots();
   initMagnifier();
+  initTts();
   showSlides(slideIndex);
 });
 
