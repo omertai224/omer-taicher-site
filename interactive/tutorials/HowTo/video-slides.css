@@ -41,14 +41,14 @@ body {
 /* badge top-right */
 .step-badge {
   position: absolute;
-  top: 40px;
+  top: 20px;
   right: 40px;
   background: #f6a67e22;
   border: 1px solid #f6a67e55;
   color: #f6a67e;
-  padding: 8px 22px;
+  padding: 6px 18px;
   border-radius: 50px;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 1px;
   z-index: 5;
