@@ -190,6 +190,8 @@ cp interactive/tutorials/Everything/images/left.png interactive/tutorials/[שם]
 cp interactive/tutorials/Everything/images/right-disabled.png interactive/tutorials/[שם]/images/
 cp interactive/tutorials/Everything/images/left-disabled.png interactive/tutorials/[שם]/images/
 cp interactive/tutorials/Everything/images/logo.png interactive/tutorials/[שם]/images/
+# להעתיק תמונת UAC גנרית (לשימוש חוזר בכל הדרכה עם התקנה!)
+cp interactive/shared/images/uac-dialog.png interactive/tutorials/[שם]/images/uac-dialog.png
 ```
 **דחיפה!**
 
@@ -525,6 +527,23 @@ function buildNavDots() {
 - הכפתור חייב להיות **מאוד בולט** — כתום, גדול, עם צל
 - **CSS classes:** `uac-wrap`, `uac-left`, `uac-right`, `uac-badge`, `uac-point`, `uac-bottom`
 - דוגמה מלאה: `Everything/index.html` שקף 7
+
+#### תמונת UAC גנרית + box כתום על "כן" — לשימוש חוזר!
+**תמונה + שקף שישמשו כל הדרכה שיש בה התקנת תוכנה.**
+- **התמונה:** `interactive/shared/images/uac-dialog.png` — תמונת UAC נקייה (בלי פס שחור על "לא"), מוכנה לשימוש
+- **בשלב 1 של שדרוג הדרכה** — התמונה מועתקת אוטומטית לתיקיית images/ של ההדרכה
+- **box כתום לחיץ על כפתור "כן"** — קואורדינטות קבועות (אותה תמונה תמיד!):
+```html
+<div class="uac-left">
+  <div style="position:relative;display:inline-block;">
+    <img src=".//images//uac-dialog.png" alt="בקרת חשבון משתמש">
+    <div class="box" style="top:86.8%;left:51.8%;right:6.5%;bottom:3.8%;cursor:pointer;" onclick="nextSlide()"></div>
+  </div>
+</div>
+```
+- **הקואורדינטות קבועות** כי התמונה תמיד אותה תמונה — `top:86.8%;left:51.8%;right:6.5%;bottom:3.8%`
+- **לחיצה על ה-box** = מעבר לשקף הבא (כמו כל box רגיל בהדרכה)
+- **למה זה חשוב:** חלון UAC קופץ בהתקנת כמעט כל תוכנה. תמונה אחת גנרית + שקף מוכן = חוסכים עבודה בכל הדרכה חדשה
 
 ### זכוכית מגדלת (Magnifier) — חובה בכל הדרכה!
 **פיצ'ר קריטי לנגישות מבוגרים.** כפתור מובנה שמאפשר הגדלת כל תוכן השקף — תמונות, בועות טקסט, ומסגרות כתומות.
