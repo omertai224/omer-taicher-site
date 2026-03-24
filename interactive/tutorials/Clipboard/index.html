@@ -5,7 +5,7 @@
 <title>היסטוריית לוח - הדרכה אינטראקטיבית</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../../shared/style.css">
 </head>
 <body onload="initApp()">
 
@@ -26,7 +26,13 @@
 <a class="prev" onclick="prevSlide()"><img id="left-arrow" src="../../shared/images/left.png" style="height:40px"></a>
 <a class="next" onclick="nextSlide()"><img id="right-arrow" src="../../shared/images/right.png" style="height:40px"></a>
 
+<script>
+var slideMap = {
+  0:  { icon: 'home', title: 'פתיחה' }
+};
+</script>
 <script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="../../shared/script.js"></script>
 
 <!-- Navigation Bar -->
 <div class="nav-background"><div class="nav-dots"></div></div>
