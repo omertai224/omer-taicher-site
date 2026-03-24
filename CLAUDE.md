@@ -308,7 +308,7 @@ num_steps = total_slides - len(slideMap)
 </div>
 ```
 
-**JS — בתוך initApp(), לפני בדיקת לוגין:**
+**JS — בתוך initApp(), לפני הצגת ההדרכה:**
 ```javascript
 var ua = navigator.userAgent || navigator.vendor || window.opera;
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
@@ -733,13 +733,12 @@ return {
 
 ```javascript
 const PRODUCTS = {
-  vibe:       { name: '...', url: 'https://omertai.net/interactive/tutorials/Vibe/',       user: 'student', pass: 'Sv8472t' },
-  everything: { name: '...', url: 'https://omertai.net/interactive/tutorials/Everything/', user: 'student', pass: 'Ex9183k' },  // ← הוסף
+  vibe:       { name: '...', url: 'https://omertai.net/interactive/tutorials/Vibe/' },
+  everything: { name: '...', url: 'https://omertai.net/interactive/tutorials/Everything/' },  // ← הוסף
 };
 ```
 
 **חובה:**
-- **`user` + `pass`** — בלעדיהם הלקוח לא יקבל credentials במייל ובוואטסאפ!
 - **`url`** — חייב להיות URL מלא (https://omertai.net/...) לא יחסי
 - **`name`** — מופיע בנושא המייל ובהודעת WhatsApp
 
@@ -748,11 +747,11 @@ const PRODUCTS = {
 2. Webhook בודק `status_code === '000'` (אושר)
 3. מוצא את המוצר לפי `more_info` (= productKey)
 4. מוסיף `?u=שם_הלקוח` ל-URL (לינק אישי)
-5. שולח **מייל** עם: שם המוצר, credentials בטבלה, כפתור "עברו להדרכה"
-6. שולח **WhatsApp** עם: שם המוצר, credentials, לינק אישי
+5. שולח **מייל** עם: שם המוצר + כפתור "עברו להדרכה"
+6. שולח **WhatsApp** עם: שם המוצר + לינק אישי
 
 #### צעד 4: מנגנון "מחובר כ:" — `index.html` של ההדרכה
-**להוסיף 3 פונקציות לסקריפט הלוגין:**
+**אין מסך לוגין! הלקוח נכנס ישירות להדרכה.** רק צריך 2 פונקציות לתצוגת שם:
 
 ```javascript
 function getPersonalName() {
@@ -778,12 +777,18 @@ function showPersonalBadge() {
 }
 ```
 
-**ולעדכן את הפונקציות הקיימות:**
-- `initApp()` — להוסיף `getPersonalName();` בתחילת הפונקציה
-- `showTutorial()` — להוסיף `showPersonalBadge();` לפני `showSlides(1)`
+**initApp() — פשוט! בדיקת מובייל ואז ישר להדרכה:**
+```javascript
+function initApp() {
+  getPersonalName();
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  if (/Android|.../.test(ua)) { document.getElementById('mobile-block').style.display = 'flex'; return; }
+  showTutorial();
+}
+function showTutorial() { showPersonalBadge(); setNavBarColor(1); showSlides(1); }
+```
 
 **localStorage keys — חייבים להיות ייחודיים לכל הדרכה!**
-- `[key]_logged_in` — למשל `everything_logged_in`
 - `[key]_user_display` — למשל `everything_user_display`
 
 #### צעד 5: אייקון בדף הבית — `index.html` (ראשי)
@@ -805,19 +810,21 @@ const wsIcons = {
   → מגיע ל-/pages/checkout/?product=[key]
   → ממלא שם + אימייל + טלפון (אופציונלי)
   → משלם 47 ש"ח ב-PayPlus
-  → מופנה ישירות להדרכה
-  → מקבל מייל עם: שם המוצר + credentials + כפתור להדרכה עם ?u=שם
-  → מקבל WhatsApp עם: אותו מידע
-  → נכנס להדרכה → מזין student/סיסמה → רואה "מחובר כ: השם שלו"
-  → הפעם הבאה: כבר מחובר (localStorage)
+  → מופנה ישירות להדרכה (עם ?u=שם)
+  → מקבל מייל עם: שם המוצר + כפתור להדרכה
+  → מקבל WhatsApp עם: שם המוצר + לינק
+  → נכנס להדרכה → רואה "מחובר כ: השם שלו" → מתחיל מיד!
 ```
 
+**אין מסך סיסמה!** הלקוח נכנס ישירות להדרכה. פשוט לינק עם `?u=שם` ומספיק.
+שליחה ידנית (ביט, נטוורקינג) = פשוט שולחים את הלינק עם `?u=שם`.
+
 #### מוצרים פעילים (עדכון מרץ 2026):
-| key | שם | מחיר | סטטוס | credentials |
-|-----|----|-------|--------|-------------|
-| `vibe` | תמלול שמע ווידאו | 47 ש"ח | פעיל | student / Sv8472t |
-| `everything` | חיפוש קבצים | 47 ש"ח | פעיל | student / Ex9183k |
-| `security` | סיסמאות ואבטחה | 47 ש"ח | בקרוב | — |
+| key | שם | מחיר | סטטוס |
+|-----|----|-------|--------|
+| `vibe` | תמלול שמע ווידאו | 47 ש"ח | פעיל |
+| `everything` | חיפוש קבצים | 47 ש"ח | פעיל |
+| `security` | סיסמאות ואבטחה | 47 ש"ח | בקרוב |
 
 ## כלל קבצים קטנים
 - **קובץ גדול וקשה לקריאה = מחלקים אותו.** לא דוחפים הכל לקובץ אחד.
