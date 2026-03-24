@@ -1,15 +1,28 @@
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin:0}
-.mySlides {display: none; position: relative;
-    overflow: auto;}
-img {vertical-align: middle;}
+* { box-sizing: border-box; }
 
-a {word-break: break-all;}
+body {
+  font-family: 'Rubik', Arial, sans-serif;
+  margin: 0;
+  background-color: #0f2a3a;
+}
+
+.mySlides {
+  display: none;
+  position: relative;
+  overflow: visible;
+  min-height: calc(100vh - 80px);
+}
+
+img { vertical-align: middle; }
+
+a { word-break: break-all; }
 
 .slideshow-container {
-  max-width: 1000px;
+  max-width: 100%;
+  width: 100%;
   position: relative;
   margin: auto;
+  min-height: 100vh;
 }
 
 .image {
@@ -22,93 +35,148 @@ a {word-break: break-all;}
   position: relative;
 }
 
+/* ─── כפתורי ניווט ─── */
 .prev, .next {
   cursor: pointer;
   position: fixed;
   width: auto;
   margin-top: 0px;
-  color: #203034;
   user-select: none;
-  right: 90px;
-  bottom: 11px;
+  bottom: 20px;
   z-index: 2;
+  transition: transform 0.2s, filter 0.2s;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
 }
 
-.next {
-  right: 30px;
-}
+.next { right: 20px; }
+.prev { right: 68px; }
 
 .prev:hover, .next:hover {
-  background-color: white;
+  transform: scale(1.15);
+  filter: drop-shadow(0 4px 16px rgba(30,95,116,0.8));
+  background-color: transparent;
 }
 
-.nav {
+/* ─── סרגל ניווט תחתון ─── */
+.nav-background {
+  background: #ffffff;
+  border-top: 2px solid #a8c5d6;
   position: fixed;
-  top:calc(100% - 37px);
-  bottom:25px;
-  background-color:blue;
-  z-index: 2;
-}
-.nav:hover
-{
-  background-color: white;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 4px 130px 4px 90px; /* לוגו משמאל, חיצים מימין */
 }
 
-.text {
-  color: white;
-  font-size: 12px;
-  padding-top: 8px;
-  padding-left:  17px;
-  padding-right: 17px;
-  padding-bottom: 18px;
-  bottom: 8px;
+.nav-dots {
+  display: grid;
+  direction: ltr;
+  gap: 4px;
   width: 100%;
-  background-color: #203034ed;
-  max-width: 300;
-  border-radius : 15px;
+  height: 100%;
+  align-content: center;
+  justify-items: center;
+}
+
+.nav-dot {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+  background-color: #a8c5d6;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.15s;
+  border: none;
+  padding: 0;
+  font-family: 'Rubik', Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.nav-dot:hover {
+  background-color: #1e5f74;
+  transform: scale(1.15);
+}
+
+.nav-dot.active {
+  background-color: #1e5f74;
+}
+
+/* עיגול עם אייקון SVG — שקפי מעבר (כתום!) */
+.nav-dot-icon {
+  padding: 0;
+  background-color: #f6a67e;
+}
+.nav-dot-icon:hover {
+  background-color: #e8834e;
+}
+.nav-dot-icon.active {
+  background-color: #e8834e;
+}
+.nav-dot-icon svg {
+  display: block;
+}
+
+/* Hide old nav elements */
+.nav {
+  display: none;
+}
+
+/* ─── בועות טקסט ─── */
+.text {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 16px 20px 20px 20px;
+  width: 100%;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  max-width: 300px;
+  border-radius: 18px;
+  border: 1px solid #5b8fa855;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(168,197,214,0.1);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  backdrop-filter: blur(4px);
 }
 
-.title {
-  color: white;
-  font-size: 48px;
-  text-align: center;	
-  padding-top: 30vh;
-  padding-bottom: 20px;
-  max-width: 1100px;
-  font-weight: bold;
-  margin: auto;
+/* מספר שקף */
+.text > div:first-child {
+  font-size: 12px;
+  font-weight: 700;
+  color: #a8c5d6;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
 }
 
-.subtitle {
-  color: white;
-  font-size: 36px;
-  text-align: center;	
-  padding: 0px 0px 5px 0px;
-  max-width: 500px;
-  margin: auto;
-}
-
+/* ─── חצי בועה ─── */
 .text.arrow-right:after {
   content: " ";
   position: absolute;
-  right: -14px;
-  top: 16px;
+  right: -13px;
+  top: 18px;
   border-top: 10px solid transparent;
   border-right: none;
-  border-left: 15px solid #203034ed;
+  border-left: 14px solid #1a4a6bef;
   border-bottom: 10px solid transparent;
 }
 
 .text.arrow-left:after {
   content: " ";
   position: absolute;
-  left: -14px;
-  top: 16px;
+  left: -13px;
+  top: 18px;
   border-top: 10px solid transparent;
-  border-right: 15px solid #203034ed;
+  border-right: 14px solid #1e5f74ef;
   border-left: none;
   border-bottom: 10px solid transparent;
 }
@@ -121,7 +189,7 @@ a {word-break: break-all;}
   border-top: none;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-bottom: 15px solid  #203034ed;
+  border-bottom: 15px solid #1a4a6bef;
 }
 
 .text.arrow-top-right:after {
@@ -132,7 +200,7 @@ a {word-break: break-all;}
   border-top: none;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-bottom: 15px solid  #203034ed;
+  border-bottom: 15px solid #1a4a6bef;
 }
 
 .text.arrow-bottom-left:after {
@@ -140,7 +208,7 @@ a {word-break: break-all;}
   position: absolute;
   left: 20px;
   bottom: -14px;
-  border-top: 15px solid #203034ed;
+  border-top: 15px solid #1e5f74ef;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   border-bottom: none;
@@ -151,66 +219,201 @@ a {word-break: break-all;}
   position: absolute;
   right: 20px;
   bottom: -14px;
-  border-top: 15px solid #203034ed;
+  border-top: 15px solid #1e5f74ef;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   border-bottom: none;
 }
 
-.button {
-	cursor: pointer;
-	width: 150px;
-	height: 30px;
-	background-color: #095982;
-	border-radius : 20px;
-	margin: 20px 10px 10px 10px;
-	text-align: center;
-	align-self: end;
-	color: white;
-	line-height:30px;
-}
-
-.button.start{
-	margin: 50px auto;
-	width: 200px;
-	height: 40px;
-	line-height:40px;
-}
-
-.background {
-background-color: #203034;
-height: 100%;
-  width: 100%;
-}
-
-.nav-background
-{
-background-color: white;
-position: fixed;
-top:calc(100% - 62px);
-bottom:0%;
-left:0%;
-right:0%;
-z-index: 1;
-}
-
+/* ─── תיבת הדגשה (box) ─── */
 .box {
   position: absolute;
   cursor: pointer;
-  border: 4px solid #095982;
-	border-radius : 10px;
+  border: 4px solid #ff7c2a;
+  border-radius: 10px;
+  transition: background-color 0.2s, border-color 0.2s;
+  box-shadow: 0 0 0 2px rgba(255,124,42,0.4), 0 0 16px rgba(255,124,42,0.6);
+  animation: box-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes box-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(255,124,42,0.4), 0 0 16px rgba(255,124,42,0.6); }
+  50% { box-shadow: 0 0 0 4px rgba(255,124,42,0.6), 0 0 28px rgba(255,124,42,0.9); }
 }
 
 .box:hover {
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255, 124, 42, 0.2);
+  border-color: #ffaa70;
 }
 
+/* ─── מסך רקע (כותרת/סיום) ─── */
+.background {
+  background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 50%, #1e5f74 100%);
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  color: white;
+  font-size: 48px;
+  text-align: center;
+  padding-top: 30vh;
+  padding-bottom: 20px;
+  max-width: 1100px;
+  font-weight: bold;
+  margin: auto;
+}
+
+.subtitle {
+  color: #a8c5d6;
+  font-size: 28px;
+  text-align: center;
+  padding: 0px 0px 8px 0px;
+  max-width: 500px;
+  margin: auto;
+}
+
+/* ─── כפתור התחל ─── */
+.button {
+  cursor: pointer;
+  width: 150px;
+  height: 32px;
+  background: linear-gradient(135deg, #1e5f74, #5b8fa8);
+  border-radius: 20px;
+  margin: 20px 10px 10px 10px;
+  text-align: center;
+  align-self: end;
+  color: white;
+  line-height: 32px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(30,95,116,0.4);
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+}
+
+.button.start {
+  margin: 50px auto;
+  width: 200px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 16px;
+}
+
+/* ─── fade animation ─── */
+.fade {
+  animation-name: fade;
+  animation-duration: 0.4s;
+}
+
+@keyframes fade {
+  from { opacity: 0.6; }
+  to   { opacity: 1; }
+}
+
+/* ─── זכוכית מגדלת ─── */
+.magnifier-btn {
+  position: fixed;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #a8c5d6;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  cursor: pointer;
+  display: none; /* shown + positioned by JS */
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.magnifier-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+}
+.magnifier-btn.active {
+  border-color: #f6a67e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+}
+.magnifier-btn svg {
+  pointer-events: none;
+}
+
+.magnifier-lens {
+  position: fixed;
+  width: 420px;
+  height: 300px;
+  border-radius: 12px;
+  border: 3px solid #f6a67e;
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.3), 0 8px 32px rgba(0,0,0,0.5);
+  pointer-events: none;
+  z-index: 9;
+  display: none;
+  overflow: hidden;
+  background-color: #1a1a2e;
+}
+
+.magnifier-active .image-center {
+  cursor: none;
+}
+
+.magnifier-esc-hint {
+  position: fixed;
+  z-index: 10;
+  background: rgba(15, 42, 58, 0.85);
+  color: #a8c5d6;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #5b8fa844;
+  text-align: center;
+  display: none;
+  direction: rtl;
+}
+
+/* ─── הקראה בקול ─── */
+.tts-btn {
+  position: fixed;
+  z-index: 10;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid #a8c5d6;
+  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+.tts-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+}
+.tts-btn.active {
+  border-color: #f6a67e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
+  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+}
+.tts-btn svg {
+  pointer-events: none;
+}
+
+
+/* ─── responsive ─── */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+  .prev, .next, .text { font-size: 13px; }
 }
 
 br {
-    display: block;
-    content: "";
-    margin-top: 10px;
+  display: block;
+  content: "";
+  margin-top: 10px;
 }

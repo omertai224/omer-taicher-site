@@ -1,0 +1,497 @@
+{
+  "tutorial": "Clipboard History",
+  "totalSteps": 32,
+  "slides": [
+    {
+      "index": 0,
+      "type": "intro",
+      "title": "How to copy Amazon order details and images and paste them into Microsoft Word using clipboard history",
+      "subtitles": [
+        "עומר טייכר",
+        "מדריך וטכנאי מחשבים"
+      ]
+    },
+    {
+      "index": 1,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_1.png",
+      "boxClass": "16",
+      "box": {
+        "top": "48.8519%",
+        "left": "50.0233%",
+        "right": "28.3372%",
+        "bottom": "46.7222%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 1,
+      "text": "From the menu that appears, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the selected date."
+    },
+    {
+      "index": 2,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_2.png",
+      "boxClass": "17",
+      "box": {
+        "top": "94.1296%",
+        "left": "21.9419%",
+        "right": "73.1047%",
+        "bottom": "-0.685181%"
+      },
+      "arrow": "arrow-bottom-left",
+      "textPos": {},
+      "step": 2,
+      "text": "In Windows Explorer, click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to access the taskbar and switch applications."
+    },
+    {
+      "index": 3,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_3.png",
+      "boxClass": "19",
+      "box": {
+        "top": "56.6296%",
+        "left": "52.1163%",
+        "right": "44.6163%",
+        "bottom": "38.7593%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 3,
+      "text": "Click <span style=\" color:#f6a67e;\">“שמור על טקסט בלבד”</span> to paste only the text without bringing over formatting from the source."
+    },
+    {
+      "index": 4,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_4.png",
+      "boxClass": "20",
+      "box": {
+        "top": "93.8519%",
+        "left": "25.2558%",
+        "right": "69.7326%",
+        "bottom": "-0.0370407%"
+      },
+      "arrow": "arrow-bottom-left",
+      "textPos": {},
+      "step": 4,
+      "text": "Click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> again to return to the taskbar and choose the next application."
+    },
+    {
+      "index": 5,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_5.png",
+      "boxClass": "23",
+      "box": {
+        "top": "48.9444%",
+        "left": "28.0465%",
+        "right": "46.6512%",
+        "bottom": "46.6296%"
+      },
+      "arrow": "arrow-left",
+      "textPos": {},
+      "step": 5,
+      "text": "From the menu, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the order number."
+    },
+    {
+      "index": 6,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_6.png",
+      "boxClass": "24",
+      "box": {
+        "top": "94.6852%",
+        "left": "22.0581%",
+        "right": "72.8721%",
+        "bottom": "-0.40741%"
+      },
+      "arrow": "arrow-bottom-left",
+      "textPos": {},
+      "step": 6,
+      "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to use the taskbar and switch back to your working document."
+    },
+    {
+      "index": 7,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_7.png",
+      "boxClass": "27",
+      "box": {
+        "top": "60.7963%",
+        "left": "52.2907%",
+        "right": "44.4419%",
+        "bottom": "34.5926%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 7,
+      "text": "Click <span style=\" color:#f6a67e;\">“שמור על טקסט בלבד”</span> to paste only the copied order number as text."
+    },
+    {
+      "index": 8,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_8.png",
+      "boxClass": "29",
+      "box": {
+        "top": "93.5741%",
+        "left": "25.1395%",
+        "right": "69.1512%",
+        "bottom": "-1.14816%"
+      },
+      "arrow": "arrow-bottom-left",
+      "textPos": {},
+      "step": 8,
+      "text": "Click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> for easy navigation between open applications."
+    },
+    {
+      "index": 9,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_9.png",
+      "boxClass": "33",
+      "box": {
+        "top": "67.3704%",
+        "left": "26.6512%",
+        "right": "55.7209%",
+        "bottom": "27.1852%"
+      },
+      "arrow": "arrow-left",
+      "textPos": {},
+      "step": 9,
+      "text": "In the new window that appears, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the highlighted content."
+    },
+    {
+      "index": 10,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_10.png",
+      "boxClass": "34",
+      "box": {
+        "top": "93.4815%",
+        "left": "22.1163%",
+        "right": "72.9302%",
+        "bottom": "-0.685181%"
+      },
+      "arrow": "arrow-bottom-left",
+      "textPos": {},
+      "step": 10,
+      "text": "In Windows Explorer, click on <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to bring the taskbar into focus for application switching."
+    },
+    {
+      "index": 11,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_11.png",
+      "boxClass": "36",
+      "box": {
+        "top": "65.7037%",
+        "left": "62.8721%",
+        "right": "33.8605%",
+        "bottom": "29.6852%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 11,
+      "text": "Click on <span style=\" color:#f6a67e;\">“מזג עיצוב”</span> to merge the formatting of the pasted content with your existing document format."
+    },
+    {
+      "index": 12,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_12.png",
+      "boxClass": "38",
+      "box": {
+        "top": "93.5741%",
+        "left": "24.9651%",
+        "right": "69.7907%",
+        "bottom": "-0.5%"
+      },
+      "arrow": "arrow-bottom-left",
+      "textPos": {},
+      "step": 12,
+      "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> again to use the taskbar for efficient navigation."
+    },
+    {
+      "index": 13,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_13.png",
+      "boxClass": "41",
+      "box": {
+        "top": "76.3519%",
+        "left": "53.9186%",
+        "right": "23.7442%",
+        "bottom": "18.0185%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 13,
+      "text": "From the context menu, select <span style=\" color:#f6a67e;\">“העתקת תמונה”</span> to copy an image from the page."
+    },
+    {
+      "index": 14,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_14.png",
+      "boxClass": "42",
+      "box": {
+        "top": "94.3148%",
+        "left": "22.3488%",
+        "right": "72.9884%",
+        "bottom": "-0.870369%"
+      },
+      "arrow": "arrow-bottom-left",
+      "textPos": {},
+      "step": 14,
+      "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to access the taskbar and switch back to your document."
+    },
+    {
+      "index": 15,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_15.png",
+      "boxClass": "44",
+      "box": {
+        "top": "33.2037%",
+        "left": "61.186%",
+        "right": "35.5465%",
+        "bottom": "62.1852%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 15,
+      "text": "To begin, select the <span style=\" color:#f6a67e;\">“תמונה”</span> option. This action will start the process and help you access relevant features."
+    },
+    {
+      "index": 16,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_16.png",
+      "boxClass": "84",
+      "box": {
+        "top": "88.2037%",
+        "left": "41.3023%",
+        "right": "51.8837%",
+        "bottom": "8.48148%"
+      },
+      "arrow": "arrow-left",
+      "textPos": {},
+      "step": 16,
+      "text": "Click on <span style=\" color:#f6a67e;\">“תוכן עמוד 1”</span> to select the content of page 1."
+    },
+    {
+      "index": 17,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_17.png",
+      "boxClass": "45",
+      "box": {
+        "top": "94.037%",
+        "left": "60.2558%",
+        "right": "33.9767%",
+        "bottom": "-0.5%"
+      },
+      "arrow": "arrow-bottom-right",
+      "textPos": {},
+      "step": 17,
+      "text": "Next, in FlowShare, click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to open the taskbar and continue to the next stage."
+    },
+    {
+      "index": 18,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_18.png",
+      "boxClass": "46",
+      "box": {
+        "top": "33.0185%",
+        "left": "57.6395%",
+        "right": "34.3256%",
+        "bottom": "56.1667%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 18,
+      "text": "In the Windows Start Menu, click <span style=\" color:#f6a67e;\">“הגדרות”</span> to access the settings panel, where you can adjust system preferences."
+    },
+    {
+      "index": 19,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_19.png",
+      "boxClass": "47",
+      "box": {
+        "top": "20.7963%",
+        "left": "78.0465%",
+        "right": "0.604652%",
+        "bottom": "73.9444%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 19,
+      "text": "Inside the Windows Application Frame Host, select the <span style=\" color:#f6a67e;\">“מערכת”</span> option to view and manage system-related settings."
+    },
+    {
+      "index": 20,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_20.png",
+      "boxClass": "48",
+      "box": {
+        "top": "48.4815%",
+        "left": "45.1977%",
+        "right": "24.2674%",
+        "bottom": "42.463%"
+      },
+      "arrow": "arrow-left",
+      "textPos": {},
+      "step": 20,
+      "text": "Now, click <span style=\" color:#f6a67e;\">“לוח”</span> to open the clipboard settings, which allow you to manage clipboard features."
+    },
+    {
+      "index": 21,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_21.png",
+      "boxClass": "50",
+      "box": {
+        "top": "14.037%",
+        "left": "2.34884%",
+        "right": "91.6512%",
+        "bottom": "80.1481%"
+      },
+      "arrow": "arrow-left",
+      "textPos": {},
+      "step": 21,
+      "text": "Once more, click the <span style=\" color:#f6a67e;\">“היסטוריית הלוח”</span> button to confirm or activate the clipboard history feature. This ensures that your clipboard history is properly set up."
+    },
+    {
+      "index": 22,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_22.png",
+      "boxClass": "49",
+      "box": {
+        "top": "14.037%",
+        "left": "3.39535%",
+        "right": "88.1628%",
+        "bottom": "80.1481%"
+      },
+      "arrow": "arrow-left",
+      "textPos": {},
+      "step": 22,
+      "text": "Click the <span style=\" color:#f6a67e;\">“היסטוריית הלוח”</span> button to enable or review the clipboard history, making it possible to see previously copied items."
+    },
+    {
+      "index": 23,
+      "type": "view",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_23.png",
+      "arrow": "none",
+      "textPos": {},
+      "step": 23,
+      "text": ""
+    },
+    {
+      "index": 24,
+      "type": "view",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_24.png",
+      "arrow": "none",
+      "textPos": {},
+      "step": 24,
+      "text": ""
+    },
+    {
+      "index": 25,
+      "type": "view",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_25.png",
+      "arrow": "none",
+      "textPos": {},
+      "step": 25,
+      "text": ""
+    },
+    {
+      "index": 26,
+      "type": "view",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_26.png",
+      "arrow": "none",
+      "textPos": {},
+      "step": 26,
+      "text": ""
+    },
+    {
+      "index": 27,
+      "type": "view",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_27.png",
+      "arrow": "none",
+      "textPos": {},
+      "step": 27,
+      "text": ""
+    },
+    {
+      "index": 28,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_28.png",
+      "boxClass": "92",
+      "box": {
+        "top": "79.5%",
+        "left": "62.4651%",
+        "right": "12.6395%",
+        "bottom": "10.1481%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 28,
+      "text": "Finally, press Ctrl+V to paste the selected content from the clipboard into your document."
+    },
+    {
+      "index": 29,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_29.png",
+      "boxClass": "95",
+      "box": {
+        "top": "73.9444%",
+        "left": "62.8721%",
+        "right": "12.2326%",
+        "bottom": "15.7037%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 29,
+      "text": "Press the Ctrl and V keys together to paste copied content into the selected area."
+    },
+    {
+      "index": 30,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_30.png",
+      "boxClass": "98",
+      "box": {
+        "top": "78.9444%",
+        "left": "71.3023%",
+        "right": "3.80232%",
+        "bottom": "10.7037%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 30,
+      "text": "Press Ctrl and V to paste content once more into the active area."
+    },
+    {
+      "index": 31,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_31.png",
+      "boxClass": "100",
+      "box": {
+        "top": "27.2778%",
+        "left": "71.3023%",
+        "right": "3.80232%",
+        "bottom": "62.3704%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {},
+      "step": 31,
+      "text": "Click the <span style=\" color:#f6a67e;\">“הצג עוד הצמד פריט”</span> button to reveal more connected items."
+    },
+    {
+      "index": 32,
+      "type": "click",
+      "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_32.png",
+      "boxClass": "102",
+      "box": {
+        "top": "58.2963%",
+        "left": "49.6163%",
+        "right": "28.686%",
+        "bottom": "7.74074%"
+      },
+      "arrow": "arrow-left",
+      "textPos": {},
+      "step": 32,
+      "text": "Click on the area you wish to activate for input or editing."
+    },
+    {
+      "index": 33,
+      "type": "outro",
+      "title": "Thank you!"
+    }
+  ]
+}
