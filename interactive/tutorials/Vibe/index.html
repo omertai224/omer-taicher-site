@@ -9,7 +9,7 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900&subset=hebrew&display=swap" rel="stylesheet">
-		<link id="style" rel="stylesheet" type="text/css" href="style.css">
+		<link id="style" rel="stylesheet" type="text/css" href="../../shared/style.css">
 		</head>
 	
 		<body onload="initApp();" style="background-color:#202020; overflow:hidden;">
@@ -286,8 +286,17 @@ function showTutorial() {
   <button class="btn-restart" onclick="showSlides(1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:6px;"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>חזרו להתחלה</button>
 </div>
 </div>
-</div><img id="logo.png" src=".//images//logo.png" style="z-index:3;position:fixed;bottom:17px;left:30px;height:46px;"><a class="prev" onclick="prevSlide()"><img id="left-arrow" src=".//images//left.png" style="height:40px"></a>
-<a class="next" onclick="nextSlide()"><img id="right-arrow" src=".//images//right.png" style="height:40px"></a></div><br><script id="script" type="text/javascript" src="script.js"></script>
+</div><img id="logo.png" src="../../shared/images/logo.png" style="z-index:3;position:fixed;bottom:17px;left:30px;height:46px;"><a class="prev" onclick="prevSlide()"><img id="left-arrow" src="../../shared/images/left.png" style="height:40px"></a>
+<a class="next" onclick="nextSlide()"><img id="right-arrow" src="../../shared/images/right.png" style="height:40px"></a></div><br><script>
+var slideMap = {
+  0:  { icon: 'home',     title: 'פתיחה' },
+  1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
+  2:  { icon: 'download', title: 'הורידו את Vibe' },
+  13: { icon: 'usage',    title: 'השתמשו ב-Vibe' },
+  29: { icon: 'finish',   title: 'סיום' }
+};
+</script>
+<script id="script" type="text/javascript" src="../../shared/script.js"></script>
 <div class="nav-background"><div class="nav-dots"></div></div><script>document.getElementsByClassName('box 43')[0].addEventListener('click', nextSlide, false);</script>
 <script>document.getElementsByClassName('box 44')[0].addEventListener('click', nextSlide, false);</script>
 <script>document.getElementsByClassName('box 5b')[0].addEventListener('click', nextSlide, false);</script>
