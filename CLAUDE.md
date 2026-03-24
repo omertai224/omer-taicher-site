@@ -133,8 +133,18 @@
 
 ## שדרוג הדרכות אינטראקטיביות - מגולמי למושלם (עדכון מרץ 2026)
 **המטרה:** עומר אומר "תשדרג לי את X" - והתוצאה מושלמת בלי שאלות.
-**הדרכת הייחוס:** `interactive/tutorials/Everything/` - להעתיק משם style.css ו-script.js.
 **קובץ תקלות:** `TROUBLESHOOTING.md` - **לקרוא לפני כל עבודה על הדרכות!**
+
+### תיקיית shared — מקור אמת משותף לכל ההדרכות!
+**`interactive/shared/`** מכילה את כל מה שמשותף לכל ההדרכות:
+- **`style.css`** — עיצוב אחיד (פס ניווט, בועות, boxes, מגדלת, TTS)
+- **`script.js`** — כל הלוגיקה (ניווט, עיגולים, זכוכית מגדלת, הקראה, מקלדת)
+- **`images/`** — לוגו, חיצי ניווט, תמונת UAC
+**כל הדרכה מצביעה ל-shared** דרך `../../shared/` — לא מעתיקים קבצים!
+**הדבר היחיד שייחודי לכל הדרכה:**
+- `slideMap` (5-8 שורות inline script) — מגדיר שקפים מיוחדים
+- `slides.json` (אם דינמית) — נתוני שקפים
+- תמונות המסך של ההדרכה עצמה (בתיקיית `images/`)
 
 ### עיקרון העקביות - הכי חשוב!
 **כל ההדרכות חייבות להיראות ולהתנהג אותו דבר.**
@@ -187,21 +197,45 @@
 ### תהליך שדרוג אוטומטי — "תשדרג לי את X"
 כשעומר נותן הדרכה גולמית, הסדר הוא:
 
-#### שלב 1: העתקת תבנית
+#### שלב 0: ניקוי ופיצול — לפני הכל! (הכרחי!)
+**עומר תמיד מביא קובץ גולמי מ-FlowShare — HTML דחוס, שורות ארוכות, הכל בקובץ אחד. חייבים לנקות לפני שעובדים!**
+
 ```bash
-# להעתיק style.css ו-script.js מ-Everything לתיקיית ההדרכה החדשה
-cp interactive/tutorials/Everything/style.css interactive/tutorials/[שם]/style.css
-cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/script.js
-# להעתיק תמונות ניווט
-cp interactive/tutorials/Everything/images/right.png interactive/tutorials/[שם]/images/
-cp interactive/tutorials/Everything/images/left.png interactive/tutorials/[שם]/images/
-cp interactive/tutorials/Everything/images/right-disabled.png interactive/tutorials/[שם]/images/
-cp interactive/tutorials/Everything/images/left-disabled.png interactive/tutorials/[שם]/images/
-cp interactive/tutorials/Everything/images/logo.png interactive/tutorials/[שם]/images/
-# להעתיק תמונת UAC גנרית (לשימוש חוזר בכל הדרכה עם התקנה!)
-cp interactive/shared/images/uac-dialog.png interactive/tutorials/[שם]/images/uac-dialog.png
+# 1. פרמוט HTML — שבירת שורות ארוכות לקריאות
+#    כל שקף, box, טקסט, תמונה — בשורה נפרדת
+python3 -c "
+import re
+with open('interactive/tutorials/[שם]/index.html') as f: content = f.read()
+content = re.sub(r'(<div class=\"mySlides)', r'\n\n\1', content)
+content = re.sub(r'(<div class=\"box )', r'\n      \1', content)
+content = re.sub(r'(<div class=\"text[ \"])', r'\n      \1', content)
+content = re.sub(r'(<img id=\")', r'\n      \1', content)
+content = re.sub(r'(<script>document\.getElement)', r'\n\1', content)
+with open('interactive/tutorials/[שם]/index.html', 'w') as f: f.write(content)
+"
+
+# 2. קישור ל-shared (לא העתקה!)
+#    CSS: href="../../shared/style.css"
+#    JS:  src="../../shared/script.js"
+#    לוגו: src="../../shared/images/logo.png"
+#    חיצים: src="../../shared/images/left.png" / right.png
+
+# 3. slideMap — סקריפט inline לפני shared/script.js
+#    <script>var slideMap = { 0: {icon:'home', title:'פתיחה'}, ... };</script>
+
+# 4. חילוץ נתוני שקפים ל-slides.json (מומלץ להדרכות חדשות)
+#    index.html נשאר שלד מינימלי (~40 שורות)
+#    slides.json מכיל: תמונות, מיקומי box, טקסטים, חיצי בועה
 ```
-**דחיפה!**
+**דחיפה אחרי כל פעולה!**
+
+**למה שלב 0 קריטי:**
+- בלי ניקוי — כל עריכה תוקע את הסשן (קבצים גדולים מדי)
+- בלי shared — שינוי עיצוב = עריכת 5 קבצים במקום 1
+- בלי פרמוט — אי אפשר למצוא שקף ספציפי בתוך שורה של 5000 תווים
+- **אם דילגת על שלב 0 — עצור והחזר. אין טעם להמשיך.**
+
+#### שלב 1: ניתוח תמונות (אחרי שהקבצים נקיים!)
 
 #### שלב 2: ניתוח תמונות + יצירת slide-map.json (השלב הקריטי!)
 **הניתוח הוא הבסיס להכל — טעות כאן = תיקונים אינסופיים אחר כך.**
