@@ -24,56 +24,6 @@
   </div>
 </div>
 
-<!-- ─── מסך כניסה ─── -->
-<div id="login-screen" style="display:none;position:fixed;inset:0;background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);z-index:9998;flex-direction:column;align-items:center;justify-content:center;font-family:'Rubik',sans-serif;padding:20px;">
-  <div style="background:#ffffff0d;border:1px solid #ffffff22;border-radius:24px;padding:36px 36px 28px;max-width:400px;width:100%;text-align:center;">
-
-    <!-- כותרת עליונה -->
-    <div style="color:#f6a67e;font-size:13px;font-weight:700;margin-bottom:14px;">עומר טייכר · הדרכות אינטראקטיביות</div>
-    <div style="color:white;font-size:22px;font-weight:900;margin-bottom:8px;">Vibe · תמלול בעברית</div>
-    <div style="color:#ffffffaa;font-size:13px;margin-bottom:24px;">את פרטי הכניסה שקיבלתם יש להזין פעם אחת בלבד.</div>
-
-    <!-- שגיאה -->
-    <div id="login-error" style="display:none;background:#ff6b6b22;border:1px solid #ff6b6b66;border-radius:10px;padding:10px 16px;color:#ff9999;font-size:13px;margin-bottom:16px;">שם משתמש או סיסמה שגויים. נסו שנית.</div>
-
-    <!-- שם משתמש -->
-    <div style="text-align:right;margin-bottom:14px;">
-      <label style="color:#ffffffcc;font-size:13px;font-weight:600;display:block;margin-bottom:6px;">שם משתמש</label>
-      <input id="login-user" type="text" placeholder="הזינו שם משתמש" dir="rtl"
-        style="width:100%;padding:12px 16px;border-radius:10px;border:1.5px solid #ffffff33;background:#ffffff0d;color:white;font-size:15px;font-family:'Rubik',sans-serif;outline:none;transition:border-color 0.2s;text-align:right;"
-        onfocus="this.style.borderColor='#f6a67e'" onblur="this.style.borderColor='#ffffff33'"
-        onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()">
-    </div>
-
-    <!-- סיסמה -->
-    <div style="text-align:right;margin-bottom:24px;">
-      <label style="color:#ffffffcc;font-size:13px;font-weight:600;display:block;margin-bottom:6px;">סיסמה</label>
-      <input id="login-pass" type="password" placeholder="הזינו סיסמה" dir="rtl"
-        style="width:100%;padding:12px 16px;border-radius:10px;border:1.5px solid #ffffff33;background:#ffffff0d;color:white;font-size:15px;font-family:'Rubik',sans-serif;outline:none;transition:border-color 0.2s;text-align:right;"
-        onfocus="this.style.borderColor='#f6a67e'" onblur="this.style.borderColor='#ffffff33'"
-        onkeydown="if(event.key==='Enter')doLogin()">
-    </div>
-
-    <!-- כפתור -->
-    <button onclick="doLogin()"
-      style="width:100%;padding:14px;border-radius:50px;border:none;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;font-size:16px;font-weight:700;cursor:pointer;font-family:'Rubik',sans-serif;box-shadow:0 8px 24px rgba(246,166,126,0.35);transition:transform 0.2s,box-shadow 0.2s;"
-      onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
-      כניסה להדרכה
-    </button>
-
-    <!-- אזהרת זכויות יוצרים -->
-    <div style="margin-top:22px;padding-top:16px;border-top:1px solid #ffffff30;text-align:right;direction:rtl;background:#ff4d4d18;border-radius:12px;padding:14px 16px;border:1px solid #ff4d4d44;">
-      <div style="color:#ff9999;font-size:13px;font-weight:800;margin-bottom:7px;">⚠️ אזהרת זכויות יוצרים</div>
-      <div style="color:#ffffffdd;font-size:12px;line-height:1.9;font-weight:500;">
-        פרטי הכניסה מיועדים לכם בלבד ואינם ניתנים להעברה.<br>
-        העברת הפרטים לצד שלישי מהווה הפרת זכויות יוצרים<br>
-        <span style="color:#ff8080;font-weight:700;">ועלולה לחשוף אתכם לתביעה אזרחית ופלילית.</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-
 <script>
 function getPersonalName() {
   // קודם מה-URL, אחרת מ-localStorage
@@ -102,39 +52,13 @@ function showPersonalBadge() {
 }
 
 function initApp() {
-  // שמירת שם מה-URL ל-localStorage גם לפני לוגין
   getPersonalName();
-
-  // בדיקת מכשיר לפי User Agent בלבד
   var ua = navigator.userAgent || navigator.vendor || window.opera;
-  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua);
-
-  if (isMobile) {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
     document.getElementById('mobile-block').style.display = 'flex';
-    return; // עצור כאן - לא מציגים כלום נוסף
+    return;
   }
-
-  // דסקטופ - בדיקה אם כבר מחובר
-  var loggedIn = localStorage.getItem('vibe_logged_in');
-  if (loggedIn === 'true') {
-    showTutorial();
-  } else {
-    document.getElementById('login-screen').style.display = 'flex';
-  }
-}
-
-function doLogin() {
-  var user = document.getElementById('login-user').value.trim();
-  var pass = document.getElementById('login-pass').value.trim();
-  if (user === 'student' && pass === 'Sv8472t') {
-    localStorage.setItem('vibe_logged_in', 'true');
-    document.getElementById('login-screen').style.display = 'none';
-    showTutorial();
-  } else {
-    document.getElementById('login-error').style.display = 'block';
-    document.getElementById('login-pass').value = '';
-    document.getElementById('login-pass').focus();
-  }
+  showTutorial();
 }
 
 function showTutorial() {

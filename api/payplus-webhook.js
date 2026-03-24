@@ -18,8 +18,8 @@ const WA_INSTANCE  = process.env.GREENAPI_INSTANCE_ID;
 const WA_TOKEN     = process.env.GREENAPI_TOKEN;
 
 const PRODUCTS = {
-  vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/', user: 'student', pass: 'Sv8472t' },
-  everything: { name: 'Everything - חיפוש מיידי בכל הקבצים במחשב', url: 'https://omertai.net/interactive/tutorials/Everything/', user: 'student', pass: 'Ex9183k' },
+  vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/' },
+  everything: { name: 'Everything - חיפוש מיידי בכל הקבצים במחשב', url: 'https://omertai.net/interactive/tutorials/Everything/' },
   security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', url: 'https://omertai.net/interactive/tutorials/Security/' }
 };
 
@@ -34,28 +34,12 @@ async function sendTutorialEmail(customerEmail, customerName, products) {
 
   const greeting = isMulti ? 'ההדרכות שלכם מוכנות ומחכות.' : 'ההדרכה שלכם מוכנה ומחכה.';
 
-  // בלוק מוצרים — כל מוצר עם שם + credentials + כפתור
+  // בלוק מוצרים — כל מוצר עם שם + כפתור
   const productBlocks = products.map(product => `
     <div style="background:#fdf8f2;border-radius:12px;padding:16px;margin-bottom:12px;">
       <p style="margin:0 0 4px;font-size:0.75rem;color:#8a7f72;font-weight:700;">מה קניתם</p>
       <p style="margin:0;font-size:0.95rem;color:#1a4a6b;font-weight:800;">${product.name}</p>
     </div>
-    ${product.user && product.pass ? `
-    <div style="background:#f0f7ff;border-radius:12px;padding:16px;margin-bottom:12px;border:1px solid #d0e3f5;">
-      <p style="margin:0 0 10px;font-size:0.75rem;color:#8a7f72;font-weight:700;">פרטי הכניסה שלכם</p>
-      <table style="width:100%;border-collapse:collapse;">
-        <tr>
-          <td style="padding:4px 0;font-size:0.85rem;color:#8a7f72;width:90px;">שם משתמש</td>
-          <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.user}</td>
-        </tr>
-        <tr>
-          <td style="padding:4px 0;font-size:0.85rem;color:#8a7f72;">סיסמה</td>
-          <td style="padding:4px 0;font-size:0.95rem;color:#1a4a6b;font-weight:800;letter-spacing:0.5px;">${product.pass}</td>
-        </tr>
-      </table>
-      <p style="margin:10px 0 0;font-size:0.75rem;color:#1a4a6b;font-weight:800;line-height:1.5;">פרטי הכניסה אישיים ואינם ניתנים להעברה.</p>
-    </div>
-    ` : ''}
     <div style="text-align:center;margin-bottom:20px;">
       <a href="${product.url}" style="display:inline-block;background:#e8854a;color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:800;font-size:1rem;">
         עברו להדרכה עכשיו &#8592;
@@ -138,21 +122,14 @@ async function sendWhatsApp(customerPhone, customerName, products) {
 
   // בניית בלוק לכל מוצר
   const productBlocks = products.map(product => {
-    const loginBlock = product.user && product.pass
-      ? `\n\nשם משתמש: *${product.user}*\nסיסמה: *${product.pass}*`
-      : '';
-    return `*${product.name}*\n\nלחצו כאן: ${product.url}${loginBlock}`;
+    return `*${product.name}*\n\nלחצו כאן: ${product.url}`;
   }).join('\n\n\n');
 
   const intro = isMulti
     ? `התשלום התקבל בהצלחה ✅\n\n${products.length} הדרכות מוכנות עבורכם:`
     : `התשלום התקבל בהצלחה ✅\n\nההדרכה מוכנה עבורכם:`;
 
-  const credNote = products.some(p => p.user && p.pass)
-    ? '\n\nפרטי הכניסה אישיים ואינם ניתנים להעברה.'
-    : '';
-
-  const message = `היי${name} 👋\n\n${intro}\n\n${productBlocks}${credNote}\n\nשאלות?\nפשוט תענו להודעה הזו 😊\nעומר טייכר`;
+  const message = `היי${name} 👋\n\n${intro}\n\n${productBlocks}\n\nשאלות?\nפשוט תענו להודעה הזו 😊\nעומר טייכר`;
 
   try {
     const apiUrl = `https://api.greenapi.com/waInstance${WA_INSTANCE}/sendMessage/${WA_TOKEN}`;
