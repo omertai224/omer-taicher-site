@@ -119,17 +119,17 @@ function showSlides(n) {
   var prev = document.getElementById('left-arrow');
 
   if (n == slides.length) {
-    next.src = './images/right-disabled.png';
+    next.src = './/images//right-disabled.png';
     next.style.cursor = 'default';
   } else {
-    next.src = './images/right.png';
+    next.src = './/images//right.png';
     next.style.cursor = 'pointer';
   }
   if (n == 1) {
-    prev.src = './images/left-disabled.png';
+    prev.src = './/images//left-disabled.png';
     prev.style.cursor = 'default';
   } else {
-    prev.src = './images/left.png';
+    prev.src = './/images//left.png';
     prev.style.cursor = 'pointer';
   }
 
