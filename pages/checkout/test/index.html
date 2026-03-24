@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<script>(function(){var m=location.pathname.match(/^(\/omer-taicher-site)\b/);if(!m)return;var B=m[1];function r(root){(root||document).querySelectorAll('a[href^="/"]').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='/'&&!h.startsWith(B))a.setAttribute('href',B+h)});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){r()});else r();if(typeof MutationObserver!=='undefined')new MutationObserver(function(muts){muts.forEach(function(mu){mu.addedNodes.forEach(function(n){if(n.nodeType===1)r(n.parentElement||n)})})}).observe(document.documentElement,{childList:true,subtree:true});var _f=window.fetch;window.fetch=function(u,o){if(typeof u==='string'&&u.charAt(0)==='/'&&!u.startsWith(B))u=B+u;return _f.call(this,u,o)}})();</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>בדיקת תשלום · עומר טייכר</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
+  <link rel="preload" href="/assets/fonts/rubik-hebrew-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/rubik-hebrew-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../../assets/css/main.css">
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+.checkout-page {
+  min-height: 100vh;
+  background: var(--cream);
+  padding-top: 60px;
+}
+.checkout-nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(253,248,242,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px;
+}
+.checkout-nav-logo { font-size: 1.1rem; font-weight: 800; color: var(--navy); text-decoration: none; }
+.checkout-nav-logo span { color: var(--orange-deep); }
+.checkout-nav-secure { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--text-light); font-weight: 600; }
+
+.checkout-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 16px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.test-badge {
+  background: #fef3cd; color: #856404; border: 1px solid #ffc107;
+  border-radius: 10px; padding: 10px 16px; font-size: 0.85rem; font-weight: 700;
+  text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+
+/* כרטיס מוצר/סל */
+.order-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
+  border: 1px solid var(--border);
+}
+.order-card-title {
+  font-size: 0.72rem; font-weight: 700; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+.order-item {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.order-item:last-child { border-bottom: none; padding-bottom: 0; }
+.order-item:first-child { padding-top: 0; }
+.order-item-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: var(--orange-light); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.order-item-body { flex: 1; }
+.order-item-name { font-size: 0.9rem; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 2px; }
+.order-item-sub  { font-size: 0.72rem; color: var(--text-light); }
+.order-item-price { font-size: 1.1rem; font-weight: 900; color: var(--navy); white-space: nowrap; }
+
+.order-total {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 16px; padding-top: 16px;
+  border-top: 2px solid var(--border);
+}
+.order-total-label { font-size: 0.88rem; font-weight: 700; color: var(--text-mid); }
+.order-total-price { font-size: 1.5rem; font-weight: 900; color: var(--navy); }
+
+/* טופס */
+.form-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(26,74,107,0.08);
+  border: 1px solid var(--border);
+}
+.form-card-title { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 20px; }
+.form-row { margin-bottom: 16px; }
+.form-label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+.form-label span { color: var(--orange-deep); margin-right: 2px; }
+.form-label em { font-style: normal; font-weight: 400; color: var(--text-light); font-size: 0.72rem; }
+.form-input {
+  width: 100%; padding: 13px 16px;
+  border: 1.5px solid var(--border); border-radius: 12px;
+  font-family: var(--font); font-size: 1rem; color: var(--text);
+  background: var(--cream); direction: rtl;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+.form-input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(26,74,107,0.08); background: #fff; }
+.form-input.error { border-color: var(--red); }
+.form-hint { font-size: 0.7rem; color: var(--text-light); margin-top: 5px; }
+.form-error-msg { font-size: 0.73rem; color: var(--red); margin-top: 4px; display: none; }
+.form-error-msg.visible { display: block; }
+
+/* כפתור */
+.pay-btn {
+  width: 100%; padding: 17px 28px;
+  background: var(--orange-deep); color: #fff;
+  border: none; border-radius: 50px;
+  font-family: var(--font); font-size: 1rem; font-weight: 800;
+  cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.pay-btn:hover:not(:disabled) { background: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,74,107,0.25); }
+.pay-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.pay-btn-spinner { display: none; width: 20px; height: 20px; border: 2.5px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.7s linear infinite; }
+.pay-btn.loading .pay-btn-text { display: none; }
+.pay-btn.loading .pay-btn-spinner { display: block; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.trust-bar { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 16px; }
+.trust-item { display: flex; align-items: center; gap: 6px; font-size: 0.72rem; color: var(--text-light); font-weight: 600; }
+
+.alert { border-radius: 14px; padding: 14px 18px; font-size: 0.85rem; font-weight: 600; line-height: 1.5; display: none; margin-top: 12px; }
+.alert.visible { display: block; }
+.alert-error { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+.alert-info   { background: var(--navy-light); color: var(--navy); border: 1px solid #c3d9e8; }
+
+/* login overlay */
+.login-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font), 'Rubik', sans-serif;
+}
+.login-box {
+  background: #ffffff0d; border: 1px solid #ffffff22; border-radius: 24px;
+  padding: 36px; max-width: 380px; width: 100%; text-align: center;
+}
+.login-box h2 { color: #f6a67e; font-size: 14px; font-weight: 700; margin: 0 0 10px; }
+.login-box h1 { color: white; font-size: 20px; font-weight: 900; margin: 0 0 24px; }
+.login-box input {
+  width: 100%; padding: 12px 16px; border-radius: 10px;
+  border: 1.5px solid #ffffff33; background: #ffffff0d;
+  color: white; font-size: 15px; font-family: inherit;
+  outline: none; text-align: right; margin-bottom: 12px;
+}
+.login-box input:focus { border-color: #f6a67e; }
+.login-box button {
+  width: 100%; padding: 14px; border-radius: 50px; border: none;
+  background: linear-gradient(135deg,#f6a67e,#ff6b6b);
+  color: white; font-size: 16px; font-weight: 700; cursor: pointer;
+  font-family: inherit; margin-top: 4px;
+}
+.login-box .login-err {
+  display: none; background: #ff6b6b22; border: 1px solid #ff6b6b66;
+  border-radius: 10px; padding: 10px; color: #ff9999; font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.status-banner { border-radius: 14px; padding: 14px 18px; font-size: 0.88rem; font-weight: 700; display: none; }
+.status-banner.failed { display: flex; align-items: center; gap: 8px; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+.status-banner.cancelled { display: flex; align-items: center; gap: 8px; background: var(--navy-light); color: var(--navy); border: 1px solid #c3d9e8; }
+
+/* empty state */
+.empty-state { text-align: center; padding: 60px 20px; }
+.empty-state-title { font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: 10px; }
+.empty-state-sub { font-size: 0.88rem; color: var(--text-mid); margin-bottom: 24px; }
+
+@media (min-width: 700px) {
+  .checkout-inner { display: grid; grid-template-columns: 1fr 340px; align-items: start; }
+  .left-col { display: flex; flex-direction: column; gap: 20px; }
+  .right-col { display: flex; flex-direction: column; gap: 16px; }
+  .status-banner, .test-badge { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== מסך כניסה ===== -->
+<div class="login-overlay" id="login-overlay">
+  <div class="login-box">
+    <h2>עומר טייכר · אזור בדיקות</h2>
+    <h1>כניסה לדף בדיקת תשלום</h1>
+    <div class="login-err" id="login-err">שם משתמש או סיסמה שגויים.</div>
+    <input type="text" id="login-user" placeholder="שם משתמש" dir="rtl" onkeydown="if(event.key==='Enter')document.getElementById('login-pass').focus()">
+    <input type="password" id="login-pass" placeholder="סיסמה" dir="rtl" onkeydown="if(event.key==='Enter')doTestLogin()">
+    <button onclick="doTestLogin()">כניסה</button>
+  </div>
+</div>
+
+<script>
+var TEST_USER = 'omer';
+var TEST_PASS = 'test2026';
+
+function doTestLogin() {
+  var u = document.getElementById('login-user').value.trim();
+  var p = document.getElementById('login-pass').value.trim();
+  if (u === TEST_USER && p === TEST_PASS) {
+    localStorage.setItem('omer_test_checkout', 'true');
+    document.getElementById('login-overlay').style.display = 'none';
+  } else {
+    document.getElementById('login-err').style.display = 'block';
+    document.getElementById('login-pass').value = '';
+    document.getElementById('login-pass').focus();
+  }
+}
+
+// בדיקה אם כבר מחובר
+if (localStorage.getItem('omer_test_checkout') === 'true') {
+  document.getElementById('login-overlay').style.display = 'none';
+}
+</script>
+
+<div class="checkout-page">
+
+<nav class="checkout-nav">
+  <a class="checkout-nav-logo" href="/">עומר <span>טייכר</span></a>
+  <div class="checkout-nav-secure">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    בדיקת תשלום
+  </div>
+</nav>
+
+<div class="checkout-inner">
+
+  <div class="test-badge">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    מצב בדיקה — כל מוצר עולה 3 ש"ח בלבד
+  </div>
+
+  <div id="status-banner" class="status-banner"></div>
+
+  <!-- עמודה שמאלית: סיכום הזמנה + טופס -->
+  <div class="left-col">
+
+    <!-- סיכום מה קונים -->
+    <div class="order-card" id="order-card">
+      <div class="order-card-title">ההזמנה שלכם (בדיקה)</div>
+      <div id="order-items"></div>
+      <div class="order-total">
+        <span class="order-total-label">סה"כ לתשלום</span>
+        <span class="order-total-price" id="order-total">₪0</span>
+      </div>
+    </div>
+
+    <!-- empty state אם הגיעו בלי מוצר -->
+    <div class="empty-state" id="empty-state" style="display:none;">
+      <div class="empty-state-title">לא נבחרה הדרכה</div>
+      <div class="empty-state-sub">הוסיפו ?product=vibe או ?product=everything ל-URL</div>
+      <a href="/interactive" class="btn btn-primary">לכל ההדרכות</a>
+    </div>
+
+    <!-- טופס -->
+    <div class="form-card" id="form-card">
+      <div class="form-card-title">פרטים לקבלת ההדרכה</div>
+
+      <div class="form-row">
+        <label class="form-label" for="customer-name">שם מלא <span>*</span></label>
+        <input class="form-input" type="text" id="customer-name" placeholder="שם פרטי ושם משפחה" autocomplete="name">
+        <div class="form-error-msg" id="name-error">נא להזין שם מלא</div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="customer-email">כתובת אימייל <span>*</span></label>
+        <input class="form-input" type="email" id="customer-email" placeholder="yourname@gmail.com" autocomplete="email" dir="ltr">
+        <div class="form-hint">כאן נשלח את פרטי הגישה לאחר התשלום</div>
+        <div class="form-error-msg" id="email-error">נא להזין כתובת אימייל תקינה</div>
+      </div>
+
+      <div class="form-row">
+        <label class="form-label" for="customer-phone">טלפון <em>(לא חובה)</em></label>
+        <input class="form-input" type="tel" id="customer-phone" placeholder="050-0000000" autocomplete="tel" dir="ltr">
+        <div class="form-hint">לעזרה מהירה אם יש בעיה</div>
+      </div>
+
+      <div class="alert alert-error" id="form-alert"></div>
+    </div>
+  </div>
+
+  <!-- עמודה ימנית: כפתור + אמון -->
+  <div class="right-col">
+    <button class="pay-btn" id="pay-btn" type="button">
+      <span class="pay-btn-text" style="display:flex;align-items:center;gap:10px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        תשלום בדיקה · ₪3
+      </span>
+      <div class="pay-btn-spinner"></div>
+    </button>
+
+    <div class="alert alert-info" id="redirect-msg">מעבירים אתכם לדף התשלום המאובטח...</div>
+
+    <div class="trust-bar">
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        SSL מוצפן
+      </div>
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        מאובטח על ידי PayPlus
+      </div>
+      <div class="trust-item">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        מצב בדיקה
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+// ===== מחיר בדיקה קבוע — 3 ש"ח =====
+var TEST_PRICE = 3;
+
+var params = new URLSearchParams(window.location.search);
+var productParam = params.get('product');
+var cartParam = params.get('cart');
+var cart = [];
+var PRODUCTS = {};
+
+function buildCart() {
+  cart = [];
+  if (productParam && PRODUCTS[productParam]) {
+    cart = [PRODUCTS[productParam]];
+  }
+  if (cartParam) {
+    cartParam.split(',').forEach(function(key) {
+      if (PRODUCTS[key]) cart.push(PRODUCTS[key]);
+    });
+  }
+}
+
+function renderOrder() {
+  var itemsEl = document.getElementById('order-items');
+  var totalEl = document.getElementById('order-total');
+  var formCard = document.getElementById('form-card');
+  var payBtn  = document.getElementById('pay-btn');
+  var emptyState = document.getElementById('empty-state');
+  var orderCard  = document.getElementById('order-card');
+
+  if (cart.length === 0) {
+    orderCard.style.display = 'none';
+    formCard.style.display  = 'none';
+    payBtn.style.display    = 'none';
+    emptyState.style.display = 'block';
+    return;
+  }
+
+  var total = cart.length * TEST_PRICE;
+
+  itemsEl.innerHTML = cart.map(function(item) {
+    return '<div class="order-item">' +
+      '<div class="order-item-icon">' +
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>' +
+      '</div>' +
+      '<div class="order-item-body">' +
+        '<div class="order-item-name">' + item.name + '</div>' +
+        '<div class="order-item-sub">בדיקה — מחיר מקורי ₪' + item.originalPrice + '</div>' +
+      '</div>' +
+      '<div class="order-item-price">₪' + TEST_PRICE + '</div>' +
+    '</div>';
+  }).join('');
+
+  totalEl.textContent = '₪' + total;
+}
+
+// טוען מחירים מ-interactive.json
+fetch('/interactive/interactive.json')
+  .then(function(r) { return r.json(); })
+  .then(function(products) {
+    products.forEach(function(p) {
+      PRODUCTS[p.key] = { name: p.title, price: TEST_PRICE, originalPrice: p.price };
+    });
+    buildCart();
+    renderOrder();
+  })
+  .catch(function() {
+    PRODUCTS = {
+      vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: TEST_PRICE, originalPrice: 47 },
+      everything: { name: 'Everything — חיפוש מיידי בכל הקבצים במחשב', price: TEST_PRICE, originalPrice: 47 },
+      security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', price: TEST_PRICE, originalPrice: 47 }
+    };
+    buildCart();
+    renderOrder();
+  });
+
+// ===== סטטוס URL =====
+var status = params.get('status');
+var banner = document.getElementById('status-banner');
+if (status === 'failed') {
+  banner.className = 'status-banner failed';
+  banner.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> התשלום לא הצליח. ניתן לנסות שוב.';
+}
+if (status === 'cancelled') {
+  banner.className = 'status-banner cancelled';
+  banner.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg> התשלום בוטל. ניתן לחזור ולנסות.';
+}
+
+// ===== ולידציה =====
+function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+function showErr(inputId, errId, show) {
+  document.getElementById(inputId).classList.toggle('error', show);
+  document.getElementById(errId).classList.toggle('visible', show);
+}
+
+document.getElementById('customer-name').addEventListener('input', function() { showErr('customer-name','name-error',false); });
+document.getElementById('customer-email').addEventListener('input', function() { showErr('customer-email','email-error',false); });
+
+// ===== תשלום בדיקה =====
+document.getElementById('pay-btn').addEventListener('click', async function() {
+  if (cart.length === 0) return;
+
+  var name  = document.getElementById('customer-name').value.trim();
+  var email = document.getElementById('customer-email').value.trim();
+  var phone = document.getElementById('customer-phone').value.trim();
+  var alertEl = document.getElementById('form-alert');
+
+  var valid = true;
+  showErr('customer-name',  'name-error',  !name);
+  showErr('customer-email', 'email-error', !validateEmail(email));
+  if (!name || !validateEmail(email)) valid = false;
+
+  if (!valid) {
+    alertEl.textContent = 'נא למלא את כל השדות החובה.';
+    alertEl.className = 'alert alert-error visible';
+    return;
+  }
+  alertEl.className = 'alert';
+
+  var btn = document.getElementById('pay-btn');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  try {
+    var cartKeys = [];
+    if (productParam && PRODUCTS[productParam]) cartKeys.push(productParam);
+    if (cartParam) cartParam.split(',').forEach(function(k) { if (PRODUCTS[k] && cartKeys.indexOf(k) === -1) cartKeys.push(k); });
+
+    var response = await fetch('/api/payplus', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        productKey: cartKeys[0],
+        productKeys: cartKeys,
+        customerName: name,
+        customerEmail: email,
+        customerPhone: phone,
+        testMode: true,
+        testSecret: 'omer-test-2026'
+      })
+    });
+
+    var data = await response.json();
+    if (!response.ok || !data.paymentUrl) throw new Error(data.error || 'שגיאה');
+
+    var payUrl = new URL(data.paymentUrl);
+    if (!['restapi.payplus.co.il', 'restapidev.payplus.co.il', 'payments.payplus.co.il'].includes(payUrl.hostname)) {
+      throw new Error('כתובת תשלום לא מוכרת');
+    }
+    document.getElementById('redirect-msg').className = 'alert alert-info visible';
+    setTimeout(function() { window.location.href = data.paymentUrl; }, 700);
+
+  } catch (err) {
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    alertEl.textContent = err.message || 'אירעה שגיאה. נסו שוב או פנו אלינו.';
+    alertEl.className = 'alert alert-error visible';
+  }
+});
+</script>
+
+<script src="/assets/js/toolbar.js" defer></script>
+</body>
+</html>
