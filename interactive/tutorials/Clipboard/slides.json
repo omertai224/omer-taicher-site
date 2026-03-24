@@ -23,7 +23,10 @@
         "bottom": "46.7222%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(50.0233% - 315px)",
+        "top": "calc(51.0185% - 25px)"
+      },
       "step": 1,
       "text": "From the menu that appears, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the selected date."
     },
@@ -39,7 +42,10 @@
         "bottom": "-0.685181%"
       },
       "arrow": "arrow-bottom-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(24.4186% - 25px)",
+        "bottom": "calc(5.87037% + 15px)"
+      },
       "step": 2,
       "text": "In Windows Explorer, click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to access the taskbar and switch applications."
     },
@@ -55,7 +61,10 @@
         "bottom": "38.7593%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(52.1163% - 315px)",
+        "top": "calc(58.8889% - 25px)"
+      },
       "step": 3,
       "text": "Click <span style=\" color:#f6a67e;\">“שמור על טקסט בלבד”</span> to paste only the text without bringing over formatting from the source."
     },
@@ -71,7 +80,10 @@
         "bottom": "-0.0370407%"
       },
       "arrow": "arrow-bottom-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(27.7326% - 25px)",
+        "bottom": "calc(6.14815% + 15px)"
+      },
       "step": 4,
       "text": "Click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> again to return to the taskbar and choose the next application."
     },
@@ -87,7 +99,10 @@
         "bottom": "46.6296%"
       },
       "arrow": "arrow-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(53.3488% + 15px)",
+        "top": "calc(51.1111% - 25px)"
+      },
       "step": 5,
       "text": "From the menu, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the order number."
     },
@@ -103,7 +118,10 @@
         "bottom": "-0.40741%"
       },
       "arrow": "arrow-bottom-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(24.593% - 25px)",
+        "bottom": "calc(5.31482% + 15px)"
+      },
       "step": 6,
       "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to use the taskbar and switch back to your working document."
     },
@@ -119,7 +137,10 @@
         "bottom": "34.5926%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(52.2907% - 315px)",
+        "top": "calc(63.0556% - 25px)"
+      },
       "step": 7,
       "text": "Click <span style=\" color:#f6a67e;\">“שמור על טקסט בלבד”</span> to paste only the copied order number as text."
     },
@@ -135,7 +156,10 @@
         "bottom": "-1.14816%"
       },
       "arrow": "arrow-bottom-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(27.9651% - 25px)",
+        "bottom": "calc(6.42593% + 15px)"
+      },
       "step": 8,
       "text": "Click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> for easy navigation between open applications."
     },
@@ -151,7 +175,10 @@
         "bottom": "27.1852%"
       },
       "arrow": "arrow-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(44.2791% + 15px)",
+        "top": "calc(70.0926% - 25px)"
+      },
       "step": 9,
       "text": "In the new window that appears, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the highlighted content."
     },
@@ -167,7 +194,10 @@
         "bottom": "-0.685181%"
       },
       "arrow": "arrow-bottom-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(24.593% - 25px)",
+        "bottom": "calc(6.51852% + 15px)"
+      },
       "step": 10,
       "text": "In Windows Explorer, click on <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to bring the taskbar into focus for application switching."
     },
@@ -183,7 +213,10 @@
         "bottom": "29.6852%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(62.8721% - 315px)",
+        "top": "calc(67.963% - 25px)"
+      },
       "step": 11,
       "text": "Click on <span style=\" color:#f6a67e;\">“מזג עיצוב”</span> to merge the formatting of the pasted content with your existing document format."
     },
@@ -199,7 +232,10 @@
         "bottom": "-0.5%"
       },
       "arrow": "arrow-bottom-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(27.5581% - 25px)",
+        "bottom": "calc(6.42593% + 15px)"
+      },
       "step": 12,
       "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> again to use the taskbar for efficient navigation."
     },
@@ -215,7 +251,10 @@
         "bottom": "18.0185%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(53.9186% - 315px)",
+        "top": "calc(79.1667% - 25px)"
+      },
       "step": 13,
       "text": "From the context menu, select <span style=\" color:#f6a67e;\">“העתקת תמונה”</span> to copy an image from the page."
     },
@@ -231,7 +270,10 @@
         "bottom": "-0.870369%"
       },
       "arrow": "arrow-bottom-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(24.6512% - 25px)",
+        "bottom": "calc(5.68519% + 15px)"
+      },
       "step": 14,
       "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to access the taskbar and switch back to your document."
     },
@@ -247,7 +289,10 @@
         "bottom": "62.1852%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(61.186% - 315px)",
+        "top": "calc(35.463% - 25px)"
+      },
       "step": 15,
       "text": "To begin, select the <span style=\" color:#f6a67e;\">“תמונה”</span> option. This action will start the process and help you access relevant features."
     },
@@ -263,7 +308,10 @@
         "bottom": "8.48148%"
       },
       "arrow": "arrow-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(48.1163% + 15px)",
+        "top": "calc(89.8148% - 25px)"
+      },
       "step": 16,
       "text": "Click on <span style=\" color:#f6a67e;\">“תוכן עמוד 1”</span> to select the content of page 1."
     },
@@ -279,7 +327,10 @@
         "bottom": "-0.5%"
       },
       "arrow": "arrow-bottom-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(63.1395% - 275px)",
+        "bottom": "calc(5.96296% + 15px)"
+      },
       "step": 17,
       "text": "Next, in FlowShare, click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to open the taskbar and continue to the next stage."
     },
@@ -295,7 +346,10 @@
         "bottom": "56.1667%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(57.6395% - 315px)",
+        "top": "calc(38.4259% - 25px)"
+      },
       "step": 18,
       "text": "In the Windows Start Menu, click <span style=\" color:#f6a67e;\">“הגדרות”</span> to access the settings panel, where you can adjust system preferences."
     },
@@ -311,7 +365,10 @@
         "bottom": "73.9444%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(78.0465% - 315px)",
+        "top": "calc(23.4259% - 25px)"
+      },
       "step": 19,
       "text": "Inside the Windows Application Frame Host, select the <span style=\" color:#f6a67e;\">“מערכת”</span> option to view and manage system-related settings."
     },
@@ -327,7 +384,10 @@
         "bottom": "42.463%"
       },
       "arrow": "arrow-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(75.7326% + 15px)",
+        "top": "calc(52.963% - 25px)"
+      },
       "step": 20,
       "text": "Now, click <span style=\" color:#f6a67e;\">“לוח”</span> to open the clipboard settings, which allow you to manage clipboard features."
     },
@@ -343,7 +403,10 @@
         "bottom": "80.1481%"
       },
       "arrow": "arrow-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(8.34884% + 15px)",
+        "top": "calc(16.9444% - 25px)"
+      },
       "step": 21,
       "text": "Once more, click the <span style=\" color:#f6a67e;\">“היסטוריית הלוח”</span> button to confirm or activate the clipboard history feature. This ensures that your clipboard history is properly set up."
     },
@@ -359,7 +422,10 @@
         "bottom": "80.1481%"
       },
       "arrow": "arrow-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(11.8372% + 15px)",
+        "top": "calc(16.9444% - 25px)"
+      },
       "step": 22,
       "text": "Click the <span style=\" color:#f6a67e;\">“היסטוריית הלוח”</span> button to enable or review the clipboard history, making it possible to see previously copied items."
     },
@@ -368,7 +434,10 @@
       "type": "view",
       "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_23.png",
       "arrow": "none",
-      "textPos": {},
+      "textPos": {
+        "left": "5%",
+        "bottom": "5%"
+      },
       "step": 23,
       "text": ""
     },
@@ -377,7 +446,10 @@
       "type": "view",
       "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_24.png",
       "arrow": "none",
-      "textPos": {},
+      "textPos": {
+        "left": "5%",
+        "bottom": "5%"
+      },
       "step": 24,
       "text": ""
     },
@@ -386,7 +458,10 @@
       "type": "view",
       "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_25.png",
       "arrow": "none",
-      "textPos": {},
+      "textPos": {
+        "left": "5%",
+        "bottom": "5%"
+      },
       "step": 25,
       "text": ""
     },
@@ -395,7 +470,10 @@
       "type": "view",
       "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_26.png",
       "arrow": "none",
-      "textPos": {},
+      "textPos": {
+        "left": "5%",
+        "bottom": "5%"
+      },
       "step": 26,
       "text": ""
     },
@@ -404,7 +482,10 @@
       "type": "view",
       "image": "How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_27.png",
       "arrow": "none",
-      "textPos": {},
+      "textPos": {
+        "left": "5%",
+        "bottom": "5%"
+      },
       "step": 27,
       "text": ""
     },
@@ -420,7 +501,10 @@
         "bottom": "10.1481%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(62.4651% - 315px)",
+        "top": "calc(84.6296% - 25px)"
+      },
       "step": 28,
       "text": "Finally, press Ctrl+V to paste the selected content from the clipboard into your document."
     },
@@ -436,7 +520,10 @@
         "bottom": "15.7037%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(62.8721% - 315px)",
+        "top": "calc(79.0741% - 25px)"
+      },
       "step": 29,
       "text": "Press the Ctrl and V keys together to paste copied content into the selected area."
     },
@@ -452,7 +539,10 @@
         "bottom": "10.7037%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(71.3023% - 315px)",
+        "top": "calc(84.0741% - 25px)"
+      },
       "step": 30,
       "text": "Press Ctrl and V to paste content once more into the active area."
     },
@@ -468,7 +558,10 @@
         "bottom": "62.3704%"
       },
       "arrow": "arrow-right",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(71.3023% - 315px)",
+        "top": "calc(32.4074% - 25px)"
+      },
       "step": 31,
       "text": "Click the <span style=\" color:#f6a67e;\">“הצג עוד הצמד פריט”</span> button to reveal more connected items."
     },
@@ -484,7 +577,10 @@
         "bottom": "7.74074%"
       },
       "arrow": "arrow-left",
-      "textPos": {},
+      "textPos": {
+        "left": "calc(71.314% + 15px)",
+        "top": "calc(75.2778% - 25px)"
+      },
       "step": 32,
       "text": "Click on the area you wish to activate for input or editing."
     },
