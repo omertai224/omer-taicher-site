@@ -323,13 +323,11 @@ function updateTtsVisibility() {
   if (textEl) setTimeout(positionTtsBtn, 50);
 }
 
-/* ── Init on DOMContentLoaded ── */
-document.addEventListener("DOMContentLoaded", function() {
-  buildNavDots();
-  initMagnifier();
-  initTts();
-  showSlides(slideIndex);
-});
+/* ── Init ──
+   DOMContentLoaded removed — each tutorial calls
+   buildNavDots/initMagnifier/initTts/showSlides
+   from its own initApp() after building slides.
+*/
 
 /* ── Keyboard + Resize ── */
 document.addEventListener('keydown', function(event) {
