@@ -23,7 +23,7 @@
       "index": 3,
       "type": "click",
       "step": 1,
-      "image": "vibe_downloads_folder.png",
+      "image": "vibe-01-open-downloads.png",
       "box": {
         "top": "33.6667%",
         "left": "87.9884%",
@@ -42,7 +42,7 @@
       "index": 4,
       "type": "click",
       "step": 2,
-      "image": "vibe_setup_file.png",
+      "image": "vibe-02-run-setup.png",
       "box": {
         "top": "20.2407%",
         "left": "78.9186%",
@@ -61,7 +61,7 @@
       "index": 5,
       "type": "click",
       "step": 3,
-      "image": "vibe_smartscreen.png",
+      "image": "vibe-03-smartscreen-warning.png",
       "box": {
         "top": "28.8519%",
         "left": "62.1163%",
@@ -80,7 +80,7 @@
       "index": 6,
       "type": "click",
       "step": 4,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_3.png",
+      "image": "vibe-04-smartscreen-run-anyway.png",
       "box": {
         "top": "66.7222%",
         "left": "41.0116%",
@@ -99,7 +99,7 @@
       "index": 7,
       "type": "click",
       "step": 5,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_4.png",
+      "image": "vibe-05-install-wizard-start.png",
       "box": {
         "top": "64.6852%",
         "left": "54.6163%",
@@ -118,7 +118,7 @@
       "index": 8,
       "type": "click",
       "step": 6,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_5.png",
+      "image": "vibe-06-install-folder.png",
       "box": {
         "top": "64.6852%",
         "left": "54.6163%",
@@ -137,7 +137,7 @@
       "index": 9,
       "type": "view",
       "step": 7,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_6.png",
+      "image": "vibe-07-install-progress.png",
       "box": {
         "top": "23.9444%",
         "left": "32.0581%",
@@ -156,7 +156,7 @@
       "index": 10,
       "type": "click",
       "step": 8,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_7.png",
+      "image": "vibe-08-install-complete.png",
       "box": {
         "top": "64.6852%",
         "left": "54.6163%",
@@ -175,7 +175,7 @@
       "index": 11,
       "type": "click",
       "step": 9,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_8.png",
+      "image": "vibe-09-install-finish.png",
       "box": {
         "top": "64.6852%",
         "left": "54.6163%",
@@ -194,7 +194,7 @@
       "index": 12,
       "type": "view",
       "step": 10,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_9.png",
+      "image": "vibe-10-model-download.png",
       "box": {
         "top": "34.1296%",
         "left": "27.814%",
@@ -219,7 +219,7 @@
       "index": 14,
       "type": "click",
       "step": 11,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_10.png",
+      "image": "vibe-11-main-screen-select-file.png",
       "box": {
         "top": "37.463%",
         "left": "47.5233%",
@@ -238,7 +238,7 @@
       "index": 15,
       "type": "click",
       "step": 12,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_11.png",
+      "image": "vibe-12-browse-videos-folder.png",
       "box": {
         "top": "32.1852%",
         "left": "22.814%",
@@ -257,7 +257,7 @@
       "index": 16,
       "type": "click",
       "step": 13,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_12.png",
+      "image": "vibe-13-select-video-file.png",
       "box": {
         "top": "21.8148%",
         "left": "33.6279%",
@@ -276,7 +276,7 @@
       "index": 17,
       "type": "click",
       "step": 14,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_13.png",
+      "image": "vibe-14-click-open.png",
       "box": {
         "top": "57.6481%",
         "left": "60.8372%",
@@ -295,7 +295,7 @@
       "index": 18,
       "type": "click",
       "step": 15,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_14.png",
+      "image": "vibe-15-set-language.png",
       "box": {
         "top": "29.963%",
         "left": "22.2326%",
@@ -314,7 +314,7 @@
       "index": 19,
       "type": "click",
       "step": 16,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_15.png",
+      "image": "vibe-16-choose-hebrew.png",
       "box": {
         "top": "59.7778%",
         "left": "23.686%",
@@ -333,7 +333,7 @@
       "index": 20,
       "type": "click",
       "step": 17,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_16.png",
+      "image": "vibe-17-click-transcribe.png",
       "box": {
         "top": "63.1111%",
         "left": "41.593%",
@@ -352,7 +352,7 @@
       "index": 21,
       "type": "view",
       "step": 18,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_17.png",
+      "image": "vibe-18-transcription-progress.png",
       "box": {
         "top": "58.2037%",
         "left": "39.9651%",
@@ -371,7 +371,7 @@
       "index": 22,
       "type": "click",
       "step": 19,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_18.png",
+      "image": "vibe-19-transcription-done-copy.png",
       "box": {
         "top": "36.9074%",
         "left": "22.4651%",
@@ -390,7 +390,7 @@
       "index": 23,
       "type": "click",
       "step": 20,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_19.png",
+      "image": "vibe-20-export-format-menu.png",
       "box": {
         "top": "37.1852%",
         "left": "68.8023%",
@@ -409,7 +409,7 @@
       "index": 24,
       "type": "click",
       "step": 21,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_20.png",
+      "image": "vibe-21-choose-text-format.png",
       "box": {
         "top": "42.5556%",
         "left": "69.0349%",
@@ -428,7 +428,7 @@
       "index": 25,
       "type": "click",
       "step": 22,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_21.png",
+      "image": "vibe-22-copy-or-download.png",
       "box": {
         "top": "36.9074%",
         "left": "22.4651%",
@@ -447,7 +447,7 @@
       "index": 26,
       "type": "click",
       "step": 23,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_22.png",
+      "image": "vibe-23-save-transcript.png",
       "box": {
         "top": "36.9074%",
         "left": "25.6628%",
@@ -466,7 +466,7 @@
       "index": 27,
       "type": "click",
       "step": 24,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_23.png",
+      "image": "vibe-24-save-to-documents.png",
       "box": {
         "top": "32.1852%",
         "left": "22.814%",
@@ -485,7 +485,7 @@
       "index": 28,
       "type": "click",
       "step": 25,
-      "image": "How_to_set_up_Vibe_and_transcribe_Hebrew_video_and_document_files_in_Windows_24.png",
+      "image": "vibe-25-save-file.png",
       "box": {
         "top": "57.6481%",
         "left": "60.8372%",
