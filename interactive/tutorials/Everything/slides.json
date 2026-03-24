@@ -23,7 +23,7 @@
     {
       "index": 3,
       "type": "click",
-      "image": "everything-01.png",
+      "image": "everything-01-open-downloads.png",
       "step": 1,
       "text": "פתחו את סייר הקבצים ולחצו על <span style=\"color:#f6a67e;\">הורדות</span> כדי לראות את הקבצים שהורדתם",
       "arrow": "arrow-right",
@@ -42,7 +42,7 @@
     {
       "index": 4,
       "type": "click",
-      "image": "everything-02.png",
+      "image": "everything-02-doubleclick-installer.png",
       "step": 2,
       "text": "לחצו לחיצה כפולה על קובץ ההתקנה <span style=\"color:#f6a67e;\">Everything</span> כדי להתחיל את ההתקנה<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> לחיצה כפולה. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
       "arrow": "arrow-right",
@@ -67,7 +67,7 @@
     {
       "index": 6,
       "type": "click",
-      "image": "everything-03.png",
+      "image": "everything-03-select-language.png",
       "step": 3,
       "text": "ניתן להשאיר את עברית כברירת מחדל. לחצו על <span style=\"color:#f6a67e;\">OK</span>",
       "arrow": "arrow-left",
@@ -86,7 +86,7 @@
     {
       "index": 7,
       "type": "click",
-      "image": "everything-04.png",
+      "image": "everything-04-accept-license.png",
       "step": 4,
       "text": "לחצו על <span style=\"color:#f6a67e;\">אני מסכים</span> כדי להמשיך",
       "arrow": "arrow-left",
@@ -105,7 +105,7 @@
     {
       "index": 8,
       "type": "click",
-      "image": "everything-05.png",
+      "image": "everything-05-choose-path.png",
       "step": 5,
       "text": "אפשר להשאיר את הנתיב כמו שהוא ולחצו על <span style=\"color:#f6a67e;\">הבא</span>",
       "arrow": "arrow-left",
@@ -124,7 +124,7 @@
     {
       "index": 9,
       "type": "click",
-      "image": "everything-06.png",
+      "image": "everything-06-click-next.png",
       "step": 6,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הבא</span>",
       "arrow": "arrow-left",
@@ -143,7 +143,7 @@
     {
       "index": 10,
       "type": "click",
-      "image": "everything-07.png",
+      "image": "everything-07-install-options.png",
       "step": 7,
       "text": "השאירו את כל האפשרויות מסומנות כברירת מחדל ולחצו על <span style=\"color:#f6a67e;\">התקן</span>",
       "arrow": "arrow-left",
@@ -162,7 +162,7 @@
     {
       "index": 11,
       "type": "click",
-      "image": "everything-08.png",
+      "image": "everything-08-install-finish.png",
       "step": 8,
       "text": "ההתקנה הסתיימה. וודאו שהתיבה מסומנת ולחצו על <span style=\"color:#f6a67e;\">סיום</span> כדי להפעיל את Everything",
       "arrow": "arrow-left",
@@ -187,7 +187,7 @@
     {
       "index": 13,
       "type": "view",
-      "image": "everything-09.png",
+      "image": "everything-09-search-bar-type.png",
       "step": 9,
       "text": "התוכנה מותקנת ומוכנה לשימוש. הקלידו ב<span style=\"color:#f6a67e;\">שורת החיפוש</span> למעלה את שם הקובץ שאתם מחפשים, והתוצאות יופיעו מיידית<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-left",
@@ -206,7 +206,7 @@
     {
       "index": 14,
       "type": "view",
-      "image": "everything-10.png",
+      "image": "everything-10-search-results.png",
       "step": 10,
       "text": "הקלדנו <span style=\"color:#f6a67e;\">שף</span> בשורת החיפוש והתוצאות מופיעות מיד! Everything מצא קובץ וידאו וקובץ טקסט<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-right",
@@ -225,7 +225,7 @@
     {
       "index": 15,
       "type": "view",
-      "image": "everything-11.png",
+      "image": "everything-11-results-details.png",
       "step": 11,
       "text": "אפשר לראות את <span style=\"color:#f6a67e;\">תוצאות החיפוש</span> עם שם הקובץ, הגודל, התאריך והנתיב המלא. לחיצה כפולה על קובץ תפתח אותו<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-right",
@@ -237,7 +237,7 @@
     {
       "index": 16,
       "type": "click",
-      "image": "everything-12.png",
+      "image": "everything-12-menu-view.png",
       "step": 12,
       "text": "לחצו על <span style=\"color:#f6a67e;\">תצוגה</span> בשורת התפריטים למעלה כדי לפתוח אפשרויות נוספות",
       "arrow": "arrow-top-right",
@@ -256,7 +256,7 @@
     {
       "index": 17,
       "type": "click",
-      "image": "everything-13.png",
+      "image": "everything-13-select-filters.png",
       "step": 13,
       "text": "בחרו באפשרות <span style=\"color:#f6a67e;\">מסננים</span>",
       "arrow": "arrow-top-right",
@@ -275,7 +275,7 @@
     {
       "index": 18,
       "type": "click",
-      "image": "everything-14.png",
+      "image": "everything-14-filter-all.png",
       "step": 14,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הכל</span> כדי לפתוח את כל המסננים.<br>מסננים מאפשרים לכם לראות רק סוג קבצים מסוים מתוך התוצאות",
       "arrow": "arrow-top-left",
@@ -294,7 +294,7 @@
     {
       "index": 19,
       "type": "click",
-      "image": "everything-15.png",
+      "image": "everything-15-filter-video.png",
       "step": 15,
       "text": "בחרו באפשרות <span style=\"color:#f6a67e;\">וידאו</span> כדי לראות רק את קבצי הוידאו שבתוצאות",
       "arrow": "arrow-left",
@@ -313,7 +313,7 @@
     {
       "index": 20,
       "type": "view",
-      "image": "everything-16.png",
+      "image": "everything-16-filtered-video-results.png",
       "step": 16,
       "text": "רואים שהתוצאות סוננו - Everything מציג רק את קבצי הוידאו. ככה אפשר למצוא בקלות סוג קובץ מסוים<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-right",
@@ -325,7 +325,7 @@
     {
       "index": 21,
       "type": "click",
-      "image": "everything-17.png",
+      "image": "everything-17-click-video-filter.png",
       "step": 17,
       "text": "לחצו על המסנן <span style=\"color:#f6a67e;\">וידאו</span> כדי לעבור למסנן אחר",
       "arrow": "arrow-top-left",
@@ -344,7 +344,7 @@
     {
       "index": 22,
       "type": "click",
-      "image": "everything-18.png",
+      "image": "everything-18-filter-documents.png",
       "step": 18,
       "text": "בחרו באפשרות <span style=\"color:#f6a67e;\">מסמכים</span> כדי לסנן ולראות רק קבצי מסמכים",
       "arrow": "arrow-left",
@@ -363,7 +363,7 @@
     {
       "index": 23,
       "type": "view",
-      "image": "everything-19.png",
+      "image": "everything-19-filtered-doc-results.png",
       "step": 19,
       "text": "קובץ המסמך הופיע בתוצאות. המסנן <span style=\"color:#f6a67e;\">מסמכים</span> מציג רק קבצי מסמכים<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-right",
@@ -375,7 +375,7 @@
     {
       "index": 24,
       "type": "click",
-      "image": "everything-20.png",
+      "image": "everything-20-menu-view-again.png",
       "step": 20,
       "text": "לחצו על <span style=\"color:#f6a67e;\">תצוגה</span> בשורת התפריטים למעלה",
       "arrow": "arrow-top-right",
@@ -394,7 +394,7 @@
     {
       "index": 25,
       "type": "click",
-      "image": "everything-21.png",
+      "image": "everything-21-select-preview.png",
       "step": 21,
       "text": "בחרו <span style=\"color:#f6a67e;\">תצוגה מקדימה</span>. תצוגה מקדימה מאפשרת לראות את הקובץ לפני שפותחים אותו",
       "arrow": "arrow-top-right",
@@ -413,7 +413,7 @@
     {
       "index": 26,
       "type": "click",
-      "image": "everything-22.png",
+      "image": "everything-22-preview-file.png",
       "step": 22,
       "text": "בחרו קובץ ברשימה - <span style=\"color:#f6a67e;\">התצוגה המקדימה</span> מופיעה בצד שמאל בלי לפתוח את הקובץ",
       "arrow": "arrow-right",
@@ -432,7 +432,7 @@
     {
       "index": 27,
       "type": "click",
-      "image": "everything-23.png",
+      "image": "everything-23-click-doc-filter.png",
       "step": 23,
       "text": "לחצו על המסנן <span style=\"color:#f6a67e;\">מסמכים</span> כדי לעבור למסנן אחר",
       "arrow": "arrow-top-left",
@@ -451,7 +451,7 @@
     {
       "index": 28,
       "type": "click",
-      "image": "everything-24.png",
+      "image": "everything-24-filter-video-again.png",
       "step": 24,
       "text": "בחרו באפשרות <span style=\"color:#f6a67e;\">וידאו</span> כדי לראות רק את קבצי הוידאו",
       "arrow": "arrow-left",
@@ -470,7 +470,7 @@
     {
       "index": 29,
       "type": "click",
-      "image": "everything-25.png",
+      "image": "everything-25-click-video-preview.png",
       "step": 25,
       "text": "לחצו על <span style=\"color:#f6a67e;\">קובץ הוידאו</span> כדי לראות את התצוגה המקדימה שלו",
       "arrow": "arrow-right",
@@ -489,7 +489,7 @@
     {
       "index": 30,
       "type": "view",
-      "image": "everything-26.png",
+      "image": "everything-26-video-preview-playing.png",
       "step": 26,
       "text": "רואים את <span style=\"color:#f6a67e;\">התצוגה המקדימה של הסרטון</span> - אפשר לצפות בלי לפתוח את הקובץ<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-left",
@@ -501,7 +501,7 @@
     {
       "index": 31,
       "type": "click",
-      "image": "everything-27.png",
+      "image": "everything-27-rightclick-file.png",
       "step": 27,
       "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על קובץ בתוצאות כדי לפתוח תפריט עם אפשרויות נוספות<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
       "arrow": "arrow-right",
@@ -520,7 +520,7 @@
     {
       "index": 32,
       "type": "click",
-      "image": "everything-28.png",
+      "image": "everything-28-open-location.png",
       "step": 28,
       "text": "בתפריט שנפתח, בחרו <span style=\"color:#f6a67e;\">פתח מיקום</span> כדי לפתוח את התיקייה של הקובץ במחשב",
       "arrow": "arrow-right",
@@ -539,7 +539,7 @@
     {
       "index": 33,
       "type": "view",
-      "image": "everything-29.png",
+      "image": "everything-29-file-in-folder.png",
       "step": 29,
       "text": "רואים את הקובץ במחשב - Everything פתח את התיקייה שבה <span style=\"color:#f6a67e;\">הקובץ נמצא</span><br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-right",
@@ -551,7 +551,7 @@
     {
       "index": 34,
       "type": "click",
-      "image": "everything-30.png",
+      "image": "everything-30-rightclick-taskbar.png",
       "step": 30,
       "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על סמל Everything בשורת המשימות למטה<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
       "arrow": "arrow-bottom-left",
@@ -570,7 +570,7 @@
     {
       "index": 35,
       "type": "click",
-      "image": "everything-31.png",
+      "image": "everything-31-pin-to-taskbar.png",
       "step": 31,
       "text": "בחרו <span style=\"color:#f6a67e;\">הצמד לשורת המשימות</span> כדי שיהיה לכם קל לפתוח את Everything בקלות",
       "arrow": "arrow-bottom-left",
