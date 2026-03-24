@@ -1,11 +1,11 @@
 {
-  "tutorial": "Clipboard History",
+  "tutorial": "היסטוריית לוח",
   "totalSteps": 32,
   "slides": [
     {
       "index": 0,
       "type": "intro",
-      "title": "How to copy Amazon order details and images and paste them into Microsoft Word using clipboard history",
+      "title": "היסטוריית לוח — העתקה והדבקה בלי סבל",
       "subtitles": [
         "עומר טייכר",
         "מדריך וטכנאי מחשבים"
@@ -28,7 +28,7 @@
         "top": "calc(51.0185% - 25px)"
       },
       "step": 1,
-      "text": "From the menu that appears, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the selected date."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את התאריך של ההזמנה"
     },
     {
       "index": 2,
@@ -47,7 +47,7 @@
         "bottom": "calc(5.87037% + 15px)"
       },
       "step": 2,
-      "text": "In Windows Explorer, click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to access the taskbar and switch applications."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word"
     },
     {
       "index": 3,
@@ -66,7 +66,7 @@
         "top": "calc(58.8889% - 25px)"
       },
       "step": 3,
-      "text": "Click <span style=\" color:#f6a67e;\">“שמור על טקסט בלבד”</span> to paste only the text without bringing over formatting from the source."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שמור על טקסט בלבד</span> כדי להדביק רק את הטקסט בלי עיצוב"
     },
     {
       "index": 4,
@@ -85,7 +85,7 @@
         "bottom": "calc(6.14815% + 15px)"
       },
       "step": 4,
-      "text": "Click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> again to return to the taskbar and choose the next application."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון ולהעתיק עוד פרט"
     },
     {
       "index": 5,
@@ -104,7 +104,7 @@
         "top": "calc(51.1111% - 25px)"
       },
       "step": 5,
-      "text": "From the menu, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the order number."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה"
     },
     {
       "index": 6,
@@ -123,7 +123,7 @@
         "bottom": "calc(5.31482% + 15px)"
       },
       "step": 6,
-      "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to use the taskbar and switch back to your working document."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור למסמך ה-Word"
     },
     {
       "index": 7,
@@ -142,7 +142,7 @@
         "top": "calc(63.0556% - 25px)"
       },
       "step": 7,
-      "text": "Click <span style=\" color:#f6a67e;\">“שמור על טקסט בלבד”</span> to paste only the copied order number as text."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שמור על טקסט בלבד</span> כדי להדביק את מספר ההזמנה"
     },
     {
       "index": 8,
@@ -161,7 +161,7 @@
         "bottom": "calc(6.42593% + 15px)"
       },
       "step": 8,
-      "text": "Click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> for easy navigation between open applications."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור שוב לאמזון"
     },
     {
       "index": 9,
@@ -180,7 +180,7 @@
         "top": "calc(70.0926% - 25px)"
       },
       "step": 9,
-      "text": "In the new window that appears, select <span style=\" color:#f6a67e;\">“העתקה Ctrl+C”</span> to copy the highlighted content."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את שם המוצר"
     },
     {
       "index": 10,
@@ -199,7 +199,7 @@
         "bottom": "calc(6.51852% + 15px)"
       },
       "step": 10,
-      "text": "In Windows Explorer, click on <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to bring the taskbar into focus for application switching."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור ל-Word"
     },
     {
       "index": 11,
@@ -218,7 +218,7 @@
         "top": "calc(67.963% - 25px)"
       },
       "step": 11,
-      "text": "Click on <span style=\" color:#f6a67e;\">“מזג עיצוב”</span> to merge the formatting of the pasted content with your existing document format."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">מזג עיצוב</span> כדי להדביק את שם המוצר"
     },
     {
       "index": 12,
@@ -237,7 +237,7 @@
         "bottom": "calc(6.42593% + 15px)"
       },
       "step": 12,
-      "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> again to use the taskbar for efficient navigation."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון בפעם הרביעית"
     },
     {
       "index": 13,
@@ -256,7 +256,7 @@
         "top": "calc(79.1667% - 25px)"
       },
       "step": 13,
-      "text": "From the context menu, select <span style=\" color:#f6a67e;\">“העתקת תמונה”</span> to copy an image from the page."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק את תמונת המוצר"
     },
     {
       "index": 14,
@@ -275,7 +275,7 @@
         "bottom": "calc(5.68519% + 15px)"
       },
       "step": 14,
-      "text": "Click <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to access the taskbar and switch back to your document."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור ל-Word בפעם האחרונה"
     },
     {
       "index": 15,
@@ -294,7 +294,7 @@
         "top": "calc(35.463% - 25px)"
       },
       "step": 15,
-      "text": "To begin, select the <span style=\" color:#f6a67e;\">“תמונה”</span> option. This action will start the process and help you access relevant features."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונה</span> כדי להדביק את תמונת המוצר במסמך"
     },
     {
       "index": 16,
@@ -313,7 +313,7 @@
         "top": "calc(89.8148% - 25px)"
       },
       "step": 16,
-      "text": "Click on <span style=\" color:#f6a67e;\">“תוכן עמוד 1”</span> to select the content of page 1."
+      "text": "הנה התוצאה — כל הפרטים הודבקו. אבל זה לקח <span style=\"color:#f6a67e;\">15 צעדים</span> והמון הלוך-חזור!"
     },
     {
       "index": 17,
@@ -332,7 +332,7 @@
         "bottom": "calc(5.96296% + 15px)"
       },
       "step": 17,
-      "text": "Next, in FlowShare, click the <span style=\" color:#f6a67e;\">“‏‏שורת המשימות”</span> to open the taskbar and continue to the next stage."
+      "text": "עכשיו נלמד את הפתרון! לחצו על <span style=\"color:#f6a67e;\">כפתור ההתחלה (Start)</span> בשורת המשימות"
     },
     {
       "index": 18,
@@ -351,7 +351,7 @@
         "top": "calc(38.4259% - 25px)"
       },
       "step": 18,
-      "text": "In the Windows Start Menu, click <span style=\" color:#f6a67e;\">“הגדרות”</span> to access the settings panel, where you can adjust system preferences."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)"
     },
     {
       "index": 19,
@@ -370,7 +370,7 @@
         "top": "calc(23.4259% - 25px)"
       },
       "step": 19,
-      "text": "Inside the Windows Application Frame Host, select the <span style=\" color:#f6a67e;\">“מערכת”</span> option to view and manage system-related settings."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד"
     },
     {
       "index": 20,
@@ -389,7 +389,7 @@
         "top": "calc(52.963% - 25px)"
       },
       "step": 20,
-      "text": "Now, click <span style=\" color:#f6a67e;\">“לוח”</span> to open the clipboard settings, which allow you to manage clipboard features."
+      "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>"
     },
     {
       "index": 21,
@@ -408,12 +408,81 @@
         "top": "calc(16.9444% - 25px)"
       },
       "step": 21,
-      "text": "Once more, click the <span style=\" color:#f6a67e;\">“היסטוריית הלוח”</span> button to confirm or activate the clipboard history feature. This ensures that your clipboard history is properly set up."
+      "text": "לחצו על המתג <span style=\"color:#f6a67e;\">לא פעיל</span> כדי להפעיל את היסטוריית הלוח"
     },
     {
       "index": 22,
-      "type": "click",
+      "type": "view",
       "image": "clipboard-22.png",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(11.8372% + 15px)",
+        "top": "calc(16.9444% - 25px)"
+      },
+      "step": 22,
+      "text": "מצוין! היסטוריית הלוח <span style=\"color:#f6a67e;\">פעילה</span> עכשיו! מעכשיו כל מה שתעתיקו יישמר"
+    },
+    {
+      "index": 23,
+      "type": "click",
+      "image": "clipboard-23.png",
+      "boxClass": "49",
+      "box": {
+        "top": "14.037%",
+        "left": "3.39535%",
+        "right": "88.1628%",
+        "bottom": "80.1481%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "5%",
+        "bottom": "5%"
+      },
+      "step": 23,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה"
+    },
+    {
+      "index": 24,
+      "type": "click",
+      "image": "clipboard-24.png",
+      "boxClass": "49",
+      "box": {
+        "top": "14.037%",
+        "left": "3.39535%",
+        "right": "88.1628%",
+        "bottom": "80.1481%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "5%",
+        "bottom": "5%"
+      },
+      "step": 24,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך"
+    },
+    {
+      "index": 25,
+      "type": "click",
+      "image": "clipboard-25.png",
+      "boxClass": "49",
+      "box": {
+        "top": "14.037%",
+        "left": "3.39535%",
+        "right": "88.1628%",
+        "bottom": "80.1481%"
+      },
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "5%",
+        "bottom": "5%"
+      },
+      "step": 25,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם המוצר"
+    },
+    {
+      "index": 26,
+      "type": "click",
+      "image": "clipboard-26.png",
       "boxClass": "49",
       "box": {
         "top": "14.037%",
@@ -423,59 +492,11 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "calc(11.8372% + 15px)",
-        "top": "calc(16.9444% - 25px)"
-      },
-      "step": 22,
-      "text": "Click the <span style=\" color:#f6a67e;\">“היסטוריית הלוח”</span> button to enable or review the clipboard history, making it possible to see previously copied items."
-    },
-    {
-      "index": 23,
-      "type": "view",
-      "image": "clipboard-23.png",
-      "arrow": "none",
-      "textPos": {
-        "left": "5%",
-        "bottom": "5%"
-      },
-      "step": 23,
-      "text": ""
-    },
-    {
-      "index": 24,
-      "type": "view",
-      "image": "clipboard-24.png",
-      "arrow": "none",
-      "textPos": {
-        "left": "5%",
-        "bottom": "5%"
-      },
-      "step": 24,
-      "text": ""
-    },
-    {
-      "index": 25,
-      "type": "view",
-      "image": "clipboard-25.png",
-      "arrow": "none",
-      "textPos": {
-        "left": "5%",
-        "bottom": "5%"
-      },
-      "step": 25,
-      "text": ""
-    },
-    {
-      "index": 26,
-      "type": "view",
-      "image": "clipboard-26.png",
-      "arrow": "none",
-      "textPos": {
         "left": "5%",
         "bottom": "5%"
       },
       "step": 26,
-      "text": ""
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את התמונה"
     },
     {
       "index": 27,
@@ -487,7 +508,7 @@
         "bottom": "5%"
       },
       "step": 27,
-      "text": ""
+      "text": "העתקנו 4 פריטים ברצף — <span style=\"color:#f6a67e;\">בלי לעבור ל-Word אפילו פעם אחת!</span>"
     },
     {
       "index": 28,
@@ -506,7 +527,7 @@
         "top": "calc(84.6296% - 25px)"
       },
       "step": 28,
-      "text": "Finally, press Ctrl+V to paste the selected content from the clipboard into your document."
+      "text": "לחצו Win+V ובחרו את <span style=\"color:#f6a67e;\">התאריך</span> מהיסטוריית הלוח"
     },
     {
       "index": 29,
@@ -525,7 +546,7 @@
         "top": "calc(79.0741% - 25px)"
       },
       "step": 29,
-      "text": "Press the Ctrl and V keys together to paste copied content into the selected area."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח"
     },
     {
       "index": 30,
@@ -544,7 +565,7 @@
         "top": "calc(84.0741% - 25px)"
       },
       "step": 30,
-      "text": "Press Ctrl and V to paste content once more into the active area."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח"
     },
     {
       "index": 31,
@@ -563,31 +584,24 @@
         "top": "calc(32.4074% - 25px)"
       },
       "step": 31,
-      "text": "Click the <span style=\" color:#f6a67e;\">“הצג עוד הצמד פריט”</span> button to reveal more connected items."
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה"
     },
     {
       "index": 32,
-      "type": "click",
+      "type": "view",
       "image": "clipboard-32.png",
-      "boxClass": "102",
-      "box": {
-        "top": "58.2963%",
-        "left": "49.6163%",
-        "right": "28.686%",
-        "bottom": "7.74074%"
-      },
-      "arrow": "arrow-left",
+      "arrow": "none",
       "textPos": {
         "left": "calc(71.314% + 15px)",
         "top": "calc(75.2778% - 25px)"
       },
       "step": 32,
-      "text": "Click on the area you wish to activate for input or editing."
+      "text": "מעולה! כל הפרטים הודבקו — <span style=\"color:#f6a67e;\">טקסט ותמונה</span> — בלי לחזור לאמזון אפילו פעם אחת!"
     },
     {
       "index": 33,
       "type": "outro",
-      "title": "Thank you!"
+      "title": "תודה שהשתתפתם!"
     }
   ]
 }
