@@ -41,6 +41,9 @@ function buildSlides(slides, totalSteps) {
     } else if (s.type === 'intro') {
       html += '<div class="mySlides fade"><div class="background">'
         + '<div class="title">' + s.title + '</div>';
+      if (s.subtitle) {
+        html += '<div class="intro-desc" style="color:#ffffffcc;font-size:17px;line-height:1.8;max-width:600px;margin:16px auto 0;text-align:center;">' + s.subtitle + '</div>';
+      }
       if (s.subtitles) {
         for (var j = 0; j < s.subtitles.length; j++) {
           html += '<div class="subtitle">' + s.subtitles[j] + '</div>';
