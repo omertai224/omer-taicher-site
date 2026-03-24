@@ -307,6 +307,36 @@ color: #f6a67e;
 
 ---
 
+### תקלות מסשן מרץ 2026 — פיצול קבצים ו-shared
+
+**14. slides.json חילוץ כולל זבל מסוף ה-HTML**
+- **בעיה:** כשמחלצים שקפים מ-index.html ל-slides.json, השקף האחרון (outro) עלול לכלול בטעות את הלוגו, החיצים, פס הניווט, event listeners, ואפילו </body></html>
+- **תסמין:** הפס ניווט לא מופיע (נדחף ע"י עותק שני של position:fixed בתוך השקף)
+- **פתרון:** בדוק את ה-HTML של השקף האחרון ב-slides.json. אם הוא מכיל logo.png, left-arrow, nav-background, addEventListener — חתוך הכל מסוף ה-outro-wrap div
+- **מניעה:** אחרי חילוץ, תמיד בדוק: `python3 -c "import json; d=json.load(open('slides.json')); print(len(d['slides'][-1].get('html','')))"` — אם מעל 8000 תווים, כנראה יש זבל
+
+**15. z-index של קבצים משותפים — לא לשנות!**
+- **כלל:** אם הדרכה אחת לא עובדת אבל השאר כן — הבעיה בהדרכה, לא ב-shared
+- **z-index hierarchy:** nav-background(1) < arrows(2) < logo(3) < magnifier/tts(10)
+- **לא לשנות z-index ב-shared בגלל הדרכה אחת** — זה ישבור את השאר
+
+**16. שמות תמונות — לשנות מיד בשלב 0!**
+- **בעיה:** FlowShare יוצר שמות כמו How_to_copy_Amazon_order_details_and_images_and_paste_them_into_Microsoft_Word_using_clipboard_history_1.png
+- **פתרון:** שינוי שמות ל-{tutorial}-{step:02d}.png (למשל clipboard-01.png, vibe-05.png)
+- **חובה לעדכן:** slides.json, slide-map.json, index.html (אם לא דינמי)
+
+**17. קבצי ניווט בתיקיית images/ — מיותרים!**
+- **כלל:** logo.png, left.png, right.png — נמצאים ב-shared/images/ בלבד
+- **לא להעתיק לתיקיית images/ של הדרכה** — רק לקשר ל-../../shared/images/
+- **אם חסר קובץ — תמיד ללכת ל-shared**, לא להעתיק
+
+**18. DOMContentLoaded ב-shared/script.js — אסור!**
+- **בעיה:** DOMContentLoaded ב-shared קורא ל-buildNavDots() לפני שהשקפים נבנים (מ-fetch)
+- **פתרון:** כל הדרכה קוראת ל-buildNavDots() מתוך initApp() שלה, אחרי buildSlides()
+- **shared/script.js לא צריך DOMContentLoaded** — רק פונקציות + keyboard/resize listeners
+
+---
+
 ## צ'קליסט לפני דחיפה של הדרכה
 
 - [ ] אין תווים תלושים בין `</script>` ל-`slideshow-container`
