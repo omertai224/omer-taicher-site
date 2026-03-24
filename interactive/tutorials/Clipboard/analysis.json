@@ -1,0 +1,290 @@
+[
+  {
+    "image_num": 1,
+    "image_file": "clipboard-01.png",
+    "description_en": "Amazon order details page in Chrome. Order number selected in blue. Right-click context menu open showing 'העתקה' (Copy) with Ctrl+C. Order total ILS 758.75.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
+    "click_area": "Context menu - 'העתקה' option",
+    "arrow_direction": "arrow-left",
+    "context": "Part 1 (pain): Copy order number from Amazon"
+  },
+  {
+    "image_num": 2,
+    "image_file": "clipboard-02.png",
+    "description_en": "Amazon order page, context menu closed. Order number highlighted in blue. Date '27 ביולי 2025' visible. Payment info blurred.",
+    "action_he": "סמנו את <span style=\"color:#f6a67e;\">התאריך</span> של ההזמנה ולחצו Ctrl+C כדי להעתיק",
+    "click_area": "Date text '27 ביולי 2025'",
+    "arrow_direction": "arrow-left",
+    "context": "Part 1 (pain): Copy date from Amazon"
+  },
+  {
+    "image_num": 3,
+    "image_file": "clipboard-03.png",
+    "description_en": "Word document 'ניהול הזמנות' open. Paste options popup visible with format choices (keep text only, etc). Fields for date and order number.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שמור על טקסט בלבד</span> כדי להדביק רק את הטקסט",
+    "click_area": "Paste options popup - 'שמור על טקסט בלבד'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Paste in Word with format choice"
+  },
+  {
+    "image_num": 4,
+    "image_file": "clipboard-04.png",
+    "description_en": "Word document with date pasted. Taskbar visible at bottom showing Chrome and Word.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון",
+    "click_area": "Bottom taskbar - Chrome icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Amazon via taskbar"
+  },
+  {
+    "image_num": 5,
+    "image_file": "clipboard-05.png",
+    "description_en": "Amazon order page. Order number '113-4329370-3268205' highlighted. Right-click context menu with 'העתקה' (Copy).",
+    "action_he": "סמנו את <span style=\"color:#f6a67e;\">מספר ההזמנה</span> ולחצו העתקה",
+    "click_area": "Context menu - 'העתקה' option",
+    "arrow_direction": "arrow-left",
+    "context": "Part 1 (pain): Copy order number from Amazon"
+  },
+  {
+    "image_num": 6,
+    "image_file": "clipboard-06.png",
+    "description_en": "Amazon page, order number highlighted. Taskbar preview showing Word document.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מסמך ה-Word</span> בשורת המשימות כדי לחזור אליו",
+    "click_area": "Bottom taskbar - Word icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Word via taskbar"
+  },
+  {
+    "image_num": 7,
+    "image_file": "clipboard-07.png",
+    "description_en": "Word document with paste options popup. Clipboard history not used yet - regular paste.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שמור על טקסט בלבד</span> כדי להדביק את מספר ההזמנה",
+    "click_area": "Paste options popup",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Paste order number in Word"
+  },
+  {
+    "image_num": 8,
+    "image_file": "clipboard-08.png",
+    "description_en": "Word document with date and order number pasted. Taskbar at bottom.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון",
+    "click_area": "Bottom taskbar - Chrome icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Amazon again"
+  },
+  {
+    "image_num": 9,
+    "image_file": "clipboard-09.png",
+    "description_en": "Amazon page. Product name 'New Balance Men's FuelCell 990 V6 Sneaker' selected. Right-click context menu with 'העתקה'.",
+    "action_he": "סמנו את <span style=\"color:#f6a67e;\">שם המוצר</span> ולחצו העתקה",
+    "click_area": "Context menu - 'העתקה' option",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Copy product name from Amazon"
+  },
+  {
+    "image_num": 10,
+    "image_file": "clipboard-10.png",
+    "description_en": "Amazon page with product visible. Taskbar at bottom showing Word.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מסמך ה-Word</span> בשורת המשימות",
+    "click_area": "Bottom taskbar - Word icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Word via taskbar"
+  },
+  {
+    "image_num": 11,
+    "image_file": "clipboard-11.png",
+    "description_en": "Word document with paste options popup showing 'מזג עיצוב' (merge formatting) option.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מזג עיצוב</span> כדי להדביק את שם המוצר",
+    "click_area": "Paste options - 'מזג עיצוב'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Paste product name in Word"
+  },
+  {
+    "image_num": 12,
+    "image_file": "clipboard-12.png",
+    "description_en": "Word document with product name pasted. Taskbar at bottom.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון בפעם הרביעית",
+    "click_area": "Bottom taskbar - Chrome icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Amazon AGAIN"
+  },
+  {
+    "image_num": 13,
+    "image_file": "clipboard-13.png",
+    "description_en": "Amazon page. Right-click context menu showing 'העתקת תמונה' (Copy image) option for product photo.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק את תמונת המוצר",
+    "click_area": "Context menu - 'העתקת תמונה'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Copy product image from Amazon"
+  },
+  {
+    "image_num": 14,
+    "image_file": "clipboard-14.png",
+    "description_en": "Amazon page. Taskbar at bottom with Word preview visible.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מסמך ה-Word</span> בשורת המשימות",
+    "click_area": "Bottom taskbar - Word icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Word for the last time"
+  },
+  {
+    "image_num": 15,
+    "image_file": "clipboard-15.png",
+    "description_en": "Word document with paste options popup showing 'תמונה' (Image) paste option.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">תמונה</span> כדי להדביק את תמונת המוצר",
+    "click_area": "Paste options - 'תמונה'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Paste product image in Word"
+  },
+  {
+    "image_num": 16,
+    "image_file": "clipboard-16.png",
+    "description_en": "Word document showing completed result: title, date, order number, product name, product image (New Balance sneakers). All pasted successfully.",
+    "action_he": "התוצאה: כל הפרטים הודבקו — אבל זה לקח 15 צעדים והרבה הלוך-חזור!",
+    "click_area": "view-only - transition slide",
+    "arrow_direction": "none",
+    "context": "Transition: Show result of painful process - all info pasted but it took 15 steps"
+  },
+  {
+    "image_num": 17,
+    "image_file": "clipboard-17.png",
+    "description_en": "Clean Windows 11 desktop with default wallpaper. Taskbar at bottom. Desktop icon 'הכנסת נתונים' visible.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">כפתור ההתחלה (Start)</span> בשורת המשימות",
+    "click_area": "Bottom center - Start button",
+    "arrow_direction": "arrow-bottom",
+    "context": "Part 2 (enable): Open Start menu to navigate to Settings"
+  },
+  {
+    "image_num": 18,
+    "image_file": "clipboard-18.png",
+    "description_en": "Windows 11 Start menu open. Pinned apps grid visible. Settings (הגדרות) icon highlighted.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)",
+    "click_area": "Start menu - Settings icon",
+    "arrow_direction": "arrow-left",
+    "context": "Part 2 (enable): Open Windows Settings"
+  },
+  {
+    "image_num": 19,
+    "image_file": "clipboard-19.png",
+    "description_en": "Windows Settings Home page. Left sidebar with categories. 'מערכת' (System) in sidebar.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד",
+    "click_area": "Left sidebar - 'מערכת' (System)",
+    "arrow_direction": "arrow-right",
+    "context": "Part 2 (enable): Navigate to System settings"
+  },
+  {
+    "image_num": 20,
+    "image_file": "clipboard-20.png",
+    "description_en": "Windows System settings page. List of options including Display, Sound, Notifications, etc. 'לוח' (Clipboard) visible near bottom.",
+    "action_he": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span> (Clipboard)",
+    "click_area": "Main content - 'לוח' option near bottom",
+    "arrow_direction": "arrow-left",
+    "context": "Part 2 (enable): Navigate to Clipboard settings"
+  },
+  {
+    "image_num": 21,
+    "image_file": "clipboard-21.png",
+    "description_en": "Clipboard settings page. Toggle 'היסטוריית לוח' is OFF (gray, showing 'לא פעיל').",
+    "action_he": "לחצו על המתג <span style=\"color:#f6a67e;\">לא פעיל</span> כדי להפעיל את היסטוריית הלוח",
+    "click_area": "Toggle switch - currently off",
+    "arrow_direction": "arrow-left",
+    "context": "Part 2 (enable): Turn on Clipboard History toggle"
+  },
+  {
+    "image_num": 22,
+    "image_file": "clipboard-22.png",
+    "description_en": "Clipboard settings page. Toggle 'היסטוריית לוח' is ON (blue, showing 'פעיל').",
+    "action_he": "מצוין! היסטוריית הלוח <span style=\"color:#f6a67e;\">פעילה</span> עכשיו!",
+    "click_area": "view-only - transition slide (toggle is on)",
+    "arrow_direction": "none",
+    "context": "Transition: Clipboard History is now enabled"
+  },
+  {
+    "image_num": 23,
+    "image_file": "clipboard-23.png",
+    "description_en": "Amazon order page. Right-click context menu showing 'העתק' (Copy). Order number selected.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה",
+    "click_area": "Context menu - 'העתק'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Copy order number - first of multiple copies"
+  },
+  {
+    "image_num": 24,
+    "image_file": "clipboard-24.png",
+    "description_en": "Amazon order page. Right-click context menu. Copying another item (date).",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך",
+    "click_area": "Context menu - 'העתק'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Copy date - second copy without switching"
+  },
+  {
+    "image_num": 25,
+    "image_file": "clipboard-25.png",
+    "description_en": "Amazon page scrolled down. Product 'New Balance' visible. Right-click context menu with copy options.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם המוצר",
+    "click_area": "Context menu - copy option",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Copy product name - third copy without switching"
+  },
+  {
+    "image_num": 26,
+    "image_file": "clipboard-26.png",
+    "description_en": "Amazon page. Right-click context menu with image copy options. Product image visible.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את התמונה",
+    "click_area": "Context menu - image copy option",
+    "arrow_direction": "arrow-left",
+    "context": "Part 3 (solution): Copy product image - fourth copy without switching"
+  },
+  {
+    "image_num": 27,
+    "image_file": "clipboard-27.png",
+    "description_en": "Amazon product page showing New Balance sneakers. Full view of the order page. No menu open.",
+    "action_he": "העתקנו 4 פריטים ברצף — בלי לעבור ל-Word אפילו פעם אחת!",
+    "click_area": "view-only",
+    "arrow_direction": "none",
+    "context": "Part 3 (solution): View slide - all items copied, ready to switch to Word"
+  },
+  {
+    "image_num": 28,
+    "image_file": "clipboard-28.png",
+    "description_en": "Word document 'ניהול הזמנות'. Win+V clipboard history panel open on right. Shows 3 text items + image. Date entry visible at bottom.",
+    "action_he": "לחצו Win+V ובחרו את <span style=\"color:#f6a67e;\">התאריך</span> מהיסטוריית הלוח",
+    "click_area": "Clipboard history panel - date entry",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Paste date from clipboard history"
+  },
+  {
+    "image_num": 29,
+    "image_file": "clipboard-29.png",
+    "description_en": "Word document with date pasted. Win+V panel still open. Order number entry highlighted.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח",
+    "click_area": "Clipboard history panel - order number entry",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Paste order number from clipboard history"
+  },
+  {
+    "image_num": 30,
+    "image_file": "clipboard-30.png",
+    "description_en": "Word document with date + order number pasted. Win+V panel showing product name entry.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח",
+    "click_area": "Clipboard history panel - product name entry",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Paste product name from clipboard history"
+  },
+  {
+    "image_num": 31,
+    "image_file": "clipboard-31.png",
+    "description_en": "Word document with all text pasted. Win+V panel showing product image thumbnail at top.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח",
+    "click_area": "Clipboard history panel - shoe image thumbnail",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Paste product image from clipboard history"
+  },
+  {
+    "image_num": 32,
+    "image_file": "clipboard-32.png",
+    "description_en": "Word document fully completed: title, date, order number, product name, product image. Clipboard panel closed. Professional result.",
+    "action_he": "מעולה! כל הפרטים הודבקו — <span style=\"color:#f6a67e;\">טקסט ותמונה</span> — בלי לחזור לאמזון אפילו פעם אחת!",
+    "click_area": "view-only - final result",
+    "arrow_direction": "none",
+    "context": "Part 3 (solution): Final result - everything pasted from clipboard history"
+  }
+]
