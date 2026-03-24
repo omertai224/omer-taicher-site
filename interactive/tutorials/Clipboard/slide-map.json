@@ -1,9 +1,9 @@
 {
   "tutorial": "היסטוריית הלוח — Win+V",
-  "total_slides": 33,
-  "special_slides": 7,
+  "total_slides": 32,
+  "special_slides": 6,
   "step_slides": 26,
-  "structure_notes": "3 חלקים: הדרך הישנה (8 צעדים) → הפעלה בהגדרות (4 צעדים) → הדרך החדשה עם Win+V (14 צעדים)",
+  "structure_notes": "3 חלקים: הדרך הישנה (9 צעדים) → הפעלה בהגדרות (4 צעדים) → הדרך החדשה עם Win+V (13 צעדים)",
   "slides": [
     { "index": 0, "type": "special", "icon": "home", "title": "פתיחה — היסטוריית הלוח" },
     { "index": 1, "type": "special", "icon": "play", "title": "איך עובדים עם ההדרכה" },
@@ -44,5 +44,6 @@
     { "index": 30, "step": 26, "type": "view", "image": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_26.png", "text_he": "מעולה! הטופס מלא — הפעם בלי הלוך וחזור!<br><span style=\"color:#f6a67e;\">היסטוריית הלוח</span> שמרה הכל ואפשרה להדביק כל פריט ישירות", "highlight": "תצוגת תוצאה", "highlight_type": "static", "part": "new-way-paste" },
 
     { "index": 31, "type": "special", "icon": "finish", "title": "סיום" }
-  ]
+  ],
+  "slideMap_js": "0:home, 1:play, 2:monitor, 12:monitor, 17:usage, 31:finish"
 }
