@@ -1,0 +1,210 @@
+[
+  {
+    "image_num": 1,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_1.png",
+    "description_en": "Demo form page with a right-click context menu open over the contact card on the right. The menu shows Copy/Paste options. The form on the left is empty. User is copying the customer name.",
+    "action_he": "בתפריט שנפתח, לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם הלקוח",
+    "click_area": "Copy option in the right-click context menu (center-right area)",
+    "arrow_direction": "right"
+  },
+  {
+    "image_num": 2,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_2.png",
+    "description_en": "Demo form page with right-click context menu open over the form area on the left. The 'שם מלא' field is visible. User needs to paste the copied name.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את השם בשדה הטופס",
+    "click_area": "Paste option in the context menu over the form (left side)",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 3,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_3.png",
+    "description_en": "Demo page with right-click context menu open on the contact card, near the address field. The address 'רחוב הרצל 42, תל אביב' is visible on the card.",
+    "action_he": "חזרו לכרטיס הלקוח ולחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את הכתובת",
+    "click_area": "Copy option in context menu (right side, near address)",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 4,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_4.png",
+    "description_en": "Demo page with right-click context menu open over the form's address field. The name field is already filled. User needs to paste the address.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את הכתובת בשדה הטופס",
+    "click_area": "Paste option in the context menu over the form address field",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 5,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_5.png",
+    "description_en": "Demo page with right-click context menu on the contact card near the phone number 052-1234567. Name and address are already filled in the form.",
+    "action_he": "חזרו שוב לכרטיס הלקוח ולחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר הטלפון",
+    "click_area": "Copy option in context menu (right side, near phone number)",
+    "arrow_direction": "right"
+  },
+  {
+    "image_num": 6,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_6.png",
+    "description_en": "Demo page with right-click context menu open over the form's phone field on the left. Name and address already filled.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את הטלפון בשדה הטופס",
+    "click_area": "Paste option in context menu over phone field (left side)",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 7,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_7.png",
+    "description_en": "Demo page with right-click context menu on the contact card near the order number ORD-2026-78453. Name, address, and phone are filled in the form.",
+    "action_he": "ושוב חזרו לכרטיס הלקוח ולחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה",
+    "click_area": "Copy option in context menu (right side, near order number)",
+    "arrow_direction": "right"
+  },
+  {
+    "image_num": 8,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_8.png",
+    "description_en": "Demo page with right-click context menu over the form's order number field. Name, address, phone already filled.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את מספר ההזמנה בשדה האחרון",
+    "click_area": "Paste option in context menu over order field (left side)",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 9,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_9.png",
+    "description_en": "Demo form fully filled: name (יוסי כהן), address (רחוב הרצל 42, תל אביב), phone (052-1234567), order (ORD-2026-78453). Blue submit button at bottom. Contact card visible on right.",
+    "action_he": "הטופס מלא! אבל שימו לב — נדרשו <span style=\"color:#f6a67e;\">8 צעדים</span> של הלוך וחזור בין הכרטיס לטופס. יש דרך הרבה יותר מהירה!",
+    "click_area": "Submit button or view - showing completed form result",
+    "arrow_direction": "bottom-right"
+  },
+  {
+    "image_num": 10,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_10.png",
+    "description_en": "Windows Start Menu is open showing pinned apps (Microsoft Store, Outlook, PowerPoint, Excel, Word, Edge, etc). Settings gear icon is visible. Demo form in background.",
+    "action_he": "פתחו את <span style=\"color:#f6a67e;\">תפריט התחל</span> ולחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)",
+    "click_area": "Settings (הגדרות) icon in the Start Menu",
+    "arrow_direction": "right"
+  },
+  {
+    "image_num": 11,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_11.png",
+    "description_en": "Windows Settings Home page. Right sidebar shows navigation: Bluetooth, Network, Personalization, Apps, System, etc. Center shows recommended settings and Microsoft account prompt.",
+    "action_he": "בהגדרות Windows, לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט בצד ימין",
+    "click_area": "System (מערכת) in the right sidebar navigation",
+    "arrow_direction": "right"
+  },
+  {
+    "image_num": 12,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_12.png",
+    "description_en": "Windows Settings > System page. List of system categories: Display, Sound, Notifications, Focus, Power, Storage, Clipboard (לוח), Troubleshoot, Recovery, About.",
+    "action_he": "גללו למטה ברשימה ולחצו על <span style=\"color:#f6a67e;\">לוח</span> (Clipboard)",
+    "click_area": "Clipboard (לוח) option in the system settings list",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 13,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_13.png",
+    "description_en": "Windows Settings > System > Clipboard. The 'Clipboard history' toggle is shown turned ON (blue). Various clipboard settings visible including sync options.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">המתג</span> כדי להפעיל את היסטוריית הלוח. כשהמתג כחול — הפיצ׳ר דלוק!",
+    "click_area": "Toggle switch for Clipboard history (top of the page)",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 14,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_14.png",
+    "description_en": "Back to demo page. Right-click context menu open on contact card. Copying the name again. Form is empty (starting fresh).",
+    "action_he": "חזרנו לדף ההדגמה. הפעם נעתיק הכל ברצף! לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את השם",
+    "click_area": "Copy option in context menu on contact card",
+    "arrow_direction": "right"
+  },
+  {
+    "image_num": 15,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_15.png",
+    "description_en": "Demo page with right-click context menu on the contact card. Copying the address. The clipboard now remembers the previous copy.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק גם את הכתובת. היסטוריית הלוח שומרת הכל!",
+    "click_area": "Copy option in context menu near address",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 16,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_16.png",
+    "description_en": "Demo page with right-click context menu on contact card near phone number 052-1234567. Clipboard history panel partially visible showing previously copied items.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר הטלפון. שימו לב — לא הדבקנו כלום עדיין!",
+    "click_area": "Copy option in context menu near phone number",
+    "arrow_direction": "right"
+  },
+  {
+    "image_num": 17,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_17.png",
+    "description_en": "Demo page with right-click context menu on contact card near order number ORD-2026-78453. Copying the last item.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה. עכשיו הכל שמור בהיסטוריית הלוח!",
+    "click_area": "Copy option in context menu near order number",
+    "arrow_direction": "right"
+  },
+  {
+    "image_num": 18,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_18.png",
+    "description_en": "Demo page with Win+V clipboard history panel open (light/white UI). Shows all copied items: phone, address, order number. Panel has toolbar with emoji, GIF, symbols options at top.",
+    "action_he": "לחצו <span style=\"color:#f6a67e;\">Win+V</span> במקלדת. נפתח חלון עם כל מה שהעתקתם! לחצו על <span style=\"color:#f6a67e;\">הפריט התחתון</span> כדי להדביק",
+    "click_area": "Bottom item in the Win+V clipboard history panel",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 19,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_19.png",
+    "description_en": "Win+V clipboard history panel open. Shows items: 052-1234567 at top, address in middle, order at bottom. Cursor near phone number item. Form has name field filled.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר הטלפון 052-1234567</span> בהיסטוריית הלוח כדי להדביק אותו",
+    "click_area": "Phone number item (052-1234567) in Win+V panel",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 20,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_20.png",
+    "description_en": "Win+V clipboard history panel open. Address item highlighted. Form has name and phone filled. Cursor on address entry.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הכתובת</span> בהיסטוריית הלוח כדי להדביק אותה",
+    "click_area": "Address item in Win+V panel",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 21,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_21.png",
+    "description_en": "Win+V clipboard history panel open. Items: ORD-2026-78453 at top, 052-1234567, address. Form has name, address, phone filled. Order number field empty.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה ORD-2026-78453</span> בהיסטוריית הלוח",
+    "click_area": "Order number item (ORD-2026-78453) at top of Win+V panel",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 22,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_22.png",
+    "description_en": "Win+V clipboard history panel. Phone number 052-1234567 highlighted. Form showing more fields filled. Cursor on phone entry.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר הטלפון</span> בהיסטוריית הלוח כדי להדביק אותו בשדה הבא",
+    "click_area": "Phone number entry in Win+V panel",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 23,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_23.png",
+    "description_en": "Win+V clipboard history panel with items visible. Form has most fields filled (order, phone, address). Cursor near an item.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הכתובת</span> בהיסטוריית הלוח כדי להדביק אותה בשדה הבא",
+    "click_area": "Address entry in Win+V panel",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 24,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_24.png",
+    "description_en": "Win+V clipboard history panel. ORD-2026-78453 at top, 052-1234567 second, address third. Form nearly complete. Cursor on order entry.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> בהיסטוריית הלוח",
+    "click_area": "Order number item in Win+V panel",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 25,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_25.png",
+    "description_en": "Win+V clipboard history panel. Phone entry highlighted. Form has all fields filled except current one.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר הטלפון</span> בהיסטוריית הלוח כדי להדביק בשדה האחרון",
+    "click_area": "Phone number entry in Win+V panel",
+    "arrow_direction": "left"
+  },
+  {
+    "image_num": 26,
+    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_26.png",
+    "description_en": "Demo form fully completed with all fields filled: name, address, phone (052-1234567), order number (ORD-2026-78453). Contact card on right for comparison. Success state.",
+    "action_he": "מעולה! הטופס מלא — הפעם בלי הלוך וחזור!<br><span style=\"color:#f6a67e;\">היסטוריית הלוח</span> שמרה הכל ואפשרה להדביק כל פריט ישירות",
+    "click_area": "No click needed - view slide showing completed form",
+    "arrow_direction": "left"
+  }
+]
