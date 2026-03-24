@@ -67,7 +67,7 @@
         "top": "calc(58.8889% - 25px)"
       },
       "step": 3,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שמור על טקסט בלבד</span> כדי להדביק רק את הטקסט בלי עיצוב"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה"
     },
     {
       "index": 4,
@@ -86,7 +86,7 @@
         "bottom": "calc(6.14815% + 15px)"
       },
       "step": 4,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון ולהעתיק עוד פרט"
+      "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה"
     },
     {
       "index": 5,
@@ -102,7 +102,7 @@
       "arrow": "arrow-left",
       "textPos": {
         "left": "calc(53.3488% + 15px)",
-        "top": "calc(51.1111% - 25px)"
+        "top": "calc(35% - 25px)"
       },
       "step": 5,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה"
@@ -124,7 +124,7 @@
         "bottom": "calc(5.31482% + 15px)"
       },
       "step": 6,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור למסמך ה-Word"
+      "text": "<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. <span style=\"color:#f6a67e;\">שוב</span> לעבור ל-Word. <span style=\"color:#f6a67e;\">שוב</span> לחכות שייטען..."
     },
     {
       "index": 7,
@@ -143,7 +143,7 @@
         "top": "calc(63.0556% - 25px)"
       },
       "step": 7,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שמור על טקסט בלבד</span> כדי להדביק את מספר ההזמנה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את מספר ההזמנה"
     },
     {
       "index": 8,
@@ -162,7 +162,7 @@
         "bottom": "calc(6.42593% + 15px)"
       },
       "step": 8,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור שוב לאמזון"
+      "text": "ו<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. ו<span style=\"color:#f6a67e;\">שוב</span> לחזור לאמזון. ו<span style=\"color:#f6a67e;\">שוב</span> להעתיק..."
     },
     {
       "index": 9,
@@ -200,7 +200,7 @@
         "bottom": "calc(6.51852% + 15px)"
       },
       "step": 10,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור ל-Word"
+      "text": "ו<span style=\"color:#f6a67e;\">שוב</span> לשורת המשימות. ו<span style=\"color:#f6a67e;\">שוב</span> ל-Word. כמה פעמים עוד צריך לקפוץ ככה?"
     },
     {
       "index": 11,
@@ -219,7 +219,7 @@
         "top": "calc(67.963% - 25px)"
       },
       "step": 11,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">מזג עיצוב</span> כדי להדביק את שם המוצר"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את שם המוצר"
     },
     {
       "index": 12,
@@ -238,7 +238,7 @@
         "bottom": "calc(6.42593% + 15px)"
       },
       "step": 12,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון בפעם הרביעית"
+      "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span>, בפעם הרביעית. עוד מעבר, עוד לחיצה, עוד המתנה..."
     },
     {
       "index": 13,
@@ -276,7 +276,7 @@
         "bottom": "calc(5.68519% + 15px)"
       },
       "step": 14,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור ל-Word בפעם האחרונה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> ולחזור ל-Word. בפעם האחרונה, סוף סוף!"
     },
     {
       "index": 15,
@@ -295,26 +295,19 @@
         "top": "calc(35.463% - 25px)"
       },
       "step": 15,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונה</span> כדי להדביק את תמונת המוצר במסמך"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את תמונת המוצר"
     },
     {
       "index": 16,
-      "type": "click",
+      "type": "view",
       "image": "clipboard-16.png",
-      "boxClass": "84",
-      "box": {
-        "top": "88.2037%",
-        "left": "41.3023%",
-        "right": "51.8837%",
-        "bottom": "8.48148%"
-      },
-      "arrow": "arrow-left",
+      "arrow": "none",
       "textPos": {
         "left": "calc(48.1163% + 15px)",
-        "top": "calc(89.8148% - 25px)"
+        "top": "calc(70% - 25px)"
       },
       "step": 16,
-      "text": "הנה התוצאה. כל הפרטים הודבקו, אבל זה לקח <span style=\"color:#f6a67e;\">15 פעולות</span> והמון הלוך-חזור בין אמזון ל-Word! בואו נראה דרך חכמה יותר"
+      "text": "הנה התוצאה. כל הפרטים הודבקו, אבל זה לקח <span style=\"color:#f6a67e;\">15 פעולות</span> והמון הלוך חזור בין אמזון ל-Word!<br><br><a class=\"button\" onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:8px;\">עכשיו נלמד דרך חכמה</a>"
     },
     {
       "index": 17,
