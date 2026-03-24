@@ -6,589 +6,591 @@
       "index": 0,
       "type": "special",
       "specialType": "intro",
-      "html": "<div class=\"mySlides fade\">\n<style>\n@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}\n@keyframes shimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}\n.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:#1a1a2e;text-align:center;padding:20px 40px;box-sizing:border-box;}\n.intro-badge{background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:5px 16px;border-radius:50px;font-size:12px;letter-spacing:2px;animation:fadeInDown .8s ease both;margin-bottom:12px;}\n.intro-title{font-size:clamp(20px,3.5vw,46px);font-weight:900;color:white;line-height:1.15;animation:fadeInDown .9s ease .2s both;margin-bottom:8px;}\n.intro-title span{background:linear-gradient(90deg,#f6a67e,#ff6b6b,#f6a67e);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}\n.intro-subtitle{font-size:clamp(12px,1.8vw,18px);color:#ffffffaa;animation:fadeInDown 1s ease .4s both;margin-bottom:4px;}\n.intro-author{font-size:13px;color:#ffffff66;animation:fadeInDown 1s ease .5s both;margin-bottom:20px;}\n.intro-cards{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeInUp 1s ease .6s both;margin-bottom:20px;}\n.intro-card{background:#ffffff12;border:1px solid #ffffff22;border-radius:14px;padding:12px 18px;min-width:130px;max-width:170px;}\n.intro-card .icon{font-size:24px;margin-bottom:6px;}\n.intro-card .label{color:#ffffffcc;font-size:12px;line-height:1.3;}\n.intro-btn{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:14px 40px;border-radius:50px;font-size:17px;font-weight:700;cursor:pointer;animation:fadeInUp 1s ease .8s both,pulse 2s ease 2s infinite;box-shadow:0 8px 32px rgba(246,166,126,0.4);font-family:Rubik,sans-serif;}\n</style>\n<div class=\"intro-wrap\">\n<div class=\"intro-badge\">חינמי. מהיר. חיוני.</div>\n<div class=\"intro-title\">לא מוצאים קובץ במחשב?<br><span>Everything מוצא הכל תוך שנייה</span></div>\n<div class=\"intro-subtitle\">חיפוש מיידי בכל הקבצים במחשב שלכם.<br>במקום לחכות דקות לחיפוש של Windows -<br>Everything מוצא בפחות משנייה.</div>\n<div class=\"intro-author\">עומר טייכר · מדריך וטכנאי מחשבים</div>\n<div class=\"intro-cards\">\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></div><div class=\"label\">חיפוש מיידי בכל הקבצים</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><path d=\"M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z\"/><polyline points=\"13 2 13 9 20 9\"/></svg></div><div class=\"label\">מוצא כל קובץ, תיקייה, תמונה</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"13 17 18 12 13 7\"/><polyline points=\"6 17 11 12 6 7\"/></svg></div><div class=\"label\">מהיר פי אלף מחיפוש Windows</div></div>\n</div>\n<button class=\"intro-btn\" onclick=\"nextSlide(1)\">&#9654;&nbsp;&nbsp;בואו נתחיל</button>\n</div>\n</div>"
+      "html": "<style>\n@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}\n@keyframes shimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}\n.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:#1a1a2e;text-align:center;padding:20px 40px;box-sizing:border-box;}\n.intro-badge{background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:5px 16px;border-radius:50px;font-size:12px;letter-spacing:2px;animation:fadeInDown .8s ease both;margin-bottom:12px;}\n.intro-title{font-size:clamp(20px,3.5vw,46px);font-weight:900;color:white;line-height:1.15;animation:fadeInDown .9s ease .2s both;margin-bottom:8px;}\n.intro-title span{background:linear-gradient(90deg,#f6a67e,#ff6b6b,#f6a67e);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}\n.intro-subtitle{font-size:clamp(12px,1.8vw,18px);color:#ffffffaa;animation:fadeInDown 1s ease .4s both;margin-bottom:4px;}\n.intro-author{font-size:13px;color:#ffffff66;animation:fadeInDown 1s ease .5s both;margin-bottom:20px;}\n.intro-cards{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeInUp 1s ease .6s both;margin-bottom:20px;}\n.intro-card{background:#ffffff12;border:1px solid #ffffff22;border-radius:14px;padding:12px 18px;min-width:130px;max-width:170px;}\n.intro-card .icon{font-size:24px;margin-bottom:6px;}\n.intro-card .label{color:#ffffffcc;font-size:12px;line-height:1.3;}\n.intro-btn{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:14px 40px;border-radius:50px;font-size:17px;font-weight:700;cursor:pointer;animation:fadeInUp 1s ease .8s both,pulse 2s ease 2s infinite;box-shadow:0 8px 32px rgba(246,166,126,0.4);font-family:Rubik,sans-serif;}\n</style>\n<div class=\"intro-wrap\">\n<div class=\"intro-badge\">חינמי. מהיר. חיוני.</div>\n<div class=\"intro-title\">לא מוצאים קובץ במחשב?<br><span>Everything מוצא הכל תוך שנייה</span></div>\n<div class=\"intro-subtitle\">חיפוש מיידי בכל הקבצים במחשב שלכם.<br>במקום לחכות דקות לחיפוש של Windows -<br>Everything מוצא בפחות משנייה.</div>\n<div class=\"intro-author\">עומר טייכר · מדריך וטכנאי מחשבים</div>\n<div class=\"intro-cards\">\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></div><div class=\"label\">חיפוש מיידי בכל הקבצים</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><path d=\"M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z\"/><polyline points=\"13 2 13 9 20 9\"/></svg></div><div class=\"label\">מוצא כל קובץ, תיקייה, תמונה</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"13 17 18 12 13 7\"/><polyline points=\"6 17 11 12 6 7\"/></svg></div><div class=\"label\">מהיר פי אלף מחיפוש Windows</div></div>\n</div>\n<button class=\"intro-btn\" onclick=\"nextSlide(1)\">&#9654;&nbsp;&nbsp;בואו נתחיל</button>\n</div>"
     },
     {
       "index": 1,
       "type": "special",
       "specialType": "howto",
-      "html": "<div class=\"mySlides fade\">\n<style>\n.howto-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e,#16213e);text-align:center;padding:20px 40px;box-sizing:border-box;gap:14px;}\n.howto-badge{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;}\n.howto-title{font-size:clamp(18px,2.8vw,34px);font-weight:900;color:white;line-height:1.2;}\n.howto-title span{color:#f6a67e;}\n.howto-video{width:100%;max-width:480px;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px #00000088;}\n.howto-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:480px;}\n.howto-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}\n.howto-note span{color:#f6a67e;font-weight:700;}\n</style>\n<div class=\"howto-wrap\">\n<div class=\"howto-badge\">לפני שמתחילים</div>\n<div class=\"howto-title\">צפו בסרטון <span>איך עובדים עם ההדרכה</span></div>\n<div class=\"howto-video\">\n<video src=\"https://res.cloudinary.com/drxyfq0cq/video/upload/v1773356906/Omer_Taicher_s_Video_-_Mar_13_2026_hbzpyo.mp4\" controls controlsList=\"nodownload\" playsinline style=\"width:100%;display:block;border-radius:14px;\"></video>\n</div>\n<div class=\"howto-note\">\n<p><span>לאחר הצפייה:</span> לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם.</p>\n</div>\n</div>\n</div>"
+      "html": "<style>\n.howto-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e,#16213e);text-align:center;padding:20px 40px;box-sizing:border-box;gap:14px;}\n.howto-badge{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;}\n.howto-title{font-size:clamp(18px,2.8vw,34px);font-weight:900;color:white;line-height:1.2;}\n.howto-title span{color:#f6a67e;}\n.howto-video{width:100%;max-width:480px;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px #00000088;}\n.howto-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:480px;}\n.howto-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}\n.howto-note span{color:#f6a67e;font-weight:700;}\n</style>\n<div class=\"howto-wrap\">\n<div class=\"howto-badge\">לפני שמתחילים</div>\n<div class=\"howto-title\">צפו בסרטון <span>איך עובדים עם ההדרכה</span></div>\n<div class=\"howto-video\">\n<video src=\"https://res.cloudinary.com/drxyfq0cq/video/upload/v1773356906/Omer_Taicher_s_Video_-_Mar_13_2026_hbzpyo.mp4\" controls controlsList=\"nodownload\" playsinline style=\"width:100%;display:block;border-radius:14px;\"></video>\n</div>\n<div class=\"howto-note\">\n<p><span>לאחר הצפייה:</span> לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם.</p>\n</div>\n</div>"
     },
     {
       "index": 2,
       "type": "special",
       "specialType": "download",
-      "html": "<div class=\"mySlides fade\">\n<style>\n.parta-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);text-align:center;padding:32px;box-sizing:border-box;gap:24px;}\n.parta-badge{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}\n.parta-title{font-size:clamp(20px,2.8vw,38px);font-weight:900;color:white;line-height:1.2;}\n.parta-title span{color:#f6a67e;}\n.parta-sub{color:#ffffffaa;font-size:clamp(13px,1.2vw,16px);line-height:1.6;}\n.parta-dl-btn{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;border:none;padding:18px 48px;border-radius:50px;font-size:clamp(16px,1.6vw,22px);font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:transform 0.2s,opacity 0.2s;}\n.parta-dl-btn:hover{opacity:0.9;transform:scale(1.03);}\n.parta-dl-version{color:#ffffff55;font-size:12px;}\n.parta-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:460px;}\n.parta-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}\n.parta-note span{color:#f6a67e;font-weight:700;}\n</style>\n<div class=\"parta-wrap\">\n  <div class=\"parta-badge\">חלק א &middot; הורדה והתקנה</div>\n  <div class=\"parta-title\">קודם כל <span>הורידו את Everything</span></div>\n  <div class=\"parta-sub\">הקובץ יורד ישירות למחשב שלכם.<br>לאחר ההורדה חוזרים להדרכה וממשיכים לשלב הבא.</div>\n  <a class=\"parta-dl-btn\" href=\"https://github.com/omertai224/omer-taicher-site/releases/download/everythingv1/Everything.exe\" download>\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>\n    הורידו את Everything\n  </a>\n  <div class=\"parta-dl-version\">הקובץ יורד ישירות למחשב</div>\n  <div class=\"parta-note\">\n    <p><span>לאחר ההורדה:</span> חוזרים להדרכה ולוחצים על <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם.</p>\n  </div>\n</div>\n</div>"
+      "html": "<style>\n.parta-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);text-align:center;padding:32px;box-sizing:border-box;gap:24px;}\n.parta-badge{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}\n.parta-title{font-size:clamp(20px,2.8vw,38px);font-weight:900;color:white;line-height:1.2;}\n.parta-title span{color:#f6a67e;}\n.parta-sub{color:#ffffffaa;font-size:clamp(13px,1.2vw,16px);line-height:1.6;}\n.parta-dl-btn{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;border:none;padding:18px 48px;border-radius:50px;font-size:clamp(16px,1.6vw,22px);font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:transform 0.2s,opacity 0.2s;}\n.parta-dl-btn:hover{opacity:0.9;transform:scale(1.03);}\n.parta-dl-version{color:#ffffff55;font-size:12px;}\n.parta-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:460px;}\n.parta-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}\n.parta-note span{color:#f6a67e;font-weight:700;}\n</style>\n<div class=\"parta-wrap\">\n  <div class=\"parta-badge\">חלק א &middot; הורדה והתקנה</div>\n  <div class=\"parta-title\">קודם כל <span>הורידו את Everything</span></div>\n  <div class=\"parta-sub\">הקובץ יורד ישירות למחשב שלכם.<br>לאחר ההורדה חוזרים להדרכה וממשיכים לשלב הבא.</div>\n  <a class=\"parta-dl-btn\" href=\"https://github.com/omertai224/omer-taicher-site/releases/download/everythingv1/Everything.exe\" download>\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>\n    הורידו את Everything\n  </a>\n  <div class=\"parta-dl-version\">הקובץ יורד ישירות למחשב</div>\n  <div class=\"parta-note\">\n    <p><span>לאחר ההורדה:</span> חוזרים להדרכה ולוחצים על <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם.</p>\n  </div>\n</div>"
     },
     {
       "index": 3,
       "type": "click",
-      "image": "How_to_Sort_Your_Downloads_Folder_by_Name_in_Windows_Explorer_1.png",
+      "image": "everything-01.png",
       "step": 1,
+      "text": "פתחו את סייר הקבצים ולחצו על <span style=\"color:#f6a67e;\">הורדות</span> כדי לראות את הקבצים שהורדתם",
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "calc(87.7558% - 315px)",
+        "top": "calc(36.0185% - 25px)"
+      },
       "box": {
         "top": "33.6667%",
         "left": "87.7558%",
         "right": "0%",
         "bottom": "61.537%"
       },
-      "boxClass": "2",
-      "arrow": "arrow-right",
-      "textPos": {
-        "left": "calc(87.7558% - 315px)",
-        "top": "calc(36.0185% - 25px)"
-      },
-      "text": "1<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "2"
     },
     {
       "index": 4,
       "type": "click",
-      "image": "How_to_Sort_Your_Downloads_Folder_by_Name_in_Windows_Explorer_2.png",
+      "image": "everything-02.png",
       "step": 2,
+      "text": "לחצו לחיצה כפולה על קובץ ההתקנה <span style=\"color:#f6a67e;\">Everything</span> כדי להתחיל את ההתקנה<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> לחיצה כפולה. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "calc(68.1047% - 315px)",
+        "top": "calc(22.8704% - 25px)"
+      },
       "box": {
         "top": "19.963%",
         "left": "68.1047%",
         "right": "11.3605%",
         "bottom": "74.1296%"
       },
-      "boxClass": "4",
-      "arrow": "arrow-right",
-      "textPos": {
-        "left": "calc(68.1047% - 315px)",
-        "top": "calc(22.8704% - 25px)"
-      },
-      "text": "2<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "4"
     },
     {
       "index": 5,
       "type": "special",
       "specialType": "uac",
-      "html": "<div class=\"mySlides fade\">\n<style>\n.uac-wrap{display:flex;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);overflow:hidden;}\n.uac-left{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;}\n.uac-left img{max-height:80vh;max-width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.5);}\n.uac-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;direction:rtl;text-align:right;gap:20px;}\n.uac-badge{display:inline-flex;align-items:center;gap:8px;background:#f6a67e22;border:1px solid #f6a67e55;color:#f6a67e;padding:6px 16px;border-radius:50px;font-size:13px;font-weight:700;width:fit-content;}\n.uac-title{font-size:clamp(22px,2.5vw,32px);font-weight:900;color:white;line-height:1.3;}\n.uac-title span{color:#f6a67e;}\n.uac-explain{background:rgba(255,255,255,0.06);border-radius:16px;padding:20px 24px;display:flex;flex-direction:column;gap:14px;}\n.uac-point{display:flex;gap:12px;align-items:flex-start;color:#ffffffcc;font-size:15px;line-height:1.6;}\n.uac-point-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;}\n.uac-point-green{background:rgba(76,175,80,0.2);color:#66bb6a;}\n.uac-point-blue{background:rgba(30,95,116,0.3);color:#5b8fa8;}\n.uac-bottom{display:flex;align-items:center;gap:10px;background:rgba(246,166,126,0.15);border:1.5px solid rgba(246,166,126,0.4);padding:12px 18px;border-radius:12px;cursor:pointer;transition:background 0.2s;}\n.uac-bottom:hover{background:rgba(246,166,126,0.25);}\n.uac-bottom-text{color:#f6a67e;font-size:15px;font-weight:700;}\n.uac-bottom-arrow{flex-shrink:0;display:flex;align-items:center;}\n@media(max-width:900px){.uac-wrap{flex-direction:column;}.uac-left{max-height:40vh;}.uac-right{padding:20px;}}\n</style>\n<div class=\"uac-wrap\">\n  <div class=\"uac-left\">\n    <div style=\"position:relative;display:inline-block;\">\n      <img src=\".//images//How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_9.png\" alt=\"בקרת חשבון משתמש\">\n      \n      <div class=\"box\" style=\"top:85.5%;left:50.5%;right:5.5%;bottom:5.2%;cursor:pointer;\" onclick=\"nextSlide()\"></div>\n    </div>\n  </div>\n  <div class=\"uac-right\">\n    <div class=\"uac-badge\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"#f6a67e\" stroke=\"none\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>\n      זה בסדר גמור!\n    </div>\n    <div class=\"uac-title\">קופץ לכם <span>חלון כזה?</span><br>אל תפחדו - זה נורמלי.</div>\n    <div class=\"uac-explain\">\n      <div class=\"uac-point\">\n        <div class=\"uac-point-icon uac-point-blue\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5b8fa8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg></div>\n        <div><b style=\"color:white;\">זה וינדוס ששומר עליכם</b> - כשמתקינים תוכנה, וינדוס לפעמים בודק שאתם מסכימים. זה סימן שהמחשב שומר עליכם.</div>\n      </div>\n      <div class=\"uac-point\">\n        <div class=\"uac-point-icon uac-point-green\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#66bb6a\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></div>\n        <div><b style=\"color:white;\">התוכנה בטוחה</b> - הורדתם אותה מהאתר הרשמי, ממש בשלב הקודם. אין סיבה לדאגה.</div>\n      </div>\n      <div class=\"uac-point\">\n        <div class=\"uac-point-icon uac-point-blue\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5b8fa8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"23 4 23 10 17 10\"/><polyline points=\"1 20 1 14 7 14\"/><path d=\"M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15\"/></svg></div>\n        <div><b style=\"color:white;\">יכול לקפוץ יותר מפעם אחת</b> - החלון הזה עשוי לקפוץ גם כמה פעמים במהלך ההתקנה. בכל פעם שהוא קופץ, לחצו \"כן\".</div>\n      </div>\n    </div>\n    <div class=\"uac-bottom\" onclick=\"nextSlide()\">\n      <div class=\"uac-bottom-arrow\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#66bb6a\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></div>\n      <div class=\"uac-bottom-text\">בכל פעם שהחלון קופץ - לחצו \"כן\"</div>\n    </div>\n  </div>\n</div>\n</div>"
+      "html": "<style>\n.uac-wrap{display:flex;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);overflow:hidden;}\n.uac-left{flex:1;display:flex;align-items:center;justify-content:center;padding:20px;position:relative;}\n.uac-left img{max-height:80vh;max-width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,0.5);}\n.uac-right{flex:1;display:flex;flex-direction:column;justify-content:center;padding:40px 48px;direction:rtl;text-align:right;gap:20px;}\n.uac-badge{display:inline-flex;align-items:center;gap:8px;background:#f6a67e22;border:1px solid #f6a67e55;color:#f6a67e;padding:6px 16px;border-radius:50px;font-size:13px;font-weight:700;width:fit-content;}\n.uac-title{font-size:clamp(22px,2.5vw,32px);font-weight:900;color:white;line-height:1.3;}\n.uac-title span{color:#f6a67e;}\n.uac-explain{background:rgba(255,255,255,0.06);border-radius:16px;padding:20px 24px;display:flex;flex-direction:column;gap:14px;}\n.uac-point{display:flex;gap:12px;align-items:flex-start;color:#ffffffcc;font-size:15px;line-height:1.6;}\n.uac-point-icon{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;}\n.uac-point-green{background:rgba(76,175,80,0.2);color:#66bb6a;}\n.uac-point-blue{background:rgba(30,95,116,0.3);color:#5b8fa8;}\n.uac-bottom{display:flex;align-items:center;gap:10px;background:rgba(246,166,126,0.15);border:1.5px solid rgba(246,166,126,0.4);padding:12px 18px;border-radius:12px;cursor:pointer;transition:background 0.2s;}\n.uac-bottom:hover{background:rgba(246,166,126,0.25);}\n.uac-bottom-text{color:#f6a67e;font-size:15px;font-weight:700;}\n.uac-bottom-arrow{flex-shrink:0;display:flex;align-items:center;}\n@media(max-width:900px){.uac-wrap{flex-direction:column;}.uac-left{max-height:40vh;}.uac-right{padding:20px;}}\n</style>\n<div class=\"uac-wrap\">\n  <div class=\"uac-left\">\n    <div style=\"position:relative;display:inline-block;\">\n      <img src=\".//images//everything-uac.png\" alt=\"בקרת חשבון משתמש\">\n      \n      <div class=\"box\" style=\"top:85.5%;left:50.5%;right:5.5%;bottom:5.2%;cursor:pointer;\" onclick=\"nextSlide()\"></div>\n    </div>\n  </div>\n  <div class=\"uac-right\">\n    <div class=\"uac-badge\">\n      <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"#f6a67e\" stroke=\"none\"><path d=\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z\"/></svg>\n      זה בסדר גמור!\n    </div>\n    <div class=\"uac-title\">קופץ לכם <span>חלון כזה?</span><br>אל תפחדו - זה נורמלי.</div>\n    <div class=\"uac-explain\">\n      <div class=\"uac-point\">\n        <div class=\"uac-point-icon uac-point-blue\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5b8fa8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/></svg></div>\n        <div><b style=\"color:white;\">זה וינדוס ששומר עליכם</b> - כשמתקינים תוכנה, וינדוס לפעמים בודק שאתם מסכימים. זה סימן שהמחשב שומר עליכם.</div>\n      </div>\n      <div class=\"uac-point\">\n        <div class=\"uac-point-icon uac-point-green\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#66bb6a\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></div>\n        <div><b style=\"color:white;\">התוכנה בטוחה</b> - הורדתם אותה מהאתר הרשמי, ממש בשלב הקודם. אין סיבה לדאגה.</div>\n      </div>\n      <div class=\"uac-point\">\n        <div class=\"uac-point-icon uac-point-blue\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5b8fa8\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"23 4 23 10 17 10\"/><polyline points=\"1 20 1 14 7 14\"/><path d=\"M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15\"/></svg></div>\n        <div><b style=\"color:white;\">יכול לקפוץ יותר מפעם אחת</b> - החלון הזה עשוי לקפוץ גם כמה פעמים במהלך ההתקנה. בכל פעם שהוא קופץ, לחצו \"כן\".</div>\n      </div>\n    </div>\n    <div class=\"uac-bottom\" onclick=\"nextSlide()\">\n      <div class=\"uac-bottom-arrow\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#66bb6a\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></div>\n      <div class=\"uac-bottom-text\">בכל פעם שהחלון קופץ - לחצו \"כן\"</div>\n    </div>\n  </div>\n</div>"
     },
     {
       "index": 6,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_10.png",
+      "image": "everything-03.png",
       "step": 3,
+      "text": "ניתן להשאיר את עברית כברירת מחדל. לחצו על <span style=\"color:#f6a67e;\">OK</span>",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(47.9419% + 15px)",
+        "top": "calc(53.6111% - 25px)"
+      },
       "box": {
         "top": "51.7222%",
         "left": "41.4186%",
         "right": "52.0581%",
         "bottom": "44.5%"
       },
-      "boxClass": "84",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(47.9419% + 15px)",
-        "top": "calc(53.6111% - 25px)"
-      },
-      "text": "3<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "84"
     },
     {
       "index": 7,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_11.png",
+      "image": "everything-04.png",
       "step": 4,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">אני מסכים</span> כדי להמשיך",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(45.0349% + 15px)",
+        "top": "calc(66.9444% - 25px)"
+      },
       "box": {
         "top": "65.0556%",
         "left": "38.5116%",
         "right": "54.9651%",
         "bottom": "31.1667%"
       },
-      "boxClass": "85",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(45.0349% + 15px)",
-        "top": "calc(66.9444% - 25px)"
-      },
-      "text": "4<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "85"
     },
     {
       "index": 8,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_12.png",
+      "image": "everything-05.png",
       "step": 5,
+      "text": "אפשר להשאיר את הנתיב כמו שהוא ולחצו על <span style=\"color:#f6a67e;\">הבא</span>",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(45.0349% + 15px)",
+        "top": "calc(66.9444% - 25px)"
+      },
       "box": {
         "top": "65.0556%",
         "left": "38.5116%",
         "right": "54.9651%",
         "bottom": "31.1667%"
       },
-      "boxClass": "86",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(45.0349% + 15px)",
-        "top": "calc(66.9444% - 25px)"
-      },
-      "text": "5<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "86"
     },
     {
       "index": 9,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_13.png",
+      "image": "everything-06.png",
       "step": 6,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הבא</span>",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(45.0349% + 15px)",
+        "top": "calc(66.9444% - 25px)"
+      },
       "box": {
         "top": "65.0556%",
         "left": "38.5116%",
         "right": "54.9651%",
         "bottom": "31.1667%"
       },
-      "boxClass": "87",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(45.0349% + 15px)",
-        "top": "calc(66.9444% - 25px)"
-      },
-      "text": "6<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "87"
     },
     {
       "index": 10,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_14.png",
+      "image": "everything-07.png",
       "step": 7,
+      "text": "השאירו את כל האפשרויות מסומנות כברירת מחדל ולחצו על <span style=\"color:#f6a67e;\">התקן</span>",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(45.0349% + 15px)",
+        "top": "calc(66.9444% - 25px)"
+      },
       "box": {
         "top": "65.0556%",
         "left": "38.5116%",
         "right": "54.9651%",
         "bottom": "31.1667%"
       },
-      "boxClass": "88",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(45.0349% + 15px)",
-        "top": "calc(66.9444% - 25px)"
-      },
-      "text": "7<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "88"
     },
     {
       "index": 11,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_15.png",
+      "image": "everything-08.png",
       "step": 8,
+      "text": "ההתקנה הסתיימה. וודאו שהתיבה מסומנת ולחצו על <span style=\"color:#f6a67e;\">סיום</span> כדי להפעיל את Everything",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(45.0349% + 15px)",
+        "top": "calc(66.9444% - 25px)"
+      },
       "box": {
         "top": "65.0556%",
         "left": "38.5116%",
         "right": "54.9651%",
         "bottom": "31.1667%"
       },
-      "boxClass": "89",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(45.0349% + 15px)",
-        "top": "calc(66.9444% - 25px)"
-      },
-      "text": "8<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "89"
     },
     {
       "index": 12,
       "type": "special",
       "specialType": "transition",
-      "html": "<div class=\"mySlides fade\">\n<style>\n.partb-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f2a3a 0%,#1a4a6b 100%);text-align:center;padding:20px 40px;box-sizing:border-box;gap:10px;}\n.partb-check{width:56px;height:56px;background:linear-gradient(135deg,#1e5f74,#5b8fa8);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;}\n.partb-badge{background:#f6a67e22;border:1px solid #f6a67e55;color:#f6a67e;padding:3px 14px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}\n.partb-title{font-size:clamp(18px,2.8vw,36px);font-weight:900;color:white;margin-bottom:0;line-height:1.2;}\n.partb-title span{color:#f6a67e;}\n.partb-sub{color:#ffffffaa;font-size:14px;margin-bottom:0;}\n.partb-btn{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:11px 32px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 8px 32px rgba(246,166,126,0.4);}\n.partb-btn:hover{transform:scale(1.05);}\n</style>\n<div class=\"partb-wrap\">\n  <div class=\"partb-check\">\n    <svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>\n  </div>\n  <div class=\"partb-badge\">חלק א הושלם</div>\n  <div class=\"partb-title\">עכשיו תורכם<br>הקטינו את החלון<br><span>והתקינו את Everything בעצמכם</span></div>\n  <div class=\"partb-sub\" style=\"color:#ffffffcc;margin-top:8px;\">כשתסיימו, חזרו להדרכה והמשיכו לחלק ב.</div>\n  <div style=\"margin-top:24px;color:#f6a67ecc;font-size:13px;font-weight:600;letter-spacing:1px;\">חלק ב · שימוש בתוכנה</div>\n  <button class=\"partb-btn\" onclick=\"nextSlide()\" style=\"margin-top:14px;\">\n    <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"9 18 15 12 9 6\"/></svg>\n    המשיכו לחלק ב\n  </button>\n</div>\n</div>"
+      "html": "<style>\n.partb-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f2a3a 0%,#1a4a6b 100%);text-align:center;padding:20px 40px;box-sizing:border-box;gap:10px;}\n.partb-check{width:56px;height:56px;background:linear-gradient(135deg,#1e5f74,#5b8fa8);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;}\n.partb-badge{background:#f6a67e22;border:1px solid #f6a67e55;color:#f6a67e;padding:3px 14px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}\n.partb-title{font-size:clamp(18px,2.8vw,36px);font-weight:900;color:white;margin-bottom:0;line-height:1.2;}\n.partb-title span{color:#f6a67e;}\n.partb-sub{color:#ffffffaa;font-size:14px;margin-bottom:0;}\n.partb-btn{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:11px 32px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 8px 32px rgba(246,166,126,0.4);}\n.partb-btn:hover{transform:scale(1.05);}\n</style>\n<div class=\"partb-wrap\">\n  <div class=\"partb-check\">\n    <svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>\n  </div>\n  <div class=\"partb-badge\">חלק א הושלם</div>\n  <div class=\"partb-title\">עכשיו תורכם<br>הקטינו את החלון<br><span>והתקינו את Everything בעצמכם</span></div>\n  <div class=\"partb-sub\" style=\"color:#ffffffcc;margin-top:8px;\">כשתסיימו, חזרו להדרכה והמשיכו לחלק ב.</div>\n  <div style=\"margin-top:24px;color:#f6a67ecc;font-size:13px;font-weight:600;letter-spacing:1px;\">חלק ב · שימוש בתוכנה</div>\n  <button class=\"partb-btn\" onclick=\"nextSlide()\" style=\"margin-top:14px;\">\n    <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"9 18 15 12 9 6\"/></svg>\n    המשיכו לחלק ב\n  </button>\n</div>"
     },
     {
       "index": 13,
       "type": "view",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_17.png",
+      "image": "everything-09.png",
       "step": 9,
-      "highlight": {
-        "top": "3.66667%",
-        "left": "13.8605%",
-        "right": "-0.558136%",
-        "bottom": "90.6111%"
-      },
+      "text": "התוכנה מותקנת ומוכנה לשימוש. הקלידו ב<span style=\"color:#f6a67e;\">שורת החיפוש</span> למעלה את שם הקובץ שאתם מחפשים, והתוצאות יופיעו מיידית<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-left",
       "textPos": {
         "left": "calc(57.2093% - 25px)",
         "top": "calc(9.38889% + 15px)"
       },
-      "text": "9<div style=\"color: #ffffffbb;display: inline;\">/31"
-    },
-    {
-      "index": 14,
-      "type": "view",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_18.png",
-      "step": 10,
-      "highlight": {
+      "box": {
         "top": "3.66667%",
         "left": "13.8605%",
         "right": "-0.558136%",
         "bottom": "90.6111%"
       },
+      "highlightType": "static"
+    },
+    {
+      "index": 14,
+      "type": "view",
+      "image": "everything-10.png",
+      "step": 10,
+      "text": "הקלדנו <span style=\"color:#f6a67e;\">שף</span> בשורת החיפוש והתוצאות מופיעות מיד! Everything מצא קובץ וידאו וקובץ טקסט<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-right",
       "textPos": {
         "left": "calc(88% - 300px)",
         "top": "calc(12% + 15px)"
       },
-      "text": "10<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "box": {
+        "top": "3.66667%",
+        "left": "13.8605%",
+        "right": "-0.558136%",
+        "bottom": "90.6111%"
+      },
+      "highlightType": "static"
     },
     {
       "index": 15,
       "type": "view",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_19.png",
+      "image": "everything-11.png",
       "step": 11,
+      "text": "אפשר לראות את <span style=\"color:#f6a67e;\">תוצאות החיפוש</span> עם שם הקובץ, הגודל, התאריך והנתיב המלא. לחיצה כפולה על קובץ תפתח אותו<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-right",
       "textPos": {
         "left": "calc(94.0116% - 275px)",
         "top": "calc(15.963% + 15px)"
-      },
-      "text": "11<div style=\"color: #ffffffbb;display: inline;\">/31"
+      }
     },
     {
       "index": 16,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_20.png",
+      "image": "everything-12.png",
       "step": 12,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תצוגה</span> בשורת התפריטים למעלה כדי לפתוח אפשרויות נוספות",
+      "arrow": "arrow-top-right",
+      "textPos": {
+        "left": "calc(92.1512% - 275px)",
+        "top": "calc(5.5% + 15px)"
+      },
       "box": {
         "top": "2.18519%",
         "left": "89.907%",
         "right": "5.60465%",
         "bottom": "94.5%"
       },
-      "boxClass": "128",
-      "arrow": "arrow-top-right",
-      "textPos": {
-        "left": "calc(92.1512% - 275px)",
-        "top": "calc(5.5% + 15px)"
-      },
-      "text": "12<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "128"
     },
     {
       "index": 17,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_21.png",
+      "image": "everything-13.png",
       "step": 13,
+      "text": "בחרו באפשרות <span style=\"color:#f6a67e;\">מסננים</span>",
+      "arrow": "arrow-top-right",
+      "textPos": {
+        "left": "calc(90.5814% - 275px)",
+        "top": "calc(8.18519% + 15px)"
+      },
       "box": {
         "top": "4.68518%",
         "left": "80.7791%",
         "right": "-0.38372%",
         "bottom": "91.8148%"
       },
-      "boxClass": "129",
-      "arrow": "arrow-top-right",
-      "textPos": {
-        "left": "calc(90.5814% - 275px)",
-        "top": "calc(8.18519% + 15px)"
-      },
-      "text": "13<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "129"
     },
     {
       "index": 18,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_22.png",
+      "image": "everything-14.png",
       "step": 14,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הכל</span> כדי לפתוח את כל המסננים.<br>מסננים מאפשרים לכם לראות רק סוג קבצים מסוים מתוך התוצאות",
+      "arrow": "arrow-top-left",
+      "textPos": {
+        "left": "calc(3.77907% - 25px)",
+        "top": "calc(8% + 15px)"
+      },
       "box": {
         "top": "4.68518%",
         "left": "-0.325581%",
         "right": "92.1163%",
         "bottom": "92%"
       },
-      "boxClass": "130",
-      "arrow": "arrow-top-left",
-      "textPos": {
-        "left": "calc(3.77907% - 25px)",
-        "top": "calc(8% + 15px)"
-      },
-      "text": "14<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "130"
     },
     {
       "index": 19,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_23.png",
+      "image": "everything-15.png",
       "step": 15,
+      "text": "בחרו באפשרות <span style=\"color:#f6a67e;\">וידאו</span> כדי לראות רק את קבצי הוידאו שבתוצאות",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(7.82558% + 15px)",
+        "top": "calc(18.6111% - 25px)"
+      },
       "box": {
         "top": "16.8%",
         "left": "-0.8%",
         "right": "91.5%",
         "bottom": "79.5%"
       },
-      "boxClass": "131",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(7.82558% + 15px)",
-        "top": "calc(18.6111% - 25px)"
-      },
-      "text": "15<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "131"
     },
     {
       "index": 20,
       "type": "view",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_24.png",
+      "image": "everything-16.png",
       "step": 16,
+      "text": "רואים שהתוצאות סוננו - Everything מציג רק את קבצי הוידאו. ככה אפשר למצוא בקלות סוג קובץ מסוים<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-right",
       "textPos": {
         "left": "calc(94.186% - 275px)",
         "top": "calc(14.4815% + 15px)"
-      },
-      "text": "16<div style=\"color: #ffffffbb;display: inline;\">/31"
+      }
     },
     {
       "index": 21,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_25.png",
+      "image": "everything-17.png",
       "step": 17,
+      "text": "לחצו על המסנן <span style=\"color:#f6a67e;\">וידאו</span> כדי לעבור למסנן אחר",
+      "arrow": "arrow-top-left",
+      "textPos": {
+        "left": "calc(3.77907% - 25px)",
+        "top": "calc(8% + 15px)"
+      },
       "box": {
         "top": "4.68518%",
         "left": "-0.325581%",
         "right": "92.1163%",
         "bottom": "92%"
       },
-      "boxClass": "133",
-      "arrow": "arrow-top-left",
-      "textPos": {
-        "left": "calc(3.77907% - 25px)",
-        "top": "calc(8% + 15px)"
-      },
-      "text": "17<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "133"
     },
     {
       "index": 22,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_26.png",
+      "image": "everything-18.png",
       "step": 18,
+      "text": "בחרו באפשרות <span style=\"color:#f6a67e;\">מסמכים</span> כדי לסנן ולראות רק קבצי מסמכים",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(7.82558% + 15px)",
+        "top": "calc(12.6852% - 25px)"
+      },
       "box": {
         "top": "10.9%",
         "left": "-0.8%",
         "right": "91.5%",
         "bottom": "85.4%"
       },
-      "boxClass": "134",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(7.82558% + 15px)",
-        "top": "calc(12.6852% - 25px)"
-      },
-      "text": "18<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "134"
     },
     {
       "index": 23,
       "type": "view",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_27.png",
+      "image": "everything-19.png",
       "step": 19,
+      "text": "קובץ המסמך הופיע בתוצאות. המסנן <span style=\"color:#f6a67e;\">מסמכים</span> מציג רק קבצי מסמכים<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-top-right",
       "textPos": {
         "left": "calc(94.7674% - 275px)",
         "top": "calc(14.3889% + 15px)"
-      },
-      "text": "19<div style=\"color: #ffffffbb;display: inline;\">/31"
+      }
     },
     {
       "index": 24,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_28.png",
+      "image": "everything-20.png",
       "step": 20,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תצוגה</span> בשורת התפריטים למעלה",
+      "arrow": "arrow-top-right",
+      "textPos": {
+        "left": "calc(92.1512% - 275px)",
+        "top": "calc(5.5% + 15px)"
+      },
       "box": {
         "top": "2.18519%",
         "left": "89.907%",
         "right": "5.60465%",
         "bottom": "94.5%"
       },
-      "boxClass": "137",
-      "arrow": "arrow-top-right",
-      "textPos": {
-        "left": "calc(92.1512% - 275px)",
-        "top": "calc(5.5% + 15px)"
-      },
-      "text": "20<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "137"
     },
     {
       "index": 25,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_29.png",
+      "image": "everything-21.png",
       "step": 21,
+      "text": "בחרו <span style=\"color:#f6a67e;\">תצוגה מקדימה</span>. תצוגה מקדימה מאפשרת לראות את הקובץ לפני שפותחים אותו",
+      "arrow": "arrow-top-right",
+      "textPos": {
+        "left": "calc(90.5814% - 275px)",
+        "top": "calc(10.5926% + 15px)"
+      },
       "box": {
         "top": "7.09259%",
         "left": "80.7791%",
         "right": "-0.38372%",
         "bottom": "89.4074%"
       },
-      "boxClass": "138",
-      "arrow": "arrow-top-right",
-      "textPos": {
-        "left": "calc(90.5814% - 275px)",
-        "top": "calc(10.5926% + 15px)"
-      },
-      "text": "21<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "138"
     },
     {
       "index": 26,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_30.png",
+      "image": "everything-22.png",
       "step": 22,
+      "text": "בחרו קובץ ברשימה - <span style=\"color:#f6a67e;\">התצוגה המקדימה</span> מופיעה בצד שמאל בלי לפתוח את הקובץ",
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "calc(89.6163% - 315px)",
+        "top": "calc(11.9444% - 25px)"
+      },
       "box": {
         "top": "10.2407%",
         "left": "89.6163%",
         "right": "-0.267441%",
         "bottom": "86.3519%"
       },
-      "boxClass": "139",
-      "arrow": "arrow-right",
-      "textPos": {
-        "left": "calc(89.6163% - 315px)",
-        "top": "calc(11.9444% - 25px)"
-      },
-      "text": "22<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "139"
     },
     {
       "index": 27,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_31.png",
+      "image": "everything-23.png",
       "step": 23,
+      "text": "לחצו על המסנן <span style=\"color:#f6a67e;\">מסמכים</span> כדי לעבור למסנן אחר",
+      "arrow": "arrow-top-left",
+      "textPos": {
+        "left": "calc(3.77907% - 25px)",
+        "top": "calc(8% + 15px)"
+      },
       "box": {
         "top": "4.68518%",
         "left": "-0.325581%",
         "right": "92.1163%",
         "bottom": "92%"
       },
-      "boxClass": "141",
-      "arrow": "arrow-top-left",
-      "textPos": {
-        "left": "calc(3.77907% - 25px)",
-        "top": "calc(8% + 15px)"
-      },
-      "text": "23<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "141"
     },
     {
       "index": 28,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_32.png",
+      "image": "everything-24.png",
       "step": 24,
+      "text": "בחרו באפשרות <span style=\"color:#f6a67e;\">וידאו</span> כדי לראות רק את קבצי הוידאו",
+      "arrow": "arrow-left",
+      "textPos": {
+        "left": "calc(7.82558% + 15px)",
+        "top": "calc(18.6111% - 25px)"
+      },
       "box": {
         "top": "16.8%",
         "left": "-0.8%",
         "right": "91.5%",
         "bottom": "79.5%"
       },
-      "boxClass": "142",
-      "arrow": "arrow-left",
-      "textPos": {
-        "left": "calc(7.82558% + 15px)",
-        "top": "calc(18.6111% - 25px)"
-      },
-      "text": "24<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "142"
     },
     {
       "index": 29,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_33.png",
+      "image": "everything-25.png",
       "step": 25,
+      "text": "לחצו על <span style=\"color:#f6a67e;\">קובץ הוידאו</span> כדי לראות את התצוגה המקדימה שלו",
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "calc(88.8605% - 315px)",
+        "top": "calc(11.9444% - 25px)"
+      },
       "box": {
         "top": "10.2407%",
         "left": "88.8605%",
         "right": "-0.267441%",
         "bottom": "86.3519%"
       },
-      "boxClass": "143",
-      "arrow": "arrow-right",
-      "textPos": {
-        "left": "calc(88.8605% - 315px)",
-        "top": "calc(11.9444% - 25px)"
-      },
-      "text": "25<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "143"
     },
     {
       "index": 30,
       "type": "view",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_34.png",
+      "image": "everything-26.png",
       "step": 26,
+      "text": "רואים את <span style=\"color:#f6a67e;\">התצוגה המקדימה של הסרטון</span> - אפשר לצפות בלי לפתוח את הקובץ<br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-left",
       "textPos": {
         "left": "calc(45.3837% + 15px)",
         "top": "calc(33.5185% - 25px)"
-      },
-      "text": "26<div style=\"color: #ffffffbb;display: inline;\">/31"
+      }
     },
     {
       "index": 31,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_35.png",
+      "image": "everything-27.png",
       "step": 27,
+      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על קובץ בתוצאות כדי לפתוח תפריט עם אפשרויות נוספות<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "calc(88.8605% - 315px)",
+        "top": "calc(11.9444% - 25px)"
+      },
       "box": {
         "top": "10.2407%",
         "left": "88.8605%",
         "right": "-0.267441%",
         "bottom": "86.3519%"
       },
-      "boxClass": "146",
-      "arrow": "arrow-right",
-      "textPos": {
-        "left": "calc(88.8605% - 315px)",
-        "top": "calc(11.9444% - 25px)"
-      },
-      "text": "27<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "146"
     },
     {
       "index": 32,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_36.png",
+      "image": "everything-28.png",
       "step": 28,
+      "text": "בתפריט שנפתח, בחרו <span style=\"color:#f6a67e;\">פתח מיקום</span> כדי לפתוח את התיקייה של הקובץ במחשב",
+      "arrow": "arrow-right",
+      "textPos": {
+        "left": "calc(71.1861% - 315px)",
+        "top": "calc(16.2963% - 25px)"
+      },
       "box": {
         "top": "14.5926%",
         "left": "71.1861%",
         "right": "7%",
         "bottom": "81.9074%"
       },
-      "boxClass": "147",
-      "arrow": "arrow-right",
-      "textPos": {
-        "left": "calc(71.1861% - 315px)",
-        "top": "calc(16.2963% - 25px)"
-      },
-      "text": "28<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "147"
     },
     {
       "index": 33,
       "type": "view",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_37.png",
+      "image": "everything-29.png",
       "step": 29,
+      "text": "רואים את הקובץ במחשב - Everything פתח את התיקייה שבה <span style=\"color:#f6a67e;\">הקובץ נמצא</span><br>לחצו <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> להמשיך",
       "arrow": "arrow-right",
       "textPos": {
         "left": "calc(63.3954% - 315px)",
         "top": "calc(22.5% - 25px)"
-      },
-      "text": "29<div style=\"color: #ffffffbb;display: inline;\">/31"
+      }
     },
     {
       "index": 34,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_38.png",
+      "image": "everything-30.png",
       "step": 30,
+      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על סמל Everything בשורת המשימות למטה<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "arrow": "arrow-bottom-left",
+      "textPos": {
+        "left": "calc(24.593% - 25px)",
+        "bottom": "calc(5.5% + 15px)"
+      },
       "box": {
         "top": "94.5%",
         "left": "22.1744%",
         "right": "72.9302%",
         "bottom": "0.333336%"
       },
-      "boxClass": "153",
-      "arrow": "arrow-bottom-left",
-      "textPos": {
-        "left": "calc(24.593% - 25px)",
-        "bottom": "calc(5.5% + 15px)"
-      },
-      "text": "30<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "153"
     },
     {
       "index": 35,
       "type": "click",
-      "image": "How_to_download_and_install_Everything_search_tool_from_voidtools_and_set_it_up_on_Windows_39.png",
+      "image": "everything-31.png",
       "step": 31,
+      "text": "בחרו <span style=\"color:#f6a67e;\">הצמד לשורת המשימות</span> כדי שיהיה לכם קל לפתוח את Everything בקלות",
+      "arrow": "arrow-bottom-left",
+      "textPos": {
+        "left": "calc(22% - 25px)",
+        "bottom": "calc(18% + 15px)"
+      },
       "box": {
         "top": "85.1481%",
         "left": "13.9186%",
         "right": "64.2093%",
         "bottom": "10.6111%"
       },
-      "boxClass": "154",
-      "arrow": "arrow-bottom-left",
-      "textPos": {
-        "left": "calc(22% - 25px)",
-        "bottom": "calc(18% + 15px)"
-      },
-      "text": "31<div style=\"color: #ffffffbb;display: inline;\">/31"
+      "boxClass": "154"
     },
     {
       "index": 36,
       "type": "special",
       "specialType": "outro",
-      "html": "<div class=\"mySlides fade\">\n<style>\n.outro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);padding:16px 20px;box-sizing:border-box;background:linear-gradient(135deg,#1a1a2e,#16213e 50%,#0f3460);}\n.outro-title{font-size:clamp(16px,2.5vw,30px);font-weight:900;color:white;margin-bottom:4px;text-align:center;}\n.outro-title span{color:#f6a67e;}\n.outro-sub{color:#ffffffaa;font-size:13px;margin-bottom:12px;text-align:center;}\n.use-cases{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;max-width:960px;margin-bottom:12px;}\n.use-card{background:#ffffff0d;border:1px solid #ffffff1a;border-radius:12px;padding:10px 12px;text-align:right;}\n.use-card:hover{transform:translateY(-3px);background:#ffffff18;}\n.use-card .uc-title{color:#f6a67e;font-size:12px;font-weight:700;margin-bottom:3px;}\n.use-card .uc-desc{color:#ffffffbb;font-size:11px;line-height:1.5;}\n.outro-tip{background:#ffffff0d;border:1px solid #f6a67e44;border-radius:10px;padding:8px 16px;max-width:960px;width:100%;margin-bottom:10px;text-align:right;}\n.outro-tip span{color:#f6a67e;font-weight:700;font-size:12px;}\n.outro-tip p{color:#ffffffcc;font-size:11px;margin:2px 0 0 0;line-height:1.5;}\n.btn-restart{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.35);}\n</style>\n<div class=\"outro-wrap\">\n<div class=\"outro-title\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:8px;\"><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/><path d=\"M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z\"/></svg> סיימתם! עכשיו מה עושים עם <span>Everything?</span></div>\n<div class=\"outro-sub\">Everything מותקן ומוכן לשימוש. הנה מה שאפשר לעשות:</div>\n<div class=\"use-cases\">\n<div class=\"use-card\"><div class=\"uc-title\">חיפוש מיידי</div><div class=\"uc-desc\">הקלידו כל מילה ומצאו כל קובץ במחשב תוך שנייה.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">ניווט ישיר</div><div class=\"uc-desc\">קליק ימני על קובץ ופתיחת התיקייה שלו ישירות.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">תצוגה מקדימה</div><div class=\"uc-desc\">צפו בתוכן קבצים בלי לפתוח אותם.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">הצמדה לשורת המשימות</div><div class=\"uc-desc\">הצמידו Everything לשורת המשימות לגישה מהירה.</div></div>\n</div>\n<div class=\"outro-tip\"><span>טיפ זהב</span><p>לחצו פעמיים על סמל Everything בשורת המשימות בכל פעם שאתם מחפשים קובץ. תוך שנייה תמצאו הכל.</p></div>\n<button class=\"btn-restart\" onclick=\"showSlides(1)\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"1 4 1 10 7 10\"/><path d=\"M3.51 15a9 9 0 102.13-9.36L1 10\"/></svg>חזרו להתחלה</button>\n</div>"
+      "html": "<style>\n.outro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);padding:16px 20px;box-sizing:border-box;background:linear-gradient(135deg,#1a1a2e,#16213e 50%,#0f3460);}\n.outro-title{font-size:clamp(16px,2.5vw,30px);font-weight:900;color:white;margin-bottom:4px;text-align:center;}\n.outro-title span{color:#f6a67e;}\n.outro-sub{color:#ffffffaa;font-size:13px;margin-bottom:12px;text-align:center;}\n.use-cases{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;max-width:960px;margin-bottom:12px;}\n.use-card{background:#ffffff0d;border:1px solid #ffffff1a;border-radius:12px;padding:10px 12px;text-align:right;}\n.use-card:hover{transform:translateY(-3px);background:#ffffff18;}\n.use-card .uc-title{color:#f6a67e;font-size:12px;font-weight:700;margin-bottom:3px;}\n.use-card .uc-desc{color:#ffffffbb;font-size:11px;line-height:1.5;}\n.outro-tip{background:#ffffff0d;border:1px solid #f6a67e44;border-radius:10px;padding:8px 16px;max-width:960px;width:100%;margin-bottom:10px;text-align:right;}\n.outro-tip span{color:#f6a67e;font-weight:700;font-size:12px;}\n.outro-tip p{color:#ffffffcc;font-size:11px;margin:2px 0 0 0;line-height:1.5;}\n.btn-restart{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.35);}\n</style>\n<div class=\"outro-wrap\">\n<div class=\"outro-title\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:8px;\"><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/><path d=\"M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z\"/></svg> סיימתם! עכשיו מה עושים עם <span>Everything?</span></div>\n<div class=\"outro-sub\">Everything מותקן ומוכן לשימוש. הנה מה שאפשר לעשות:</div>\n<div class=\"use-cases\">\n<div class=\"use-card\"><div class=\"uc-title\">חיפוש מיידי</div><div class=\"uc-desc\">הקלידו כל מילה ומצאו כל קובץ במחשב תוך שנייה.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">ניווט ישיר</div><div class=\"uc-desc\">קליק ימני על קובץ ופתיחת התיקייה שלו ישירות.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">תצוגה מקדימה</div><div class=\"uc-desc\">צפו בתוכן קבצים בלי לפתוח אותם.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">הצמדה לשורת המשימות</div><div class=\"uc-desc\">הצמידו Everything לשורת המשימות לגישה מהירה.</div></div>\n</div>\n<div class=\"outro-tip\"><span>טיפ זהב</span><p>לחצו פעמיים על סמל Everything בשורת המשימות בכל פעם שאתם מחפשים קובץ. תוך שנייה תמצאו הכל.</p></div>\n<button class=\"btn-restart\" onclick=\"showSlides(1)\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"1 4 1 10 7 10\"/><path d=\"M3.51 15a9 9 0 102.13-9.36L1 10\"/></svg>חזרו להתחלה</button>\n</div>\n</div>\n<img id=\"logo.png\" src=\"../../shared/images/logo.png\" style=\"z-index:3;position:fixed;bottom:17px;left:30px;height:46px;\">\n<a class=\"prev\" onclick=\"prevSlide()\"><img id=\"left-arrow\" src=\"../../shared/images/left.png\" style=\"height:40px\"></a>\n<a class=\"next\" onclick=\"nextSlide()\"><img id=\"right-arrow\" src=\"../../shared/images/right.png\" style=\"height:40px\"></a>\n</div>\n<br>\n<script>\nvar slideMap = {\n  0:  { icon: 'home',     title: 'פתיחה' },\n  1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },\n  2:  { icon: 'download', title: 'הורידו את Everything' },\n  5:  { icon: 'warning',  title: 'בקרת חשבון משתמש' },\n  12: { icon: 'usage',    title: 'שימוש בתוכנה' },\n  36: { icon: 'finish',   title: 'סיום' }\n};\n</script>\n<script id=\"script\" type=\"text/javascript\" src=\"../../shared/script.js\"></script>\n<div class=\"nav-background\"><div class=\"nav-dots\"></div></div>\n<div id=\"1\" class =\"nav\" style=\"left:calc(2.381% + 99.66px);right:calc(95.2381% + -93.32px);\"></div>\n<div id=\"2\" class =\"nav\" style=\"left:calc(4.7619% + 93.32px);right:calc(92.8571% + -86.98px);\"></div>\n<div id=\"3\" class =\"nav\" style=\"left:calc(7.1429% + 86.98px);right:calc(90.4762% + -80.63px);\"></div>\n<div id=\"4\" class =\"nav\" style=\"left:calc(9.5238% + 80.63px);right:calc(88.0952% + -74.29px);\"></div>\n<div id=\"5\" class =\"nav\" style=\"left:calc(11.9048% + 74.29px);right:calc(85.7143% + -67.95px);\"></div>\n<div id=\"6\" class =\"nav\" style=\"left:calc(14.2857% + 67.95px);right:calc(83.3333% + -61.61px);\"></div>\n<div id=\"7\" class =\"nav\" style=\"left:calc(16.6667% + 61.61px);right:calc(80.9524% + -55.27px);\"></div>\n<div id=\"8\" class =\"nav\" style=\"left:calc(19.0476% + 55.27px);right:calc(78.5714% + -48.93px);\"></div>\n<div id=\"9\" class =\"nav\" style=\"left:calc(21.4286% + 48.93px);right:calc(76.1905% + -42.59px);\"></div>\n<div id=\"10\" class =\"nav\" style=\"left:calc(23.8095% + 42.59px);right:calc(73.8095% + -36.24px);\"></div>\n<div id=\"11\" class =\"nav\" style=\"left:calc(26.1905% + 36.24px);right:calc(71.4286% + -29.9px);\"></div>\n<div id=\"12\" class =\"nav\" style=\"left:calc(28.5714% + 29.9px);right:calc(69.0476% + -23.56px);\"></div>\n<div id=\"13\" class =\"nav\" style=\"left:calc(30.9524% + 23.56px);right:calc(66.6667% + -17.22px);\"></div>\n<div id=\"14\" class =\"nav\" style=\"left:calc(33.3333% + 17.22px);right:calc(64.2857% + -10.88px);\"></div>\n<div id=\"15\" class =\"nav\" style=\"left:calc(35.7143% + 10.88px);right:calc(61.9048% + -4.54px);\"></div>\n<div id=\"16\" class =\"nav\" style=\"left:calc(38.0952% + 4.54px);right:calc(59.5238% + 1.8px);\"></div>\n<div id=\"17\" class =\"nav\" style=\"left:calc(40.4762% + -1.8px);right:calc(57.1429% + 8.15px);\"></div>\n<div id=\"18\" class =\"nav\" style=\"left:calc(42.8571% + -8.15px);right:calc(54.7619% + 14.49px);\"></div>\n<div id=\"19\" class =\"nav\" style=\"left:calc(45.2381% + -14.49px);right:calc(52.381% + 20.83px);\"></div>\n<div id=\"20\" class =\"nav\" style=\"left:calc(47.619% + -20.83px);right:calc(50.0% + 27.17px);\"></div>\n<div id=\"21\" class =\"nav\" style=\"left:calc(50.0% + -27.17px);right:calc(47.619% + 33.51px);\"></div>\n<div id=\"22\" class =\"nav\" style=\"left:calc(52.381% + -33.51px);right:calc(45.2381% + 39.85px);\"></div>\n<div id=\"23\" class =\"nav\" style=\"left:calc(54.7619% + -39.85px);right:calc(42.8571% + 46.2px);\"></div>\n<div id=\"24\" class =\"nav\" style=\"left:calc(57.1429% + -46.2px);right:calc(40.4762% + 52.54px);\"></div>\n<div id=\"25\" class =\"nav\" style=\"left:calc(59.5238% + -52.54px);right:calc(38.0952% + 58.88px);\"></div>\n<div id=\"26\" class =\"nav\" style=\"left:calc(61.9048% + -58.88px);right:calc(35.7143% + 65.22px);\"></div>\n<div id=\"27\" class =\"nav\" style=\"left:calc(64.2857% + -65.22px);right:calc(33.3333% + 71.56px);\"></div>\n<div id=\"28\" class =\"nav\" style=\"left:calc(66.6667% + -71.56px);right:calc(30.9524% + 77.9px);\"></div>\n<div id=\"29\" class =\"nav\" style=\"left:calc(69.0476% + -77.9px);right:calc(28.5714% + 84.24px);\"></div>\n<div id=\"30\" class =\"nav\" style=\"left:calc(71.4286% + -84.24px);right:calc(26.1905% + 90.59px);\"></div>\n<div id=\"31\" class =\"nav\" style=\"left:calc(73.8095% + -90.59px);right:calc(23.8095% + 96.93px);\"></div>\n<div id=\"32\" class =\"nav\" style=\"left:calc(76.1905% + -96.93px);right:calc(21.4286% + 103.27px);\"></div>\n<div id=\"33\" class =\"nav\" style=\"left:calc(78.5714% + -103.27px);right:calc(19.0476% + 109.61px);\"></div>\n<div id=\"34\" class =\"nav\" style=\"left:calc(80.9524% + -109.61px);right:calc(16.6667% + 115.95px);\"></div>\n<div id=\"35\" class =\"nav\" style=\"left:calc(83.3333% + -115.95px);right:calc(14.2857% + 122.29px);\"></div>\n<div id=\"36\" class =\"nav\" style=\"left:calc(85.7143% + -122.29px);right:calc(11.9048% + 128.63px);\"></div>\n<div id=\"37\" class =\"nav\" style=\"left:calc(88.0952% + -128.63px);right:calc(9.5238% + 134.98px);\"></div>\n<div id=\"38\" class =\"nav\" style=\"left:calc(90.4762% + -134.98px);right:calc(7.1429% + 141.32px);\"></div>\n<div id=\"39\" class =\"nav\" style=\"left:calc(92.8571% + -141.32px);right:calc(4.7619% + 147.66px);\"></div>\n<div id=\"40\" class =\"nav\" style=\"left:calc(95.2381% + -147.66px);right:calc(2.381% + 154.0px);\"></div>\n<div id=\"41\" class =\"nav\" style=\"left:calc(97.619% + -154.0px);right:calc(0.0% + 160.34px);\"></div></div>\n<div id=\"1\" class=\"nav\" style=\"left:calc(2.3810% + 3px);right:calc(95.2381% + 3px);\"></div>\n<div id=\"2\" class=\"nav\" style=\"left:calc(4.7619% + 3px);right:calc(92.8571% + 3px);\"></div>\n<div id=\"3\" class=\"nav\" style=\"left:calc(7.1429% + 3px);right:calc(90.4762% + 3px);\"></div>\n<div id=\"4\" class=\"nav\" style=\"left:calc(9.5238% + 3px);right:calc(88.0952% + 3px);\"></div>\n<div id=\"5\" class=\"nav\" style=\"left:calc(11.9048% + 3px);right:calc(85.7143% + 3px);\"></div>\n<div id=\"6\" class=\"nav\" style=\"left:calc(14.2857% + 3px);right:calc(83.3333% + 3px);\"></div>\n<div id=\"7\" class=\"nav\" style=\"left:calc(16.6667% + 3px);right:calc(80.9524% + 3px);\"></div>\n<div id=\"8\" class=\"nav\" style=\"left:calc(19.0476% + 3px);right:calc(78.5714% + 3px);\"></div>\n<div id=\"9\" class=\"nav\" style=\"left:calc(21.4286% + 3px);right:calc(76.1905% + 3px);\"></div>\n<div id=\"10\" class=\"nav\" style=\"left:calc(23.8095% + 3px);right:calc(73.8095% + 3px);\"></div>\n<div id=\"11\" class=\"nav\" style=\"left:calc(26.1905% + 3px);right:calc(71.4286% + 3px);\"></div>\n<div id=\"12\" class=\"nav\" style=\"left:calc(28.5714% + 3px);right:calc(69.0476% + 3px);\"></div>\n<div id=\"13\" class=\"nav\" style=\"left:calc(30.9524% + 3px);right:calc(66.6667% + 3px);\"></div>\n<div id=\"14\" class=\"nav\" style=\"left:calc(33.3333% + 3px);right:calc(64.2857% + 3px);\"></div>\n<div id=\"15\" class=\"nav\" style=\"left:calc(35.7143% + 3px);right:calc(61.9048% + 3px);\"></div>\n<div id=\"16\" class=\"nav\" style=\"left:calc(38.0952% + 3px);right:calc(59.5238% + 3px);\"></div>\n<div id=\"17\" class=\"nav\" style=\"left:calc(40.4762% + 3px);right:calc(57.1429% + 3px);\"></div>\n<div id=\"18\" class=\"nav\" style=\"left:calc(42.8571% + 3px);right:calc(54.7619% + 3px);\"></div>\n<div id=\"19\" class=\"nav\" style=\"left:calc(45.2381% + 3px);right:calc(52.3810% + 3px);\"></div>\n<div id=\"20\" class=\"nav\" style=\"left:calc(47.6190% + 3px);right:calc(50.0000% + 3px);\"></div>\n<div id=\"21\" class=\"nav\" style=\"left:calc(50.0000% + 3px);right:calc(47.6190% + 3px);\"></div>\n<div id=\"22\" class=\"nav\" style=\"left:calc(52.3810% + 3px);right:calc(45.2381% + 3px);\"></div>\n<div id=\"23\" class=\"nav\" style=\"left:calc(54.7619% + 3px);right:calc(42.8571% + 3px);\"></div>\n<div id=\"24\" class=\"nav\" style=\"left:calc(57.1429% + 3px);right:calc(40.4762% + 3px);\"></div>\n<div id=\"25\" class=\"nav\" style=\"left:calc(59.5238% + 3px);right:calc(38.0952% + 3px);\"></div>\n<div id=\"26\" class=\"nav\" style=\"left:calc(61.9048% + 3px);right:calc(35.7143% + 3px);\"></div>\n<div id=\"27\" class=\"nav\" style=\"left:calc(64.2857% + 3px);right:calc(33.3333% + 3px);\"></div>\n<div id=\"28\" class=\"nav\" style=\"left:calc(66.6667% + 3px);right:calc(30.9524% + 3px);\"></div>\n<div id=\"29\" class=\"nav\" style=\"left:calc(69.0476% + 3px);right:calc(28.5714% + 3px);\"></div>\n<div id=\"30\" class=\"nav\" style=\"left:calc(71.4286% + 3px);right:calc(26.1905% + 3px);\"></div>\n<div id=\"31\" class=\"nav\" style=\"left:calc(73.8095% + 3px);right:calc(23.8095% + 3px);\"></div>\n<div id=\"32\" class=\"nav\" style=\"left:calc(76.1905% + 3px);right:calc(21.4286% + 3px);\"></div>\n<div id=\"33\" class=\"nav\" style=\"left:calc(78.5714% + 3px);right:calc(19.0476% + 3px);\"></div>\n<div id=\"34\" class=\"nav\" style=\"left:calc(80.9524% + 3px);right:calc(16.6667% + 3px);\"></div>\n<div id=\"35\" class=\"nav\" style=\"left:calc(83.3333% + 3px);right:calc(14.2857% + 3px);\"></div>\n<div id=\"36\" class=\"nav\" style=\"left:calc(85.7143% + 3px);right:calc(11.9048% + 3px);\"></div>\n<div id=\"37\" class=\"nav\" style=\"left:calc(88.0952% + 3px);right:calc(9.5238% + 3px);\"></div>\n<div id=\"38\" class=\"nav\" style=\"left:calc(90.4762% + 3px);right:calc(7.1429% + 3px);\"></div>\n<div id=\"39\" class=\"nav\" style=\"left:calc(92.8571% + 3px);right:calc(4.7619% + 3px);\"></div>\n<div id=\"40\" class=\"nav\" style=\"left:calc(95.2381% + 3px);right:calc(2.3810% + 3px);\"></div>\n<div id=\"41\" class=\"nav\" style=\"left:calc(97.6190% + 3px);right:calc(0.0000% + 3px);\"></div></div>\n<script>document.getElementsByClassName('box 2')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 4')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 18')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 20')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 21')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 22')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 24')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 47')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 113')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 119')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 84')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 85')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 86')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 87')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 88')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 89')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 114')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 152')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 125')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 127')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 128')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 129')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 130')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 131')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 132')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 133')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 134')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 135')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 137')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 138')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 139')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 141')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 142')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 143')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 144')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 146')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 147')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 148')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 153')[0].addEventListener('click', nextSlide, false);</script>\n<script>document.getElementsByClassName('box 154')[0].addEventListener('click', nextSlide, false);</script>\n</body>\n</html>"
     }
   ]
 }
