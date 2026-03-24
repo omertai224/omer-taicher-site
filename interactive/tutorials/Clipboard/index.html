@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>היסטוריית הלוח — Win+V | עומר טייכר</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link id="style" rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body style="background-color:#202020; font-family:'Rubik',sans-serif; margin:0;">
+<div id="mobile-block" style="display:none;position:fixed;inset:0;background:#1a1a2e;z-index:9999;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;font-family:'Rubik',sans-serif;">
+<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:20px;">
+<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+</svg>
+<div style="color:white;font-size:24px;font-weight:900;margin-bottom:14px;line-height:1.3;">הדרכה זו מיועדת למחשב Windows בלבד</div>
+<div style="color:#ffffffcc;font-size:16px;line-height:1.8;margin-bottom:20px;">כדי לתרגל את השלבים תוך כדי,<br>יש לפתוח הדרכה זו במחשב Windows שלכם.</div>
+<div style="background:#f6a67e22;border:2px solid #f6a67e88;border-radius:14px;padding:14px 20px;">
+<div style="color:#f6a67e;font-size:14px;font-weight:700;">טיפ</div>
+<div style="color:#ffffffaa;font-size:14px;margin-top:6px;line-height:1.6;">פתחו את הקישור שקיבלתם<br>במחשב Windows שלכם.</div>
+</div>
+</div>
+<div class="slideshow-container">
+<div class="mySlides fade">
+<style>
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+@keyframes shimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}
+.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:#1a1a2e;text-align:center;padding:20px 40px;box-sizing:border-box;}
+.intro-badge{background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:5px 16px;border-radius:50px;font-size:12px;letter-spacing:2px;animation:fadeInDown .8s ease both;margin-bottom:12px;}
+.intro-title{font-size:clamp(20px,3.5vw,46px);font-weight:900;color:white;line-height:1.15;animation:fadeInDown .9s ease .2s both;margin-bottom:8px;}
+.intro-title span{background:linear-gradient(90deg,#f6a67e,#ff6b6b,#f6a67e);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}
+.intro-subtitle{font-size:clamp(12px,1.8vw,18px);color:#ffffffaa;animation:fadeInDown 1s ease .4s both;margin-bottom:4px;}
+.intro-author{font-size:13px;color:#ffffff66;animation:fadeInDown 1s ease .5s both;margin-bottom:20px;}
+.intro-cards{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeInUp 1s ease .6s both;margin-bottom:20px;}
+.intro-card{background:#ffffff12;border:1px solid #ffffff22;border-radius:14px;padding:12px 18px;min-width:130px;max-width:170px;}
+.intro-card .icon{font-size:24px;margin-bottom:6px;}
+.intro-card .label{color:#ffffffcc;font-size:12px;line-height:1.3;}
+.intro-btn{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:14px 40px;border-radius:50px;font-size:17px;font-weight:700;cursor:pointer;animation:fadeInUp 1s ease .8s both,pulse 2s ease 2s infinite;box-shadow:0 8px 32px rgba(246,166,126,0.4);font-family:Rubik,sans-serif;}
+</style>
+<div class="intro-wrap">
+<div class="intro-badge">מובנה בוינדוס. בחינם.</div>
+<div class="intro-title">מעתיקים הרבה דברים?<br><span>היסטוריית הלוח חוסכת לכם זמן</span></div>
+<div class="intro-subtitle">במקום להעתיק ולהדביק פריט אחד בכל פעם —<br>Win+V שומר הכל ומאפשר להדביק כל פריט בלחיצה.</div>
+<div class="intro-author">עומר טייכר · מדריך וטכנאי מחשבים</div>
+<div class="intro-cards">
+<div class="intro-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg></div><div class="label">כל מה שהעתקתם — שמור</div></div>
+<div class="intro-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg></div><div class="label">הדביקו כל פריט בלחיצה</div></div>
+<div class="intro-card"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="label">חוסך הלוך-חזור מיותר</div></div>
+</div>
+<button class="intro-btn" onclick="nextSlide()">בואו נתחיל ←</button>
+</div>
+</div>
+<div class="mySlides fade">
+<style>
+.howto-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e,#16213e);text-align:center;padding:20px 40px;box-sizing:border-box;gap:14px;}
+.howto-badge{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;}
+.howto-title{font-size:clamp(18px,2.8vw,34px);font-weight:900;color:white;line-height:1.2;}
+.howto-title span{color:#f6a67e;}
+.howto-video{width:100%;max-width:480px;border-radius:14px;overflow:hidden;box-shadow:0 20px 60px #00000088;}
+.howto-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:480px;}
+.howto-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}
+.howto-note span{color:#f6a67e;font-weight:700;}
+</style>
+<div class="howto-wrap">
+<div class="howto-badge">לפני שמתחילים</div>
+<div class="howto-title">צפו בסרטון <span>איך עובדים עם ההדרכה</span></div>
+<div class="howto-video">
+<video src="https://res.cloudinary.com/drxyfq0cq/video/upload/v1773356906/Omer_Taicher_s_Video_-_Mar_13_2026_hbzpyo.mp4" controls controlsList="nodownload" playsinline style="width:100%;display:block;border-radius:14px;"></video>
+</div>
+<div class="howto-note">
+<p><span>לאחר הצפייה:</span> לחצו על <span onclick="nextSlide()" style="display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;"><svg style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg></span> כדי להתקדם.</p>
+</div>
+</div>
+</div>
+<div class="mySlides fade">
+<style>
+.parta-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);text-align:center;padding:32px;box-sizing:border-box;gap:18px;}
+.parta-badge{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}
+.parta-title{font-size:clamp(20px,2.8vw,38px);font-weight:900;color:white;line-height:1.2;}
+.parta-title span{color:#f6a67e;}
+.parta-sub{color:#ffffffaa;font-size:clamp(13px,1.2vw,16px);line-height:1.6;}
+.parta-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:460px;}
+.parta-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}
+.parta-note span{color:#f6a67e;font-weight:700;}
+</style>
+<div class="parta-wrap">
+  <div class="parta-badge">חלק א · הבעיה</div>
+  <div class="parta-title">קודם נראה את <span>הדרך הישנה</span></div>
+  <div class="parta-sub">4 פרטים צריך להעתיק מכרטיס לקוח לטופס.<br>בדרך הרגילה — זה אומר 8 צעדים של הלוך וחזור.<br>בואו נראה איך זה נראה.</div>
+  <div class="parta-note">
+    <p><span>שימו לב:</span> אחרי שנראה את הבעיה — נלמד את הפתרון!</p>
+  </div>
+  <button onclick="nextSlide()" style="background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;border:none;padding:14px 40px;border-radius:50px;font-size:17px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(30,95,116,0.35);">בואו נראה ←</button>
+</div>
+</div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_1.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-4" style="top:55.4259%;left:60.5465%;right:20.0814%;bottom:38.8519%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-right" style="left:calc(60.5465% - 315px);top:calc(58.2407% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">1<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">בתפריט שנפתח, לחצו על <span style="color:#f6a67e;">העתק</span> כדי להעתיק את שם הלקוח</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_2.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-6" style="top:65.4259%;left:24.4419%;right:58.3953%;bottom:29.037%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(41.6047% + 15px);top:calc(68.1481% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">2<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">הדבק</span> כדי להדביק את השם בשדה הטופס</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_3.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-9" style="top:66.0741%;left:46.7674%;right:27.6977%;bottom:28.3889%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(72.3023% + 15px);top:calc(68.7963% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">3<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">חזרו לכרטיס הלקוח ולחצו על <span style="color:#f6a67e;">העתק</span> כדי להעתיק את הכתובת</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_4.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-11" style="top:65.7037%;left:26.5349%;right:56.4186%;bottom:28.7593%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(43.5814% + 15px);top:calc(68.4259% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">4<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">הדבק</span> כדי להדביק את הכתובת בשדה הטופס</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_5.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-14" style="top:49.037%;left:54.5%;right:23.8605%;bottom:44.8704%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-right" style="left:calc(54.5% - 315px);top:calc(52.037% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">5<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">חזרו שוב לכרטיס הלקוח ולחצו על <span style="color:#f6a67e;">העתק</span> כדי להעתיק את מספר הטלפון</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_6.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-17" style="top:34.1296%;left:23.9767%;right:58.8605%;bottom:59.6852%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(41.1395% + 15px);top:calc(37.2222% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">6<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">הדבק</span> כדי להדביק את הטלפון בשדה הטופס</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_7.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-20" style="top:58.9444%;left:50.6047%;right:26.0116%;bottom:35.0556%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-right" style="left:calc(50.6047% - 315px);top:calc(61.9444% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">7<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">ושוב חזרו לכרטיס הלקוח ולחצו על <span style="color:#f6a67e;">העתק</span> כדי להעתיק את מספר ההזמנה</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_8.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-22" style="top:43.9444%;left:17.6977%;right:65.1395%;bottom:50.1481%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(34.8605% + 15px);top:calc(46.8519% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">8<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">הדבק</span> כדי להדביק את מספר ההזמנה בשדה האחרון</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_9.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-23" style="top:94.037%;left:60.7209%;right:33.6861%;bottom:-0.59259%;pointer-events:none;animation:none;opacity:0.5;"></div><div onclick="nextSlide()" style="position:absolute;bottom:12%;left:50%;transform:translateX(-50%);width:52px;height:52px;background:#1e5f74;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px #00000055;border:2.5px solid white;z-index:5;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg></div>
+<div class="text arrow-bottom-right" style="left:calc(63.4884% - 275px);bottom:calc(5.96296% + 15px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">9<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">הטופס מלא! אבל שימו לב — נדרשו <span style="color:#f6a67e;">8 צעדים</span> של הלוך וחזור בין הכרטיס לטופס. יש דרך הרבה יותר מהירה!</div>
+</div>
+</div></div></div>
+<div class="mySlides fade">
+<style>
+.partb-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f2a3a 0%,#1a4a6b 100%);text-align:center;padding:20px 40px;box-sizing:border-box;gap:10px;}
+.partb-check{width:56px;height:56px;background:linear-gradient(135deg,#1e5f74,#5b8fa8);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto;}
+.partb-badge{background:#f6a67e22;border:1px solid #f6a67e55;color:#f6a67e;padding:3px 14px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}
+.partb-title{font-size:clamp(18px,2.8vw,36px);font-weight:900;color:white;margin-bottom:0;line-height:1.2;}
+.partb-title span{color:#f6a67e;}
+.partb-sub{color:#ffffffaa;font-size:14px;margin-bottom:0;}
+.partb-btn{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:11px 32px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 8px 32px rgba(246,166,126,0.4);}
+.partb-btn:hover{transform:scale(1.05);}
+</style>
+<div class="partb-wrap">
+  <div class="partb-check">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <div class="partb-badge">ראיתם את הבעיה</div>
+  <div class="partb-title">8 צעדים של הלוך וחזור!<br><span>עכשיו נפעיל את הפתרון</span></div>
+  <div class="partb-sub">נכנס להגדרות Windows ונפעיל את היסטוריית הלוח.<br>זה לוקח 4 לחיצות בלבד.</div>
+  <button class="partb-btn" onclick="nextSlide()">בואו נפעיל ←</button>
+</div>
+</div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_10.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-24" style="top:33.0185%;left:57.6395%;right:34.3256%;bottom:56.1667%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-right" style="left:calc(57.6395% - 315px);top:calc(38.4259% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">10<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">פתחו את <span style="color:#f6a67e;">תפריט התחל</span> ולחצו על <span style="color:#f6a67e;">הגדרות</span> (סמל גלגל השיניים)</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_11.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-25" style="top:20.5185%;left:78.0465%;right:0.604652%;bottom:73.1111%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-right" style="left:calc(78.0465% - 315px);top:calc(23.7037% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">11<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">בהגדרות Windows, לחצו על <span style="color:#f6a67e;">מערכת</span> בתפריט בצד ימין</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_12.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-26" style="top:67.7407%;left:42%;right:24.4419%;bottom:22.9259%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(75.5581% + 15px);top:calc(72.4074% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">12<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">גללו למטה ברשימה ולחצו על <span style="color:#f6a67e;">לוח</span> (Clipboard)</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_13.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-27" style="top:13.3889%;left:2.5814%;right:86.8256%;bottom:79.5%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(13.1744% + 15px);top:calc(16.9444% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">13<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">המתג</span> כדי להפעיל את היסטוריית הלוח. כשהמתג כחול — הפיצ׳ר דלוק!</div>
+</div>
+</div></div></div>
+<div class="mySlides fade">
+<div class="partb-wrap">
+  <div class="partb-check">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+  <div class="partb-badge">היסטוריית הלוח הופעלה</div>
+  <div class="partb-title">עכשיו נעתיק הכל ברצף<br><span>ונדביק עם Win+V</span></div>
+  <div class="partb-sub">הפעם נעתיק את כל 4 הפרטים אחד אחרי השני —<br>בלי לחזור לטופס ביניהם. ואז נדביק הכל ממקום אחד!</div>
+  <button class="partb-btn" onclick="nextSlide()">בואו ננסה ←</button>
+</div>
+</div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_14.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-35" style="top:54.7778%;left:60.5465%;right:20.0814%;bottom:39.2222%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-right" style="left:calc(60.5465% - 315px);top:calc(57.7778% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">14<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">חזרנו לדף ההדגמה. הפעם נעתיק הכל ברצף! לחצו על <span style="color:#f6a67e;">העתק</span> כדי להעתיק את השם</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_15.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-38" style="top:65.6111%;left:46.8256%;right:27.6395%;bottom:28.6667%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(72.3605% + 15px);top:calc(68.4259% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">15<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">העתק</span> כדי להעתיק גם את הכתובת. היסטוריית הלוח שומרת הכל!</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_16.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-41" style="top:48.8519%;left:54.3837%;right:23.8605%;bottom:45.0556%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-right" style="left:calc(54.3837% - 315px);top:calc(51.8519% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">16<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">העתק</span> כדי להעתיק את מספר הטלפון. שימו לב — לא הדבקנו כלום עדיין!</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_17.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-44" style="top:60.0556%;left:50.4302%;right:26.2442%;bottom:34.5926%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-right" style="left:calc(50.4302% - 315px);top:calc(62.6852% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">17<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">העתק</span> כדי להעתיק את מספר ההזמנה. עכשיו הכל שמור בהיסטוריית הלוח!</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_18.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-83" style="top:79.1296%;left:45.5465%;right:29.5581%;bottom:10.5185%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(70.4419% + 15px);top:calc(84.2593% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">18<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו <span style="color:#f6a67e;">Win+V</span> במקלדת. נפתח חלון עם כל מה שהעתקתם! לחצו על <span style="color:#f6a67e;">הפריט התחתון</span> כדי להדביק</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_19.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-85" style="top:29.5%;left:45.5465%;right:29.5581%;bottom:60.1481%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(70.4419% + 15px);top:calc(34.6296% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">19<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">מספר הטלפון 052-1234567</span> בהיסטוריית הלוח כדי להדביק אותו</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_20.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-86" style="top:29.5%;left:45.5465%;right:29.5581%;bottom:60.1481%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(70.4419% + 15px);top:calc(34.6296% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">20<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">הכתובת</span> בהיסטוריית הלוח כדי להדביק אותה</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_21.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-90" style="top:40.5185%;left:45.5465%;right:29.5581%;bottom:49.1296%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(70.4419% + 15px);top:calc(45.6481% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">21<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">מספר ההזמנה ORD-2026-78453</span> בהיסטוריית הלוח</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_22.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-91" style="top:40.5185%;left:45.5465%;right:29.5581%;bottom:49.1296%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(70.4419% + 15px);top:calc(45.6481% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">22<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">מספר הטלפון</span> בהיסטוריית הלוח כדי להדביק אותו בשדה הבא</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_23.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-95" style="top:45.2407%;left:45.8953%;right:50.7209%;bottom:49.8704%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(49.2791% + 15px);top:calc(47.6852% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">23<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">הכתובת</span> בהיסטוריית הלוח כדי להדביק אותה בשדה הבא</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_24.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-96" style="top:40.2407%;left:45.5465%;right:29.5581%;bottom:49.4074%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(70.4419% + 15px);top:calc(45.3704% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">24<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">מספר ההזמנה</span> בהיסטוריית הלוח</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_25.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-97" style="top:40.2407%;left:45.5465%;right:29.5581%;bottom:49.4074%;cursor:pointer;" onclick="nextSlide()"></div>
+<div class="text arrow-left" style="left:calc(70.4419% + 15px);top:calc(45.3704% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">25<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">לחצו על <span style="color:#f6a67e;">מספר הטלפון</span> בהיסטוריית הלוח כדי להדביק בשדה האחרון</div>
+</div>
+</div></div></div>
+<div class="mySlides fade"><div class="image"><div class="image-center">
+<img src=".//images//How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_26.png" style="max-height:calc(100vh - 80px);width:auto;">
+<div class="box box-98" style="top:87.8333%;left:14.3256%;right:53.1628%;bottom:5.51852%;pointer-events:none;animation:none;opacity:0.5;"></div><div onclick="nextSlide()" style="position:absolute;bottom:12%;left:50%;transform:translateX(-50%);width:52px;height:52px;background:#1e5f74;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px #00000055;border:2.5px solid white;z-index:5;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="9 18 15 12 9 6"/></svg></div>
+<div class="text arrow-left" style="left:calc(46.8372% + 15px);top:calc(91.1111% - 25px);position:absolute;width:300; height: fit-content;">
+    <div style="text-align: right;">26<div style="color: #ffffffbb;display: inline;">/26</div></div>
+    <b style="font-size:24px;padding: 8px 0px;"></b>
+    <div dir="rtl" style="text-align:right;">מעולה! הטופס מלא — הפעם בלי הלוך וחזור!<br><span style="color:#f6a67e;">היסטוריית הלוח</span> שמרה הכל ואפשרה להדביק כל פריט ישירות</div>
+</div>
+</div></div></div>
+<div class="mySlides fade">
+<style>
+.outro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);padding:16px 20px;box-sizing:border-box;background:linear-gradient(135deg,#1a1a2e,#16213e 50%,#0f3460);}
+.outro-title{font-size:clamp(16px,2.5vw,30px);font-weight:900;color:white;margin-bottom:4px;text-align:center;}
+.outro-title span{color:#f6a67e;}
+.outro-sub{color:#ffffffaa;font-size:13px;margin-bottom:12px;text-align:center;}
+.use-cases{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:720px;margin-bottom:16px;}
+.use-card{background:#ffffff0d;border:1px solid #ffffff1a;border-radius:12px;padding:12px 14px;text-align:right;}
+.use-card:hover{transform:translateY(-3px);background:#ffffff18;}
+.use-card .uc-title{color:#f6a67e;font-size:13px;font-weight:700;margin-bottom:4px;}
+.use-card .uc-desc{color:#ffffffbb;font-size:12px;line-height:1.5;}
+.outro-tip{background:#ffffff0d;border:1px solid #f6a67e44;border-radius:10px;padding:10px 18px;max-width:720px;width:100%;margin-bottom:12px;text-align:right;}
+.outro-tip span{color:#f6a67e;font-weight:700;font-size:13px;}
+.outro-tip p{color:#ffffffcc;font-size:12px;margin:3px 0 0 0;line-height:1.5;}
+.btn-restart{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.35);}
+</style>
+<div class="outro-wrap">
+<div class="outro-title"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:8px;"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg> סיימתם! עכשיו אתם יודעים להשתמש ב<span>היסטוריית הלוח</span></div>
+<div class="outro-sub">Win+V פתוח לכם מהיום. הנה רעיונות מה לעשות:</div>
+<div class="use-cases">
+<div class="use-card"><div class="uc-title">מילוי טפסים</div><div class="uc-desc">העתיקו כמה פרטים ברצף והדביקו כל אחד בשדה המתאים.</div></div>
+<div class="use-card"><div class="uc-title">עבודה עם מיילים</div><div class="uc-desc">העתיקו קטעים ממייל אחד והדביקו בתשובה — בלי לחזור.</div></div>
+<div class="use-card"><div class="uc-title">העברת מידע</div><div class="uc-desc">העתיקו טקסטים מאתרים והדביקו במסמך אחד.</div></div>
+</div>
+<div class="outro-tip">
+<span>טיפ:</span>
+<p>Win+V עובד בכל מקום בוינדוס — בדפדפן, במייל, ב-Word, ובכל תוכנה.<br>אפשר גם להצמיד פריטים שחוזרים עליהם הרבה (כמו כתובת או חתימה).</p>
+</div>
+<button class="btn-restart" onclick="showSlides(1)">התחילו מחדש ←</button>
+</div>
+</div>
+</div>
+<img src=".//images//logo.png" style="z-index:3;position:fixed;bottom:17px;left:30px;height:46px;">
+<a class="prev" onclick="prevSlide()"><img id="left-arrow" src=".//images//left.png" style="height:40px"></a>
+<a class="next" onclick="nextSlide()"><img id="right-arrow" src=".//images//right.png" style="height:40px"></a>
+<script type="text/javascript" src="script.js"></script>
+<div class="nav-background"><div class="nav-dots"></div></div>
+<script>
+function getPersonalName() {
+  var params = new URLSearchParams(window.location.search);
+  var name = params.get('u');
+  if (name) {
+    localStorage.setItem('clipboard_user_display', name);
+    return name;
+  }
+  return localStorage.getItem('clipboard_user_display') || '';
+}
+
+function showPersonalBadge() {
+  var name = getPersonalName();
+  if (!name) return;
+  var badge = document.createElement('div');
+  badge.id = 'user-badge';
+  badge.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#5b8fa8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:5px;"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>' +
+    '<span style="color:#ffffffaa;font-size:11px;">\u05DE\u05D7\u05D5\u05D1\u05E8 \u05DB:</span> ' +
+    '<span style="color:white;font-weight:700;font-size:12px;">' + name + '</span>';
+  badge.style.cssText = 'position:fixed;top:12px;left:12px;z-index:9000;background:#0f1a2eee;border:1px solid #ffffff22;border-radius:20px;padding:6px 14px;font-family:Rubik,sans-serif;display:flex;align-items:center;gap:4px;backdrop-filter:blur(8px);box-shadow:0 4px 16px #00000044;';
+  document.body.appendChild(badge);
+}
+
+function initApp() {
+  getPersonalName();
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
+    document.getElementById('mobile-block').style.display = 'flex';
+    return;
+  }
+  showTutorial();
+}
+function showTutorial() { showPersonalBadge(); setNavBarColor(1); showSlides(1); }
+window.onload = initApp;
+</script>
+</body>
+</html>
