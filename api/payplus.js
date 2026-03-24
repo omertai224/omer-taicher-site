@@ -52,8 +52,13 @@ export default async function handler(req, res) {
       productKeys,
       customerName,
       customerEmail,
-      customerPhone
+      customerPhone,
+      testMode,
+      testSecret
     } = req.body;
+
+    // מצב בדיקה — מחיר 3 ש"ח לכל מוצר (מוגן בסיסמה)
+    const isTestMode = testMode === true && testSecret === 'omer-test-2026';
 
     const PRODUCTS = loadProducts();
 
@@ -76,11 +81,12 @@ export default async function handler(req, res) {
     };
 
     // סכום כולל + רשימת מוצרים ל-PayPlus
-    const totalAmount = validKeys.reduce((sum, k) => sum + PRODUCTS[k].price, 0);
+    const pricePerItem = isTestMode ? 3 : null;
+    const totalAmount = validKeys.reduce((sum, k) => sum + (pricePerItem || PRODUCTS[k].price), 0);
     const payPlusProducts = validKeys.map(k => ({
-      name: PRODUCTS[k].name,
+      name: PRODUCTS[k].name + (isTestMode ? ' (בדיקה)' : ''),
       quantity: 1,
-      price: PRODUCTS[k].price
+      price: pricePerItem || PRODUCTS[k].price
     }));
 
     // אם מוצר בודד — הפניה ישירה להדרכה. כמה מוצרים — לדף ההדרכות
