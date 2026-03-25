@@ -33,9 +33,9 @@ function markModified(idx) {
   updateStrip();
 }
 
-// Zoom
+// Zoom — scale the container, canvas-area scrolls to let you pan
 function setZoom(z) {
-  E.zoom = Math.max(0.3, Math.min(3, z));
+  E.zoom = Math.max(0.5, Math.min(4, z));
   $('slideContainer').style.transform = 'scale(' + E.zoom + ')';
 }
 
