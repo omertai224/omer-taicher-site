@@ -6,7 +6,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 .topbar {
   display:flex; align-items:center; gap:6px; padding:6px 12px;
   background:linear-gradient(180deg,#1e2a45,#1a2540); border-bottom:1px solid #ffffff18;
-  height:46px; z-index:100;
+  height:40px; z-index:100;
 }
 .topbar select {
   font-family:'Rubik',sans-serif; font-size:12px; border-radius:8px;
@@ -32,7 +32,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 .topbar .save-btn:hover { opacity:0.85; }
 
 /* ═══ Main Layout ═══ */
-.main { display:flex; flex-direction:row-reverse; height:calc(100vh - 46px - 44px); }
+.main { display:flex; flex-direction:row-reverse; height:calc(100vh - 80px); }
 
 /* ═══ Canvas ═══ */
 .canvas-area {
@@ -52,7 +52,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   border-radius:4px; overflow:visible;
 }
 .slide-container img.slide-img {
-  display:block; max-height:calc(100vh - 90px);
+  display:block; max-height:calc(100vh - 80px);
   width:auto; height:auto; user-select:none; -webkit-user-drag:none;
 }
 .no-slide {
@@ -191,7 +191,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 
 /* ═══ Slide Strip — full width ═══ */
 .strip {
-  height:44px; background:#1a2540; border-top:1px solid #ffffff15;
+  height:40px; background:#1a2540; border-top:1px solid #ffffff15;
   display:grid; align-items:center; padding:0 10px;
   direction:ltr; gap:2px;
 }
