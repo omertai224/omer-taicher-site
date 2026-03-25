@@ -109,11 +109,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 }
 .bubble-resize:hover { background:#f6a67e; }
 .editor-bubble.dragging { border-color:#f6a67e; border-style:dashed; }
-.drag-label {
-  position:absolute; top:-18px; left:0; right:0; text-align:center;
-  font-size:9px; color:#f6a67e; font-weight:700;
-  opacity:0.6; user-select:none; pointer-events:none;
-}
+.drag-label { display:none; }
 #bubblePreview { pointer-events:none; }
 #bubblePreview span[style*="color:#f6a67e"] { color:#f6a67e !important; }
 
