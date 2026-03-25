@@ -38,12 +38,11 @@
     if (!mode) return;
 
     if (mode === 'resize') {
-      // Resize: change width as % of container (proportional like orange box)
+      // Resize: width in pixels (text doesn't reflow). Scale handles proportions.
       var dx = e.clientX - startX;
       var newWidth = Math.max(150, Math.min(500, startWidth + dx));
-      var widthPct = (newWidth / cw * 100) + '%';
-      bubble.style.maxWidth = widthPct;
-      bubble.style.width = widthPct;
+      bubble.style.maxWidth = newWidth + 'px';
+      bubble.style.width = newWidth + 'px';
       return;
     }
 
@@ -78,7 +77,7 @@
     if (!s || !s.textPos) return;
 
     if (prevMode === 'resize') {
-      s.textWidth = (bubble.offsetWidth / cw * 100) + '%';
+      s.textWidth = bubble.offsetWidth + 'px';
       markModified();
       return;
     }
