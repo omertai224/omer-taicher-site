@@ -16,57 +16,82 @@ function loadFromServer(name) {
     .catch(function(err) { toast('שגיאה: ' + err.message); });
 }
 
-/* ── Local mode: pick tutorials/ root folder, scan for tutorials ── */
+/* ── Local mode: pick ANY folder, find tutorials automatically ── */
 function loadLocalRoot() {
   if (!window.showDirectoryPicker) {
     toast('הדפדפן לא תומך. השתמשו ב-Chrome או Edge');
     return;
   }
   window.showDirectoryPicker()
-    .then(function(rootHandle) {
-      E.rootHandle = rootHandle;
-      return scanForTutorials(rootHandle);
+    .then(function(handle) {
+      return findTutorials(handle);
     })
-    .then(function(names) {
-      if (names.length === 0) {
+    .then(function(result) {
+      if (!result) {
         toast('לא נמצאו הדרכות עם slides.json');
         return;
       }
-      populateDropdown(names);
-      toast('נמצאו ' + names.length + ' הדרכות. בחרו מהרשימה');
+      E.rootHandle = result.root;
+      populateDropdown(result.names);
+      toast('נמצאו ' + result.names.length + ' הדרכות. בחרו מהרשימה');
     })
     .catch(function(err) {
       if (err.name !== 'AbortError') toast('שגיאה: ' + err.message);
     });
 }
 
-/* ── Scan root folder for subfolders with slides.json ── */
-function scanForTutorials(rootHandle) {
-  var names = [];
-  var iter = rootHandle.values();
+/* ── Smart scan: check current folder, then 1 level deeper ── */
+function findTutorials(handle) {
+  // First: check if THIS folder contains tutorial subfolders
+  return scanLevel(handle).then(function(names) {
+    if (names.length > 0) {
+      return { root: handle, names: names };
+    }
+    // Not found — check subfolders (user picked parent like "interactive" or repo root)
+    return scanDeeper(handle);
+  });
+}
 
-  function processEntries() {
+/* ── Scan one level: check each subfolder for slides.json ── */
+function scanLevel(dirHandle) {
+  var names = [];
+  var iter = dirHandle.values();
+
+  function next() {
     return iter.next().then(function(result) {
-      if (result.done) {
-        names.sort();
-        return names;
-      }
+      if (result.done) { names.sort(); return names; }
       var entry = result.value;
-      if (entry.kind !== 'directory' || entry.name === 'editor') {
-        return processEntries();
+      if (entry.kind !== 'directory' || entry.name === 'editor' || entry.name.startsWith('.')) {
+        return next();
       }
-      // Check if this folder has slides.json
       return entry.getFileHandle('slides.json')
-        .then(function() {
-          names.push(entry.name);
-        })
-        .catch(function() {
-          // No slides.json — skip
-        })
-        .then(processEntries);
+        .then(function() { names.push(entry.name); })
+        .catch(function() { /* no slides.json, skip */ })
+        .then(next);
     });
   }
-  return processEntries();
+  return next();
+}
+
+/* ── Go one level deeper into each subfolder ── */
+function scanDeeper(parentHandle) {
+  var iter = parentHandle.values();
+  var found = null;
+
+  function next() {
+    return iter.next().then(function(result) {
+      if (result.done) return found;
+      var entry = result.value;
+      if (entry.kind !== 'directory' || entry.name.startsWith('.')) return next();
+      return scanLevel(entry).then(function(names) {
+        if (names.length > 0 && !found) {
+          found = { root: entry, names: names };
+        }
+        return next();
+      });
+    });
+  }
+  return next();
 }
 
 /* ── Load a specific tutorial from the root handle ── */
@@ -97,20 +122,19 @@ function loadLocalImages(dirHandle) {
     .then(function(imgDir) {
       var promises = [];
       var iter = imgDir.values();
-      function processEntries() {
+      function next() {
         return iter.next().then(function(result) {
           if (result.done) return Promise.all(promises);
           var entry = result.value;
           if (entry.kind === 'file' && /\.(png|jpg|jpeg|gif|webp|bmp)$/i.test(entry.name)) {
-            var p = entry.getFile().then(function(file) {
+            promises.push(entry.getFile().then(function(file) {
               E.imageMap[entry.name] = URL.createObjectURL(file);
-            });
-            promises.push(p);
+            }));
           }
-          return processEntries();
+          return next();
         });
       }
-      return processEntries();
+      return next();
     })
     .catch(function() {
       toast('לא נמצאה תיקיית images/');
