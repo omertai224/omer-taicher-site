@@ -32,8 +32,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "13.5682%",
-        "top": "53.8283%"
+        "left": "18.2253%",
+        "top": "56.1288%"
       },
       "step": 1,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה",
@@ -52,8 +52,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "27.1473%",
-        "top": "59.9105%"
+        "left": "26.8261%",
+        "top": "64.0026%"
       },
       "step": 2,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word",
@@ -72,8 +72,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "9.07752%",
-        "top": "49.4246%"
+        "left": "14.055%",
+        "top": "50.9591%"
       },
       "step": 3,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה",
@@ -92,8 +92,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "35.7606%",
-        "top": "52.8667%"
+        "left": "35.6%",
+        "top": "57.2144%"
       },
       "step": 4,
       "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה",
@@ -112,8 +112,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "53.0274%",
-        "top": "55.203%"
+        "left": "52.8668%",
+        "top": "66.9664%"
       },
       "step": 5,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
@@ -132,8 +132,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "32.4626%",
-        "top": "59.5455%"
+        "left": "43.5425%",
+        "top": "55.1977%"
       },
       "step": 6,
       "text": "<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. <span style=\"color:#f6a67e;\">שוב</span> לעבור ל-Word. <span style=\"color:#f6a67e;\">שוב</span> לחכות שייטען...",
@@ -159,8 +159,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "9.116%",
-        "top": "54.3598%"
+        "left": "16.0205%",
+        "top": "56.1488%"
       },
       "step": 7,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את מספר ההזמנה",
