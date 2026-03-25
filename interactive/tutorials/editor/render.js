@@ -18,6 +18,12 @@ function showSlide(idx) {
     container.style.display = 'inline-block';
     img.src = getImageUrl(s.image);
     img.onload = function() {
+      // Lock image to its rendered size — prevents resizing with window.
+      // This ensures bubble + box positions stay fixed regardless of
+      // window resize (height or width). Use zoom to change display size.
+      img.style.width = img.offsetWidth + 'px';
+      img.style.height = img.offsetHeight + 'px';
+      img.style.maxHeight = 'none';
       renderBox(s);
       renderBubble(s);
     };
