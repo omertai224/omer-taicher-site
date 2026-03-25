@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // Dropdown change handler — works for both modes
   $('tutorialSelect').addEventListener('change', function() {
     if (!this.value) return;
-    if (E.rootHandle) {
+    if (E.localTutorials) {
       loadFromLocalRoot(this.value);
     } else {
       loadFromServer(this.value);

@@ -92,7 +92,14 @@ function processFolderFiles(fileList) {
   // Store for later loading
   E.localTutorials = tutorials;
   populateDropdown(names);
-  toast('נמצאו ' + names.length + ' הדרכות. בחרו מהרשימה');
+
+  if (names.length === 1) {
+    // Only one tutorial found — load it immediately
+    $('tutorialSelect').value = names[0];
+    loadFromLocalRoot(names[0]);
+  } else {
+    toast('נמצאו ' + names.length + ' הדרכות. בחרו מהרשימה');
+  }
 }
 
 /* ── Load a tutorial from local file data ── */
