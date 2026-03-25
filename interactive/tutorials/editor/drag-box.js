@@ -18,7 +18,7 @@
       mode = 'drag';
     }
 
-    // Save start state
+    saveUndo();
     startX = e.clientX;
     startY = e.clientY;
     startTop = parseFloat(s.box.top);
@@ -84,6 +84,7 @@
 function nudgeBox(dLeft, dTop) {
   var s = E.data && E.data.slides[E.idx];
   if (!s || !s.box) return;
+  saveUndo();
 
   var t = parseFloat(s.box.top) + dTop;
   var b = parseFloat(s.box.bottom) - dTop;
