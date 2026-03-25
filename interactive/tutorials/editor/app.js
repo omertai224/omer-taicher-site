@@ -7,14 +7,12 @@ var E = {
   path: '',             // tutorial path (e.g. "../Clipboard")
   name: '',             // tutorial name
   imageMap: {},          // local files: filename -> blob URL
-  dirHandle: null,       // File System Access API handle
+  dirHandle: null,       // current tutorial folder handle
+  rootHandle: null,      // tutorials/ root folder handle
   modified: {},          // slide index -> true if changed
   zoom: 1,
   isLocal: location.protocol === 'file:',
 };
-
-// Known tutorials
-var TUTORIALS = ['Clipboard', 'Everything', 'Vibe'];
 
 // DOM cache
 var $ = function(id) { return document.getElementById(id); };
@@ -50,7 +48,7 @@ window.addEventListener('DOMContentLoaded', function() {
   $('btnZoomIn').onclick = function() { setZoom(E.zoom * 1.15); };
   $('btnZoomOut').onclick = function() { setZoom(E.zoom / 1.15); };
   $('btnZoomFit').onclick = function() { setZoom(1); };
-  $('btnLoadLocal').onclick = function() { loadLocal(); };
+  $('btnLoadLocal').onclick = function() { loadLocalRoot(); };
   $('btnSave').onclick = function() { saveToFolder(); };
   $('btnDownload').onclick = function() { downloadJSON(); };
   $('btnCopy').onclick = function() { copyJSON(); };
@@ -66,35 +64,47 @@ window.addEventListener('DOMContentLoaded', function() {
 
   buildPanel();
 
+  // Dropdown change handler — works for both modes
+  $('tutorialSelect').addEventListener('change', function() {
+    if (!this.value) return;
+    if (E.rootHandle) {
+      loadFromLocalRoot(this.value);
+    } else {
+      loadFromServer(this.value);
+    }
+  });
+
   if (E.isLocal) {
-    // ── Local mode: hide dropdown, show browse message ──
-    $('tutorialSelect').style.display = 'none';
+    // ── Local mode: show welcome + prompt to load folder ──
     $('noSlide').innerHTML = '<div style="font-size:20px;color:#f6a67e;margin-bottom:16px;">עורך בועות</div>'
-      + '<div style="margin-bottom:20px;color:#ffffffaa;">לחצו על הכפתור למעלה כדי לטעון תיקיית הדרכה</div>'
-      + '<div style="font-size:11px;color:#ffffff44;">או גררו תיקיית הדרכה לכאן</div>';
+      + '<div style="margin-bottom:12px;color:#ffffffaa;">לחצו "טען מקומי" בסרגל למעלה</div>'
+      + '<div style="font-size:12px;color:#ffffff55;">בחרו את תיקיית tutorials (התיקייה שמכילה את כל ההדרכות)</div>';
   } else {
     // ── Server mode: populate dropdown, support URL param ──
-    var sel = $('tutorialSelect');
-    TUTORIALS.forEach(function(name) {
-      var o = document.createElement('option');
-      o.value = name; o.textContent = name;
-      sel.appendChild(o);
-    });
+    populateDropdown(['Clipboard', 'Everything', 'Vibe']);
 
     var p = new URLSearchParams(window.location.search);
     var t = p.get('t');
     if (t) {
-      if (!sel.querySelector('option[value="' + t + '"]')) {
-        var o = document.createElement('option');
-        o.value = t; o.textContent = t;
-        sel.appendChild(o);
-      }
-      sel.value = t;
+      addToDropdown(t);
+      $('tutorialSelect').value = t;
       loadFromServer(t);
     }
-
-    sel.addEventListener('change', function() {
-      if (this.value) loadFromServer(this.value);
-    });
   }
 });
+
+// Add tutorials to dropdown
+function populateDropdown(names) {
+  var sel = $('tutorialSelect');
+  // Clear existing options except the first placeholder
+  while (sel.options.length > 1) sel.remove(1);
+  names.forEach(function(name) { addToDropdown(name); });
+}
+
+function addToDropdown(name) {
+  var sel = $('tutorialSelect');
+  if (sel.querySelector('option[value="' + name + '"]')) return;
+  var o = document.createElement('option');
+  o.value = name; o.textContent = name;
+  sel.appendChild(o);
+}
