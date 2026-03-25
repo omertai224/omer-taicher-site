@@ -44,23 +44,6 @@ function showSlides(n) {
     slides[i].style.display = "none";
   }
   slides[slideIndex - 1].style.display = "block";
-
-  // Lock image size — prevents bubble/box shift on window resize
-  var _img = slides[slideIndex - 1].querySelector('.image-center > img');
-  if (_img) {
-    if (_img.complete && _img.naturalWidth > 0) {
-      _img.style.width = _img.offsetWidth + 'px';
-      _img.style.height = _img.offsetHeight + 'px';
-      _img.style.maxHeight = 'none';
-    } else {
-      _img.onload = function() {
-        this.style.width = this.offsetWidth + 'px';
-        this.style.height = this.offsetHeight + 'px';
-        this.style.maxHeight = 'none';
-      };
-    }
-  }
-
   setNavBarColor(slideIndex);
   updateMagnifierVisibility();
   updateTtsVisibility();

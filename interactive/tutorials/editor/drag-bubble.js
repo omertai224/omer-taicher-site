@@ -38,11 +38,12 @@
     if (!mode) return;
 
     if (mode === 'resize') {
-      // Resize: change width in pixels (matching tutorial behavior)
+      // Resize: change width as % of container (proportional like orange box)
       var dx = e.clientX - startX;
       var newWidth = Math.max(150, Math.min(500, startWidth + dx));
-      bubble.style.maxWidth = newWidth + 'px';
-      bubble.style.width = newWidth + 'px';
+      var widthPct = (newWidth / cw * 100) + '%';
+      bubble.style.maxWidth = widthPct;
+      bubble.style.width = widthPct;
       return;
     }
 
@@ -77,7 +78,7 @@
     if (!s || !s.textPos) return;
 
     if (prevMode === 'resize') {
-      s.textWidth = bubble.offsetWidth + 'px';
+      s.textWidth = (bubble.offsetWidth / cw * 100) + '%';
       markModified();
       return;
     }

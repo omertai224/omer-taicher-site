@@ -18,12 +18,6 @@ function showSlide(idx) {
     container.style.display = 'inline-block';
     img.src = getImageUrl(s.image);
     img.onload = function() {
-      // Lock image to its rendered size — prevents resizing with window.
-      // This ensures bubble + box positions stay fixed regardless of
-      // window resize (height or width). Use zoom to change display size.
-      img.style.width = img.offsetWidth + 'px';
-      img.style.height = img.offsetHeight + 'px';
-      img.style.maxHeight = 'none';
       renderBox(s);
       renderBubble(s);
     };
@@ -60,19 +54,21 @@ function renderBubble(slide) {
   bubble.style.right = '';
   bubble.style.bottom = '';
 
-  // Width stays in PIXELS (not %) — matching the tutorial exactly.
-  // Pixel width keeps text from reflowing when the window resizes.
+  // Width in PERCENTAGES — proportional like the orange box.
+  // When the image resizes, the bubble scales with it.
   var container = $('slideContainer');
   var cw = container.offsetWidth || 1;
   var ch = container.offsetHeight || 1;
 
-  if (slide.textWidth) {
-    bubble.style.width = slide.textWidth;
-    bubble.style.maxWidth = slide.textWidth;
-  } else {
-    bubble.style.width = '300px';
-    bubble.style.maxWidth = '300px';
+  var tw = slide.textWidth || '300px';
+  // Auto-convert px to % so bubble scales like the orange box
+  if (/^\d+(\.\d+)?px$/.test(tw)) {
+    tw = (parseFloat(tw) / cw * 100) + '%';
+    slide.textWidth = tw;
+    markModified();
   }
+  bubble.style.width = tw;
+  bubble.style.maxWidth = tw;
 
   var tp = slide.textPos;
 
