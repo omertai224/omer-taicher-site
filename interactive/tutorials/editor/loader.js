@@ -137,20 +137,37 @@ function loadFromLocalRoot(name) {
 
 /* ── Restore from cache (after page refresh) ── */
 function tryRestoreFromCache() {
-  loadFromCache().then(function(cached) {
+  loadFromCache().then(function(meta) {
+    if (!meta) return;
+    // Populate dropdown with ALL cached tutorial names
+    populateDropdown(meta.names);
+    E.cachedMode = true;
+    // Load the last viewed tutorial
+    return loadCachedTutorial(meta.last);
+  }).then(function(cached) {
     if (!cached) return;
     E.name = cached.name;
     E.path = '';
     E.imageMap = {};
-    // Convert base64 data URLs back to usable URLs
     for (var imgName in cached.images) {
-      E.imageMap[imgName] = cached.images[imgName]; // data URLs work as img src
+      E.imageMap[imgName] = cached.images[imgName];
     }
     onDataLoaded(cached.slides);
-    addToDropdown(cached.name);
     $('tutorialSelect').value = cached.name;
-    // Mark as local so dropdown uses local loading
-    E.localTutorials = {};
+  });
+}
+
+/* ── Load a cached tutorial by name (from dropdown after refresh) ── */
+function loadFromCachedDropdown(name) {
+  loadCachedTutorial(name).then(function(cached) {
+    if (!cached) { toast('לא נמצא ב-cache: ' + name); return; }
+    E.name = cached.name;
+    E.path = '';
+    E.imageMap = {};
+    for (var imgName in cached.images) {
+      E.imageMap[imgName] = cached.images[imgName];
+    }
+    onDataLoaded(cached.slides);
   });
 }
 

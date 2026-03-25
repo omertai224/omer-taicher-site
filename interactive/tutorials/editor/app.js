@@ -101,11 +101,13 @@ window.addEventListener('DOMContentLoaded', function() {
 
   buildPanel();
 
-  // Dropdown change handler — works for both modes
+  // Dropdown change handler — works for all modes
   $('tutorialSelect').addEventListener('change', function() {
     if (!this.value) return;
     if (E.localTutorials) {
       loadFromLocalRoot(this.value);
+    } else if (E.cachedMode) {
+      loadFromCachedDropdown(this.value);
     } else {
       loadFromServer(this.value);
     }
