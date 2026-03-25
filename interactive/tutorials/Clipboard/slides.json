@@ -32,12 +32,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "19.9318%",
-        "top": "44.1271%"
+        "left": "calc(50.0233% - 315px)",
+        "top": "calc(51.0185% - 25px)"
       },
       "step": 1,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה",
-      "textWidth": "183px"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה"
     },
     {
       "index": 2,
@@ -52,12 +51,11 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "27.5036%",
-        "bottom": "6.75149%"
+        "left": "calc(24.4186% - 25px)",
+        "bottom": "calc(5.87037% + 15px)"
       },
       "step": 2,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word",
-      "textWidth": "219px"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word"
     },
     {
       "index": 3,
@@ -65,19 +63,18 @@
       "image": "clipboard-03.png",
       "boxClass": "19",
       "box": {
-        "top": "56.4614%",
-        "left": "51.5883%",
-        "right": "44.194%",
-        "bottom": "37.9185%"
+        "top": "56.6296%",
+        "left": "52.1163%",
+        "right": "44.6163%",
+        "bottom": "38.7593%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "62.1927%",
-        "top": "50.1813%"
+        "left": "calc(52.1163% - 315px)",
+        "top": "calc(58.8889% - 25px)"
       },
       "step": 3,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה",
-      "textWidth": "179px"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה"
     },
     {
       "index": 4,
@@ -92,12 +89,11 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "35.7819%",
-        "bottom": "24.0651%"
+        "left": "calc(27.7326% - 25px)",
+        "bottom": "calc(6.14815% + 15px)"
       },
       "step": 4,
-      "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה",
-      "textWidth": "224px"
+      "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה"
     },
     {
       "index": 5,
@@ -552,12 +548,6 @@
       },
       "step": 27,
       "text": "העתקנו 4 פריטים ברצף, <span style=\"color:#f6a67e;\">בלי לעבור ל-Word אפילו פעם אחת!</span>",
-      "box": {
-        "top": "93.3513%",
-        "left": "22.3351%",
-        "right": "73.0743%",
-        "bottom": "0%"
-      },
       "notes": [
         {
           "text": "הערה חדשהלא צריך להיות כתוב העתקנו ארבע פריטים ברצף עכשיו נעבור לוורד כדי להדביק אותה משהו כזה",
