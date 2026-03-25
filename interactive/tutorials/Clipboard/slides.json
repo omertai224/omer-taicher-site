@@ -72,8 +72,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "15.2339%",
-        "top": "48.0759%"
+        "left": "20.1665%",
+        "top": "51.4729%"
       },
       "step": 3,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה",
@@ -259,8 +259,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "30.3567%",
-        "top": "61.5158%"
+        "left": "30.49%",
+        "top": "60.4532%"
       },
       "step": 12,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span>, בפעם הרביעית. עוד מעבר, עוד לחיצה, עוד המתנה...",
@@ -370,11 +370,12 @@
       },
       "arrow": "arrow-bottom-right",
       "textPos": {
-        "left": "26.472833333333334%",
-        "bottom": "9.147673375796177%"
+        "left": "37.0043%",
+        "top": "59.5586%"
       },
       "step": 17,
-      "text": "עכשיו נלמד את הפתרון! לחצו על <span style=\"color:#f6a67e;\">כפתור ההתחלה (Start)</span> בשורת המשימות"
+      "text": "עכשיו נלמד את הפתרון! לחצו על <span style=\"color:#f6a67e;\">כפתור ההתחלה (Start)</span> בשורת המשימות",
+      "textWidth": "216px"
     },
     {
       "index": 18,
@@ -389,11 +390,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "15.639499999999998%",
-        "top": "33.11804437367304%"
+        "left": "16.9725%",
+        "top": "26.1113%"
       },
       "step": 18,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)",
+      "textWidth": "300px"
     },
     {
       "index": 19,
@@ -408,8 +410,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "36.046499999999995%",
-        "top": "18.118044373673033%"
+        "left": "36.846%",
+        "top": "13.6589%"
       },
       "step": 19,
       "text": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד"
@@ -427,8 +429,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "77.7326%",
-        "top": "47.65514437367304%"
+        "left": "36.5384%",
+        "top": "58.4826%"
       },
       "step": 20,
       "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>"
@@ -446,8 +448,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "10.34884%",
-        "top": "11.636544373673036%"
+        "left": "9.14867%",
+        "top": "13.5472%"
       },
       "step": 21,
       "text": "לחצו על המתג <span style=\"color:#f6a67e;\">לא פעיל</span> כדי להפעיל את היסטוריית הלוח"
@@ -458,8 +460,8 @@
       "image": "clipboard-22.png",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "13.8372%",
-        "top": "11.636544373673036%"
+        "left": "25.9684%",
+        "top": "41.3604%"
       },
       "step": 22,
       "text": "מצוין! היסטוריית הלוח <span style=\"color:#f6a67e;\">פעילה</span> עכשיו! מעכשיו כל מה שתעתיקו יישמר",
@@ -489,8 +491,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "5%",
-        "bottom": "5%"
+        "left": "10.1992%",
+        "top": "47.7829%"
       },
       "step": 23,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה"
@@ -501,18 +503,19 @@
       "image": "clipboard-24.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "48.8565%",
+        "left": "44.7227%",
+        "right": "46.8355%",
+        "bottom": "45.3286%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "5%",
-        "bottom": "5%"
+        "left": "53.1263%",
+        "top": "54.7041%"
       },
       "step": 24,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך",
+      "textWidth": "200px"
     },
     {
       "index": 25,
