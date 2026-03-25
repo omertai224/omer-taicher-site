@@ -54,37 +54,36 @@ function renderBubble(slide) {
   bubble.style.right = '';
   bubble.style.bottom = '';
 
-  // Width in PERCENTAGES — proportional like the orange box.
-  // When the image resizes, the bubble scales with it.
   var container = $('slideContainer');
+  var img = $('slideImg');
   var cw = container.offsetWidth || 1;
   var ch = container.offsetHeight || 1;
+  var naturalW = img.naturalWidth || cw;
 
-  var tw = slide.textWidth || '300px';
-  // Auto-convert px to % so bubble scales like the orange box
-  if (/^\d+(\.\d+)?px$/.test(tw)) {
-    tw = (parseFloat(tw) / cw * 100) + '%';
-    slide.textWidth = tw;
-    markModified();
-  }
-  bubble.style.width = tw;
-  bubble.style.maxWidth = tw;
+  // Width in PIXELS (fixed reference size — text doesn't reflow)
+  bubble.style.width = slide.textWidth || '300px';
+  bubble.style.maxWidth = slide.textWidth || '300px';
+
+  // Scale the ENTIRE bubble proportionally (like zoom).
+  // This scales text + padding + border + width together.
+  // The orange box doesn't need this because it has no text inside.
+  var scale = cw / naturalW;
+  bubble.style.transform = 'scale(' + scale + ')';
+  bubble.style.transformOrigin = 'left top';
 
   var tp = slide.textPos;
 
-  // Auto-convert calc() to pure % using the rendered container size.
-  // calc(X% - Npx) doesn't scale across different container sizes,
-  // causing mismatch between editor and tutorial. Pure % scales correctly.
+  // Auto-convert calc() to pure %
   if (tp.left && /calc\(/.test(tp.left)) {
-    tp.left = calcToPercent(tp.left, cw);
+    tp.left = calcToPercent(tp.left, naturalW);
     markModified();
   }
   if (tp.top && /calc\(/.test(tp.top)) {
-    tp.top = calcToPercent(tp.top, ch);
+    tp.top = calcToPercent(tp.top, img.naturalHeight || ch);
     markModified();
   }
   if (tp.bottom && /calc\(/.test(tp.bottom)) {
-    tp.bottom = calcToPercent(tp.bottom, ch);
+    tp.bottom = calcToPercent(tp.bottom, img.naturalHeight || ch);
     markModified();
   }
 
@@ -96,8 +95,6 @@ function renderBubble(slide) {
   }
 
   // Step counter + bold spacer — MUST match tutorial rendering exactly!
-  // Tutorial CSS: .text > div:first-child { font-size:12px; margin-bottom:6px; }
-  // Tutorial HTML: <b style="font-size:24px;padding:8px 0;"></b> (inline, not block!)
   var stepHtml = '';
   if (slide.step) {
     var totalSteps = E.data.totalSteps || 32;
@@ -110,15 +107,10 @@ function renderBubble(slide) {
 }
 
 // Convert "calc(50% - 315px)" to pure percentage based on container size
-// If already pure % like "35.5%", return as-is
 function calcToPercent(val, containerPx) {
   if (!val) return val;
   val = val.trim();
-
-  // Already a simple percentage
   if (/^[\d.]+%$/.test(val)) return val;
-
-  // Parse calc(X% - Npx) or calc(X% + Npx)
   var m = val.match(/calc\(\s*([\d.]+)%\s*([+-])\s*([\d.]+)px\s*\)/);
   if (m) {
     var pct = parseFloat(m[1]);
@@ -128,7 +120,5 @@ function calcToPercent(val, containerPx) {
     var result = (op === '+') ? pct + pxAsPct : pct - pxAsPct;
     return result + '%';
   }
-
-  // Fallback: return as-is
   return val;
 }
