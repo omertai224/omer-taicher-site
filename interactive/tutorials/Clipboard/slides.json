@@ -320,11 +320,11 @@
       "image": "clipboard-16.png",
       "arrow": "none",
       "textPos": {
-        "left": "12.5204%",
-        "top": "7.57918%"
+        "left": "11.9871%",
+        "top": "12.887%"
       },
       "step": 16,
-      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:8px;\"><path d=\"M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z\"/><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"/><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"/></svg><div style=\"font-size:36px;font-weight:900;color:#f6a67e;line-height:1;\">15</div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;margin-top:2px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:14px;color:#ffffffcc;line-height:1.6;\">הלוך חזור בין אמזון ל-Word.<br>הרבה לחיצות. הרבה המתנה.</div><div style=\"margin-top:12px;font-size:15px;font-weight:700;color:white;\">יש דרך טובה <span style=\"color:#f6a67e;\">בהרבה</span>.</div><a onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:14px;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:10px 28px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);\">&#9654; בואו נראה איך</a></div>",
+      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:8px;\"><path d=\"M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z\"></path><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"></line><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"></line></svg><div style=\"font-size:36px;font-weight:900;color:#f6a67e;line-height:1;\">15</div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;margin-top:2px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:14px;color:#ffffffcc;line-height:1.6;\">הלוך חזור בין אמזון ל-Word.<br>הרבה לחיצות. הרבה המתנה.</div><div style=\"margin-top:12px;font-size:15px;font-weight:700;color:white;\">יש דרך טובה <span style=\"color:#f6a67e;\">בהרבה</span><span style=\"color: rgb(246, 166, 126);\">.</span></div><a onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:14px;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:10px 28px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);\">▶ בואו נראה איך</a></div>",
       "textWidth": "211px"
     },
     {
