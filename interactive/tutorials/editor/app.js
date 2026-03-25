@@ -33,10 +33,24 @@ function markModified(idx) {
   updateStrip();
 }
 
-// Zoom — scale the container, canvas-area scrolls to let you pan
+// Zoom — scale + resize canvas-inner so scrollbars appear in both directions
 function setZoom(z) {
   E.zoom = Math.max(0.5, Math.min(5, z));
-  $('slideContainer').style.transform = 'scale(' + E.zoom + ')';
+  var sc = $('slideContainer');
+  var ci = $('canvasInner');
+  sc.style.transform = 'scale(' + E.zoom + ')';
+
+  // Make canvas-inner big enough for the zoomed content
+  if (E.zoom > 1) {
+    var img = $('slideImg');
+    var w = (img.offsetWidth || 800) * E.zoom + 60;
+    var h = (img.offsetHeight || 600) * E.zoom + 60;
+    ci.style.minWidth = w + 'px';
+    ci.style.minHeight = h + 'px';
+  } else {
+    ci.style.minWidth = '100%';
+    ci.style.minHeight = '100%';
+  }
 }
 
 // Ctrl+scroll = zoom, plain scroll = pan
