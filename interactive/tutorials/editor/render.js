@@ -107,6 +107,17 @@ function renderBubble(slide) {
   $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (slide.text || '') + '</div>';
 }
 
+// Re-scale bubble on window resize
+window.addEventListener('resize', function() {
+  var bubble = $('editorBubble');
+  var container = $('slideContainer');
+  if (!bubble || !container || bubble.style.display === 'none') return;
+  if (!E.bubbleRefWidth) return;
+  var cw = container.offsetWidth || 1;
+  var scale = cw / E.bubbleRefWidth;
+  bubble.style.transform = 'scale(' + scale + ')';
+});
+
 // Convert "calc(50% - 315px)" to pure percentage based on container size
 function calcToPercent(val, containerPx) {
   if (!val) return val;
