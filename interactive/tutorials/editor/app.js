@@ -4,7 +4,7 @@ var E = {
   data: null,           // current slides JSON (mutable)
   original: null,       // deep copy for reset
   idx: 0,               // current slide index (0-based)
-  path: '',             // tutorial path (e.g. "../tutorials/Clipboard")
+  path: '',             // tutorial path (e.g. "../Clipboard")
   name: '',             // tutorial name
   imageMap: {},          // local files: filename -> blob URL
   dirHandle: null,       // File System Access API handle
@@ -12,7 +12,7 @@ var E = {
   zoom: 1,
 };
 
-// Known tutorials
+// Known tutorials — auto-populated, plus fallback list
 var TUTORIALS = ['Clipboard', 'Everything', 'Vibe'];
 
 // DOM cache
@@ -34,19 +34,38 @@ function markModified(idx) {
   updateStrip();
 }
 
-// Init
-(function init() {
+// Populate dropdown with tutorials that have slides.json
+function populateDropdown() {
   var sel = $('tutorialSelect');
-  TUTORIALS.forEach(function(t) {
+  var added = {};
+  TUTORIALS.forEach(function(name) {
+    if (added[name]) return;
+    added[name] = true;
     var o = document.createElement('option');
-    o.value = t; o.textContent = t;
+    o.value = name; o.textContent = name;
     sel.appendChild(o);
   });
+}
+
+// Init
+(function init() {
+  populateDropdown();
+
+  var sel = $('tutorialSelect');
 
   // URL param
   var p = new URLSearchParams(window.location.search);
   var t = p.get('t');
-  if (t) { sel.value = t; loadFromServer(t); }
+  if (t) {
+    // Add to dropdown if not in list
+    if (!sel.querySelector('option[value="' + t + '"]')) {
+      var o = document.createElement('option');
+      o.value = t; o.textContent = t;
+      sel.appendChild(o);
+    }
+    sel.value = t;
+    loadFromServer(t);
+  }
 
   sel.addEventListener('change', function() {
     if (this.value) loadFromServer(this.value);
