@@ -43,7 +43,7 @@ function buildPanel() {
 
     // ── Text ──
     + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט</h3>'
-    + '<textarea id="pText" oninput="applyText()"></textarea>'
+    + '<div id="pText" class="text-editor" contenteditable="true" oninput="applyText()"></div>'
 
     // ── Actions ──
     + '<div class="action-btns">'
@@ -61,23 +61,14 @@ function updatePanel(s) {
     btns[i].classList.toggle('active', btns[i].dataset.type === s.type);
   }
 
-  $('pArrow').value = s.arrow || 'none';
-  $('pText').value = s.text || '';
+  $('pText').innerHTML = s.text || '';
   updateUndoBtn();
 }
 
 // ── Apply from panel ──
-function applyArrow() {
-  saveUndo();
-  var s = E.data.slides[E.idx];
-  var v = $('pArrow').value;
-  s.arrow = (v === 'none') ? '' : v;
-  markModified();
-}
-
 function applyText() {
   var s = E.data.slides[E.idx];
-  s.text = $('pText').value;
+  s.text = $('pText').innerHTML;
   $('bubblePreview').innerHTML = s.text;
   markModified();
 }
