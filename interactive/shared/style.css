@@ -158,7 +158,9 @@ a { word-break: break-all; }
   letter-spacing: 1px;
 }
 
-/* ─── חצי בועה ─── */
+/* ─── חצי בועה (מבוטל — בועות בלי שפיצים) ─── */
+.text[class*="arrow-"]:after { display:none !important; }
+
 .text.arrow-right:after {
   content: " ";
   position: absolute;
