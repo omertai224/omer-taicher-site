@@ -16,7 +16,7 @@ function buildPanel() {
     + '</div>'
 
     // ── Box ──
-    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> מסגרת כתומה</h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> מסגרת כתומה <span class="orange-btn" onclick="addBox()" title="הוסף מסגרת">+ הוסף</span> <span class="orange-btn" onclick="removeBox()" title="הסר מסגרת" style="color:#ff6b6b;border-color:#ff6b6b55;">- הסר</span></h3>'
     + '<div class="nudge-btns">'
     + '<div class="nudge-btn" onclick="nudgeBox(-1,0)">' + arrL + '</div>'
     + '<div class="nudge-btn" onclick="nudgeBox(0,-1)">' + arrU + '</div>'
@@ -29,7 +29,7 @@ function buildPanel() {
     + '</div>'
 
     // ── Bubble ──
-    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> בועת טקסט</h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> בועת טקסט <span class="orange-btn" onclick="addBubble()" title="הוסף בועה">+ הוסף</span> <span class="orange-btn" onclick="removeBubble()" title="הסר בועה" style="color:#ff6b6b;border-color:#ff6b6b55;">- הסר</span></h3>'
     + '<div class="nudge-btns">'
     + '<div class="nudge-btn" onclick="nudgeBubble(-1,0)">' + arrL + '</div>'
     + '<div class="nudge-btn" onclick="nudgeBubble(0,-1)">' + arrU + '</div>'
@@ -131,6 +131,52 @@ function applyText() {
   s.text = $('pText').innerHTML;
   $('bubblePreview').innerHTML = s.text;
   markModified();
+}
+
+// ── Add/Remove box ──
+function addBox() {
+  var s = E.data.slides[E.idx];
+  if (s.box) { toast('כבר יש מסגרת'); return; }
+  saveUndo();
+  s.box = { top: '30%', left: '30%', right: '50%', bottom: '50%' };
+  renderBox(s);
+  markModified();
+  toast('מסגרת נוספה. גררו למיקום הנכון');
+}
+
+function removeBox() {
+  var s = E.data.slides[E.idx];
+  if (!s.box) { toast('אין מסגרת להסרה'); return; }
+  saveUndo();
+  delete s.box;
+  $('editorBox').style.display = 'none';
+  markModified();
+  toast('מסגרת הוסרה');
+}
+
+// ── Add/Remove bubble ──
+function addBubble() {
+  var s = E.data.slides[E.idx];
+  if (s.textPos && s.text) { toast('כבר יש בועה'); return; }
+  saveUndo();
+  s.textPos = { left: '10%', top: '10%' };
+  s.text = s.text || 'טקסט חדש';
+  renderBubble(s);
+  $('pText').innerHTML = s.text;
+  markModified();
+  toast('בועה נוספה. גררו למיקום הנכון');
+}
+
+function removeBubble() {
+  var s = E.data.slides[E.idx];
+  if (!s.textPos && !s.text) { toast('אין בועה להסרה'); return; }
+  saveUndo();
+  delete s.textPos;
+  delete s.text;
+  $('editorBubble').style.display = 'none';
+  $('pText').innerHTML = '';
+  markModified();
+  toast('בועה הוסרה');
 }
 
 function setSlideType(type) {
