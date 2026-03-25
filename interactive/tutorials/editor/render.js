@@ -22,15 +22,13 @@ function showSlide(idx) {
       renderBubble(s);
     };
   } else {
-    // Special slide
     container.style.display = 'none';
     box.style.display = 'none';
     bubble.style.display = 'none';
     noSlide.style.display = 'block';
     noSlide.innerHTML = '<div style="color:#f6a67e;font-size:13px;">שקף מיוחד</div>'
       + '<div style="color:#ffffff55;font-size:12px;margin-top:6px;">'
-      + (s.type || s.specialType || 'html') + ' — אין תמונה לעריכה'
-      + '</div>';
+      + (s.type || s.specialType || 'html') + '</div>';
   }
 
   updatePanel(s);
@@ -49,19 +47,46 @@ function renderBox(slide) {
 function renderBubble(slide) {
   var bubble = $('editorBubble');
   if (!slide.textPos || !slide.text) { bubble.style.display = 'none'; return; }
-  bubble.style.display = 'block';
+  bubble.style.display = 'flex';
 
-  // Reset all positioning
   bubble.style.left = '';
   bubble.style.top = '';
   bubble.style.right = '';
   bubble.style.bottom = '';
 
   var tp = slide.textPos;
-  if (tp.left) bubble.style.left = tp.left;
-  if (tp.top) bubble.style.top = tp.top;
-  if (tp.bottom) bubble.style.bottom = tp.bottom;
+  var img = $('slideImg');
+  var w = img.offsetWidth || 1;
+  var h = img.offsetHeight || 1;
 
-  // Show HTML preview
+  // Convert calc() expressions to pure percentages
+  if (tp.left) bubble.style.left = calcToPercent(tp.left, w);
+  if (tp.top) bubble.style.top = calcToPercent(tp.top, h);
+  if (tp.bottom) bubble.style.bottom = calcToPercent(tp.bottom, h);
+
   $('bubblePreview').innerHTML = slide.text || '';
+}
+
+// Convert "calc(50% - 315px)" to pure percentage based on container size
+// If already pure % like "35.5%", return as-is
+function calcToPercent(val, containerPx) {
+  if (!val) return val;
+  val = val.trim();
+
+  // Already a simple percentage
+  if (/^[\d.]+%$/.test(val)) return val;
+
+  // Parse calc(X% - Npx) or calc(X% + Npx)
+  var m = val.match(/calc\(\s*([\d.]+)%\s*([+-])\s*([\d.]+)px\s*\)/);
+  if (m) {
+    var pct = parseFloat(m[1]);
+    var op = m[2];
+    var px = parseFloat(m[3]);
+    var pxAsPct = (px / containerPx) * 100;
+    var result = (op === '+') ? pct + pxAsPct : pct - pxAsPct;
+    return result + '%';
+  }
+
+  // Fallback: return as-is
+  return val;
 }
