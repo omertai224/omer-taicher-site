@@ -132,8 +132,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "calc(24.593% - 25px)",
-        "bottom": "calc(5.31482% + 15px)"
+        "left": "32.4626%",
+        "top": "59.5455%"
       },
       "step": 6,
       "text": "<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. <span style=\"color:#f6a67e;\">שוב</span> לעבור ל-Word. <span style=\"color:#f6a67e;\">שוב</span> לחכות שייטען...",
@@ -143,7 +143,8 @@
           "left": "50%",
           "top": "50%"
         }
-      ]
+      ],
+      "textWidth": "270px"
     },
     {
       "index": 7,
@@ -151,18 +152,19 @@
       "image": "clipboard-07.png",
       "boxClass": "27",
       "box": {
-        "top": "60.7963%",
-        "left": "52.2907%",
-        "right": "44.4419%",
-        "bottom": "34.5926%"
+        "top": "59.9063%",
+        "left": "51.7318%",
+        "right": "43.404%",
+        "bottom": "33.8296%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(52.2907% - 315px)",
-        "top": "calc(63.0556% - 25px)"
+        "left": "9.116%",
+        "top": "54.3598%"
       },
       "step": 7,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את מספר ההזמנה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את מספר ההזמנה",
+      "textWidth": "219px"
     },
     {
       "index": 8,
