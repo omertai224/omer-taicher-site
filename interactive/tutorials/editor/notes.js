@@ -3,7 +3,6 @@
 // Add a new note to current slide
 function addNote() {
   var s = E.data.slides[E.idx];
-  if (!s.image) { toast('הערות רק בשקפי תמונה'); return; }
   saveUndo();
   if (!s.notes) s.notes = [];
   s.notes.push({
@@ -40,20 +39,21 @@ function renderNotes(slide) {
   if (!slide.notes || slide.notes.length === 0) return;
 
   var container = $('slideContainer');
+  var hasImage = container && container.style.display !== 'none';
 
   slide.notes.forEach(function(note, idx) {
-    // Create marker on canvas
-    var marker = document.createElement('div');
-    marker.className = 'note-marker';
-    marker.style.left = note.left;
-    marker.style.top = note.top;
-    marker.innerHTML = '<span class="note-num">' + (idx + 1) + '</span>';
-    marker.title = note.text;
-    marker.dataset.idx = idx;
-    container.appendChild(marker);
-
-    // Make marker draggable
-    initNoteDrag(marker, idx);
+    // Create marker on canvas (only for image slides)
+    if (hasImage) {
+      var marker = document.createElement('div');
+      marker.className = 'note-marker';
+      marker.style.left = note.left;
+      marker.style.top = note.top;
+      marker.innerHTML = '<span class="note-num">' + (idx + 1) + '</span>';
+      marker.title = note.text;
+      marker.dataset.idx = idx;
+      container.appendChild(marker);
+      initNoteDrag(marker, idx);
+    }
 
     // Panel entry
     if (list) {
