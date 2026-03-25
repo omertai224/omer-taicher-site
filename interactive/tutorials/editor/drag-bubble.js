@@ -39,7 +39,7 @@
 
     if (mode === 'resize') {
       // Resize: change width based on horizontal drag
-      var dx = startX - e.clientX; // RTL: dragging left = wider
+      var dx = e.clientX - startX;
       var newWidth = Math.max(150, Math.min(500, startWidth + dx));
       bubble.style.maxWidth = newWidth + 'px';
       bubble.style.width = newWidth + 'px';
