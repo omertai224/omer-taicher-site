@@ -133,6 +133,7 @@ a { word-break: break-all; }
 
 /* ─── בועות טקסט ─── */
 .text {
+  box-sizing: border-box;
   color: #ffffffcc;
   font-size: 16px;
   line-height: 1.6;
