@@ -59,7 +59,7 @@ function setZoom(z) {
     ci.style.minHeight = '100%';
     ci.style.alignItems = 'center';
     ci.style.justifyContent = 'center';
-    ci.style.padding = '20px';
+    ci.style.padding = '';
   }
 }
 
