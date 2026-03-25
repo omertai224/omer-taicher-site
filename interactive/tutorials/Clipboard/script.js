@@ -20,6 +20,15 @@ function initApp() {
       buildSlides(data.slides, data.totalSteps);
       slideMap[data.slides.length - 1] = { icon: 'finish', title: 'סיום' };
       buildNavDots();
+      // Color specific step dots orange (keep number, just orange)
+      if (window.orangeSteps) {
+        var dots = document.getElementsByClassName('nav-dot');
+        for (var i = 0; i < dots.length; i++) {
+          if (orangeSteps.indexOf(i) > -1) {
+            dots[i].classList.add('nav-dot-icon');
+          }
+        }
+      }
       initMagnifier();
       initTts();
       showSlides(1);
