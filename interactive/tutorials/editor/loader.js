@@ -16,129 +16,114 @@ function loadFromServer(name) {
     .catch(function(err) { toast('שגיאה: ' + err.message); });
 }
 
-/* ── Local mode: pick ANY folder, find tutorials automatically ── */
+/* ── Local mode: folder picker that works on file:// ── */
+// Hidden file input for folder selection
+var _folderInput = document.createElement('input');
+_folderInput.type = 'file';
+_folderInput.webkitdirectory = true;
+_folderInput.multiple = true;
+_folderInput.style.display = 'none';
+document.body.appendChild(_folderInput);
+
+_folderInput.addEventListener('change', function() {
+  if (!this.files || this.files.length === 0) return;
+  processFolderFiles(this.files);
+  this.value = ''; // reset for re-use
+});
+
 function loadLocalRoot() {
-  if (!window.showDirectoryPicker) {
-    toast('הדפדפן לא תומך. השתמשו ב-Chrome או Edge');
+  _folderInput.click();
+}
+
+/* ── Process files from folder picker ── */
+function processFolderFiles(fileList) {
+  // Build a map: tutorialName -> { slides: File, images: {name: File} }
+  var tutorials = {};
+
+  for (var i = 0; i < fileList.length; i++) {
+    var file = fileList[i];
+    var path = file.webkitRelativePath; // e.g. "tutorials/Clipboard/slides.json"
+    var parts = path.split('/');
+
+    // Find slides.json — could be at depth 1 (Clipboard/slides.json)
+    // or depth 2 (tutorials/Clipboard/slides.json)
+    var slidesIdx = -1;
+    for (var j = 0; j < parts.length; j++) {
+      if (parts[j] === 'slides.json') { slidesIdx = j; break; }
+    }
+
+    if (slidesIdx >= 1) {
+      var tutName = parts[slidesIdx - 1];
+      if (tutName === 'editor') continue;
+      if (!tutorials[tutName]) tutorials[tutName] = { slides: null, images: {} };
+      tutorials[tutName].slides = file;
+      continue;
+    }
+
+    // Find images — look for /images/filename.png
+    var imgIdx = -1;
+    for (var k = 0; k < parts.length; k++) {
+      if (parts[k] === 'images') { imgIdx = k; break; }
+    }
+
+    if (imgIdx >= 1 && imgIdx < parts.length - 1) {
+      var tutNameImg = parts[imgIdx - 1];
+      if (tutNameImg === 'editor' || tutNameImg === 'shared') continue;
+      var imgName = parts[parts.length - 1];
+      if (/\.(png|jpg|jpeg|gif|webp|bmp)$/i.test(imgName)) {
+        if (!tutorials[tutNameImg]) tutorials[tutNameImg] = { slides: null, images: {} };
+        tutorials[tutNameImg].images[imgName] = file;
+      }
+    }
+  }
+
+  // Filter: only tutorials with slides.json
+  var names = [];
+  for (var name in tutorials) {
+    if (tutorials[name].slides) names.push(name);
+  }
+  names.sort();
+
+  if (names.length === 0) {
+    toast('לא נמצאו הדרכות עם slides.json');
     return;
   }
-  window.showDirectoryPicker()
-    .then(function(handle) {
-      return findTutorials(handle);
-    })
-    .then(function(result) {
-      if (!result) {
-        toast('לא נמצאו הדרכות עם slides.json');
-        return;
-      }
-      E.rootHandle = result.root;
-      populateDropdown(result.names);
-      toast('נמצאו ' + result.names.length + ' הדרכות. בחרו מהרשימה');
-    })
-    .catch(function(err) {
-      if (err.name !== 'AbortError') toast('שגיאה: ' + err.message);
-    });
+
+  // Store for later loading
+  E.localTutorials = tutorials;
+  populateDropdown(names);
+  toast('נמצאו ' + names.length + ' הדרכות. בחרו מהרשימה');
 }
 
-/* ── Smart scan: check current folder, then 1 level deeper ── */
-function findTutorials(handle) {
-  // First: check if THIS folder contains tutorial subfolders
-  return scanLevel(handle).then(function(names) {
-    if (names.length > 0) {
-      return { root: handle, names: names };
-    }
-    // Not found — check subfolders (user picked parent like "interactive" or repo root)
-    return scanDeeper(handle);
-  });
-}
-
-/* ── Scan one level: check each subfolder for slides.json ── */
-function scanLevel(dirHandle) {
-  var names = [];
-  var iter = dirHandle.values();
-
-  function next() {
-    return iter.next().then(function(result) {
-      if (result.done) { names.sort(); return names; }
-      var entry = result.value;
-      if (entry.kind !== 'directory' || entry.name === 'editor' || entry.name.startsWith('.')) {
-        return next();
-      }
-      return entry.getFileHandle('slides.json')
-        .then(function() { names.push(entry.name); })
-        .catch(function() { /* no slides.json, skip */ })
-        .then(next);
-    });
-  }
-  return next();
-}
-
-/* ── Go one level deeper into each subfolder ── */
-function scanDeeper(parentHandle) {
-  var iter = parentHandle.values();
-  var found = null;
-
-  function next() {
-    return iter.next().then(function(result) {
-      if (result.done) return found;
-      var entry = result.value;
-      if (entry.kind !== 'directory' || entry.name.startsWith('.')) return next();
-      return scanLevel(entry).then(function(names) {
-        if (names.length > 0 && !found) {
-          found = { root: entry, names: names };
-        }
-        return next();
-      });
-    });
-  }
-  return next();
-}
-
-/* ── Load a specific tutorial from the root handle ── */
+/* ── Load a tutorial from local file data ── */
 function loadFromLocalRoot(name) {
-  if (!E.rootHandle) return;
+  var tut = E.localTutorials && E.localTutorials[name];
+  if (!tut || !tut.slides) {
+    toast('הדרכה לא נמצאה: ' + name);
+    return;
+  }
 
-  E.rootHandle.getDirectoryHandle(name)
-    .then(function(dirHandle) {
-      E.dirHandle = dirHandle;
-      E.name = name;
-      E.path = '';
-      return dirHandle.getFileHandle('slides.json');
-    })
-    .then(function(fh) { return fh.getFile(); })
-    .then(function(file) { return file.text(); })
-    .then(function(text) {
-      var data = JSON.parse(text);
-      return loadLocalImages(E.dirHandle).then(function() { return data; });
-    })
-    .then(function(data) { onDataLoaded(data); })
-    .catch(function(err) { toast('שגיאה: ' + err.message); });
-}
+  E.name = name;
+  E.path = '';
+  E.dirHandle = null;
 
-/* ── Load all images from images/ subfolder ── */
-function loadLocalImages(dirHandle) {
+  // Create blob URLs for images
   E.imageMap = {};
-  return dirHandle.getDirectoryHandle('images')
-    .then(function(imgDir) {
-      var promises = [];
-      var iter = imgDir.values();
-      function next() {
-        return iter.next().then(function(result) {
-          if (result.done) return Promise.all(promises);
-          var entry = result.value;
-          if (entry.kind === 'file' && /\.(png|jpg|jpeg|gif|webp|bmp)$/i.test(entry.name)) {
-            promises.push(entry.getFile().then(function(file) {
-              E.imageMap[entry.name] = URL.createObjectURL(file);
-            }));
-          }
-          return next();
-        });
-      }
-      return next();
-    })
-    .catch(function() {
-      toast('לא נמצאה תיקיית images/');
-    });
+  for (var imgName in tut.images) {
+    E.imageMap[imgName] = URL.createObjectURL(tut.images[imgName]);
+  }
+
+  // Read slides.json
+  var reader = new FileReader();
+  reader.onload = function() {
+    try {
+      var data = JSON.parse(reader.result);
+      onDataLoaded(data);
+    } catch (err) {
+      toast('שגיאה בקריאת JSON: ' + err.message);
+    }
+  };
+  reader.readAsText(tut.slides);
 }
 
 /* ── Common handler after data is loaded ── */
@@ -159,3 +144,6 @@ function getImageUrl(filename) {
   if (E.imageMap[filename]) return E.imageMap[filename];
   return E.path + '/images/' + filename;
 }
+
+/* ── Save: download updated slides.json ── */
+// (saveToFolder moved to export.js)
