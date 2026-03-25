@@ -42,7 +42,7 @@ function buildPanel() {
     + '</div>'
 
     // ── Text ──
-    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט</h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט <span class="orange-btn" onclick="toggleOrange()" title="סמנו מילים ולחצו להדגשה בכתום">&#x25CF; כתום</span></h3>'
     + '<div id="pText" class="text-editor" contenteditable="true" oninput="applyText()"></div>'
 
     // ── Actions ──
@@ -63,6 +63,42 @@ function updatePanel(s) {
 
   $('pText').innerHTML = s.text || '';
   updateUndoBtn();
+}
+
+// ── Toggle orange highlight on selected text ──
+function toggleOrange() {
+  var sel = window.getSelection();
+  if (!sel || sel.rangeCount === 0 || sel.isCollapsed) {
+    toast('סמנו מילים קודם');
+    return;
+  }
+  saveUndo();
+  var range = sel.getRangeAt(0);
+  var parent = range.commonAncestorContainer;
+
+  // Check if already inside an orange span
+  var orangeParent = null;
+  var node = parent;
+  while (node && node !== $('pText')) {
+    if (node.nodeType === 1 && node.style && node.style.color === 'rgb(246, 166, 126)') {
+      orangeParent = node;
+      break;
+    }
+    node = node.parentNode;
+  }
+
+  if (orangeParent) {
+    // Remove orange: unwrap the span
+    var text = document.createTextNode(orangeParent.textContent);
+    orangeParent.parentNode.replaceChild(text, orangeParent);
+  } else {
+    // Add orange: wrap selection in span
+    var span = document.createElement('span');
+    span.style.color = '#f6a67e';
+    range.surroundContents(span);
+  }
+  sel.removeAllRanges();
+  applyText();
 }
 
 // ── Apply from panel ──
