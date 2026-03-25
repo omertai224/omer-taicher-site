@@ -44,10 +44,33 @@ function showSlides(n) {
     slides[i].style.display = "none";
   }
   slides[slideIndex - 1].style.display = "block";
+  scaleBubbles();
   setNavBarColor(slideIndex);
   updateMagnifierVisibility();
   updateTtsVisibility();
 }
+
+/* ── Scale bubbles proportionally (like the orange box) ── */
+function scaleBubbles() {
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  if (!slide) return;
+  var img = slide.querySelector('.image-center > img');
+  if (!img) return;
+  function doScale() {
+    var container = img.parentElement;
+    if (!container || !img.naturalWidth) return;
+    var scale = container.offsetWidth / img.naturalWidth;
+    var texts = slide.querySelectorAll('.text');
+    for (var i = 0; i < texts.length; i++) {
+      texts[i].style.transform = 'scale(' + scale + ')';
+      texts[i].style.transformOrigin = 'left top';
+    }
+  }
+  if (img.complete && img.naturalWidth > 0) { doScale(); }
+  else { img.addEventListener('load', doScale); }
+}
+// Rescale on window resize
+window.addEventListener('resize', function() { scaleBubbles(); });
 
 /* ── Nav Bar Color ── */
 function setNavBarColor(n) {

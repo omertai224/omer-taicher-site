@@ -58,21 +58,31 @@ function renderBubble(slide) {
   var img = $('slideImg');
   var cw = container.offsetWidth || 1;
   var ch = container.offsetHeight || 1;
+  var naturalW = img.naturalWidth || cw;
+  var scale = cw / naturalW;
 
-  // Simple pixel width — readable text, resizable, no transform tricks
-  bubble.style.width = slide.textWidth || '300px';
-  bubble.style.maxWidth = slide.textWidth || '300px';
-  bubble.style.transform = '';
+  // Render width at natural-space size (bigger), so after scale()
+  // it appears at the correct visual size. Data stays unchanged.
+  var twPx = parseFloat(slide.textWidth) || 300;
+  var renderWidth = twPx / scale;
+  bubble.style.width = renderWidth + 'px';
+  bubble.style.maxWidth = renderWidth + 'px';
+
+  // Scale everything proportionally: text + padding + border.
+  // Both editor and tutorial use naturalWidth as reference,
+  // so bubbles are the same PROPORTION of the image in both.
+  bubble.style.transform = 'scale(' + scale + ')';
+  bubble.style.transformOrigin = 'left top';
 
   var tp = slide.textPos;
 
   // Auto-convert calc() to pure %
   if (tp.left && /calc\(/.test(tp.left)) {
-    tp.left = calcToPercent(tp.left, cw);
+    tp.left = calcToPercent(tp.left, naturalW);
     markModified();
   }
   if (tp.top && /calc\(/.test(tp.top)) {
-    tp.top = calcToPercent(tp.top, ch);
+    tp.top = calcToPercent(tp.top, img.naturalHeight || ch);
     markModified();
   }
   if (tp.bottom && /calc\(/.test(tp.bottom)) {
@@ -98,6 +108,19 @@ function renderBubble(slide) {
   }
   $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (slide.text || '') + '</div>';
 }
+
+// Re-scale bubble on window resize
+window.addEventListener('resize', function() {
+  var bubble = $('editorBubble');
+  var container = $('slideContainer');
+  var img = $('slideImg');
+  if (!bubble || !container || !img || bubble.style.display === 'none') return;
+  var naturalW = img.naturalWidth || 1;
+  if (!naturalW) return;
+  var cw = container.offsetWidth || 1;
+  var scale = cw / naturalW;
+  bubble.style.transform = 'scale(' + scale + ')';
+});
 
 // Convert "calc(50% - 315px)" to pure percentage based on container size
 function calcToPercent(val, containerPx) {
