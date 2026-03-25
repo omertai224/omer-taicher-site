@@ -4,16 +4,18 @@
   "slides": [
     {
       "index": 0,
-      "type": "intro",
-      "title": "היסטוריית לוח",
-      "subtitle": "בהדרכה הזאת נעתיק פרטי הזמנה מאמזון למסמך Word: תאריך, מספר הזמנה, שם מוצר ותמונה. קודם נראה איך עושים את זה בדרך הרגילה (15 פעולות!) ואז נלמד דרך חכמה שחוסכת זמן, עצבים ואנרגיה.",
-      "subtitles": [
-        "עומר טייכר",
-        "מדריך וטכנאי מחשבים"
-      ]
+      "type": "special",
+      "specialType": "intro",
+      "html": "<style>\n@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}\n@keyframes shimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}\n.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:#1a1a2e;text-align:center;padding:20px 40px;box-sizing:border-box;}\n.intro-badge{background:linear-gradient(135deg,#667eea,#764ba2);color:white;padding:5px 16px;border-radius:50px;font-size:12px;letter-spacing:2px;animation:fadeInDown .8s ease both;margin-bottom:12px;}\n.intro-title{font-size:clamp(20px,3.5vw,46px);font-weight:900;color:white;line-height:1.15;animation:fadeInDown .9s ease .2s both;margin-bottom:8px;}\n.intro-title span{background:linear-gradient(90deg,#f6a67e,#ff6b6b,#f6a67e);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}\n.intro-subtitle{font-size:clamp(12px,1.8vw,18px);color:#ffffffaa;animation:fadeInDown 1s ease .4s both;margin-bottom:4px;}\n.intro-author{font-size:13px;color:#ffffff66;animation:fadeInDown 1s ease .5s both;margin-bottom:20px;}\n.intro-cards{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:fadeInUp 1s ease .6s both;margin-bottom:20px;}\n.intro-card{background:#ffffff12;border:1px solid #ffffff22;border-radius:14px;padding:12px 18px;min-width:130px;max-width:170px;}\n.intro-card .icon{font-size:24px;margin-bottom:6px;}\n.intro-card .label{color:#ffffffcc;font-size:12px;line-height:1.3;}\n.intro-btn{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:14px 40px;border-radius:50px;font-size:17px;font-weight:700;cursor:pointer;animation:fadeInUp 1s ease .8s both,pulse 2s ease 2s infinite;box-shadow:0 8px 32px rgba(246,166,126,0.4);font-family:Rubik,sans-serif;}\n</style>\n<div class=\"intro-wrap\">\n<div class=\"intro-badge\">15 פעולות? יש דרך חכמה יותר</div>\n<div class=\"intro-title\">העתקה שחוסכת<br><span>זמן, עצבים ואנרגיה</span></div>\n<div class=\"intro-subtitle\">נעתיק פרטי הזמנה מאמזון ל-Word.<br>קודם בדרך הרגילה (15 פעולות!), ואז בדרך החכמה.</div>\n<div class=\"intro-author\">עומר טייכר · מדריך וטכנאי מחשבים</div>\n<div class=\"intro-cards\">\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\"/><path d=\"M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1\"/></svg></div><div class=\"label\">העתקה והדבקה חכמה</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><path d=\"M12 20h9\"/><path d=\"M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z\"/></svg></div><div class=\"label\">היסטוריית לוח של Windows</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"13 17 18 12 13 7\"/><polyline points=\"6 17 11 12 6 7\"/></svg></div><div class=\"label\">מ-15 פעולות ל-9 בלבד</div></div>\n</div>\n<button class=\"intro-btn\" onclick=\"nextSlide(1)\">&#9654;&nbsp;&nbsp;בואו נתחיל</button>\n</div>"
     },
     {
       "index": 1,
+      "type": "special",
+      "specialType": "howto",
+      "html": "<style>\n.howto-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e,#16213e);text-align:center;padding:20px 40px;box-sizing:border-box;gap:20px;}\n.howto-badge{background:linear-gradient(135deg,#1e5f74,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;}\n.howto-title{font-size:clamp(18px,2.8vw,34px);font-weight:900;color:white;line-height:1.2;}\n.howto-title span{color:#f6a67e;}\n.howto-features{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:700px;}\n.howto-feat{background:#ffffff08;border:1px solid #ffffff15;border-radius:14px;padding:16px 20px;width:200px;text-align:center;}\n.howto-feat svg{margin-bottom:8px;}\n.howto-feat .feat-title{color:white;font-size:14px;font-weight:700;margin-bottom:4px;}\n.howto-feat .feat-desc{color:#ffffffaa;font-size:12px;line-height:1.5;}\n.howto-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:500px;}\n.howto-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}\n.howto-note span{color:#f6a67e;font-weight:700;}\n</style>\n<div class=\"howto-wrap\">\n<div class=\"howto-badge\">לפני שמתחילים</div>\n<div class=\"howto-title\">איך עובדים עם <span>ההדרכה</span></div>\n<div class=\"howto-features\">\n<div class=\"howto-feat\">\n<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"1.5\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M12 8v8\"/><path d=\"M8 12h8\"/></svg>\n<div class=\"feat-title\">לחצו על הכתום</div>\n<div class=\"feat-desc\">בכל שקף, לחצו על הסימון הכתום כדי להתקדם</div>\n</div>\n<div class=\"howto-feat\">\n<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5b8fa8\" stroke-width=\"1.5\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/><line x1=\"11\" y1=\"8\" x2=\"11\" y2=\"14\"/><line x1=\"8\" y1=\"11\" x2=\"14\" y2=\"11\"/></svg>\n<div class=\"feat-title\">זכוכית מגדלת</div>\n<div class=\"feat-desc\">לחצו על הכפתור בצד שמאל כדי להגדיל</div>\n</div>\n<div class=\"howto-feat\">\n<svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#5b8fa8\" stroke-width=\"1.5\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"/><path d=\"M15.54 8.46a5 5 0 010 7.07\"/><path d=\"M19.07 4.93a10 10 0 010 14.14\"/></svg>\n<div class=\"feat-title\">הקראה בקול</div>\n<div class=\"feat-desc\">לחצו על הכפתור בצד ימין כדי לשמוע את ההוראה</div>\n</div>\n</div>\n<div class=\"howto-note\">\n<p>מוכנים? לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם.</p>\n</div>\n</div>"
+    },
+    {
+      "index": 2,
       "type": "click",
       "image": "clipboard-01.png",
       "boxClass": "16",
@@ -33,7 +35,7 @@
       "textWidth": "242px"
     },
     {
-      "index": 2,
+      "index": 3,
       "type": "click",
       "image": "clipboard-02.png",
       "boxClass": "17",
@@ -53,7 +55,7 @@
       "textWidth": "219px"
     },
     {
-      "index": 3,
+      "index": 4,
       "type": "click",
       "image": "clipboard-03.png",
       "boxClass": "19",
@@ -73,7 +75,7 @@
       "textWidth": "223px"
     },
     {
-      "index": 4,
+      "index": 5,
       "type": "click",
       "image": "clipboard-04.png",
       "boxClass": "20",
@@ -93,7 +95,7 @@
       "textWidth": "295px"
     },
     {
-      "index": 5,
+      "index": 6,
       "type": "click",
       "image": "clipboard-05.png",
       "boxClass": "23",
@@ -113,7 +115,7 @@
       "textWidth": "227px"
     },
     {
-      "index": 6,
+      "index": 7,
       "type": "click",
       "image": "clipboard-06.png",
       "boxClass": "24",
@@ -133,7 +135,7 @@
       "textWidth": "164px"
     },
     {
-      "index": 7,
+      "index": 8,
       "type": "click",
       "image": "clipboard-07.png",
       "boxClass": "27",
@@ -153,7 +155,7 @@
       "textWidth": "222px"
     },
     {
-      "index": 8,
+      "index": 9,
       "type": "click",
       "image": "clipboard-08.png",
       "boxClass": "29",
@@ -173,7 +175,7 @@
       "textWidth": "188px"
     },
     {
-      "index": 9,
+      "index": 10,
       "type": "click",
       "image": "clipboard-09.png",
       "boxClass": "33",
@@ -193,7 +195,7 @@
       "textWidth": "201px"
     },
     {
-      "index": 10,
+      "index": 11,
       "type": "click",
       "image": "clipboard-10.png",
       "boxClass": "34",
@@ -213,7 +215,7 @@
       "textWidth": "220px"
     },
     {
-      "index": 11,
+      "index": 12,
       "type": "click",
       "image": "clipboard-11.png",
       "boxClass": "36",
@@ -233,7 +235,7 @@
       "textWidth": "219px"
     },
     {
-      "index": 12,
+      "index": 13,
       "type": "click",
       "image": "clipboard-12.png",
       "boxClass": "38",
@@ -253,7 +255,7 @@
       "textWidth": "195px"
     },
     {
-      "index": 13,
+      "index": 14,
       "type": "click",
       "image": "clipboard-13.png",
       "boxClass": "41",
@@ -273,7 +275,7 @@
       "textWidth": "227px"
     },
     {
-      "index": 14,
+      "index": 15,
       "type": "click",
       "image": "clipboard-14.png",
       "boxClass": "42",
@@ -293,7 +295,7 @@
       "textWidth": "209px"
     },
     {
-      "index": 15,
+      "index": 16,
       "type": "click",
       "image": "clipboard-15.png",
       "boxClass": "44",
@@ -313,7 +315,7 @@
       "textWidth": "210px"
     },
     {
-      "index": 16,
+      "index": 17,
       "type": "click",
       "image": "clipboard-16.png",
       "arrow": "none",
@@ -326,7 +328,7 @@
       "textWidth": "211px"
     },
     {
-      "index": 17,
+      "index": 18,
       "type": "click",
       "image": "clipboard-17.png",
       "boxClass": "45",
@@ -346,7 +348,7 @@
       "textWidth": "216px"
     },
     {
-      "index": 18,
+      "index": 19,
       "type": "click",
       "image": "clipboard-18.png",
       "boxClass": "46",
@@ -366,7 +368,7 @@
       "textWidth": "300px"
     },
     {
-      "index": 19,
+      "index": 20,
       "type": "click",
       "image": "clipboard-19.png",
       "boxClass": "47",
@@ -385,7 +387,7 @@
       "text": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד"
     },
     {
-      "index": 20,
+      "index": 21,
       "type": "click",
       "image": "clipboard-20.png",
       "boxClass": "48",
@@ -404,7 +406,7 @@
       "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>"
     },
     {
-      "index": 21,
+      "index": 22,
       "type": "click",
       "image": "clipboard-21.png",
       "boxClass": "50",
@@ -423,7 +425,7 @@
       "text": "לחצו על המתג <span style=\"color:#f6a67e;\">לא פעיל</span> כדי להפעיל את היסטוריית הלוח"
     },
     {
-      "index": 22,
+      "index": 23,
       "type": "click",
       "image": "clipboard-22.png",
       "arrow": "arrow-left",
@@ -436,7 +438,7 @@
       "textWidth": "207px"
     },
     {
-      "index": 23,
+      "index": 24,
       "type": "click",
       "image": "clipboard-23.png",
       "boxClass": "49",
@@ -456,7 +458,7 @@
       "textWidth": "224px"
     },
     {
-      "index": 24,
+      "index": 25,
       "type": "click",
       "image": "clipboard-24.png",
       "boxClass": "49",
@@ -476,7 +478,7 @@
       "textWidth": "200px"
     },
     {
-      "index": 25,
+      "index": 26,
       "type": "click",
       "image": "clipboard-25.png",
       "boxClass": "49",
@@ -496,7 +498,7 @@
       "textWidth": "203px"
     },
     {
-      "index": 26,
+      "index": 27,
       "type": "click",
       "image": "clipboard-26.png",
       "boxClass": "49",
@@ -516,7 +518,7 @@
       "textWidth": "225px"
     },
     {
-      "index": 27,
+      "index": 28,
       "type": "click",
       "image": "clipboard-27.png",
       "arrow": "none",
@@ -525,7 +527,7 @@
         "top": "60.3083%"
       },
       "step": 27,
-      "text": "העתקנו <span style=\"color:#f6a67e;\">4 פריטים ברצף</span> בלי לעבור ל-Word אפילו פעם! עכשיו נעבור ל-Word ונדביק הכל.",
+      "text": "העתקנו <span style=\"color:#f6a67e;\">4 פריטים ברצף</span> בלי לעבור ל-Word אפילו פעם! עכשיו לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור ל-Word ולהדביק הכל.",
       "box": {
         "top": "93.126%",
         "left": "22.2146%",
@@ -535,7 +537,7 @@
       "textWidth": "259px"
     },
     {
-      "index": 28,
+      "index": 29,
       "type": "click",
       "image": "clipboard-28.png",
       "boxClass": "92",
@@ -555,7 +557,7 @@
       "textWidth": "246px"
     },
     {
-      "index": 29,
+      "index": 30,
       "type": "click",
       "image": "clipboard-29.png",
       "boxClass": "95",
@@ -575,7 +577,7 @@
       "textWidth": "210px"
     },
     {
-      "index": 30,
+      "index": 31,
       "type": "click",
       "image": "clipboard-30.png",
       "boxClass": "98",
@@ -594,7 +596,7 @@
       "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח"
     },
     {
-      "index": 31,
+      "index": 32,
       "type": "click",
       "image": "clipboard-31.png",
       "boxClass": "100",
@@ -614,7 +616,7 @@
       "textWidth": "259px"
     },
     {
-      "index": 32,
+      "index": 33,
       "type": "click",
       "image": "clipboard-32.png",
       "arrow": "none",
@@ -627,7 +629,7 @@
       "textWidth": "230px"
     },
     {
-      "index": 33,
+      "index": 34,
       "type": "outro",
       "title": "תודה שהשתתפתם!"
     }
