@@ -20,6 +20,9 @@ function buildStrip() {
   var strip = $('slideStrip');
   strip.innerHTML = '';
   if (!E.data) return;
+  // Grid: stretch dots across full width
+  var cols = E.data.slides.length;
+  strip.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
 
   E.data.slides.forEach(function(s, i) {
     var dot = document.createElement('div');
