@@ -42,7 +42,6 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 .canvas-inner {
   min-width:100%; min-height:100%;
   display:flex; align-items:center; justify-content:center;
-  padding:20px;
 }
 .slide-container {
   position:relative; display:inline-block;
