@@ -133,20 +133,20 @@ a { word-break: break-all; }
 
 /* ─── בועות טקסט ─── */
 .text {
-  color: #ffffff;
+  color: #ffffffcc;
   font-size: 16px;
   line-height: 1.6;
   padding: 16px 20px 20px 20px;
   width: 100%;
-  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  background: #1a2540ee;
   max-width: 300px;
-  border-radius: 18px;
-  border: 1px solid #5b8fa855;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 0 0 1px rgba(168,197,214,0.1);
+  border-radius: 14px;
+  border: 2px solid #5b8fa8;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
 }
 
 /* מספר שקף */
@@ -250,7 +250,7 @@ a { word-break: break-all; }
 
 /* ─── מסך רקע (כותרת/סיום) ─── */
 .background {
-  background: linear-gradient(135deg, #0f2a3a 0%, #1a4a6b 50%, #1e5f74 100%);
+  background: linear-gradient(135deg, #0f1a2e 0%, #1a2540 50%, #1e3050 100%);
   height: 100%;
   width: 100%;
 }
