@@ -456,7 +456,7 @@
         "top": "47.7829%"
       },
       "step": 23,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> תאריך ההזמנה</span>",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> תאריך ההזמנה</span>",
       "textWidth": "224px"
     },
     {
@@ -472,11 +472,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "53.1263%",
-        "top": "50.2444%"
+        "left": "53.5262%",
+        "top": "49.8198%"
       },
       "step": 24,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
       "textWidth": "218px"
     },
     {
