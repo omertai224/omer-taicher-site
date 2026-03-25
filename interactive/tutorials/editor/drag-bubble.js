@@ -46,15 +46,12 @@
       return;
     }
 
-    // Drag — account for transform:scale() on bubble
+    // Drag
     var newLeftPx = startBubbleLeft + (e.clientX - startX);
     var newTopPx = startBubbleTop + (e.clientY - startY);
 
-    // Use visual (scaled) size for clamping, not layout size
-    var scaleMatch = bubble.style.transform.match(/scale\(([\d.]+)\)/);
-    var scale = scaleMatch ? parseFloat(scaleMatch[1]) : 1;
-    var bubbleW = bubble.offsetWidth * scale;
-    var bubbleH = bubble.offsetHeight * scale;
+    var bubbleW = bubble.offsetWidth;
+    var bubbleH = bubble.offsetHeight;
     newLeftPx = Math.max(0, Math.min(newLeftPx, cw - bubbleW));
     newTopPx = Math.max(0, Math.min(newTopPx, ch - bubbleH));
 
