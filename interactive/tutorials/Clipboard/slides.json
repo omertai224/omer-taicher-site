@@ -127,8 +127,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "32.5925%",
-        "top": "60.5438%"
+        "left": "26.86%",
+        "top": "60.5427%"
       },
       "step": 6,
       "text": "עוד מעבר בין החלונות. <span style=\"color:#f6a67e;\">הלוך חזור</span> שלא נגמר...",
@@ -172,7 +172,14 @@
       },
       "step": 8,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם השלישית. הקפיצה בין החלונות נמשכת...",
-      "textWidth": "188px"
+      "textWidth": "188px",
+      "notes": [
+        {
+          "text": "הערה חדשהפוזה שורת משימות בפעם הרביעית",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 10,
@@ -252,7 +259,14 @@
       },
       "step": 12,
       "text": "בפעם הרביעית כבר. <span style=\"color:#f6a67e;\">חייבת להיות דרך חכמה יותר.</span>",
-      "textWidth": "195px"
+      "textWidth": "195px",
+      "notes": [
+        {
+          "text": "הערה חדשהעוד שורת משימות בפעם השישית",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 14,
@@ -380,11 +394,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "36.846%",
-        "top": "13.6589%"
+        "left": "44.8442%",
+        "top": "24.6992%"
       },
       "step": 19,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד",
+      "textWidth": "237px"
     },
     {
       "index": 21,
