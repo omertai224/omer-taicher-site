@@ -92,14 +92,16 @@ function renderBubble(slide) {
     bubble.style.bottom = tp.bottom;
   }
 
-  // Step counter + bold spacer (matches tutorial bubble format)
+  // Step counter + bold spacer — MUST match tutorial rendering exactly!
+  // Tutorial CSS: .text > div:first-child { font-size:12px; margin-bottom:6px; }
+  // Tutorial HTML: <b style="font-size:24px;padding:8px 0;"></b> (inline, not block!)
   var stepHtml = '';
   if (slide.step) {
     var totalSteps = E.data.totalSteps || 32;
-    stepHtml = '<div style="text-align:right;font-size:16px;font-weight:700;">'
-      + '<span style="color:#f6a67e;">' + slide.step + '</span>'
+    stepHtml = '<div style="text-align:right;font-size:12px;font-weight:700;margin-bottom:6px;letter-spacing:1px;">'
+      + '<span style="color:#f6a67e;font-weight:700;">' + slide.step + '</span>'
       + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
-      + '<b style="font-size:24px;padding:8px 0;display:block;"></b>';
+      + '<b style="font-size:24px;padding:8px 0;"></b>';
   }
   $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (slide.text || '') + '</div>';
 }
