@@ -58,9 +58,9 @@
       "boxClass": "19",
       "box": {
         "top": "56.4833%",
-        "left": "51.5654%",
-        "right": "44.0654%",
-        "bottom": "38.0282%"
+        "left": "51.8049%",
+        "right": "44.2251%",
+        "bottom": "37.5196%"
       },
       "arrow": "arrow-right",
       "textPos": {
@@ -104,8 +104,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "15.3545%",
-        "top": "18.9537%"
+        "left": "53.2398%",
+        "top": "49.8944%"
       },
       "step": 5,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
@@ -124,12 +124,19 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "32.8828%",
-        "bottom": "6.27799%"
+        "left": "32.7606%",
+        "bottom": "7.02742%"
       },
       "step": 6,
       "text": "<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. <span style=\"color:#f6a67e;\">שוב</span> לעבור ל-Word. <span style=\"color:#f6a67e;\">שוב</span> לחכות שייטען...",
-      "textWidth": "318px"
+      "textWidth": "318px",
+      "notes": [
+        {
+          "text": "הערה חדשהיש פה יותר מידי את המילה שוב בכלל בהדרכה יש יותר מידי פעמים את המילה שוב צריך לתקן את זה",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 7,
@@ -144,8 +151,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "11.3697%",
-        "top": "56.9541%"
+        "left": "11.8483%",
+        "top": "55.6818%"
       },
       "step": 7,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את מספר ההזמנה",
@@ -158,14 +165,14 @@
       "boxClass": "29",
       "box": {
         "top": "93.3033%",
-        "left": "25.415%",
-        "right": "69.3348%",
+        "left": "25.2553%",
+        "right": "69.4945%",
         "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "36.9896%",
-        "bottom": "6.65809%"
+        "left": "36.4304%",
+        "bottom": "6.83971%"
       },
       "step": 8,
       "text": "ו<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. ו<span style=\"color:#f6a67e;\">שוב</span> לחזור לאמזון. ו<span style=\"color:#f6a67e;\">שוב</span> להעתיק...",
@@ -178,14 +185,14 @@
       "boxClass": "33",
       "box": {
         "top": "67.3704%",
-        "left": "26.6512%",
+        "left": "5.80853%",
         "right": "55.7209%",
-        "bottom": "27.1852%"
+        "bottom": "27.3315%"
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "calc(44.2791% + 15px)",
-        "top": "calc(70.0926% - 25px)"
+        "left": "44.0239%",
+        "top": "64.5749%"
       },
       "step": 9,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את שם המוצר"
@@ -196,15 +203,15 @@
       "image": "clipboard-10.png",
       "boxClass": "34",
       "box": {
-        "top": "93.4815%",
-        "left": "22.1163%",
-        "right": "72.9302%",
-        "bottom": "-0.685181%"
+        "top": "94.1124%",
+        "left": "22.6672%",
+        "right": "72.7466%",
+        "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "calc(24.593% - 25px)",
-        "bottom": "calc(6.51852% + 15px)"
+        "left": "27.3798%",
+        "bottom": "6.47428%"
       },
       "step": 10,
       "text": "ו<span style=\"color:#f6a67e;\">שוב</span> לשורת המשימות. ו<span style=\"color:#f6a67e;\">שוב</span> ל-Word. כמה פעמים עוד צריך לקפוץ ככה?"
@@ -215,15 +222,15 @@
       "image": "clipboard-11.png",
       "boxClass": "36",
       "box": {
-        "top": "65.7037%",
-        "left": "62.8721%",
-        "right": "33.8605%",
-        "bottom": "29.6852%"
+        "top": "65.265%",
+        "left": "62.413%",
+        "right": "33.3096%",
+        "bottom": "28.5154%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(62.8721% - 315px)",
-        "top": "calc(67.963% - 25px)"
+        "left": "12.5857%",
+        "top": "60.984%"
       },
       "step": 11,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את שם המוצר"
@@ -234,18 +241,25 @@
       "image": "clipboard-12.png",
       "boxClass": "38",
       "box": {
-        "top": "93.5741%",
-        "left": "24.9651%",
-        "right": "69.7907%",
-        "bottom": "-0.5%"
+        "top": "93.8052%",
+        "left": "25.2406%",
+        "right": "69.607%",
+        "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "calc(27.5581% - 25px)",
-        "bottom": "calc(6.42593% + 15px)"
+        "left": "28.0439%",
+        "bottom": "8.02196%"
       },
       "step": 12,
-      "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span>, בפעם הרביעית. עוד מעבר, עוד לחיצה, עוד המתנה..."
+      "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span>, בפעם הרביעית. עוד מעבר, עוד לחיצה, עוד המתנה...",
+      "notes": [
+        {
+          "text": "הערה חדשהצריך פחות חזרתיות פחות עוד ועוד ועוד שוב ושוב ושוב צריך שזה יהיה יותר זורם יותר פלור",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 13,
@@ -260,8 +274,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(53.9186% - 315px)",
-        "top": "calc(79.1667% - 25px)"
+        "left": "5.21605%",
+        "top": "64.8704%"
       },
       "step": 13,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק את תמונת המוצר"
@@ -272,15 +286,15 @@
       "image": "clipboard-14.png",
       "boxClass": "42",
       "box": {
-        "top": "94.3148%",
-        "left": "22.3488%",
-        "right": "72.9884%",
-        "bottom": "-0.870369%"
+        "top": "93.4444%",
+        "left": "22.4406%",
+        "right": "72.8966%",
+        "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "calc(24.6512% - 25px)",
-        "bottom": "calc(5.68519% + 15px)"
+        "left": "32.8501%",
+        "bottom": "6.69509%"
       },
       "step": 14,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> ולחזור ל-Word. בפעם האחרונה, סוף סוף!"
@@ -291,15 +305,15 @@
       "image": "clipboard-15.png",
       "boxClass": "44",
       "box": {
-        "top": "33.2037%",
-        "left": "61.186%",
-        "right": "35.5465%",
-        "bottom": "62.1852%"
+        "top": "32.4725%",
+        "left": "60.8187%",
+        "right": "34.9038%",
+        "bottom": "61.6003%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(61.186% - 315px)",
-        "top": "calc(35.463% - 25px)"
+        "left": "10.9913%",
+        "top": "29.2143%"
       },
       "step": 15,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את תמונת המוצר"
@@ -310,11 +324,23 @@
       "image": "clipboard-16.png",
       "arrow": "none",
       "textPos": {
-        "left": "calc(48.1163% + 15px)",
-        "top": "calc(70% - 25px)"
+        "left": "6.08006%",
+        "top": "23.3799%"
       },
       "step": 16,
-      "text": "הנה התוצאה. כל הפרטים הודבקו, אבל זה לקח <span style=\"color:#f6a67e;\">15 פעולות</span> והמון הלוך חזור בין אמזון ל-Word!<br><br><a class=\"button\" onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:8px;\">עכשיו נלמד דרך חכמה</a>"
+      "text": "הנה התוצאה. כל הפרטים הודבקו, אבל זה לקח <span style=\"color:#f6a67e;\">15 פעולות</span> והמון הלוך חזור בין אמזון ל-Word!<br><br><a class=\"button\" onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:8px;\">עכשיו נלמד דרך חכמה</a>",
+      "notes": [
+        {
+          "text": "הערה חדשהצריך לעשות משהו יותר וואו בקטע הזה של של התוצאה שזה צריך לעשות משהו יותר בומבסטי יותר יותר משהו להבהיר את הקטע הזה של של הפעולות משהו לא לא יודע בדיוק מה אבל צריך לעשות משהו יותר בולט",
+          "left": "50%",
+          "top": "50%"
+        },
+        {
+          "text": "הערה חדשהבמיקום הזה של הבועת טקסט צריך לעשות איזה משהו יותר מעברי כזה לעשות משהו יותר מעבר בין השקף הזה של כל הסבל לשקף של התוצאה טקסט רגילה לא משהו סטנדרטי משהו יותר משהו אחר טיפה מעבר אחר שהוא לא בועה טקסט",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 17,
@@ -322,10 +348,10 @@
       "image": "clipboard-17.png",
       "boxClass": "45",
       "box": {
-        "top": "94.037%",
-        "left": "60.2558%",
-        "right": "33.9767%",
-        "bottom": "-0.5%"
+        "top": "93.1502%",
+        "left": "60.7415%",
+        "right": "33.6124%",
+        "bottom": "0%"
       },
       "arrow": "arrow-bottom-right",
       "textPos": {
@@ -348,8 +374,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(57.6395% - 315px)",
-        "top": "calc(38.4259% - 25px)"
+        "left": "8.4134%",
+        "top": "27.9708%"
       },
       "step": 18,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)"
@@ -367,8 +393,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(78.0465% - 315px)",
-        "top": "calc(23.4259% - 25px)"
+        "left": "27.9701%",
+        "top": "12.3904%"
       },
       "step": 19,
       "text": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד"
@@ -386,11 +412,12 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "calc(75.7326% + 15px)",
-        "top": "calc(52.963% - 25px)"
+        "left": "42.9245%",
+        "top": "58.9451%"
       },
       "step": 20,
-      "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>"
+      "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>",
+      "textWidth": "212px"
     },
     {
       "index": 21,
@@ -405,8 +432,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "calc(8.34884% + 15px)",
-        "top": "calc(16.9444% - 25px)"
+        "left": "11.2419%",
+        "top": "14.4176%"
       },
       "step": 21,
       "text": "לחצו על המתג <span style=\"color:#f6a67e;\">לא פעיל</span> כדי להפעיל את היסטוריית הלוח"
@@ -421,7 +448,19 @@
         "top": "calc(16.9444% - 25px)"
       },
       "step": 22,
-      "text": "מצוין! היסטוריית הלוח <span style=\"color:#f6a67e;\">פעילה</span> עכשיו! מעכשיו כל מה שתעתיקו יישמר"
+      "text": "מצוין! היסטוריית הלוח <span style=\"color:#f6a67e;\">פעילה</span> עכשיו! מעכשיו כל מה שתעתיקו יישמר",
+      "notes": [
+        {
+          "text": "הערה חדשהפה צריך לכתוב בשקף הזה שזה לא רק כאילו עכשיו אנחנו עוברים לחלק שבו אנחנו עובדים עם היסטוריית הלוח בלה בלה בלה ונראה כמה זה קל בלה בלה בלה",
+          "left": "50%",
+          "top": "50%"
+        },
+        {
+          "text": "הערה חדשהגם פה צריך במקום הבועה טקסט מעל משהו אחר שמשהו אחר שהוא מציין את המעבר בין הזה שהפעלנו עכשיו את הלוח לבין זה שעכשיו אנחנו נעבוד בצורת תקינה חכמה פשוטה קלה זה לא יכול להיות תיבת אקס רגילה",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 23,
@@ -436,11 +475,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "5%",
-        "bottom": "5%"
+        "left": "13.62%",
+        "bottom": "25.2806%"
       },
       "step": 23,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה",
+      "textWidth": "224px"
     },
     {
       "index": 24,
@@ -455,11 +495,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "5%",
-        "bottom": "5%"
+        "left": "53.2059%",
+        "bottom": "19.9087%"
       },
       "step": 24,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך",
+      "textWidth": "214px"
     },
     {
       "index": 25,
@@ -474,11 +515,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "5%",
-        "bottom": "5%"
+        "left": "44.7066%",
+        "bottom": "29.5473%"
       },
       "step": 25,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם המוצר"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם המוצר",
+      "textWidth": "236px"
     },
     {
       "index": 26,
@@ -493,11 +535,12 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "5%",
-        "bottom": "5%"
+        "left": "16.5345%",
+        "bottom": "6.52146%"
       },
       "step": 26,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את התמונה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את התמונה",
+      "textWidth": "229px"
     },
     {
       "index": 27,
@@ -505,8 +548,8 @@
       "image": "clipboard-27.png",
       "arrow": "none",
       "textPos": {
-        "left": "5%",
-        "bottom": "5%"
+        "left": "27.9493%",
+        "bottom": "7.11442%"
       },
       "step": 27,
       "text": "העתקנו 4 פריטים ברצף, <span style=\"color:#f6a67e;\">בלי לעבור ל-Word אפילו פעם אחת!</span>"
@@ -524,11 +567,19 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(62.4651% - 315px)",
-        "top": "calc(84.6296% - 25px)"
+        "left": "21.0094%",
+        "top": "62.57%"
       },
       "step": 28,
-      "text": "לחצו Win+V ובחרו את <span style=\"color:#f6a67e;\">התאריך</span> מהיסטוריית הלוח"
+      "text": "לחצו Win+V ובחרו את <span style=\"color:#f6a67e;\">התאריך</span> מהיסטוריית הלוח",
+      "textWidth": "233px",
+      "notes": [
+        {
+          "text": "הערה חדשהאני רוצה פה שהווינדוס פלוס וי זה יהיה משהו יותר מיוחד אולי זה יראה כמו המקשים במקלדת כמו המקש ווינדוס וכמו המקש v שזה יהיה משהו יותר וואו כזה לא סתם טקסטואלי",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 29,
@@ -543,11 +594,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(62.8721% - 315px)",
-        "top": "calc(79.0741% - 25px)"
+        "left": "24.0883%",
+        "top": "64.1693%"
       },
       "step": 29,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח",
+      "textWidth": "227px"
     },
     {
       "index": 30,
@@ -562,11 +614,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(71.3023% - 315px)",
-        "top": "calc(84.0741% - 25px)"
+        "left": "34.7041%",
+        "top": "64.3351%"
       },
       "step": 30,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח",
+      "textWidth": "215px"
     },
     {
       "index": 31,
@@ -581,11 +634,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(71.3023% - 315px)",
-        "top": "calc(32.4074% - 25px)"
+        "left": "35.433%",
+        "top": "40.7088%"
       },
       "step": 31,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה",
+      "textWidth": "217px"
     },
     {
       "index": 32,
@@ -593,11 +647,18 @@
       "image": "clipboard-32.png",
       "arrow": "none",
       "textPos": {
-        "left": "calc(71.314% + 15px)",
-        "top": "calc(75.2778% - 25px)"
+        "left": "5.84168%",
+        "top": "36.2007%"
       },
       "step": 32,
-      "text": "מעולה! כל הפרטים הודבקו, <span style=\"color:#f6a67e;\">טקסט ותמונה</span>, בלי לחזור לאמזון אפילו פעם אחת! 15 פעולות הפכו ל-5"
+      "text": "מעולה! כל הפרטים הודבקו, <span style=\"color:#f6a67e;\">טקסט ותמונה</span>, בלי לחזור לאמזון אפילו פעם אחת! 15 פעולות הפכו ל-5",
+      "notes": [
+        {
+          "text": "הערה חדשהזה השקף סיום אני רוצה גם בשקף הזה במקום הבועה טקסט שיהיה כמו בשאר השקפי צפייה שזה יהיה משהו אחר שבכל השקפים של הצפייה שאלה המעברים בין הסבל לפתרון ואיך עובדים נכון שיהיה משהו אחר",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 33,
