@@ -65,9 +65,10 @@ function renderBubble(slide) {
   bubble.style.maxWidth = slide.textWidth || '300px';
 
   // Scale the ENTIRE bubble proportionally (like zoom).
-  // This scales text + padding + border + width together.
-  // The orange box doesn't need this because it has no text inside.
-  var scale = cw / naturalW;
+  // Reference = container width at first render. scale=1 on load,
+  // scales only when window resizes.
+  if (!E.bubbleRefWidth) E.bubbleRefWidth = cw;
+  var scale = cw / E.bubbleRefWidth;
   bubble.style.transform = 'scale(' + scale + ')';
   bubble.style.transformOrigin = 'left top';
 
