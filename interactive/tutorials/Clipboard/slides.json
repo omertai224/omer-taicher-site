@@ -179,9 +179,9 @@
       "boxClass": "33",
       "box": {
         "top": "67.3704%",
-        "left": "26.2513%",
+        "left": "6.25422%",
         "right": "56.1208%",
-        "bottom": "27.1852%"
+        "bottom": "27.6098%"
       },
       "arrow": "arrow-left",
       "textPos": {
@@ -318,11 +318,19 @@
       "image": "clipboard-16.png",
       "arrow": "none",
       "textPos": {
-        "left": "18.2536%",
-        "top": "25.6259%"
+        "left": "3.85569%",
+        "top": "25.4136%"
       },
       "step": 16,
-      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:8px;\"><path d=\"M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z\"/><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"/><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"/></svg><div style=\"font-size:36px;font-weight:900;color:#f6a67e;line-height:1;\">15</div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;margin-top:2px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:14px;color:#ffffffcc;line-height:1.6;\">הלוך חזור בין אמזון ל-Word.<br>הרבה לחיצות. הרבה המתנה.</div><div style=\"margin-top:12px;font-size:15px;font-weight:700;color:white;\">יש דרך טובה <span style=\"color:#f6a67e;\">בהרבה</span>.</div></div>"
+      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:8px;\"><path d=\"M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z\"/><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"/><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"/></svg><div style=\"font-size:36px;font-weight:900;color:#f6a67e;line-height:1;\">15</div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;margin-top:2px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:14px;color:#ffffffcc;line-height:1.6;\">הלוך חזור בין אמזון ל-Word.<br>הרבה לחיצות. הרבה המתנה.</div><div style=\"margin-top:12px;font-size:15px;font-weight:700;color:white;\">יש דרך טובה <span style=\"color:#f6a67e;\">בהרבה</span>.</div></div>",
+      "textWidth": "211px",
+      "notes": [
+        {
+          "text": "הערה חדשהבשקף הזה שמסיים את הסבל צריך גם כפתור מתחת יש דרך טובה בהרבה שמעביר אותם לשלב הבא בואו נראה איך לא יודע צריך להיות שם כפתור",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 17,
@@ -427,11 +435,19 @@
       "image": "clipboard-22.png",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "12.503%",
-        "top": "21.1905%"
+        "left": "14.3687%",
+        "top": "20.9771%"
       },
       "step": 22,
-      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4ade80\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><path d=\"M22 11.08V12a10 10 0 11-5.93-9.14\"/><polyline points=\"22 4 12 14.01 9 11.01\"/></svg><div style=\"font-size:18px;font-weight:900;color:white;line-height:1.3;\">היסטוריית הלוח<br><span style=\"color:#4ade80;\">פעילה!</span></div><div style=\"width:40px;height:2px;background:#4ade8044;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:13px;color:#ffffffbb;line-height:1.6;\">מעכשיו כל מה שתעתיקו נשמר.<br>בואו נראה איך עובדים איתה.</div></div>"
+      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4ade80\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><path d=\"M22 11.08V12a10 10 0 11-5.93-9.14\"/><polyline points=\"22 4 12 14.01 9 11.01\"/></svg><div style=\"font-size:18px;font-weight:900;color:white;line-height:1.3;\">היסטוריית הלוח<br><span style=\"color:#4ade80;\">פעילה!</span></div><div style=\"width:40px;height:2px;background:#4ade8044;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:13px;color:#ffffffbb;line-height:1.6;\">מעכשיו כל מה שתעתיקו נשמר.<br>בואו נראה איך עובדים איתה.</div></div>",
+      "textWidth": "207px",
+      "notes": [
+        {
+          "text": "הערה חדשהגם פה שאנחנו אומרים היסטורית הלוח פעילה צריכים שיהיה כפתור שיוביל אותם הלאה",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 23,
@@ -480,9 +496,9 @@
       "boxClass": "49",
       "box": {
         "top": "67.4345%",
-        "left": "26.7%",
+        "left": "6.16966%",
         "right": "55.6866%",
-        "bottom": "27.3891%"
+        "bottom": "27.1768%"
       },
       "arrow": "arrow-right",
       "textPos": {
@@ -525,9 +541,9 @@
       "step": 27,
       "text": "העתקנו <span style=\"color:#f6a67e;\">4 פריטים ברצף</span> בלי לעבור ל-Word אפילו פעם! עכשיו נעבור ל-Word ונדביק הכל.",
       "box": {
-        "top": "93.2315%",
-        "left": "22.1491%",
-        "right": "72.7905%",
+        "top": "93.126%",
+        "left": "22.2146%",
+        "right": "72.9901%",
         "bottom": "0%"
       },
       "textWidth": "259px"
@@ -545,11 +561,19 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "21.3983%",
-        "top": "63.1856%"
+        "left": "28.064%",
+        "top": "58.5147%"
       },
       "step": 28,
-      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">&#8862; Win</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> ובחרו את התאריך מהיסטוריית הלוח"
+      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">&#8862; Win</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> ובחרו את התאריך מהיסטוריית הלוח",
+      "textWidth": "246px",
+      "notes": [
+        {
+          "text": "הערה חדשהפה בשקף הזה צריכים להפוך את הסדר בין אביא לווינדוס בכפתורים ולמחוק את האימוג'י הזה או ה-svg לא יודע של הריבועים זה לא הכרחי זה יפה מה שעשית פשוט צריך להחליף בין הסדר של הכפתורים",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 29,
@@ -564,11 +588,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "22.4717%",
-        "top": "65.9103%"
+        "left": "33.4028%",
+        "top": "63.9995%"
       },
       "step": 29,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח",
+      "textWidth": "210px"
     },
     {
       "index": 30,
@@ -602,11 +627,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "29.7019%",
-        "top": "30.4958%"
+        "left": "61.9632%",
+        "top": "38.775%"
       },
       "step": 31,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה. כן, גם תמונות נשמרות!"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה. כן, גם תמונות נשמרות!",
+      "textWidth": "259px"
     },
     {
       "index": 32,
@@ -614,11 +640,19 @@
       "image": "clipboard-32.png",
       "arrow": "none",
       "textPos": {
-        "left": "11.5886%",
-        "top": "34.9379%"
+        "left": "3.72307%",
+        "top": "23.6852%"
       },
       "step": 32,
-      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg><div style=\"display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;\"><div style=\"font-size:28px;font-weight:900;color:#ffffff55;text-decoration:line-through;\">15</div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"9 18 15 12 9 6\"/></svg><div style=\"font-size:28px;font-weight:900;color:#f6a67e;\">4</div></div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:14px;color:#ffffffcc;line-height:1.6;\">בלי לחזור לאמזון אפילו פעם.<br>טקסט ותמונה, הכל במקום אחד.</div><div style=\"margin-top:8px;font-size:13px;font-weight:700;color:#f6a67e;\">זו העוצמה של היסטוריית הלוח.</div></div>"
+      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg><div style=\"display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;\"><div style=\"font-size:28px;font-weight:900;color:#ffffff55;text-decoration:line-through;\">15</div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"9 18 15 12 9 6\"/></svg><div style=\"font-size:28px;font-weight:900;color:#f6a67e;\">4</div></div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:14px;color:#ffffffcc;line-height:1.6;\">בלי לחזור לאמזון אפילו פעם.<br>טקסט ותמונה, הכל במקום אחד.</div><div style=\"margin-top:8px;font-size:13px;font-weight:700;color:#f6a67e;\">זו העוצמה של היסטוריית הלוח.</div></div>",
+      "textWidth": "230px",
+      "notes": [
+        {
+          "text": "הערה חדשהפה זה תשע פעולות במקום 15 לא ארבע תשע פעולות במקום 15 וצריך גם לציין שזה חוסך זמן ורוצה להגיד להם וזה רק ארבע העתקות כאילו לתת להם תחושה שזה רק ארבע תחשבו כמה זמן תחסכו זה רק ארבע פעולות במהלך כל העבודה שלכם וסתכלו כמה חסכתם אם אתם תמשיכו לעבוד ככה לתת להם תחושה שאם אפשר אתם תמשיכו לעבוד ככה אתם תחסכו ארגזים של זמן אנרגיה ויהיה לכם מדהים ולעשות כפתור חיזרו להתחלה או משהו",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 33,
