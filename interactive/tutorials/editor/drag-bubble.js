@@ -62,14 +62,9 @@
     var usesBottom = s.textPos.bottom && !s.textPos.top;
 
     bubble.style.left = leftPct + '%';
-    if (usesBottom) {
-      var bottomPct = 100 - topPct - (bubbleH / ch) * 100;
-      bubble.style.top = '';
-      bubble.style.bottom = bottomPct + '%';
-    } else {
-      bubble.style.bottom = '';
-      bubble.style.top = topPct + '%';
-    }
+    // Always use top positioning (not bottom) for consistency
+    bubble.style.bottom = '';
+    bubble.style.top = topPct + '%';
   });
 
   document.addEventListener('mouseup', function() {
@@ -82,22 +77,15 @@
     if (!s || !s.textPos) return;
 
     if (prevMode === 'resize') {
-      // Save width
       s.textWidth = bubble.style.width || bubble.style.maxWidth;
       markModified();
       return;
     }
 
-    // Save position
+    // Always save as left + top (never bottom)
     s.textPos.left = bubble.style.left;
-    if (bubble.style.top && bubble.style.top !== '') {
-      s.textPos.top = bubble.style.top;
-      delete s.textPos.bottom;
-    }
-    if (bubble.style.bottom && bubble.style.bottom !== '') {
-      s.textPos.bottom = bubble.style.bottom;
-      delete s.textPos.top;
-    }
+    s.textPos.top = bubble.style.top;
+    delete s.textPos.bottom;
 
     markModified();
   });
@@ -115,15 +103,11 @@ function nudgeBubble(dLeft, dTop) {
   left = Math.max(0, Math.min(95, left + dLeft));
   s.textPos.left = left + '%';
 
-  if (usesBottom) {
-    var bottom = parseFloat(s.textPos.bottom) || 0;
-    bottom = Math.max(0, Math.min(95, bottom - dTop));
-    s.textPos.bottom = bottom + '%';
-  } else {
-    var top = parseFloat(s.textPos.top) || 0;
-    top = Math.max(0, Math.min(95, top + dTop));
-    s.textPos.top = top + '%';
-  }
+  // Always use top (convert from bottom if needed)
+  var top = parseFloat(s.textPos.top) || 0;
+  top = Math.max(0, Math.min(95, top + dTop));
+  s.textPos.top = top + '%';
+  delete s.textPos.bottom;
 
   renderBubble(s);
   markModified();
