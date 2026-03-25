@@ -37,7 +37,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 /* ═══ Canvas ═══ */
 .canvas-area {
   flex:1; background:#0d1117; position:relative;
-  overflow-x:auto; overflow-y:hidden; direction:ltr;
+  overflow:auto; direction:ltr;
 }
 .canvas-inner {
   min-width:100%; min-height:100%;
@@ -48,7 +48,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   box-shadow:0 4px 40px #00000088;
   transform-origin:top left;
   flex-shrink:0;
-  border-radius:4px; overflow:visible;
+  border-radius:4px; overflow:hidden;
 }
 .slide-container img.slide-img {
   display:block; max-height:calc(100vh - 80px);
