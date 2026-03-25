@@ -14,9 +14,9 @@
   <select id="tutorialSelect"><option value="">בחרו הדרכה...</option></select>
   <button id="btnLoadLocal" title="טען תיקייה מהמחשב">📂 טען מקומי</button>
   <div class="topbar-sep"></div>
-  <button class="nav-btn" id="btnPrev" title="שקף קודם">&larr;</button>
-  <span class="slide-info" id="slideInfo">---</span>
   <button class="nav-btn" id="btnNext" title="שקף הבא">&rarr;</button>
+  <span class="slide-info" id="slideInfo">---</span>
+  <button class="nav-btn" id="btnPrev" title="שקף קודם">&larr;</button>
   <div class="topbar-sep"></div>
   <button id="btnZoomIn" title="הגדל">+</button>
   <button id="btnZoomOut" title="הקטן">-</button>
@@ -31,6 +31,7 @@
 <div class="main">
   <div class="canvas-area" id="canvasArea">
     <div class="no-slide" id="noSlide">בחרו הדרכה מהתפריט למעלה<br><small>או לחצו "טען מקומי" לפתיחת תיקייה מהמחשב</small></div>
+    <div class="canvas-inner" id="canvasInner">
     <div class="slide-container" id="slideContainer" style="display:none;">
       <img class="slide-img" id="slideImg">
       <div class="editor-box" id="editorBox" style="display:none;">
@@ -43,6 +44,7 @@
         <div class="drag-label">&#x2725; גררו למיקום</div>
         <div id="bubblePreview"></div>
       </div>
+    </div>
     </div>
   </div>
   <div class="panel" id="panel"></div>
