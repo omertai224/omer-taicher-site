@@ -59,16 +59,28 @@ function renderBubble(slide) {
   var cw = container.offsetWidth || 1;
   var ch = container.offsetHeight || 1;
   var naturalW = img.naturalWidth || cw;
+  var scale = cw / naturalW;
 
-  // Width in PIXELS (fixed reference size — text doesn't reflow)
-  bubble.style.width = slide.textWidth || '300px';
-  bubble.style.maxWidth = slide.textWidth || '300px';
+  // Convert old pixel widths to "natural-space" pixels.
+  // Natural-space = the width at the image's natural resolution.
+  // Example: 227px in editor (1200px container) on a 1920px image
+  //   → naturalPx = 227 / (1200/1920) = 363px
+  //   → visual in editor: 363 * 0.625 = 227px (same!)
+  //   → visual in tutorial: 363 * 0.833 = 302px (proportional!)
+  var tw = slide.textWidth || '300px';
+  if (/^\d+(\.\d+)?px$/.test(tw) && scale < 0.95) {
+    var oldPx = parseFloat(tw);
+    var naturalPx = Math.round(oldPx / scale);
+    tw = naturalPx + 'px';
+    slide.textWidth = tw;
+    markModified();
+  }
+  bubble.style.width = tw;
+  bubble.style.maxWidth = tw;
 
-  // Scale the ENTIRE bubble proportionally (like zoom).
-  // Reference = container width at first render. scale=1 on load,
-  // scales only when window resizes.
-  if (!E.bubbleRefWidth) E.bubbleRefWidth = cw;
-  var scale = cw / E.bubbleRefWidth;
+  // Scale everything proportionally: text + padding + border.
+  // Both editor and tutorial use naturalWidth as reference,
+  // so bubbles are the same PROPORTION of the image in both.
   bubble.style.transform = 'scale(' + scale + ')';
   bubble.style.transformOrigin = 'left top';
 
@@ -102,7 +114,7 @@ function renderBubble(slide) {
     stepHtml = '<div style="text-align:right;font-size:12px;font-weight:700;margin-bottom:6px;letter-spacing:1px;">'
       + '<span style="color:#f6a67e;font-weight:700;">' + slide.step + '</span>'
       + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
-      + '<b style="font-size:24px;padding:8px 0;"></b>';
+      + '<b style="font-size:24px;padding:8px 0;display:block;"></b>';
   }
   $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (slide.text || '') + '</div>';
 }
@@ -111,10 +123,12 @@ function renderBubble(slide) {
 window.addEventListener('resize', function() {
   var bubble = $('editorBubble');
   var container = $('slideContainer');
-  if (!bubble || !container || bubble.style.display === 'none') return;
-  if (!E.bubbleRefWidth) return;
+  var img = $('slideImg');
+  if (!bubble || !container || !img || bubble.style.display === 'none') return;
+  var naturalW = img.naturalWidth || 1;
+  if (!naturalW) return;
   var cw = container.offsetWidth || 1;
-  var scale = cw / E.bubbleRefWidth;
+  var scale = cw / naturalW;
   bubble.style.transform = 'scale(' + scale + ')';
 });
 
