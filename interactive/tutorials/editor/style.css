@@ -52,7 +52,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   border-radius:4px; overflow:visible;
 }
 .slide-container img.slide-img {
-  display:block; max-height:calc(100vh - 160px);
+  display:block; max-height:calc(100vh - 90px);
   width:auto; height:auto; user-select:none; -webkit-user-drag:none;
 }
 .no-slide {
