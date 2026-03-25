@@ -54,6 +54,15 @@ function renderBubble(slide) {
   bubble.style.right = '';
   bubble.style.bottom = '';
 
+  // Apply saved width if exists
+  if (slide.textWidth) {
+    bubble.style.width = slide.textWidth;
+    bubble.style.maxWidth = slide.textWidth;
+  } else {
+    bubble.style.width = '';
+    bubble.style.maxWidth = '300px';
+  }
+
   var tp = slide.textPos;
   var img = $('slideImg');
   var w = img.offsetWidth || 1;

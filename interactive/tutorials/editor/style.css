@@ -100,6 +100,12 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   transition:border-color 0.15s;
 }
 .editor-bubble:hover { border-color:#f6a67e; }
+.bubble-resize {
+  position:absolute; bottom:-5px; left:-5px; width:12px; height:12px;
+  background:#5b8fa8; border-radius:50%; cursor:nw-resize; z-index:21;
+  box-shadow:0 0 4px #00000066;
+}
+.bubble-resize:hover { background:#f6a67e; }
 .editor-bubble.dragging { border-color:#f6a67e; border-style:dashed; }
 .drag-label {
   font-size:9px; color:#f6a67e; font-weight:700; margin-bottom:4px;
