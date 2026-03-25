@@ -70,7 +70,7 @@ function buildSlides(slides, totalSteps) {
       var ps = buildTextPos(s.textPos);
       var tw = s.textWidth || '300px';
       html += '<div class="text' + ac + '" style="' + ps + 'position:absolute;width:' + tw + ';height:fit-content;">'
-        + '<div style="text-align:right;">' + s.step + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
+        + '<div style="text-align:right;"><span style="color:#f6a67e;font-weight:700;">' + s.step + '</span><span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
         + '<b style="font-size:24px;padding:8px 0;"></b>'
         + '<div dir="rtl">' + (s.text || '') + '</div>'
         + '<a class="button" onclick="nextSlide()">המשך</a>'
@@ -89,7 +89,7 @@ function buildSlides(slides, totalSteps) {
       var ps2 = buildTextPos(s.textPos);
       var tw2 = s.textWidth || '300px';
       html += '<div class="text' + ac2 + '" style="' + ps2 + 'position:absolute;width:' + tw2 + ';height:fit-content;">'
-        + '<div style="text-align:right;">' + s.step + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
+        + '<div style="text-align:right;"><span style="color:#f6a67e;font-weight:700;">' + s.step + '</span><span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
         + '<b style="font-size:24px;padding:8px 0;"></b>'
         + '<div dir="rtl">' + (s.text || '') + '</div>'
         + '</div>';

@@ -78,10 +78,12 @@ function renderBubble(slide) {
   var stepHtml = '';
   if (slide.step) {
     var totalSteps = E.data.totalSteps || 32;
-    stepHtml = '<div style="text-align:right;">' + slide.step + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
-      + '<b style="font-size:24px;padding:8px 0;"></b>';
+    stepHtml = '<div style="text-align:right;font-size:16px;font-weight:700;">'
+      + '<span style="color:#f6a67e;">' + slide.step + '</span>'
+      + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
+      + '<b style="font-size:24px;padding:8px 0;display:block;"></b>';
   }
-  $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl">' + (slide.text || '') + '</div>';
+  $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (slide.text || '') + '</div>';
 }
 
 // Convert "calc(50% - 315px)" to pure percentage based on container size
