@@ -18,7 +18,6 @@ function initApp() {
     .then(function(data) {
       slidesData = data;
       buildSlides(data.slides, data.totalSteps);
-      slideMap[data.slides.length - 1] = { icon: 'finish', title: 'סיום' };
       buildNavDots();
       // Color specific step dots orange (keep number, just orange)
       if (window.orangeSteps) {
