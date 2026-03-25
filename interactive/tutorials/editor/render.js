@@ -58,15 +58,13 @@ function renderBubble(slide) {
   var img = $('slideImg');
   var cw = container.offsetWidth || 1;
   var ch = container.offsetHeight || 1;
-  var naturalW = img.naturalWidth || cw;
-  var scale = cw / naturalW;
+  // Reference = container width at first render. scale=1 on load,
+  // bubble appears at full readable size. Only scales on resize.
+  if (!E.bubbleRefWidth) E.bubbleRefWidth = cw;
+  var scale = cw / E.bubbleRefWidth;
 
-  // Render width at natural-space size (bigger), so after scale()
-  // it appears at the correct visual size. Data stays unchanged.
-  var twPx = parseFloat(slide.textWidth) || 300;
-  var renderWidth = twPx / scale;
-  bubble.style.width = renderWidth + 'px';
-  bubble.style.maxWidth = renderWidth + 'px';
+  bubble.style.width = (slide.textWidth || '300px');
+  bubble.style.maxWidth = (slide.textWidth || '300px');
 
   // Scale everything proportionally: text + padding + border.
   // Both editor and tutorial use naturalWidth as reference,
@@ -115,10 +113,9 @@ window.addEventListener('resize', function() {
   var container = $('slideContainer');
   var img = $('slideImg');
   if (!bubble || !container || !img || bubble.style.display === 'none') return;
-  var naturalW = img.naturalWidth || 1;
-  if (!naturalW) return;
+  if (!E.bubbleRefWidth) return;
   var cw = container.offsetWidth || 1;
-  var scale = cw / naturalW;
+  var scale = cw / E.bubbleRefWidth;
   bubble.style.transform = 'scale(' + scale + ')';
 });
 
