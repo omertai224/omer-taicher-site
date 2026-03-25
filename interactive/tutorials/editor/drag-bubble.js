@@ -38,12 +38,11 @@
     if (!mode) return;
 
     if (mode === 'resize') {
-      // Resize: change width based on horizontal drag, save as % of container
+      // Resize: change width in pixels (matching tutorial behavior)
       var dx = e.clientX - startX;
       var newWidth = Math.max(150, Math.min(500, startWidth + dx));
-      var widthPct = (newWidth / cw * 100) + '%';
-      bubble.style.maxWidth = widthPct;
-      bubble.style.width = widthPct;
+      bubble.style.maxWidth = newWidth + 'px';
+      bubble.style.width = newWidth + 'px';
       return;
     }
 
@@ -78,9 +77,7 @@
     if (!s || !s.textPos) return;
 
     if (prevMode === 'resize') {
-      // Save width as % of container for proportional scaling
-      var widthPct = (bubble.offsetWidth / cw * 100) + '%';
-      s.textWidth = widthPct;
+      s.textWidth = bubble.offsetWidth + 'px';
       markModified();
       return;
     }
