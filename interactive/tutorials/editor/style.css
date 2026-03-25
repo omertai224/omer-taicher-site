@@ -20,6 +20,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   padding:6px 10px; cursor:pointer; transition:all 0.15s;
 }
 .tb-icon:hover { background:#1e5f74; color:white; border-color:#5b8fa8; }
+.tb-icon.nav-arrow { padding:4px 6px; border-radius:50%; }
 .tb-icon svg { flex-shrink:0; }
 .topbar-sep { width:1px; height:26px; background:#ffffff15; }
 .topbar-spacer { flex:1; }
