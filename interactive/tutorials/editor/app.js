@@ -40,16 +40,26 @@ function setZoom(z) {
   var ci = $('canvasInner');
   sc.style.transform = 'scale(' + E.zoom + ')';
 
-  // Make canvas-inner big enough for the zoomed content
   if (E.zoom > 1) {
     var img = $('slideImg');
-    var w = (img.offsetWidth || 800) * E.zoom + 60;
-    var h = (img.offsetHeight || 600) * E.zoom + 60;
+    var w = (img.offsetWidth || 800) * E.zoom + 100;
+    var h = (img.offsetHeight || 600) * E.zoom + 100;
+    ci.style.width = w + 'px';
+    ci.style.height = h + 'px';
     ci.style.minWidth = w + 'px';
     ci.style.minHeight = h + 'px';
+    // Align to top-left so scroll reaches all edges
+    ci.style.alignItems = 'flex-start';
+    ci.style.justifyContent = 'flex-start';
+    ci.style.padding = '30px';
   } else {
+    ci.style.width = '';
+    ci.style.height = '';
     ci.style.minWidth = '100%';
     ci.style.minHeight = '100%';
+    ci.style.alignItems = 'center';
+    ci.style.justifyContent = 'center';
+    ci.style.padding = '20px';
   }
 }
 
