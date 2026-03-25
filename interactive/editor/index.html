@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>עורך בועות</title>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <select id="tutorialSelect"><option value="">בחרו הדרכה...</option></select>
+  <button id="btnLoadLocal" title="טען תיקייה מהמחשב">📂 טען מקומי</button>
+  <div class="topbar-sep"></div>
+  <button class="nav-btn" id="btnPrev" title="שקף קודם">&larr;</button>
+  <span class="slide-info" id="slideInfo">---</span>
+  <button class="nav-btn" id="btnNext" title="שקף הבא">&rarr;</button>
+  <div class="topbar-sep"></div>
+  <button id="btnZoomIn" title="הגדל">+</button>
+  <button id="btnZoomOut" title="הקטן">-</button>
+  <button id="btnZoomFit" title="התאם">Fit</button>
+  <div class="topbar-spacer"></div>
+  <button class="save-btn" id="btnSave">💾 שמור</button>
+  <button id="btnDownload">הורד JSON</button>
+  <button id="btnCopy">העתק</button>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <div class="canvas-area" id="canvasArea">
+    <div class="no-slide" id="noSlide">בחרו הדרכה מהתפריט למעלה<br><small>או לחצו "טען מקומי" לפתיחת תיקייה מהמחשב</small></div>
+    <div class="slide-container" id="slideContainer" style="display:none;">
+      <img class="slide-img" id="slideImg">
+      <div class="editor-box" id="editorBox" style="display:none;">
+        <div class="resize-handle tl" data-handle="tl"></div>
+        <div class="resize-handle tr" data-handle="tr"></div>
+        <div class="resize-handle bl" data-handle="bl"></div>
+        <div class="resize-handle br" data-handle="br"></div>
+      </div>
+      <div class="editor-bubble" id="editorBubble" style="display:none;">
+        <div class="drag-label">&#x2725; גררו למיקום</div>
+        <div id="bubblePreview"></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="panel"></div>
+</div>
+
+<!-- Slide Strip -->
+<div class="strip" id="slideStrip"></div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- Scripts (order matters!) -->
+<script src="app.js"></script>
+<script src="loader.js"></script>
+<script src="nav.js"></script>
+<script src="render.js"></script>
+<script src="drag-box.js"></script>
+<script src="drag-bubble.js"></script>
+<script src="panel.js"></script>
+<script src="export.js"></script>
+</body>
+</html>
