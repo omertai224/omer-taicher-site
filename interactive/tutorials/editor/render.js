@@ -59,8 +59,8 @@ function renderBubble(slide) {
     bubble.style.width = slide.textWidth;
     bubble.style.maxWidth = slide.textWidth;
   } else {
-    bubble.style.width = '';
-    bubble.style.maxWidth = '300px';
+    bubble.style.width = '300px';
+    bubble.style.maxWidth = 'none';
   }
 
   var tp = slide.textPos;
@@ -74,7 +74,14 @@ function renderBubble(slide) {
   if (tp.top) bubble.style.top = calcToPercent(tp.top, h);
   if (tp.bottom) bubble.style.bottom = calcToPercent(tp.bottom, h);
 
-  $('bubblePreview').innerHTML = slide.text || '';
+  // Step counter + bold spacer (matches tutorial bubble format)
+  var stepHtml = '';
+  if (slide.step) {
+    var totalSteps = E.data.totalSteps || 32;
+    stepHtml = '<div style="text-align:right;">' + slide.step + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
+      + '<b style="font-size:24px;padding:8px 0;"></b>';
+  }
+  $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl">' + (slide.text || '') + '</div>';
 }
 
 // Convert "calc(50% - 315px)" to pure percentage based on container size
