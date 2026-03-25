@@ -2,7 +2,7 @@
 
 // Load from server (deployed or local dev server)
 function loadFromServer(name) {
-  E.path = '../tutorials/' + name;
+  E.path = '../' + name;
   E.name = name;
   E.imageMap = {};
   E.dirHandle = null;
