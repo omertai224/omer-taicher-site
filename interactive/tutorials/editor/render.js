@@ -65,8 +65,9 @@ function renderBubble(slide) {
 
   var tp = slide.textPos;
   var img = $('slideImg');
-  var w = img.offsetWidth || 1;
-  var h = img.offsetHeight || 1;
+  // Use NATURAL image size for calc conversion (matches tutorial rendering)
+  var w = img.naturalWidth || img.offsetWidth || 1;
+  var h = img.naturalHeight || img.offsetHeight || 1;
 
   // Convert calc() expressions to pure percentages
   if (tp.left) bubble.style.left = calcToPercent(tp.left, w);
