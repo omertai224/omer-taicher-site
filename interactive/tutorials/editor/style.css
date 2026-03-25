@@ -110,7 +110,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 .bubble-resize:hover { background:#f6a67e; }
 .editor-bubble.dragging { border-color:#f6a67e; border-style:dashed; }
 .drag-label { display:none; }
-#bubblePreview { pointer-events:none; }
+#bubblePreview { pointer-events:none; display:flex; flex-direction:column; align-items:flex-start; }
 #bubblePreview span[style*="color:#f6a67e"] { color:#f6a67e !important; }
 
 /* ═══ Panel ═══ */
