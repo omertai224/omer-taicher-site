@@ -61,22 +61,12 @@ function renderBubble(slide) {
   var naturalW = img.naturalWidth || cw;
   var scale = cw / naturalW;
 
-  // Convert old pixel widths to "natural-space" pixels.
-  // Natural-space = the width at the image's natural resolution.
-  // Example: 227px in editor (1200px container) on a 1920px image
-  //   → naturalPx = 227 / (1200/1920) = 363px
-  //   → visual in editor: 363 * 0.625 = 227px (same!)
-  //   → visual in tutorial: 363 * 0.833 = 302px (proportional!)
-  var tw = slide.textWidth || '300px';
-  if (/^\d+(\.\d+)?px$/.test(tw) && scale < 0.95) {
-    var oldPx = parseFloat(tw);
-    var naturalPx = Math.round(oldPx / scale);
-    tw = naturalPx + 'px';
-    slide.textWidth = tw;
-    markModified();
-  }
-  bubble.style.width = tw;
-  bubble.style.maxWidth = tw;
+  // Render width at natural-space size (bigger), so after scale()
+  // it appears at the correct visual size. Data stays unchanged.
+  var twPx = parseFloat(slide.textWidth) || 300;
+  var renderWidth = twPx / scale;
+  bubble.style.width = renderWidth + 'px';
+  bubble.style.maxWidth = renderWidth + 'px';
 
   // Scale everything proportionally: text + padding + border.
   // Both editor and tutorial use naturalWidth as reference,
