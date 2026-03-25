@@ -69,14 +69,13 @@ function renderBubble(slide) {
   var w = img.naturalWidth || img.offsetWidth || 1;
   var h = img.naturalHeight || img.offsetHeight || 1;
 
-  // Convert calc() expressions to pure percentages
-  if (tp.left) bubble.style.left = calcToPercent(tp.left, w);
-  if (tp.top) {
-    bubble.style.top = calcToPercent(tp.top, h);
-  } else if (tp.bottom) {
-    // Convert bottom to top for consistent positioning
-    var bottomPct = parseFloat(calcToPercent(tp.bottom, h));
-    bubble.style.top = (100 - bottomPct) + '%';
+  // Apply position as-is (calc or pure %)
+  // After dragging, positions become pure % and match everywhere
+  if (tp.left) bubble.style.left = tp.left;
+  if (tp.top) bubble.style.top = tp.top;
+  if (tp.bottom) {
+    bubble.style.top = '';
+    bubble.style.bottom = tp.bottom;
   }
 
   // Step counter + bold spacer (matches tutorial bubble format)
