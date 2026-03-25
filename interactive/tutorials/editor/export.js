@@ -1,6 +1,6 @@
 /* ═══ Export & Save ═══ */
 
-// Download slides.json
+// Download slides.json + update cache
 function downloadJSON() {
   if (!E.data) return;
   var json = JSON.stringify(E.data, null, 2);
@@ -10,7 +10,11 @@ function downloadJSON() {
   a.download = 'slides.json';
   a.click();
   URL.revokeObjectURL(a.href);
-  toast('slides.json הורד');
+
+  // Update cache with current edits so refresh keeps them
+  updateCacheSlides(E.name, E.data);
+
+  toast('slides.json הורד + cache עודכן');
 }
 
 // Copy JSON to clipboard
