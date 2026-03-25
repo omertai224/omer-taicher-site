@@ -1,6 +1,6 @@
 /* ═══ Tutorial Loading ═══ */
 
-// Load from server (deployed or local dev server)
+/* ── Server mode: fetch with relative paths ── */
 function loadFromServer(name) {
   E.path = '../' + name;
   E.name = name;
@@ -16,16 +16,67 @@ function loadFromServer(name) {
     .catch(function(err) { toast('שגיאה: ' + err.message); });
 }
 
-// Load from local folder (File System Access API)
-function loadLocal() {
+/* ── Local mode: pick tutorials/ root folder, scan for tutorials ── */
+function loadLocalRoot() {
   if (!window.showDirectoryPicker) {
     toast('הדפדפן לא תומך. השתמשו ב-Chrome או Edge');
     return;
   }
   window.showDirectoryPicker()
+    .then(function(rootHandle) {
+      E.rootHandle = rootHandle;
+      return scanForTutorials(rootHandle);
+    })
+    .then(function(names) {
+      if (names.length === 0) {
+        toast('לא נמצאו הדרכות עם slides.json');
+        return;
+      }
+      populateDropdown(names);
+      toast('נמצאו ' + names.length + ' הדרכות. בחרו מהרשימה');
+    })
+    .catch(function(err) {
+      if (err.name !== 'AbortError') toast('שגיאה: ' + err.message);
+    });
+}
+
+/* ── Scan root folder for subfolders with slides.json ── */
+function scanForTutorials(rootHandle) {
+  var names = [];
+  var iter = rootHandle.values();
+
+  function processEntries() {
+    return iter.next().then(function(result) {
+      if (result.done) {
+        names.sort();
+        return names;
+      }
+      var entry = result.value;
+      if (entry.kind !== 'directory' || entry.name === 'editor') {
+        return processEntries();
+      }
+      // Check if this folder has slides.json
+      return entry.getFileHandle('slides.json')
+        .then(function() {
+          names.push(entry.name);
+        })
+        .catch(function() {
+          // No slides.json — skip
+        })
+        .then(processEntries);
+    });
+  }
+  return processEntries();
+}
+
+/* ── Load a specific tutorial from the root handle ── */
+function loadFromLocalRoot(name) {
+  if (!E.rootHandle) return;
+
+  E.rootHandle.getDirectoryHandle(name)
     .then(function(dirHandle) {
       E.dirHandle = dirHandle;
-      E.name = dirHandle.name;
+      E.name = name;
       E.path = '';
       return dirHandle.getFileHandle('slides.json');
     })
@@ -36,12 +87,10 @@ function loadLocal() {
       return loadLocalImages(E.dirHandle).then(function() { return data; });
     })
     .then(function(data) { onDataLoaded(data); })
-    .catch(function(err) {
-      if (err.name !== 'AbortError') toast('שגיאה: ' + err.message);
-    });
+    .catch(function(err) { toast('שגיאה: ' + err.message); });
 }
 
-// Load all images from local images/ subfolder
+/* ── Load all images from images/ subfolder ── */
 function loadLocalImages(dirHandle) {
   E.imageMap = {};
   return dirHandle.getDirectoryHandle('images')
@@ -68,7 +117,7 @@ function loadLocalImages(dirHandle) {
     });
 }
 
-// Common handler after data is loaded
+/* ── Common handler after data is loaded ── */
 function onDataLoaded(data) {
   E.data = data;
   E.original = JSON.parse(JSON.stringify(data));
@@ -81,7 +130,7 @@ function onDataLoaded(data) {
   toast(E.name + ' נטען (' + data.slides.length + ' שקפים)');
 }
 
-// Get image URL (server or local blob)
+/* ── Get image URL (server path or local blob) ── */
 function getImageUrl(filename) {
   if (E.imageMap[filename]) return E.imageMap[filename];
   return E.path + '/images/' + filename;
