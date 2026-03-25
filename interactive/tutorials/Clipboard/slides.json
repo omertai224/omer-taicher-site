@@ -32,8 +32,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "13.8902%",
-        "top": "54.0854%"
+        "left": "13.5682%",
+        "top": "53.8283%"
       },
       "step": 1,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה",
@@ -52,8 +52,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "26.8269%",
-        "top": "59.399%"
+        "left": "27.1473%",
+        "top": "59.9105%"
       },
       "step": 2,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word",
@@ -65,15 +65,15 @@
       "image": "clipboard-03.png",
       "boxClass": "19",
       "box": {
-        "top": "55.9566%",
-        "left": "51.6334%",
-        "right": "44.1333%",
-        "bottom": "37.9901%"
+        "top": "55.8104%",
+        "left": "51.3579%",
+        "right": "44.0415%",
+        "bottom": "37.5514%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "9.39871%",
-        "top": "49.1701%"
+        "left": "9.07752%",
+        "top": "49.4246%"
       },
       "step": 3,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה",
@@ -92,8 +92,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "35.7614%",
-        "top": "53.5979%"
+        "left": "35.7606%",
+        "top": "52.8667%"
       },
       "step": 4,
       "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה",
@@ -112,8 +112,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "52.8668%",
-        "top": "54.6928%"
+        "left": "53.0274%",
+        "top": "55.203%"
       },
       "step": 5,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
