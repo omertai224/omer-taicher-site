@@ -32,6 +32,12 @@
     var newLeftPx = startBubbleLeft + (e.clientX - startX);
     var newTopPx = startBubbleTop + (e.clientY - startY);
 
+    // Clamp to image bounds
+    var bubbleW = bubble.offsetWidth;
+    var bubbleH = bubble.offsetHeight;
+    newLeftPx = Math.max(0, Math.min(newLeftPx, cw - bubbleW));
+    newTopPx = Math.max(0, Math.min(newTopPx, ch - bubbleH));
+
     var leftPct = (newLeftPx / cw) * 100;
     var topPct = (newTopPx / ch) * 100;
 
@@ -40,15 +46,12 @@
 
     bubble.style.left = leftPct + '%';
     if (usesBottom) {
-      var bubbleH = bubble.getBoundingClientRect().height;
       var bottomPct = 100 - topPct - (bubbleH / ch) * 100;
       bubble.style.top = '';
       bubble.style.bottom = bottomPct + '%';
-      updateBubbleFields(leftPct, null, bottomPct);
     } else {
       bubble.style.bottom = '';
       bubble.style.top = topPct + '%';
-      updateBubbleFields(leftPct, topPct, null);
     }
   });
 
@@ -57,7 +60,6 @@
     dragging = false;
     bubble.classList.remove('dragging');
 
-    // Save to data
     var s = E.data.slides[E.idx];
     if (!s || !s.textPos) return;
 
@@ -75,29 +77,26 @@
   });
 })();
 
-// Nudge bubble by percentage
+// Nudge bubble by percentage (also clamped)
 function nudgeBubble(dLeft, dTop) {
   var s = E.data && E.data.slides[E.idx];
   if (!s || !s.textPos) return;
   saveUndo();
 
-  // Parse current position
   var left = parseFloat(s.textPos.left) || 0;
   var usesBottom = s.textPos.bottom && !s.textPos.top;
 
-  left += dLeft;
+  left = Math.max(0, Math.min(95, left + dLeft));
   s.textPos.left = left + '%';
 
   if (usesBottom) {
     var bottom = parseFloat(s.textPos.bottom) || 0;
-    bottom -= dTop; // dTop positive = move down = decrease bottom
+    bottom = Math.max(0, Math.min(95, bottom - dTop));
     s.textPos.bottom = bottom + '%';
-    updateBubbleFields(left, null, bottom);
   } else {
     var top = parseFloat(s.textPos.top) || 0;
-    top += dTop;
+    top = Math.max(0, Math.min(95, top + dTop));
     s.textPos.top = top + '%';
-    updateBubbleFields(left, top, null);
   }
 
   renderBubble(s);
