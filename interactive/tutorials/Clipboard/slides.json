@@ -619,27 +619,16 @@
     },
     {
       "index": 33,
-      "type": "view",
+      "type": "click",
       "image": "clipboard-32.png",
       "step": 32,
-      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg><div style=\"display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;\"><div style=\"font-size:28px;font-weight:900;color:#ffffff55;text-decoration:line-through;\">15</div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"9 18 15 12 9 6\"/></svg><div style=\"font-size:28px;font-weight:900;color:#f6a67e;\">9</div></div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:13px;color:#ffffffcc;line-height:1.7;\">רק 4 העתקות, בלי לחזור לאמזון אפילו פעם.<br>תארו לכם כמה זמן ואנרגיה תחסכו<br>אם תעבדו ככה <span style=\"color:#f6a67e;font-weight:700;\">כל יום</span>.</div><div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;\"><a onclick=\"showSlides(1)\" style=\"display:inline-block;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);\">&#8634; חזרו להתחלה</a><a href=\"/interactive/\" style=\"display:inline-block;background:#ffffff12;color:white;border:1px solid #ffffff33;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;text-decoration:none;\">להדרכות נוספות &#9654;</a></div></div>",
+      "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg><div style=\"display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;\"><div style=\"font-size:28px;font-weight:900;color:#ffffff55;text-decoration:line-through;\">15</div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"9 18 15 12 9 6\"/></svg><div style=\"font-size:28px;font-weight:900;color:#f6a67e;\">9</div></div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:13px;color:#ffffffcc;line-height:1.7;\">רק 4 העתקות, בלי לחזור לאמזון אפילו פעם.<br>תארו לכם כמה זמן ואנרגיה תחסכו<br>אם תעבדו ככה <span style=\"color:#f6a67e;font-weight:700;\">כל יום</span>.</div><div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;\"><a onclick=\"showSlides(1)\" style=\"display:inline-block;background:#ffffff12;color:white;border:1px solid #ffffff33;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;text-decoration:none;\">&#8634; חזרו להתחלה</a><a href=\"/interactive/\" style=\"display:inline-block;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);text-decoration:none;\">&#9654; להדרכות נוספות</a></div></div>",
       "arrow": "none",
       "textPos": {
         "left": "4.93956%",
         "top": "6.22014%"
       },
       "textWidth": "280px"
-    },
-    {
-      "index": 34,
-      "type": "special",
-      "specialType": "outro",
-      "html": "<style>\n.outro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:#1a1a2e;text-align:center;padding:20px 40px;box-sizing:border-box;gap:16px;}\n.outro-title{font-size:clamp(20px,3vw,38px);font-weight:900;color:white;line-height:1.2;}\n.outro-title span{color:#f6a67e;}\n.outro-sub{color:#ffffffaa;font-size:clamp(13px,1.5vw,17px);line-height:1.7;}\n.outro-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:8px;}\n.outro-btn{padding:14px 32px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform 0.2s,opacity 0.2s;}\n.outro-btn:hover{opacity:0.9;transform:scale(1.03);}\n.outro-btn-primary{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;box-shadow:0 8px 32px rgba(246,166,126,0.4);}\n.outro-btn-secondary{background:#ffffff12;color:white;border:1px solid #ffffff33;}\n</style>\n<div class=\"outro-wrap\">\n<svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg>\n<div class=\"outro-title\">עכשיו אתם יודעים<br><span>לעבוד חכם יותר</span></div>\n<div class=\"outro-sub\">היסטוריית הלוח חוסכת זמן בכל פעם שאתם מעתיקים.<br>נסו את זה בעבודה היומית שלכם!</div>\n<div class=\"outro-btns\">\n<a class=\"outro-btn outro-btn-primary\" onclick=\"showSlides(1)\">&#8634; חזרו להתחלה</a>\n<a class=\"outro-btn outro-btn-secondary\" href=\"/interactive/\">להדרכות נוספות &#9654;</a>\n</div>\n</div>"
-    },
-    {
-      "index": 35,
-      "type": "outro",
-      "title": "תודה שהשתתפתם!"
     }
   ]
 }
