@@ -76,8 +76,7 @@ function buildSlides(slides, totalSteps) {
       var ac = s.arrow && s.arrow !== 'none' ? ' ' + s.arrow : '';
       var ps = buildTextPos(s.textPos);
       var tw = s.textWidth || '300px';
-      var mw = tw.indexOf('%') > -1 ? 'max-width:' + tw + ';' : '';
-      html += '<div class="text' + ac + '" style="' + ps + 'position:absolute;width:' + tw + ';' + mw + 'height:fit-content;">'
+      html += '<div class="text' + ac + '" style="' + ps + 'position:absolute;width:' + tw + ';height:fit-content;">'
         + '<div style="text-align:right;">' + s.step + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
         + '<b style="font-size:24px;padding:8px 0;"></b>'
         + '<div dir="rtl">' + (s.text || '') + '</div>'
@@ -96,8 +95,7 @@ function buildSlides(slides, totalSteps) {
       var ac2 = s.arrow && s.arrow !== 'none' ? ' ' + s.arrow : '';
       var ps2 = buildTextPos(s.textPos);
       var tw2 = s.textWidth || '300px';
-      var mw2 = tw2.indexOf('%') > -1 ? 'max-width:' + tw2 + ';' : '';
-      html += '<div class="text' + ac2 + '" style="' + ps2 + 'position:absolute;width:' + tw2 + ';' + mw2 + 'height:fit-content;">'
+      html += '<div class="text' + ac2 + '" style="' + ps2 + 'position:absolute;width:' + tw2 + ';height:fit-content;">'
         + '<div style="text-align:right;">' + s.step + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
         + '<b style="font-size:24px;padding:8px 0;"></b>'
         + '<div dir="rtl">' + (s.text || '') + '</div>'
