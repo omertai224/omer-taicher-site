@@ -71,8 +71,13 @@ function renderBubble(slide) {
 
   // Convert calc() expressions to pure percentages
   if (tp.left) bubble.style.left = calcToPercent(tp.left, w);
-  if (tp.top) bubble.style.top = calcToPercent(tp.top, h);
-  if (tp.bottom) bubble.style.bottom = calcToPercent(tp.bottom, h);
+  if (tp.top) {
+    bubble.style.top = calcToPercent(tp.top, h);
+  } else if (tp.bottom) {
+    // Convert bottom to top for consistent positioning
+    var bottomPct = parseFloat(calcToPercent(tp.bottom, h));
+    bubble.style.top = (100 - bottomPct) + '%';
+  }
 
   // Step counter + bold spacer (matches tutorial bubble format)
   var stepHtml = '';
