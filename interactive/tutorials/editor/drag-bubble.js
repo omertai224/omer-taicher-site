@@ -11,6 +11,7 @@
     if (!s || !s.textPos) return;
 
     dragging = true;
+    saveUndo();
     startX = e.clientX;
     startY = e.clientY;
     containerRect = document.getElementById('slideContainer').getBoundingClientRect();
@@ -78,6 +79,7 @@
 function nudgeBubble(dLeft, dTop) {
   var s = E.data && E.data.slides[E.idx];
   if (!s || !s.textPos) return;
+  saveUndo();
 
   // Parse current position
   var left = parseFloat(s.textPos.left) || 0;
