@@ -126,11 +126,32 @@ function loadFromLocalRoot(name) {
     try {
       var data = JSON.parse(reader.result);
       onDataLoaded(data);
+      // Cache for page refresh
+      cacheTutorial(name, data, tut.images);
     } catch (err) {
       toast('שגיאה בקריאת JSON: ' + err.message);
     }
   };
   reader.readAsText(tut.slides);
+}
+
+/* ── Restore from cache (after page refresh) ── */
+function tryRestoreFromCache() {
+  loadFromCache().then(function(cached) {
+    if (!cached) return;
+    E.name = cached.name;
+    E.path = '';
+    E.imageMap = {};
+    // Convert base64 data URLs back to usable URLs
+    for (var imgName in cached.images) {
+      E.imageMap[imgName] = cached.images[imgName]; // data URLs work as img src
+    }
+    onDataLoaded(cached.slides);
+    addToDropdown(cached.name);
+    $('tutorialSelect').value = cached.name;
+    // Mark as local so dropdown uses local loading
+    E.localTutorials = {};
+  });
 }
 
 /* ── Common handler after data is loaded ── */

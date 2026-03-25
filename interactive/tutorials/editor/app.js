@@ -112,9 +112,10 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   if (E.isLocal) {
-    // ── Local mode: show welcome + prompt to load folder ──
+    // ── Local mode: try to restore from cache first ──
+    tryRestoreFromCache();
     $('noSlide').innerHTML = '<div style="font-size:20px;color:#f6a67e;margin-bottom:16px;">עורך בועות</div>'
-      + '<div style="margin-bottom:12px;color:#ffffffaa;">לחצו "טען מקומי" בסרגל למעלה</div>'
+      + '<div style="margin-bottom:12px;color:#ffffffaa;">לחצו "טען" בסרגל למעלה</div>'
       + '<div style="font-size:12px;color:#ffffff55;">בחרו כל תיקייה בריפו. העורך ימצא את ההדרכות אוטומטית</div>';
   } else {
     // ── Server mode: populate dropdown, support URL param ──
