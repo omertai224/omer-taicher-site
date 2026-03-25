@@ -102,7 +102,7 @@ function renderBubble(slide) {
     stepHtml = '<div style="text-align:right;font-size:12px;font-weight:700;margin-bottom:6px;letter-spacing:1px;">'
       + '<span style="color:#f6a67e;font-weight:700;">' + slide.step + '</span>'
       + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
-      + '<b style="font-size:24px;padding:8px 0;display:block;"></b>';
+      + '<b style="font-size:24px;padding:8px 0;"></b>';
   }
   $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (slide.text || '') + '</div>';
 }
