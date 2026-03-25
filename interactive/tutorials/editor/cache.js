@@ -17,11 +17,13 @@ function openCacheDB() {
 
 // Save tutorial to IndexedDB
 function cacheTutorial(name, slidesJson, imageFiles) {
-  // Step 1: read ALL images to data URLs FIRST (async)
+  // Step 1: read ALL images to data URLs
   var imgData = {};
   var promises = [];
+  var count = 0;
 
   for (var imgName in imageFiles) {
+    count++;
     (function(n, file) {
       var p = new Promise(function(resolve) {
         var reader = new FileReader();
@@ -36,8 +38,11 @@ function cacheTutorial(name, slidesJson, imageFiles) {
     })(imgName, imageFiles[imgName]);
   }
 
-  // Step 2: AFTER all images read, open transaction and save everything
+  toast('שומר ' + count + ' תמונות...');
+
+  // Step 2: save everything to IndexedDB
   Promise.all(promises).then(function() {
+    toast('תמונות נקראו. שומר ל-cache...');
     return openCacheDB();
   }).then(function(db) {
     var tx = db.transaction('data', 'readwrite');
@@ -46,10 +51,13 @@ function cacheTutorial(name, slidesJson, imageFiles) {
     store.put(JSON.stringify(slidesJson), 'slides');
     store.put(imgData, 'images');
     tx.oncomplete = function() {
-      console.log('Cache saved: ' + name + ' (' + Object.keys(imgData).length + ' images)');
+      toast('נשמר! ' + Object.keys(imgData).length + ' תמונות. רענון יטען אוטומטית');
+    };
+    tx.onerror = function(e) {
+      toast('שגיאת שמירה: ' + (e.target.error || 'unknown'));
     };
   }).catch(function(err) {
-    console.error('Cache error:', err);
+    toast('שגיאת cache: ' + err.message);
   });
 }
 
@@ -68,10 +76,11 @@ function loadFromCache() {
           resolve(null);
           return;
         }
+        var imgs = imagesReq.result || {};
         resolve({
           name: nameReq.result,
           slides: JSON.parse(slidesReq.result),
-          images: imagesReq.result || {}
+          images: imgs
         });
       };
       tx.onerror = function() { resolve(null); };
