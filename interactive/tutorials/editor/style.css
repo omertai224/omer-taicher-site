@@ -148,6 +148,20 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   transition:all 0.15s; margin-top:-1px;
 }
 .orange-btn:hover { background:#f6a67e22; }
+.mic-btn {
+  float:left; cursor:pointer; padding:2px 5px; border-radius:4px;
+  border:1px solid #ffffff22; color:#ffffff88; transition:all 0.15s;
+  margin-top:-1px;
+}
+.mic-btn:hover { color:#ff6b6b; border-color:#ff6b6b55; }
+.mic-btn.recording {
+  color:#ff6b6b; border-color:#ff6b6b; background:#ff6b6b22;
+  animation:mic-pulse 1s ease infinite;
+}
+@keyframes mic-pulse {
+  0%,100% { box-shadow:none; }
+  50% { box-shadow:0 0 8px #ff6b6b66; }
+}
 .text-editor span[style*="color:#f6a67e"] { color:#f6a67e !important; }
 .panel .type-btns { display:flex; gap:3px; margin-top:3px; }
 .panel .type-btn {
