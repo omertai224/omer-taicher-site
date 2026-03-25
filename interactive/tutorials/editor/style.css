@@ -37,7 +37,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 /* ═══ Canvas ═══ */
 .canvas-area {
   flex:1; background:#0d1117; position:relative;
-  overflow:auto; direction:ltr;
+  overflow-x:auto; overflow-y:hidden; direction:ltr;
 }
 .canvas-inner {
   min-width:100%; min-height:100%;
