@@ -52,13 +52,23 @@ function updateStrip() {
   }
 }
 
-// Update top bar info
+// Update top bar info — show step/totalSteps (not slide index)
 function updateInfo() {
   var s = E.data.slides[E.idx];
-  var total = E.data.slides.length;
-  var info = (E.idx + 1) + '/' + total;
-  if (s.step) info += '  Step ' + s.step;
-  info += '  [' + (s.type || 'html') + ']';
+  var info = '';
+  if (s.step) {
+    var totalSteps = E.data.totalSteps || countSteps();
+    info = 'צעד ' + s.step + '/' + totalSteps;
+  } else {
+    info = (s.type || s.specialType || 'מיוחד');
+  }
   if (E.modified[E.idx]) info += ' *';
   $('slideInfo').textContent = info;
+}
+
+// Count total step slides (not special)
+function countSteps() {
+  var n = 0;
+  E.data.slides.forEach(function(s) { if (s.step) n++; });
+  return n;
 }
