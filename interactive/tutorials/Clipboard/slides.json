@@ -456,7 +456,7 @@
         "top": "47.7829%"
       },
       "step": 23,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> מספר ההזמנה</span>",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> תאריך ההזמנה</span>",
       "textWidth": "224px"
     },
     {
@@ -472,12 +472,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "52.993%",
-        "top": "55.1287%"
+        "left": "53.1263%",
+        "top": "50.2444%"
       },
       "step": 24,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">התאריך</span>",
-      "textWidth": "200px"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
+      "textWidth": "218px"
     },
     {
       "index": 26,
@@ -492,11 +492,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "44.1609%",
-        "top": "62.8461%"
+        "left": "43.7603%",
+        "top": "61.3588%"
       },
       "step": 25,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
       "textWidth": "203px"
     },
     {
