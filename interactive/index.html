@@ -439,7 +439,7 @@
   <div class="pain-inner">
     <div class="pain-eyebrow">לעצמאים שעובדים עם מחשב</div>
     <h1 class="pain-title"><span class="pain-title-1">כשהמחשב תקוע –</span><br><span class="pain-title-2">העבודה נתקעת.</span><br><em class="pain-title-em">ואתם לא יודעים מה לעשות.</em></h1>
-    <p class="pain-sub">עורכי דין, מטפלים, יועצים, רואי חשבון.<br>בעלי עסקים, ובכלל, אנשים שהמחשב הוא כלי העבודה שלהם.<br>כשמשהו משתבש, זה לא מרגיש כמו תקלה טכנית.<br>זה מרגיש כאילו לקחו לכם את הידיים.</p>
+    <p class="pain-sub">עורכי דין, מטפלים, יועצים, רואי חשבון.<br><strong>ובכלל, אנשים שהמחשב הוא כלי העבודה שלהם.</strong><br>כשמשהו משתבש, זה לא מרגיש כמו תקלה טכנית.<br>זה מרגיש כאילו לקחו לכם את הידיים.</p>
 
     <div class="pain-grid">
       <div class="pain-card">
@@ -486,7 +486,7 @@
 <section class="how-section">
   <div class="how-inner">
     <span class="section-eyebrow how-eyebrow">איך זה עובד</span>
-    <h2 class="section-title how-title">משלמים פעם אחת. <span style="color:#f6a67e;">מקבלים לצמיתות.</span></h2>
+    <h2 class="section-title how-title">משלמים פעם אחת. <span style="color:var(--orange-deep);">מקבלים לצמיתות.</span></h2>
     <p class="section-sub how-sub">בלי הרשמה, בלי סיסמאות, בלי חשבונות לנהל.<br>רק תשלום ואימייל. ההדרכה אצלכם.</p>
 
     <div class="steps-grid">
@@ -729,8 +729,8 @@ function displayProducts(products) {
   var titleEl = document.getElementById('shop-title');
   if (titleEl) {
     if (active.length === 0) titleEl.innerHTML = 'עדיין אין הדרכות זמינות';
-    else if (active.length === 1) titleEl.innerHTML = 'הדרכה אחת <span style="color:#f6a67e;">זמינה עכשיו</span>';
-    else titleEl.innerHTML = active.length + ' הדרכות <span style="color:#f6a67e;">זמינות עכשיו</span>';
+    else if (active.length === 1) titleEl.innerHTML = 'הדרכה אחת <span style="color:#e8854a;">זמינה עכשיו</span>';
+    else titleEl.innerHTML = active.length + ' הדרכות <span style="color:#e8854a;">זמינות עכשיו</span>';
   }
   var visible = products.filter(function(p) { return p.status !== 'hidden'; });
   renderProducts(visible);
