@@ -32,12 +32,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "8.75133%",
-        "top": "43.8566%"
+        "left": "calc(50.0233% - 315px)",
+        "top": "calc(51.0185% - 25px)"
       },
       "step": 1,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה",
-      "textWidth": "250px"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה"
     },
     {
       "index": 2,
@@ -52,12 +51,11 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "27.3087%",
-        "top": "59.6547%"
+        "left": "calc(24.4186% - 25px)",
+        "bottom": "calc(5.87037% + 15px)"
       },
       "step": 2,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word",
-      "textWidth": "238px"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word"
     },
     {
       "index": 3,
@@ -72,12 +70,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "9.23812%",
-        "top": "47.1241%"
+        "left": "calc(52.1163% - 315px)",
+        "top": "calc(58.8889% - 25px)"
       },
       "step": 3,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה",
-      "textWidth": "221px"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה"
     },
     {
       "index": 4,
@@ -92,12 +89,11 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "35.7614%",
-        "top": "53.0864%"
+        "left": "calc(27.7326% - 25px)",
+        "bottom": "calc(6.14815% + 15px)"
       },
       "step": 4,
-      "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה",
-      "textWidth": "232px"
+      "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה"
     },
     {
       "index": 5,
@@ -112,12 +108,11 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "52.8668%",
-        "top": "56.2274%"
+        "left": "calc(53.3488% + 15px)",
+        "top": "calc(35% - 25px)"
       },
       "step": 5,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
-      "textWidth": "225px"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה"
     },
     {
       "index": 6,
