@@ -35,6 +35,13 @@ a { word-break: break-all; }
   position: relative;
 }
 
+/* image must be block to eliminate inline baseline gap —
+   ensures container height == exact image height,
+   matching the editor's slideContainer (also block img) */
+.image-center > img {
+  display: block;
+}
+
 /* ─── כפתורי ניווט ─── */
 .prev, .next {
   cursor: pointer;

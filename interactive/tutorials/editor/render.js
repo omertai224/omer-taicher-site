@@ -65,12 +65,26 @@ function renderBubble(slide) {
 
   var tp = slide.textPos;
   var img = $('slideImg');
-  // Use NATURAL image size for calc conversion (matches tutorial rendering)
-  var w = img.naturalWidth || img.offsetWidth || 1;
-  var h = img.naturalHeight || img.offsetHeight || 1;
+  var container = $('slideContainer');
+  var cw = container.offsetWidth || 1;
+  var ch = container.offsetHeight || 1;
 
-  // Apply position as-is (calc or pure %)
-  // After dragging, positions become pure % and match everywhere
+  // Auto-convert calc() to pure % using the rendered container size.
+  // calc(X% - Npx) doesn't scale across different container sizes,
+  // causing mismatch between editor and tutorial. Pure % scales correctly.
+  if (tp.left && /calc\(/.test(tp.left)) {
+    tp.left = calcToPercent(tp.left, cw);
+    markModified();
+  }
+  if (tp.top && /calc\(/.test(tp.top)) {
+    tp.top = calcToPercent(tp.top, ch);
+    markModified();
+  }
+  if (tp.bottom && /calc\(/.test(tp.bottom)) {
+    tp.bottom = calcToPercent(tp.bottom, ch);
+    markModified();
+  }
+
   if (tp.left) bubble.style.left = tp.left;
   if (tp.top) bubble.style.top = tp.top;
   if (tp.bottom) {
