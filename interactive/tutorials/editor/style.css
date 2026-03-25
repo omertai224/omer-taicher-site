@@ -116,7 +116,7 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 
 /* ═══ Panel ═══ */
 .panel {
-  width:210px; background:#1a2540; border-left:1px solid #ffffff15;
+  width:280px; background:#1a2540; border-left:1px solid #ffffff15;
   overflow-y:auto; padding:10px; font-size:12px;
 }
 .panel h3 {
