@@ -45,6 +45,10 @@ function buildPanel() {
     + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט <span class="orange-btn" onclick="toggleOrange()" title="סמנו מילים ולחצו להדגשה בכתום">&#x25CF; כתום</span> <span class="orange-btn" onclick="insertLineBreak()" title="שורה חדשה" style="color:#5b8fa8;border-color:#5b8fa855;">&#x23CE; שורה</span></h3>'
     + '<div id="pText" class="text-editor" contenteditable="true" oninput="applyText()"></div>'
 
+    // ── Notes ──
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> הערות <span class="orange-btn" onclick="addNote()" style="color:#fbbf24;border-color:#fbbf2455;">+ הערה</span></h3>'
+    + '<div id="notesList"></div>'
+
     // ── Actions ──
     + '<div class="action-btns">'
     + '<div class="action-btn undo" onclick="undo()" id="btnUndo" title="Ctrl+Z"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.64-8.36L1 10"/></svg> ביטול</div>'
@@ -63,6 +67,7 @@ function updatePanel(s) {
 
   $('pText').innerHTML = s.text || '';
   updateUndoBtn();
+  renderNotes(s);
 }
 
 // ── Toggle orange highlight on selected text ──
