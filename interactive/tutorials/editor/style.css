@@ -214,7 +214,11 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 .note-marker:hover { transform:scale(1.2); }
 .note-num { font-size:11px; font-weight:900; color:#1a1a2e; font-family:'Rubik',sans-serif; }
 .note-entry {
-  display:flex; gap:4px; align-items:center; margin:3px 0;
+  margin:4px 0; background:#fbbf2408; border:1px solid #fbbf2418;
+  border-radius:6px; padding:4px;
+}
+.note-header {
+  display:flex; gap:4px; align-items:center; margin-bottom:3px;
 }
 .note-badge {
   min-width:18px; height:18px; border-radius:50%; background:#fbbf24;
@@ -222,13 +226,14 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   align-items:center; justify-content:center; flex-shrink:0;
 }
 .note-input {
-  flex:1; background:#0f1a2e; border:1px solid #fbbf2433; border-radius:4px;
-  color:#fbbf24; padding:3px 6px; font-family:'Rubik',sans-serif;
-  font-size:10px; direction:rtl; outline:none;
+  width:100%; background:#0f1a2e; border:1px solid #fbbf2433; border-radius:4px;
+  color:#fbbf24; padding:4px 6px; font-family:'Rubik',sans-serif;
+  font-size:10px; direction:rtl; outline:none; resize:vertical;
+  min-height:36px;
 }
 .note-input:focus { border-color:#fbbf24; }
 .note-del {
-  color:#ff6b6b88; cursor:pointer; font-size:14px; padding:0 2px;
+  color:#ff6b6b88; cursor:pointer; font-size:14px; padding:0 2px; margin-right:auto;
 }
 .note-del:hover { color:#ff6b6b; }
 
