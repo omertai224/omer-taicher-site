@@ -399,11 +399,12 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "36.5384%",
-        "top": "58.4826%"
+        "left": "44.8032%",
+        "top": "59.3308%"
       },
       "step": 20,
-      "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>"
+      "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>",
+      "textWidth": "239px"
     },
     {
       "index": 22,
@@ -609,12 +610,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "3.03775%",
-        "top": "1.40769%"
+        "left": "71.4271%",
+        "top": "38.9873%"
       },
       "step": 31,
       "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה. כן, גם תמונות נשמרות!",
-      "textWidth": "259px"
+      "textWidth": "189px"
     },
     {
       "index": 33,
@@ -624,10 +625,10 @@
       "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg><div style=\"display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;\"><div style=\"font-size:28px;font-weight:900;color:#ffffff55;text-decoration:line-through;\">15</div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"9 18 15 12 9 6\"/></svg><div style=\"font-size:28px;font-weight:900;color:#f6a67e;\">9</div></div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:13px;color:#ffffffcc;line-height:1.7;\">רק 4 העתקות, בלי לחזור לאמזון אפילו פעם.<br>תארו לכם כמה זמן ואנרגיה תחסכו<br>אם תעבדו ככה <span style=\"color:#f6a67e;font-weight:700;\">כל יום</span>.</div><div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;\"><a onclick=\"showSlides(1)\" style=\"display:inline-block;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);\">&#8634; חזרו להתחלה</a><a href=\"/interactive/\" style=\"display:inline-block;background:#ffffff12;color:white;border:1px solid #ffffff33;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;text-decoration:none;\">להדרכות נוספות &#9654;</a></div></div>",
       "arrow": "none",
       "textPos": {
-        "left": "50%",
-        "top": "30%"
+        "left": "4.93956%",
+        "top": "6.22014%"
       },
-      "textWidth": "350px"
+      "textWidth": "280px"
     },
     {
       "index": 34,
