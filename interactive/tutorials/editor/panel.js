@@ -1,49 +1,53 @@
 /* ═══ Side Panel — Minimal ═══ */
 
 function buildPanel() {
+  var arrowSvg = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">';
+  var arrL = arrowSvg + '<polyline points="19 12 5 12"/><polyline points="12 19 5 12 12 5"/></svg>';
+  var arrR = arrowSvg + '<polyline points="5 12 19 12"/><polyline points="12 5 19 12 12 19"/></svg>';
+  var arrU = arrowSvg + '<polyline points="12 19 12 5"/><polyline points="5 12 12 5 19 12"/></svg>';
+  var arrD = arrowSvg + '<polyline points="12 5 12 19"/><polyline points="19 12 12 19 5 12"/></svg>';
+
   $('panel').innerHTML = ''
     // ── Slide Info ──
-    + '<h3>שקף <span id="pInfo" style="color:#ffffffaa;font-weight:400;"></span></h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> שקף <span id="pInfo" style="color:#ffffff77;font-weight:400;font-size:10px;"></span></h3>'
     + '<div class="type-btns">'
-    + '<div class="type-btn" data-type="click" onclick="setSlideType(\'click\')">click</div>'
-    + '<div class="type-btn" data-type="view" onclick="setSlideType(\'view\')">view</div>'
-    + '<div class="type-btn" data-type="right-click" onclick="setSlideType(\'right-click\')">R-click</div>'
-    + '<div class="type-btn" data-type="double-click" onclick="setSlideType(\'double-click\')">dbl</div>'
+    + '<div class="type-btn" data-type="click" onclick="setSlideType(\'click\')" title="שקף עם לחיצה על המסגרת הכתומה">לחיצה</div>'
+    + '<div class="type-btn" data-type="view" onclick="setSlideType(\'view\')" title="שקף צפייה בלבד, כפתור המשך">צפייה</div>'
     + '</div>'
 
     // ── Box ──
-    + '<h3>מסגרת כתומה</h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> מסגרת כתומה</h3>'
     + '<div class="nudge-btns">'
-    + '<div class="nudge-btn" onclick="nudgeBox(-1,0)">&larr;</div>'
-    + '<div class="nudge-btn" onclick="nudgeBox(0,-1)">&uarr;</div>'
-    + '<div class="nudge-btn" onclick="nudgeBox(0,1)">&darr;</div>'
-    + '<div class="nudge-btn" onclick="nudgeBox(1,0)">&rarr;</div>'
-    + '<div class="nudge-btn sm" onclick="nudgeBox(-0.2,0)" title="עדין">&lsaquo;</div>'
-    + '<div class="nudge-btn sm" onclick="nudgeBox(0,-0.2)" title="עדין">&#x2303;</div>'
-    + '<div class="nudge-btn sm" onclick="nudgeBox(0,0.2)" title="עדין">&#x2304;</div>'
-    + '<div class="nudge-btn sm" onclick="nudgeBox(0.2,0)" title="עדין">&rsaquo;</div>'
+    + '<div class="nudge-btn" onclick="nudgeBox(-1,0)">' + arrL + '</div>'
+    + '<div class="nudge-btn" onclick="nudgeBox(0,-1)">' + arrU + '</div>'
+    + '<div class="nudge-btn" onclick="nudgeBox(0,1)">' + arrD + '</div>'
+    + '<div class="nudge-btn" onclick="nudgeBox(1,0)">' + arrR + '</div>'
+    + '<div class="nudge-btn sm" onclick="nudgeBox(-0.2,0)" title="עדין">' + arrL + '</div>'
+    + '<div class="nudge-btn sm" onclick="nudgeBox(0,-0.2)" title="עדין">' + arrU + '</div>'
+    + '<div class="nudge-btn sm" onclick="nudgeBox(0,0.2)" title="עדין">' + arrD + '</div>'
+    + '<div class="nudge-btn sm" onclick="nudgeBox(0.2,0)" title="עדין">' + arrR + '</div>'
     + '</div>'
 
     // ── Bubble ──
-    + '<h3>בועת טקסט</h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> בועת טקסט</h3>'
     + '<div class="nudge-btns">'
-    + '<div class="nudge-btn" onclick="nudgeBubble(-1,0)">&larr;</div>'
-    + '<div class="nudge-btn" onclick="nudgeBubble(0,-1)">&uarr;</div>'
-    + '<div class="nudge-btn" onclick="nudgeBubble(0,1)">&darr;</div>'
-    + '<div class="nudge-btn" onclick="nudgeBubble(1,0)">&rarr;</div>'
-    + '<div class="nudge-btn sm" onclick="nudgeBubble(-0.2,0)" title="עדין">&lsaquo;</div>'
-    + '<div class="nudge-btn sm" onclick="nudgeBubble(0,-0.2)" title="עדין">&#x2303;</div>'
-    + '<div class="nudge-btn sm" onclick="nudgeBubble(0,0.2)" title="עדין">&#x2304;</div>'
-    + '<div class="nudge-btn sm" onclick="nudgeBubble(0.2,0)" title="עדין">&rsaquo;</div>'
+    + '<div class="nudge-btn" onclick="nudgeBubble(-1,0)">' + arrL + '</div>'
+    + '<div class="nudge-btn" onclick="nudgeBubble(0,-1)">' + arrU + '</div>'
+    + '<div class="nudge-btn" onclick="nudgeBubble(0,1)">' + arrD + '</div>'
+    + '<div class="nudge-btn" onclick="nudgeBubble(1,0)">' + arrR + '</div>'
+    + '<div class="nudge-btn sm" onclick="nudgeBubble(-0.2,0)" title="עדין">' + arrL + '</div>'
+    + '<div class="nudge-btn sm" onclick="nudgeBubble(0,-0.2)" title="עדין">' + arrU + '</div>'
+    + '<div class="nudge-btn sm" onclick="nudgeBubble(0,0.2)" title="עדין">' + arrD + '</div>'
+    + '<div class="nudge-btn sm" onclick="nudgeBubble(0.2,0)" title="עדין">' + arrR + '</div>'
     + '</div>'
 
     // ── Text ──
-    + '<h3>טקסט</h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט</h3>'
     + '<textarea id="pText" oninput="applyText()"></textarea>'
 
     // ── Actions ──
     + '<div class="action-btns">'
-    + '<div class="action-btn undo" onclick="undo()" id="btnUndo" title="Ctrl+Z">&#x21A9; ביטול</div>'
+    + '<div class="action-btn undo" onclick="undo()" id="btnUndo" title="Ctrl+Z"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.64-8.36L1 10"/></svg> ביטול</div>'
     + '<div class="action-btn reset" onclick="resetSlide()">אפס שקף</div>'
     + '</div>';
 }

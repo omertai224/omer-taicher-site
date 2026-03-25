@@ -35,9 +35,24 @@ function markModified(idx) {
 
 // Zoom — scale the container, canvas-area scrolls to let you pan
 function setZoom(z) {
-  E.zoom = Math.max(0.5, Math.min(4, z));
+  E.zoom = Math.max(0.5, Math.min(5, z));
   $('slideContainer').style.transform = 'scale(' + E.zoom + ')';
 }
+
+// Ctrl+scroll = zoom, plain scroll = pan
+document.addEventListener('DOMContentLoaded', function() {
+  var canvas = document.getElementById('canvasArea');
+  if (canvas) {
+    canvas.addEventListener('wheel', function(e) {
+      if (e.ctrlKey) {
+        e.preventDefault();
+        var delta = e.deltaY > 0 ? 0.9 : 1.1;
+        setZoom(E.zoom * delta);
+      }
+      // Without Ctrl: normal scroll = pan (default browser behavior)
+    }, { passive: false });
+  }
+});
 
 // Init — runs after ALL scripts are loaded
 window.addEventListener('DOMContentLoaded', function() {
