@@ -42,7 +42,7 @@ function buildPanel() {
     + '</div>'
 
     // ── Text ──
-    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט <span class="orange-btn" onclick="toggleOrange()" title="סמנו מילים ולחצו להדגשה בכתום">&#x25CF; כתום</span></h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט <span class="orange-btn" onclick="toggleOrange()" title="סמנו מילים ולחצו להדגשה בכתום">&#x25CF; כתום</span> <span class="orange-btn" onclick="insertLineBreak()" title="שורה חדשה" style="color:#5b8fa8;border-color:#5b8fa855;">&#x23CE; שורה</span></h3>'
     + '<div id="pText" class="text-editor" contenteditable="true" oninput="applyText()"></div>'
 
     // ── Actions ──
@@ -100,6 +100,30 @@ function toggleOrange() {
   sel.removeAllRanges();
   applyText();
 }
+
+// ── Line break: insert <br> at cursor ──
+function insertLineBreak() {
+  var editor = $('pText');
+  editor.focus();
+  document.execCommand('insertHTML', false, '<br>');
+  applyText();
+}
+
+// Enter key in text editor = <br> not <div>
+document.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    var editor = document.getElementById('pText');
+    if (editor) {
+      editor.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          document.execCommand('insertHTML', false, '<br>');
+          applyText();
+        }
+      });
+    }
+  }, 500);
+});
 
 // ── Apply from panel ──
 function applyText() {
