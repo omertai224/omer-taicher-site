@@ -15,38 +15,45 @@ function openCacheDB() {
   });
 }
 
-// Save current tutorial to IndexedDB
+// Save tutorial to IndexedDB
 function cacheTutorial(name, slidesJson, imageFiles) {
-  openCacheDB().then(function(db) {
+  // Step 1: read ALL images to data URLs FIRST (async)
+  var imgData = {};
+  var promises = [];
+
+  for (var imgName in imageFiles) {
+    (function(n, file) {
+      var p = new Promise(function(resolve) {
+        var reader = new FileReader();
+        reader.onload = function() {
+          imgData[n] = reader.result;
+          resolve();
+        };
+        reader.onerror = function() { resolve(); };
+        reader.readAsDataURL(file);
+      });
+      promises.push(p);
+    })(imgName, imageFiles[imgName]);
+  }
+
+  // Step 2: AFTER all images read, open transaction and save everything
+  Promise.all(promises).then(function() {
+    return openCacheDB();
+  }).then(function(db) {
     var tx = db.transaction('data', 'readwrite');
     var store = tx.objectStore('data');
     store.put(name, 'name');
     store.put(JSON.stringify(slidesJson), 'slides');
-
-    // Store images as blobs
-    var imgData = {};
-    var promises = [];
-    for (var imgName in imageFiles) {
-      (function(n, file) {
-        var p = new Promise(function(resolve) {
-          var reader = new FileReader();
-          reader.onload = function() {
-            imgData[n] = reader.result; // base64 data URL
-            resolve();
-          };
-          reader.readAsDataURL(file);
-        });
-        promises.push(p);
-      })(imgName, imageFiles[imgName]);
-    }
-
-    Promise.all(promises).then(function() {
-      store.put(imgData, 'images');
-    });
-  }).catch(function() {});
+    store.put(imgData, 'images');
+    tx.oncomplete = function() {
+      console.log('Cache saved: ' + name + ' (' + Object.keys(imgData).length + ' images)');
+    };
+  }).catch(function(err) {
+    console.error('Cache error:', err);
+  });
 }
 
-// Load cached tutorial on page load
+// Load cached tutorial
 function loadFromCache() {
   return openCacheDB().then(function(db) {
     return new Promise(function(resolve) {
