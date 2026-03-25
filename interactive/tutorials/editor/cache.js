@@ -114,6 +114,22 @@ function loadCachedTutorial(name) {
   }).catch(function() { return null; });
 }
 
+// Update just the slides data in cache (after editing)
+function updateCacheSlides(name, slidesData) {
+  if (!name) return;
+  openCacheDB().then(function(db) {
+    var tx = db.transaction('tutorials', 'readwrite');
+    var store = tx.objectStore('tutorials');
+    var req = store.get(name);
+    req.onsuccess = function() {
+      var entry = req.result;
+      if (!entry) return;
+      entry.slides = JSON.stringify(slidesData);
+      store.put(entry, name);
+    };
+  }).catch(function() {});
+}
+
 // Clear cache
 function clearCache() {
   openCacheDB().then(function(db) {
