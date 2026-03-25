@@ -32,12 +32,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "32.6751%",
-        "top": "48.7079%"
+        "left": "10.6742%",
+        "top": "47.9393%"
       },
       "step": 1,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה",
-      "textWidth": "106px"
+      "textWidth": "242px"
     },
     {
       "index": 2,
@@ -52,12 +52,12 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "27.6274%",
-        "top": "81.3912%"
+        "left": "26.985%",
+        "top": "60.3581%"
       },
       "step": 2,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word",
-      "textWidth": "98px"
+      "textWidth": "219px"
     },
     {
       "index": 3,
@@ -72,12 +72,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "34.7694%",
-        "top": "55.8171%"
+        "left": "9.23477%",
+        "top": "46.8031%"
       },
       "step": 3,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה",
-      "textWidth": "99px"
+      "textWidth": "223px"
     },
     {
       "index": 4,
@@ -93,11 +93,11 @@
       "arrow": "arrow-bottom-left",
       "textPos": {
         "left": "35.5975%",
-        "top": "81.7642%"
+        "top": "59.335%"
       },
       "step": 4,
       "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה",
-      "textWidth": "118px"
+      "textWidth": "295px"
     },
     {
       "index": 5,
@@ -112,12 +112,12 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "53.0274%",
-        "top": "55.2003%"
+        "left": "53.188%",
+        "top": "53.153%"
       },
       "step": 5,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
-      "textWidth": "86px"
+      "textWidth": "218px"
     },
     {
       "index": 6,
@@ -132,8 +132,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "32.4601%",
-        "top": "82.0492%"
+        "left": "32.4593%",
+        "top": "53.9642%"
       },
       "step": 6,
       "text": "<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. <span style=\"color:#f6a67e;\">שוב</span> לעבור ל-Word. <span style=\"color:#f6a67e;\">שוב</span> לחכות שייטען...",
@@ -144,7 +144,7 @@
           "top": "50%"
         }
       ],
-      "textWidth": "119px"
+      "textWidth": "183px"
     },
     {
       "index": 7,
@@ -159,12 +159,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "36.7358%",
-        "top": "59.2178%"
+        "left": "9.75585%",
+        "top": "51.6624%"
       },
       "step": 7,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את מספר ההזמנה",
-      "textWidth": "86px"
+      "textWidth": "222px"
     },
     {
       "index": 8,
@@ -179,12 +179,12 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "35.4904%",
-        "top": "78.2609%"
+        "left": "35.9705%",
+        "top": "53.7084%"
       },
       "step": 8,
       "text": "ו<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. ו<span style=\"color:#f6a67e;\">שוב</span> לחזור לאמזון. ו<span style=\"color:#f6a67e;\">שוב</span> להעתיק...",
-      "textWidth": "69px"
+      "textWidth": "178px"
     },
     {
       "index": 9,
@@ -199,12 +199,12 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "44.1623%",
-        "top": "61.8899%"
+        "left": "43.5199%",
+        "top": "57.5448%"
       },
       "step": 9,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את שם המוצר",
-      "textWidth": "79px"
+      "textWidth": "201px"
     },
     {
       "index": 10,
@@ -219,12 +219,12 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "27.2987%",
-        "top": "81.8414%"
+        "left": "61.1832%",
+        "top": "16.1125%"
       },
       "step": 10,
       "text": "ו<span style=\"color:#f6a67e;\">שוב</span> לשורת המשימות. ו<span style=\"color:#f6a67e;\">שוב</span> ל-Word. כמה פעמים עוד צריך לקפוץ ככה?",
-      "textWidth": "104px"
+      "textWidth": "220px"
     },
     {
       "index": 11,
