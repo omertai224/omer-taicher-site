@@ -26,14 +26,6 @@ function buildPanel() {
 
     // ── Bubble ──
     + '<h3>בועת טקסט</h3>'
-    + '<label>כיוון חץ</label>'
-    + '<select id="pArrow" onchange="applyArrow()">'
-    + '<option value="arrow-right">בועה משמאל &larr;</option>'
-    + '<option value="arrow-left">בועה מימין &rarr;</option>'
-    + '<option value="arrow-bottom-left">בועה למטה &darr;</option>'
-    + '<option value="arrow-top-left">בועה למעלה &uarr;</option>'
-    + '<option value="none">ללא חץ</option>'
-    + '</select>'
     + '<div class="nudge-btns">'
     + '<div class="nudge-btn" onclick="nudgeBubble(-1,0)">&larr;</div>'
     + '<div class="nudge-btn" onclick="nudgeBubble(0,-1)">&uarr;</div>'
