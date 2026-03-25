@@ -200,7 +200,7 @@
       "image": "clipboard-10.png",
       "boxClass": "34",
       "box": {
-        "top": "92.7963%",
+        "top": "93.2209%",
         "left": "22.2496%",
         "right": "72.7969%",
         "bottom": "0%"
@@ -320,8 +320,8 @@
       "image": "clipboard-16.png",
       "arrow": "none",
       "textPos": {
-        "left": "12.6544%",
-        "top": "19.2565%"
+        "left": "12.5204%",
+        "top": "7.57918%"
       },
       "step": 16,
       "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"32\" height=\"32\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:8px;\"><path d=\"M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z\"/><line x1=\"12\" y1=\"9\" x2=\"12\" y2=\"13\"/><line x1=\"12\" y1=\"17\" x2=\"12.01\" y2=\"17\"/></svg><div style=\"font-size:36px;font-weight:900;color:#f6a67e;line-height:1;\">15</div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;margin-top:2px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:14px;color:#ffffffcc;line-height:1.6;\">הלוך חזור בין אמזון ל-Word.<br>הרבה לחיצות. הרבה המתנה.</div><div style=\"margin-top:12px;font-size:15px;font-weight:700;color:white;\">יש דרך טובה <span style=\"color:#f6a67e;\">בהרבה</span>.</div><a onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:14px;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:10px 28px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);\">&#9654; בואו נראה איך</a></div>",
@@ -430,8 +430,8 @@
       "image": "clipboard-22.png",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "16.7677%",
-        "top": "21.1894%"
+        "left": "17.8342%",
+        "top": "12.6957%"
       },
       "step": 22,
       "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4ade80\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><path d=\"M22 11.08V12a10 10 0 11-5.93-9.14\"/><polyline points=\"22 4 12 14.01 9 11.01\"/></svg><div style=\"font-size:18px;font-weight:900;color:white;line-height:1.3;\">היסטוריית הלוח<br><span style=\"color:#4ade80;\">פעילה!</span></div><div style=\"width:40px;height:2px;background:#4ade8044;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:13px;color:#ffffffbb;line-height:1.6;\">מעכשיו כל מה שתעתיקו נשמר.<br>בואו נראה איך עובדים איתה.</div><a onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:12px;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:10px 28px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);\">&#9654; בואו נתחיל</a></div>",
@@ -484,7 +484,7 @@
       "boxClass": "49",
       "box": {
         "top": "67.4345%",
-        "left": "6.16966%",
+        "left": "26.7%",
         "right": "55.6866%",
         "bottom": "27.1768%"
       },
@@ -589,11 +589,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "30.3685%",
-        "top": "70.6962%"
+        "left": "47.566%",
+        "top": "65.8119%"
       },
       "step": 30,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח",
+      "textWidth": "169px"
     },
     {
       "index": 32,
@@ -608,8 +609,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "61.9632%",
-        "top": "38.775%"
+        "left": "3.03775%",
+        "top": "1.40769%"
       },
       "step": 31,
       "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><polygon points=\"13 2 3 14 12 14 11 22 21 10 12 10 13 2\"/></svg><div style=\"display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:8px;\"><div style=\"font-size:28px;font-weight:900;color:#ffffff55;text-decoration:line-through;\">15</div><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"9 18 15 12 9 6\"/></svg><div style=\"font-size:28px;font-weight:900;color:#f6a67e;\">9</div></div><div style=\"font-size:11px;color:#ffffffaa;letter-spacing:1px;\">פעולות</div><div style=\"width:40px;height:2px;background:#f6a67e44;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:13px;color:#ffffffcc;line-height:1.7;\">רק 4 העתקות, בלי לחזור לאמזון אפילו פעם.<br>תארו לכם כמה זמן ואנרגיה תחסכו<br>אם תעבדו ככה <span style=\"color:#f6a67e;font-weight:700;\">כל יום</span>.</div><div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px;\"><a onclick=\"showSlides(1)\" style=\"display:inline-block;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);\">&#8634; חזרו להתחלה</a><a href=\"/interactive/\" style=\"display:inline-block;background:#ffffff12;color:white;border:1px solid #ffffff33;padding:8px 22px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;text-decoration:none;\">להדרכות נוספות &#9654;</a></div></div>",
