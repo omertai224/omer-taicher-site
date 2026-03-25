@@ -25,18 +25,19 @@
       "image": "clipboard-01.png",
       "boxClass": "16",
       "box": {
-        "top": "48.8519%",
-        "left": "50.0233%",
-        "right": "28.3372%",
-        "bottom": "46.7222%"
+        "top": "48.6596%",
+        "left": "49.6007%",
+        "right": "28.0957%",
+        "bottom": "46.2415%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(50.0233% - 315px)",
-        "top": "calc(51.0185% - 25px)"
+        "left": "12.4382%",
+        "top": "47.1681%"
       },
       "step": 1,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה",
+      "textWidth": "230px"
     },
     {
       "index": 2,
@@ -44,15 +45,15 @@
       "image": "clipboard-02.png",
       "boxClass": "17",
       "box": {
-        "top": "94.1296%",
-        "left": "21.9419%",
-        "right": "73.1047%",
-        "bottom": "-0.685181%"
+        "top": "93.4444%",
+        "left": "22.3042%",
+        "right": "72.7424%",
+        "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "calc(24.4186% - 25px)",
-        "bottom": "calc(5.87037% + 15px)"
+        "left": "26.9791%",
+        "bottom": "6.6949%"
       },
       "step": 2,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word"
@@ -63,18 +64,19 @@
       "image": "clipboard-03.png",
       "boxClass": "19",
       "box": {
-        "top": "56.6296%",
-        "left": "52.1163%",
-        "right": "44.6163%",
-        "bottom": "38.7593%"
+        "top": "55.8603%",
+        "left": "51.3918%",
+        "right": "43.6504%",
+        "bottom": "37.9902%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "calc(52.1163% - 315px)",
-        "top": "calc(58.8889% - 25px)"
+        "left": "8.26621%",
+        "top": "50.1798%"
       },
       "step": 3,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה",
+      "textWidth": "250px"
     },
     {
       "index": 4,
@@ -89,11 +91,12 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "calc(27.7326% - 25px)",
-        "bottom": "calc(6.14815% + 15px)"
+        "left": "35.8593%",
+        "bottom": "5.87528%"
       },
       "step": 4,
-      "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה"
+      "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה",
+      "textWidth": "248px"
     },
     {
       "index": 5,
@@ -108,11 +111,12 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "calc(53.3488% + 15px)",
-        "top": "calc(35% - 25px)"
+        "left": "52.9697%",
+        "top": "55.2404%"
       },
       "step": 5,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
+      "textWidth": "224px"
     },
     {
       "index": 6,
