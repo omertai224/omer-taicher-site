@@ -38,11 +38,12 @@
     if (!mode) return;
 
     if (mode === 'resize') {
-      // Resize: change width based on horizontal drag
+      // Resize: change width based on horizontal drag, save as % of container
       var dx = e.clientX - startX;
       var newWidth = Math.max(150, Math.min(500, startWidth + dx));
-      bubble.style.maxWidth = newWidth + 'px';
-      bubble.style.width = newWidth + 'px';
+      var widthPct = (newWidth / cw * 100) + '%';
+      bubble.style.maxWidth = widthPct;
+      bubble.style.width = widthPct;
       return;
     }
 
@@ -77,7 +78,9 @@
     if (!s || !s.textPos) return;
 
     if (prevMode === 'resize') {
-      s.textWidth = bubble.style.width || bubble.style.maxWidth;
+      // Save width as % of container for proportional scaling
+      var widthPct = (bubble.offsetWidth / cw * 100) + '%';
+      s.textWidth = widthPct;
       markModified();
       return;
     }
