@@ -37,18 +37,13 @@ function initApp() {
     .then(function(r) { return r.json(); })
     .then(function(data) {
       slidesData = data;
-      console.log('Vibe: loaded ' + data.slides.length + ' slides');
       buildSlides(data.slides, data.totalSteps);
-      console.log('Vibe: built ' + document.getElementsByClassName('mySlides').length + ' slide elements');
-      // Set finish slide dynamically
       slideMap[data.slides.length - 1] = { icon: 'finish', title: 'סיום' };
       showPersonalBadge();
       buildNavDots();
-      console.log('Vibe: built ' + document.getElementsByClassName('nav-dot').length + ' nav dots');
       initMagnifier();
       initTts();
       showSlides(1);
-      console.log('Vibe: init complete');
     })
     .catch(function(err) { console.error('Vibe ERROR:', err); });
 }

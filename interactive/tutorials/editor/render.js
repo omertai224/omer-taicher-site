@@ -12,7 +12,6 @@ function showSlide(idx) {
   updateInfo();
   updateStrip();
 
-  // Image slide?
   if (s.image) {
     noSlide.style.display = 'none';
     container.style.display = 'inline-block';
@@ -54,21 +53,16 @@ function renderBubble(slide) {
   bubble.style.right = '';
   bubble.style.bottom = '';
 
-  var container = $('slideContainer');
-  var img = $('slideImg');
-  var cw = container.offsetWidth || 1;
-  var ch = container.offsetHeight || 1;
-  // Reference = container width at first render. scale=1 on load,
-  // bubble appears at full readable size. Only scales on resize.
+  var cw = $('slideContainer').offsetWidth || 1;
+  var ch = $('slideContainer').offsetHeight || 1;
+
+  // Width in pixels — text doesn't reflow
+  bubble.style.width = slide.textWidth || '300px';
+  bubble.style.maxWidth = slide.textWidth || '300px';
+
+  // Scale bubble proportionally on window resize (scale=1 on first load)
   if (!E.bubbleRefWidth) E.bubbleRefWidth = cw;
   var scale = cw / E.bubbleRefWidth;
-
-  bubble.style.width = (slide.textWidth || '300px');
-  bubble.style.maxWidth = (slide.textWidth || '300px');
-
-  // Scale everything proportionally: text + padding + border.
-  // Both editor and tutorial use naturalWidth as reference,
-  // so bubbles are the same PROPORTION of the image in both.
   bubble.style.transform = 'scale(' + scale + ')';
   bubble.style.transformOrigin = 'left top';
 
@@ -76,15 +70,15 @@ function renderBubble(slide) {
 
   // Auto-convert calc() to pure %
   if (tp.left && /calc\(/.test(tp.left)) {
-    tp.left = calcToPercent(tp.left, naturalW);
+    tp.left = calcToPercent(tp.left, cw);
     markModified();
   }
   if (tp.top && /calc\(/.test(tp.top)) {
-    tp.top = calcToPercent(tp.top, img.naturalHeight || ch);
+    tp.top = calcToPercent(tp.top, ch);
     markModified();
   }
   if (tp.bottom && /calc\(/.test(tp.bottom)) {
-    tp.bottom = calcToPercent(tp.bottom, img.naturalHeight || ch);
+    tp.bottom = calcToPercent(tp.bottom, ch);
     markModified();
   }
 
@@ -95,7 +89,7 @@ function renderBubble(slide) {
     bubble.style.bottom = tp.bottom;
   }
 
-  // Step counter + bold spacer — MUST match tutorial rendering exactly!
+  // Step counter + spacer — matches tutorial .text layout exactly
   var stepHtml = '';
   if (slide.step) {
     var totalSteps = E.data.totalSteps || 32;
@@ -110,16 +104,12 @@ function renderBubble(slide) {
 // Re-scale bubble on window resize
 window.addEventListener('resize', function() {
   var bubble = $('editorBubble');
-  var container = $('slideContainer');
-  var img = $('slideImg');
-  if (!bubble || !container || !img || bubble.style.display === 'none') return;
-  if (!E.bubbleRefWidth) return;
-  var cw = container.offsetWidth || 1;
-  var scale = cw / E.bubbleRefWidth;
-  bubble.style.transform = 'scale(' + scale + ')';
+  if (!bubble || !E.bubbleRefWidth || bubble.style.display === 'none') return;
+  var cw = $('slideContainer').offsetWidth || 1;
+  bubble.style.transform = 'scale(' + (cw / E.bubbleRefWidth) + ')';
 });
 
-// Convert "calc(50% - 315px)" to pure percentage based on container size
+// Convert calc(X% ± Npx) to pure percentage
 function calcToPercent(val, containerPx) {
   if (!val) return val;
   val = val.trim();
@@ -130,8 +120,7 @@ function calcToPercent(val, containerPx) {
     var op = m[2];
     var px = parseFloat(m[3]);
     var pxAsPct = (px / containerPx) * 100;
-    var result = (op === '+') ? pct + pxAsPct : pct - pxAsPct;
-    return result + '%';
+    return ((op === '+') ? pct + pxAsPct : pct - pxAsPct) + '%';
   }
   return val;
 }
