@@ -31,7 +31,7 @@
         "top": "47.7265%"
       },
       "step": 1,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
       "textWidth": "242px"
     },
     {
@@ -71,7 +71,7 @@
         "top": "51.4729%"
       },
       "step": 3,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
       "textWidth": "223px"
     },
     {
@@ -87,12 +87,12 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "35.1963%",
-        "top": "59.7587%"
+        "left": "35.9961%",
+        "top": "54.2374%"
       },
       "step": 4,
-      "text": "חזרה ל<span style=\"color:#f6a67e;\">שורת המשימות</span> כדי להחליף חלון לאמזון ולהעתיק את מספר ההזמנה",
-      "textWidth": "231px"
+      "text": "חזרה ל<span style=\"color:#f6a67e;\">שורת המשימות</span> כדי להחליף חלון לאמזון ולהעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
+      "textWidth": "193px"
     },
     {
       "index": 6,
@@ -107,11 +107,11 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "52.7874%",
-        "top": "55.0635%"
+        "left": "52.9201%",
+        "top": "55.9127%"
       },
       "step": 5,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
       "textWidth": "227px"
     },
     {
@@ -148,10 +148,10 @@
       "arrow": "arrow-right",
       "textPos": {
         "left": "20.8206%",
-        "top": "54.8467%"
+        "top": "59.3042%"
       },
       "step": 7,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את מספר ההזמנה",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
       "textWidth": "222px"
     },
     {
@@ -187,11 +187,11 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "44.3192%",
-        "top": "58.393%"
+        "left": "44.0519%",
+        "top": "58.6043%"
       },
       "step": 9,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את שם המוצר",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
       "textWidth": "201px"
     },
     {
@@ -211,7 +211,7 @@
         "top": "60.0606%"
       },
       "step": 10,
-      "text": "עוד קפיצה בין החלונות. כבר ברור שחייב להיות <span style=\"color:#f6a67e;\">פתרון טוב יותר</span>...",
+      "text": "עוד קפיצה בין החלונות. כבר ברור שחייב להיות <span style=\"color:#f6a67e;\">פתרון טוב יותר</span><span style=\"color: rgb(246, 166, 126);\">...</span>",
       "textWidth": "220px"
     },
     {
@@ -231,7 +231,7 @@
         "top": "61.5733%"
       },
       "step": 11,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את שם המוצר",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
       "textWidth": "219px"
     },
     {
@@ -267,11 +267,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "23.7826%",
-        "top": "66.6401%"
+        "left": "23.2487%",
+        "top": "65.3651%"
       },
       "step": 13,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק את תמונת המוצר",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">תמונת המוצר</span>",
       "textWidth": "227px"
     },
     {
@@ -307,11 +307,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "28.5174%",
-        "top": "30.5788%"
+        "left": "31.4503%",
+        "top": "33.3389%"
       },
       "step": 15,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את תמונת המוצר",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את <span style=\"color: rgb(246, 166, 126);\">תמונת המוצר</span>",
       "textWidth": "210px"
     },
     {
@@ -456,7 +456,7 @@
         "top": "47.7829%"
       },
       "step": 23,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> מספר ההזמנה</span>",
       "textWidth": "224px"
     },
     {
@@ -472,11 +472,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "53.1263%",
-        "top": "54.7041%"
+        "left": "52.993%",
+        "top": "55.1287%"
       },
       "step": 24,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">התאריך</span>",
       "textWidth": "200px"
     },
     {
@@ -492,11 +492,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "44.2949%",
-        "top": "62.8472%"
+        "left": "44.1609%",
+        "top": "62.8461%"
       },
       "step": 25,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם המוצר",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
       "textWidth": "203px"
     },
     {
@@ -516,7 +516,7 @@
         "top": "65.3773%"
       },
       "step": 26,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את התמונה",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את <span style=\"color: rgb(246, 166, 126);\">התמונה</span>",
       "textWidth": "225px"
     },
     {
@@ -551,11 +551,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "28.064%",
-        "top": "58.5147%"
+        "left": "28.3306%",
+        "top": "59.7886%"
       },
       "step": 28,
-      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את התאריך מהיסטוריית הלוח",
+      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color: rgb(246, 166, 126);\">התאריך </span>מהיסטוריית הלוח",
       "textWidth": "246px"
     },
     {
@@ -611,11 +611,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "71.4271%",
-        "top": "38.9873%"
+        "left": "71.1605%",
+        "top": "38.9862%"
       },
       "step": 31,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה. כן, גם תמונות נשמרות!",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה.<span style=\"color: rgb(246, 166, 126);\"> כן, גם תמונות נשמרות!</span>",
       "textWidth": "189px"
     },
     {
