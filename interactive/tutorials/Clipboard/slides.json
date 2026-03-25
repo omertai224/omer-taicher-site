@@ -18,18 +18,18 @@
       "image": "clipboard-01.png",
       "boxClass": "16",
       "box": {
-        "top": "48.4704%",
+        "top": "48.8519%",
         "left": "50.0233%",
-        "right": "28.417%",
+        "right": "28.3372%",
         "bottom": "46.7222%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "2.07271%",
-        "top": "47.0398%"
+        "left": "calc(50.0233% - 315px)",
+        "top": "calc(51.0185% - 25px)"
       },
       "step": 1,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את התאריך של ההזמנה"
+      "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את תאריך ההזמנה"
     },
     {
       "index": 2,
@@ -37,9 +37,9 @@
       "image": "clipboard-02.png",
       "boxClass": "17",
       "box": {
-        "top": "92.9358%",
-        "left": "22.1814%",
-        "right": "73.0249%",
+        "top": "93.6987%",
+        "left": "22.3411%",
+        "right": "73.1846%",
         "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
@@ -56,15 +56,15 @@
       "image": "clipboard-03.png",
       "boxClass": "19",
       "box": {
-        "top": "55.7395%",
-        "left": "51.4776%",
-        "right": "44.217%",
-        "bottom": "38.1235%"
+        "top": "55.7396%",
+        "left": "51.3978%",
+        "right": "43.9775%",
+        "bottom": "37.742%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "8.39617%",
-        "top": "52.3678%"
+        "left": "calc(52.1163% - 315px)",
+        "top": "calc(58.8889% - 25px)"
       },
       "step": 3,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את תאריך ההזמנה"
@@ -75,15 +75,15 @@
       "image": "clipboard-04.png",
       "boxClass": "20",
       "box": {
-        "top": "93.8519%",
+        "top": "93.8149%",
         "left": "25.2558%",
         "right": "69.7326%",
-        "bottom": "-0.0370407%"
+        "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "25.4737%",
-        "bottom": "6.86856%"
+        "left": "calc(27.7326% - 25px)",
+        "bottom": "calc(6.14815% + 15px)"
       },
       "step": 4,
       "text": "לחצו <span style=\"color:#f6a67e;\">שוב</span> על שורת המשימות כדי לחזור לאמזון ולהעתיק את מספר ההזמנה"
@@ -101,8 +101,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "25.3377%",
-        "top": "29.8774%"
+        "left": "3.72452%",
+        "top": "18.8872%"
       },
       "step": 5,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה"
@@ -113,15 +113,15 @@
       "image": "clipboard-06.png",
       "boxClass": "24",
       "box": {
-        "top": "94.6852%",
-        "left": "22.0581%",
+        "top": "94.6593%",
+        "left": "22.3775%",
         "right": "72.8721%",
-        "bottom": "-0.40741%"
+        "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "22.5742%",
-        "bottom": "6.54331%"
+        "left": "calc(24.593% - 25px)",
+        "bottom": "calc(5.31482% + 15px)"
       },
       "step": 6,
       "text": "<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. <span style=\"color:#f6a67e;\">שוב</span> לעבור ל-Word. <span style=\"color:#f6a67e;\">שוב</span> לחכות שייטען..."
@@ -132,15 +132,15 @@
       "image": "clipboard-07.png",
       "boxClass": "27",
       "box": {
-        "top": "60.0333%",
-        "left": "51.5721%",
-        "right": "44.2024%",
+        "top": "59.9062%",
+        "left": "52.0512%",
+        "right": "44.0427%",
         "bottom": "33.8297%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "8.09193%",
-        "top": "56.5345%"
+        "left": "calc(52.2907% - 315px)",
+        "top": "calc(63.0556% - 25px)"
       },
       "step": 7,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את מספר ההזמנה"
@@ -151,15 +151,15 @@
       "image": "clipboard-08.png",
       "boxClass": "29",
       "box": {
-        "top": "93.316%",
-        "left": "25.1395%",
-        "right": "69.0714%",
+        "top": "93.8246%",
+        "left": "25.2992%",
+        "right": "69.8698%",
         "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "26.1054%",
-        "bottom": "7.57752%"
+        "left": "calc(27.9651% - 25px)",
+        "bottom": "calc(6.42593% + 15px)"
       },
       "step": 8,
       "text": "ו<span style=\"color:#f6a67e;\">שוב</span> שורת המשימות. ו<span style=\"color:#f6a67e;\">שוב</span> לחזור לאמזון. ו<span style=\"color:#f6a67e;\">שוב</span> להעתיק..."
@@ -171,14 +171,14 @@
       "boxClass": "33",
       "box": {
         "top": "67.3704%",
-        "left": "26.6512%",
+        "left": "5.73268%",
         "right": "55.7209%",
-        "bottom": "27.1852%"
+        "bottom": "27.5667%"
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "44.4518%",
-        "top": "68.9109%"
+        "left": "44.2913%",
+        "top": "42.3355%"
       },
       "step": 9,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את שם המוצר"
@@ -189,15 +189,15 @@
       "image": "clipboard-10.png",
       "boxClass": "34",
       "box": {
-        "top": "93.3049%",
-        "left": "22.3558%",
-        "right": "73.0899%",
+        "top": "93.4321%",
+        "left": "22.4357%",
+        "right": "72.7705%",
         "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "23.2927%",
-        "bottom": "7.74749%"
+        "left": "calc(24.593% - 25px)",
+        "bottom": "calc(6.51852% + 15px)"
       },
       "step": 10,
       "text": "ו<span style=\"color:#f6a67e;\">שוב</span> לשורת המשימות. ו<span style=\"color:#f6a67e;\">שוב</span> ל-Word. כמה פעמים עוד צריך לקפוץ ככה?"
@@ -208,15 +208,15 @@
       "image": "clipboard-11.png",
       "boxClass": "36",
       "box": {
-        "top": "65.0679%",
-        "left": "62.3132%",
-        "right": "33.3016%",
-        "bottom": "28.5408%"
+        "top": "65.1951%",
+        "left": "62.6326%",
+        "right": "33.3814%",
+        "bottom": "29.0494%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "22.0267%",
-        "top": "62.5861%"
+        "left": "calc(62.8721% - 315px)",
+        "top": "calc(67.963% - 25px)"
       },
       "step": 11,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את שם המוצר"
@@ -227,15 +227,15 @@
       "image": "clipboard-12.png",
       "boxClass": "38",
       "box": {
-        "top": "93.2013%",
-        "left": "25.3643%",
-        "right": "69.7907%",
+        "top": "93.5827%",
+        "left": "25.2844%",
+        "right": "69.7109%",
         "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "26.4973%",
-        "bottom": "8.92713%"
+        "left": "calc(27.5581% - 25px)",
+        "bottom": "calc(6.42593% + 15px)"
       },
       "step": 12,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span>, בפעם הרביעית. עוד מעבר, עוד לחיצה, עוד המתנה..."
@@ -253,8 +253,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "6.36623%",
-        "top": "73.9172%"
+        "left": "4.71381%",
+        "top": "71.6284%"
       },
       "step": 13,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק את תמונת המוצר"
@@ -266,14 +266,14 @@
       "boxClass": "42",
       "box": {
         "top": "93.4444%",
-        "left": "22.4286%",
-        "right": "72.9086%",
+        "left": "22.3488%",
+        "right": "72.9884%",
         "bottom": "0%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "24.4682%",
-        "bottom": "8.6938%"
+        "left": "calc(24.6512% - 25px)",
+        "bottom": "calc(5.68519% + 15px)"
       },
       "step": 14,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> ולחזור ל-Word. בפעם האחרונה, סוף סוף!"
@@ -284,15 +284,15 @@
       "image": "clipboard-15.png",
       "boxClass": "44",
       "box": {
-        "top": "32.4408%",
-        "left": "60.6271%",
-        "right": "34.7481%",
-        "bottom": "61.2951%"
+        "top": "32.3135%",
+        "left": "60.8667%",
+        "right": "35.2271%",
+        "bottom": "61.5495%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "19.9413%",
-        "top": "29.9582%"
+        "left": "calc(61.186% - 315px)",
+        "top": "calc(35.463% - 25px)"
       },
       "step": 15,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את תמונת המוצר"
@@ -303,8 +303,8 @@
       "image": "clipboard-16.png",
       "arrow": "none",
       "textPos": {
-        "left": "2.3%",
-        "top": "55.8483%"
+        "left": "5.6466%",
+        "top": "22.9094%"
       },
       "step": 16,
       "text": "הנה התוצאה. כל הפרטים הודבקו, אבל זה לקח <span style=\"color:#f6a67e;\">15 פעולות</span> והמון הלוך חזור בין אמזון ל-Word!<br><br><a class=\"button\" onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:8px;\">עכשיו נלמד דרך חכמה</a>"
@@ -315,15 +315,15 @@
       "image": "clipboard-17.png",
       "boxClass": "45",
       "box": {
-        "top": "94.037%",
-        "left": "60.2558%",
-        "right": "33.9767%",
-        "bottom": "-0.5%"
+        "top": "93.537%",
+        "left": "60.467%",
+        "right": "33.7655%",
+        "bottom": "0%"
       },
       "arrow": "arrow-bottom-right",
       "textPos": {
-        "left": "19.2958%",
-        "bottom": "8.08211%"
+        "left": "calc(63.1395% - 275px)",
+        "bottom": "calc(5.96296% + 15px)"
       },
       "step": 17,
       "text": "עכשיו נלמד את הפתרון! לחצו על <span style=\"color:#f6a67e;\">כפתור ההתחלה (Start)</span> בשורת המשימות"
@@ -341,8 +341,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "23.5008%",
-        "top": "30.7604%"
+        "left": "calc(57.6395% - 315px)",
+        "top": "calc(38.4259% - 25px)"
       },
       "step": 18,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)"
@@ -360,8 +360,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "48.698%",
-        "top": "16.2678%"
+        "left": "calc(78.0465% - 315px)",
+        "top": "calc(23.4259% - 25px)"
       },
       "step": 19,
       "text": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד"
@@ -379,8 +379,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "50.1967%",
-        "top": "58.5212%"
+        "left": "calc(75.7326% + 15px)",
+        "top": "calc(52.963% - 25px)"
       },
       "step": 20,
       "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>"
@@ -398,8 +398,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "2.29381%",
-        "top": "21.4852%"
+        "left": "calc(8.34884% + 15px)",
+        "top": "calc(16.9444% - 25px)"
       },
       "step": 21,
       "text": "לחצו על המתג <span style=\"color:#f6a67e;\">לא פעיל</span> כדי להפעיל את היסטוריית הלוח"
@@ -410,8 +410,8 @@
       "image": "clipboard-22.png",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "16.2417%",
-        "top": "23.5197%"
+        "left": "calc(11.8372% + 15px)",
+        "top": "calc(16.9444% - 25px)"
       },
       "step": 22,
       "text": "מצוין! היסטוריית הלוח <span style=\"color:#f6a67e;\">פעילה</span> עכשיו! מעכשיו כל מה שתעתיקו יישמר"
@@ -422,15 +422,15 @@
       "image": "clipboard-23.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "48.8467%",
+        "left": "50.172%",
+        "right": "28.6097%",
+        "bottom": "46.5156%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "8.75115%",
-        "bottom": "35.995%"
+        "left": "2.04267%",
+        "bottom": "18.0618%"
       },
       "step": 23,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה"
@@ -441,15 +441,15 @@
       "image": "clipboard-24.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "48.8467%",
+        "left": "28.2092%",
+        "right": "46.5601%",
+        "bottom": "46.5155%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "14.9782%",
-        "bottom": "53.1467%"
+        "left": "42.1671%",
+        "bottom": "22.2772%"
       },
       "step": 24,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך"
@@ -460,15 +460,15 @@
       "image": "clipboard-25.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "67.3446%",
+        "left": "26.8365%",
+        "right": "55.7465%",
+        "bottom": "27.1768%"
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "35.0995%",
-        "bottom": "34.7391%"
+        "left": "47.1297%",
+        "bottom": "27.5921%"
       },
       "step": 25,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם המוצר"
@@ -479,27 +479,27 @@
       "image": "clipboard-26.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "76.5935%",
+        "left": "53.8676%",
+        "right": "23.7526%",
+        "bottom": "18.0961%"
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "5%",
-        "bottom": "5%"
+        "left": "5.31598%",
+        "bottom": "10.4945%"
       },
       "step": 26,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את התמונה"
     },
     {
       "index": 27,
-      "type": "view",
+      "type": "click",
       "image": "clipboard-27.png",
       "arrow": "none",
       "textPos": {
-        "left": "13.9415%",
-        "bottom": "11.2935%"
+        "left": "18.6204%",
+        "bottom": "12.8488%"
       },
       "step": 27,
       "text": "העתקנו 4 פריטים ברצף, <span style=\"color:#f6a67e;\">בלי לעבור ל-Word אפילו פעם אחת!</span>"
@@ -517,8 +517,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "18.3451%",
-        "top": "75.3105%"
+        "left": "12.9588%",
+        "top": "63.9417%"
       },
       "step": 28,
       "text": "לחצו Win+V ובחרו את <span style=\"color:#f6a67e;\">התאריך</span> מהיסטוריית הלוח"
@@ -536,8 +536,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "24.9009%",
-        "top": "70.7713%"
+        "left": "12.9438%",
+        "top": "63.9351%"
       },
       "step": 29,
       "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח"
@@ -555,8 +555,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "36.6839%",
-        "top": "76.662%"
+        "left": "22.1131%",
+        "top": "69.1038%"
       },
       "step": 30,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח"
@@ -574,8 +574,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "20.3169%",
-        "top": "14.3141%"
+        "left": "21.7963%",
+        "top": "40.138%"
       },
       "step": 31,
       "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה"
@@ -586,8 +586,8 @@
       "image": "clipboard-32.png",
       "arrow": "none",
       "textPos": {
-        "left": "5.77692%",
-        "top": "55.4045%"
+        "left": "6.56455%",
+        "top": "37.6048%"
       },
       "step": 32,
       "text": "מעולה! כל הפרטים הודבקו, <span style=\"color:#f6a67e;\">טקסט ותמונה</span>, בלי לחזור לאמזון אפילו פעם אחת! 15 פעולות הפכו ל-5"
