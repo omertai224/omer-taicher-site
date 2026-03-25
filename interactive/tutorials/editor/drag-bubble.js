@@ -61,9 +61,6 @@
     var leftPct = (newLeftPx / cw) * 100;
     var topPct = (newTopPx / ch) * 100;
 
-    var s = E.data.slides[E.idx];
-    var usesBottom = s.textPos.bottom && !s.textPos.top;
-
     bubble.style.left = leftPct + '%';
     // Always use top positioning (not bottom) for consistency
     bubble.style.bottom = '';
@@ -104,8 +101,6 @@ function nudgeBubble(dLeft, dTop) {
   saveUndo();
 
   var left = parseFloat(s.textPos.left) || 0;
-  var usesBottom = s.textPos.bottom && !s.textPos.top;
-
   left = Math.max(0, Math.min(95, left + dLeft));
   s.textPos.left = left + '%';
 

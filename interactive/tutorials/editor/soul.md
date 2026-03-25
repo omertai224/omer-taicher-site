@@ -6,19 +6,28 @@
 ## עקרון מנחה: מה שרואים בעורך = מה שרואים בהדרכה
 זה הדבר הכי חשוב. אחד לאחד. אם יש הבדל כלשהו בין העורך להדרכה, זה באג. עומר חזר על זה שוב ושוב. כל פיקסל חשוב.
 
-## בעיית המיקום: ניתוח ותיקונים (מרץ 2026)
+## בעיית המיקום: נפתרה! (מרץ 2026)
 
-### שלוש סיבות שגורמות לפער בין עורך להדרכה:
+### שורה תחתונה: הבעיה הייתה גודל ה-container
+התמונה בעורך הייתה קטנה יותר מהתמונה בהדרכה. עורך: `calc(100vh - 160px)`, הדרכה: `calc(100vh - 80px)`. הפרש של 80px גרם לאחוזים למפות לפיקסלים שונים. הבועות "נדחפו" לכיוון הפינה השמאלית-עליונה.
 
-**סיבה 1 (העיקרית): calc() לא סקיילבילי**
-ערכים כמו `calc(87.7558% - 315px)` נותנים תוצאות שונות בגדלי container שונים. ב-container של 1778px: left=1245px (70.04%). ב-container של 1636px (העורך): left=1120px (68.50%). הפרש של 27px! זו הסיבה שצעדים 1-3 (עם אופסט 315px) לא תואמים וצעד 5 (אופסט קטן) כן.
+### הפתרון: השוואת גודל ה-container
+- **עורך:** toolbar(40px) + strip(40px) = **80px** → תמונה = `calc(100vh - 80px)`
+- **הדרכה:** nav bar = **80px** → תמונה = `calc(100vh - 80px)`
+- **אותו חישוב בדיוק** → אפס אופסט
 
-**תיקון:** העורך עכשיו ממיר calc() אוטומטית לאחוזים טהורים ברגע הטעינה (render.js). אחרי שמירה, ה-slides.json מכיל רק אחוזים טהורים שעובדים בכל גודל מסך.
+### תיקונים נוספים שנשארו:
+1. **shared/style.css** — `.image-center > img { display: block; }` (הסרת baseline gap)
+2. **editor/render.js** — calc() ממומר אוטומטית ל-% טהורים בטעינה
+3. **editor/render.js** — step counter 12px + margin-bottom:6px (תואם CSS של .text)
+4. **editor/style.css** — `#bubblePreview` flex column (תואם .text flex layout)
+5. **editor/style.css** — הסרת max-width מהתמונה (רק height-constrained)
+6. **All tutorials** — textWidth בשימוש (`s.textWidth || '300px'`)
+7. **shared/script.js** — scaleBubbles() לשמירת פרופורציות ב-resize
+8. **vercel.json** — cache-control: no-cache ל-/interactive/
 
-**סיבה 2: inline img vs block img**
-בהדרכה, ה-`<img>` בתוך `.image-center` היה inline (ברירת מחדל). בעורך, הוא `display:block`. תמונה inline יוצרת "baseline gap" (2-4px רווח מתחת). זה גורם לcontainer בהדרכה להיות מעט גבוה יותר מהתמונה, ואז `top: X%` נותן תוצאה שונה.
-
-**תיקון:** הוספת `.image-center > img { display: block; }` ב-shared/style.css. עכשיו ה-container בדיוק בגודל התמונה, כמו בעורך.
+### למה הצהוב עבד תמיד והבועות לא:
+הצהוב (4 insets באחוזים) סקיילבילי מושלם. הבועה (left+top באחוזים + width בפיקסלים) רגישה לגודל container. אחרי שהcontainers הושוו, גם הבועה מושלמת.
 
 **סיבה 3: textWidth לא היה בשימוש**
 העורך שומר רוחב מותאם (כמו 227px) בשדה textWidth, אבל Everything ו-Vibe התעלמו ממנו והשתמשו תמיד ב-300px. אם בועה כוווצה ב-73px, הבדל העמדה ניכר.
