@@ -54,27 +54,18 @@ function renderBubble(slide) {
   bubble.style.right = '';
   bubble.style.bottom = '';
 
-  // Apply saved width — convert px to % for proportional scaling
+  // Width stays in PIXELS (not %) — matching the tutorial exactly.
+  // Pixel width keeps text from reflowing when the window resizes.
   var container = $('slideContainer');
   var cw = container.offsetWidth || 1;
   var ch = container.offsetHeight || 1;
 
   if (slide.textWidth) {
-    var tw = slide.textWidth;
-    // Auto-convert pixel width to percentage (like calc→%)
-    if (/^\d+(\.\d+)?px$/.test(tw)) {
-      var pxVal = parseFloat(tw);
-      tw = (pxVal / cw * 100) + '%';
-      slide.textWidth = tw;
-      markModified();
-    }
-    bubble.style.width = tw;
-    bubble.style.maxWidth = tw;
+    bubble.style.width = slide.textWidth;
+    bubble.style.maxWidth = slide.textWidth;
   } else {
-    // Default 300px → convert to %
-    var defaultPct = (300 / cw * 100) + '%';
-    bubble.style.width = defaultPct;
-    bubble.style.maxWidth = defaultPct;
+    bubble.style.width = '300px';
+    bubble.style.maxWidth = '300px';
   }
 
   var tp = slide.textPos;
