@@ -468,10 +468,10 @@
       "image": "clipboard-23.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "49.0047%",
+        "left": "50.1027%",
+        "right": "28.4413%",
+        "bottom": "46.452%"
       },
       "arrow": "arrow-right",
       "textPos": {
@@ -488,10 +488,10 @@
       "image": "clipboard-24.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "48.7504%",
+        "left": "27.9067%",
+        "right": "46.8048%",
+        "bottom": "46.4519%"
       },
       "arrow": "arrow-right",
       "textPos": {
@@ -508,10 +508,10 @@
       "image": "clipboard-25.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "67.315%",
+        "left": "27.1084%",
+        "right": "55.7471%",
+        "bottom": "27.3787%"
       },
       "arrow": "arrow-right",
       "textPos": {
@@ -528,10 +528,10 @@
       "image": "clipboard-26.png",
       "boxClass": "49",
       "box": {
-        "top": "14.037%",
-        "left": "3.39535%",
-        "right": "88.1628%",
-        "bottom": "80.1481%"
+        "top": "76.7245%",
+        "left": "54.1747%",
+        "right": "23.8903%",
+        "bottom": "18.0964%"
       },
       "arrow": "arrow-left",
       "textPos": {
@@ -544,7 +544,7 @@
     },
     {
       "index": 27,
-      "type": "view",
+      "type": "click",
       "image": "clipboard-27.png",
       "arrow": "none",
       "textPos": {
@@ -552,7 +552,13 @@
         "bottom": "7.11442%"
       },
       "step": 27,
-      "text": "העתקנו 4 פריטים ברצף, <span style=\"color:#f6a67e;\">בלי לעבור ל-Word אפילו פעם אחת!</span>"
+      "text": "העתקנו 4 פריטים ברצף, <span style=\"color:#f6a67e;\">בלי לעבור ל-Word אפילו פעם אחת!</span>",
+      "box": {
+        "top": "93.3513%",
+        "left": "22.3351%",
+        "right": "73.0743%",
+        "bottom": "0%"
+      }
     },
     {
       "index": 28,
