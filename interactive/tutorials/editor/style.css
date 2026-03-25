@@ -123,6 +123,12 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   line-height:1.6; outline:none;
 }
 .text-editor:focus { border-color:#5b8fa8; }
+.orange-btn {
+  float:left; font-size:9px; color:#f6a67e; cursor:pointer; padding:1px 6px;
+  border:1px solid #f6a67e55; border-radius:4px; font-weight:400;
+  transition:all 0.15s; margin-top:-1px;
+}
+.orange-btn:hover { background:#f6a67e22; }
 .text-editor span[style*="color:#f6a67e"] { color:#f6a67e !important; }
 .panel .type-btns { display:flex; gap:3px; margin-top:3px; }
 .panel .type-btn {
