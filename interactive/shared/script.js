@@ -51,7 +51,6 @@ function showSlides(n) {
 }
 
 /* ── Scale bubbles proportionally (like the orange box) ── */
-var _bubbleRefWidth = 0;
 function scaleBubbles() {
   var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
   if (!slide) return;
@@ -59,11 +58,8 @@ function scaleBubbles() {
   if (!img) return;
   function doScale() {
     var container = img.parentElement;
-    if (!container) return;
-    var w = container.offsetWidth;
-    if (!w) return;
-    if (!_bubbleRefWidth) _bubbleRefWidth = w;
-    var scale = w / _bubbleRefWidth;
+    if (!container || !img.naturalWidth) return;
+    var scale = container.offsetWidth / img.naturalWidth;
     var texts = slide.querySelectorAll('.text');
     for (var i = 0; i < texts.length; i++) {
       texts[i].style.transform = 'scale(' + scale + ')';
