@@ -1,16 +1,23 @@
-/* ═══ Bubble Dragging ═══ */
+/* ═══ Bubble Dragging & Resizing ═══ */
 
 (function() {
   var bubble = document.getElementById('editorBubble');
-  var dragging = false;
-  var startX, startY, startBubbleLeft, startBubbleTop;
+  var mode = null; // 'drag' or 'resize'
+  var startX, startY, startBubbleLeft, startBubbleTop, startWidth;
   var cw, ch, containerRect;
 
   bubble.addEventListener('mousedown', function(e) {
     var s = E.data && E.data.slides[E.idx];
     if (!s || !s.textPos) return;
 
-    dragging = true;
+    // Check if resize handle clicked
+    if (e.target.classList.contains('bubble-resize')) {
+      mode = 'resize';
+      startWidth = bubble.offsetWidth;
+    } else {
+      mode = 'drag';
+    }
+
     saveUndo();
     startX = e.clientX;
     startY = e.clientY;
@@ -24,15 +31,25 @@
 
     bubble.classList.add('dragging');
     e.preventDefault();
+    e.stopPropagation();
   });
 
   document.addEventListener('mousemove', function(e) {
-    if (!dragging) return;
+    if (!mode) return;
 
+    if (mode === 'resize') {
+      // Resize: change width based on horizontal drag
+      var dx = startX - e.clientX; // RTL: dragging left = wider
+      var newWidth = Math.max(150, Math.min(500, startWidth + dx));
+      bubble.style.maxWidth = newWidth + 'px';
+      bubble.style.width = newWidth + 'px';
+      return;
+    }
+
+    // Drag
     var newLeftPx = startBubbleLeft + (e.clientX - startX);
     var newTopPx = startBubbleTop + (e.clientY - startY);
 
-    // Clamp to image bounds
     var bubbleW = bubble.offsetWidth;
     var bubbleH = bubble.offsetHeight;
     newLeftPx = Math.max(0, Math.min(newLeftPx, cw - bubbleW));
@@ -56,13 +73,22 @@
   });
 
   document.addEventListener('mouseup', function() {
-    if (!dragging) return;
-    dragging = false;
+    if (!mode) return;
+    var prevMode = mode;
+    mode = null;
     bubble.classList.remove('dragging');
 
     var s = E.data.slides[E.idx];
     if (!s || !s.textPos) return;
 
+    if (prevMode === 'resize') {
+      // Save width
+      s.textWidth = bubble.style.width || bubble.style.maxWidth;
+      markModified();
+      return;
+    }
+
+    // Save position
     s.textPos.left = bubble.style.left;
     if (bubble.style.top && bubble.style.top !== '') {
       s.textPos.top = bubble.style.top;
@@ -77,7 +103,7 @@
   });
 })();
 
-// Nudge bubble by percentage (also clamped)
+// Nudge bubble by percentage (clamped)
 function nudgeBubble(dLeft, dTop) {
   var s = E.data && E.data.slides[E.idx];
   if (!s || !s.textPos) return;
