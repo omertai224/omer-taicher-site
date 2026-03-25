@@ -19,7 +19,7 @@ function loadFromServer(name) {
 // Load from local folder (File System Access API)
 function loadLocal() {
   if (!window.showDirectoryPicker) {
-    toast('הדפדפן לא תומך. השתמשו ב-Chrome/Edge');
+    toast('הדפדפן לא תומך. השתמשו ב-Chrome או Edge');
     return;
   }
   window.showDirectoryPicker()
@@ -33,7 +33,6 @@ function loadLocal() {
     .then(function(file) { return file.text(); })
     .then(function(text) {
       var data = JSON.parse(text);
-      // Load images from folder
       return loadLocalImages(E.dirHandle).then(function() { return data; });
     })
     .then(function(data) { onDataLoaded(data); })
