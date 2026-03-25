@@ -475,8 +475,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "13.62%",
-        "bottom": "25.2806%"
+        "left": "8.34272%",
+        "bottom": "31.1949%"
       },
       "step": 23,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה",
@@ -535,8 +535,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "16.5345%",
-        "bottom": "6.52146%"
+        "left": "9.31363%",
+        "bottom": "7.23877%"
       },
       "step": 26,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את התמונה",
@@ -607,8 +607,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "24.0883%",
-        "top": "64.1693%"
+        "left": "20.7552%",
+        "top": "62.8422%"
       },
       "step": 29,
       "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח",
@@ -627,8 +627,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "34.7041%",
-        "top": "64.3351%"
+        "left": "31.8568%",
+        "top": "61.4594%"
       },
       "step": 30,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח",
