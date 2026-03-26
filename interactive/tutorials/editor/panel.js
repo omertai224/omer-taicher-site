@@ -83,7 +83,7 @@ function updateContinueBtn(s) {
 }
 
 var CONTINUE_MARKER = 'כדי להמשיך בהדרכה.';
-var CONTINUE_HTML = '<div style="text-align:center;margin-top:12px;">לחצו על <a class="button" onclick="nextSlide()" style="display:inline-block;cursor:pointer;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border-radius:50%;text-align:center;color:white;line-height:36px;font-size:16px;font-weight:700;vertical-align:middle;margin:0 4px;">▶</a> כדי להמשיך בהדרכה.</div>';
+var CONTINUE_HTML = '<div style="text-align:center;margin-top:12px;">לחצו על <a class="button" onclick="nextSlide()" style="margin:0 6px;display:inline-block;vertical-align:middle;">המשך</a> כדי להמשיך בהדרכה.</div>';
 
 function hasContinueBtn(s) {
   return s.text && s.text.indexOf(CONTINUE_MARKER) > -1;
