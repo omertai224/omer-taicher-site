@@ -282,6 +282,10 @@ function renderOrder() {
   }
 
   const total = cart.reduce((s, i) => s + i.price, 0);
+  const paidCount = cart.filter(i => i.price > 0 && !i.bundleKeys).length;
+  const discountPct = getDiscountPct(paidCount);
+  const savings = Math.round(total * discountPct / 100);
+  const finalTotal = total - savings;
 
   itemsEl.innerHTML = cart.map(item => `
     <div class="order-item">
@@ -294,15 +298,37 @@ function renderOrder() {
       </div>
       <div class="order-item-price">${item.originalPrice ? '<span style="text-decoration:line-through;color:var(--text-light);font-size:0.8rem;margin-left:6px;">₪' + item.originalPrice + '</span>' : ''}₪${item.price}</div>
     </div>
-  `).join('');
+  `).join('') + (discountPct > 0 ? `
+    <div class="order-item" style="border-top:1px dashed var(--border);padding-top:12px;margin-top:8px;">
+      <div class="order-item-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="order-item-body">
+        <div class="order-item-name" style="color:#4ade80;">הנחת ${discountPct}% על ${paidCount} הדרכות</div>
+      </div>
+      <div class="order-item-price" style="color:#4ade80;">-₪${savings}</div>
+    </div>
+  ` : '');
 
-  totalEl.textContent = '₪' + total;
+  totalEl.textContent = '₪' + finalTotal;
+}
+
+// הנחות כמות — נטענות מ-interactive.json
+var discountRules = [];
+function getDiscountPct(count) {
+  var best = 0;
+  discountRules.forEach(function(rule) {
+    if (count >= rule.minItems && rule.percent > best) best = rule.percent;
+  });
+  return best;
 }
 
 // טוען מחירים מ-interactive.json ומעדכן
 fetch('/interactive/interactive.json')
   .then(function(r) { return r.json(); })
-  .then(function(products) {
+  .then(function(data) {
+    var products = data.products || data;
+    if (data.discountRules) discountRules = data.discountRules;
     products.forEach(function(p) {
       PRODUCTS[p.key] = { name: p.title, price: p.price };
       if (p.bundleKeys) PRODUCTS[p.key].bundleKeys = p.bundleKeys;

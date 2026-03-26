@@ -18,11 +18,23 @@ const PAGE_UID   = process.env.PAYPLUS_PAGE_UID;
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+// טוען כללי הנחות מ-interactive.json
+function loadDiscountRules() {
+  try {
+    const raw = readFileSync(join(process.cwd(), 'interactive', 'interactive.json'), 'utf8');
+    const data = JSON.parse(raw);
+    return data.discountRules || [];
+  } catch(e) {
+    return [];
+  }
+}
+
 // טוען מוצרים מ-interactive.json (מקור אמת יחיד)
 function loadProducts() {
   try {
     const raw = readFileSync(join(process.cwd(), 'interactive', 'interactive.json'), 'utf8');
-    const items = JSON.parse(raw);
+    const data = JSON.parse(raw);
+    const items = data.products || data; // תומך בפורמט ישן (מערך) וחדש (אובייקט עם products)
     const map = {};
     items.forEach(function(item) {
       if (item.key) {
@@ -97,9 +109,16 @@ export default async function handler(req, res) {
       }
     });
 
-    // סכום כולל + רשימת מוצרים ל-PayPlus (לפי מחיר המוצר/חבילה, לא לפי הדרכות בודדות)
+    // הנחות כמות — נטענות מ-interactive.json (discountRules)
+    const paidSingles = validKeys.filter(k => PRODUCTS[k].price > 0 && !PRODUCTS[k].bundleKeys);
+    const discountRules = loadDiscountRules();
+    const discountPct = discountRules.reduce((best, rule) => paidSingles.length >= rule.minItems ? rule.percent : best, 0);
+
+    // סכום כולל + רשימת מוצרים ל-PayPlus
     const pricePerItem = isTestMode ? 3 : null;
-    const totalAmount = validKeys.reduce((sum, k) => sum + (pricePerItem || PRODUCTS[k].price), 0);
+    const rawTotal = validKeys.reduce((sum, k) => sum + (pricePerItem || PRODUCTS[k].price), 0);
+    const savings = isTestMode ? 0 : Math.round(rawTotal * discountPct / 100);
+    const totalAmount = rawTotal - savings;
     const payPlusProducts = validKeys.map(k => ({
       name: PRODUCTS[k].name + (isTestMode ? ' (בדיקה)' : ''),
       quantity: 1,

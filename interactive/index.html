@@ -604,6 +604,7 @@
 </section>
 
 <!-- CART BAR -->
+<div id="discount-teaser" style="display:none;position:fixed;bottom:68px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#1a2540,#243350);color:#fff;padding:10px 24px;border-radius:50px;font-size:0.82rem;font-family:'Rubik',sans-serif;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,0.4);border:1px solid rgba(246,166,126,0.3);text-align:center;white-space:nowrap;animation:fadeUp 0.3s ease;direction:rtl;"></div>
 <div class="cart-bar" id="cart-bar">
   <div class="cart-bar-right">
     <div class="cart-icon-wrap">
@@ -718,14 +719,53 @@ function addToCart(btn, key, price) {
   setTimeout(function() { btn.innerHTML = cartSVG + ' הוספה לסל'; btn.classList.remove('added'); }, 1500);
   updateCart();
 }
+// הנחות כמות — נטענות מ-interactive.json
+var discountRules = [];
+function getDiscount(count) {
+  var best = 0;
+  discountRules.forEach(function(rule) {
+    if (count >= rule.minItems && rule.percent > best) best = rule.percent;
+  });
+  return best;
+}
+
 function updateCart() {
+  var paidItems = cart.filter(function(i) { return i.price > 0; });
   var total = cart.reduce(function(s, i) { return s + i.price; }, 0);
   var count = cart.length;
+  var paidCount = paidItems.length;
+  var discount = getDiscount(paidCount);
+  var savings = Math.round(total * discount / 100);
+  var finalTotal = total - savings;
+
   document.getElementById('cart-count').textContent = count;
-  document.getElementById('cart-summary').innerHTML = count === 1
-    ? '<strong>' + total + ' ₪</strong> · הדרכה אחת בסל'
-    : '<strong>' + total + ' ₪</strong> · ' + count + ' הדרכות בסל';
+
+  var summaryHTML;
+  if (count === 0) {
+    summaryHTML = 'הסל שלך ריק';
+  } else if (discount > 0) {
+    summaryHTML = '<strong>' + finalTotal + ' ₪</strong> <span style="text-decoration:line-through;opacity:0.5;font-size:0.75rem;margin:0 4px;">' + total + ' ₪</span> · ' + count + ' הדרכות · <span style="color:#4ade80;font-weight:700;">' + discount + '% הנחה!</span>';
+  } else if (count === 1) {
+    summaryHTML = '<strong>' + total + ' ₪</strong> · הדרכה אחת בסל';
+  } else {
+    summaryHTML = '<strong>' + total + ' ₪</strong> · ' + count + ' הדרכות בסל';
+  }
+  document.getElementById('cart-summary').innerHTML = summaryHTML;
   document.getElementById('cart-bar').classList.toggle('visible', count > 0);
+
+  // עדכון הפיתוי
+  var teaser = document.getElementById('discount-teaser');
+  if (teaser) {
+    if (paidCount === 1) {
+      teaser.innerHTML = '💡 הוסיפו הדרכה נוספת וקבלו <strong>10% הנחה</strong> על הכל!';
+      teaser.style.display = 'block';
+    } else if (paidCount === 2) {
+      teaser.innerHTML = '🔥 הוסיפו עוד אחת וקפצו ל-<strong>20% הנחה</strong> על הכל!';
+      teaser.style.display = 'block';
+    } else {
+      teaser.style.display = 'none';
+    }
+  }
 }
 function clearCart() {
   cart = [];
@@ -763,7 +803,11 @@ function displayProducts(products) {
 try {
   fetch('/interactive/interactive.json')
     .then(function(r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(function(products) { if (products && products.length) displayProducts(products); })
+    .then(function(data) {
+      var products = data.products || data;
+      if (data.discountRules) discountRules = data.discountRules;
+      if (products && products.length) displayProducts(products);
+    })
     .catch(function() {});
 } catch(e) {}
 </script>
