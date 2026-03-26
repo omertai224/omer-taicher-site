@@ -719,6 +719,9 @@ cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/scrip
 - **slideMap חייב להיות 0-based** — האינדקס הראשון הוא 0, לא 1
 - **כיוון עיגולים: ltr** — גם באתר עברי, המספרים משמאל לימין
 - **אייקון finish = נורה (lightbulb)** — לא לב! שינינו מלב לנורה
+- **הדרכות בעומק 3+ (כמו Gmail/Schedule/)** — shared/script.js מזהה את נתיב shared אוטומטית מה-link של style.css. אין צורך לשנות את sharedImages. אבל ב-index.html צריך לכתוב את הנתיב הנכון: `../../../shared/style.css` (3 רמות), לא `../../shared/` (2 רמות)
+- **interactive.json פורמט חדש** — הקובץ הוא עכשיו אובייקט `{ discountRules, products }` ולא מערך. כל קוד שקורא אותו צריך לטפל ב-`data.products || data`
+- **הנחות כמות** — מוגדרות ב-discountRules בתוך interactive.json. כרגע: 2 הדרכות = 10%, 3+ = 20%. משפיע על: דף אינטראקטיבי (סל), checkout, ו-API
 
 #### סדר עבודה מוכח (עדכון מרץ 2026 — גרסה חדשה!):
 
@@ -731,6 +734,12 @@ interactive/tutorials/[שם]/
   soul.md       — הנשמה של ההדרכה (משמעות, רגש, שיווק, ציטוטים של עומר)
   images/       — תמונות מסך בלבד (ממוספרות: [שם]-01.png)
   *.bak         — גיבוי index.html ישן
+
+חבילות/סדרות (כמו Gmail) — תיקיית אב עם תת-הדרכות:
+interactive/tutorials/Gmail/
+  Schedule/     — תזמון שליחה (index.html מצביע ל-../../../shared/)
+  UndoSend/     — ביטול שליחה (בעתיד)
+  Filters/      — סינון אוטומטי (בעתיד)
 ```
 **קבצים משותפים (interactive/shared/) — לא לגעת!**
 - `style.css` — עיצוב אחיד | `script.js` — ניווט+נגישות | `images/` — לוגו+חיצים+UAC
