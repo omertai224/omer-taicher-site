@@ -29,8 +29,8 @@
       "step": 2,
       "type": "view",
       "image": "schedule-02.png",
-      "text": "כתבנו מייל עם נמען, נושא ותוכן. המייל מוכן לשליחה. שימו לב ל<span style=\"color:#f6a67e;\">חץ הקטן</span> ליד כפתור השליחה הכחול.",
-      "textPos": { "left": "20%", "top": "60%" },
+      "text": "המייל מוכן. האצבע על <span style=\"color:#f6a67e;\">שלח</span>. רגע לפני שלוחצים, חשבו: השעה 23:15. באמת רוצים שהלקוח יראה את זה עכשיו?",
+      "textPos": { "left": "20%", "top": "40%" },
       "arrow": "arrow-left"
     },
     {
@@ -38,7 +38,7 @@
       "step": 3,
       "type": "click",
       "image": "schedule-03.png",
-      "text": "ליד כפתור השליחה הכחול יש <span style=\"color:#f6a67e;\">חץ קטן</span>. לחצו עליו כדי לגלות את אפשרויות השליחה הנוספות.",
+      "text": "במקום ללחוץ שלח, לחצו על <span style=\"color:#f6a67e;\">החץ הקטן</span> שליד הכפתור. פה מתחבא הקסם.",
       "box": { "top": "88.2%", "left": "34.5%", "right": "62%", "bottom": "6.44%" },
       "textPos": { "left": "38%", "top": "68%" },
       "arrow": "arrow-left"
