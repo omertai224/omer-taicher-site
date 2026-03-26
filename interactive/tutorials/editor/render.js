@@ -98,8 +98,7 @@ function renderBubble(slide) {
       + '<span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
       + '<b style="font-size:24px;padding:8px 0;"></b>';
   }
-  var continueHtml = slide.continueBtn ? '<div style="margin-top:10px;"><a style="display:inline-block;cursor:pointer;width:150px;height:32px;background:linear-gradient(135deg,#1a2540,#3d5a80);border-radius:20px;text-align:center;color:white;line-height:32px;font-size:14px;font-weight:600;">המשך</a></div>' : '';
-  $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (slide.text || '') + '</div>' + continueHtml;
+  $('bubblePreview').innerHTML = stepHtml + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (slide.text || '') + '</div>';
 }
 
 // Re-scale bubble on window resize

@@ -76,22 +76,31 @@ function updatePanel(s) {
 function updateContinueBtn(s) {
   var btn = $('btnContinue');
   if (!btn) return;
-  var has = s.continueBtn === true;
+  var has = hasContinueBtn(s);
   btn.textContent = has ? '✓ כפתור המשך' : '▶ כפתור המשך';
   btn.style.color = has ? '#4ade80' : '#5b8fa8';
   btn.style.borderColor = has ? '#4ade8055' : '#5b8fa855';
 }
 
+var CONTINUE_HTML = '<div style="text-align:center;margin-top:12px;"><a class="button" onclick="nextSlide()" style="display:inline-block;cursor:pointer;width:150px;height:32px;background:linear-gradient(135deg,#1a2540,#3d5a80);border-radius:20px;text-align:center;color:white;line-height:32px;font-size:14px;font-weight:600;">לחצו להמשיך</a></div>';
+
+function hasContinueBtn(s) {
+  return s.text && s.text.indexOf('לחצו להמשיך') > -1;
+}
+
 function toggleContinueBtn() {
   var s = E.data.slides[E.idx];
   saveUndo();
-  if (s.continueBtn) {
-    delete s.continueBtn;
+  if (hasContinueBtn(s)) {
+    // הסרה — מוחק את ה-div עם הכפתור
+    s.text = s.text.replace(/<div style="text-align:center;margin-top:12px;">.*?לחצו להמשיך.*?<\/div>/g, '').trim();
     toast('כפתור המשך הוסר');
   } else {
-    s.continueBtn = true;
+    // הוספה — מוסיף בסוף הטקסט
+    s.text = (s.text || '') + CONTINUE_HTML;
     toast('כפתור המשך נוסף');
   }
+  $('pText').innerHTML = s.text;
   updateContinueBtn(s);
   renderBubble(s);
   markModified();
