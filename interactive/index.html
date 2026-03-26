@@ -677,7 +677,7 @@ function renderProducts(products) {
     if (!isActive) {
       footerHTML = '<div class="prod-footer" style="justify-content:center;"><div style="font-size:0.8rem;color:rgba(255,255,255,0.3);font-weight:600;">בקרוב</div></div>';
     } else if (p.price === 0) {
-      footerHTML = '<div class="prod-footer"><div class="prod-price" style="color:#4ade80;">חינם<span>בלי תשלום, בלי הרשמה</span></div><div class="prod-actions"><a href="' + p.url + '" target="_blank" class="btn-quick-buy" style="background:linear-gradient(135deg,#4ade80,#22c55e);flex:1;text-align:center;color:#fff;">התחילו עכשיו ' + arrowSVG + '</a>' + prereqsBtnHTML + '</div></div>';
+      footerHTML = '<div class="prod-footer"><div class="prod-price" style="color:#4ade80;">חינם<span>בלי תשלום, בלי הרשמה</span></div><div class="prod-actions"><a href="' + p.url + '" target="_blank" class="btn-add-cart" style="background:linear-gradient(135deg,#4ade80,#22c55e);color:#fff;text-decoration:none;">התחילו עכשיו ' + arrowSVG + '</a><div style="height:36px;"></div></div></div>';
     } else {
       footerHTML = '<div class="prod-footer"><div class="prod-price">' + p.price + ' &#8362;<span>תשלום חד פעמי</span></div><div class="prod-actions"><button class="btn-add-cart" onclick="addToCart(this, \'' + p.key + '\', ' + p.price + ')">' + cartSVG + ' הוספה לסל</button><a href="' + p.checkout_url + '" class="btn-quick-buy">קנייה מהירה ' + arrowSVG + '</a>' + prereqsBtnHTML + '</div></div>';
     }
