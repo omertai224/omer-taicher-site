@@ -144,7 +144,7 @@
         "left": "8.56611%",
         "top": "47.6192%"
       },
-      "text": "ההתקנה מתבצעת. המתינו עד שסרגל ההתקנה יסתיים. כשסיים, לחצו על כפתור <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם."
+      "text": "ההתקנה מתבצעת. המתינו עד שסרגל ההתקנה יסתיים. כשסיים,"
     },
     {
       "index": 10,
@@ -195,7 +195,7 @@
         "left": "20.4005%",
         "top": "58.0702%"
       },
-      "text": "בהפעלה הראשונה, <span style=\"color: rgb(246, 166, 126);\">Vibe </span>מוריד את מודל העברית. המתינו עד שההורדה תסתיים (תלוי במהירות האינטרנט).&nbsp;<br>כשסיים, לחצו על כפתור <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להתקדם.",
+      "text": "בהפעלה הראשונה, <span style=\"color: rgb(246, 166, 126);\">Vibe </span>מוריד את מודל העברית. המתינו עד שההורדה תסתיים (תלוי במהירות האינטרנט).&nbsp;<br>כשסיים,",
       "textWidth": "454px"
     },
     {
@@ -348,7 +348,7 @@
         "left": "45.5545%",
         "top": "15.1694%"
       },
-      "text": "<span style=\"color: rgb(246, 166, 126);\">התמלול בתהליך.</span> המתינו עד שהתמלול יסתיים, זה עשוי לקחת מספר דקות בהתאם לביצועי המחשב ולאורך הקובץ. כשסיים, לחצו על כפתור <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1e5f74;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להתקדם.",
+      "text": "<span style=\"color: rgb(246, 166, 126);\">התמלול בתהליך.</span> המתינו עד שהתמלול יסתיים, זה עשוי לקחת מספר דקות בהתאם לביצועי המחשב ולאורך הקובץ. כשסיים,",
       "textWidth": "339px"
     },
     {
