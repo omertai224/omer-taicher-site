@@ -193,11 +193,11 @@
       "type": "view",
       "image": "everything-09-search-bar-type.png",
       "step": 9,
-      "text": "<span style=\"color: rgb(246, 166, 126);\">התוכנה מותקנת ומוכנה לשימוש.&nbsp;<br></span>הקלידו <span style=\"color: rgb(246, 166, 126);\">ב<span style=\"color:#f6a67e;\">שור</span></span><span style=\"color:#f6a67e;\">ת החיפוש</span> למעלה את שם הקובץ שאתם מחפשים, והתוצאות יופיעו מיידית<br>",
+      "text": "<span style=\"color: rgb(246, 166, 126);\">התוכנה מותקנת ומוכנה לשימוש.&nbsp;<br></span>הקלידו <span style=\"color: rgb(246, 166, 126);\">ב<span style=\"color:#f6a67e;\">שור</span></span><span style=\"color:#f6a67e;\">ת החיפוש</span> למעלה את שם הקובץ שאתם מחפשים, והתוצאות יופיעו מיידית<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-top-left",
       "textPos": {
-        "left": "43.8769%",
-        "top": "10.4498%"
+        "left": "59.2073%",
+        "top": "10.0241%"
       },
       "box": {
         "top": "3.66667%",
@@ -212,7 +212,7 @@
       "type": "view",
       "image": "everything-10-search-results.png",
       "step": 10,
-      "text": "הקלדנו <span style=\"color:#f6a67e;\">שף</span> בשורת החיפוש והתוצאות מופיעות מיד! Everything מצא קובץ וידאו וקובץ טקסט.<br>",
+      "text": "הקלדנו <span style=\"color:#f6a67e;\">שף</span> בשורת החיפוש והתוצאות מופיעות מיד! Everything מצא קובץ וידאו וקובץ טקסט.<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-top-right",
       "textPos": {
         "left": "59.3386%",
@@ -225,7 +225,7 @@
       "type": "view",
       "image": "everything-11-results-details.png",
       "step": 11,
-      "text": "אפשר לראות את <span style=\"color:#f6a67e;\">תוצאות החיפוש</span> עם שם הקובץ, הגודל, התאריך והנתיב המלא.&nbsp;<br>לחיצה כפולה על קובץ תפתח אותו<br>",
+      "text": "אפשר לראות את <span style=\"color:#f6a67e;\">תוצאות החיפוש</span> עם שם הקובץ, הגודל, התאריך והנתיב המלא.&nbsp;<br>לחיצה כפולה על קובץ תפתח אותו<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-top-right",
       "textPos": {
         "left": "42.0133%",
@@ -316,7 +316,7 @@
       "type": "view",
       "image": "everything-16-filtered-video-results.png",
       "step": 16,
-      "text": "<span style=\"color: rgb(246, 166, 126);\">רואים שהתוצאות סוננו </span>- Everything מציג רק את קבצי הוידאו.&nbsp;ככה אפשר למצוא בקלות סוג קובץ מסוים<br>",
+      "text": "<span style=\"color: rgb(246, 166, 126);\">רואים שהתוצאות סוננו </span>- Everything מציג רק את קבצי הוידאו.&nbsp;ככה אפשר למצוא בקלות סוג קובץ מסוים<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-top-right",
       "textPos": {
         "left": "40.9878%",
@@ -368,7 +368,7 @@
       "type": "view",
       "image": "everything-19-filtered-doc-results.png",
       "step": 19,
-      "text": "קובץ המסמך הופיע בתוצאות.<span style=\"color: rgb(246, 166, 126);\"> המסנן</span> <span style=\"color:#f6a67e;\">מסמכים</span> מציג רק קבצי מסמכים<br>",
+      "text": "קובץ המסמך הופיע בתוצאות.<span style=\"color: rgb(246, 166, 126);\"> המסנן</span> <span style=\"color:#f6a67e;\">מסמכים</span> מציג רק קבצי מסמכים<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-top-right",
       "textPos": {
         "left": "58.9004%",
@@ -499,13 +499,13 @@
       "type": "view",
       "image": "everything-26-video-preview-playing.png",
       "step": 26,
-      "text": "רואים את <span style=\"color:#f6a67e;\">התצוגה המקדימה של הסרטון</span> - אפשר לצפות בלי לפתוח את הקובץ<br>",
+      "text": "רואים את <span style=\"color:#f6a67e;\">התצוגה המקדימה של הסרטון</span> - אפשר לצפות בלי לפתוח את הקובץ<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "63.6477%",
-        "top": "25.2377%"
+        "left": "57.3819%",
+        "top": "17.5933%"
       },
-      "textWidth": "233px"
+      "textWidth": "313px"
     },
     {
       "index": 31,
@@ -551,7 +551,7 @@
       "type": "view",
       "image": "everything-29-file-in-folder.png",
       "step": 29,
-      "text": "<span style=\"color: rgb(246, 166, 126);\">רואים את הקובץ במחשב</span> - Everything פתח את התיקייה שבה <span style=\"color:#f6a67e;\">הקובץ נמצא</span><br>",
+      "text": "<span style=\"color: rgb(246, 166, 126);\">רואים את הקובץ במחשב</span> - Everything פתח את התיקייה שבה <span style=\"color:#f6a67e;\">הקובץ נמצא</span><br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-right",
       "textPos": {
         "left": "45.7912%",
