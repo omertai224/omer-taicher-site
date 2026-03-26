@@ -38,7 +38,7 @@
       "step": 2,
       "type": "view",
       "image": "schedule-02.png",
-      "text": "המייל מוכן. האצבע על <span style=\"color:#f6a67e;\">ש</span><span style=\"color: rgb(246, 166, 126);\"><span style=\"color:#f6a67e;\">ליחה</span>. </span>רגע לפני שלוחצים, חשבו: השעה 23:15. באמת רוצים שהלקוח יראה את זה עכשיו?<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "המייל מוכן. האצבע על <span style=\"color:#f6a67e;\">ש</span><span style=\"color: rgb(246, 166, 126);\"><span style=\"color:#f6a67e;\">ליחה</span>. </span>רגע לפני שלוחצים, חשבו: השעה 23:15. <span style=\"color: rgb(246, 166, 126);\">באמת רוצים שהלקוח יראה את זה עכשיו?</span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "44.1297%",
         "top": "38.3006%"
@@ -112,7 +112,13 @@
         "top": "39.287%"
       },
       "arrow": "arrow-right",
-      "highlight_type": "static"
+      "highlight_type": "static",
+      "box": {
+        "top": "84.7771%",
+        "left": "61.862%",
+        "right": "5.8731%",
+        "bottom": "6.90021%"
+      }
     },
     {
       "index": 8,
@@ -203,8 +209,8 @@
       "box": {
         "top": "84.9326%",
         "left": "57.0698%",
-        "right": "31.0442%",
-        "bottom": "7.92575%"
+        "right": "5.98119%",
+        "bottom": "8.35038%"
       },
       "textPos": {
         "left": "55.4648%",
@@ -298,12 +304,19 @@
       "step": 16,
       "type": "click",
       "image": "schedule-16.png",
-      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> מתוך \"עוד\" למעלה, כדי להצמיד אותן לתיקיות הראשיות.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> גרירה עם הקליק השמאלי של העכבר. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום.</span>",
+      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> מתוך \"עוד\" למעלה, כדי להצמיד אותן לתיקיות הראשיות.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> גרירה עם הקליק השמאלי של העכבר.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום.</span>",
       "textPos": {
-        "left": "35.9343%",
-        "top": "45.0062%"
+        "left": "31.001%",
+        "top": "45.4308%"
       },
-      "arrow": "arrow-right"
+      "arrow": "arrow-right",
+      "textWidth": "339px",
+      "box": {
+        "top": "55.69%",
+        "left": "76.7932%",
+        "right": "6.40635%",
+        "bottom": "39.172%"
+      }
     },
     {
       "index": 20,
@@ -315,7 +328,13 @@
         "left": "34.8637%",
         "top": "44.4997%"
       },
-      "arrow": "arrow-left"
+      "arrow": "arrow-left",
+      "box": {
+        "top": "85.8387%",
+        "left": "59.0624%",
+        "right": "6.40636%",
+        "bottom": "7.74947%"
+      }
     },
     {
       "index": 21,
