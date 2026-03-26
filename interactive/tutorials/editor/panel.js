@@ -83,7 +83,7 @@ function updateContinueBtn(s) {
 }
 
 var CONTINUE_MARKER = 'כדי להמשיך בהדרכה.';
-var CONTINUE_HTML = '<div style="text-align:center;margin-top:12px;">לחצו על <span onclick="nextSlide()" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span> כדי להמשיך בהדרכה.</div>';
+var CONTINUE_HTML = '<div style="text-align:center;margin-top:12px;">לחצו על <span onclick="nextSlide()" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span> כדי להמשיך בהדרכה.</div>';
 
 function hasContinueBtn(s) {
   return s.text && s.text.indexOf(CONTINUE_MARKER) > -1;
