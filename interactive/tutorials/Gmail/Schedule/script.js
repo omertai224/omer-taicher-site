@@ -52,7 +52,7 @@ function buildSlides(slides, totalSteps) {
         + '<div style="text-align:right;"><span style="color:#f6a67e;font-weight:700;">' + s.step + '</span><span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
         + '<b style="font-size:24px;padding:8px 0;"></b>'
         + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (s.text || '') + '</div>'
-        + '<a class="button" onclick="nextSlide()">המשך</a>'
+        + '<div style="text-align:center;margin-top:12px;">לחצו על <a class="button" onclick="nextSlide()" style="display:inline-block;cursor:pointer;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border-radius:50%;text-align:center;color:white;line-height:36px;font-size:16px;font-weight:700;vertical-align:middle;margin:0 4px;">&#9654;</a> כדי להמשיך בהדרכה.</div>'
         + '</div>';
       html += '</div></div></div>';
 
