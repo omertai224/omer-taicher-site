@@ -82,10 +82,11 @@ function updateContinueBtn(s) {
   btn.style.borderColor = has ? '#4ade8055' : '#5b8fa855';
 }
 
-var CONTINUE_HTML = '<div style="text-align:center;margin-top:12px;"><a class="button" onclick="nextSlide()" style="display:inline-block;cursor:pointer;width:150px;height:32px;background:linear-gradient(135deg,#1a2540,#3d5a80);border-radius:20px;text-align:center;color:white;line-height:32px;font-size:14px;font-weight:600;">לחצו להמשיך</a></div>';
+var CONTINUE_MARKER = 'כדי להמשיך בהדרכה.';
+var CONTINUE_HTML = '<div style="text-align:center;margin-top:12px;">לחצו על <a class="button" onclick="nextSlide()" style="display:inline-block;cursor:pointer;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border-radius:50%;text-align:center;color:white;line-height:36px;font-size:16px;font-weight:700;vertical-align:middle;margin:0 4px;">▶</a> כדי להמשיך בהדרכה.</div>';
 
 function hasContinueBtn(s) {
-  return s.text && s.text.indexOf('לחצו להמשיך') > -1;
+  return s.text && s.text.indexOf(CONTINUE_MARKER) > -1;
 }
 
 function toggleContinueBtn() {
@@ -93,7 +94,7 @@ function toggleContinueBtn() {
   saveUndo();
   if (hasContinueBtn(s)) {
     // הסרה — מוחק את ה-div עם הכפתור
-    s.text = s.text.replace(/<div style="text-align:center;margin-top:12px;">.*?לחצו להמשיך.*?<\/div>/g, '').trim();
+    s.text = s.text.replace(/<div style="text-align:center;margin-top:12px;">.*?כדי להמשיך בהדרכה\..*?<\/div>/g, '').trim();
     toast('כפתור המשך הוסר');
   } else {
     // הוספה — מוסיף בסוף הטקסט
