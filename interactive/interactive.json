@@ -1,4 +1,9 @@
-[
+{
+  "discountRules": [
+    { "minItems": 2, "percent": 10 },
+    { "minItems": 3, "percent": 20 }
+  ],
+  "products": [
   {
     "key": "clipboard",
     "title": "העתקה חכמה שחוסכת זמן, עצבים ואנרגיה",
@@ -51,3 +56,4 @@
     ]
   }
 ]
+}
