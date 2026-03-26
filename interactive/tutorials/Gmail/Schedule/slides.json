@@ -1,7 +1,7 @@
 {
   "title": "תזמון שליחה",
   "subtitle": "Gmail",
-  "totalSteps": 19,
+  "totalSteps": 17,
   "slides": [
     {
       "index": 0,
@@ -304,27 +304,20 @@
       "step": 16,
       "type": "view",
       "image": "schedule-16.png",
-      "text": "התזמון בוטל והמייל חזר לטיוטות. חזרנו לתיקיית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span>.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> מתוך \"עוד\" למעלה, כדי להצמיד אותן לתיקיות הראשיות. ככה תמיד תראו אותן.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "35.9343%",
         "top": "45.0062%"
       },
       "arrow": "arrow-right",
-      "highlight_type": "static",
-      "notes": [
-        {
-          "text": "הערה חדשהבשקף הזה לא מדברים על השליחה בוטלה שהתזמון בוטלל בוטל מדברים על זה שצריכים לגרור את ההודעות המתוזמנות למעלה כדי להצמיד אותם לתיקיות הראשיות על זה מדובר בשקף הזה",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "highlight_type": "static"
     },
     {
       "index": 20,
       "step": 17,
       "type": "view",
       "image": "schedule-17.png",
-      "text": "למטה מופיעה הודעה שהתזמון בוטל. אם התחרטתם, לחצו <span style=\"color:#f6a67e;\">ביטול</span> כדי להחזיר את התזמון.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "<span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> עברו לחלק העליון! עכשיו לא צריך ללחוץ \"עוד\" כל פעם.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "box": {
         "top": "85.0009%",
         "left": "59.6333%",
@@ -335,50 +328,10 @@
         "left": "34.8637%",
         "top": "37.7057%"
       },
-      "arrow": "arrow-left",
-      "notes": [
-        {
-          "text": "הערה חדשהפה כבר רואים בחלק הזה שההודעות המתוזמנות עברו לחלק העליון ושלא נצטרך ללחוץ על עוד כדי לפתוח את זה",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "arrow": "arrow-left"
     },
     {
       "index": 21,
-      "step": 18,
-      "type": "view",
-      "image": "schedule-18.png",
-      "text": "התזמון שוחזר בהצלחה! המייל חזר לתיקיית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> וישלח בזמן שקבעתם.",
-      "textPos": {
-        "left": "35.5344%",
-        "top": "46.0678%"
-      },
-      "arrow": "arrow-right",
-      "highlight_type": "static"
-    },
-    {
-      "index": 22,
-      "step": 19,
-      "type": "view",
-      "image": "schedule-19.png",
-      "text": "זו תיקיית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span>. כאן תמיד תוכלו לראות, לערוך או לבטל מיילים שתזמנתם.",
-      "textPos": {
-        "left": "45%",
-        "top": "38%"
-      },
-      "arrow": "arrow-right",
-      "highlight_type": "static",
-      "notes": [
-        {
-          "text": "הערה חדשההצעת 18 ו 19 אפשר לבטל הם לא רלוונטים וגם למחוק את התמונה שלהם",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
-    },
-    {
-      "index": 23,
       "type": "outro",
       "html": "<style>.outro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);overflow:hidden;padding:16px 20px;box-sizing:border-box;background:linear-gradient(135deg,#0f1a2e 0%,#1a2540 50%,#1e3050 100%);}.outro-title{font-size:clamp(16px,2.5vw,28px);font-weight:900;color:white;margin-bottom:10px;text-align:center;}.outro-title span{color:#f6a67e;}.outro-sub{color:#ffffffaa;font-size:13px;margin-bottom:20px;text-align:center;line-height:1.8;}.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;max-width:600px;margin-bottom:20px;}.use-card{background:#ffffff0d;border:1px solid #ffffff1a;border-radius:12px;padding:14px 16px;text-align:right;transition:transform 0.2s;}.use-card:hover{transform:translateY(-3px);background:#ffffff18;}.use-card .uc-icon{font-size:20px;margin-bottom:6px;}.use-card .uc-title{color:#f6a67e;font-size:13px;font-weight:700;margin-bottom:4px;}.use-card .uc-desc{color:#ffffffbb;font-size:12px;line-height:1.6;}.btn-restart{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.35);}.btn-more{display:inline-block;background:linear-gradient(135deg,#4ade80,#22c55e);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(74,222,128,0.3);text-decoration:none;}</style><div class=\"outro-wrap\"><div class=\"outro-title\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:8px;\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg> עכשיו אתם יודעים <span>לתזמן שליחה!</span></div><div class=\"outro-sub\">המייל יישלח בדיוק מתי שתבחרו. הנה עוד דוגמאות:</div><div class=\"use-cases\"><div class=\"use-card\"><div class=\"uc-icon\">🎂</div><div class=\"uc-title\">ברכת יום הולדת</div><div class=\"uc-desc\">כותבים היום, נשלח בדיוק ביום המיוחד.</div></div><div class=\"use-card\"><div class=\"uc-icon\">🌍</div><div class=\"uc-title\">שעות עבודה בחו\"ל</div><div class=\"uc-desc\">כותבים בשעות שלכם, נשלח בשעות העבודה של הלקוח.</div></div><div class=\"use-card\"><div class=\"uc-icon\">📋</div><div class=\"uc-title\">תזכורת לעצמכם</div><div class=\"uc-desc\">שולחים לעצמכם מייל שיגיע ביום ראשון בבוקר.</div></div><div class=\"use-card\"><div class=\"uc-icon\">📨</div><div class=\"uc-title\">סדרת מיילים</div><div class=\"uc-desc\">3 מיילים מתוזמנים ליום א', ג', ה'. נשלחים לבד.</div></div></div><div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;\"><button class=\"btn-restart\" onclick=\"showSlides(1)\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"1 4 1 10 7 10\"/><path d=\"M3.51 15a9 9 0 102.13-9.36L1 10\"/></svg>חזרו להתחלה</button><a href=\"/interactive/\" target=\"_blank\" class=\"btn-more\">&#9654; להדרכות נוספות</a></div></div>"
     }
