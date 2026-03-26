@@ -58,8 +58,8 @@
         "bottom": "6.44%"
       },
       "textPos": {
-        "left": "43.5985%",
-        "top": "61.2051%"
+        "left": "45.0643%",
+        "top": "65.6626%"
       },
       "arrow": "arrow-left"
     },
@@ -107,12 +107,6 @@
       "type": "view",
       "image": "schedule-06.png",
       "text": "המייל תוזמן בהצלחה! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span> עם השעה שנבחרה. אפשר ללחוץ <span style=\"color:#f6a67e;\">בטל</span> אם התחרטתם.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
-      "box": {
-        "top": "85.1033%",
-        "left": "61.3358%",
-        "right": "5.56111%",
-        "bottom": "7.1181%"
-      },
       "textPos": {
         "left": "36.3336%",
         "top": "39.287%"
@@ -140,7 +134,7 @@
       },
       "textPos": {
         "left": "44.3984%",
-        "top": "46.3431%"
+        "top": "54.8346%"
       },
       "arrow": "arrow-left"
     },
@@ -157,8 +151,8 @@
         "bottom": "11.35%"
       },
       "textPos": {
-        "left": "45.3996%",
-        "top": "59.0543%"
+        "left": "44.4657%",
+        "top": "66.0596%"
       },
       "arrow": "arrow-left"
     },
@@ -209,12 +203,12 @@
       "box": {
         "top": "84.9326%",
         "left": "57.0698%",
-        "right": "5.58128%",
-        "bottom": "7.2888%"
+        "right": "31.0442%",
+        "bottom": "7.92575%"
       },
       "textPos": {
-        "left": "58.5317%",
-        "top": "49.0545%"
+        "left": "55.4648%",
+        "top": "49.0534%"
       },
       "arrow": "arrow-right",
       "textWidth": "216px"
@@ -238,8 +232,8 @@
         "bottom": "42.83%"
       },
       "textPos": {
-        "left": "48.5992%",
-        "top": "58.5667%"
+        "left": "48.1992%",
+        "top": "58.779%"
       },
       "arrow": "arrow-right"
     },
@@ -304,7 +298,7 @@
       "step": 16,
       "type": "view",
       "image": "schedule-16.png",
-      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> מתוך \"עוד\" למעלה, כדי להצמיד אותן לתיקיות הראשיות. ככה תמיד תראו אותן.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> מתוך \"עוד\" למעלה, כדי להצמיד אותן לתיקיות הראשיות.<span style=\"color: rgb(246, 166, 126);\"> ככה תמיד תראו אותן.</span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "35.9343%",
         "top": "45.0062%"
@@ -317,16 +311,10 @@
       "step": 17,
       "type": "view",
       "image": "schedule-17.png",
-      "text": "<span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> עברו לחלק העליון! עכשיו לא צריך ללחוץ \"עוד\" כל פעם.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
-      "box": {
-        "top": "85.0009%",
-        "left": "59.6333%",
-        "right": "6.09402%",
-        "bottom": "6.79594%"
-      },
+      "text": "<span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> עברו לחלק העליון! עכשיו לא צריך ללחוץ \"עוד\" <span style=\"color: rgb(246, 166, 126);\">כל פעם.</span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "34.8637%",
-        "top": "37.7057%"
+        "top": "44.4997%"
       },
       "arrow": "arrow-left"
     },
