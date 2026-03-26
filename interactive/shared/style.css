@@ -316,8 +316,10 @@ a { word-break: break-all; }
   margin: 50px auto;
   width: 200px;
   height: 44px;
-  line-height: 44px;
+  line-height: 40px;
   font-size: 16px;
+  background: linear-gradient(135deg, #f6a67e, #e8834e);
+  box-shadow: 0 6px 20px rgba(246,166,126,0.4);
 }
 
 /* ─── fade animation ─── */
