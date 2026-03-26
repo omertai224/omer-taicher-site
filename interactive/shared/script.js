@@ -33,17 +33,17 @@ function showSlides(n) {
   let previous = document.getElementById("left-arrow");
 
   if (n == slides.length) {
-    next.src = sharedImages + "/right-disabled.png";
+    next.style.opacity = "0.3";
     next.style.cursor = "default";
   } else {
-    next.src = sharedImages + "/right.png";
+    next.style.opacity = "1";
     next.style.cursor = "pointer";
   }
   if (n == 1) {
-    previous.src = sharedImages + "/left-disabled.png";
+    previous.style.opacity = "0.3";
     previous.style.cursor = "default";
   } else {
-    previous.src = sharedImages + "/left.png";
+    previous.style.opacity = "1";
     previous.style.cursor = "pointer";
   }
 
