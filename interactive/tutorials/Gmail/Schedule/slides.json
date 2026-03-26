@@ -1,0 +1,225 @@
+{
+  "title": "תזמון שליחה",
+  "subtitle": "Gmail",
+  "totalSteps": 19,
+  "slides": [
+    {
+      "index": 0,
+      "type": "intro",
+      "html": "<style>.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e 0%,#1a2540 50%,#1e3050 100%);text-align:center;padding:40px 20px;}.intro-icon{margin-bottom:20px;}.intro-series{font-size:0.85rem;color:#f6a67e;font-weight:700;letter-spacing:1px;margin-bottom:8px;}.intro-title{font-size:clamp(28px,4vw,42px);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.3;}.intro-title span{color:#f6a67e;}.intro-desc{font-size:1rem;color:#ffffffaa;line-height:1.8;max-width:500px;margin-bottom:30px;}.intro-btn{background:linear-gradient(135deg,#f6a67e,#e8834e);color:#fff;border:none;padding:14px 40px;border-radius:50px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Rubik',sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.4);transition:transform 0.2s;}.intro-btn:hover{transform:scale(1.05);}</style><div class=\"intro-wrap\"><div class=\"intro-icon\"><svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg></div><div class=\"intro-series\">Gmail</div><div class=\"intro-title\">תזמון <span>שליחה</span></div><div class=\"intro-desc\">כתבתם מייל ב-11 בלילה?<br>לא חייבים שהלקוח ידע.<br>למדו לתזמן שליחה לכל שעה שתרצו.</div><button class=\"intro-btn\" onclick=\"nextSlide()\">בואו נתחיל</button></div>"
+    },
+    {
+      "index": 1,
+      "type": "special",
+      "specialType": "howto",
+      "html": "<style>.howto-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e,#1a2540);text-align:center;padding:40px 20px;}.howto-title{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:20px;}.howto-desc{font-size:0.95rem;color:#ffffffaa;line-height:2;max-width:460px;margin-bottom:30px;}.howto-btn{background:linear-gradient(135deg,#1a2540,#3d5a80);color:#fff;border:none;padding:12px 36px;border-radius:50px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Rubik',sans-serif;box-shadow:0 4px 16px rgba(26,37,64,0.4);}</style><div class=\"howto-wrap\"><svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:16px;\"><polygon points=\"5 3 19 12 5 21 5 3\"/></svg><div class=\"howto-title\">איך עובדים עם ההדרכה</div><div class=\"howto-desc\">בכל שקף תראו תמונה אמיתית מהמחשב.<br>לחצו על <span style=\"color:#f6a67e;font-weight:700;\">המסגרת הכתומה</span> כדי להתקדם.<br>בדיוק כמו שהייתם עושים במחשב שלכם.</div><button class=\"howto-btn\" onclick=\"nextSlide()\">הבנתי, קדימה</button></div>"
+    },
+    {
+      "index": 2,
+      "step": 1,
+      "type": "click",
+      "image": "schedule-01.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">אימייל חדש</span> כדי לפתוח חלון כתיבה.",
+      "box": { "top": "21.8%", "left": "82.87%", "right": "5.26%", "bottom": "70.61%" },
+      "textPos": { "left": "50%", "top": "25%" },
+      "arrow": "arrow-right"
+    },
+    {
+      "index": 3,
+      "step": 2,
+      "type": "view",
+      "image": "schedule-02.png",
+      "text": "כתבנו מייל עם נמען, נושא ותוכן. המייל מוכן לשליחה. שימו לב ל<span style=\"color:#f6a67e;\">חץ הקטן</span> ליד כפתור השליחה הכחול.",
+      "textPos": { "left": "20%", "top": "60%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 4,
+      "step": 3,
+      "type": "click",
+      "image": "schedule-03.png",
+      "text": "ליד כפתור השליחה הכחול יש <span style=\"color:#f6a67e;\">חץ קטן</span>. לחצו עליו כדי לגלות את אפשרויות השליחה הנוספות.",
+      "box": { "top": "88.2%", "left": "34.5%", "right": "62%", "bottom": "6.44%" },
+      "textPos": { "left": "38%", "top": "68%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 5,
+      "step": 4,
+      "type": "click",
+      "image": "schedule-04.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תזמון שליחה</span> מהתפריט שנפתח.",
+      "box": { "top": "83.76%", "left": "32.06%", "right": "56.59%", "bottom": "11.35%" },
+      "textPos": { "left": "43.4%", "top": "65%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 6,
+      "step": 5,
+      "type": "click",
+      "image": "schedule-05.png",
+      "text": "בחרו מתי לשלוח. לדוגמה, לחצו על <span style=\"color:#f6a67e;\">מחר בבוקר</span> כדי שהמייל יישלח מחר ב-8:00.",
+      "box": { "top": "49.22%", "left": "39.33%", "right": "39.27%", "bottom": "45.43%" },
+      "textPos": { "left": "60.7%", "top": "35%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 7,
+      "step": 6,
+      "type": "view",
+      "image": "schedule-06.png",
+      "text": "המייל תוזמן בהצלחה! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span> עם השעה שנבחרה. אפשר ללחוץ <span style=\"color:#f6a67e;\">בטל</span> אם התחרטתם.",
+      "box": { "top": "77.46%", "left": "78%", "right": "13.16%", "bottom": "19.22%" },
+      "textPos": { "left": "45%", "top": "55%" },
+      "arrow": "arrow-right",
+      "highlight_type": "static"
+    },
+    {
+      "index": 8,
+      "type": "special",
+      "specialType": "transition",
+      "html": "<style>.trans-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e,#1a2540);text-align:center;padding:40px 20px;}.trans-check{width:56px;height:56px;border-radius:50%;background:rgba(74,222,128,0.12);border:2px solid #4ade80;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}.trans-title{font-size:1.2rem;font-weight:900;color:#fff;margin-bottom:8px;}.trans-sub{font-size:0.9rem;color:#ffffffaa;margin-bottom:24px;line-height:1.7;}.trans-btn{background:linear-gradient(135deg,#1a2540,#3d5a80);color:#fff;border:none;padding:12px 36px;border-radius:50px;font-size:0.95rem;font-weight:700;cursor:pointer;font-family:'Rubik',sans-serif;}</style><div class=\"trans-wrap\"><div class=\"trans-check\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4ade80\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></div><div class=\"trans-title\">תזמון מהיר הושלם!</div><div class=\"trans-sub\">ראיתם? שלוש לחיצות והמייל ממתין.<br>עכשיו נלמד לבחור תאריך ושעה מדויקים.</div><button class=\"trans-btn\" onclick=\"nextSlide()\">המשך</button></div>"
+    },
+    {
+      "index": 9,
+      "step": 7,
+      "type": "click",
+      "image": "schedule-07.png",
+      "text": "כתבנו מייל נוסף. הפעם נתזמן אותו לתאריך ושעה מדויקים. לחצו על <span style=\"color:#f6a67e;\">החץ הקטן</span> ליד כפתור השליחה.",
+      "box": { "top": "88.2%", "left": "34.5%", "right": "62%", "bottom": "6.44%" },
+      "textPos": { "left": "38%", "top": "68%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 10,
+      "step": 8,
+      "type": "click",
+      "image": "schedule-08.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תזמון שליחה</span> מהתפריט.",
+      "box": { "top": "83.76%", "left": "32.06%", "right": "56.59%", "bottom": "11.35%" },
+      "textPos": { "left": "43.4%", "top": "65%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 11,
+      "step": 9,
+      "type": "click",
+      "image": "schedule-09.png",
+      "text": "הפעם לחצו על <span style=\"color:#f6a67e;\">בחירת תאריך ושעה</span> כדי לבחור בדיוק מתי לשלוח.",
+      "box": { "top": "62.65%", "left": "39.33%", "right": "39.27%", "bottom": "30.06%" },
+      "textPos": { "left": "60.7%", "top": "45%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 12,
+      "step": 10,
+      "type": "click",
+      "image": "schedule-10.png",
+      "text": "בחרו <span style=\"color:#f6a67e;\">תאריך</span> בלוח השנה ו<span style=\"color:#f6a67e;\">שעה</span>. אז לחצו על <span style=\"color:#f6a67e;\">תזמן שליחה</span>.",
+      "box": { "top": "72.19%", "left": "31.19%", "right": "58.4%", "bottom": "22%" },
+      "textPos": { "left": "41.6%", "top": "50%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 13,
+      "step": 11,
+      "type": "click",
+      "image": "schedule-11.png",
+      "text": "המייל תוזמן! לחצו על <span style=\"color:#f6a67e;\">הצגת הודעה</span> כדי לראות אותו.",
+      "box": { "top": "76.44%", "left": "78.8%", "right": "14.38%", "bottom": "20.24%" },
+      "textPos": { "left": "50%", "top": "55%" },
+      "arrow": "arrow-right"
+    },
+    {
+      "index": 14,
+      "type": "special",
+      "specialType": "transition",
+      "html": "<div class=\"trans-wrap\"><div class=\"trans-check\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4ade80\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg></div><div class=\"trans-title\">תזמון מדויק הושלם!</div><div class=\"trans-sub\">עכשיו נלמד איפה למצוא את המיילים המתוזמנים<br>ואיך לבטל או לערוך אותם.</div><button class=\"trans-btn\" onclick=\"nextSlide()\">המשך</button></div>"
+    },
+    {
+      "index": 15,
+      "step": 12,
+      "type": "click",
+      "image": "schedule-12.png",
+      "text": "בתפריט בצד ימין, לחצו על <span style=\"color:#f6a67e;\">עוד תוויות</span> כדי לראות את כל התיקיות.",
+      "box": { "top": "52.37%", "left": "76.83%", "right": "5.26%", "bottom": "42.83%" },
+      "textPos": { "left": "45%", "top": "35%" },
+      "arrow": "arrow-right"
+    },
+    {
+      "index": 16,
+      "step": 13,
+      "type": "click",
+      "image": "schedule-13.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> כדי לראות את כל המיילים שממתינים לשליחה.",
+      "box": { "top": "56.07%", "left": "76.83%", "right": "5.26%", "bottom": "39.13%" },
+      "textPos": { "left": "45%", "top": "38%" },
+      "arrow": "arrow-right"
+    },
+    {
+      "index": 17,
+      "step": 14,
+      "type": "click",
+      "image": "schedule-14.png",
+      "text": "כאן תראו את כל המיילים המתוזמנים. לחצו על <span style=\"color:#f6a67e;\">ההודעה</span> כדי לפתוח אותה.",
+      "box": { "top": "40.06%", "left": "53.69%", "right": "30.66%", "bottom": "56.44%" },
+      "textPos": { "left": "20%", "top": "42%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 18,
+      "step": 15,
+      "type": "click",
+      "image": "schedule-15.png",
+      "text": "זו ההודעה המתוזמנת. למעלה מופיע <span style=\"color:#f6a67e;\">ביטול השליחה</span>. לחצו כאן אם רוצים לבטל את התזמון ולערוך את המייל.",
+      "box": { "top": "40.8%", "left": "5.9%", "right": "84.15%", "bottom": "53.94%" },
+      "textPos": { "left": "15.85%", "top": "25%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 19,
+      "step": 16,
+      "type": "view",
+      "image": "schedule-16.png",
+      "text": "התזמון בוטל והמייל חזר לטיוטות. חזרנו לתיקיית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span>.",
+      "textPos": { "left": "45%", "top": "38%" },
+      "arrow": "arrow-right",
+      "highlight_type": "static"
+    },
+    {
+      "index": 20,
+      "step": 17,
+      "type": "click",
+      "image": "schedule-17.png",
+      "text": "למטה מופיעה הודעה שהתזמון בוטל. אם התחרטתם, לחצו <span style=\"color:#f6a67e;\">ביטול</span> כדי להחזיר את התזמון.",
+      "box": { "top": "80.33%", "left": "59.5%", "right": "33.69%", "bottom": "16.35%" },
+      "textPos": { "left": "25%", "top": "60%" },
+      "arrow": "arrow-left"
+    },
+    {
+      "index": 21,
+      "step": 18,
+      "type": "view",
+      "image": "schedule-18.png",
+      "text": "התזמון שוחזר בהצלחה! המייל חזר לתיקיית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> וישלח בזמן שקבעתם.",
+      "textPos": { "left": "45%", "top": "38%" },
+      "arrow": "arrow-right",
+      "highlight_type": "static"
+    },
+    {
+      "index": 22,
+      "step": 19,
+      "type": "view",
+      "image": "schedule-19.png",
+      "text": "זו תיקיית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span>. כאן תמיד תוכלו לראות, לערוך או לבטל מיילים שתזמנתם.",
+      "textPos": { "left": "45%", "top": "38%" },
+      "arrow": "arrow-right",
+      "highlight_type": "static"
+    },
+    {
+      "index": 23,
+      "type": "outro",
+      "html": "<style>.outro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);overflow:hidden;padding:16px 20px;box-sizing:border-box;background:linear-gradient(135deg,#0f1a2e 0%,#1a2540 50%,#1e3050 100%);}.outro-title{font-size:clamp(16px,2.5vw,28px);font-weight:900;color:white;margin-bottom:10px;text-align:center;}.outro-title span{color:#f6a67e;}.outro-sub{color:#ffffffaa;font-size:13px;margin-bottom:20px;text-align:center;line-height:1.8;}.use-cases{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;width:100%;max-width:600px;margin-bottom:20px;}.use-card{background:#ffffff0d;border:1px solid #ffffff1a;border-radius:12px;padding:14px 16px;text-align:right;transition:transform 0.2s;}.use-card:hover{transform:translateY(-3px);background:#ffffff18;}.use-card .uc-icon{font-size:20px;margin-bottom:6px;}.use-card .uc-title{color:#f6a67e;font-size:13px;font-weight:700;margin-bottom:4px;}.use-card .uc-desc{color:#ffffffbb;font-size:12px;line-height:1.6;}.btn-restart{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.35);}.btn-more{display:inline-block;background:linear-gradient(135deg,#4ade80,#22c55e);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(74,222,128,0.3);text-decoration:none;}</style><div class=\"outro-wrap\"><div class=\"outro-title\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:8px;\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg> עכשיו אתם יודעים <span>לתזמן שליחה!</span></div><div class=\"outro-sub\">המייל יישלח בדיוק מתי שתבחרו. הנה עוד דוגמאות:</div><div class=\"use-cases\"><div class=\"use-card\"><div class=\"uc-icon\">🎂</div><div class=\"uc-title\">ברכת יום הולדת</div><div class=\"uc-desc\">כותבים היום, נשלח בדיוק ביום המיוחד.</div></div><div class=\"use-card\"><div class=\"uc-icon\">🌍</div><div class=\"uc-title\">שעות עבודה בחו\"ל</div><div class=\"uc-desc\">כותבים בשעות שלכם, נשלח בשעות העבודה של הלקוח.</div></div><div class=\"use-card\"><div class=\"uc-icon\">📋</div><div class=\"uc-title\">תזכורת לעצמכם</div><div class=\"uc-desc\">שולחים לעצמכם מייל שיגיע ביום ראשון בבוקר.</div></div><div class=\"use-card\"><div class=\"uc-icon\">📨</div><div class=\"uc-title\">סדרת מיילים</div><div class=\"uc-desc\">3 מיילים מתוזמנים ליום א', ג', ה'. נשלחים לבד.</div></div></div><div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;\"><button class=\"btn-restart\" onclick=\"showSlides(1)\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"1 4 1 10 7 10\"/><path d=\"M3.51 15a9 9 0 102.13-9.36L1 10\"/></svg>חזרו להתחלה</button><a href=\"/interactive/\" target=\"_blank\" class=\"btn-more\">&#9654; להדרכות נוספות</a></div></div>"
+    }
+  ]
+}

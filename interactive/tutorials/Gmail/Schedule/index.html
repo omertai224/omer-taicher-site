@@ -1,0 +1,49 @@
+<html dir="rtl" style="overflow:hidden;">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>תזמון שליחה - Gmail - הדרכה אינטראקטיבית</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../shared/style.css">
+</head>
+<body onload="initApp()">
+
+<!-- Mobile Block -->
+<div id="mobile-block" style="display:none;position:fixed;inset:0;background:#1a1a2e;z-index:9999;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;font-family:'Rubik',sans-serif;">
+  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:20px;">
+    <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+  </svg>
+  <div style="color:white;font-size:24px;font-weight:900;margin-bottom:14px;line-height:1.3;">הדרכה זו מיועדת למחשב בלבד</div>
+  <div style="color:#ffffffcc;font-size:16px;line-height:1.8;margin-bottom:20px;">כדי לתרגל את השלבים תוך כדי,<br>יש לפתוח הדרכה זו במחשב שלכם.</div>
+  <div style="background:#f6a67e22;border:2px solid #f6a67e88;border-radius:14px;padding:14px 20px;max-width:340px;">
+    <div style="color:#f6a67e;font-size:14px;font-weight:700;">איך לפתוח במחשב?</div>
+    <div style="color:#ffffffaa;font-size:14px;margin-top:6px;line-height:1.6;">היכנסו לאתר מהמחשב שלכם:<br><strong style="color:white;">omertai.net/interactive</strong><br>ולחצו על ההדרכה.</div>
+  </div>
+</div>
+
+<!-- Slideshow - built dynamically from slides.json -->
+<div class="slideshow-container" id="slideshow"></div>
+
+<!-- Logo + Arrows (from shared/) -->
+<img id="logo.png" src="../../../shared/images/logo.png" style="z-index:3;position:fixed;bottom:17px;left:30px;height:46px;">
+<a class="prev" onclick="prevSlide()"><img id="left-arrow" src="../../../shared/images/left.png" style="height:40px"></a>
+<a class="next" onclick="nextSlide()"><img id="right-arrow" src="../../../shared/images/right.png" style="height:40px"></a>
+
+<script>
+var slideMap = {
+  0:  { icon: 'home', title: 'פתיחה' },
+  1:  { icon: 'play', title: 'איך עובדים' },
+  8:  { icon: 'monitor', title: 'תזמון מדויק' },
+  14: { icon: 'monitor', title: 'מיילים מתוזמנים' },
+  23: { icon: 'finish', title: 'סיום' }
+};
+</script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="../../../shared/script.js"></script>
+
+<!-- Navigation Bar -->
+<div class="nav-background"><div class="nav-dots"></div></div>
+
+</body>
+</html>
