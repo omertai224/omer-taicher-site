@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function applyText() {
   var s = E.data.slides[E.idx];
   s.text = $('pText').innerHTML;
-  $('bubblePreview').innerHTML = s.text;
+  renderBubble(s);
   markModified();
 }
 
