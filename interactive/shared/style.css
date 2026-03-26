@@ -3,7 +3,7 @@
 body {
   font-family: 'Rubik', Arial, sans-serif;
   margin: 0;
-  background-color: #0f2a3a;
+  background-color: #0f1a2e;
 }
 
 .mySlides {
@@ -60,7 +60,7 @@ a { word-break: break-all; }
 
 .prev:hover, .next:hover {
   transform: scale(1.15);
-  filter: drop-shadow(0 4px 16px rgba(30,95,116,0.8));
+  filter: drop-shadow(0 4px 16px rgba(26,37,64,0.8));
   background-color: transparent;
 }
 
@@ -110,12 +110,12 @@ a { word-break: break-all; }
 }
 
 .nav-dot:hover {
-  background-color: #1e5f74;
+  background-color: #1a2540;
   transform: scale(1.15);
 }
 
 .nav-dot.active {
-  background-color: #1e5f74;
+  background-color: #1a2540;
 }
 
 /* עיגול עם אייקון SVG — שקפי מעבר (כתום!) */
@@ -176,7 +176,7 @@ a { word-break: break-all; }
   top: 18px;
   border-top: 10px solid transparent;
   border-right: none;
-  border-left: 14px solid #1a4a6bef;
+  border-left: 14px solid #1a2540ef;
   border-bottom: 10px solid transparent;
 }
 
@@ -186,7 +186,7 @@ a { word-break: break-all; }
   left: -13px;
   top: 18px;
   border-top: 10px solid transparent;
-  border-right: 14px solid #1e5f74ef;
+  border-right: 14px solid #243350ef;
   border-left: none;
   border-bottom: 10px solid transparent;
 }
@@ -199,7 +199,7 @@ a { word-break: break-all; }
   border-top: none;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-bottom: 15px solid #1a4a6bef;
+  border-bottom: 15px solid #1a2540ef;
 }
 
 .text.arrow-top-right:after {
@@ -210,7 +210,7 @@ a { word-break: break-all; }
   border-top: none;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
-  border-bottom: 15px solid #1a4a6bef;
+  border-bottom: 15px solid #1a2540ef;
 }
 
 .text.arrow-bottom-left:after {
@@ -218,7 +218,7 @@ a { word-break: break-all; }
   position: absolute;
   left: 20px;
   bottom: -14px;
-  border-top: 15px solid #1e5f74ef;
+  border-top: 15px solid #243350ef;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   border-bottom: none;
@@ -229,7 +229,7 @@ a { word-break: break-all; }
   position: absolute;
   right: 20px;
   bottom: -14px;
-  border-top: 15px solid #1e5f74ef;
+  border-top: 15px solid #243350ef;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
   border-bottom: none;
@@ -288,7 +288,7 @@ a { word-break: break-all; }
   cursor: pointer;
   width: 150px;
   height: 32px;
-  background: linear-gradient(135deg, #1e5f74, #5b8fa8);
+  background: linear-gradient(135deg, #1a2540, #3d5a80);
   border-radius: 20px;
   margin: 20px 10px 10px 10px;
   text-align: center;
@@ -298,12 +298,12 @@ a { word-break: break-all; }
   font-size: 14px;
   font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 4px 16px rgba(30,95,116,0.4);
+  box-shadow: 0 4px 16px rgba(26,37,64,0.4);
 }
 
 .button:hover {
   transform: scale(1.05);
-  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+  box-shadow: 0 6px 24px rgba(26,37,64,0.6);
 }
 
 .button.start {
@@ -332,23 +332,23 @@ a { word-break: break-all; }
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid #a8c5d6;
-  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  border: 2px solid #e8834e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
   cursor: pointer;
   display: none; /* shown + positioned by JS */
   align-items: center;
   justify-content: center;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px rgba(232,131,78,0.4);
 }
 .magnifier-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+  box-shadow: 0 6px 24px rgba(232,131,78,0.6);
 }
 .magnifier-btn.active {
-  border-color: #f6a67e;
-  background: linear-gradient(135deg, #e8834e, #f6a67e);
-  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+  border-color: #fff;
+  background: linear-gradient(135deg, #d4702e, #e8834e);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 6px 24px rgba(232,131,78,0.5);
 }
 .magnifier-btn svg {
   pointer-events: none;
@@ -365,7 +365,7 @@ a { word-break: break-all; }
   z-index: 9;
   display: none;
   overflow: hidden;
-  background-color: #1a1a2e;
+  background-color: #0f1a2e;
 }
 
 .magnifier-active .image-center {
@@ -375,7 +375,7 @@ a { word-break: break-all; }
 .magnifier-esc-hint {
   position: fixed;
   z-index: 10;
-  background: rgba(15, 42, 58, 0.85);
+  background: rgba(15, 26, 46, 0.9);
   color: #a8c5d6;
   font-size: 12px;
   line-height: 1.5;
@@ -394,23 +394,23 @@ a { word-break: break-all; }
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid #a8c5d6;
-  background: linear-gradient(135deg, #1a4a6bef, #1e5f74ef);
+  border: 2px solid #e8834e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
   cursor: pointer;
   display: none;
   align-items: center;
   justify-content: center;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px rgba(232,131,78,0.4);
 }
 .tts-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 24px rgba(30,95,116,0.6);
+  box-shadow: 0 6px 24px rgba(232,131,78,0.6);
 }
 .tts-btn.active {
-  border-color: #f6a67e;
-  background: linear-gradient(135deg, #e8834e, #f6a67e);
-  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+  border-color: #fff;
+  background: linear-gradient(135deg, #d4702e, #e8834e);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 6px 24px rgba(232,131,78,0.5);
 }
 .tts-btn svg {
   pointer-events: none;
