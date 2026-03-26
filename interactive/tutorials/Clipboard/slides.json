@@ -87,12 +87,12 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "35.9961%",
-        "top": "54.2374%"
+        "left": "35.5955%",
+        "top": "65.0644%"
       },
       "step": 4,
       "text": "חזרה ל<span style=\"color:#f6a67e;\">שורת המשימות</span> כדי להחליף חלון לאמזון ולהעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
-      "textWidth": "193px"
+      "textWidth": "307px"
     },
     {
       "index": 6,
@@ -127,12 +127,12 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "26.86%",
-        "top": "60.5427%"
+        "left": "29.6596%",
+        "top": "65.6372%"
       },
       "step": 6,
       "text": "עוד מעבר בין החלונות. <span style=\"color:#f6a67e;\">הלוך חזור</span> שלא נגמר...",
-      "textWidth": "172px"
+      "textWidth": "204px"
     },
     {
       "index": 8,
