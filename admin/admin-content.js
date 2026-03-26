@@ -1465,6 +1465,16 @@ async function saveInteractiveContent() {
   if (saveBtn) { saveBtn.disabled = false; saveBtn.style.opacity = '1'; }
 }
 
+// שומר את discountRules מה-JSON כדי לא לאבד אותם בשמירה
+var interactiveWrapper = null;
+function wrapInteractiveJSON(items) {
+  if (interactiveWrapper) {
+    interactiveWrapper.products = items;
+    return JSON.stringify(interactiveWrapper, null, 2);
+  }
+  return JSON.stringify(items, null, 2);
+}
+
 async function loadInteractiveManager() {
   setStatus('content', 'loading', 'טוען הדרכות...');
   const container = document.getElementById('interactive-list');
@@ -1476,10 +1486,19 @@ async function loadInteractiveManager() {
     const pendingKey = resolveRepoPath('interactive.json');
     const pending = getPendingChanges();
     if (pending[pendingKey]) {
-      try { interactiveItems = JSON.parse(pending[pendingKey].data); }
-      catch(e) { interactiveItems = JSON.parse(decode(data.content)); }
+      try {
+        var parsed = JSON.parse(pending[pendingKey].data);
+        if (parsed.products) { interactiveWrapper = parsed; interactiveItems = parsed.products; }
+        else { interactiveItems = parsed; }
+      } catch(e) {
+        var parsed2 = JSON.parse(decode(data.content));
+        if (parsed2.products) { interactiveWrapper = parsed2; interactiveItems = parsed2.products; }
+        else { interactiveItems = parsed2; }
+      }
     } else {
-      interactiveItems = JSON.parse(decode(data.content));
+      var parsed3 = JSON.parse(decode(data.content));
+      if (parsed3.products) { interactiveWrapper = parsed3; interactiveItems = parsed3.products; }
+      else { interactiveItems = parsed3; }
     }
     renderInteractiveList();
     setStatus('content', 'ok', interactiveItems.length + ' הדרכות נטענו');
@@ -1620,7 +1639,7 @@ async function interactiveSaveItem() {
     }
 
     const commitMsg = (interactiveEditingIndex !== null ? 'עריכת הדרכה: ' : 'הדרכה חדשה: ') + title;
-    setPending(resolveRepoPath('interactive.json'), JSON.stringify(interactiveItems, null, 2), commitMsg);
+    setPending(resolveRepoPath('interactive.json'), wrapInteractiveJSON(interactiveItems), commitMsg);
     setStatus('content', 'ok', '✓ נשמר מקומית — לחץ "דחוף הכל" לפרסום');
     renderInteractiveList();
   } catch(e) {
@@ -1640,7 +1659,7 @@ function interactiveDeleteItem(index) {
   document.getElementById('confirm-modal-yes').onclick = async () => {
     modal.style.display = 'none';
     interactiveItems.splice(index, 1);
-    setPending('interactive.json', JSON.stringify(interactiveItems, null, 2), 'מחיקת הדרכה: ' + item.title);
+    setPending('interactive.json', wrapInteractiveJSON(interactiveItems), 'מחיקת הדרכה: ' + item.title);
     setStatus('content', 'ok', '✓ נמחק מקומית — לחץ "דחוף הכל" לפרסום');
     renderInteractiveList();
   };
