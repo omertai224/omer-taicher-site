@@ -9,7 +9,14 @@
    ═══════════════════════════════════════════════════ */
 
 var slideIndex = 1;
-var sharedImages = '../../shared/images';
+// Auto-detect shared path from the stylesheet link (works at any nesting depth)
+var sharedImages = (function() {
+  var links = document.querySelectorAll('link[rel="stylesheet"][href*="shared/style.css"]');
+  if (links.length) {
+    return links[0].getAttribute('href').replace('style.css', 'images');
+  }
+  return '../../shared/images';
+})();
 
 /* ── Navigation ── */
 function nextSlide() { showSlides(slideIndex + 1); }
