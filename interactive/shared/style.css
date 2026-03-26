@@ -332,23 +332,23 @@ a { word-break: break-all; }
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid #a8c5d6;
-  background: linear-gradient(135deg, #1a2540ef, #243350ef);
+  border: 2px solid #e8834e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
   cursor: pointer;
   display: none; /* shown + positioned by JS */
   align-items: center;
   justify-content: center;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px rgba(232,131,78,0.4);
 }
 .magnifier-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 24px rgba(26,37,64,0.6);
+  box-shadow: 0 6px 24px rgba(232,131,78,0.6);
 }
 .magnifier-btn.active {
-  border-color: #f6a67e;
-  background: linear-gradient(135deg, #e8834e, #f6a67e);
-  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+  border-color: #fff;
+  background: linear-gradient(135deg, #d4702e, #e8834e);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 6px 24px rgba(232,131,78,0.5);
 }
 .magnifier-btn svg {
   pointer-events: none;
@@ -394,23 +394,23 @@ a { word-break: break-all; }
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  border: 2px solid #a8c5d6;
-  background: linear-gradient(135deg, #1a2540ef, #243350ef);
+  border: 2px solid #e8834e;
+  background: linear-gradient(135deg, #e8834e, #f6a67e);
   cursor: pointer;
   display: none;
   align-items: center;
   justify-content: center;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 16px rgba(232,131,78,0.4);
 }
 .tts-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 24px rgba(26,37,64,0.6);
+  box-shadow: 0 6px 24px rgba(232,131,78,0.6);
 }
 .tts-btn.active {
-  border-color: #f6a67e;
-  background: linear-gradient(135deg, #e8834e, #f6a67e);
-  box-shadow: 0 0 0 3px rgba(246,166,126,0.4), 0 6px 24px rgba(232,131,78,0.5);
+  border-color: #fff;
+  background: linear-gradient(135deg, #d4702e, #e8834e);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 6px 24px rgba(232,131,78,0.5);
 }
 .tts-btn svg {
   pointer-events: none;
