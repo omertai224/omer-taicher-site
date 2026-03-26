@@ -30,7 +30,7 @@
       "type": "view",
       "image": "schedule-02.png",
       "text": "המייל מוכן. האצבע על <span style=\"color:#f6a67e;\">שלח</span>. רגע לפני שלוחצים, חשבו: השעה 23:15. באמת רוצים שהלקוח יראה את זה עכשיו?",
-      "textPos": { "left": "20%", "top": "60%" },
+      "textPos": { "left": "20%", "top": "40%" },
       "arrow": "arrow-left"
     },
     {
