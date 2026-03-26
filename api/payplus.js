@@ -25,7 +25,10 @@ function loadProducts() {
     const items = JSON.parse(raw);
     const map = {};
     items.forEach(function(item) {
-      if (item.key) map[item.key] = { name: item.title, price: item.price };
+      if (item.key) {
+        map[item.key] = { name: item.title, price: item.price };
+        if (item.bundleKeys) map[item.key].bundleKeys = item.bundleKeys;
+      }
     });
     return map;
   } catch(e) {
@@ -80,7 +83,21 @@ export default async function handler(req, res) {
       security: 'https://omertai.net/interactive/tutorials/Security/'
     };
 
-    // סכום כולל + רשימת מוצרים ל-PayPlus
+    // פירוק חבילות — חבילה מכילה bundleKeys שמצביעים להדרכות בודדות
+    // more_info שומר את ה-keys המקוריים (כולל חבילות) לחישוב מחיר
+    // tutorialKeys = ההדרכות בפועל שהלקוח מקבל גישה אליהן
+    const tutorialKeys = [];
+    validKeys.forEach(k => {
+      if (PRODUCTS[k].bundleKeys) {
+        PRODUCTS[k].bundleKeys.forEach(bk => {
+          if (TUTORIAL_URLS[bk] && tutorialKeys.indexOf(bk) === -1) tutorialKeys.push(bk);
+        });
+      } else if (TUTORIAL_URLS[k]) {
+        if (tutorialKeys.indexOf(k) === -1) tutorialKeys.push(k);
+      }
+    });
+
+    // סכום כולל + רשימת מוצרים ל-PayPlus (לפי מחיר המוצר/חבילה, לא לפי הדרכות בודדות)
     const pricePerItem = isTestMode ? 3 : null;
     const totalAmount = validKeys.reduce((sum, k) => sum + (pricePerItem || PRODUCTS[k].price), 0);
     const payPlusProducts = validKeys.map(k => ({
@@ -89,16 +106,18 @@ export default async function handler(req, res) {
       price: pricePerItem || PRODUCTS[k].price
     }));
 
-    // אם מוצר בודד — הפניה ישירה להדרכה. כמה מוצרים — לדף ההדרכות
-    const successUrl = validKeys.length === 1
-      ? (TUTORIAL_URLS[validKeys[0]] || 'https://omertai.net/interactive/')
+    // הפניה: הדרכה בודדת → ישירות אליה. חבילה/כמה → דף תודה
+    const successUrl = tutorialKeys.length === 1
+      ? (TUTORIAL_URLS[tutorialKeys[0]] || 'https://omertai.net/interactive/')
       : 'https://omertai.net/pages/thank-you/';
     const failUrl = validKeys.length === 1
       ? `https://omertai.net/pages/checkout/?product=${validKeys[0]}&status=failed`
       : `https://omertai.net/pages/checkout/?cart=${validKeys.join(',')}&status=failed`;
 
-    // more_info שומר את כל ה-keys (מופרד בפסיקים) — ה-webhook יודע לפרסר
+    // more_info שומר: keys מקוריים + tutorialKeys מפורקים (webhook צריך את שניהם)
+    // פורמט: "bundle-key|tutorial1,tutorial2,tutorial3"
     const allKeys = validKeys.join(',');
+    const allTutorials = tutorialKeys.join(',');
 
     const payload = {
       payment_page_uid: PAGE_UID,
@@ -114,7 +133,7 @@ export default async function handler(req, res) {
         email: customerEmail || '',
         phone: customerPhone || ''
       },
-      more_info: allKeys,
+      more_info: allTutorials || allKeys,
       more_info_1: customerPhone || '',
       more_info_2: customerName || '',
       refURL_success: successUrl,

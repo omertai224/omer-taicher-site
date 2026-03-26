@@ -290,9 +290,9 @@ function renderOrder() {
       </div>
       <div class="order-item-body">
         <div class="order-item-name">${item.name}</div>
-        <div class="order-item-sub">גישה מיידית לאחר התשלום</div>
+        <div class="order-item-sub">${item.bundleKeys ? item.bundleKeys.length + ' הדרכות בחבילה' : 'גישה מיידית לאחר התשלום'}</div>
       </div>
-      <div class="order-item-price">₪${item.price}</div>
+      <div class="order-item-price">${item.originalPrice ? '<span style="text-decoration:line-through;color:var(--text-light);font-size:0.8rem;margin-left:6px;">₪' + item.originalPrice + '</span>' : ''}₪${item.price}</div>
     </div>
   `).join('');
 
@@ -305,6 +305,8 @@ fetch('/interactive/interactive.json')
   .then(function(products) {
     products.forEach(function(p) {
       PRODUCTS[p.key] = { name: p.title, price: p.price };
+      if (p.bundleKeys) PRODUCTS[p.key].bundleKeys = p.bundleKeys;
+      if (p.originalPrice) PRODUCTS[p.key].originalPrice = p.originalPrice;
     });
     buildCart();
     renderOrder();
