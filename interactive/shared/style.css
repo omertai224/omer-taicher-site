@@ -294,12 +294,13 @@ a { word-break: break-all; }
   width: 150px;
   height: 32px;
   background: linear-gradient(135deg, #1a2540, #3d5a80);
+  border: 2px solid white;
   border-radius: 20px;
   margin: 20px 10px 10px 10px;
   text-align: center;
   align-self: end;
   color: white;
-  line-height: 32px;
+  line-height: 28px;
   font-size: 14px;
   font-weight: 600;
   transition: transform 0.2s, box-shadow 0.2s;
