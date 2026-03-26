@@ -196,8 +196,8 @@
       "text": "<span style=\"color: rgb(246, 166, 126);\">התוכנה מותקנת ומוכנה לשימוש.&nbsp;<br></span>הקלידו <span style=\"color: rgb(246, 166, 126);\">ב<span style=\"color:#f6a67e;\">שור</span></span><span style=\"color:#f6a67e;\">ת החיפוש</span> למעלה את שם הקובץ שאתם מחפשים, והתוצאות יופיעו מיידית<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-top-left",
       "textPos": {
-        "left": "59.2073%",
-        "top": "10.0241%"
+        "left": "54.674%",
+        "top": "9.81069%"
       },
       "box": {
         "top": "3.66667%",
@@ -205,7 +205,8 @@
         "right": "0%",
         "bottom": "91.0357%"
       },
-      "highlightType": "static"
+      "highlightType": "static",
+      "textWidth": "333px"
     },
     {
       "index": 14,
@@ -228,9 +229,10 @@
       "text": "אפשר לראות את <span style=\"color:#f6a67e;\">תוצאות החיפוש</span> עם שם הקובץ, הגודל, התאריך והנתיב המלא.&nbsp;<br>לחיצה כפולה על קובץ תפתח אותו<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "arrow": "arrow-top-right",
       "textPos": {
-        "left": "42.0133%",
-        "top": "17.2362%"
-      }
+        "left": "39.0797%",
+        "top": "17.4485%"
+      },
+      "textWidth": "311px"
     },
     {
       "index": 16,
