@@ -93,14 +93,21 @@ function toggleOrange() {
   }
 
   if (orangeParent) {
-    // Remove orange: unwrap the span
-    var text = document.createTextNode(orangeParent.textContent);
-    orangeParent.parentNode.replaceChild(text, orangeParent);
+    // Remove orange: unwrap span but keep inner HTML (including <br> tags)
+    while (orangeParent.firstChild) {
+      orangeParent.parentNode.insertBefore(orangeParent.firstChild, orangeParent);
+    }
+    orangeParent.parentNode.removeChild(orangeParent);
   } else {
-    // Add orange: wrap selection in span
+    // Add orange: wrap selection in span (safe even across elements)
     var span = document.createElement('span');
     span.style.color = '#f6a67e';
-    range.surroundContents(span);
+    try {
+      range.surroundContents(span);
+    } catch (e) {
+      span.appendChild(range.extractContents());
+      range.insertNode(span);
+    }
   }
   sel.removeAllRanges();
   applyText();
