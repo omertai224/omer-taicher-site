@@ -44,6 +44,7 @@ function buildPanel() {
     // ── Text ──
     + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט <span class="orange-btn" onmousedown="event.preventDefault()" onclick="toggleOrange()" title="סמנו מילים ולחצו להדגשה בכתום">&#x25CF; כתום</span> <span class="orange-btn" onmousedown="event.preventDefault()" onclick="toggleWhite()" title="סמנו מילים ולחצו להפיכה ללבן" style="color:#ffffffcc;border-color:#ffffff44;">&#x25CF; לבן</span> <span class="orange-btn" onclick="insertLineBreak()" title="שורה חדשה" style="color:#5b8fa8;border-color:#5b8fa855;">&#x23CE; שורה</span> <span class="mic-btn" onclick="toggleSpeech(\'text\')" title="הקלטה לטקסט"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></span></h3>'
     + '<div id="pText" class="text-editor" contenteditable="true" oninput="applyText()"></div>'
+    + '<div style="margin-top:6px;"><span class="orange-btn" onclick="toggleContinueBtn()" id="btnContinue" title="הוסף/הסר כפתור המשך לשקפי צפייה" style="color:#5b8fa8;border-color:#5b8fa855;">▶ כפתור המשך</span></div>'
 
     // ── Notes ──
     + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> הערות <span class="orange-btn" onclick="addNote()" style="color:#fbbf24;border-color:#fbbf2455;">+ הערה</span></h3>'
@@ -66,8 +67,34 @@ function updatePanel(s) {
   }
 
   $('pText').innerHTML = s.text || '';
+  updateContinueBtn(s);
   updateUndoBtn();
   renderNotes(s);
+}
+
+// ── Continue button (כפתור המשך) ──
+function updateContinueBtn(s) {
+  var btn = $('btnContinue');
+  if (!btn) return;
+  var has = s.continueBtn === true;
+  btn.textContent = has ? '✓ כפתור המשך' : '▶ כפתור המשך';
+  btn.style.color = has ? '#4ade80' : '#5b8fa8';
+  btn.style.borderColor = has ? '#4ade8055' : '#5b8fa855';
+}
+
+function toggleContinueBtn() {
+  var s = E.data.slides[E.idx];
+  saveUndo();
+  if (s.continueBtn) {
+    delete s.continueBtn;
+    toast('כפתור המשך הוסר');
+  } else {
+    s.continueBtn = true;
+    toast('כפתור המשך נוסף');
+  }
+  updateContinueBtn(s);
+  renderBubble(s);
+  markModified();
 }
 
 // ── Toggle orange highlight on selected text ──
