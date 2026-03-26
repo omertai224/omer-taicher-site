@@ -188,7 +188,7 @@
   .prod-card {
     background: var(--dark-card); border-radius: 20px; overflow: hidden;
     border: 1px solid rgba(255,255,255,0.07);
-    display: flex; flex-direction: column; height: 100%;
+    display: grid; grid-template-rows: auto 1fr auto; height: 100%;
     opacity: 0; transform: translateY(16px);
     transition: opacity 0.45s ease, transform 0.45s ease, box-shadow 0.25s, border-color 0.25s;
   }
@@ -237,7 +237,7 @@
     padding: 4px 10px; border-radius: 50px;
     border: 1px solid rgba(255,255,255,0.1);
   }
-  .prod-body { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+  .prod-body { padding: 20px 20px 0; display: flex; flex-direction: column; }
   .prod-category { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--orange); margin-bottom: 8px; }
   .prod-title    { font-size: 0.97rem; font-weight: 800; color: #fff; line-height: 1.35; margin-bottom: 8px; }
   .prod-desc     { font-size: 0.78rem; color: rgba(255,255,255,0.52); line-height: 1.75; margin-bottom: 10px; }
@@ -254,8 +254,8 @@
   }
   .prod-footer {
     display: flex; align-items: center; justify-content: space-between;
-    padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.07); gap: 12px;
-    margin-top: auto;
+    padding: 16px 20px 20px; border-top: 1px solid rgba(255,255,255,0.07); gap: 12px;
+    min-height: 120px;
   }
   .prod-price { font-size: 1.5rem; font-weight: 900; color: #fff; line-height: 1; }
   .prod-price span { font-size: 0.75rem; color: rgba(255,255,255,0.4); font-weight: 400; display: block; margin-top: 3px; }
@@ -699,7 +699,7 @@ function renderProducts(products) {
     }
     var cardStyle = isActive
       ? 'style="transition-delay:' + delay + ';"' : 'style="opacity:0.38;pointer-events:none;transition-delay:' + delay + ';"';
-    return '<div class="prod-card visible" ' + cardStyle + '><div class="prod-thumb ' + thumbClass + ' grid-lines">' + labelHTML + stepsHTML + '<div class="thumb-icon"' + (iconStyle ? ' style="' + iconStyle + '"' : '') + '>' + (productIcons[p.key] || thumbIcons[p.thumb] || thumbIcons.navy) + '</div></div><div class="prod-body"><div class="prod-category"' + (isActive ? '' : ' style="color:rgba(255,255,255,0.3);"') + '>' + p.category + '</div><div class="prod-title">' + p.title + '</div><div class="prod-desc">' + p.desc + '</div>' + includesHTML + footerHTML + '</div></div>';
+    return '<div class="prod-card visible" ' + cardStyle + '><div class="prod-thumb ' + thumbClass + ' grid-lines">' + labelHTML + stepsHTML + '<div class="thumb-icon"' + (iconStyle ? ' style="' + iconStyle + '"' : '') + '>' + (productIcons[p.key] || thumbIcons[p.thumb] || thumbIcons.navy) + '</div></div><div class="prod-body"><div class="prod-category"' + (isActive ? '' : ' style="color:rgba(255,255,255,0.3);"') + '>' + p.category + '</div><div class="prod-title">' + p.title + '</div><div class="prod-desc">' + p.desc + '</div>' + includesHTML + '</div>' + footerHTML + '</div>';
   }).join('');
 }
 
