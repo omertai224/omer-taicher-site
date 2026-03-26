@@ -93,7 +93,7 @@ window.addEventListener('DOMContentLoaded', function() {
   // Keyboard
   document.addEventListener('keydown', function(e) {
     var tag = e.target.tagName;
-    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || e.target.isContentEditable) return;
     if (e.key === 'ArrowRight') { e.preventDefault(); goNext(); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); goPrev(); }
     if (e.ctrlKey && e.key === 's') { e.preventDefault(); downloadJSON(); }
