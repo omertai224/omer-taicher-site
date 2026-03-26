@@ -128,7 +128,7 @@ function copyTab(tabId) {
 
 function downloadTab(tabId) {
   var el = document.getElementById('tab-' + tabId);
-  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', interactive: 'נוסחת-על-הדרכות', payments: 'מוצרים-ותשלומים', sitemap: 'מבנה-האתר', ideas: 'רעיונות-להמשך', calls: 'ניתוח-שיחות' };
+  var names = { workflow: 'תהליך-עבודה', posts: 'נוסחת-על-פוסטים', payments: 'מוצרים-ותשלומים', sitemap: 'מבנה-האתר', ideas: 'רעיונות-להמשך', calls: 'ניתוח-שיחות' };
   var text = el.innerText
     .replace(/הורד כטקסט\n?/g, '')
     .replace(/העתק ללוח\n?/g, '')
