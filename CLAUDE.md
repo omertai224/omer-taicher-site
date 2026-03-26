@@ -740,6 +740,7 @@ cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/scrip
 - **slideMap חייב להיות 0-based** — האינדקס הראשון הוא 0, לא 1
 - **כיוון עיגולים: ltr** — גם באתר עברי, המספרים משמאל לימין
 - **אייקון finish = נורה (lightbulb)** — לא לב! שינינו מלב לנורה
+- **הערות בשקפים (notes) = הוראות חד-פעמיות!** כשעומר כותב הערות בעורך, קרא אותן, בצע את מה שכתוב, ואז **מחק את ההערות** מה-slides.json. הן לא חלק מההדרכה, רק הוראות לך
 - **הדרכות בעומק 3+ (כמו Gmail/Schedule/)** — shared/script.js מזהה את נתיב shared אוטומטית מה-link של style.css. אין צורך לשנות את sharedImages. אבל ב-index.html צריך לכתוב את הנתיב הנכון: `../../../shared/style.css` (3 רמות), לא `../../shared/` (2 רמות)
 - **interactive.json פורמט חדש** — הקובץ הוא עכשיו אובייקט `{ discountRules, products }` ולא מערך. כל קוד שקורא אותו צריך לטפל ב-`data.products || data`
 - **הנחות כמות** — מוגדרות ב-discountRules בתוך interactive.json. כרגע: 2 הדרכות = 10%, 3+ = 20%. משפיע על: דף אינטראקטיבי (סל), checkout, ו-API
