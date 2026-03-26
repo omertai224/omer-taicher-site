@@ -1,210 +1,290 @@
 [
   {
     "image_num": 1,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_1.png",
-    "description_en": "Demo form page with a right-click context menu open over the contact card on the right. The menu shows Copy/Paste options. The form on the left is empty. User is copying the customer name.",
-    "action_he": "בתפריט שנפתח, לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם הלקוח",
-    "click_area": "Copy option in the right-click context menu (center-right area)",
-    "arrow_direction": "right"
+    "image_file": "clipboard-01.png",
+    "description_en": "Amazon order details page in Chrome. Order number selected in blue. Right-click context menu open showing 'העתקה' (Copy) with Ctrl+C. Order total ILS 758.75.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את מספר ההזמנה",
+    "click_area": "Context menu - 'העתקה' option",
+    "arrow_direction": "arrow-left",
+    "context": "Part 1 (pain): Copy order number from Amazon"
   },
   {
     "image_num": 2,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_2.png",
-    "description_en": "Demo form page with right-click context menu open over the form area on the left. The 'שם מלא' field is visible. User needs to paste the copied name.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את השם בשדה הטופס",
-    "click_area": "Paste option in the context menu over the form (left side)",
-    "arrow_direction": "left"
+    "image_file": "clipboard-02.png",
+    "description_en": "Amazon order page, context menu closed. Order number highlighted in blue. Date '27 ביולי 2025' visible. Payment info blurred.",
+    "action_he": "סמנו את <span style=\"color:#f6a67e;\">התאריך</span> של ההזמנה ולחצו Ctrl+C כדי להעתיק",
+    "click_area": "Date text '27 ביולי 2025'",
+    "arrow_direction": "arrow-left",
+    "context": "Part 1 (pain): Copy date from Amazon"
   },
   {
     "image_num": 3,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_3.png",
-    "description_en": "Demo page with right-click context menu open on the contact card, near the address field. The address 'רחוב הרצל 42, תל אביב' is visible on the card.",
-    "action_he": "חזרו לכרטיס הלקוח ולחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את הכתובת",
-    "click_area": "Copy option in context menu (right side, near address)",
-    "arrow_direction": "left"
+    "image_file": "clipboard-03.png",
+    "description_en": "Word document 'ניהול הזמנות' open. Paste options popup visible with format choices (keep text only, etc). Fields for date and order number.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שמור על טקסט בלבד</span> כדי להדביק רק את הטקסט",
+    "click_area": "Paste options popup - 'שמור על טקסט בלבד'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Paste in Word with format choice"
   },
   {
     "image_num": 4,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_4.png",
-    "description_en": "Demo page with right-click context menu open over the form's address field. The name field is already filled. User needs to paste the address.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את הכתובת בשדה הטופס",
-    "click_area": "Paste option in the context menu over the form address field",
-    "arrow_direction": "left"
+    "image_file": "clipboard-04.png",
+    "description_en": "Word document with date pasted. Taskbar visible at bottom showing Chrome and Word.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון",
+    "click_area": "Bottom taskbar - Chrome icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Amazon via taskbar"
   },
   {
     "image_num": 5,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_5.png",
-    "description_en": "Demo page with right-click context menu on the contact card near the phone number 052-1234567. Name and address are already filled in the form.",
-    "action_he": "חזרו שוב לכרטיס הלקוח ולחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר הטלפון",
-    "click_area": "Copy option in context menu (right side, near phone number)",
-    "arrow_direction": "right"
+    "image_file": "clipboard-05.png",
+    "description_en": "Amazon order page. Order number '113-4329370-3268205' highlighted. Right-click context menu with 'העתקה' (Copy).",
+    "action_he": "סמנו את <span style=\"color:#f6a67e;\">מספר ההזמנה</span> ולחצו העתקה",
+    "click_area": "Context menu - 'העתקה' option",
+    "arrow_direction": "arrow-left",
+    "context": "Part 1 (pain): Copy order number from Amazon"
   },
   {
     "image_num": 6,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_6.png",
-    "description_en": "Demo page with right-click context menu open over the form's phone field on the left. Name and address already filled.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את הטלפון בשדה הטופס",
-    "click_area": "Paste option in context menu over phone field (left side)",
-    "arrow_direction": "left"
+    "image_file": "clipboard-06.png",
+    "description_en": "Amazon page, order number highlighted. Taskbar preview showing Word document.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מסמך ה-Word</span> בשורת המשימות כדי לחזור אליו",
+    "click_area": "Bottom taskbar - Word icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Word via taskbar"
   },
   {
     "image_num": 7,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_7.png",
-    "description_en": "Demo page with right-click context menu on the contact card near the order number ORD-2026-78453. Name, address, and phone are filled in the form.",
-    "action_he": "ושוב חזרו לכרטיס הלקוח ולחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה",
-    "click_area": "Copy option in context menu (right side, near order number)",
-    "arrow_direction": "right"
+    "image_file": "clipboard-07.png",
+    "description_en": "Word document with paste options popup. Clipboard history not used yet - regular paste.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שמור על טקסט בלבד</span> כדי להדביק את מספר ההזמנה",
+    "click_area": "Paste options popup",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Paste order number in Word"
   },
   {
     "image_num": 8,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_8.png",
-    "description_en": "Demo page with right-click context menu over the form's order number field. Name, address, phone already filled.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הדבק</span> כדי להדביק את מספר ההזמנה בשדה האחרון",
-    "click_area": "Paste option in context menu over order field (left side)",
-    "arrow_direction": "left"
+    "image_file": "clipboard-08.png",
+    "description_en": "Word document with date and order number pasted. Taskbar at bottom.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון",
+    "click_area": "Bottom taskbar - Chrome icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Amazon again"
   },
   {
     "image_num": 9,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_9.png",
-    "description_en": "Demo form fully filled: name (יוסי כהן), address (רחוב הרצל 42, תל אביב), phone (052-1234567), order (ORD-2026-78453). Blue submit button at bottom. Contact card visible on right.",
-    "action_he": "הטופס מלא! אבל שימו לב — נדרשו <span style=\"color:#f6a67e;\">8 צעדים</span> של הלוך וחזור בין הכרטיס לטופס. יש דרך הרבה יותר מהירה!",
-    "click_area": "Submit button or view - showing completed form result",
-    "arrow_direction": "bottom-right"
+    "image_file": "clipboard-09.png",
+    "description_en": "Amazon page. Product name 'New Balance Men's FuelCell 990 V6 Sneaker' selected. Right-click context menu with 'העתקה'.",
+    "action_he": "סמנו את <span style=\"color:#f6a67e;\">שם המוצר</span> ולחצו העתקה",
+    "click_area": "Context menu - 'העתקה' option",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Copy product name from Amazon"
   },
   {
     "image_num": 10,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_10.png",
-    "description_en": "Windows Start Menu is open showing pinned apps (Microsoft Store, Outlook, PowerPoint, Excel, Word, Edge, etc). Settings gear icon is visible. Demo form in background.",
-    "action_he": "פתחו את <span style=\"color:#f6a67e;\">תפריט התחל</span> ולחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)",
-    "click_area": "Settings (הגדרות) icon in the Start Menu",
-    "arrow_direction": "right"
+    "image_file": "clipboard-10.png",
+    "description_en": "Amazon page with product visible. Taskbar at bottom showing Word.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מסמך ה-Word</span> בשורת המשימות",
+    "click_area": "Bottom taskbar - Word icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Word via taskbar"
   },
   {
     "image_num": 11,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_11.png",
-    "description_en": "Windows Settings Home page. Right sidebar shows navigation: Bluetooth, Network, Personalization, Apps, System, etc. Center shows recommended settings and Microsoft account prompt.",
-    "action_he": "בהגדרות Windows, לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט בצד ימין",
-    "click_area": "System (מערכת) in the right sidebar navigation",
-    "arrow_direction": "right"
+    "image_file": "clipboard-11.png",
+    "description_en": "Word document with paste options popup showing 'מזג עיצוב' (merge formatting) option.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מזג עיצוב</span> כדי להדביק את שם המוצר",
+    "click_area": "Paste options - 'מזג עיצוב'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Paste product name in Word"
   },
   {
     "image_num": 12,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_12.png",
-    "description_en": "Windows Settings > System page. List of system categories: Display, Sound, Notifications, Focus, Power, Storage, Clipboard (לוח), Troubleshoot, Recovery, About.",
-    "action_he": "גללו למטה ברשימה ולחצו על <span style=\"color:#f6a67e;\">לוח</span> (Clipboard)",
-    "click_area": "Clipboard (לוח) option in the system settings list",
-    "arrow_direction": "left"
+    "image_file": "clipboard-12.png",
+    "description_en": "Word document with product name pasted. Taskbar at bottom.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לחזור לאמזון בפעם הרביעית",
+    "click_area": "Bottom taskbar - Chrome icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Amazon AGAIN"
   },
   {
     "image_num": 13,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_13.png",
-    "description_en": "Windows Settings > System > Clipboard. The 'Clipboard history' toggle is shown turned ON (blue). Various clipboard settings visible including sync options.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">המתג</span> כדי להפעיל את היסטוריית הלוח. כשהמתג כחול — הפיצ׳ר דלוק!",
-    "click_area": "Toggle switch for Clipboard history (top of the page)",
-    "arrow_direction": "left"
+    "image_file": "clipboard-13.png",
+    "description_en": "Amazon page. Right-click context menu showing 'העתקת תמונה' (Copy image) option for product photo.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק את תמונת המוצר",
+    "click_area": "Context menu - 'העתקת תמונה'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Copy product image from Amazon"
   },
   {
     "image_num": 14,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_14.png",
-    "description_en": "Back to demo page. Right-click context menu open on contact card. Copying the name again. Form is empty (starting fresh).",
-    "action_he": "חזרנו לדף ההדגמה. הפעם נעתיק הכל ברצף! לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את השם",
-    "click_area": "Copy option in context menu on contact card",
-    "arrow_direction": "right"
+    "image_file": "clipboard-14.png",
+    "description_en": "Amazon page. Taskbar at bottom with Word preview visible.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מסמך ה-Word</span> בשורת המשימות",
+    "click_area": "Bottom taskbar - Word icon",
+    "arrow_direction": "arrow-bottom-left",
+    "context": "Part 1 (pain): Switch back to Word for the last time"
   },
   {
     "image_num": 15,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_15.png",
-    "description_en": "Demo page with right-click context menu on the contact card. Copying the address. The clipboard now remembers the previous copy.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק גם את הכתובת. היסטוריית הלוח שומרת הכל!",
-    "click_area": "Copy option in context menu near address",
-    "arrow_direction": "left"
+    "image_file": "clipboard-15.png",
+    "description_en": "Word document with paste options popup showing 'תמונה' (Image) paste option.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">תמונה</span> כדי להדביק את תמונת המוצר",
+    "click_area": "Paste options - 'תמונה'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 1 (pain): Paste product image in Word"
   },
   {
     "image_num": 16,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_16.png",
-    "description_en": "Demo page with right-click context menu on contact card near phone number 052-1234567. Clipboard history panel partially visible showing previously copied items.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר הטלפון. שימו לב — לא הדבקנו כלום עדיין!",
-    "click_area": "Copy option in context menu near phone number",
-    "arrow_direction": "right"
+    "image_file": "clipboard-16.png",
+    "description_en": "Word document showing completed result: title, date, order number, product name, product image (New Balance sneakers). All pasted successfully.",
+    "action_he": "התוצאה: כל הפרטים הודבקו — אבל זה לקח 15 צעדים והרבה הלוך-חזור!",
+    "click_area": "view-only - transition slide",
+    "arrow_direction": "none",
+    "context": "Transition: Show result of painful process - all info pasted but it took 15 steps"
   },
   {
     "image_num": 17,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_17.png",
-    "description_en": "Demo page with right-click context menu on contact card near order number ORD-2026-78453. Copying the last item.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה. עכשיו הכל שמור בהיסטוריית הלוח!",
-    "click_area": "Copy option in context menu near order number",
-    "arrow_direction": "right"
+    "image_file": "clipboard-17.png",
+    "description_en": "Clean Windows 11 desktop with default wallpaper. Taskbar at bottom. Desktop icon 'הכנסת נתונים' visible.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">כפתור ההתחלה (Start)</span> בשורת המשימות",
+    "click_area": "Bottom center - Start button",
+    "arrow_direction": "arrow-bottom",
+    "context": "Part 2 (enable): Open Start menu to navigate to Settings"
   },
   {
     "image_num": 18,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_18.png",
-    "description_en": "Demo page with Win+V clipboard history panel open (light/white UI). Shows all copied items: phone, address, order number. Panel has toolbar with emoji, GIF, symbols options at top.",
-    "action_he": "לחצו <span style=\"color:#f6a67e;\">Win+V</span> במקלדת. נפתח חלון עם כל מה שהעתקתם! לחצו על <span style=\"color:#f6a67e;\">הפריט התחתון</span> כדי להדביק",
-    "click_area": "Bottom item in the Win+V clipboard history panel",
-    "arrow_direction": "left"
+    "image_file": "clipboard-18.png",
+    "description_en": "Windows 11 Start menu open. Pinned apps grid visible. Settings (הגדרות) icon highlighted.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (סמל גלגל השיניים)",
+    "click_area": "Start menu - Settings icon",
+    "arrow_direction": "arrow-left",
+    "context": "Part 2 (enable): Open Windows Settings"
   },
   {
     "image_num": 19,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_19.png",
-    "description_en": "Win+V clipboard history panel open. Shows items: 052-1234567 at top, address in middle, order at bottom. Cursor near phone number item. Form has name field filled.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר הטלפון 052-1234567</span> בהיסטוריית הלוח כדי להדביק אותו",
-    "click_area": "Phone number item (052-1234567) in Win+V panel",
-    "arrow_direction": "left"
+    "image_file": "clipboard-19.png",
+    "description_en": "Windows Settings Home page. Left sidebar with categories. 'מערכת' (System) in sidebar.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד",
+    "click_area": "Left sidebar - 'מערכת' (System)",
+    "arrow_direction": "arrow-right",
+    "context": "Part 2 (enable): Navigate to System settings"
   },
   {
     "image_num": 20,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_20.png",
-    "description_en": "Win+V clipboard history panel open. Address item highlighted. Form has name and phone filled. Cursor on address entry.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הכתובת</span> בהיסטוריית הלוח כדי להדביק אותה",
-    "click_area": "Address item in Win+V panel",
-    "arrow_direction": "left"
+    "image_file": "clipboard-20.png",
+    "description_en": "Windows System settings page. List of options including Display, Sound, Notifications, etc. 'לוח' (Clipboard) visible near bottom.",
+    "action_he": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span> (Clipboard)",
+    "click_area": "Main content - 'לוח' option near bottom",
+    "arrow_direction": "arrow-left",
+    "context": "Part 2 (enable): Navigate to Clipboard settings"
   },
   {
     "image_num": 21,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_21.png",
-    "description_en": "Win+V clipboard history panel open. Items: ORD-2026-78453 at top, 052-1234567, address. Form has name, address, phone filled. Order number field empty.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה ORD-2026-78453</span> בהיסטוריית הלוח",
-    "click_area": "Order number item (ORD-2026-78453) at top of Win+V panel",
-    "arrow_direction": "left"
+    "image_file": "clipboard-21.png",
+    "description_en": "Clipboard settings page. Toggle 'היסטוריית לוח' is OFF (gray, showing 'לא פעיל').",
+    "action_he": "לחצו על המתג <span style=\"color:#f6a67e;\">לא פעיל</span> כדי להפעיל את היסטוריית הלוח",
+    "click_area": "Toggle switch - currently off",
+    "arrow_direction": "arrow-left",
+    "context": "Part 2 (enable): Turn on Clipboard History toggle"
   },
   {
     "image_num": 22,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_22.png",
-    "description_en": "Win+V clipboard history panel. Phone number 052-1234567 highlighted. Form showing more fields filled. Cursor on phone entry.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר הטלפון</span> בהיסטוריית הלוח כדי להדביק אותו בשדה הבא",
-    "click_area": "Phone number entry in Win+V panel",
-    "arrow_direction": "left"
+    "image_file": "clipboard-22.png",
+    "description_en": "Clipboard settings page. Toggle 'היסטוריית לוח' is ON (blue, showing 'פעיל').",
+    "action_he": "מצוין! היסטוריית הלוח <span style=\"color:#f6a67e;\">פעילה</span> עכשיו!",
+    "click_area": "view-only - transition slide (toggle is on)",
+    "arrow_direction": "none",
+    "context": "Transition: Clipboard History is now enabled"
   },
   {
     "image_num": 23,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_23.png",
-    "description_en": "Win+V clipboard history panel with items visible. Form has most fields filled (order, phone, address). Cursor near an item.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">הכתובת</span> בהיסטוריית הלוח כדי להדביק אותה בשדה הבא",
-    "click_area": "Address entry in Win+V panel",
-    "arrow_direction": "left"
+    "image_file": "clipboard-23.png",
+    "description_en": "Amazon order page. Right-click context menu showing 'העתק' (Copy). Order number selected.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את מספר ההזמנה",
+    "click_area": "Context menu - 'העתק'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Copy order number - first of multiple copies"
   },
   {
     "image_num": 24,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_24.png",
-    "description_en": "Win+V clipboard history panel. ORD-2026-78453 at top, 052-1234567 second, address third. Form nearly complete. Cursor on order entry.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> בהיסטוריית הלוח",
-    "click_area": "Order number item in Win+V panel",
-    "arrow_direction": "left"
+    "image_file": "clipboard-24.png",
+    "description_en": "Amazon order page. Right-click context menu. Copying another item (date).",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את התאריך",
+    "click_area": "Context menu - 'העתק'",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Copy date - second copy without switching"
   },
   {
     "image_num": 25,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_25.png",
-    "description_en": "Win+V clipboard history panel. Phone entry highlighted. Form has all fields filled except current one.",
-    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר הטלפון</span> בהיסטוריית הלוח כדי להדביק בשדה האחרון",
-    "click_area": "Phone number entry in Win+V panel",
-    "arrow_direction": "left"
+    "image_file": "clipboard-25.png",
+    "description_en": "Amazon page scrolled down. Product 'New Balance' visible. Right-click context menu with copy options.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתק</span> כדי להעתיק את שם המוצר",
+    "click_area": "Context menu - copy option",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Copy product name - third copy without switching"
   },
   {
     "image_num": 26,
-    "image_file": "How_to_copy_and_paste_clipboard_history_items_to_form_fields_in_omertai.net_using_Windows_clipboard_manager_26.png",
-    "description_en": "Demo form fully completed with all fields filled: name, address, phone (052-1234567), order number (ORD-2026-78453). Contact card on right for comparison. Success state.",
-    "action_he": "מעולה! הטופס מלא — הפעם בלי הלוך וחזור!<br><span style=\"color:#f6a67e;\">היסטוריית הלוח</span> שמרה הכל ואפשרה להדביק כל פריט ישירות",
-    "click_area": "No click needed - view slide showing completed form",
-    "arrow_direction": "left"
+    "image_file": "clipboard-26.png",
+    "description_en": "Amazon page. Right-click context menu with image copy options. Product image visible.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">העתקת תמונה</span> כדי להעתיק גם את התמונה",
+    "click_area": "Context menu - image copy option",
+    "arrow_direction": "arrow-left",
+    "context": "Part 3 (solution): Copy product image - fourth copy without switching"
+  },
+  {
+    "image_num": 27,
+    "image_file": "clipboard-27.png",
+    "description_en": "Amazon product page showing New Balance sneakers. Full view of the order page. No menu open.",
+    "action_he": "העתקנו 4 פריטים ברצף — בלי לעבור ל-Word אפילו פעם אחת!",
+    "click_area": "view-only",
+    "arrow_direction": "none",
+    "context": "Part 3 (solution): View slide - all items copied, ready to switch to Word"
+  },
+  {
+    "image_num": 28,
+    "image_file": "clipboard-28.png",
+    "description_en": "Word document 'ניהול הזמנות'. Win+V clipboard history panel open on right. Shows 3 text items + image. Date entry visible at bottom.",
+    "action_he": "לחצו Win+V ובחרו את <span style=\"color:#f6a67e;\">התאריך</span> מהיסטוריית הלוח",
+    "click_area": "Clipboard history panel - date entry",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Paste date from clipboard history"
+  },
+  {
+    "image_num": 29,
+    "image_file": "clipboard-29.png",
+    "description_en": "Word document with date pasted. Win+V panel still open. Order number entry highlighted.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח",
+    "click_area": "Clipboard history panel - order number entry",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Paste order number from clipboard history"
+  },
+  {
+    "image_num": 30,
+    "image_file": "clipboard-30.png",
+    "description_en": "Word document with date + order number pasted. Win+V panel showing product name entry.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח",
+    "click_area": "Clipboard history panel - product name entry",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Paste product name from clipboard history"
+  },
+  {
+    "image_num": 31,
+    "image_file": "clipboard-31.png",
+    "description_en": "Word document with all text pasted. Win+V panel showing product image thumbnail at top.",
+    "action_he": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח",
+    "click_area": "Clipboard history panel - shoe image thumbnail",
+    "arrow_direction": "arrow-right",
+    "context": "Part 3 (solution): Paste product image from clipboard history"
+  },
+  {
+    "image_num": 32,
+    "image_file": "clipboard-32.png",
+    "description_en": "Word document fully completed: title, date, order number, product name, product image. Clipboard panel closed. Professional result.",
+    "action_he": "מעולה! כל הפרטים הודבקו — <span style=\"color:#f6a67e;\">טקסט ותמונה</span> — בלי לחזור לאמזון אפילו פעם אחת!",
+    "click_area": "view-only - final result",
+    "arrow_direction": "none",
+    "context": "Part 3 (solution): Final result - everything pasted from clipboard history"
   }
 ]

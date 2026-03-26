@@ -380,7 +380,8 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
 
   fetch('/interactive/interactive.json')
     .then(r => r.json())
-    .then(products => {
+    .then(data => {
+      var products = data.products || data;
       products.forEach(p => { if (!p.checkout_url) p.checkout_url = '/pages/checkout/?product=' + p.key; });
       renderProducts(products.filter(p => p.status !== 'hidden'));
     })
