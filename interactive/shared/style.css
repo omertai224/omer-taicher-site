@@ -251,6 +251,11 @@ a { word-break: break-all; }
   50% { box-shadow: 0 0 0 4px rgba(255,124,42,0.6), 0 0 28px rgba(255,124,42,0.9); }
 }
 
+@keyframes btn-pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 6px 24px rgba(232,131,78,0.5); transform: scale(1); }
+  50% { box-shadow: 0 0 0 6px rgba(246,166,126,0.4), 0 6px 28px rgba(232,131,78,0.8); transform: scale(1.06); }
+}
+
 .box:hover {
   background-color: rgba(255, 124, 42, 0.2);
   border-color: #ffaa70;
@@ -349,6 +354,7 @@ a { word-break: break-all; }
   border-color: #fff;
   background: linear-gradient(135deg, #d4702e, #e8834e);
   box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 6px 24px rgba(232,131,78,0.5);
+  animation: btn-pulse 1.8s ease-in-out infinite;
 }
 .magnifier-btn svg {
   pointer-events: none;
@@ -411,6 +417,7 @@ a { word-break: break-all; }
   border-color: #fff;
   background: linear-gradient(135deg, #d4702e, #e8834e);
   box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 6px 24px rgba(232,131,78,0.5);
+  animation: btn-pulse 1.8s ease-in-out infinite;
 }
 .tts-btn svg {
   pointer-events: none;
