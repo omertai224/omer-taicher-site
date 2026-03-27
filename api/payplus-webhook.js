@@ -51,7 +51,7 @@ async function sendTutorialEmail(customerEmail, customerName, products) {
 
   // בלוק מוצרים — כל מוצר עם שם + כפתור
   const productBlocks = products.map(product => `
-    <div style="background:#fdf8f2;border-radius:12px;padding:16px;margin-bottom:12px;">
+    <div style="background:#fdf8f2;border-radius:12px;padding:16px;margin-bottom:12px;text-align:right;direction:rtl;">
       <p style="margin:0 0 4px;font-size:0.75rem;color:#8a7f72;font-weight:700;">מה קניתם</p>
       <p style="margin:0;font-size:0.95rem;color:#1a4a6b;font-weight:800;">${product.name}</p>
     </div>
