@@ -27,6 +27,7 @@
     }
   },
   "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www.omertai.net" }], "destination": "https://omertai.net/:path*", "statusCode": 301 },
     { "source": "/yomano", "destination": "/pages/lectures/main-suspect.html", "statusCode": 302 }
   ],
   "rewrites": [
