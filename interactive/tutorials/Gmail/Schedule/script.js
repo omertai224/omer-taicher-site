@@ -10,7 +10,7 @@ var slidesData = null;
 function initApp() {
   var ua = navigator.userAgent || navigator.vendor || window.opera;
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
-    document.getElementById('mobile-block').style.display = 'flex';
+    enhanceMobileBlock('schedule');
     return;
   }
   fetch('slides.json')

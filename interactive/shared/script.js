@@ -363,6 +363,87 @@ function updateTtsVisibility() {
    from its own initApp() after building slides.
 */
 
+/* ── Enhanced Mobile Block ── */
+function enhanceMobileBlock(tutorialKey) {
+  var block = document.getElementById('mobile-block');
+  if (!block) return;
+  block.style.display = 'flex';
+
+  // Replace the static content with an interactive form
+  block.innerHTML = '' +
+    '<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:20px;">' +
+      '<rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>' +
+    '</svg>' +
+    '<div style="color:white;font-size:22px;font-weight:900;margin-bottom:10px;line-height:1.3;">הדרכה זו מיועדת למחשב Windows</div>' +
+    '<div style="color:#ffffffcc;font-size:15px;line-height:1.7;margin-bottom:24px;">נשלח לכם את הקישור ב-WhatsApp או באימייל,<br>ותוכלו לפתוח אותו במחשב.</div>' +
+
+    '<div id="mb-form" style="width:100%;max-width:340px;">' +
+      '<input id="mb-name" type="text" placeholder="השם שלכם" style="width:100%;padding:14px 18px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff11;color:white;font-family:Rubik,sans-serif;font-size:15px;margin-bottom:10px;text-align:right;direction:rtl;box-sizing:border-box;">' +
+      '<input id="mb-phone" type="tel" placeholder="טלפון (לקבלת WhatsApp)" dir="ltr" style="width:100%;padding:14px 18px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff11;color:white;font-family:Rubik,sans-serif;font-size:15px;margin-bottom:10px;text-align:right;box-sizing:border-box;">' +
+      '<div style="color:#ffffff66;font-size:12px;margin-bottom:6px;text-align:center;">או</div>' +
+      '<input id="mb-email" type="email" placeholder="אימייל" dir="ltr" style="width:100%;padding:14px 18px;border-radius:12px;border:1px solid #ffffff22;background:#ffffff11;color:white;font-family:Rubik,sans-serif;font-size:15px;margin-bottom:16px;text-align:right;box-sizing:border-box;">' +
+      '<button id="mb-send" onclick="sendMobileLink(\'' + tutorialKey + '\')" style="width:100%;padding:16px;border-radius:50px;border:none;background:#e8854a;color:white;font-family:Rubik,sans-serif;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(232,133,74,0.4);transition:background 0.2s;">' +
+        'שלחו לי את הקישור' +
+      '</button>' +
+      '<div id="mb-error" style="color:#ff6b6b;font-size:13px;margin-top:10px;display:none;text-align:center;"></div>' +
+    '</div>' +
+
+    '<div id="mb-success" style="display:none;text-align:center;">' +
+      '<div style="width:56px;height:56px;background:#25d366;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;">' +
+        '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' +
+      '</div>' +
+      '<div style="color:white;font-size:20px;font-weight:800;margin-bottom:8px;">הקישור נשלח!</div>' +
+      '<div style="color:#ffffffcc;font-size:15px;line-height:1.7;">בדקו את ה-WhatsApp או האימייל שלכם.<br>פתחו את הקישור במחשב Windows.</div>' +
+    '</div>' +
+
+    '<div style="margin-top:24px;background:#f6a67e22;border:2px solid #f6a67e44;border-radius:14px;padding:14px 20px;max-width:340px;">' +
+      '<div style="color:#f6a67e;font-size:13px;font-weight:700;">למה רק במחשב?</div>' +
+      '<div style="color:#ffffffaa;font-size:13px;margin-top:6px;line-height:1.6;">ההדרכה מדמה מחשב Windows אמיתי.<br>לוחצים על הסימונים הכתומים ולומדים תוך כדי עשייה.</div>' +
+    '</div>';
+}
+
+function sendMobileLink(tutorialKey) {
+  var name = document.getElementById('mb-name').value.trim();
+  var phone = document.getElementById('mb-phone').value.trim();
+  var email = document.getElementById('mb-email').value.trim();
+  var errorEl = document.getElementById('mb-error');
+  var btn = document.getElementById('mb-send');
+
+  if (!phone && !email) {
+    errorEl.textContent = 'נא למלא טלפון או אימייל';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  btn.textContent = 'שולח...';
+  btn.disabled = true;
+  errorEl.style.display = 'none';
+
+  fetch('/api/send-tutorial-link', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: name, phone: phone, email: email, tutorialKey: tutorialKey })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.sent) {
+      document.getElementById('mb-form').style.display = 'none';
+      document.getElementById('mb-success').style.display = 'block';
+    } else {
+      errorEl.textContent = 'לא הצלחנו לשלוח. נסו שוב';
+      errorEl.style.display = 'block';
+      btn.textContent = 'שלחו לי את הקישור';
+      btn.disabled = false;
+    }
+  })
+  .catch(function() {
+    errorEl.textContent = 'שגיאה בשליחה. נסו שוב';
+    errorEl.style.display = 'block';
+    btn.textContent = 'שלחו לי את הקישור';
+    btn.disabled = false;
+  });
+}
+
 /* ── Keyboard + Resize ── */
 document.addEventListener('keydown', function(event) {
   if (event.key === 'ArrowRight') { nextSlide(); }
