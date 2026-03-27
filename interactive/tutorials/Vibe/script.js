@@ -30,7 +30,7 @@ function initApp() {
   getPersonalName();
   var ua = navigator.userAgent || navigator.vendor || window.opera;
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {
-    document.getElementById('mobile-block').style.display = 'flex';
+    enhanceMobileBlock('vibe');
     return;
   }
   fetch('slides.json')
