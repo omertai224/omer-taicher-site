@@ -94,7 +94,7 @@ async function sendTutorialEmail(customerEmail, customerName, products) {
 
   try {
     const token = await getSendMsgToken();
-    const response = await fetch('https://gconvertrest.sendmsg.co.il/api/Sendmsg/AddUsersAndSendRequest', {
+    const response = await fetch('https://gconvertrest.sendmsg.co.il/api/Sendmsg/AddUsersAndSend', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
