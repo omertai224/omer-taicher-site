@@ -560,6 +560,104 @@ body {
   font-weight: 600;
 }
 
+/* ===== TUTORIALS PROMO ===== */
+.tutorials-promo { background: var(--cream); }
+.tutorials-promo .section-title { margin-bottom: 8px; }
+.promo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 36px;
+}
+.promo-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 22px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.promo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.08);
+}
+.promo-icon {
+  width: 52px; height: 52px;
+  background: var(--orange-light);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.promo-icon svg { color: var(--orange-deep); }
+.promo-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+.promo-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-mid);
+  line-height: 1.7;
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+.promo-card-price {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--orange-deep);
+  margin-bottom: 12px;
+}
+.promo-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--navy);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s;
+  font-family: 'Rubik', sans-serif;
+}
+.promo-card-btn:hover { background: var(--navy-mid); }
+.promo-card-btn.free-btn {
+  background: #25d366;
+}
+.promo-card-btn.free-btn:hover { background: #1da855; }
+.promo-more {
+  text-align: center;
+  margin-top: 28px;
+}
+.promo-more a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--navy);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 10px 24px;
+  border: 2px solid var(--border);
+  border-radius: 50px;
+  transition: all 0.2s;
+}
+.promo-more a:hover {
+  border-color: var(--orange-deep);
+  color: var(--orange-deep);
+}
+@media (max-width: 600px) {
+  .promo-grid { grid-template-columns: 1fr; }
+}
+
 /* ===== FOOTER ===== */
 footer {
   background: var(--navy-dark);
@@ -864,6 +962,63 @@ nav {
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIALS PROMO -->
+<section class="tutorials-promo">
+  <div class="section-wrap">
+    <span class="section-eyebrow">בינתיים, רוצים לתרגל?</span>
+    <h2 class="section-title">הדרכות אינטראקטיביות למחשב</h2>
+    <p class="section-sub">צעד אחר צעד, עם תמונות אמיתיות מהמחשב שלכם.<br>לא סרטון. לא קורס. לומדים תוך כדי עשייה.</p>
+
+    <div class="promo-grid">
+      <div class="promo-card">
+        <div class="promo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        </div>
+        <div class="promo-card-title">העתקה חכמה שחוסכת זמן</div>
+        <div class="promo-card-desc">היסטוריית הלוח של Windows. במקום 15 פעולות, 9 בלבד. טריק שמשנה את יום העבודה.</div>
+        <div class="promo-card-price">חינמי לגמרי</div>
+        <a href="/interactive/tutorials/Clipboard/index.html" class="promo-card-btn free-btn">
+          התחילו בחינם
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
+        </a>
+      </div>
+
+      <div class="promo-card">
+        <div class="promo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="promo-card-title">לא מוצאים קובץ? Everything מוצא הכל</div>
+        <div class="promo-card-desc">חיפוש מיידי בכל הקבצים במחשב. במקום לחכות דקות לחיפוש של Windows, מוצאים בפחות משנייה.</div>
+        <div class="promo-card-price">47 ש"ח</div>
+        <a href="/pages/checkout/?product=everything" class="promo-card-btn">
+          להצטרפות
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
+        </a>
+      </div>
+
+      <div class="promo-card">
+        <div class="promo-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+        </div>
+        <div class="promo-card-title">תמלול שמע ווידאו בעברית, על המחשב</div>
+        <div class="promo-card-desc">ישיבות, הרצאות, שיעורים. הופכים לטקסט. בעברית. בחינם. הכל על המחשב שלכם, בלי לשלוח לאינטרנט.</div>
+        <div class="promo-card-price">47 ש"ח</div>
+        <a href="/pages/checkout/?product=vibe" class="promo-card-btn">
+          להצטרפות
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="promo-more">
+      <a href="/interactive/">
+        כל ההדרכות
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg>
+      </a>
     </div>
   </div>
 </section>
