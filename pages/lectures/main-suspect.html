@@ -43,7 +43,7 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   font-family: 'Rubik', sans-serif;
   background: var(--cream);
@@ -254,7 +254,7 @@ body {
 }
 .cd-unit {
   text-align: center;
-  min-width: 70px;
+  min-width: 50px;
 }
 .cd-num {
   font-size: clamp(2rem, 6vw, 3rem);
@@ -281,6 +281,8 @@ body {
   max-width: 900px;
   margin: 0 auto;
   padding: 80px 20px;
+  overflow: hidden;
+  word-break: break-word;
 }
 .section-eyebrow {
   font-size: 0.78rem;
@@ -602,7 +604,7 @@ footer {
   .about-inner { flex-direction: row; align-items: flex-start; gap: 40px; }
   .about-text { flex: 1; }
   .about-photo { width: 200px !important; }
-  .about-stats { grid-template-columns: repeat(3, 1fr); min-width: 260px; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); }
 }
 
 nav {
