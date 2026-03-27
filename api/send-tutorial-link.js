@@ -48,7 +48,8 @@ async function sendWhatsApp(phone, name, tutorial) {
 }
 
 async function sendEmail(email, name, tutorial) {
-  if (!BREVO_KEY || !email) return false;
+  if (!BREVO_KEY) { console.error('BREVO_API_KEY not configured'); return false; }
+  if (!email) return false;
   const url = tutorial.url + (name ? '?u=' + encodeURIComponent(name) : '');
 
   const htmlContent = `
@@ -103,6 +104,12 @@ async function sendEmail(email, name, tutorial) {
         htmlContent
       })
     });
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error('Brevo error:', response.status, errText);
+    } else {
+      console.log('Email sent to:', email);
+    }
     return response.ok;
   } catch (err) {
     console.error('Email error:', err.message);
