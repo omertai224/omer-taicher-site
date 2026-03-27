@@ -344,7 +344,9 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       const badge = isSoon ? '<div class="ws-soon-badge">בקרוב</div>' : (p.label ? `<div class="ws-new-badge">${p.label}</div>` : '');
       const btn = isSoon
         ? ''
-        : `<a href="${p.checkout_url}" class="ws-btn"><span class="btn-arrow">להצטרפות ${joinSVG}</span></a>`;
+        : p.price === 0
+          ? `<a href="${p.url}" target="_blank" class="ws-btn" style="background:linear-gradient(135deg,#4ade80,#22c55e);"><span class="btn-arrow">התחילו עכשיו ${joinSVG}</span></a>`
+          : `<a href="${p.checkout_url}" class="ws-btn"><span class="btn-arrow">להצטרפות ${joinSVG}</span></a>`;
       const prereqBtn = (!isSoon && p.prereqs && p.prereqs.length)
         ? `<button class="prereqs-modal-btn" onclick="showPrereqsModal(this)" data-prereqs='${JSON.stringify(p.prereqs)}'>${warnSVG} דרישות מקדימות</button>`
         : '';
@@ -356,7 +358,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
         <div class="ws-title">${p.title}</div>
         <div class="ws-desc"><p>${p.desc}</p></div>
         <div class="ws-footer">
-          <div class="ws-price">₪${p.price} <span>חד פעמי</span></div>
+          <div class="ws-price">${p.price === 0 ? '<span style="color:#4ade80;font-weight:900;">חינם</span>' : '₪' + p.price + ' <span>חד פעמי</span>'}</div>
           ${btn}
         </div>
         ${prereqBtn}
