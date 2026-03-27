@@ -13,9 +13,10 @@ const PAYPLUS_BASE_URL = process.env.PAYPLUS_ENV === 'production'
 
 const API_KEY      = process.env.PAYPLUS_API_KEY;
 const SECRET_KEY   = process.env.PAYPLUS_SECRET_KEY;
-const BREVO_KEY    = process.env.BREVO_API_KEY;
 const WA_INSTANCE  = process.env.GREENAPI_INSTANCE_ID;
 const WA_TOKEN     = process.env.GREENAPI_TOKEN;
+const SENDMSG_SITE_ID  = process.env.SENDMSG_SITE_ID;
+const SENDMSG_PASSWORD = process.env.SENDMSG_PASSWORD;
 
 const PRODUCTS = {
   vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/' },
@@ -23,9 +24,23 @@ const PRODUCTS = {
   security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', url: 'https://omertai.net/interactive/tutorials/Security/' }
 };
 
-// שולח מייל — תומך במוצר בודד או כמה מוצרים (products = מערך)
+async function getSendMsgToken() {
+  const response = await fetch('https://gconvertrest.sendmsg.co.il/api/sendMsg/token/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ SiteID: Number(SENDMSG_SITE_ID), Password: SENDMSG_PASSWORD })
+  });
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error('SendMsg token error: ' + response.status + ' ' + err);
+  }
+  const token = await response.text();
+  return token.replace(/"/g, '');
+}
+
+// שולח מייל דרך שלח מסר — תומך במוצר בודד או כמה מוצרים (products = מערך)
 async function sendTutorialEmail(customerEmail, customerName, products) {
-  if (!BREVO_KEY || !customerEmail) return;
+  if (!SENDMSG_SITE_ID || !SENDMSG_PASSWORD || !customerEmail) return;
 
   const isMulti = products.length > 1;
   const subject = isMulti
@@ -77,25 +92,39 @@ async function sendTutorialEmail(customerEmail, customerName, products) {
 </body>
 </html>`;
 
-  const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'api-key': BREVO_KEY
-    },
-    body: JSON.stringify({
-      sender: { name: 'עומר טייכר', email: 'omertai224@gmail.com' },
-      to: [{ email: customerEmail, name: customerName || customerEmail }],
-      subject,
-      htmlContent
-    })
-  });
+  try {
+    const token = await getSendMsgToken();
+    const response = await fetch('https://gconvertrest.sendmsg.co.il/api/sendMsg/AddUsersAndSendNewEmail', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': token
+      },
+      body: JSON.stringify({
+        users: [{
+          EmailAddress: customerEmail,
+          FirstName: customerName || ''
+        }],
+        Message: {
+          MessageContent: htmlContent,
+          MessageSubject: subject,
+          MessageInnerName: 'purchase-' + Date.now(),
+          SenderEmailAddress: 'omertai224@gmail.com',
+          MessageDirection: 1,
+          MessageBackColor: '#fdf8f2'
+        }
+      })
+    });
 
-  if (!response.ok) {
-    const err = await response.text();
-    console.error('Brevo email error:', response.status, err);
-  } else {
-    console.log('Tutorial email sent to:', customerEmail);
+    if (!response.ok) {
+      const err = await response.text();
+      console.error('SendMsg email error:', response.status, err);
+    } else {
+      const result = await response.json();
+      console.log('Tutorial email sent to:', customerEmail, result);
+    }
+  } catch (err) {
+    console.error('SendMsg email error:', err.message);
   }
 }
 

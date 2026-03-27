@@ -1,12 +1,13 @@
 /**
  * api/send-tutorial-link.js — Vercel Serverless Function
- * שולח קישור להדרכה ב-WhatsApp ו/או אימייל
+ * שולח קישור להדרכה ב-WhatsApp ו/או אימייל (דרך שלח מסר)
  * משמש כשמישהו נכנס להדרכה מהנייד ורוצה לקבל את הקישור למחשב
  */
 
-const BREVO_KEY    = process.env.BREVO_API_KEY;
 const WA_INSTANCE  = process.env.GREENAPI_INSTANCE_ID;
 const WA_TOKEN     = process.env.GREENAPI_TOKEN;
+const SENDMSG_SITE_ID  = process.env.SENDMSG_SITE_ID;
+const SENDMSG_PASSWORD = process.env.SENDMSG_PASSWORD;
 
 const TUTORIALS = {
   clipboard:  { name: 'העתקה חכמה (היסטוריית לוח)', url: 'https://omertai.net/interactive/tutorials/Clipboard/' },
@@ -47,8 +48,23 @@ async function sendWhatsApp(phone, name, tutorial) {
   }
 }
 
+async function getSendMsgToken() {
+  const response = await fetch('https://gconvertrest.sendmsg.co.il/api/sendMsg/token/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ SiteID: Number(SENDMSG_SITE_ID), Password: SENDMSG_PASSWORD })
+  });
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error('SendMsg token error: ' + response.status + ' ' + err);
+  }
+  const token = await response.text();
+  return token.replace(/"/g, '');
+}
+
 async function sendEmail(email, name, tutorial) {
-  if (!BREVO_KEY || !email) return false;
+  if (!SENDMSG_SITE_ID || !SENDMSG_PASSWORD) { console.error('SendMsg credentials not configured'); return false; }
+  if (!email) return false;
   const url = tutorial.url + (name ? '?u=' + encodeURIComponent(name) : '');
 
   const htmlContent = `
@@ -90,22 +106,38 @@ async function sendEmail(email, name, tutorial) {
 </html>`;
 
   try {
-    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+    const token = await getSendMsgToken();
+    const response = await fetch('https://gconvertrest.sendmsg.co.il/api/sendMsg/AddUsersAndSendNewEmail', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'api-key': BREVO_KEY
+        'Authorization': token
       },
       body: JSON.stringify({
-        sender: { name: 'עומר טייכר', email: 'omertai224@gmail.com' },
-        to: [{ email, name: name || email }],
-        subject: `ההדרכה שלכם מחכה - ${tutorial.name}`,
-        htmlContent
+        users: [{
+          EmailAddress: email,
+          FirstName: name || ''
+        }],
+        Message: {
+          MessageContent: htmlContent,
+          MessageSubject: 'ההדרכה שלכם מחכה - ' + tutorial.name,
+          MessageInnerName: 'mobile-link-' + Date.now(),
+          SenderEmailAddress: 'omertai224@gmail.com',
+          MessageDirection: 1,
+          MessageBackColor: '#fdf8f2'
+        }
       })
     });
-    return response.ok;
+    if (!response.ok) {
+      const errText = await response.text();
+      console.error('SendMsg error:', response.status, errText);
+      return false;
+    }
+    const result = await response.json();
+    console.log('SendMsg email sent to:', email, result);
+    return true;
   } catch (err) {
-    console.error('Email error:', err.message);
+    console.error('SendMsg error:', err.message);
     return false;
   }
 }
