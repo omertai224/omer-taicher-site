@@ -34,8 +34,8 @@ async function getSendMsgToken() {
     const err = await response.text();
     throw new Error('SendMsg token error: ' + response.status + ' ' + err);
   }
-  const token = await response.text();
-  return token.replace(/"/g, '');
+  const data = await response.json();
+  return data.Token;
 }
 
 // שולח מייל דרך שלח מסר — תומך במוצר בודד או כמה מוצרים (products = מערך)
