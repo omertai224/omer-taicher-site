@@ -99,7 +99,7 @@ async function sendEmail(email, name, tutorial) {
     </p>
   </div>
   <p style="text-align:center;color:#8a7f72;font-size:0.75rem;margin-top:20px;">
-    שאלות? <a href="mailto:omertai224@gmail.com" style="color:#1a4a6b;font-weight:700;">omertai224@gmail.com</a>
+    שאלות? <a href="mailto:omer@omertai.net" style="color:#1a4a6b;font-weight:700;">omer@omertai.net</a>
   </p>
 </div>
 </body>
@@ -122,7 +122,7 @@ async function sendEmail(email, name, tutorial) {
           MessageContent: htmlContent,
           MessageSubject: 'ההדרכה שלכם מחכה - ' + tutorial.name,
           MessageInnerName: 'mobile-link-' + Date.now(),
-          SenderEmailAddress: 'omertai224@gmail.com',
+          SenderEmailAddress: 'omer@omertai.net',
           MessageDirection: 1,
           MessageBackColor: '#fdf8f2'
         }
