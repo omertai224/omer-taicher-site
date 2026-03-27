@@ -58,8 +58,8 @@ async function getSendMsgToken() {
     const err = await response.text();
     throw new Error('SendMsg token error: ' + response.status + ' ' + err);
   }
-  const token = await response.text();
-  return token.replace(/"/g, '');
+  const data = await response.json();
+  return data.Token;
 }
 
 async function sendEmail(email, name, tutorial) {
@@ -107,7 +107,7 @@ async function sendEmail(email, name, tutorial) {
 
   try {
     const token = await getSendMsgToken();
-    const response = await fetch('https://gconvertrest.sendmsg.co.il/api/sendMsg/AddUsersAndSendNewEmail', {
+    const response = await fetch('https://gconvertrest.sendmsg.co.il/api/Sendmsg/AddUsersAndSend', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

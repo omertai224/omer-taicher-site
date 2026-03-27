@@ -34,8 +34,8 @@ async function getSendMsgToken() {
     const err = await response.text();
     throw new Error('SendMsg token error: ' + response.status + ' ' + err);
   }
-  const token = await response.text();
-  return token.replace(/"/g, '');
+  const data = await response.json();
+  return data.Token;
 }
 
 // שולח מייל דרך שלח מסר — תומך במוצר בודד או כמה מוצרים (products = מערך)
@@ -94,7 +94,7 @@ async function sendTutorialEmail(customerEmail, customerName, products) {
 
   try {
     const token = await getSendMsgToken();
-    const response = await fetch('https://gconvertrest.sendmsg.co.il/api/sendMsg/AddUsersAndSendNewEmail', {
+    const response = await fetch('https://gconvertrest.sendmsg.co.il/api/Sendmsg/AddUsersAndSend', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
