@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+Sitemap: https://omertai.net/sitemap.xml
