@@ -579,14 +579,45 @@ function buildNavDots() {
 
 ### מפרט נוסף — בועות טקסט ותמונות
 
+#### מיקום בועות — מנגנון אוטומטי (עדכון מרץ 2026)
+**בועות טקסט ממוקמות אוטומטית ביחס ל-box הכתום. לא צריך לכוונן textPos ידנית!**
+
+**איך זה עובד:**
+1. **`bubbleDesignWidth`** — כל הדרכה מגדירה את רוחב הcontainer שבו עוצבה (בד"כ 1019, שזה 4K@300% או 1080p@150%)
+2. **`transform: scale()`** — הבועה מוגדלת/מוקטנת כיחידה אחת (טקסט+padding+font), שומרת על פרופורציה בכל רזולוציה
+3. **מיקום ביחס ל-box** — הבועה ממוקמת ליד ה-box הכתום לפי כיוון ה-`arrow` מ-slides.json:
+   - `arrow-right` = בועה משמאל ל-box
+   - `arrow-left` = בועה מימין ל-box
+   - `arrow-top-*` = בועה מתחת ל-box
+   - `arrow-bottom-*` = בועה מעל ל-box
+4. **הפיכת צד** — אם אין מקום בצד המבוקש (box בקצה המסך), הבועה מתהפכת אוטומטית לצד השני
+5. **gap 1.5%** — מרחק קבוע בין הבועה ל-box, הבועה אף פעם לא חוסמת את הכתום
+
+**למה זה חשוב:**
+- ה-box הכתום תמיד מדויק (4 אחוזים: top/left/right/bottom)
+- בועת הטקסט צמודה ל-box, אז גם היא תמיד במקום הנכון
+- לא משנה קנה מידה (100%, 125%, 150%) ולא משנה רזולוציה, הבועה נשארת ליד ה-box
+- `textPos` ב-slides.json נשאר כגיבוי אבל **לא בשימוש בזמן ריצה**
+
+**הגדרה בכל הדרכה (script.js):**
+```javascript
+window.bubbleDesignWidth = 1019;  // 4K@300% = 1080p@150%
+```
+
+**הקוד ב-shared/script.js — `scaleBubbles()`:**
+- נקרא אוטומטית מ-`showSlides()` ועל resize
+- מזהה גם `.box` (לחיץ) וגם highlight סטטי (שקפי צפייה)
+- שומר על גבולות מסך (בועה לא יוצאת מהמסך)
+
 #### HTML — תבנית בועת טקסט לכל צעד:
 ```html
-<div class="text arrow-right" style="left:calc(X% - 315px);top:calc(Y% - 25px);position:absolute;width:300; height: fit-content;">
+<div class="text arrow-right" style="left:46%;top:32%;position:absolute;width:300px;height:fit-content;">
   <div style="text-align: right;">1<div style="color: #ffffffbb;display: inline;">/N</div></div>
   <b style="font-size:24px;padding: 8px 0px;"></b>
   <div>טקסט ההוראה עם <span style="color:#f6a67e;">אלמנט ללחיצה</span></div>
 </div>
 ```
+**הערה:** ה-left/top נדרסים בזמן ריצה ע"י scaleBubbles(). ה-arrow class קובע את הכיוון.
 
 #### גובה תמונות:
 כל תמונת שלב: `max-height:calc(100vh - 80px)` (לא height! ראה TROUBLESHOOTING.md סעיף 1)
