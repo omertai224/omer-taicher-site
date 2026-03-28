@@ -6,6 +6,10 @@
 
 var slidesData = null;
 
+/* Design width: container width (px) when textPos was calibrated.
+   Used by shared/script.js scaleBubbles() to keep bubbles proportional. */
+window.bubbleDesignWidth = 970;
+
 /* ── App Init ── */
 function initApp() {
   var ua = navigator.userAgent || navigator.vendor || window.opera;
