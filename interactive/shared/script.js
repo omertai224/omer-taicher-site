@@ -58,19 +58,22 @@ function showSlides(n) {
 }
 
 /* ── Scale bubbles proportionally (like the orange box) ── */
-var _bubbleRefWidth = 0;
+/* Each tutorial sets window.bubbleDesignWidth in its script.js
+   (the container width at which textPos was calibrated).
+   scaleBubbles() computes: scale = currentWidth / designWidth
+   and applies transform:scale() so the bubble (text+padding+font)
+   shrinks/grows as a unit — text never reflows or breaks. */
 function scaleBubbles() {
+  var designW = window.bubbleDesignWidth;
+  if (!designW) return;
   var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
   if (!slide) return;
   var img = slide.querySelector('.image-center > img');
   if (!img) return;
   function doScale() {
-    var container = img.parentElement;
-    if (!container) return;
-    var w = container.offsetWidth;
+    var w = img.offsetWidth;
     if (!w) return;
-    if (!_bubbleRefWidth) _bubbleRefWidth = w;
-    var scale = w / _bubbleRefWidth;
+    var scale = w / designW;
     var texts = slide.querySelectorAll('.text');
     for (var i = 0; i < texts.length; i++) {
       texts[i].style.transform = 'scale(' + scale + ')';
