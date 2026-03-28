@@ -98,18 +98,31 @@ function scaleBubbles() {
       var thPct = (t.offsetHeight || 150) / designH * 100;
       var gap = 1.5;
       var cl = t.classList;
+      var newL, newT;
       if (cl.contains('arrow-right')) {
-        t.style.left = Math.max(0.5, bL - gap - twPct) + '%';
-        t.style.top = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct)) + '%';
+        newL = bL - gap - twPct;
+        if (newL < 0.5) newL = bRE + gap;
+        newT = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct));
+        t.style.left = newL + '%';
+        t.style.top = newT + '%';
       } else if (cl.contains('arrow-left')) {
-        t.style.left = Math.min(99 - twPct, bRE + gap) + '%';
-        t.style.top = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct)) + '%';
+        newL = bRE + gap;
+        if (newL + twPct > 99) newL = Math.max(0.5, bL - gap - twPct);
+        newT = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct));
+        t.style.left = newL + '%';
+        t.style.top = newT + '%';
       } else if (cl.contains('arrow-top-left') || cl.contains('arrow-top-right')) {
-        t.style.top = Math.min(98 - thPct, bBE + gap) + '%';
-        t.style.left = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct)) + '%';
+        newT = bBE + gap;
+        if (newT + thPct > 98) newT = Math.max(0.5, bT - gap - thPct);
+        newL = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct));
+        t.style.left = newL + '%';
+        t.style.top = newT + '%';
       } else if (cl.contains('arrow-bottom-left') || cl.contains('arrow-bottom-right')) {
-        t.style.top = Math.max(0.5, bT - gap - thPct) + '%';
-        t.style.left = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct)) + '%';
+        newT = bT - gap - thPct;
+        if (newT < 0.5) newT = bBE + gap;
+        newL = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct));
+        t.style.left = newL + '%';
+        t.style.top = newT + '%';
       }
     }
   }
