@@ -57,12 +57,12 @@ function showSlides(n) {
   updateTtsVisibility();
 }
 
-/* ── Scale bubbles proportionally (like the orange box) ── */
-/* Each tutorial sets window.bubbleDesignWidth in its script.js
-   (the container width at which textPos was calibrated).
-   scaleBubbles() computes: scale = currentWidth / designWidth
-   and applies transform:scale() so the bubble (text+padding+font)
-   shrinks/grows as a unit — text never reflows or breaks. */
+/* ── Scale + anchor bubbles to the orange box ── */
+/* Each tutorial sets window.bubbleDesignWidth in its script.js.
+   scaleBubbles() does two things:
+   1. transform:scale() so the bubble shrinks/grows as a unit
+   2. repositions the bubble relative to the box based on arrow direction
+   Result: bubble is always close to the box at any resolution. */
 function scaleBubbles() {
   var designW = window.bubbleDesignWidth;
   if (!designW) return;
@@ -72,18 +72,47 @@ function scaleBubbles() {
   if (!img) return;
   function doScale() {
     var w = img.offsetWidth;
-    if (!w) return;
+    var h = img.offsetHeight;
+    if (!w || !h) return;
     var scale = w / designW;
+    var designH = designW * h / w;
     var texts = slide.querySelectorAll('.text');
+    var box = slide.querySelector('.box');
     for (var i = 0; i < texts.length; i++) {
-      texts[i].style.transform = 'scale(' + scale + ')';
-      texts[i].style.transformOrigin = 'left top';
+      var t = texts[i];
+      t.style.transform = 'scale(' + scale + ')';
+      t.style.transformOrigin = 'left top';
+      if (!box) continue;
+      var bL = parseFloat(box.style.left) || 0;
+      var bR = parseFloat(box.style.right) || 0;
+      var bT = parseFloat(box.style.top) || 0;
+      var bB = parseFloat(box.style.bottom) || 0;
+      var bRE = 100 - bR;
+      var bBE = 100 - bB;
+      var bCX = (bL + bRE) / 2;
+      var bCY = (bT + bBE) / 2;
+      var twPct = (t.offsetWidth || 300) / designW * 100;
+      var thPct = (t.offsetHeight || 150) / designH * 100;
+      var gap = 1.5;
+      var cl = t.classList;
+      if (cl.contains('arrow-right')) {
+        t.style.left = Math.max(0.5, bL - gap - twPct) + '%';
+        t.style.top = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct)) + '%';
+      } else if (cl.contains('arrow-left')) {
+        t.style.left = Math.min(99 - twPct, bRE + gap) + '%';
+        t.style.top = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct)) + '%';
+      } else if (cl.contains('arrow-top-left') || cl.contains('arrow-top-right')) {
+        t.style.top = Math.min(98 - thPct, bBE + gap) + '%';
+        t.style.left = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct)) + '%';
+      } else if (cl.contains('arrow-bottom-left') || cl.contains('arrow-bottom-right')) {
+        t.style.top = Math.max(0.5, bT - gap - thPct) + '%';
+        t.style.left = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct)) + '%';
+      }
     }
   }
   if (img.complete && img.naturalWidth > 0) { doScale(); }
   else { img.addEventListener('load', doScale); }
 }
-// Rescale on window resize
 window.addEventListener('resize', function() { scaleBubbles(); });
 
 /* ── Nav Bar Color ── */
