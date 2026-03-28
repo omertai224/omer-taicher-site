@@ -77,7 +77,10 @@ function scaleBubbles() {
     var scale = w / designW;
     var designH = designW * h / w;
     var texts = slide.querySelectorAll('.text');
-    var box = slide.querySelector('.box');
+    /* Find the highlight: .box (click/view) or static highlight div
+       (any child of image-center that isn't img or .text) */
+    var highlightEls = slide.querySelectorAll('.image-center > *:not(img):not(.text)');
+    var box = highlightEls.length > 0 ? highlightEls[0] : null;
     for (var i = 0; i < texts.length; i++) {
       var t = texts[i];
       t.style.transform = 'scale(' + scale + ')';
