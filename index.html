@@ -80,8 +80,9 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
   <meta name="twitter:title" content="עומר טייכר | טכנאי ומדריך מחשבים">
   <meta name="twitter:description" content="כשהמחשב קורס, העבודה עומדת. עומר טייכר, 25 שנות ניסיון, תמיכה מרחוק והדרכות AI לעצמאים.">
   <meta name="twitter:image" content="https://media.omertai.net/1772846439490_hero.webp">
-  <link rel="alternate" hreflang="he" href="https://omertai.net">
-  <link rel="canonical" href="https://omertai.net">
+  <link rel="alternate" hreflang="he" href="https://omertai.net/">
+  <link rel="alternate" hreflang="x-default" href="https://omertai.net/">
+  <link rel="canonical" href="https://omertai.net/">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -538,7 +539,7 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
       const excerpt = plainExcerpt.substring(0, 100).trim() + (plainExcerpt.length > 100 ? '...' : '');
       const readTime = estimateReadTime(stripHTML(p.body || p.excerpt || ''));
       const meta = readTime + ' דקות קריאה · ' + formatDate(p.date);
-      const link = '/blog/post.html?id=' + p.id;
+      const link = '/blog/' + p.id;
       const imgHtml = p.image
         ? `<div class="blog-thumb" style="background-image:url('${escapeHTML(p.image)}')"></div>`
         : `<div class="blog-thumb blog-thumb-empty"></div>`;

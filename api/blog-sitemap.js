@@ -31,7 +31,7 @@ export default function handler(req, res) {
 
   for (const p of posts) {
     urls.push(`  <url>
-    <loc>${baseUrl}/blog/post.html?id=${xmlEscape(p.id)}</loc>
+    <loc>${baseUrl}/blog/${xmlEscape(p.id)}</loc>
     <lastmod>${p.date}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
