@@ -1,5 +1,6 @@
 {
   "categories": {
+    "clipboard-history-windows.webp": "בלוג",
     "1772846439490_hero.webp": "כללי",
     "1772846483393_working.webp": "כללי",
     "1772846496056_lecture.webp": "כללי",
@@ -52,6 +53,7 @@
     "youtube-video-ends-with-pizza.webp": "כללי"
   },
   "order": [
+    "clipboard-history-windows.webp",
     "1772846439490_hero.webp",
     "1772846483393_working.webp",
     "1772846496056_lecture.webp",
