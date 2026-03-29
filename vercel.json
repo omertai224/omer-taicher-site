@@ -32,7 +32,8 @@
   ],
   "rewrites": [
     { "source": "/blog/post", "destination": "/api/blog-post" },
-    { "source": "/blog/post.html", "destination": "/api/blog-post" }
+    { "source": "/blog/post.html", "destination": "/api/blog-post" },
+    { "source": "/blog/:slug((?!post|index|posts-index|post-template)[a-zA-Z0-9_-]+)", "destination": "/api/blog-post?id=:slug" }
   ],
   "headers": [
     {

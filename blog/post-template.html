@@ -439,6 +439,9 @@ footer {
 }
 </style>
   <link rel="canonical" id="canonical-url" href="https://omertai.net/blog/post">
+  <link rel="alternate" hreflang="he" id="hreflang-he" href="https://omertai.net/blog/post">
+  <link rel="alternate" hreflang="x-default" id="hreflang-default" href="https://omertai.net/blog/post">
+  <meta name="robots" content="index, follow">
 </head>
 <body>
 
@@ -484,7 +487,8 @@ function formatDate(dateStr) {
 
 async function init() {
   const params = new URLSearchParams(window.location.search);
-  const id = params.get('id');
+  const pathSlug = window.location.pathname.replace(/^(\/omer-taicher-site)?\/blog\/?/, '').replace(/\/$/, '');
+  const id = params.get('id') || (pathSlug && pathSlug !== 'post' && pathSlug !== 'post.html' ? pathSlug : null);
   const container = document.getElementById('post-content');
 
   if (!id) {
@@ -552,10 +556,11 @@ async function init() {
     }
 
     // Update page meta
-    document.getElementById('page-title').textContent = stripHtml(`${post.seo_title || post.title} | עומר טייכר`);
+    const cleanTitle = stripHtml(post.seo_title || post.title).replace(/\s*\|\s*עומר טייכר\s*$/g, '');
+    document.getElementById('page-title').textContent = cleanTitle + ' | עומר טייכר';
     document.getElementById('page-desc').setAttribute('content', stripHtml(post.seo_desc || post.excerpt));
     // og tags
-    const ogTitle = stripHtml(post.seo_title || post.title);
+    const ogTitle = stripHtml(post.seo_title || post.title).replace(/\s*\|\s*עומר טייכר\s*$/g, '');
     const ogDesc  = stripHtml(post.seo_desc  || post.excerpt);
     const ogUrl   = window.location.href;
     const ogImage = post.image || '';
@@ -567,6 +572,8 @@ async function init() {
     document.getElementById('tw-desc').setAttribute('content', ogDesc);
     document.getElementById('tw-image').setAttribute('content', ogImage);
     document.getElementById('canonical-url').setAttribute('href', ogUrl);
+    document.getElementById('hreflang-he').setAttribute('href', ogUrl);
+    document.getElementById('hreflang-default').setAttribute('href', ogUrl);
 
     // JSON-LD structured data
     const ld = document.createElement('script');
@@ -595,13 +602,13 @@ async function init() {
     if (prev || next) {
       navHTML = `<div class="post-nav">`;
       if (next) {
-        navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${next.id}${branchParam}">
+        navHTML += `<a class="post-nav-btn" href="/blog/${next.id}${branchParam}">
           <span class="nav-direction">הפוסט הבא <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="12 8 8 12 12 16"/><line x1="16" y1="12" x2="8" y2="12"/></svg></span>
           <span class="nav-title">${next.title}</span>
         </a>`;
       }
       if (prev) {
-        navHTML += `<a class="post-nav-btn" href="/blog/post.html?id=${prev.id}${branchParam}">
+        navHTML += `<a class="post-nav-btn" href="/blog/${prev.id}${branchParam}">
           <span class="nav-direction"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg> הפוסט הקודם</span>
           <span class="nav-title">${prev.title}</span>
         </a>`;

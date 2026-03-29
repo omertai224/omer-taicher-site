@@ -35,7 +35,7 @@ export default function handler(req, res) {
   const items = posts.map(p => {
     const title   = xmlEscape(stripHtml(p.title || ''));
     const excerpt = xmlEscape(stripHtml(p.excerpt || '').substring(0, 160));
-    const link    = `${baseUrl}/blog/post.html?id=${p.id}`;
+    const link    = `${baseUrl}/blog/${p.id}`;
     const pubDate = formatDate(p.date);
     const image   = p.image || '';
     const tags    = p.tags || [];

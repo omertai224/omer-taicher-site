@@ -29,11 +29,11 @@ export default function handler(req, res) {
       }
 
       if (post) {
-        const rawTitle = stripHtml(post.seo_title || post.title);
-        const title = escapeAttr(rawTitle.includes('עומר טייכר') ? rawTitle : rawTitle + ' | עומר טייכר');
+        const rawTitle = stripHtml(post.seo_title || post.title).replace(/\s*\|\s*עומר טייכר\s*$/g, '');
+        const title = escapeAttr(rawTitle + ' | עומר טייכר');
         const desc = escapeAttr(stripHtml(post.seo_desc || post.excerpt));
         const baseUrl = `https://${req.headers.host}`;
-        const url = `${baseUrl}/blog/post.html?id=${encodeURIComponent(id)}`;
+        const url = `${baseUrl}/blog/${encodeURIComponent(id)}`;
         const image = escapeAttr(post.image || '');
 
         html = html

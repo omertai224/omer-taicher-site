@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <script>(function(){var m=location.pathname.match(/^(\/omer-taicher-site)\b/);if(!m)return;var B=m[1];function r(root){(root||document).querySelectorAll('a[href^="/"]').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='/'&&!h.startsWith(B))a.setAttribute('href',B+h)});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){r()});else r();if(typeof MutationObserver!=='undefined')new MutationObserver(function(muts){muts.forEach(function(mu){mu.addedNodes.forEach(function(n){if(n.nodeType===1)r(n.parentElement||n)})})}).observe(document.documentElement,{childList:true,subtree:true});var _f=window.fetch;window.fetch=function(u,o){if(typeof u==='string'&&u.charAt(0)==='/'&&!u.startsWith(B))u=B+u;return _f.call(this,u,o)}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>עומר טייכר · הבלוג</title>
+<title>טיפים למחשב, טכנולוגיה ו-AI | הבלוג של עומר טייכר</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
 <meta name="description" content="טיפים פשוטים לטכנולוגיה יומיומית. מחשבים, סמארטפונים ואינטרנט, בשפה ברורה.">
 <link rel="preconnect" href="https://media.omertai.net">
@@ -311,6 +311,9 @@ footer {
   <meta name="twitter:description" content="טיפים פרקטיים למחשב, אבטחה ובינה מלאכותית. כתובים בפשטות, מניסיון של 25 שנה.">
   <meta name="twitter:image" content="https://media.omertai.net/1772846439490_hero.webp">
   <link rel="canonical" href="https://omertai.net/blog/">
+  <link rel="alternate" hreflang="he" href="https://omertai.net/blog/">
+  <link rel="alternate" hreflang="x-default" href="https://omertai.net/blog/">
+  <meta name="robots" content="index, follow">
   <link rel="alternate" type="application/rss+xml" title="עומר טייכר | טיפים" href="/api/blog-feed">
   <script type="application/ld+json">
   {
@@ -392,7 +395,7 @@ function renderHero(post) {
     ? `<img src="${post.image}" alt="${post.image_alt || post.title}" fetchpriority="high" width="380" height="380" sizes="(max-width:768px) calc(100vw - 40px), 330px">`
     : post.emoji;
   document.getElementById('hero-container').innerHTML = `
-    <a class="hero" href="/blog/post.html?id=${post.id}">
+    <a class="hero" href="/blog/${post.id}">
       <div class="hero-content">
         <div class="hero-label">הפוסט האחרון</div>
         <h1 class="hero-title">${normText(post.title)}</h1>
@@ -412,7 +415,7 @@ function renderPostRow(post, index, colorClass) {
     ? `<img src="${post.image}" alt="${post.image_alt || post.title}" loading="lazy" width="260" height="260" sizes="(max-width:768px) calc(100vw - 32px), 220px">`
     : post.emoji;
   return `
-    <a class="post-row ${colorClass}" href="/blog/post.html?id=${post.id}">
+    <a class="post-row ${colorClass}" href="/blog/${post.id}">
       <div class="post-row-body">
         <span class="row-num">${String(index + 2).padStart(2,'0')}</span>
         <h3 class="post-title">${normText(post.title)}</h3>
