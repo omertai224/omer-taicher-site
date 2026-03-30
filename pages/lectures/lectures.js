@@ -66,13 +66,11 @@ function renderLectures() {
       return '<span class="lec-topic">' + t + '</span>';
     }).join('');
 
-    // Chapters as buttons (seek inside embedded player)
+    // Chapters as inline tags
     var chaptersHTML = lec.chapters.map(function(ch) {
       var secs = timeToSeconds(ch.time);
-      return '<button class="lec-chapter" onclick="seekTo(' + i + ',' + secs + ')">' +
-        '<span class="lec-chapter-time">' + ch.time + '</span>' +
-        '<span class="lec-chapter-label">' + ch.label + '</span>' +
-        '<svg class="lec-chapter-play" width="12" height="12" viewBox="0 0 24 24" fill="var(--orange-deep)" stroke="none"><polygon points="5 3 19 12 5 21 5 3"/></svg>' +
+      return '<button class="lec-chapter-tag" onclick="seekTo(' + i + ',' + secs + ')">' +
+        '<span class="lec-tag-time">' + ch.time + '</span> ' + ch.label +
       '</button>';
     }).join('');
 
@@ -96,17 +94,12 @@ function renderLectures() {
         '</button>' +
         '<div class="lec-duration">' + lec.duration + '</div>' +
       '</div>' +
+      '<div class="lec-chapter-tags">' + chaptersHTML + '</div>' +
       '<div class="lec-body">' +
         '<div class="lec-date">' + lec.date + '</div>' +
         '<h3 class="lec-title">' + lec.title + '</h3>' +
         '<p class="lec-desc">' + lec.desc + '</p>' +
         '<div class="lec-topics">' + topicsHTML + '</div>' +
-        '<button class="lec-chapters-toggle" data-index="' + i + '">' +
-          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>' +
-          'פרקי זמן (' + lec.chapters.length + ')' +
-          '<svg class="lec-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
-        '</button>' +
-        '<div class="lec-chapters" id="chapters-' + i + '">' + chaptersHTML + '</div>' +
         '<div class="lec-actions">' +
           '<a class="lec-yt-btn" href="' + ytUrl + '" target="_blank" rel="noopener">' +
             '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C16.8 2.5 12 2.5 12 2.5s-4.8 0-8.1.3c-.5 0-1.5 0-2.4 1-.7.7-1 2.4-1 2.4S.2 8.2.2 10.1v1.8c0 2 .3 3.9.3 3.9s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.8 0 8.1-.3c.5 0 1.5 0 2.4-1 .7-.7 1-2.4 1-2.4s.3-2 .3-3.9v-1.8c0-2-.3-3.9-.3-3.9zM9.5 15.1V8.4l6.5 3.4-6.5 3.4z"/></svg>' +
@@ -117,16 +110,6 @@ function renderLectures() {
       '</div>';
 
     container.appendChild(card);
-  });
-
-  // Chapter toggles
-  document.querySelectorAll('.lec-chapters-toggle').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var idx = this.getAttribute('data-index');
-      var panel = document.getElementById('chapters-' + idx);
-      panel.classList.toggle('open');
-      this.classList.toggle('open');
-    });
   });
 
   // Play buttons - create YouTube player
