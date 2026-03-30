@@ -1,4 +1,96 @@
+# General crawlers
 User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+# AI crawlers - explicitly allowed for GEO
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: CCBot
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: Bytespider
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin/
+Disallow: /pages/checkout/
+Disallow: /pages/thank-you/
+Disallow: /pages/workflow/
+Disallow: /interactive/drafts/
+Disallow: /api/
+
+User-agent: cohere-ai
 Allow: /
 Disallow: /admin/
 Disallow: /pages/checkout/
