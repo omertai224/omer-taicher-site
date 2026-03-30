@@ -50,7 +50,8 @@
   {
     "postId": "clipboard-history-windows",
     "sendAt": "2026-03-30T09:39:00Z",
-    "sent": false,
-    "addedAt": "2026-03-30T09:37:09.667Z"
+    "sent": true,
+    "addedAt": "2026-03-30T09:37:09.667Z",
+    "sentAt": "2026-03-30T09:39:10.383Z"
   }
 ]
