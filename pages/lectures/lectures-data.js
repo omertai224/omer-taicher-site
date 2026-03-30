@@ -85,12 +85,15 @@ var lecturesData = [
     desc: "5 כלים חינמיים שכל מחשב צריך. נמאס לך לחפש קבצים דקות ארוכות? המחשב איטי ומלא בזבל? הדגמות חיות של כלים שמשנים את הדרך שעובדים עם המחשב.",
     topics: ["Everything", "TreeSize", "CCleaner", "Speccy", "ניהול RAM", "כרטיסיות כרום", "פינוי שטח בדיסק"],
     chapters: [
-      { time: "22:27", label: "פתיחה והקדמה" },
-      { time: "26:00", label: "Everything, חיפוש קבצים מהיר" },
-      { time: "33:36", label: "TreeSize, מה אוכל את הדיסק" },
-      { time: "43:22", label: "CCleaner, ניקוי המחשב" },
-      { time: "57:19", label: "ניהול זיכרון RAM" },
-      { time: "1:02:11", label: "כרום, כרטיסיות ותוספים" }
+      { time: "22:54", label: "פתיחה והקדמה" },
+      { time: "24:51", label: "Everything. חיפוש קבצים מהיר" },
+      { time: "33:29", label: "TreeSize. מה אוכל את הדיסק" },
+      { time: "35:54", label: "Disk Cleanup. ניקוי דיסק של Windows" },
+      { time: "44:47", label: "Speccy. המפרט של המחשב שלכם" },
+      { time: "51:56", label: "CCleaner. ניהול תוכנות" },
+      { time: "56:27", label: "ניהול הפעלה ותוכנות רקע" },
+      { time: "57:19", label: "RAM. ניהול זיכרון" },
+      { time: "1:01:16", label: "כרום. טאבים ותוספים" }
     ],
     cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Everything/" }
   }
