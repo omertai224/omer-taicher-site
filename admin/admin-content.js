@@ -269,7 +269,7 @@ function filterBlogList(query) {
     ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">לא נמצאו פוסטים</div>`
     : filtered.map(p => {
       const sched = blogScheduled.find(s => s.postId === p.id);
-      const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${sched.sendAt.replace('T',' ').slice(0,16)}</div>` : '';
+      const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${new Date(sched.sendAt).toLocaleString('he-IL',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div>` : '';
       const isDraft = p.status === 'draft';
       const statusToggleLabel = isDraft ? 'פרסם' : 'העבר לטיוטה';
       const statusToggleStyle = isDraft
@@ -310,7 +310,7 @@ function renderBlogList() {
     ? `<div style="text-align:center;padding:40px;color:var(--text-light);font-size:0.88rem">${blogStatusFilter === 'draft' ? 'אין טיוטות' : 'אין פוסטים עדיין'}</div>`
     : filteredPosts.map(p => {
       const sched = blogScheduled.find(s => s.postId === p.id);
-      const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${sched.sendAt.replace('T',' ').slice(0,16)}</div>` : '';
+      const schedTag = sched ? `<div style="font-size:0.68rem;background:#e8f5e9;color:#128c7e;border-radius:20px;padding:2px 8px;font-weight:700;margin-top:4px;display:inline-block">⏰ ${new Date(sched.sendAt).toLocaleString('he-IL',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}</div>` : '';
       const isDraft = p.status === 'draft';
       const statusToggleLabel = isDraft ? 'פרסם' : 'העבר לטיוטה';
       const statusToggleStyle = isDraft
@@ -1142,7 +1142,12 @@ async function blogScheduleWhatsapp(postId) {
     if (!date || !time) return;
 
     const sendAtLocal = new Date(date + 'T' + time + ':00');
-    const sendAt = sendAtLocal.toISOString().slice(0, 19);
+    // Store with timezone offset so cron knows the exact UTC time
+    const tzOffset = -sendAtLocal.getTimezoneOffset();
+    const sign = tzOffset >= 0 ? '+' : '-';
+    const hh = String(Math.floor(Math.abs(tzOffset) / 60)).padStart(2, '0');
+    const mm = String(Math.abs(tzOffset) % 60).padStart(2, '0');
+    const sendAt = date + 'T' + time + ':00' + sign + hh + ':' + mm;
     const statusEl = document.getElementById('schedule-status');
     statusEl.textContent = 'שומר...';
 
