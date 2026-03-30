@@ -70,16 +70,12 @@ var lecturesData = [
     desc: "מה בדיוק יש בתוך המחשב שלך? מעבד, RAM, כרטיס מסך, SSD. הכל מוסבר בפשטות, עם כלי חינמי שמראה הכל בלחיצה אחת.",
     topics: ["Speccy", "מעבד Intel", "RAM", "כרטיס מסך", "SSD vs HDD", "NVMe", "לוח אם", "טמפרטורה", "רשת ביתית", "תקלות מדפסת"],
     chapters: [
-      { time: "25:51", label: "פתיחה" },
-      { time: "28:46", label: "Speccy, מה יש במחשב שלך" },
-      { time: "32:00", label: "מעבד ודורות אינטל" },
-      { time: "35:03", label: "זיכרון RAM" },
-      { time: "37:01", label: "כרטיס מסך, פנימי vs חיצוני" },
-      { time: "39:29", label: "אחסון: HDD, SSD, NVMe" },
-      { time: "43:12", label: "לוח אם" },
-      { time: "44:00", label: "טמפרטורת המחשב" },
-      { time: "50:26", label: "רשת ביתית ומהירות אינטרנט" },
-      { time: "59:18", label: "בעיות מדפסת ופתרונות" }
+      { time: "0:00", label: "פתיחה" },
+      { time: "2:55", label: "מה יש בתוך המחשב (המקרה של רוני)" },
+      { time: "24:35", label: "רשת ביתית ואינטרנט (המקרה של נועה)" },
+      { time: "33:21", label: "בעיות מדפסת (המקרה של דורית)" },
+      { time: "40:25", label: "סוללה במחשב נייד (המקרה של טל)" },
+      { time: "49:12", label: "איך עוד אני יכול לעזור לכם?" }
     ],
     cta: null
   },
@@ -92,9 +88,9 @@ var lecturesData = [
     desc: "5 כלים חינמיים שכל מחשב צריך. נמאס לך לחפש קבצים דקות ארוכות? המחשב איטי ומלא בזבל? הדגמות חיות של כלים שמשנים את הדרך שעובדים עם המחשב.",
     topics: ["Everything", "TreeSize", "CCleaner", "Speccy", "ניהול RAM", "כרטיסיות כרום", "פינוי שטח בדיסק"],
     chapters: [
-      { time: "0:15", label: "Everything" },
-      { time: "8:48", label: "TreeSize" },
-      { time: "18:35", label: "CCleaner + Speccy" },
+      { time: "0:15", label: "Everything (המקרה של מרים)" },
+      { time: "8:48", label: "TreeSize (המקרה של שירה)" },
+      { time: "18:35", label: "CCleaner + Speccy (המקרה של דינה)" },
       { time: "42:10", label: "על עומר טייכר" }
     ],
     cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Everything/" }
