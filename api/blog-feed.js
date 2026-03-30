@@ -28,7 +28,7 @@ export default function handler(req, res) {
     readFileSync(join(cwd, 'blog', 'posts-index.json'), 'utf-8')
   );
 
-  const posts = (data.posts || []).sort((a, b) => new Date(b.date) - new Date(a.date));
+  const posts = (data.posts || []).filter(p => (p.status || 'published') === 'published').sort((a, b) => new Date(b.date) - new Date(a.date));
 
   const baseUrl = `https://${req.headers.host}`;
 
