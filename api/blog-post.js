@@ -14,6 +14,10 @@ function escapeAttr(str) {
     .replace(/>/g, '&gt;');
 }
 
+function escapeJson(str) {
+  return String(str || '').replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n');
+}
+
 export default function handler(req, res) {
   const id = String(req.query.id || '').replace(/[^a-zA-Z0-9_-]/g, '');
   const cwd = process.cwd();
@@ -36,6 +40,43 @@ export default function handler(req, res) {
         const url = `${baseUrl}/blog/${encodeURIComponent(id)}`;
         const image = escapeAttr(post.image || '');
 
+        // Schema.org placeholders
+        const schemaTitle = escapeJson(rawTitle);
+        const schemaDesc = escapeJson(stripHtml(post.seo_desc || post.excerpt));
+        const schemaDate = post.date || '';
+        const schemaImage = post.image || '';
+        const schemaUrl = `https://omertai.net/blog/${encodeURIComponent(id)}`;
+
+        // Build FAQ schema from body if it has h2 question patterns
+        let faqSchema = '';
+        const bodyText = post.body || '';
+        const h2Matches = bodyText.match(/<h2[^>]*>([^<]+\?)<\/h2>/g);
+        if (h2Matches && h2Matches.length >= 2) {
+          const faqEntries = [];
+          h2Matches.forEach(function(h2) {
+            const question = h2.replace(/<[^>]+>/g, '').trim();
+            const afterH2 = bodyText.split(h2)[1] || '';
+            const nextSection = afterH2.split(/<h2/)[0] || '';
+            const answerText = nextSection.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 300);
+            if (answerText.length > 20) {
+              faqEntries.push({ q: escapeJson(question), a: escapeJson(answerText) });
+            }
+          });
+          if (faqEntries.length >= 2) {
+            faqSchema = JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": faqEntries.map(function(e) {
+                return {
+                  "@type": "Question",
+                  "name": e.q,
+                  "acceptedAnswer": { "@type": "Answer", "text": e.a }
+                };
+              })
+            });
+          }
+        }
+
         html = html
           .replace('<title id="page-title">עומר טייכר - הבלוג</title>',
                    `<title id="page-title">${title}</title>`)
@@ -56,7 +97,13 @@ export default function handler(req, res) {
           .replace('<meta name="twitter:image" content="" id="tw-image">',
                    `<meta name="twitter:image" content="${image}" id="tw-image">`)
           .replace('<link rel="canonical" id="canonical-url" href="/">',
-                   `<link rel="canonical" id="canonical-url" href="${url}">`);
+                   `<link rel="canonical" id="canonical-url" href="${url}">`)
+          .replace(/\{\{SCHEMA_TITLE\}\}/g, schemaTitle)
+          .replace(/\{\{SCHEMA_DESC\}\}/g, schemaDesc)
+          .replace(/\{\{SCHEMA_DATE\}\}/g, schemaDate)
+          .replace(/\{\{SCHEMA_IMAGE\}\}/g, schemaImage)
+          .replace(/\{\{SCHEMA_URL\}\}/g, schemaUrl)
+          .replace('{{SCHEMA_FAQ}}', faqSchema || '{}');
       }
     } catch (e) {
       console.error('OG injection error:', e);
