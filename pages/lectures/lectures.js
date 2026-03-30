@@ -66,9 +66,24 @@ function renderLectures() {
       return '<span class="lec-topic">' + t + '</span>';
     }).join('');
 
-    // Chapters as inline tags
+    // Chapters as inline tags (with optional dropdown for sub-chapters)
     var chaptersHTML = lec.chapters.map(function(ch) {
       var secs = timeToSeconds(ch.time);
+      if (ch.sub) {
+        var subHTML = ch.sub.map(function(s) {
+          var ss = timeToSeconds(s.time);
+          return '<button class="lec-sub-tag" onclick="seekTo(' + i + ',' + ss + ');event.stopPropagation();">' +
+            '<span class="lec-tag-time">' + s.time + '</span> ' + s.label +
+          '</button>';
+        }).join('');
+        return '<div class="lec-chapter-dropdown">' +
+          '<button class="lec-chapter-tag lec-has-sub" onclick="this.parentElement.classList.toggle(\'open\')">' +
+            '<span class="lec-tag-time">' + ch.time + '</span> ' + ch.label +
+            ' <svg class="lec-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>' +
+          '</button>' +
+          '<div class="lec-sub-menu">' + subHTML + '</div>' +
+        '</div>';
+      }
       return '<button class="lec-chapter-tag" onclick="seekTo(' + i + ',' + secs + ')">' +
         '<span class="lec-tag-time">' + ch.time + '</span> ' + ch.label +
       '</button>';
@@ -122,3 +137,12 @@ function renderLectures() {
 }
 
 document.addEventListener('DOMContentLoaded', renderLectures);
+
+// Close dropdowns on outside click
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.lec-chapter-dropdown')) {
+    document.querySelectorAll('.lec-chapter-dropdown.open').forEach(function(d) {
+      d.classList.remove('open');
+    });
+  }
+});
