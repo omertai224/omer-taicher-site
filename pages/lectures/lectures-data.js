@@ -23,7 +23,7 @@ var lecturesData = [
       { time: "26:32", label: "אנטי וירוסים כפולים" },
       { time: "35:08", label: "וירוסים ותוכנות זדוניות" },
       { time: "41:55", label: "האינטרנט. בדיקת מהירות" },
-      { time: "49:58", label: "סיכום" }
+      { time: "49:58", label: "איך עוד אני יכול לעזור לכם?" }
     ],
     cta: null
   },
@@ -42,7 +42,8 @@ var lecturesData = [
       { time: "27:36", label: "ייצוא כל הפוסטים מפייסבוק האישי" },
       { time: "32:45", label: "ייצוא פוסטים מדף עסקי בפייסבוק" },
       { time: "40:04", label: "הורדת תמלולים מסרטוני יוטיוב" },
-      { time: "43:09", label: "הדגמה חיה: תוסף Copy YouTube Transcript" }
+      { time: "43:09", label: "הדגמה חיה: תוסף Copy YouTube Transcript" },
+      { time: "48:18", label: "איך עוד אני יכול לעזור לכם?" }
     ],
     cta: null
   },
@@ -57,7 +58,8 @@ var lecturesData = [
     chapters: [
       { time: "22:27", label: "פתיחה" },
       { time: "24:33", label: "ביטול שליחת מייל, הדגמה חיה" },
-      { time: "32:11", label: "שליחה מתוזמנת בג'ימייל" }
+      { time: "32:11", label: "שליחה מתוזמנת בג'ימייל" },
+      { time: "47:03", label: "איך עוד אני יכול לעזור לכם?" }
     ],
     cta: { text: "להדרכת Gmail האינטראקטיבית", url: "/interactive/tutorials/Gmail/Schedule/" }
   },
@@ -91,7 +93,7 @@ var lecturesData = [
       { time: "0:15", label: "Everything (המקרה של מרים)" },
       { time: "8:48", label: "TreeSize (המקרה של שירה)" },
       { time: "18:35", label: "CCleaner + Speccy (המקרה של דינה)" },
-      { time: "42:10", label: "על עומר טייכר" }
+      { time: "42:10", label: "איך עוד אני יכול לעזור לכם?" }
     ],
     cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Everything/" }
   }
