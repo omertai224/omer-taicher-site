@@ -159,17 +159,24 @@ body {
 }
 .lec-chapter {
   display:flex; align-items:center; gap:12px;
-  padding:8px 14px; text-decoration:none;
+  padding:10px 14px;
+  border:none; background:none; cursor:pointer;
   border-radius:8px; transition:background 0.15s;
+  width:100%; text-align:right; font-family:inherit;
 }
-.lec-chapter:hover { background:var(--cream); }
+.lec-chapter:hover { background:var(--orange-light); }
 .lec-chapter-time {
   font-size:0.8rem; font-weight:700; color:var(--orange-deep);
   min-width:50px; direction:ltr; text-align:left;
+  background:var(--cream); padding:3px 8px; border-radius:6px;
 }
 .lec-chapter-label {
-  font-size:0.85rem; color:var(--text);
+  font-size:0.85rem; color:var(--text); flex:1;
 }
+.lec-chapter-play {
+  opacity:0; transition:opacity 0.15s;
+}
+.lec-chapter:hover .lec-chapter-play { opacity:1; }
 
 /* Actions */
 .lec-actions {
