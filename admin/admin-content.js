@@ -1142,7 +1142,7 @@ async function blogScheduleWhatsapp(postId) {
     if (!date || !time) return;
 
     const sendAtLocal = new Date(date + 'T' + time + ':00');
-    const sendAt = sendAtLocal.toISOString().slice(0, 19);
+    const sendAt = sendAtLocal.toISOString().slice(0, 19) + 'Z';
     const statusEl = document.getElementById('schedule-status');
     statusEl.textContent = 'שומר...';
 
@@ -1172,7 +1172,7 @@ async function blogScheduleWhatsapp(postId) {
       if (result.content) {
         statusEl.style.color = '#128c7e';
         statusEl.textContent = '✓ מתוזמן ל-' + time + ' בתאריך ' + date;
-        setTimeout(() => overlay.remove(), 1500);
+        setTimeout(() => { overlay.remove(); location.reload(); }, 1500);
       } else {
         statusEl.style.color = '#c0392b';
         statusEl.textContent = 'שגיאה: ' + (result.message || '');
