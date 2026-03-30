@@ -95,7 +95,7 @@ var lecturesData = [
       { time: "0:15", label: "Everything" },
       { time: "8:48", label: "TreeSize" },
       { time: "18:35", label: "CCleaner + Speccy" },
-      { time: "42:00", label: "על עומר טייכר" }
+      { time: "42:10", label: "על עומר טייכר" }
     ],
     cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Everything/" }
   }
