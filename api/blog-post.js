@@ -44,6 +44,7 @@ export default function handler(req, res) {
         const schemaTitle = escapeJson(rawTitle);
         const schemaDesc = escapeJson(stripHtml(post.seo_desc || post.excerpt));
         const schemaDate = post.date || '';
+        const schemaDateModified = post.date_modified || schemaDate;
         const schemaImage = post.image || '';
         const schemaUrl = `https://omertai.net/blog/${encodeURIComponent(id)}`;
 
@@ -101,9 +102,16 @@ export default function handler(req, res) {
           .replace(/\{\{SCHEMA_TITLE\}\}/g, schemaTitle)
           .replace(/\{\{SCHEMA_DESC\}\}/g, schemaDesc)
           .replace(/\{\{SCHEMA_DATE\}\}/g, schemaDate)
+          .replace(/\{\{SCHEMA_DATE_MODIFIED\}\}/g, schemaDateModified)
           .replace(/\{\{SCHEMA_IMAGE\}\}/g, schemaImage)
-          .replace(/\{\{SCHEMA_URL\}\}/g, schemaUrl)
-          .replace('{{SCHEMA_FAQ}}', faqSchema || '{}');
+          .replace(/\{\{SCHEMA_URL\}\}/g, schemaUrl);
+
+        // Inject FAQ schema or remove the empty script tag entirely
+        if (faqSchema) {
+          html = html.replace('{{SCHEMA_FAQ}}', faqSchema);
+        } else {
+          html = html.replace(/\s*<script type="application\/ld\+json" id="schema-faq">\s*\{\{SCHEMA_FAQ\}\}\s*<\/script>/, '');
+        }
       }
     } catch (e) {
       console.error('OG injection error:', e);

@@ -719,22 +719,38 @@ async function init() {
     document.getElementById('hreflang-he').setAttribute('href', ogUrl);
     document.getElementById('hreflang-default').setAttribute('href', ogUrl);
 
-    // JSON-LD structured data
-    const ld = document.createElement('script');
-    ld.type = 'application/ld+json';
-    ld.textContent = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": ogTitle,
-      "description": ogDesc,
-      "image": ogImage,
-      "url": ogUrl,
-      "datePublished": post.date,
-      "author": { "@type": "Person", "name": "עומר טייכר", "url": "https://omertai.net" },
-      "publisher": { "@type": "Person", "name": "עומר טייכר" },
-      "inLanguage": "he"
-    });
-    document.head.appendChild(ld);
+    // Update server-rendered JSON-LD schemas with client-side values
+    var schemaEl = document.getElementById('schema-article');
+    if (schemaEl) {
+      try {
+        var schema = JSON.parse(schemaEl.textContent);
+        schema.headline = ogTitle;
+        schema.description = ogDesc;
+        schema.image = ogImage;
+        schema.url = ogUrl;
+        schema.datePublished = post.date;
+        schema.dateModified = post.date_modified || post.date;
+        schema.mainEntityOfPage['@id'] = ogUrl;
+        schemaEl.textContent = JSON.stringify(schema);
+      } catch(e) {}
+    }
+    var bcEl = document.getElementById('schema-breadcrumb');
+    if (bcEl) {
+      try {
+        var bc = JSON.parse(bcEl.textContent);
+        var lastItem = bc.itemListElement[bc.itemListElement.length - 1];
+        if (lastItem) { lastItem.name = ogTitle; lastItem.item = ogUrl; }
+        bcEl.textContent = JSON.stringify(bc);
+      } catch(e) {}
+    }
+    // Remove empty FAQ schema if not populated
+    var faqEl = document.getElementById('schema-faq');
+    if (faqEl) {
+      try {
+        var faq = JSON.parse(faqEl.textContent);
+        if (!faq['@type']) faqEl.remove();
+      } catch(e) { faqEl.remove(); }
+    }
 
     const imgContent = post.image
       ? `<img src="${post.image}" alt="${post.image_alt || post.title}" fetchpriority="high" width="200" height="200">`
