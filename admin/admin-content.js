@@ -1115,8 +1115,8 @@ async function blogScheduleWhatsapp(postId) {
   overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:10000;display:flex;align-items:center;justify-content:center';
 
   const now = new Date();
-  const tomorrow = new Date(now.getTime() + 24*60*60*1000);
-  const defaultDate = tomorrow.toISOString().slice(0,10);
+  const defaultDate = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+  const defaultTime = String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
 
   overlay.innerHTML = `
     <div style="background:#fff;border-radius:16px;padding:28px;width:90%;max-width:320px;direction:rtl;font-family:Rubik,sans-serif">
@@ -1125,7 +1125,7 @@ async function blogScheduleWhatsapp(postId) {
       <label style="font-size:0.82rem;font-weight:600;color:#555;display:block;margin-bottom:6px">תאריך</label>
       <input id="schedule-date" type="date" value="${defaultDate}" style="width:100%;padding:8px 12px;border:1px solid #e0d6cc;border-radius:8px;font-size:0.9rem;margin-bottom:14px;box-sizing:border-box;font-family:inherit">
       <label style="font-size:0.82rem;font-weight:600;color:#555;display:block;margin-bottom:6px">שעה</label>
-      <input id="schedule-time" type="time" value="08:00" style="width:100%;padding:8px 12px;border:1px solid #e0d6cc;border-radius:8px;font-size:0.9rem;margin-bottom:20px;box-sizing:border-box;font-family:inherit">
+      <input id="schedule-time" type="time" value="${defaultTime}" style="width:100%;padding:8px 12px;border:1px solid #e0d6cc;border-radius:8px;font-size:0.9rem;margin-bottom:20px;box-sizing:border-box;font-family:inherit">
       <div style="display:flex;gap:10px">
         <button id="schedule-confirm" style="flex:1;background:#128c7e;color:#fff;border:none;padding:10px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">תזמן</button>
         <button id="schedule-cancel" style="flex:1;background:#f5ede0;color:#555;border:none;padding:10px;border-radius:20px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">ביטול</button>
