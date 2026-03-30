@@ -1142,12 +1142,7 @@ async function blogScheduleWhatsapp(postId) {
     if (!date || !time) return;
 
     const sendAtLocal = new Date(date + 'T' + time + ':00');
-    // Store with timezone offset so cron knows the exact UTC time
-    const tzOffset = -sendAtLocal.getTimezoneOffset();
-    const sign = tzOffset >= 0 ? '+' : '-';
-    const hh = String(Math.floor(Math.abs(tzOffset) / 60)).padStart(2, '0');
-    const mm = String(Math.abs(tzOffset) % 60).padStart(2, '0');
-    const sendAt = date + 'T' + time + ':00' + sign + hh + ':' + mm;
+    const sendAt = sendAtLocal.toISOString().slice(0, 19);
     const statusEl = document.getElementById('schedule-status');
     statusEl.textContent = 'שומר...';
 
