@@ -92,10 +92,10 @@ var lecturesData = [
     desc: "5 כלים חינמיים שכל מחשב צריך. נמאס לך לחפש קבצים דקות ארוכות? המחשב איטי ומלא בזבל? הדגמות חיות של כלים שמשנים את הדרך שעובדים עם המחשב.",
     topics: ["Everything", "TreeSize", "CCleaner", "Speccy", "ניהול RAM", "כרטיסיות כרום", "פינוי שטח בדיסק"],
     chapters: [
-      { time: "0:15", label: "Everything. חיפוש קבצים מהיר" },
-      { time: "8:48", label: "TreeSize. מה אוכל את הדיסק" },
-      { time: "18:40", label: "CCleaner + Speccy. ניקוי ומפרט המחשב" },
-      { time: "42:00", label: "עומר טייכר. שירותים והדרכות" }
+      { time: "0:15", label: "Everything" },
+      { time: "8:48", label: "TreeSize" },
+      { time: "18:35", label: "CCleaner + Speccy" },
+      { time: "42:00", label: "על עומר טייכר" }
     ],
     cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Everything/" }
   }
