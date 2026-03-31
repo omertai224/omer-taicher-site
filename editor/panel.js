@@ -9,12 +9,11 @@ function buildPanel() {
 
   $('panel').innerHTML = ''
     // ── Slide Management ──
-    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="10" y1="10" x2="14" y2="10"/></svg> ניהול שקפים</h3>'
-    + '<div class="action-btns">'
-    + '<div class="action-btn" onclick="addSlideAfterCurrent()" title="הוסף שקף אחרי הנוכחי">+ הוסף שקף</div>'
-    + '<div class="action-btn reset" onclick="deleteCurrentSlide()" title="מחק את השקף הנוכחי">- מחק שקף</div>'
-    + '<div class="action-btn" onclick="moveSlide(-1)" title="הזז שקף אחורה">' + arrU + ' הזז קודם</div>'
-    + '<div class="action-btn" onclick="moveSlide(1)" title="הזז שקף קדימה">' + arrD + ' הזז הבא</div>'
+    + '<div class="slide-mgmt">'
+    + '<span class="mgmt-btn" onclick="addSlideAfterCurrent()" title="הוסף שקף">הוסף</span>'
+    + '<span class="mgmt-btn del" onclick="deleteCurrentSlide()" title="מחק שקף">מחק</span>'
+    + '<span class="mgmt-btn" onclick="moveSlide(-1)" title="הזז קודם">קודם</span>'
+    + '<span class="mgmt-btn" onclick="moveSlide(1)" title="הזז הבא">הבא</span>'
     + '</div>'
 
     // ── Slide Info ──
