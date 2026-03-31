@@ -20,14 +20,22 @@ function showSlide(idx) {
       renderBox(s);
       renderBubble(s);
     };
+  } else if (s.html) {
+    // Special slide with HTML content - render preview
+    box.style.display = 'none';
+    bubble.style.display = 'none';
+    container.style.display = 'none';
+    noSlide.style.display = 'block';
+    noSlide.innerHTML = '<div class="special-preview">'
+      + '<div class="special-badge">' + (s.specialType || 'special') + '</div>'
+      + '<div class="special-frame">' + s.html + '</div>'
+      + '</div>';
   } else {
     container.style.display = 'none';
     box.style.display = 'none';
     bubble.style.display = 'none';
     noSlide.style.display = 'block';
-    noSlide.innerHTML = '<div style="color:#f6a67e;font-size:13px;">שקף מיוחד</div>'
-      + '<div style="color:#ffffff55;font-size:12px;margin-top:6px;">'
-      + (s.type || s.specialType || 'html') + '</div>';
+    noSlide.innerHTML = '<div style="color:#f6a67e;font-size:13px;">שקף ריק</div>';
   }
 
   updatePanel(s);
