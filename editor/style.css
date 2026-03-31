@@ -73,10 +73,10 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 }
 .special-frame {
   border:1px solid #ffffff15; border-radius:8px; overflow:hidden;
-  height:calc(100vh - 160px); pointer-events:none;
+  height:calc(100vh - 140px); pointer-events:none;
 }
 .special-frame > * {
-  transform:scale(0.7); transform-origin:top center;
+  transform:scale(0.55); transform-origin:top center;
 }
 .no-slide small { font-size:11px; color:#ffffff22; }
 
