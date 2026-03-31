@@ -74,7 +74,11 @@ function buildSlides(slides, totalSteps) {
           stepHtml = '<div style="text-align:right;"><span style="font-size:16px;font-weight:700;color:#f6a67e;">' + s.step + '</span><span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div><b style="font-size:24px;padding:8px 0;"></b>';
         }
         var w = s.textWidth || '280px';
-        div.innerHTML += '<div class="text ' + arrowClass + '" style="position:absolute;width:' + w + ';height:fit-content;">' + stepHtml + '<div style="text-align:right;">' + s.text + '</div></div>';
+        var posStyle = 'position:absolute;width:' + w + ';height:fit-content;';
+        if (s.textPos.left) posStyle += 'left:' + s.textPos.left + ';';
+        if (s.textPos.top) posStyle += 'top:' + s.textPos.top + ';';
+        if (s.textPos.bottom) posStyle += 'bottom:' + s.textPos.bottom + ';';
+        div.innerHTML += '<div class="text ' + arrowClass + '" style="' + posStyle + '">' + stepHtml + '<div style="text-align:right;">' + s.text + '</div></div>';
       }
       if (s.type === 'view' && !s.text) {
         div.innerHTML += '<div onclick="nextSlide()" style="position:absolute;bottom:20%;left:50%;transform:translateX(-50%);width:44px;height:44px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid #5b8fa8;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(26,37,64,0.5);z-index:5;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>';
