@@ -88,7 +88,8 @@ window.addEventListener('DOMContentLoaded', function() {
   $('btnZoomOut').onclick = function() { setZoom(E.zoom / 1.15); };
   $('btnZoomFit').onclick = function() { setZoom(1); };
   $('btnLoadLocal').onclick = function() { loadLocalRoot(); };
-  $('btnSave').onclick = function() { downloadJSON(); };
+  $('btnSave').onclick = function() { saveData(); };
+  if ($('btnPush')) $('btnPush').onclick = function() { pushToMain(); };
 
   // Keyboard
   document.addEventListener('keydown', function(e) {

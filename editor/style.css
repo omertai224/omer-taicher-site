@@ -30,6 +30,11 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   color:white; font-weight:700;
 }
 .topbar .save-btn:hover { opacity:0.85; }
+.topbar .push-btn {
+  background:linear-gradient(135deg,#e8834e,#f6a67e); border:none;
+  color:#1a1a2e; font-weight:700;
+}
+.topbar .push-btn:hover { opacity:0.85; }
 
 /* ═══ Main Layout ═══ */
 .main { display:flex; flex-direction:row-reverse; height:calc(100vh - 80px); }

@@ -20,12 +20,33 @@
 </head>
 <body>
 
+<!-- TOKEN GATE -->
+<div id="editor-token-gate" style="position:fixed;inset:0;background:#0f1a2e;z-index:9999;display:flex;align-items:center;justify-content:center;font-family:'Rubik',sans-serif;">
+  <div style="text-align:center;max-width:360px;padding:40px;">
+    <div style="font-size:18px;font-weight:700;color:#f6a67e;margin-bottom:8px;">עורך הדרכות</div>
+    <div style="font-size:13px;color:#ffffff88;margin-bottom:24px;">עומר טייכר</div>
+    <div style="margin-bottom:16px;">
+      <input id="editor-token-input" type="password" placeholder="GitHub Token" dir="ltr"
+        style="width:100%;padding:12px 16px;border-radius:10px;background:#1a2540;border:1px solid #ffffff22;color:white;font-family:'Rubik',sans-serif;font-size:14px;outline:none;text-align:center;"
+        onkeydown="if(event.key==='Enter')editorSaveToken()">
+    </div>
+    <button id="editor-token-btn" onclick="editorSaveToken()"
+      style="width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,#e8834e,#f6a67e);border:none;color:#1a1a2e;font-family:'Rubik',sans-serif;font-size:14px;font-weight:700;cursor:pointer;">
+      כניסה
+    </button>
+  </div>
+</div>
+
 <!-- Top Bar -->
 <div class="topbar">
-  <!-- Right: Save button -->
+  <!-- Right: Save + Push buttons -->
   <button class="tb-icon save-btn" id="btnSave">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     שמור
+  </button>
+  <button class="tb-icon push-btn" id="btnPush" title="דחוף ל-main (deploy)">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/></svg>
+    דחוף
   </button>
   <div class="topbar-spacer"></div>
   <!-- Center: Controls -->
@@ -174,5 +195,6 @@
 <script src="/editor/speech.js"></script>
 <script src="/editor/export.js"></script>
 <script src="/editor/new-tutorial.js"></script>
+<script src="/editor/github.js"></script>
 </body>
 </html>
