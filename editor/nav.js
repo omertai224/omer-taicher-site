@@ -38,30 +38,36 @@ function buildStrip() {
     }
     dot.title = 'שקף ' + (i + 1) + (s.step ? ' (צעד ' + s.step + ')' : '');
     dot.onclick = function() { goTo(i); };
-    // Drag to reorder
-    dot.draggable = true;
-    dot.dataset.idx = i;
-    dot.addEventListener('dragstart', function(e) {
-      e.dataTransfer.setData('text/plain', this.dataset.idx);
-      this.classList.add('dragging-dot');
-    });
-    dot.addEventListener('dragend', function() { this.classList.remove('dragging-dot'); });
-    dot.addEventListener('dragover', function(e) { e.preventDefault(); this.classList.add('drop-target'); });
-    dot.addEventListener('dragleave', function() { this.classList.remove('drop-target'); });
-    dot.addEventListener('drop', function(e) {
-      e.preventDefault();
-      this.classList.remove('drop-target');
-      var from = parseInt(e.dataTransfer.getData('text/plain'));
-      var to = parseInt(this.dataset.idx);
-      if (isNaN(from) || isNaN(to) || from === to) return;
-      var slide = E.data.slides.splice(from, 1)[0];
-      E.data.slides.splice(to, 0, slide);
-      reindexSlides();
-      E.idx = to;
-      buildStrip();
-      showSlide(to);
-      toast('שקף הוזז');
-    });
+    // Drag to reorder - only for step slides (not special)
+    var isStep = !(s.type === 'intro' || s.type === 'outro' || s.type === 'special' || s.html);
+    if (isStep) {
+      dot.draggable = true;
+      dot.dataset.idx = i;
+      dot.addEventListener('dragstart', function(e) {
+        e.dataTransfer.setData('text/plain', this.dataset.idx);
+        this.classList.add('dragging-dot');
+      });
+      dot.addEventListener('dragend', function() { this.classList.remove('dragging-dot'); });
+      dot.addEventListener('dragover', function(e) { e.preventDefault(); this.classList.add('drop-target'); });
+      dot.addEventListener('dragleave', function() { this.classList.remove('drop-target'); });
+      dot.addEventListener('drop', function(e) {
+        e.preventDefault();
+        this.classList.remove('drop-target');
+        var from = parseInt(e.dataTransfer.getData('text/plain'));
+        var to = parseInt(this.dataset.idx);
+        if (isNaN(from) || isNaN(to) || from === to) return;
+        // Only allow dropping on step slides
+        var targetSlide = E.data.slides[to];
+        if (targetSlide.type === 'special' || targetSlide.type === 'intro' || targetSlide.html) return;
+        var slide = E.data.slides.splice(from, 1)[0];
+        E.data.slides.splice(to, 0, slide);
+        reindexSlides();
+        E.idx = to;
+        buildStrip();
+        showSlide(to);
+        toast('שקף הוזז');
+      });
+    }
     strip.appendChild(dot);
   });
   updateStrip();
