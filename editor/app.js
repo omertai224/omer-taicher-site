@@ -112,6 +112,9 @@ window.addEventListener('DOMContentLoaded', function() {
     addToDropdown(t);
     $('tutorialSelect').value = t;
     loadFromServer(t);
+  } else {
+    // Auto-load last tutorial
+    tryRestoreLast();
   }
 });
 

@@ -31,7 +31,28 @@ function onDataLoaded(data) {
   $('slideContainer').style.transform = '';
   buildStrip();
   showSlide(0);
+  // Remember last tutorial
+  localStorage.setItem('editor_last', E.name);
+  // Restore last slide position
+  var lastIdx = parseInt(localStorage.getItem('editor_last_slide_' + E.name));
+  if (lastIdx > 0 && lastIdx < data.slides.length) {
+    showSlide(lastIdx);
+  }
   toast(E.name + ' נטען (' + data.slides.length + ' שקפים)');
+}
+
+/* Save current slide position (called from showSlide) */
+function rememberSlide() {
+  if (E.name) localStorage.setItem('editor_last_slide_' + E.name, E.idx);
+}
+
+/* Auto-load last tutorial on page refresh */
+function tryRestoreLast() {
+  var last = localStorage.getItem('editor_last');
+  if (!last) return;
+  var sel = $('tutorialSelect');
+  if (sel) sel.value = last;
+  loadFromServer(last);
 }
 
 /* Get image URL (server path or local blob from drag-drop) */

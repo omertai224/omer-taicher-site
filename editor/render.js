@@ -2,6 +2,7 @@
 
 function showSlide(idx) {
   E.idx = idx;
+  if (typeof rememberSlide === 'function') rememberSlide();
   var s = E.data.slides[idx];
   var container = $('slideContainer');
   var noSlide = $('noSlide');
