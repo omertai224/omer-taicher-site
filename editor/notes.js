@@ -2,6 +2,7 @@
 
 // Add a new note to current slide
 function addNote() {
+  if (!E.data || !E.data.slides || !E.data.slides[E.idx]) { toast('טענו הדרכה קודם'); return; }
   var s = E.data.slides[E.idx];
   saveUndo();
   if (!s.notes) s.notes = [];
