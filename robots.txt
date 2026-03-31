@@ -7,6 +7,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 # AI crawlers - explicitly allowed for GEO
 User-agent: GPTBot
@@ -17,6 +18,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: ChatGPT-User
 Allow: /
@@ -26,6 +28,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: ClaudeBot
 Allow: /
@@ -35,6 +38,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: anthropic-ai
 Allow: /
@@ -44,6 +48,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: CCBot
 Allow: /
@@ -53,6 +58,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: PerplexityBot
 Allow: /
@@ -62,6 +68,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: Google-Extended
 Allow: /
@@ -71,6 +78,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: Bytespider
 Allow: /
@@ -80,6 +88,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: Applebot-Extended
 Allow: /
@@ -89,6 +98,7 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 User-agent: cohere-ai
 Allow: /
@@ -98,5 +108,6 @@ Disallow: /pages/thank-you/
 Disallow: /pages/workflow/
 Disallow: /interactive/drafts/
 Disallow: /api/
+Disallow: /editor/
 
 Sitemap: https://omertai.net/sitemap.xml
