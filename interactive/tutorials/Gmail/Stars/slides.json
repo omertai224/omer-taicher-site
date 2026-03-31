@@ -1,7 +1,7 @@
 {
   "title": "כוכבים וסימון",
   "subtitle": "Gmail",
-  "totalSteps": 0,
+  "totalSteps": 13,
   "slides": [
     {
       "index": 0,
@@ -13,6 +13,140 @@
       "type": "special",
       "specialType": "howto",
       "html": "<style>.howto-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e,#1a2540);text-align:center;padding:40px 20px;}.howto-title{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:20px;}.howto-desc{font-size:0.95rem;color:#ffffffaa;line-height:2;max-width:460px;margin-bottom:30px;}.howto-btn{background:linear-gradient(135deg,#1a2540,#3d5a80);color:white;border:2px solid white;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 12px rgba(26,37,64,0.5);}</style><div class=\"howto-wrap\"><svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" style=\"margin-bottom:16px;\"><polygon points=\"5 3 19 12 5 21 5 3\"/></svg><div class=\"howto-title\">איך עובדים עם ההדרכה</div><div class=\"howto-desc\">בכל שקף תראו תמונה אמיתית מהמחשב.<br>לחצו על <span style=\"color:#f6a67e;font-weight:700;\">המסגרת הכתומה</span> כדי להתקדם.<br>בדיוק כמו שהייתם עושים במחשב שלכם.</div><button class=\"howto-btn\" onclick=\"nextSlide()\">הבנתי, קדימה</button></div>"
+    },
+    {
+      "index": 2,
+      "step": 1,
+      "type": "click",
+      "image": "Stars-01.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הכוכב</span> שליד המייל כדי לסמן אותו.",
+      "box": { "top": "34%", "left": "28.5%", "right": "69%", "bottom": "59%" },
+      "textPos": { "left": "35%", "top": "40%" },
+      "textWidth": "260px"
+    },
+    {
+      "index": 3,
+      "step": 2,
+      "type": "click",
+      "image": "Stars-02.png",
+      "text": "אפשר לסמן כוכב גם מתוך מייל פתוח. לחצו על <span style=\"color:#f6a67e;\">לא מסומן בכוכב</span>.",
+      "box": { "top": "30%", "left": "5%", "right": "88%", "bottom": "63%" },
+      "textPos": { "left": "15%", "top": "35%" },
+      "textWidth": "280px"
+    },
+    {
+      "index": 4,
+      "step": 3,
+      "type": "click",
+      "image": "Stars-03.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">מסומנים</span> למעלה כדי לראות את כל המיילים עם כוכב.",
+      "box": { "top": "24%", "left": "4.5%", "right": "89%", "bottom": "69%" },
+      "textPos": { "left": "15%", "top": "35%" },
+      "textWidth": "260px"
+    },
+    {
+      "index": 5,
+      "step": 4,
+      "type": "click",
+      "image": "Stars-04.png",
+      "text": "עכשיו נפעיל כוכבים צבעוניים. לחצו על <span style=\"color:#f6a67e;\">הגדרות מתקדמ</span> בתפריט שנפתח.",
+      "box": { "top": "23%", "left": "2%", "right": "85%", "bottom": "69%" },
+      "textPos": { "left": "20%", "top": "30%" },
+      "textWidth": "280px"
+    },
+    {
+      "index": 6,
+      "step": 5,
+      "type": "click",
+      "image": "Stars-05.png",
+      "text": "בהגדרות, גללו למטה עד <span style=\"color:#f6a67e;\">כוכבים</span>. לחצו על <span style=\"color:#f6a67e;\">4 כוכבים</span> כדי להפעיל צבעים.",
+      "box": { "top": "49%", "left": "23%", "right": "66%", "bottom": "44%" },
+      "textPos": { "left": "35%", "top": "30%" },
+      "textWidth": "280px"
+    },
+    {
+      "index": 7,
+      "step": 6,
+      "type": "click",
+      "image": "Stars-06.png",
+      "text": "רוצים עוד אפשרויות? לחצו על <span style=\"color:#f6a67e;\">כל הכוכבים</span> כדי לראות את כל 12 הסמלים.",
+      "box": { "top": "49%", "left": "15%", "right": "74%", "bottom": "44%" },
+      "textPos": { "left": "25%", "top": "30%" },
+      "textWidth": "280px"
+    },
+    {
+      "index": 8,
+      "step": 7,
+      "type": "view",
+      "image": "Stars-07.png",
+      "text": "שימו לב לשורת <span style=\"color:#f6a67e;\">בשימוש</span>. אלה הכוכבים שזמינים לכם כרגע. אפשר לגרור כוכבים בין השורות.",
+      "box": { "top": "55%", "left": "11%", "right": "55%", "bottom": "37%" },
+      "textPos": { "left": "25%", "top": "25%" },
+      "textWidth": "300px"
+    },
+    {
+      "index": 9,
+      "step": 8,
+      "type": "view",
+      "image": "Stars-08.png",
+      "text": "כשמעבירים את העכבר על כוכב, רואים את <span style=\"color:#f6a67e;\">השם שלו</span> באנגלית (orange-star). ככה תדעו איזה כוכב בחרתם.",
+      "box": { "top": "57%", "left": "31%", "right": "57%", "bottom": "34%" },
+      "textPos": { "left": "40%", "top": "25%" },
+      "textWidth": "300px"
+    },
+    {
+      "index": 10,
+      "step": 9,
+      "type": "click",
+      "image": "Stars-09.png",
+      "text": "בחרו כמה כוכבים אתם רוצים. לחצו על <span style=\"color:#f6a67e;\">כוכב אחד</span> אם מעדיפים פשטות.",
+      "box": { "top": "49%", "left": "29%", "right": "61%", "bottom": "44%" },
+      "textPos": { "left": "40%", "top": "30%" },
+      "textWidth": "260px"
+    },
+    {
+      "index": 11,
+      "step": 10,
+      "type": "view",
+      "image": "Stars-10.png",
+      "text": "אחרי שבחרתם, גללו <span style=\"color:#f6a67e;\">למטה</span> ולחצו <span style=\"color:#f6a67e;\">שמור שינויים</span> כדי לשמור את ההגדרות.",
+      "textPos": { "left": "30%", "top": "60%" },
+      "textWidth": "280px"
+    },
+    {
+      "index": 12,
+      "step": 11,
+      "type": "click",
+      "image": "Stars-11.png",
+      "text": "חזרנו לתיבה. כל לחיצה על הכוכב <span style=\"color:#f6a67e;\">מחליפה צבע</span>. לחצו שוב ושוב לעבור בין הצבעים.",
+      "box": { "top": "35%", "left": "28%", "right": "69%", "bottom": "57%" },
+      "textPos": { "left": "35%", "top": "42%" },
+      "textWidth": "280px"
+    },
+    {
+      "index": 13,
+      "step": 12,
+      "type": "click",
+      "image": "Stars-12.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">מסומן בכוכב</span> בצד כדי לראות רק מיילים מסומנים.",
+      "box": { "top": "31%", "left": "72%", "right": "8%", "bottom": "61%" },
+      "textPos": { "left": "40%", "top": "35%" },
+      "textWidth": "260px"
+    },
+    {
+      "index": 14,
+      "step": 13,
+      "type": "view",
+      "image": "Stars-13.png",
+      "text": "מעולה! רואים רק את המיילים <span style=\"color:#f6a67e;\">המסומנים בכוכב</span>. סדר מושלם בתיבה.",
+      "textPos": { "left": "30%", "top": "45%" },
+      "textWidth": "280px"
+    },
+    {
+      "index": 15,
+      "type": "special",
+      "specialType": "finish",
+      "html": "<style>.finish-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e,#1a2540);text-align:center;padding:40px 20px;}.finish-title{font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:16px;}.finish-desc{font-size:1rem;color:#ffffffaa;line-height:1.8;max-width:460px;}</style><div class=\"finish-wrap\"><svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"1.5\" style=\"margin-bottom:16px;\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/></svg><div class=\"finish-title\">כל הכבוד!</div><div class=\"finish-desc\">עכשיו אתם יודעים לסמן מיילים חשובים עם כוכבים צבעוניים.<br><br>כוכב אחד קטן. סדר גדול.</div></div>"
     }
   ]
 }
