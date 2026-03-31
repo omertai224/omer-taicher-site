@@ -73,9 +73,8 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 }
 .special-frame {
   border:1px solid #ffffff15; border-radius:8px; overflow:hidden;
-  pointer-events:none; zoom:0.5;
+  pointer-events:none;
 }
-.special-frame div[style*="min-height"] { min-height:auto !important; }
 .no-slide small { font-size:11px; color:#ffffff22; }
 
 /* ═══ Orange Box — matches tutorial .box exactly ═══ */
@@ -213,10 +212,10 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 }
 .strip-nav-group { display:flex; gap:3px; flex-shrink:0; margin:0 6px; }
 .strip-nav {
-  width:26px; height:26px; border-radius:50%;
-  background:#ffffff0a; border:1px solid #ffffff15; color:#ffffff66;
+  width:30px; height:30px; border-radius:50%;
+  background:#0f1a2ecc; border:1px solid #ffffff22; color:#ffffffcc;
   display:flex; align-items:center; justify-content:center;
-  cursor:pointer; transition:all 0.15s;
+  cursor:pointer; transition:all 0.15s; padding:0;
 }
 .strip-nav:hover { background:#1e5f74; color:white; border-color:#5b8fa8; }
 .strip {
