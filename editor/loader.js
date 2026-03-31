@@ -36,6 +36,12 @@ function onDataLoaded(data) {
   showSlide(lastIdx);
   // Remember last tutorial
   localStorage.setItem('editor_last', E.name);
+  // Update "open" link
+  var openBtn = document.getElementById('btnOpenTutorial');
+  if (openBtn) {
+    openBtn.href = '/interactive/tutorials/' + E.name + '/';
+    openBtn.style.display = '';
+  }
   toast(E.name + ' נטען (' + data.slides.length + ' שקפים)');
 }
 

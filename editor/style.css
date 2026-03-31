@@ -218,6 +218,8 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   cursor:pointer; transition:all 0.15s; padding:0;
 }
 .strip-nav:hover { background:#1e5f74; color:white; border-color:#5b8fa8; }
+.open-link { font-size:10px !important; padding:5px 8px !important; color:#f6a67e !important; border-color:#f6a67e44 !important; }
+.open-link:hover { background:#f6a67e22 !important; }
 .strip {
   flex:1; height:40px;
   display:grid; align-items:center; padding:0 4px;
