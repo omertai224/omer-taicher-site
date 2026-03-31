@@ -4,7 +4,7 @@
 var TUTORIALS_BASE = '/interactive/tutorials/';
 
 /* Known tutorials for the dropdown */
-var KNOWN_TUTORIALS = ['Clipboard', 'Everything', 'Vibe', 'Gmail/Schedule'];
+var KNOWN_TUTORIALS = ['Clipboard', 'Everything', 'Vibe', 'Gmail/Schedule', 'Gmail/Stars'];
 
 /* Fetch tutorial from server */
 function loadFromServer(name) {
