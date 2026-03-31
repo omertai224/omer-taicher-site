@@ -73,14 +73,9 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 }
 .special-frame {
   border:1px solid #ffffff15; border-radius:8px; overflow:hidden;
-  width:70%; margin:0 auto; aspect-ratio:16/9;
-  pointer-events:none; position:relative;
+  pointer-events:none; zoom:0.5;
 }
-.special-frame > * {
-  position:absolute; inset:0; width:100%; height:100%;
-  transform-origin:center center;
-}
-.special-frame div[style*="min-height"] { min-height:100% !important; height:100% !important; }
+.special-frame div[style*="min-height"] { min-height:auto !important; }
 .no-slide small { font-size:11px; color:#ffffff22; }
 
 /* ═══ Orange Box — matches tutorial .box exactly ═══ */
