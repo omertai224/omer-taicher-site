@@ -71,9 +71,9 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   display:inline-block; font-size:9px; color:#f6a67e; border:1px solid #f6a67e44;
   border-radius:6px; padding:2px 8px; margin-bottom:4px;
 }
-.special-frame {
-  border:1px solid #ffffff15; border-radius:8px; overflow:hidden;
-  pointer-events:none;
+.special-iframe {
+  width:100%; height:calc(100vh - 150px); border:1px solid #ffffff15;
+  border-radius:8px; pointer-events:none;
 }
 .no-slide small { font-size:11px; color:#ffffff22; }
 

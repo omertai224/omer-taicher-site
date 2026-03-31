@@ -22,21 +22,15 @@ function showSlide(idx) {
       renderBubble(s);
     };
   } else if (s.html || s.type === 'special') {
-    // Special slide - show type and key text
+    // Special slide - render in iframe
     box.style.display = 'none';
     bubble.style.display = 'none';
     container.style.display = 'none';
     noSlide.style.display = 'block';
     var label = s.specialType || s.type || 'special';
-    // Extract readable text from HTML (strip style/script tags)
-    var tmp = document.createElement('div');
-    tmp.innerHTML = (s.html || '').replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
-    var plainText = tmp.textContent.replace(/\s+/g, ' ').trim().slice(0, 200);
+    var iframeHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;overflow:hidden;">' + (s.html || '') + '</body></html>';
     noSlide.innerHTML = '<div class="special-badge">' + label + '</div>'
-      + '<div style="color:#ffffffcc;font-size:16px;font-weight:700;margin:12px 0 8px;line-height:1.6;">'
-      + plainText.slice(0, 80) + '</div>'
-      + '<div style="color:#ffffff55;font-size:12px;line-height:1.8;">'
-      + plainText.slice(80, 200) + (plainText.length > 200 ? '...' : '') + '</div>';
+      + '<iframe class="special-iframe" srcdoc="' + iframeHtml.replace(/"/g, '&quot;') + '"></iframe>';
   } else {
     container.style.display = 'none';
     box.style.display = 'none';
