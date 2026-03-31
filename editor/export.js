@@ -7,14 +7,28 @@ function saveData() {
   // Update cache
   updateCacheSlides(E.name, E.data);
 
+  // Visual feedback on disk icon
+  var disk = document.getElementById('btnSave');
+  if (disk) { disk.classList.add('saving'); setTimeout(function() { disk.classList.remove('saving'); }, 600); }
+
   // If we have GitHub token, save there
   if (typeof GH !== 'undefined' && GH.token) {
-    saveToGitHub();
+    saveToGitHub().then(function() { updateStatusBar(); });
     return;
   }
 
   // Fallback: download
   downloadJSON();
+  updateStatusBar();
+}
+
+function updateStatusBar() {
+  var el = document.getElementById('statusText');
+  if (!el) return;
+  var now = new Date();
+  var h = String(now.getHours()).padStart(2, '0');
+  var m = String(now.getMinutes()).padStart(2, '0');
+  el.innerHTML = '<span class="saved">נשמר</span> ' + h + ':' + m;
 }
 
 // Download slides.json
