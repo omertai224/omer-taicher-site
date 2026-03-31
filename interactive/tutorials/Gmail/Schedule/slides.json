@@ -1,12 +1,13 @@
 {
   "title": "תזמון שליחה",
   "subtitle": "Gmail",
-  "totalSteps": 17,
+  "totalSteps": 18,
   "slides": [
     {
       "index": 0,
       "type": "intro",
-      "html": "<style>.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e 0%,#1a2540 50%,#1e3050 100%);text-align:center;padding:40px 20px;}.intro-title{font-size:clamp(28px,4vw,42px);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.3;}.intro-title span{color:#f6a67e;}.intro-desc{font-size:1rem;color:#ffffffaa;line-height:1.8;max-width:500px;margin-bottom:30px;}.intro-btn{background:linear-gradient(135deg,#f6a67e,#e8834e);color:white;border:2px solid white;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.4);}.intro-btn:hover{transform:scale(1.05);}</style><div class=\"intro-wrap\"><div style=\"margin-bottom:20px;\"><svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg></div><div style=\"font-size:0.85rem;color:#f6a67e;font-weight:700;letter-spacing:1px;margin-bottom:8px;\">Gmail</div><div class=\"intro-title\">תזמון <span>שליחה</span></div><div class=\"intro-desc\">כתבתם מייל ב-11 בלילה?<br>לא חייבים שהלקוח ידע.<br>למדו לתזמן שליחה לכל שעה שתרצו.</div><button class=\"intro-btn\" onclick=\"nextSlide()\">בואו נתחיל</button></div>"
+      "html": "<style>.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e 0%,#1a2540 50%,#1e3050 100%);text-align:center;padding:40px 20px;}.intro-title{font-size:clamp(28px,4vw,42px);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.3;}.intro-title span{color:#f6a67e;}.intro-desc{font-size:1rem;color:#ffffffaa;line-height:1.8;max-width:500px;margin-bottom:30px;}.intro-btn{background:linear-gradient(135deg,#f6a67e,#e8834e);color:white;border:2px solid white;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.4);}.intro-btn:hover{transform:scale(1.05);}</style><div class=\"intro-wrap\"><div style=\"margin-bottom:20px;\"><svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg></div><div style=\"font-size:0.85rem;color:#f6a67e;font-weight:700;letter-spacing:1px;margin-bottom:8px;\">Gmail</div><div class=\"intro-title\">תזמון <span>שליחה</span></div><div class=\"intro-desc\">כתבתם מייל ב-11 בלילה?<br>לא חייבים שהלקוח ידע.<br>למדו לתזמן שליחה לכל שעה שתרצו.</div><button class=\"intro-btn\" onclick=\"nextSlide()\">בואו נתחיל</button></div>",
+      "step": 1
     },
     {
       "index": 1,
@@ -16,261 +17,15 @@
     },
     {
       "index": 2,
-      "step": 1,
-      "type": "click",
-      "image": "Schedule-01.png",
-      "text": "",
-      "box": {
-        "top": "28%",
-        "left": "2%",
-        "right": "82%",
-        "bottom": "65%"
-      },
-      "textPos": {
-        "left": "25%",
-        "top": "35%"
-      },
-      "textWidth": "280px"
-    },
-    {
-      "index": 3,
       "step": 2,
       "type": "click",
-      "image": "Schedule-02.png",
-      "text": "",
-      "box": {
-        "top": "90%",
-        "left": "14%",
-        "right": "80%",
-        "bottom": "3%"
-      },
-      "textPos": {
-        "left": "25%",
-        "top": "65%"
-      },
-      "textWidth": "280px"
-    },
-    {
-      "index": 4,
-      "step": 3,
-      "type": "click",
-      "image": "Schedule-03.png",
-      "text": "",
-      "box": {
-        "top": "25%",
-        "left": "15%",
-        "right": "50%",
-        "bottom": "65%"
-      },
-      "textPos": {
-        "left": "25%",
-        "top": "40%"
-      },
-      "textWidth": "280px"
-    },
-    {
-      "index": 5,
-      "step": 4,
-      "type": "click",
-      "image": "Schedule-04.png",
-      "text": "",
-      "box": {
-        "top": "88%",
-        "left": "10%",
-        "right": "74%",
-        "bottom": "5%"
-      },
-      "textPos": {
-        "left": "25%",
-        "top": "65%"
-      },
-      "textWidth": "260px"
-    },
-    {
-      "index": 6,
-      "step": 5,
-      "type": "view",
-      "image": "Schedule-05.png",
-      "text": "",
-      "textPos": {
-        "left": "25%",
-        "top": "40%"
-      },
-      "textWidth": "280px"
-    },
-    {
-      "index": 7,
-      "step": 6,
-      "type": "click",
-      "image": "Schedule-06.png",
-      "text": "",
-      "box": {
-        "top": "90%",
-        "left": "12%",
-        "right": "78%",
-        "bottom": "3%"
-      },
-      "textPos": {
-        "left": "25%",
-        "top": "65%"
-      },
-      "textWidth": "260px"
-    },
-    {
-      "index": 8,
-      "step": 7,
-      "type": "view",
-      "image": "Schedule-07.png",
-      "text": "",
-      "textPos": {
-        "left": "40%",
-        "top": "70%"
-      },
-      "textWidth": "260px"
-    },
-    {
-      "index": 9,
-      "step": 8,
-      "type": "click",
-      "image": "Schedule-08.png",
-      "text": "",
-      "box": {
-        "top": "55%",
-        "left": "20%",
-        "right": "55%",
-        "bottom": "35%"
-      },
-      "textPos": {
-        "left": "35%",
-        "top": "30%"
-      },
-      "textWidth": "260px"
-    },
-    {
-      "index": 10,
-      "step": 9,
-      "type": "click",
-      "image": "Schedule-09.png",
-      "text": "",
-      "box": {
-        "top": "20%",
-        "left": "72%",
-        "right": "8%",
-        "bottom": "70%"
-      },
-      "textPos": {
-        "left": "40%",
-        "top": "30%"
-      },
-      "textWidth": "260px"
-    },
-    {
-      "index": 11,
-      "step": 10,
-      "type": "click",
-      "image": "Schedule-10.png",
-      "text": "",
-      "box": {
-        "top": "35%",
-        "left": "70%",
-        "right": "5%",
-        "bottom": "55%"
-      },
-      "textPos": {
-        "left": "35%",
-        "top": "40%"
-      },
-      "textWidth": "280px"
-    },
-    {
-      "index": 12,
-      "step": 11,
-      "type": "click",
-      "image": "Schedule-11.png",
-      "text": "",
-      "box": {
-        "top": "88%",
-        "left": "10%",
-        "right": "74%",
-        "bottom": "5%"
-      },
-      "textPos": {
-        "left": "25%",
-        "top": "65%"
-      },
-      "textWidth": "260px"
-    },
-    {
-      "index": 13,
-      "step": 12,
-      "type": "click",
-      "image": "Schedule-12.png",
-      "text": "",
-      "box": {
-        "top": "78%",
-        "left": "12%",
-        "right": "68%",
-        "bottom": "12%"
-      },
-      "textPos": {
-        "left": "30%",
-        "top": "30%"
-      },
-      "textWidth": "280px"
-    },
-    {
-      "index": 14,
-      "step": 13,
-      "type": "click",
-      "image": "Schedule-13.png",
-      "text": "",
-      "box": {
-        "top": "42%",
-        "left": "20%",
-        "right": "55%",
-        "bottom": "50%"
-      },
-      "textPos": {
-        "left": "35%",
-        "top": "25%"
-      },
-      "textWidth": "260px"
-    },
-    {
-      "index": 15,
-      "step": 14,
-      "type": "view",
-      "image": "Schedule-14.png",
-      "text": "",
-      "textPos": {
-        "left": "25%",
-        "top": "50%"
-      },
-      "textWidth": "280px"
-    },
-    {
-      "index": 16,
-      "step": 15,
-      "type": "view",
-      "image": "Schedule-15.png",
-      "text": "",
-      "textPos": {
-        "left": "25%",
-        "top": "65%"
-      },
-      "textWidth": "260px"
-    },
-    {
-      "index": 17,
-      "step": 16,
-      "type": "click",
       "image": "Schedule-16.png",
-      "text": "",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">אימייל חדש</span> כדי לפתוח חלון כתיבה.",
       "box": {
-        "top": "15%",
-        "left": "78%",
-        "right": "5%",
-        "bottom": "77%"
+        "top": "12.2399%",
+        "left": "81.141%",
+        "right": "5.11943%",
+        "bottom": "76.8786%"
       },
       "textPos": {
         "left": "45%",
@@ -279,22 +34,293 @@
       "textWidth": "260px"
     },
     {
-      "index": 18,
-      "step": 17,
+      "index": 3,
+      "step": 3,
+      "type": "click",
+      "image": "Schedule-15.png",
+      "text": "כתבנו מייל עם הצעת מחיר. הכל מוכן. הסמן על <span style=\"color:#f6a67e;\">שליחה</span>. רגע, עדיף לשלוח את זה בבוקר.",
+      "textPos": {
+        "left": "25%",
+        "top": "65%"
+      },
+      "textWidth": "260px",
+      "box": {
+        "top": "83.7809%",
+        "left": "37.2243%",
+        "right": "54.0637%",
+        "bottom": "6.33311%"
+      }
+    },
+    {
+      "index": 4,
+      "step": 4,
+      "type": "click",
+      "image": "Schedule-04.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תזמון שליחה</span> מהתפריט שנפתח.",
+      "box": {
+        "top": "85.2708%",
+        "left": "34.653%",
+        "right": "60.8156%",
+        "bottom": "7.08702%"
+      },
+      "textPos": {
+        "left": "25%",
+        "top": "65%"
+      },
+      "textWidth": "260px"
+    },
+    {
+      "index": 5,
+      "step": 5,
+      "type": "click",
+      "image": "Schedule-02.png",
+      "text": "במקום ללחוץ שלח, לחצו על <span style=\"color:#f6a67e;\">החץ הקטן</span> שליד הכפתור. פה מתחבא הקסם.",
+      "box": {
+        "top": "79.2438%",
+        "left": "31.8802%",
+        "right": "54.8955%",
+        "bottom": "12.4719%"
+      },
+      "textPos": {
+        "left": "25%",
+        "top": "65%"
+      },
+      "textWidth": "280px"
+    },
+    {
+      "index": 6,
+      "step": 6,
+      "type": "click",
+      "image": "Schedule-13.png",
+      "text": "בחרו מתי לשלוח. לחצו על <span style=\"color:#f6a67e;\">מחר בצהריים</span> כדי שהמייל יישלח מחר ב-13:00.",
+      "box": {
+        "top": "41.8395%",
+        "left": "37.6995%",
+        "right": "37.3005%",
+        "bottom": "50.1605%"
+      },
+      "textPos": {
+        "left": "35%",
+        "top": "25%"
+      },
+      "textWidth": "260px"
+    },
+    {
+      "index": 7,
+      "step": 7,
+      "type": "view",
+      "image": "Schedule-05.png",
+      "text": "המייל תוזמן בהצלחה! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span> עם השעה שנבחרה. אפשר ללחוץ <span style=\"color:#f6a67e;\">ביטול</span> אם התחרטתם.",
+      "textPos": {
+        "left": "25%",
+        "top": "40%"
+      },
+      "textWidth": "280px",
+      "box": {
+        "top": "80%",
+        "left": "58.8972%",
+        "right": "6.29297%",
+        "bottom": "8.34808%"
+      }
+    },
+    {
+      "index": 8,
+      "step": 8,
+      "type": "click",
+      "image": "Schedule-11.png",
+      "text": "בואו נתזמן מייל נוסף. לחצו שוב על <span style=\"color:#f6a67e;\">תזמון שליחה</span>.",
+      "box": {
+        "top": "85.5919%",
+        "left": "34.7433%",
+        "right": "60.5447%",
+        "bottom": "7.72918%"
+      },
+      "textPos": {
+        "left": "25%",
+        "top": "65%"
+      },
+      "textWidth": "260px"
+    },
+    {
+      "index": 9,
+      "step": 9,
+      "type": "click",
+      "image": "Schedule-06.png",
+      "text": "הפעם נבחר תאריך מדויק. לחצו על <span style=\"color:#f6a67e;\">החץ הקטן</span> שליד כפתור השליחה.",
+      "box": {
+        "top": "79.4044%",
+        "left": "32.4087%",
+        "right": "54.9725%",
+        "bottom": "11.6691%"
+      },
+      "textPos": {
+        "left": "25%",
+        "top": "65%"
+      },
+      "textWidth": "260px"
+    },
+    {
+      "index": 10,
+      "step": 10,
+      "type": "click",
+      "image": "Schedule-08.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">בחירת תאריך ושעה</span> כדי לקבוע בדיוק מתי לשלוח.",
+      "box": {
+        "top": "58.0503%",
+        "left": "38.2413%",
+        "right": "37.6617%",
+        "bottom": "32.4313%"
+      },
+      "textPos": {
+        "left": "35%",
+        "top": "30%"
+      },
+      "textWidth": "260px"
+    },
+    {
+      "index": 11,
+      "step": 11,
+      "type": "click",
+      "image": "Schedule-12.png",
+      "text": "בחרו <span style=\"color:#f6a67e;\">תאריך</span> מלוח השנה, הגדירו <span style=\"color:#f6a67e;\">שעה</span>, ולחצו <span style=\"color:#f6a67e;\">תזמון שליחה</span>.",
+      "box": {
+        "top": "68.6887%",
+        "left": "28.7965%",
+        "right": "58.3375%",
+        "bottom": "21.6324%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px"
+    },
+    {
+      "index": 12,
+      "step": 12,
+      "type": "view",
+      "image": "Schedule-07.png",
+      "text": "מצוין! <span style=\"color:#f6a67e;\">השליחה תתבצע ל-9:00</span>. המייל תוזמן בהצלחה!",
+      "textPos": {
+        "left": "40%",
+        "top": "70%"
+      },
+      "textWidth": "260px",
+      "box": {
+        "top": "80.0885%",
+        "left": "58.3554%",
+        "right": "6.29297%",
+        "bottom": "7.61743%"
+      }
+    },
+    {
+      "index": 13,
+      "step": 13,
       "type": "click",
       "image": "Schedule-17.png",
-      "text": "",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> בתפריט הצד כדי לראות את כל המיילים שמחכים.",
       "box": {
-        "top": "45%",
-        "left": "68%",
-        "right": "5%",
-        "bottom": "45%"
+        "top": "52.2243%",
+        "left": "74.0504%",
+        "right": "5.45152%",
+        "bottom": "38.2573%"
       },
       "textPos": {
         "left": "35%",
         "top": "35%"
       },
       "textWidth": "280px"
+    },
+    {
+      "index": 14,
+      "step": 14,
+      "type": "click",
+      "image": "Schedule-03.png",
+      "text": "הנה המייל המתוזמן שלנו ברשימה. לחצו עליו כדי <span style=\"color:#f6a67e;\">לצפות בתוכן</span>.",
+      "box": {
+        "top": "31.9032%",
+        "left": "2.89933%",
+        "right": "24.5343%",
+        "bottom": "58.739%"
+      },
+      "textPos": {
+        "left": "25%",
+        "top": "40%"
+      },
+      "textWidth": "280px"
+    },
+    {
+      "index": 15,
+      "step": 15,
+      "type": "click",
+      "image": "Schedule-01.png",
+      "text": "המייל המתוזמן פתוח. לחצו על <span style=\"color:#f6a67e;\">ביטול השליחה</span> אם רוצים לערוך או לבטל.",
+      "box": {
+        "top": "35.8665%",
+        "left": "5.88306%",
+        "right": "82.7223%",
+        "bottom": "57.294%"
+      },
+      "textPos": {
+        "left": "25%",
+        "top": "35%"
+      },
+      "textWidth": "280px"
+    },
+    {
+      "index": 16,
+      "step": 16,
+      "type": "click",
+      "image": "Schedule-09.png",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">תוויות</span> בצד כדי לפתוח את רשימת התיקיות.",
+      "box": {
+        "top": "47.6129%",
+        "left": "75.1606%",
+        "right": "4.83937%",
+        "bottom": "42.3871%"
+      },
+      "textPos": {
+        "left": "40%",
+        "top": "30%"
+      },
+      "textWidth": "260px"
+    },
+    {
+      "index": 17,
+      "step": 17,
+      "type": "view",
+      "image": "Schedule-10.png",
+      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> לתפריט הראשי שלכם, כדי שתמיד תראו אותן.",
+      "textPos": {
+        "left": "35%",
+        "top": "40%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "הערה חדשהבשקף הזה אנחנו מראים איך אנחנו גוררים את את ההודעות מתוזמנות לתוך המסך הראשי שלנו בלי שאני צריך ללחוץ על עוד משהו כזה",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "step": 18,
+      "type": "view",
+      "image": "Schedule-14.png",
+      "text": "המייל המתוזמן פתוח. למטה רואים הודעה כחולה עם אפשרות <span style=\"color:#f6a67e;\">ביטול</span>. תמיד אפשר לחזור בכם!",
+      "textPos": {
+        "left": "25%",
+        "top": "50%"
+      },
+      "textWidth": "280px",
+      "box": {
+        "top": "80.5702%",
+        "left": "56.2784%",
+        "right": "6.11236%",
+        "bottom": "8.58067%"
+      }
     },
     {
       "index": 19,
