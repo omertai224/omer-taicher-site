@@ -6,6 +6,7 @@
 
 var slidesData = null;
 
+/* Design width: container width (px) when textPos was calibrated. */
 window.bubbleDesignWidth = 1019;
 
 /* ── App Init ── */
@@ -28,6 +29,67 @@ function initApp() {
     .catch(function(err) { console.error('Gmail Stars ERROR:', err); });
 }
 
+/* ── Build Slides from JSON (identical to Schedule) ── */
+function buildSlides(slides, totalSteps) {
+  var container = document.getElementById('slideshow');
+  var html = '';
+
+  for (var i = 0; i < slides.length; i++) {
+    var s = slides[i];
+
+    if (s.html) {
+      html += '<div class="mySlides fade">' + s.html + '</div>';
+
+    } else if (s.type === 'view') {
+      html += '<div class="mySlides fade"><div class="image"><div class="image-center">'
+        + '<img src="./images/' + s.image + '" style="max-height:calc(100vh - 80px);width:auto;max-width:100%;">';
+      if (s.box) {
+        html += '<div class="box" style="'
+          + 'top:' + s.box.top + ';left:' + s.box.left + ';right:' + s.box.right + ';bottom:' + s.box.bottom
+          + ';pointer-events:none;animation:none;"></div>';
+      }
+      var ac = s.arrow && s.arrow !== 'none' ? ' ' + s.arrow : '';
+      var ps = buildTextPos(s.textPos);
+      var tw = s.textWidth || '300px';
+      html += '<div class="text' + ac + '" style="' + ps + 'position:absolute;width:' + tw + ';height:fit-content;">'
+        + '<div style="text-align:right;"><span style="color:#f6a67e;font-weight:700;">' + s.step + '</span><span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
+        + '<b style="font-size:24px;padding:8px 0;"></b>'
+        + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (s.text || '') + '</div>'
+        + '</div>';
+      html += '</div></div></div>';
+
+    } else {
+      // click slide
+      html += '<div class="mySlides fade"><div class="image"><div class="image-center">'
+        + '<img src="./images/' + s.image + '" style="max-height:calc(100vh - 80px);width:auto;max-width:100%;">';
+      if (s.box) {
+        html += '<div class="box" style="'
+          + 'top:' + s.box.top + ';left:' + s.box.left + ';right:' + s.box.right + ';bottom:' + s.box.bottom + ';"'
+          + ' onclick="nextSlide()"></div>';
+      }
+      var ac2 = s.arrow && s.arrow !== 'none' ? ' ' + s.arrow : '';
+      var ps2 = buildTextPos(s.textPos);
+      var tw2 = s.textWidth || '300px';
+      html += '<div class="text' + ac2 + '" style="' + ps2 + 'position:absolute;width:' + tw2 + ';height:fit-content;">'
+        + '<div style="text-align:right;"><span style="color:#f6a67e;font-weight:700;">' + s.step + '</span><span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div>'
+        + '<b style="font-size:24px;padding:8px 0;"></b>'
+        + '<div dir="rtl" style="font-size:16px;line-height:1.6;">' + (s.text || '') + '</div>'
+        + '</div>';
+      html += '</div></div></div>';
+    }
+  }
+  container.innerHTML = html;
+}
+
+function buildTextPos(pos) {
+  if (!pos) return '';
+  var s = '';
+  if (pos.left) s += 'left:' + pos.left + ';';
+  if (pos.top) s += 'top:' + pos.top + ';';
+  if (pos.bottom) s += 'bottom:' + pos.bottom + ';';
+  return s;
+}
+
 function getPersonalName() {
   var params = new URLSearchParams(window.location.search);
   var name = params.get('u');
@@ -48,52 +110,3 @@ function showPersonalBadge() {
 }
 
 function showTutorial() { showPersonalBadge(); setNavBarColor(1); showSlides(1); }
-
-function buildSlides(slides, totalSteps) {
-  var container = document.getElementById('slideshow');
-  slides.forEach(function(s) {
-    var div = document.createElement('div');
-    div.className = 'mySlides';
-    if (s.type === 'intro' || s.type === 'special' || s.html) {
-      div.innerHTML = s.html || '';
-    } else if (s.image) {
-      var imgSrc = 'images/' + s.image;
-      div.innerHTML = '<div class="image"><div class="image-center"><img src="' + imgSrc + '" style="max-height:calc(100vh - 80px);width:auto;max-width:100%;display:block;margin:0 auto;">';
-      if (s.box) {
-        var boxStyle = 'top:' + s.box.top + ';left:' + s.box.left + ';right:' + s.box.right + ';bottom:' + s.box.bottom;
-        if (s.type === 'view') {
-          div.innerHTML += '<div class="box" style="' + boxStyle + ';pointer-events:none;animation:none;opacity:0.7;"></div>';
-        } else {
-          div.innerHTML += '<div class="box" style="' + boxStyle + ';cursor:pointer;" onclick="nextSlide()"></div>';
-        }
-      }
-      if (s.text && s.textPos) {
-        var arrowClass = s.arrow || 'arrow-right';
-        var stepHtml = '';
-        if (s.step) {
-          stepHtml = '<div style="text-align:right;"><span style="font-size:16px;font-weight:700;color:#f6a67e;">' + s.step + '</span><span style="color:#ffffffbb;display:inline;">/' + totalSteps + '</span></div><b style="font-size:24px;padding:8px 0;"></b>';
-        }
-        var w = s.textWidth || '280px';
-        var posStyle = 'position:absolute;width:' + w + ';height:fit-content;';
-        if (s.textPos.left) posStyle += 'left:' + s.textPos.left + ';';
-        if (s.textPos.top) posStyle += 'top:' + s.textPos.top + ';';
-        if (s.textPos.bottom) posStyle += 'bottom:' + s.textPos.bottom + ';';
-        div.innerHTML += '<div class="text ' + arrowClass + '" style="' + posStyle + '">' + stepHtml + '<div style="text-align:right;">' + s.text + '</div></div>';
-      }
-      if (s.type === 'view' && !s.text) {
-        div.innerHTML += '<div onclick="nextSlide()" style="position:absolute;bottom:20%;left:50%;transform:translateX(-50%);width:44px;height:44px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid #5b8fa8;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(26,37,64,0.5);z-index:5;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>';
-      }
-      div.innerHTML += '</div></div>';
-    }
-    container.appendChild(div);
-  });
-}
-
-function buildTextPos(pos) {
-  if (!pos) return '';
-  var s = '';
-  if (pos.left) s += 'left:' + pos.left + ';';
-  if (pos.top) s += 'top:' + pos.top + ';';
-  if (pos.bottom) s += 'bottom:' + pos.bottom + ';';
-  return s;
-}
