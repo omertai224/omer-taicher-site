@@ -28,9 +28,9 @@ function showSlide(idx) {
     container.style.display = 'none';
     noSlide.style.display = 'block';
     var label = s.specialType || s.type || 'special';
-    // Extract readable text from HTML
+    // Extract readable text from HTML (strip style/script tags)
     var tmp = document.createElement('div');
-    tmp.innerHTML = s.html || '';
+    tmp.innerHTML = (s.html || '').replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
     var plainText = tmp.textContent.replace(/\s+/g, ' ').trim().slice(0, 200);
     noSlide.innerHTML = '<div class="special-badge">' + label + '</div>'
       + '<div style="color:#ffffffcc;font-size:16px;font-weight:700;margin:12px 0 8px;line-height:1.6;">'
