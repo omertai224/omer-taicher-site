@@ -24,6 +24,7 @@ function buildStrip() {
   var cols = E.data.slides.length;
   strip.style.gridTemplateColumns = 'repeat(' + cols + ', 1fr)';
 
+  var stepCounter = 0;
   E.data.slides.forEach(function(s, i) {
     var dot = document.createElement('div');
     dot.className = 'strip-dot';
@@ -32,9 +33,11 @@ function buildStrip() {
       dot.textContent = s.type === 'intro' || (s.specialType === 'intro') ? '🏠' :
                          s.type === 'outro' ? '💡' :
                          s.specialType === 'howto' ? '▶' :
-                         s.specialType === 'download' ? '⬇' : '◆';
+                         s.specialType === 'download' ? '⬇' :
+                         s.specialType === 'finish' ? '💡' : '◆';
     } else {
-      dot.textContent = s.step || (i + 1);
+      stepCounter++;
+      dot.textContent = stepCounter;
     }
     dot.title = 'שקף ' + (i + 1) + (s.step ? ' (צעד ' + s.step + ')' : '');
     dot.onclick = function() { goTo(i); };
