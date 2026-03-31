@@ -4,9 +4,6 @@
 function saveData() {
   if (!E.data) return;
 
-  // Update cache
-  updateCacheSlides(E.name, E.data);
-
   // Visual feedback on disk icon
   var disk = document.getElementById('btnSave');
   if (disk) { disk.classList.add('saving'); setTimeout(function() { disk.classList.remove('saving'); }, 600); }
@@ -61,24 +58,3 @@ function copyJSON() {
   });
 }
 
-// Save directly to folder (File System Access API)
-function saveToFolder() {
-  if (!E.data) return;
-  if (E.dirHandle) {
-    E.dirHandle.getFileHandle('slides.json', { create: true })
-      .then(function(fh) { return fh.createWritable(); })
-      .then(function(writable) {
-        var json = JSON.stringify(E.data, null, 2);
-        return writable.write(json).then(function() { return writable.close(); });
-      })
-      .then(function() {
-        E.original = JSON.parse(JSON.stringify(E.data));
-        E.modified = {};
-        updateStrip();
-        toast('נשמר ישירות לתיקייה!');
-      })
-      .catch(function(err) { toast('שגיאה בשמירה: ' + err.message); });
-    return;
-  }
-  downloadJSON();
-}

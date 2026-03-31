@@ -4,14 +4,11 @@ var E = {
   data: null,           // current slides JSON (mutable)
   original: null,       // deep copy for reset
   idx: 0,               // current slide index (0-based)
-  path: '',             // tutorial path (e.g. "../Clipboard")
+  path: '',             // tutorial path (e.g. "/interactive/tutorials/Clipboard")
   name: '',             // tutorial name
-  imageMap: {},          // local files: filename -> blob URL
-  dirHandle: null,       // current tutorial folder handle
-  rootHandle: null,      // tutorials/ root folder handle
+  imageMap: {},          // drag-drop files: filename -> blob URL
   modified: {},          // slide index -> true if changed
   zoom: 1,
-  isLocal: location.protocol === 'file:' || location.pathname.indexOf('/editor') === -1,
 };
 
 // DOM cache
@@ -87,7 +84,6 @@ window.addEventListener('DOMContentLoaded', function() {
   $('btnZoomIn').onclick = function() { setZoom(E.zoom * 1.15); };
   $('btnZoomOut').onclick = function() { setZoom(E.zoom / 1.15); };
   $('btnZoomFit').onclick = function() { setZoom(1); };
-  if ($('btnLoadLocal')) $('btnLoadLocal').onclick = function() { loadLocalRoot(); };
   $('btnSave').onclick = function() { saveData(); };
 
   // Keyboard
@@ -101,35 +97,21 @@ window.addEventListener('DOMContentLoaded', function() {
 
   buildPanel();
 
-  // Dropdown change handler — works for all modes
+  // Dropdown change handler
   $('tutorialSelect').addEventListener('change', function() {
     if (!this.value) return;
-    if (E.localTutorials) {
-      loadFromLocalRoot(this.value);
-    } else if (E.cachedMode) {
-      loadFromCachedDropdown(this.value);
-    } else {
-      loadFromServer(this.value);
-    }
+    loadFromServer(this.value);
   });
 
-  if (E.isLocal) {
-    // ── Local mode: try to restore from cache first ──
-    tryRestoreFromCache();
-    $('noSlide').innerHTML = '<div style="font-size:20px;color:#f6a67e;margin-bottom:16px;">עורך בועות</div>'
-      + '<div style="margin-bottom:12px;color:#ffffffaa;">לחצו "טען" בסרגל למעלה</div>'
-      + '<div style="font-size:12px;color:#ffffff55;">בחרו כל תיקייה בריפו. העורך ימצא את ההדרכות אוטומטית</div>';
-  } else {
-    // ── Server mode: populate dropdown, support URL param ──
-    populateDropdown(KNOWN_TUTORIALS);
+  // Populate dropdown, support URL param
+  populateDropdown(KNOWN_TUTORIALS);
 
-    var p = new URLSearchParams(window.location.search);
-    var t = p.get('t');
-    if (t) {
-      addToDropdown(t);
-      $('tutorialSelect').value = t;
-      loadFromServer(t);
-    }
+  var p = new URLSearchParams(window.location.search);
+  var t = p.get('t');
+  if (t) {
+    addToDropdown(t);
+    $('tutorialSelect').value = t;
+    loadFromServer(t);
   }
 });
 

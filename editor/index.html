@@ -113,56 +113,8 @@
 <!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- New Tutorial Dialog -->
-<div class="dialog-overlay" id="newTutorialDialog" style="display:none;">
-  <div class="dialog">
-    <div class="dialog-title">הדרכה חדשה</div>
-    <div class="dialog-field">
-      <label>שם ההדרכה (אנגלית)</label>
-      <input type="text" id="newTutName" placeholder="MyTutorial" dir="ltr">
-    </div>
-    <div class="dialog-field">
-      <label>כותרת בעברית</label>
-      <input type="text" id="newTutTitle" placeholder="איך להשתמש ב...">
-    </div>
-    <div class="dialog-field">
-      <label>סוג ההדרכה</label>
-      <div class="type-cards">
-        <label class="type-card selected" data-type="download">
-          <input type="radio" name="tutType" value="download" checked>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          <div class="type-name">עם הורדה</div>
-          <div class="type-desc">תוכנה להורדה והתקנה</div>
-          <div class="type-example">כמו Everything, Vibe</div>
-        </label>
-        <label class="type-card" data-type="no-download">
-          <input type="radio" name="tutType" value="no-download">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <div class="type-name">בלי הורדה</div>
-          <div class="type-desc">שירות מובנה או אונליין</div>
-          <div class="type-example">כמו Gmail, Windows</div>
-        </label>
-      </div>
-    </div>
-    <div class="dialog-field">
-      <label>צילומי מסך (אופציונלי)</label>
-      <div class="upload-zone" id="uploadZone">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-        <div>גררו תמונות לכאן או לחצו לבחירה</div>
-        <input type="file" id="uploadInput" multiple accept="image/*" style="display:none">
-      </div>
-      <div class="upload-preview" id="uploadPreview"></div>
-    </div>
-    <div class="dialog-buttons">
-      <button class="dialog-btn cancel" id="btnCancelNew">ביטול</button>
-      <button class="dialog-btn create" id="btnCreateNew">צור הדרכה</button>
-    </div>
-  </div>
-</div>
-
 <!-- Scripts -->
 <script src="/editor/app.js"></script>
-<script src="/editor/cache.js"></script>
 <script src="/editor/loader.js"></script>
 <script src="/editor/nav.js"></script>
 <script src="/editor/render.js"></script>
@@ -171,8 +123,8 @@
 <script src="/editor/panel.js"></script>
 <script src="/editor/notes.js"></script>
 <script src="/editor/speech.js"></script>
+<script src="/editor/slide-mgmt.js"></script>
 <script src="/editor/export.js"></script>
-<script src="/editor/new-tutorial.js"></script>
 <script src="/editor/github.js"></script>
 </body>
 </html>

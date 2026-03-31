@@ -258,107 +258,11 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 }
 .toast.show { opacity:1; }
 
-/* ═══ New Tutorial Button ═══ */
-.new-btn { background:linear-gradient(135deg,#e8834e,#f6a67e) !important; border:none !important; color:#1a1a2e !important; font-weight:700 !important; }
-.new-btn:hover { opacity:0.85 !important; }
-
 /* ═══ Welcome Screen ═══ */
 .welcome-screen { text-align:center; }
 .welcome-icon { margin-bottom:16px; opacity:0.6; }
 .welcome-title { font-size:20px; font-weight:700; color:#ffffffcc; margin-bottom:8px; }
 .welcome-sub { font-size:13px; color:#ffffff55; margin-bottom:24px; line-height:1.8; }
-.welcome-actions { display:flex; gap:10px; justify-content:center; }
-.welcome-btn {
-  display:flex; align-items:center; gap:8px;
-  padding:12px 24px; border-radius:12px; font-family:'Rubik',sans-serif;
-  font-size:13px; font-weight:600; cursor:pointer; transition:all 0.15s;
-  border:1px solid #ffffff22; background:#1a2540; color:#ffffffcc;
-}
-.welcome-btn:hover { background:#1e5f74; color:white; border-color:#5b8fa8; }
-.welcome-btn.primary {
-  background:linear-gradient(135deg,#e8834e,#f6a67e); border:none;
-  color:#1a1a2e; font-weight:700;
-}
-.welcome-btn.primary:hover { opacity:0.85; }
-
-/* ═══ Dialog ═══ */
-.dialog-overlay {
-  position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:1000;
-  display:flex; align-items:center; justify-content:center;
-  backdrop-filter:blur(4px);
-}
-.dialog {
-  background:#1a2540; border:1px solid #ffffff22; border-radius:18px;
-  padding:28px 32px; width:520px; max-width:90vw; max-height:85vh;
-  overflow-y:auto; box-shadow:0 20px 60px #00000088;
-}
-.dialog-title {
-  font-size:18px; font-weight:700; color:#f6a67e; margin-bottom:20px;
-  text-align:center;
-}
-.dialog-field { margin-bottom:16px; }
-.dialog-field label {
-  display:block; color:#ffffffaa; font-size:12px; font-weight:600;
-  margin-bottom:6px;
-}
-.dialog-field input[type="text"] {
-  width:100%; padding:10px 14px; border-radius:10px;
-  background:#0f1a2e; border:1px solid #ffffff22; color:white;
-  font-family:'Rubik',sans-serif; font-size:14px; outline:none;
-}
-.dialog-field input[type="text"]:focus { border-color:#5b8fa8; }
-
-/* Type cards */
-.type-cards { display:flex; gap:10px; }
-.type-card {
-  flex:1; padding:16px; border-radius:14px; text-align:center;
-  border:2px solid #ffffff18; background:#0f1a2e; cursor:pointer;
-  transition:all 0.15s;
-}
-.type-card:hover { border-color:#5b8fa8; }
-.type-card.selected { border-color:#f6a67e; background:#f6a67e11; }
-.type-card input { display:none; }
-.type-card svg { margin-bottom:8px; color:#ffffff88; }
-.type-card.selected svg { color:#f6a67e; }
-.type-name { font-size:14px; font-weight:700; color:white; margin-bottom:4px; }
-.type-desc { font-size:11px; color:#ffffff88; margin-bottom:2px; }
-.type-example { font-size:10px; color:#ffffff44; }
-
-/* Upload zone */
-.upload-zone {
-  border:2px dashed #ffffff22; border-radius:14px; padding:24px;
-  text-align:center; cursor:pointer; transition:all 0.15s;
-  color:#ffffff55; font-size:12px;
-}
-.upload-zone:hover, .upload-zone.dragover {
-  border-color:#f6a67e; background:#f6a67e08; color:#f6a67ecc;
-}
-.upload-zone svg { margin-bottom:8px; }
-.upload-preview {
-  display:flex; flex-wrap:wrap; gap:6px; margin-top:10px;
-}
-.upload-thumb {
-  width:60px; height:45px; border-radius:6px; object-fit:cover;
-  border:1px solid #ffffff22;
-}
-.upload-count {
-  font-size:11px; color:#f6a67e; margin-top:6px; text-align:center;
-}
-
-/* Dialog buttons */
-.dialog-buttons { display:flex; gap:10px; margin-top:20px; }
-.dialog-btn {
-  flex:1; padding:12px; border-radius:10px; font-family:'Rubik',sans-serif;
-  font-size:14px; font-weight:600; cursor:pointer; border:none;
-  transition:all 0.15s;
-}
-.dialog-btn.cancel { background:#0f1a2e; color:#ffffff88; border:1px solid #ffffff22; }
-.dialog-btn.cancel:hover { background:#ffffff11; color:white; }
-.dialog-btn.create {
-  background:linear-gradient(135deg,#e8834e,#f6a67e);
-  color:#1a1a2e; font-weight:700;
-}
-.dialog-btn.create:hover { opacity:0.85; }
 
 /* ═══ Drop Overlay ═══ */
 .drop-overlay {
