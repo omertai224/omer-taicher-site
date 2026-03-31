@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>עורך הדרכות | עומר טייכר</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iI2Y2YTY3ZSIvPjxwYXRoIGQ9Ik0yMCA2bC05IDE0aDZsLTEgNiA5LTE0aC02bDEtNnoiIGZpbGw9IiMxYTFhMmUiLz48L3N2Zz4=">
+<link rel="preload" href="/assets/fonts/rubik-hebrew-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/rubik-hebrew-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-hebrew-400-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:600;src:url(/assets/fonts/rubik-hebrew-700-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-hebrew-700-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:900;src:url(/assets/fonts/rubik-hebrew-800-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <!-- Right: Save button -->
+  <button class="tb-icon save-btn" id="btnSave">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    שמור
+  </button>
+  <div class="topbar-spacer"></div>
+  <!-- Center: Controls -->
+  <button class="tb-icon" id="btnZoomFit" title="התאם גודל">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  </button>
+  <button class="tb-icon" id="btnZoomOut" title="הקטן">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+  </button>
+  <button class="tb-icon" id="btnZoomIn" title="הגדל">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+  </button>
+  <div class="topbar-sep"></div>
+  <button class="tb-icon nav-arrow" id="btnNext" title="שקף הבא">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="10 8 14 12 10 16"/></svg>
+  </button>
+  <span class="slide-info" id="slideInfo">---</span>
+  <button class="tb-icon nav-arrow" id="btnPrev" title="שקף קודם">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="14 16 10 12 14 8"/></svg>
+  </button>
+  <div class="topbar-sep"></div>
+  <select id="tutorialSelect"><option value="">בחרו הדרכה...</option></select>
+  <button id="btnLoadLocal" class="tb-icon" title="טען תיקייה מהמחשב">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+    טען
+  </button>
+  <button id="btnNewTutorial" class="tb-icon new-btn" title="הדרכה חדשה">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+    חדש
+  </button>
+  <div class="topbar-spacer"></div>
+</div>
+
+<!-- Main -->
+<div class="main">
+  <div class="canvas-area" id="canvasArea">
+    <div class="no-slide" id="noSlide">
+      <div class="welcome-screen">
+        <div class="welcome-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="welcome-title">עורך הדרכות אינטראקטיביות</div>
+        <div class="welcome-sub">בחרו הדרכה קיימת מהתפריט, טענו תיקייה, או צרו הדרכה חדשה</div>
+        <div class="welcome-actions">
+          <button class="welcome-btn" onclick="document.getElementById('btnLoadLocal').click()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
+            טעינת תיקייה
+          </button>
+          <button class="welcome-btn primary" onclick="document.getElementById('btnNewTutorial').click()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            הדרכה חדשה
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="canvas-inner" id="canvasInner">
+    <div class="slide-container" id="slideContainer" style="display:none;">
+      <img class="slide-img" id="slideImg">
+      <div class="editor-box" id="editorBox" style="display:none;">
+        <div class="resize-handle tl" data-handle="tl"></div>
+        <div class="resize-handle tr" data-handle="tr"></div>
+        <div class="resize-handle bl" data-handle="bl"></div>
+        <div class="resize-handle br" data-handle="br"></div>
+      </div>
+      <div class="editor-bubble" id="editorBubble" style="display:none;">
+        <div class="drag-label">&#x2725; גררו למיקום</div>
+        <div id="bubblePreview"></div>
+        <div class="resize-handle br bubble-resize" data-handle="br"></div>
+      </div>
+    </div>
+    </div>
+    <!-- Drop zone overlay -->
+    <div class="drop-overlay" id="dropOverlay" style="display:none;">
+      <div class="drop-content">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <div>שחררו תמונות כאן</div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="panel"></div>
+</div>
+
+<!-- Slide Strip -->
+<div class="strip" id="slideStrip"></div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- New Tutorial Dialog -->
+<div class="dialog-overlay" id="newTutorialDialog" style="display:none;">
+  <div class="dialog">
+    <div class="dialog-title">הדרכה חדשה</div>
+    <div class="dialog-field">
+      <label>שם ההדרכה (אנגלית)</label>
+      <input type="text" id="newTutName" placeholder="MyTutorial" dir="ltr">
+    </div>
+    <div class="dialog-field">
+      <label>כותרת בעברית</label>
+      <input type="text" id="newTutTitle" placeholder="איך להשתמש ב...">
+    </div>
+    <div class="dialog-field">
+      <label>סוג ההדרכה</label>
+      <div class="type-cards">
+        <label class="type-card selected" data-type="download">
+          <input type="radio" name="tutType" value="download" checked>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <div class="type-name">עם הורדה</div>
+          <div class="type-desc">תוכנה להורדה והתקנה</div>
+          <div class="type-example">כמו Everything, Vibe</div>
+        </label>
+        <label class="type-card" data-type="no-download">
+          <input type="radio" name="tutType" value="no-download">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div class="type-name">בלי הורדה</div>
+          <div class="type-desc">שירות מובנה או אונליין</div>
+          <div class="type-example">כמו Gmail, Windows</div>
+        </label>
+      </div>
+    </div>
+    <div class="dialog-field">
+      <label>צילומי מסך (אופציונלי)</label>
+      <div class="upload-zone" id="uploadZone">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <div>גררו תמונות לכאן או לחצו לבחירה</div>
+        <input type="file" id="uploadInput" multiple accept="image/*" style="display:none">
+      </div>
+      <div class="upload-preview" id="uploadPreview"></div>
+    </div>
+    <div class="dialog-buttons">
+      <button class="dialog-btn cancel" id="btnCancelNew">ביטול</button>
+      <button class="dialog-btn create" id="btnCreateNew">צור הדרכה</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="app.js"></script>
+<script src="cache.js"></script>
+<script src="loader.js"></script>
+<script src="nav.js"></script>
+<script src="render.js"></script>
+<script src="drag-box.js"></script>
+<script src="drag-bubble.js"></script>
+<script src="panel.js"></script>
+<script src="notes.js"></script>
+<script src="speech.js"></script>
+<script src="export.js"></script>
+<script src="new-tutorial.js"></script>
+</body>
+</html>
