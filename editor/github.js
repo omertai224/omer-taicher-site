@@ -4,7 +4,7 @@ var GH = {
   token: '',
   user: 'omertai224',
   repo: 'omer-taicher-site',
-  branch: localStorage.getItem('editor_branch') || 'editor-work',
+  branch: 'claude/work-in-progress-Bkqwf',
   mainBranch: 'main'
 };
 
@@ -210,14 +210,7 @@ function showBranchBadge() {
 }
 
 function changeBranch() {
-  var current = GH.branch;
-  var newBranch = prompt('שם הבראנצ\' לשמירה:', current);
-  if (!newBranch || newBranch === current) return;
-  newBranch = newBranch.trim();
-  localStorage.setItem('editor_branch', newBranch);
-  GH.branch = newBranch;
-  showBranchBadge();
-  toast('בראנצ\' שונה ל: ' + newBranch);
+  toast('הבראנצ\' מוגדר בקוד. Claude משנה אותו בתחילת כל סשן.');
 }
 
 // ── Init on page load ──
