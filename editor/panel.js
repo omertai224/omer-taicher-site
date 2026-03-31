@@ -40,8 +40,10 @@ function buildPanel() {
 
     // ── Actions ──
     + '<div class="action-btns">'
-    + '<div class="action-btn undo" onclick="undo()" id="btnUndo" title="Ctrl+Z"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.64-8.36L1 10"/></svg> ביטול</div>'
-    + '<div class="action-btn reset" onclick="resetSlide()">אפס שקף</div>'
+    + '<div style="display:flex;gap:6px;margin-top:8px;">'
+    + '<span class="mgmt-btn" onclick="undo()" id="btnUndo" title="Ctrl+Z">↩ ביטול</span>'
+    + '<span class="mgmt-btn del" onclick="resetSlide()" title="החזר לגרסה המקורית">אפס</span>'
+    + '</div>'
     + '</div>';
 }
 
