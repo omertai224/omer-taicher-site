@@ -1,7 +1,7 @@
 {
   "title": "כוכבים וסימון",
   "subtitle": "Gmail",
-  "totalSteps": 17,
+  "totalSteps": 16,
   "slides": [
     {
       "index": 0,
@@ -205,24 +205,6 @@
       "step": 12,
       "type": "click",
       "image": "Stars-12.png",
-      "text": "חשוב! כל שינוי בהגדרות ג'ימייל צריך שמירה. גללו למטה ולחצו על <span style=\"color:#f6a67e;\">שמירת שינויים</span>.",
-      "box": {
-        "top": "40%",
-        "left": "40%",
-        "right": "40%",
-        "bottom": "40%"
-      },
-      "textPos": {
-        "left": "25%",
-        "top": "35%"
-      },
-      "textWidth": "280px"
-    },
-    {
-      "index": 14,
-      "step": 13,
-      "type": "click",
-      "image": "Stars-13.png",
       "text": "חזרנו לתיבה! שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>. זה דבר חיובי.&nbsp;<br>לחצו על הכוכב <span style=\"color:#f6a67e;\">עד V ירוק</span>.",
       "box": {
         "top": "65.1085%",
@@ -237,10 +219,10 @@
       "textWidth": "280px"
     },
     {
-      "index": 15,
-      "step": 14,
+      "index": 14,
+      "step": 13,
       "type": "click",
-      "image": "Stars-14.png",
+      "image": "Stars-13.png",
       "text": "גם רונית <span style=\"color:#f6a67e;\">ממליצה עליך לחברה שלה</span>. עוד דבר חיובי! עוד <span style=\"color:#f6a67e;\">V ירוק</span>.",
       "box": {
         "top": "42.2155%",
@@ -255,10 +237,10 @@
       "textWidth": "280px"
     },
     {
-      "index": 16,
-      "step": 15,
+      "index": 15,
+      "step": 14,
       "type": "click",
-      "image": "Stars-15.png",
+      "image": "Stars-14.png",
       "text": "מחר פגישה חשובה עם רונית ב-10:00. אסור לפספס! לחצו על הכוכב <span style=\"color:#f6a67e;\">עד סימן קריאה אדום</span>.",
       "box": {
         "top": "59.9391%",
@@ -273,10 +255,10 @@
       "textWidth": "280px"
     },
     {
-      "index": 17,
-      "step": 16,
+      "index": 16,
+      "step": 15,
       "type": "click",
-      "image": "Stars-16.png",
+      "image": "Stars-15.png",
       "text": "רוצים לראות רק מה שסימנתם? לחצו על <span style=\"color:#f6a67e;\">מסומן בכוכב</span> בתפריט הצד.",
       "box": {
         "top": "27.815%",
@@ -291,10 +273,10 @@
       "textWidth": "280px"
     },
     {
-      "index": 18,
-      "step": 17,
+      "index": 17,
+      "step": 16,
       "type": "view",
-      "image": "Stars-17.png",
+      "image": "Stars-16.png",
       "text": "הנה! רק המיילים החשובים. <span style=\"color:#f6a67e;\">כוכב צהוב</span> = תקלות. <span style=\"color:#f6a67e;\">V ירוק</span> = המלצות ותודות. <span style=\"color:#f6a67e;\">סימן קריאה אדום</span> = תזכורות. סדר מושלם!",
       "textPos": {
         "left": "18.3525%",
@@ -303,7 +285,7 @@
       "textWidth": "280px"
     },
     {
-      "index": 19,
+      "index": 18,
       "type": "special",
       "specialType": "finish",
       "html": "<style>.finish-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e,#1a2540);text-align:center;padding:40px 20px;}.finish-title{font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:16px;}.finish-desc{font-size:1rem;color:#ffffffaa;line-height:1.8;max-width:460px;}</style><div class=\"finish-wrap\"><svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"1.5\" style=\"margin-bottom:16px;\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/></svg><div class=\"finish-title\">כל הכבוד!</div><div class=\"finish-desc\">עכשיו אתם יודעים לסמן מיילים חשובים עם כוכבים צבעוניים.<br><br>כוכב אחד קטן. סדר גדול.</div></div>"
