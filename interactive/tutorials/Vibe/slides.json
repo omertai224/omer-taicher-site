@@ -23,7 +23,7 @@
       "index": 3,
       "type": "click",
       "step": 1,
-      "image": "vibe-01-open-downloads.png",
+      "image": "Vibe-01.png",
       "box": {
         "top": "33.6667%",
         "left": "87.9884%",
@@ -42,7 +42,7 @@
       "index": 4,
       "type": "click",
       "step": 2,
-      "image": "vibe-02-run-setup.png",
+      "image": "Vibe-02.png",
       "box": {
         "top": "20.2407%",
         "left": "78.9186%",
@@ -61,7 +61,7 @@
       "index": 5,
       "type": "click",
       "step": 3,
-      "image": "vibe-03-smartscreen-warning.png",
+      "image": "Vibe-03.png",
       "box": {
         "top": "28.8519%",
         "left": "62.1163%",
@@ -80,7 +80,7 @@
       "index": 6,
       "type": "click",
       "step": 4,
-      "image": "vibe-04-smartscreen-run-anyway.png",
+      "image": "Vibe-04.png",
       "box": {
         "top": "66.7222%",
         "left": "41.0116%",
@@ -99,7 +99,7 @@
       "index": 7,
       "type": "click",
       "step": 5,
-      "image": "vibe-05-install-wizard-start.png",
+      "image": "Vibe-05.png",
       "box": {
         "top": "64.6852%",
         "left": "54.6163%",
@@ -118,7 +118,7 @@
       "index": 8,
       "type": "click",
       "step": 6,
-      "image": "vibe-06-install-folder.png",
+      "image": "Vibe-06.png",
       "box": {
         "top": "64.6852%",
         "left": "54.6163%",
@@ -137,7 +137,7 @@
       "index": 9,
       "type": "view",
       "step": 7,
-      "image": "vibe-07-install-progress.png",
+      "image": "Vibe-07.png",
       "boxClass": "9",
       "arrow": "arrow-left",
       "textPos": {
@@ -150,7 +150,7 @@
       "index": 10,
       "type": "click",
       "step": 8,
-      "image": "vibe-08-install-complete.png",
+      "image": "Vibe-08.png",
       "box": {
         "top": "64.6852%",
         "left": "54.6163%",
@@ -169,7 +169,7 @@
       "index": 11,
       "type": "click",
       "step": 9,
-      "image": "vibe-09-install-finish.png",
+      "image": "Vibe-09.png",
       "box": {
         "top": "64.6852%",
         "left": "54.6163%",
@@ -188,7 +188,7 @@
       "index": 12,
       "type": "view",
       "step": 10,
-      "image": "vibe-10-model-download.png",
+      "image": "Vibe-10.png",
       "boxClass": "12",
       "arrow": "arrow-left",
       "textPos": {
@@ -208,7 +208,7 @@
       "index": 14,
       "type": "click",
       "step": 11,
-      "image": "vibe-11-main-screen-select-file.png",
+      "image": "Vibe-11.png",
       "box": {
         "top": "37.463%",
         "left": "47.5233%",
@@ -227,7 +227,7 @@
       "index": 15,
       "type": "click",
       "step": 12,
-      "image": "vibe-12-browse-videos-folder.png",
+      "image": "Vibe-12.png",
       "box": {
         "top": "32.1852%",
         "left": "22.814%",
@@ -246,7 +246,7 @@
       "index": 16,
       "type": "click",
       "step": 13,
-      "image": "vibe-13-select-video-file.png",
+      "image": "Vibe-13.png",
       "box": {
         "top": "21.8148%",
         "left": "33.6279%",
@@ -265,7 +265,7 @@
       "index": 17,
       "type": "click",
       "step": 14,
-      "image": "vibe-14-click-open.png",
+      "image": "Vibe-14.png",
       "box": {
         "top": "57.6481%",
         "left": "60.8372%",
@@ -284,7 +284,7 @@
       "index": 18,
       "type": "click",
       "step": 15,
-      "image": "vibe-15-set-language.png",
+      "image": "Vibe-15.png",
       "box": {
         "top": "29.963%",
         "left": "22.2326%",
@@ -303,7 +303,7 @@
       "index": 19,
       "type": "click",
       "step": 16,
-      "image": "vibe-16-choose-hebrew.png",
+      "image": "Vibe-16.png",
       "box": {
         "top": "59.7778%",
         "left": "23.686%",
@@ -322,7 +322,7 @@
       "index": 20,
       "type": "click",
       "step": 17,
-      "image": "vibe-17-click-transcribe.png",
+      "image": "Vibe-17.png",
       "box": {
         "top": "63.1111%",
         "left": "21.9959%",
@@ -341,7 +341,7 @@
       "index": 21,
       "type": "view",
       "step": 18,
-      "image": "vibe-18-transcription-progress.png",
+      "image": "Vibe-18.png",
       "boxClass": "21",
       "arrow": "arrow-left",
       "textPos": {
@@ -355,7 +355,7 @@
       "index": 22,
       "type": "click",
       "step": 19,
-      "image": "vibe-19-transcription-done-copy.png",
+      "image": "Vibe-19.png",
       "box": {
         "top": "36.9074%",
         "left": "22.4651%",
@@ -374,7 +374,7 @@
       "index": 23,
       "type": "click",
       "step": 20,
-      "image": "vibe-20-export-format-menu.png",
+      "image": "Vibe-20.png",
       "box": {
         "top": "37.1852%",
         "left": "68.8023%",
@@ -393,7 +393,7 @@
       "index": 24,
       "type": "click",
       "step": 21,
-      "image": "vibe-21-choose-text-format.png",
+      "image": "Vibe-21.png",
       "box": {
         "top": "42.5556%",
         "left": "69.0349%",
@@ -412,7 +412,7 @@
       "index": 25,
       "type": "click",
       "step": 22,
-      "image": "vibe-22-copy-or-download.png",
+      "image": "Vibe-22.png",
       "box": {
         "top": "36.9074%",
         "left": "22.4651%",
@@ -431,7 +431,7 @@
       "index": 26,
       "type": "click",
       "step": 23,
-      "image": "vibe-23-save-transcript.png",
+      "image": "Vibe-23.png",
       "box": {
         "top": "36.9074%",
         "left": "25.6628%",
@@ -450,7 +450,7 @@
       "index": 27,
       "type": "click",
       "step": 24,
-      "image": "vibe-24-save-to-documents.png",
+      "image": "Vibe-24.png",
       "box": {
         "top": "32.1852%",
         "left": "22.814%",
@@ -469,7 +469,7 @@
       "index": 28,
       "type": "click",
       "step": 25,
-      "image": "vibe-25-save-file.png",
+      "image": "Vibe-25.png",
       "box": {
         "top": "57.6481%",
         "left": "60.8372%",
