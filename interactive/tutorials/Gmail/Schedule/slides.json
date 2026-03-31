@@ -19,7 +19,7 @@
       "step": 1,
       "type": "click",
       "image": "Schedule-16.png",
-      "text": "לחצו על <span style=\"color:#f6a67e;\">אימייל חדש</span> כדי לפתוח חלון כתיבה.",
+      "text": "נכנסים לג'ימייל ולוחצים על <span style=\"color:#f6a67e;\">אימייל חדש</span>. יש לנו הצעת מחיר לשלוח.",
       "box": {
         "top": "12.2399%",
         "left": "81.141%",
@@ -27,8 +27,8 @@
         "bottom": "76.8786%"
       },
       "textPos": {
-        "left": "45%",
-        "top": "25%"
+        "left": "48.1047%",
+        "top": "10.9873%"
       },
       "textWidth": "260px"
     },
@@ -37,10 +37,10 @@
       "step": 2,
       "type": "click",
       "image": "Schedule-15.png",
-      "text": "כתבנו מייל עם הצעת מחיר. הכל מוכן. הסמן על <span style=\"color:#f6a67e;\">שליחה</span>. רגע, עדיף לשלוח את זה בבוקר.",
+      "text": "השעה 11:22 בלילה. האצבע מרחפת מעל <span style=\"color:#f6a67e;\">שליחה</span>. רגע. מה הלקוח יחשוב כשיראה שקיבל מייל באמצע הלילה?",
       "textPos": {
-        "left": "25%",
-        "top": "65%"
+        "left": "46.9745%",
+        "top": "59.2666%"
       },
       "textWidth": "260px",
       "box": {
@@ -55,7 +55,7 @@
       "step": 3,
       "type": "click",
       "image": "Schedule-04.png",
-      "text": "לחצו על <span style=\"color:#f6a67e;\">תזמון שליחה</span> מהתפריט שנפתח.",
+      "text": "רואים את <span style=\"color:#f6a67e;\">החץ הקטן</span> שמצביע למטה, ליד כפתור השליחה? לחצו עליו.",
       "box": {
         "top": "85.2708%",
         "left": "34.653%",
@@ -63,8 +63,8 @@
         "bottom": "7.08702%"
       },
       "textPos": {
-        "left": "25%",
-        "top": "65%"
+        "left": "46.1385%",
+        "top": "64.3622%"
       },
       "textWidth": "260px"
     },
@@ -73,7 +73,7 @@
       "step": 4,
       "type": "click",
       "image": "Schedule-02.png",
-      "text": "במקום ללחוץ שלח, לחצו על <span style=\"color:#f6a67e;\">החץ הקטן</span> שליד הכפתור. פה מתחבא הקסם.",
+      "text": "נפתח תפריט קטן. לחצו על <span style=\"color:#f6a67e;\">תזמון שליחה</span>. פה מתחבא הקסם.",
       "box": {
         "top": "79.2438%",
         "left": "31.8802%",
@@ -81,8 +81,8 @@
         "bottom": "12.4719%"
       },
       "textPos": {
-        "left": "25%",
-        "top": "65%"
+        "left": "45.8997%",
+        "top": "58.842%"
       },
       "textWidth": "280px"
     },
@@ -91,7 +91,7 @@
       "step": 5,
       "type": "click",
       "image": "Schedule-13.png",
-      "text": "בחרו מתי לשלוח. לחצו על <span style=\"color:#f6a67e;\">מחר בצהריים</span> כדי שהמייל יישלח מחר ב-13:00.",
+      "text": "בחרו <span style=\"color:#f6a67e;\">מחר בבוקר</span>. המייל יישלח ב-8:00, בול כשהלקוח פותח את המחשב.",
       "box": {
         "top": "41.8395%",
         "left": "37.6995%",
@@ -99,8 +99,8 @@
         "bottom": "50.1605%"
       },
       "textPos": {
-        "left": "35%",
-        "top": "25%"
+        "left": "62.4677%",
+        "top": "34.7665%"
       },
       "textWidth": "260px"
     },
@@ -109,10 +109,10 @@
       "step": 6,
       "type": "view",
       "image": "Schedule-05.png",
-      "text": "המייל תוזמן בהצלחה! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span> עם השעה שנבחרה. אפשר ללחוץ <span style=\"color:#f6a67e;\">ביטול</span> אם התחרטתם.",
+      "text": "תוזמן! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span>. המייל יישלח מחר ב-8:00. התחרטתם? לחצו <span style=\"color:#f6a67e;\">ביטול</span>.",
       "textPos": {
-        "left": "25%",
-        "top": "40%"
+        "left": "24.8806%",
+        "top": "58.4705%"
       },
       "textWidth": "280px",
       "box": {
@@ -127,7 +127,7 @@
       "step": 7,
       "type": "click",
       "image": "Schedule-11.png",
-      "text": "בואו נתזמן מייל נוסף. לחצו שוב על <span style=\"color:#f6a67e;\">תזמון שליחה</span>.",
+      "text": "בואו נתזמן עוד מייל, הפעם עם תאריך מדויק. שוב <span style=\"color:#f6a67e;\">החץ הקטן</span> ליד שליחה.",
       "box": {
         "top": "85.5919%",
         "left": "34.7433%",
@@ -135,8 +135,8 @@
         "bottom": "7.72918%"
       },
       "textPos": {
-        "left": "25%",
-        "top": "65%"
+        "left": "45.7803%",
+        "top": "65.4237%"
       },
       "textWidth": "260px"
     },
@@ -145,7 +145,7 @@
       "step": 8,
       "type": "click",
       "image": "Schedule-06.png",
-      "text": "הפעם נבחר תאריך מדויק. לחצו על <span style=\"color:#f6a67e;\">החץ הקטן</span> שליד כפתור השליחה.",
+      "text": "הפעם לחצו על <span style=\"color:#f6a67e;\">תזמון שליחה</span> מהתפריט.",
       "box": {
         "top": "79.4044%",
         "left": "32.4087%",
@@ -153,8 +153,8 @@
         "bottom": "11.6691%"
       },
       "textPos": {
-        "left": "25%",
-        "top": "65%"
+        "left": "45.8997%",
+        "top": "57.3558%"
       },
       "textWidth": "260px"
     },
@@ -163,7 +163,7 @@
       "step": 9,
       "type": "click",
       "image": "Schedule-08.png",
-      "text": "לחצו על <span style=\"color:#f6a67e;\">בחירת תאריך ושעה</span> כדי לקבוע בדיוק מתי לשלוח.",
+      "text": "רוצים שעה מדויקת? לחצו על <span style=\"color:#f6a67e;\">בחירת תאריך ושעה</span>. ככה שולטים בדיוק מתי המייל יגיע.",
       "box": {
         "top": "58.0503%",
         "left": "38.2413%",
@@ -171,8 +171,8 @@
         "bottom": "32.4313%"
       },
       "textPos": {
-        "left": "35%",
-        "top": "30%"
+        "left": "63.7813%",
+        "top": "39.5535%"
       },
       "textWidth": "260px"
     },
@@ -181,7 +181,7 @@
       "step": 10,
       "type": "click",
       "image": "Schedule-12.png",
-      "text": "בחרו <span style=\"color:#f6a67e;\">תאריך</span> מלוח השנה, הגדירו <span style=\"color:#f6a67e;\">שעה</span>, ולחצו <span style=\"color:#f6a67e;\">תזמון שליחה</span>.",
+      "text": "בחרו <span style=\"color:#f6a67e;\">תאריך</span> מלוח השנה, קבעו <span style=\"color:#f6a67e;\">שעה</span>, ולחצו <span style=\"color:#f6a67e;\">תזמון שליחה</span>.",
       "box": {
         "top": "68.6887%",
         "left": "28.7965%",
@@ -189,17 +189,17 @@
         "bottom": "21.6324%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "72.1568%",
+        "top": "45.4983%"
       },
-      "textWidth": "280px"
+      "textWidth": "192px"
     },
     {
       "index": 12,
       "step": 11,
       "type": "view",
       "image": "Schedule-07.png",
-      "text": "מצוין! <span style=\"color:#f6a67e;\">השליחה תתבצע ל-9:00</span>. המייל תוזמן בהצלחה!",
+      "text": "יופי! <span style=\"color:#f6a67e;\">השליחה תתבצע ל-9:00</span>. הלקוח יקבל את המייל בדיוק כשתרצו.",
       "textPos": {
         "left": "40%",
         "top": "70%"
@@ -217,7 +217,7 @@
       "step": 12,
       "type": "click",
       "image": "Schedule-17.png",
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> בתפריט הצד כדי לראות את כל המיילים שמחכים.",
+      "text": "איפה רואים את המיילים שתוזמנו? לחצו על <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> בתפריט הצד.",
       "box": {
         "top": "52.2243%",
         "left": "74.0504%",
@@ -225,17 +225,17 @@
         "bottom": "38.2573%"
       },
       "textPos": {
-        "left": "35%",
-        "top": "35%"
+        "left": "68.439%",
+        "top": "16.9531%"
       },
-      "textWidth": "280px"
+      "textWidth": "224px"
     },
     {
       "index": 14,
       "step": 13,
       "type": "click",
       "image": "Schedule-03.png",
-      "text": "הנה המייל המתוזמן שלנו ברשימה. לחצו עליו כדי <span style=\"color:#f6a67e;\">לצפות בתוכן</span>.",
+      "text": "הנה המייל שתוזמן, מחכה בתור. לחצו עליו כדי <span style=\"color:#f6a67e;\">לצפות בתוכן</span> או לערוך.",
       "box": {
         "top": "31.9032%",
         "left": "2.89933%",
@@ -243,8 +243,8 @@
         "bottom": "58.739%"
       },
       "textPos": {
-        "left": "25%",
-        "top": "40%"
+        "left": "24.5223%",
+        "top": "44.4577%"
       },
       "textWidth": "280px"
     },
@@ -253,7 +253,7 @@
       "step": 14,
       "type": "click",
       "image": "Schedule-01.png",
-      "text": "המייל המתוזמן פתוח. לחצו על <span style=\"color:#f6a67e;\">ביטול השליחה</span> אם רוצים לערוך או לבטל.",
+      "text": "המייל המתוזמן פתוח. רוצים לשנות משהו? לחצו <span style=\"color:#f6a67e;\">ביטול השליחה</span>, תקנו, ותזמנו מחדש.",
       "box": {
         "top": "35.8665%",
         "left": "5.88306%",
@@ -261,8 +261,8 @@
         "bottom": "57.294%"
       },
       "textPos": {
-        "left": "25%",
-        "top": "35%"
+        "left": "13.2962%",
+        "top": "43.917%"
       },
       "textWidth": "280px"
     },
@@ -271,7 +271,7 @@
       "step": 15,
       "type": "click",
       "image": "Schedule-09.png",
-      "text": "לחצו על <span style=\"color:#f6a67e;\">תוויות</span> בצד כדי לפתוח את רשימת התיקיות.",
+      "text": "טיפ! לחצו על <span style=\"color:#f6a67e;\">תוויות</span> בצד כדי לפתוח את כל התיקיות.",
       "box": {
         "top": "47.6129%",
         "left": "75.1606%",
@@ -279,8 +279,8 @@
         "bottom": "42.3871%"
       },
       "textPos": {
-        "left": "40%",
-        "top": "30%"
+        "left": "41.7913%",
+        "top": "46.7722%"
       },
       "textWidth": "260px"
     },
@@ -289,29 +289,22 @@
       "step": 16,
       "type": "view",
       "image": "Schedule-10.png",
-      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> לתפריט הראשי שלכם, כדי שתמיד תראו אותן.",
+      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> למעלה, ככה תמיד תראו אותן בתפריט הראשי בלי לחפש.",
       "textPos": {
-        "left": "35%",
-        "top": "40%"
+        "left": "40.9708%",
+        "top": "53.5872%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "הערה חדשהבשקף הזה אנחנו מראים איך אנחנו גוררים את את ההודעות מתוזמנות לתוך המסך הראשי שלנו בלי שאני צריך ללחוץ על עוד משהו כזה",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 18,
       "step": 17,
       "type": "view",
       "image": "Schedule-14.png",
-      "text": "המייל המתוזמן פתוח. למטה רואים הודעה כחולה עם אפשרות <span style=\"color:#f6a67e;\">ביטול</span>. תמיד אפשר לחזור בכם!",
+      "text": "המייל המתוזמן פתוח. למטה רואים הודעה כחולה. לחצו <span style=\"color:#f6a67e;\">ביטול</span> ותחזרו לעריכה. תמיד אפשר לתקן!",
       "textPos": {
-        "left": "25%",
-        "top": "50%"
+        "left": "49.4825%",
+        "top": "45.7537%"
       },
       "textWidth": "280px",
       "box": {
