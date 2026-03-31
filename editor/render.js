@@ -28,7 +28,7 @@ function showSlide(idx) {
     container.style.display = 'none';
     noSlide.style.display = 'block';
     var label = s.specialType || s.type || 'special';
-    var iframeHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;overflow:hidden;">' + (s.html || '') + '</body></html>';
+    var iframeHtml = '<!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="preload" href="/assets/fonts/rubik-hebrew-400-normal.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/assets/fonts/rubik-hebrew-700-normal.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:Rubik;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-hebrew-400-normal.woff2) format(woff2)}@font-face{font-family:Rubik;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-hebrew-700-normal.woff2) format(woff2)}@font-face{font-family:Rubik;font-display:swap;font-weight:800;src:url(/assets/fonts/rubik-hebrew-800-normal.woff2) format(woff2)}@font-face{font-family:Rubik;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-latin-400-normal.woff2) format(woff2);unicode-range:U+0000-00FF}@font-face{font-family:Rubik;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-latin-700-normal.woff2) format(woff2);unicode-range:U+0000-00FF}*{font-family:Rubik,sans-serif}</style></head><body style="margin:0;overflow:hidden;">' + (s.html || '') + '</body></html>';
     noSlide.innerHTML = '<div class="special-badge">' + label + '</div>'
       + '<iframe class="special-iframe" srcdoc="' + iframeHtml.replace(/"/g, '&quot;') + '"></iframe>';
   } else {
