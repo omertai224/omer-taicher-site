@@ -25,7 +25,7 @@ function updateStatusBar() {
   var now = new Date();
   var h = String(now.getHours()).padStart(2, '0');
   var m = String(now.getMinutes()).padStart(2, '0');
-  el.innerHTML = '<span class="saved">נשמר</span> ' + h + ':' + m;
+  el.innerHTML = '<span class="saved">נשמר</span> <span class="saved">' + h + ':' + m + '</span>';
 }
 
 // Download slides.json

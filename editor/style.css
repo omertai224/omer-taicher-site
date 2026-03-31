@@ -34,8 +34,8 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 @keyframes save-pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
 
 /* ═══ Save Status (inline in topbar) ═══ */
-.save-status { font-size:10px; color:#ffffff44; white-space:nowrap; }
-.save-status .saved { color:#f6a67e; }
+.save-status { font-size:10px; color:#ffffff44; white-space:nowrap; direction:ltr; }
+.save-status .saved { color:#f6a67e; font-weight:600; margin:0 3px; }
 
 /* ═══ Main Layout ═══ */
 .main { display:flex; flex-direction:row-reverse; height:calc(100vh - 80px); }
