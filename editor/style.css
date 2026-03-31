@@ -264,7 +264,10 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 }
 .note-del:hover { color:#ff6b6b; }
 
+.strip-dot { cursor:grab; }
 .strip-dot:hover { background:#ffffff33; color:white; }
+.strip-dot.dragging-dot { opacity:0.4; cursor:grabbing; }
+.strip-dot.drop-target { background:#f6a67e44; border:1px solid #f6a67e; }
 .strip-dot.active { background:#1e5f74; color:white; box-shadow:0 0 8px #1e5f7466; }
 .strip-dot.modified { background:#f6a67e33; color:#f6a67e; }
 .strip-dot.modified.active { background:#e8834e; color:white; }

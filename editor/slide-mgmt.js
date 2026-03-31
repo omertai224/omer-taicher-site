@@ -83,33 +83,90 @@ function moveSlide(direction) {
     dragCounter = 0;
     if (!E.data || !e.dataTransfer.files) return;
 
-    var files = e.dataTransfer.files;
-    var added = 0;
+    var files = [];
+    for (var i = 0; i < e.dataTransfer.files.length; i++) {
+      var f = e.dataTransfer.files[i];
+      if (/\.(png|jpg|jpeg|gif|webp|bmp)$/i.test(f.name)) files.push(f);
+    }
+    if (files.length === 0) return;
+
+    // Sort by name (01, 02, 03...)
+    files.sort(function(a, b) { return a.name.localeCompare(b.name, undefined, {numeric: true}); });
+
+    // Rename to [tutorial]-01.png format
+    var prefix = E.name.replace(/\//g, '-');
+    var existingCount = E.data.slides.filter(function(s) { return s.image; }).length;
+
+    toast('מעלה ' + files.length + ' תמונות...');
     var insertAt = E.idx + 1;
 
-    for (var i = 0; i < files.length; i++) {
-      var f = files[i];
-      if (!/\.(png|jpg|jpeg|gif|webp|bmp)$/i.test(f.name)) continue;
-      E.imageMap[f.name] = URL.createObjectURL(f);
+    uploadImagesSequentially(files, prefix, existingCount, insertAt, 0);
+  });
+
+  // Upload images one by one to GitHub
+  function uploadImagesSequentially(files, prefix, startNum, insertAt, fileIdx) {
+    if (fileIdx >= files.length) {
+      reindexSlides();
+      buildStrip();
+      showSlide(insertAt);
+      toast(files.length + ' תמונות הועלו ונוספו');
+      return;
+    }
+
+    var f = files[fileIdx];
+    var num = String(startNum + fileIdx + 1).padStart(2, '0');
+    var newName = prefix + '-' + num + '.' + f.name.split('.').pop().toLowerCase();
+
+    var reader = new FileReader();
+    reader.onload = function() {
+      // Create blob URL for immediate display
+      E.imageMap[newName] = URL.createObjectURL(f);
+
+      // Create slide
       var newSlide = {
         index: 0,
         type: 'click',
-        image: f.name,
+        image: newName,
         box: { top: '40%', left: '40%', right: '40%', bottom: '40%' },
         textPos: { left: '20%', top: '30%' },
         step: 0,
         text: '',
         textWidth: '280px'
       };
-      E.data.slides.splice(insertAt + added, 0, newSlide);
-      added++;
-    }
+      E.data.slides.splice(insertAt + fileIdx, 0, newSlide);
 
-    if (added > 0) {
-      reindexSlides();
-      buildStrip();
-      showSlide(insertAt);
-      toast(added + ' שקפים נוספו');
-    }
-  });
+      // Upload to GitHub if token available
+      if (typeof GH !== 'undefined' && GH.token) {
+        var base64 = reader.result.split(',')[1];
+        var path = 'interactive/tutorials/' + E.name + '/images/' + newName;
+        var apiBase = 'https://api.github.com/repos/' + GH.user + '/' + GH.repo;
+
+        ghFetch(apiBase + '/contents/' + path + '?ref=' + GH.branch)
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(existing) {
+            var body = {
+              message: 'editor: upload ' + newName,
+              content: base64,
+              branch: GH.branch
+            };
+            if (existing && existing.sha) body.sha = existing.sha;
+            return ghFetch(apiBase + '/contents/' + path, {
+              method: 'PUT',
+              body: JSON.stringify(body)
+            });
+          })
+          .then(function() {
+            toast('הועלה ' + (fileIdx + 1) + '/' + files.length + ': ' + newName);
+            uploadImagesSequentially(files, prefix, startNum, insertAt, fileIdx + 1);
+          })
+          .catch(function(err) {
+            toast('שגיאה בהעלאת ' + newName + ': ' + err.message);
+            uploadImagesSequentially(files, prefix, startNum, insertAt, fileIdx + 1);
+          });
+      } else {
+        uploadImagesSequentially(files, prefix, startNum, insertAt, fileIdx + 1);
+      }
+    };
+    reader.readAsDataURL(f);
+  }
 })();
