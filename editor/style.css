@@ -195,9 +195,20 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
 .mgmt-btn.del:hover { color:#ff6b6b; border-color:#ff6b6b55; }
 
 /* ═══ Slide Strip — full width ═══ */
+.strip-wrap {
+  display:flex; align-items:center; background:#1a2540; border-top:1px solid #ffffff15;
+  height:40px;
+}
+.strip-nav {
+  flex-shrink:0; width:28px; height:28px; border-radius:50%;
+  background:#ffffff0a; border:1px solid #ffffff15; color:#ffffff66;
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer; transition:all 0.15s; margin:0 4px;
+}
+.strip-nav:hover { background:#1e5f74; color:white; border-color:#5b8fa8; }
 .strip {
-  height:40px; background:#1a2540; border-top:1px solid #ffffff15;
-  display:grid; align-items:center; padding:0 10px;
+  flex:1; height:40px;
+  display:grid; align-items:center; padding:0 4px;
   direction:ltr; gap:2px;
 }
 .strip-dot {
