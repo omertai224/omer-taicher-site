@@ -109,12 +109,12 @@
       "step": 6,
       "type": "view",
       "image": "Schedule-05.png",
-      "text": "תוזמן! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span>. המייל יישלח מחר ב-8:00. התחרטתם? לחצו <span style=\"color:#f6a67e;\">ביטול</span>.",
+      "text": "תוזמן! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span>. המייל יישלח מחר ב-8:00. התחרטתם? לחצו <span style=\"color:#f6a67e;\">ביטול</span>.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "24.8806%",
-        "top": "58.4705%"
+        "left": "50.6768%",
+        "top": "39.1499%"
       },
-      "textWidth": "280px",
+      "textWidth": "354px",
       "box": {
         "top": "80%",
         "left": "58.8972%",
@@ -199,12 +199,12 @@
       "step": 11,
       "type": "view",
       "image": "Schedule-07.png",
-      "text": "יופי! <span style=\"color:#f6a67e;\">השליחה תתבצע ליום ראשון, 12 באפריל, ב-9:00</span>. הלקוח יקבל את המייל אחרי פסח, ביום עבודה.",
+      "text": "יופי! <span style=\"color:#f6a67e;\">השליחה תתבצע ליום ראשון, 12 באפריל, ב-9:00</span>. הלקוח יקבל את המייל אחרי פסח, ביום עבודה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "20.6527%",
-        "top": "57.6842%"
+        "left": "46.2094%",
+        "top": "39.6364%"
       },
-      "textWidth": "260px",
+      "textWidth": "395px",
       "box": {
         "top": "80.0885%",
         "left": "53.6978%",
@@ -289,24 +289,24 @@
       "step": 16,
       "type": "view",
       "image": "Schedule-10.png",
-      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> למעלה, ככה תמיד תראו אותן בתפריט הראשי בלי לחפש.",
+      "text": "גררו את <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> למעלה, ככה תמיד תראו אותן בתפריט הראשי בלי לחפש.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "40.9708%",
-        "top": "53.5872%"
+        "left": "34.4011%",
+        "top": "40.2103%"
       },
-      "textWidth": "280px"
+      "textWidth": "326px"
     },
     {
       "index": 18,
       "step": 17,
       "type": "view",
       "image": "Schedule-14.png",
-      "text": "מוכן! התווית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> עברה לרשימת התוויות הכללית. מעכשיו תמיד תראו אותה בתפריט הצד.",
+      "text": "מוכן! התווית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> עברה לרשימת התוויות הכללית. מעכשיו תמיד תראו אותה בתפריט הצד.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "21.6561%",
-        "top": "56.5806%"
+        "left": "25.836%",
+        "top": "40.019%"
       },
-      "textWidth": "280px",
+      "textWidth": "400px",
       "box": {
         "top": "80.5702%",
         "left": "56.2784%",
