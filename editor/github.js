@@ -4,7 +4,7 @@ var GH = {
   token: '',
   user: 'omertai224',
   repo: 'omer-taicher-site',
-  branch: 'claude/work-in-progress-Bkqwf',
+  branch: localStorage.getItem('editor_branch') || 'editor-work',
   mainBranch: 'main'
 };
 
@@ -196,5 +196,32 @@ function updatePushBtn() {
   if (btn) btn.style.opacity = '1';
 }
 
+// ── Branch Indicator ──
+function showBranchBadge() {
+  var existing = document.getElementById('branch-badge');
+  if (existing) existing.remove();
+  var badge = document.createElement('div');
+  badge.id = 'branch-badge';
+  badge.style.cssText = 'position:fixed;bottom:6px;left:6px;z-index:9000;background:#1a2540ee;border:1px solid #ffffff22;border-radius:8px;padding:4px 10px;font-family:Rubik,sans-serif;font-size:11px;color:#ffffffaa;cursor:pointer;display:flex;align-items:center;gap:4px;';
+  badge.title = 'לחצו לשנות בראנצ\'';
+  badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2.5"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 009 9"/></svg> <span style="color:#f6a67e;font-weight:700;direction:ltr;">' + GH.branch + '</span>';
+  badge.onclick = changeBranch;
+  document.body.appendChild(badge);
+}
+
+function changeBranch() {
+  var current = GH.branch;
+  var newBranch = prompt('שם הבראנצ\' לשמירה:', current);
+  if (!newBranch || newBranch === current) return;
+  newBranch = newBranch.trim();
+  localStorage.setItem('editor_branch', newBranch);
+  GH.branch = newBranch;
+  showBranchBadge();
+  toast('בראנצ\' שונה ל: ' + newBranch);
+}
+
 // ── Init on page load ──
-document.addEventListener('DOMContentLoaded', checkEditorToken);
+document.addEventListener('DOMContentLoaded', function() {
+  checkEditorToken();
+  showBranchBadge();
+});
