@@ -29,15 +29,13 @@ function onDataLoaded(data) {
   E.modified = {};
   E.zoom = 1;
   $('slideContainer').style.transform = '';
+  // Read saved position BEFORE showSlide overwrites it
+  var lastIdx = parseInt(localStorage.getItem('editor_last_slide_' + E.name)) || 0;
+  if (lastIdx >= data.slides.length) lastIdx = 0;
   buildStrip();
-  showSlide(0);
+  showSlide(lastIdx);
   // Remember last tutorial
   localStorage.setItem('editor_last', E.name);
-  // Restore last slide position
-  var lastIdx = parseInt(localStorage.getItem('editor_last_slide_' + E.name));
-  if (lastIdx > 0 && lastIdx < data.slides.length) {
-    showSlide(lastIdx);
-  }
   toast(E.name + ' נטען (' + data.slides.length + ' שקפים)');
 }
 
