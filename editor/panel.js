@@ -199,7 +199,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // ── Apply from panel ──
+var _undoTextTimer = null;
 function applyText() {
+  // Save undo only once per typing burst (debounced 500ms)
+  if (!_undoTextTimer) {
+    saveUndo();
+  }
+  clearTimeout(_undoTextTimer);
+  _undoTextTimer = setTimeout(function() { _undoTextTimer = null; }, 500);
+
   var s = E.data.slides[E.idx];
   s.text = $('pText').innerHTML;
   renderBubble(s);
