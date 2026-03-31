@@ -114,8 +114,7 @@ function moveSlide(direction) {
     }
 
     var f = files[fileIdx];
-    var num = String(startNum + fileIdx + 1).padStart(2, '0');
-    var newName = prefix + '-' + num + '.' + f.name.split('.').pop().toLowerCase();
+    var newName = f.name; // Keep original filename
 
     var reader = new FileReader();
     reader.onload = function() {
