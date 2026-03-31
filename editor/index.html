@@ -109,13 +109,15 @@
 
 <!-- Slide Strip -->
 <div class="strip-wrap">
-  <button class="strip-nav" id="stripPrev" onclick="goPrev()" title="שקף קודם">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="14 16 10 12 14 8"/></svg>
-  </button>
   <div class="strip" id="slideStrip"></div>
-  <button class="strip-nav" id="stripNext" onclick="goNext()" title="שקף הבא">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="10 8 14 12 10 16"/></svg>
-  </button>
+  <div class="strip-nav-group">
+    <button class="strip-nav" onclick="goPrev()" title="שקף קודם">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="14 16 10 12 14 8"/></svg>
+    </button>
+    <button class="strip-nav" onclick="goNext()" title="שקף הבא">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="10 8 14 12 10 16"/></svg>
+    </button>
+  </div>
 </div>
 
 <!-- Toast -->
