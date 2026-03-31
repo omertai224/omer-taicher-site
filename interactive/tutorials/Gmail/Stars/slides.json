@@ -21,8 +21,8 @@
       "image": "Stars-01.png",
       "text": "סוף יום עבודה.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">9 הודעות חדשות.</span> חלקן דחופות, חלקן יכולות לחכות. איך יודעים מה קודם?<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "0.87393%",
-        "top": "55.5921%"
+        "left": "9.94974%",
+        "top": "42.4286%"
       },
       "textWidth": "310px"
     },
@@ -57,8 +57,8 @@
         "bottom": "64.4162%"
       },
       "textPos": {
-        "left": "15.6847%",
-        "top": "39.2461%"
+        "left": "21.7749%",
+        "top": "32.8766%"
       },
       "textWidth": "280px"
     },
@@ -105,10 +105,10 @@
       "image": "Stars-06.png",
       "text": "גם דני עם מחשב איטי. עוד <span style=\"color:#f6a67e;\">כוכב</span>. שלוש תקלות מסומנות!",
       "box": {
-        "top": "37.0276%",
-        "left": "67.2293%",
-        "right": "26.7436%",
-        "bottom": "55.2866%"
+        "top": "37.8769%",
+        "left": "67.707%",
+        "right": "26.9825%",
+        "bottom": "54.6496%"
       },
       "textPos": {
         "left": "32.7627%",
@@ -137,8 +137,8 @@
       "box": {
         "top": "4.33121%",
         "left": "19.3392%",
-        "right": "74.2754%",
-        "bottom": "87.1338%"
+        "right": "74.7531%",
+        "bottom": "87.7707%"
       },
       "textPos": {
         "left": "19.1481%",
@@ -208,13 +208,13 @@
       "text": "חשוב! כל שינוי בהגדרות ג'ימייל צריך שמירה. גללו למטה ולחצו על <span style=\"color:#f6a67e;\">שמירת שינויים</span>.",
       "box": {
         "top": "72.1149%",
-        "left": "36.1317%",
+        "left": "37.0871%",
         "right": "52.4255%",
         "bottom": "19.8393%"
       },
       "textPos": {
-        "left": "31.9564%",
-        "top": "29.2733%"
+        "left": "49.2729%",
+        "top": "52.6274%"
       },
       "textWidth": "280px"
     },
@@ -223,7 +223,7 @@
       "step": 13,
       "type": "click",
       "image": "Stars-13.png",
-      "text": "חזרנו לתיבה! שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>. זה דבר חיובי. לחצו על הכוכב <span style=\"color:#f6a67e;\">עד V ירוק</span>.",
+      "text": "חזרנו לתיבה!&nbsp;<br>שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>. זה דבר חיובי.&nbsp;<br>לחצו על הכוכב <span style=\"color:#f6a67e;\">V ירוק</span>.",
       "box": {
         "top": "65.4777%",
         "left": "67.9459%",
@@ -270,7 +270,14 @@
         "left": "16.2761%",
         "top": "25.583%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "הערה חדשהאת הצעד הזה אפשר להסיר כי הוא כפול ולהעביר את הטקסט בתיבת הקוד לשקף הבא בתיבת הטקסט לשקף הבא",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 17,
