@@ -58,7 +58,7 @@ function buildSlides(slides, totalSteps) {
       div.innerHTML = s.html || '';
     } else if (s.image) {
       var imgSrc = 'images/' + s.image;
-      div.innerHTML = '<div class="image-center"><img src="' + imgSrc + '" style="max-height:calc(100vh - 80px);width:auto;display:block;margin:0 auto;">';
+      div.innerHTML = '<div class="image"><div class="image-center"><img src="' + imgSrc + '" style="max-height:calc(100vh - 80px);width:auto;max-width:100%;display:block;margin:0 auto;">';
       if (s.box) {
         var boxStyle = 'top:' + s.box.top + ';left:' + s.box.left + ';right:' + s.box.right + ';bottom:' + s.box.bottom;
         if (s.type === 'view') {
@@ -83,10 +83,17 @@ function buildSlides(slides, totalSteps) {
       if (s.type === 'view' && !s.text) {
         div.innerHTML += '<div onclick="nextSlide()" style="position:absolute;bottom:20%;left:50%;transform:translateX(-50%);width:44px;height:44px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid #5b8fa8;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(26,37,64,0.5);z-index:5;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></div>';
       }
-      div.innerHTML += '</div>';
+      div.innerHTML += '</div></div>';
     }
     container.appendChild(div);
   });
 }
 
-function buildTextPos(slides) { return; }
+function buildTextPos(pos) {
+  if (!pos) return '';
+  var s = '';
+  if (pos.left) s += 'left:' + pos.left + ';';
+  if (pos.top) s += 'top:' + pos.top + ';';
+  if (pos.bottom) s += 'bottom:' + pos.bottom + ';';
+  return s;
+}
