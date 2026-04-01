@@ -251,6 +251,15 @@ a { word-break: break-all; }
   50% { box-shadow: 0 0 0 4px rgba(255,124,42,0.6), 0 0 28px rgba(255,124,42,0.9); }
 }
 
+/* ─── מסגרת צפייה (כחולה, לא לחיצה) ─── */
+.box.view-highlight {
+  border-color: #5b8fa8;
+  box-shadow: 0 0 0 2px rgba(91,143,168,0.4), 0 0 16px rgba(91,143,168,0.6);
+  animation: none;
+  pointer-events: none;
+  cursor: default;
+}
+
 @keyframes btn-pulse {
   0%, 100% { box-shadow: 0 0 0 3px rgba(255,255,255,0.3), 0 6px 24px rgba(232,131,78,0.5); transform: scale(1); }
   50% { box-shadow: 0 0 0 6px rgba(246,166,126,0.4), 0 6px 28px rgba(232,131,78,0.8); transform: scale(1.06); }
