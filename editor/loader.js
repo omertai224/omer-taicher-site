@@ -6,8 +6,8 @@ var TUTORIALS_BASE = '/interactive/tutorials/';
 /* Known tutorials organized by category */
 var TUTORIAL_CATEGORIES = [
   { label: 'Gmail', items: ['Gmail/Schedule', 'Gmail/Stars'] },
-  { label: 'Windows', items: ['Clipboard', 'Everything'] },
-  { label: 'Applications', items: ['Vibe'] }
+  { label: 'Windows', items: ['Clipboard'] },
+  { label: 'Apps', items: ['Vibe', 'Everything'] }
 ];
 
 /* Flat list for backwards compatibility */
