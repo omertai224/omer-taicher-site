@@ -82,8 +82,8 @@
       "box": {
         "top": "90.8425%",
         "left": "65.4888%",
-        "right": "27.8276%",
-        "bottom": "0%"
+        "right": "28.4247%",
+        "bottom": "0.212314%"
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
@@ -107,12 +107,12 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "54.8306%",
-        "top": "17.9074%"
+        "left": "1.56623%",
+        "top": "17.6951%"
       },
       "step": 5,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
-      "textWidth": "227px"
+      "textWidth": "168px"
     },
     {
       "index": 7,
@@ -127,8 +127,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "28.8235%",
-        "top": "63.0883%"
+        "left": "59.8739%",
+        "top": "64.3622%"
       },
       "step": 6,
       "text": "עוד מעבר בין החלונות. <span style=\"color:#f6a67e;\">הלוך חזור</span> שלא נגמר...",
@@ -167,8 +167,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "77.1895%",
-        "top": "60.0849%"
+        "left": "71.6959%",
+        "top": "59.6592%"
       },
       "step": 8,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם הרביעית. הקפיצה בין החלונות נמשכת...",
@@ -187,12 +187,12 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "61.9632%",
-        "top": "38.8568%"
+        "left": "6.32962%",
+        "top": "42.4651%"
       },
       "step": 9,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
-      "textWidth": "201px"
+      "textWidth": "147px"
     },
     {
       "index": 11,
@@ -207,8 +207,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "27.6647%",
-        "top": "57.5128%"
+        "left": "59.4316%",
+        "top": "58.7856%"
       },
       "step": 10,
       "text": "עוד קפיצה בין החלונות. כבר ברור שחייב להיות <span style=\"color:#f6a67e;\">פתרון טוב יותר</span><span style=\"color: rgb(246, 166, 126);\">...</span>",
@@ -247,8 +247,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "76.8312%",
-        "top": "57.9607%"
+        "left": "59.5137%",
+        "top": "59.0223%"
       },
       "step": 12,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם השישית. <span style=\"color:#f6a67e;\">חייבת להיות דרך חכמה יותר.</span>",
@@ -287,8 +287,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "28.8117%",
-        "top": "57.797%"
+        "left": "60.1009%",
+        "top": "58.8575%"
       },
       "step": 14,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> ולחזור ל-Word. בפעם האחרונה, <span style=\"color:#f6a67e;\">סוף סוף!</span>",
@@ -380,8 +380,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "43.5298%",
-        "top": "22.9996%"
+        "left": "46.6343%",
+        "top": "26.6078%"
       },
       "step": 19,
       "text": "לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בתפריט הצד",
