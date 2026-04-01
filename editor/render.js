@@ -68,9 +68,9 @@ function renderBubble(slide) {
   bubble.style.width = slide.textWidth || '300px';
   bubble.style.maxWidth = slide.textWidth || '300px';
 
-  // Scale bubble proportionally on window resize (scale=1 on first load)
-  if (!E.bubbleRefWidth) E.bubbleRefWidth = cw;
-  var scale = cw / E.bubbleRefWidth;
+  // Scale bubble same as live tutorial: containerWidth / designWidth
+  var designW = window.bubbleDesignWidth || 1280;
+  var scale = cw / designW;
   bubble.style.transform = 'scale(' + scale + ')';
   bubble.style.transformOrigin = 'left top';
 
