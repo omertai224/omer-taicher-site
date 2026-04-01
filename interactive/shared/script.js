@@ -109,6 +109,12 @@ function scaleBubbles() {
       /* Reapply the same offset */
       var newL = bCX + offsetX;
       var newT = bCY + offsetY;
+      /* Compensate for scale growth: scale enlarges from top-left,
+         so center shifts right+down. Shift back by half the growth. */
+      var growX = rawW * (scale - 1) / (2 * w) * 100;
+      var growY = rawH * (scale - 1) / (2 * h) * 100;
+      newL -= growX;
+      newT -= growY;
       /* Clamp to screen bounds */
       newL = Math.max(0.5, Math.min(newL, 99 - twPct));
       newT = Math.max(0.5, Math.min(newT, 98 - thPct));
