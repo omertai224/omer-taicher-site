@@ -58,11 +58,11 @@ function showSlides(n) {
 }
 
 /* ── Scale + anchor bubbles to the orange box ── */
-/* Each tutorial sets window.bubbleDesignWidth in its script.js.
-   scaleBubbles() does two things:
+/* scaleBubbles() does two things:
    1. transform:scale() so the bubble shrinks/grows as a unit
-   2. repositions the bubble relative to the box based on arrow direction
-   Result: bubble is always close to the box at any resolution. */
+   2. repositions the bubble relative to the box using AUTO-DETECT from 8 directions
+   The direction is detected from the angle between box center and textPos.
+   8 directions: right, bottom-right, bottom, bottom-left, left, top-left, top, top-right */
 function scaleBubbles() {
   var designW = window.bubbleDesignWidth;
   if (!designW) return;
@@ -77,8 +77,6 @@ function scaleBubbles() {
     var scale = w / designW;
     var designH = designW * h / w;
     var texts = slide.querySelectorAll('.text');
-    /* Find the highlight: .box (click/view) or static highlight div
-       (any child of image-center that isn't img or .text) */
     var highlightEls = slide.querySelectorAll('.image-center > *:not(img):not(.text)');
     var box = highlightEls.length > 0 ? highlightEls[0] : null;
     for (var i = 0; i < texts.length; i++) {
@@ -97,33 +95,61 @@ function scaleBubbles() {
       var twPct = (t.offsetWidth || 300) / designW * 100;
       var thPct = (t.offsetHeight || 150) / designH * 100;
       var gap = 1.5;
-      var cl = t.classList;
+
+      /* Auto-detect direction from textPos angle relative to box center */
+      var tL = parseFloat(t.style.left) || 0;
+      var tT = parseFloat(t.style.top) || 0;
+      var tCX = tL + twPct / 2;
+      var tCY = tT + thPct / 2;
+      var dx = tCX - bCX;
+      var dy = tCY - bCY;
+      var angle = Math.atan2(dy, dx) * 180 / Math.PI; // -180 to 180
+      if (angle < 0) angle += 360; // 0 to 360
+
+      /* 8 directions: 0=right, 45=bottom-right, 90=bottom, 135=bottom-left,
+         180=left, 225=top-left, 270=top, 315=top-right */
+      var dir = Math.round(angle / 45) % 8;
+
       var newL, newT;
-      if (cl.contains('arrow-right')) {
-        newL = bL - gap - twPct;
-        if (newL < 0.5) newL = bRE + gap;
-        newT = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct));
-        t.style.left = newL + '%';
-        t.style.top = newT + '%';
-      } else if (cl.contains('arrow-left')) {
+      if (dir === 0) { /* right: bubble right of box */
         newL = bRE + gap;
         if (newL + twPct > 99) newL = Math.max(0.5, bL - gap - twPct);
         newT = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct));
-        t.style.left = newL + '%';
-        t.style.top = newT + '%';
-      } else if (cl.contains('arrow-top-left') || cl.contains('arrow-top-right')) {
+      } else if (dir === 1) { /* bottom-right */
+        newL = bRE + gap;
+        if (newL + twPct > 99) newL = Math.max(0.5, bRE - twPct);
+        newT = bBE + gap;
+        if (newT + thPct > 98) newT = Math.max(0.5, 98 - thPct);
+      } else if (dir === 2) { /* bottom: bubble below box */
         newT = bBE + gap;
         if (newT + thPct > 98) newT = Math.max(0.5, bT - gap - thPct);
         newL = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct));
-        t.style.left = newL + '%';
-        t.style.top = newT + '%';
-      } else if (cl.contains('arrow-bottom-left') || cl.contains('arrow-bottom-right')) {
+      } else if (dir === 3) { /* bottom-left */
+        newL = bL - gap - twPct;
+        if (newL < 0.5) newL = 0.5;
+        newT = bBE + gap;
+        if (newT + thPct > 98) newT = Math.max(0.5, 98 - thPct);
+      } else if (dir === 4) { /* left: bubble left of box */
+        newL = bL - gap - twPct;
+        if (newL < 0.5) newL = bRE + gap;
+        newT = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct));
+      } else if (dir === 5) { /* top-left */
+        newL = bL - gap - twPct;
+        if (newL < 0.5) newL = 0.5;
+        newT = bT - gap - thPct;
+        if (newT < 0.5) newT = 0.5;
+      } else if (dir === 6) { /* top: bubble above box */
         newT = bT - gap - thPct;
         if (newT < 0.5) newT = bBE + gap;
         newL = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct));
-        t.style.left = newL + '%';
-        t.style.top = newT + '%';
+      } else { /* dir === 7, top-right */
+        newL = bRE + gap;
+        if (newL + twPct > 99) newL = Math.max(0.5, 99 - twPct);
+        newT = bT - gap - thPct;
+        if (newT < 0.5) newT = 0.5;
       }
+      t.style.left = newL + '%';
+      t.style.top = newT + '%';
     }
   }
   if (img.complete && img.naturalWidth > 0) { doScale(); }
