@@ -551,12 +551,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "56.543%",
-        "top": "13.2906%"
+        "left": "0%",
+        "top": "51.505%"
       },
       "step": 28,
       "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> במקלדת כדי לפתוח את <span style=\"color:#f6a67e;\">היסטוריית הלוח</span> ובחרו את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
-      "textWidth": "246px"
+      "textWidth": "243px"
     },
     {
       "index": 30,
@@ -571,11 +571,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "50.242%",
-        "top": "16.2288%"
+        "left": "0%",
+        "top": "45.5281%"
       },
       "step": 29,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח",
+      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> כדי להדביק אותו.",
       "textWidth": "210px"
     },
     {
@@ -591,11 +591,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "49.954%",
-        "top": "16.3427%"
+        "left": "0%",
+        "top": "47.1282%"
       },
       "step": 30,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח",
+      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> כדי להדביק אותו.",
       "textWidth": "169px"
     },
     {
@@ -611,11 +611,11 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "55.2765%",
-        "top": "8.20064%"
+        "left": "0%",
+        "top": "33.2537%"
       },
       "step": 31,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה.<span style=\"color: rgb(246, 166, 126);\"> כן, גם תמונות נשמרות!</span>",
+      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> כדי להדביק גם אותה.<span style=\"color:#f6a67e;\"> כן, גם תמונות נשמרות!</span>",
       "textWidth": "189px"
     },
     {
