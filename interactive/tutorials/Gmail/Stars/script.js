@@ -7,7 +7,7 @@
 var slidesData = null;
 
 /* Design width: container width (px) when textPos was calibrated. */
-window.bubbleDesignWidth = 960;
+window.bubbleDesignWidth = 823;
 
 /* ── App Init ── */
 function initApp() {
