@@ -58,11 +58,8 @@ function showSlides(n) {
 }
 
 /* ── Scale + anchor bubbles to the orange box ── */
-/* scaleBubbles() does two things:
-   1. transform:scale() so the bubble shrinks/grows as a unit
-   2. repositions the bubble relative to the box using AUTO-DETECT from 8 directions
-   The direction is detected from the angle between box center and textPos.
-   8 directions: right, bottom-right, bottom, bottom-left, left, top-left, top, top-right */
+/* scaleBubbles(): scales bubble and positions it at the exact angle
+   from the box center to where the editor placed it (360 degrees). */
 function scaleBubbles() {
   var designW = window.bubbleDesignWidth;
   if (!designW) return;
@@ -96,58 +93,36 @@ function scaleBubbles() {
       var thPct = (t.offsetHeight || 150) / designH * 100;
       var gap = 1.5;
 
-      /* Auto-detect direction from textPos angle relative to box center */
+      /* Get original textPos angle from box center */
       var tL = parseFloat(t.style.left) || 0;
       var tT = parseFloat(t.style.top) || 0;
       var tCX = tL + twPct / 2;
       var tCY = tT + thPct / 2;
-      var dx = tCX - bCX;
-      var dy = tCY - bCY;
-      var angle = Math.atan2(dy, dx) * 180 / Math.PI; // -180 to 180
-      if (angle < 0) angle += 360; // 0 to 360
+      var angle = Math.atan2(tCY - bCY, tCX - bCX);
 
-      /* 8 directions: 0=right, 45=bottom-right, 90=bottom, 135=bottom-left,
-         180=left, 225=top-left, 270=top, 315=top-right */
-      var dir = Math.round(angle / 45) % 8;
-
-      var newL, newT;
-      if (dir === 0) { /* right: bubble right of box */
-        newL = bRE + gap;
-        if (newL + twPct > 99) newL = Math.max(0.5, bL - gap - twPct);
-        newT = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct));
-      } else if (dir === 1) { /* bottom-right */
-        newL = bRE + gap;
-        if (newL + twPct > 99) newL = Math.max(0.5, bRE - twPct);
-        newT = bBE + gap;
-        if (newT + thPct > 98) newT = Math.max(0.5, 98 - thPct);
-      } else if (dir === 2) { /* bottom: bubble below box */
-        newT = bBE + gap;
-        if (newT + thPct > 98) newT = Math.max(0.5, bT - gap - thPct);
-        newL = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct));
-      } else if (dir === 3) { /* bottom-left */
-        newL = bL - gap - twPct;
-        if (newL < 0.5) newL = 0.5;
-        newT = bBE + gap;
-        if (newT + thPct > 98) newT = Math.max(0.5, 98 - thPct);
-      } else if (dir === 4) { /* left: bubble left of box */
-        newL = bL - gap - twPct;
-        if (newL < 0.5) newL = bRE + gap;
-        newT = Math.max(0.5, Math.min(bCY - thPct/2, 98 - thPct));
-      } else if (dir === 5) { /* top-left */
-        newL = bL - gap - twPct;
-        if (newL < 0.5) newL = 0.5;
-        newT = bT - gap - thPct;
-        if (newT < 0.5) newT = 0.5;
-      } else if (dir === 6) { /* top: bubble above box */
-        newT = bT - gap - thPct;
-        if (newT < 0.5) newT = bBE + gap;
-        newL = Math.max(0.5, Math.min(bCX - twPct/2, 99 - twPct));
-      } else { /* dir === 7, top-right */
-        newL = bRE + gap;
-        if (newL + twPct > 99) newL = Math.max(0.5, 99 - twPct);
-        newT = bT - gap - thPct;
-        if (newT < 0.5) newT = 0.5;
+      /* Place bubble along that exact angle, with gap from box edge */
+      var cosA = Math.cos(angle);
+      var sinA = Math.sin(angle);
+      var boxW = bRE - bL;
+      var boxH = bBE - bT;
+      /* Distance from center to box edge in the direction of the angle */
+      var edgeDistX = boxW / 2;
+      var edgeDistY = boxH / 2;
+      var edgeDist;
+      if (Math.abs(cosA) * edgeDistY > Math.abs(sinA) * edgeDistX) {
+        edgeDist = edgeDistX / Math.abs(cosA);
+      } else {
+        edgeDist = edgeDistY / Math.abs(sinA);
       }
+      /* Anchor point: box edge + gap, in the direction of the angle */
+      var anchorX = bCX + cosA * (edgeDist + gap);
+      var anchorY = bCY + sinA * (edgeDist + gap);
+      /* Offset so bubble center aligns: shift by half bubble size in the direction */
+      var newL = anchorX - twPct / 2 * (1 + cosA);
+      var newT = anchorY - thPct / 2 * (1 + sinA);
+      /* Clamp to screen bounds */
+      newL = Math.max(0.5, Math.min(newL, 99 - twPct));
+      newT = Math.max(0.5, Math.min(newT, 98 - thPct));
       t.style.left = newL + '%';
       t.style.top = newT + '%';
     }
