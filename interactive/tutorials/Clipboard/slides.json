@@ -87,8 +87,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "77.1895%",
-        "top": "49.1397%"
+        "left": "73.7261%",
+        "top": "60.9342%"
       },
       "step": 4,
       "text": "חזרה ל<span style=\"color:#f6a67e;\">שורת המשימות</span> כדי להחליף חלון לאמזון ולהעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
@@ -167,8 +167,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "77.5478%",
-        "top": "54.557%"
+        "left": "72.7707%",
+        "top": "66.4544%"
       },
       "step": 8,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם הרביעית. הקפיצה בין החלונות נמשכת...",
@@ -247,8 +247,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "42.0743%",
-        "top": "54.5084%"
+        "left": "61.302%",
+        "top": "66.4544%"
       },
       "step": 12,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם השישית. <span style=\"color:#f6a67e;\">חייבת להיות דרך חכמה יותר.</span>",
@@ -576,7 +576,14 @@
       },
       "step": 29,
       "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> כדי להדביק אותו.",
-      "textWidth": "210px"
+      "textWidth": "239px",
+      "notes": [
+        {
+          "text": "הערה חדשהפה צריך לעשות את הווינדוס פלוס וי את המקשים ווינדוס פלוס v בדיוק כמו בשקף הקודם צד 28 זה לא נראה אותו דבר עכשיוצריך לכתוב פה גם לחצו שוב",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 31,
@@ -596,7 +603,14 @@
       },
       "step": 30,
       "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> כדי להדביק אותו.",
-      "textWidth": "169px"
+      "textWidth": "216px",
+      "notes": [
+        {
+          "text": "הערה חדשהגם פה לחצו שוב גם פה זה לא נראה אותו דברגם פה זה לא נראה אותו דבר הקיצור מקשים הווינדוס לא נראה טוב",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 32,
@@ -616,7 +630,14 @@
       },
       "step": 31,
       "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> כדי להדביק גם אותה.<span style=\"color:#f6a67e;\"> כן, גם תמונות נשמרות!</span>",
-      "textWidth": "189px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "הערה חדשהליחצו שוב ווינדוס פלוס וי וגם פה תתקן את הווינדוס את המכה של הווינדוס",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 33,
