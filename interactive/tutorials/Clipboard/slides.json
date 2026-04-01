@@ -551,12 +551,12 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "56.543%",
-        "top": "13.2906%"
+        "left": "0%",
+        "top": "51.505%"
       },
       "step": 28,
       "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> במקלדת כדי לפתוח את <span style=\"color:#f6a67e;\">היסטוריית הלוח</span> ובחרו את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
-      "textWidth": "246px"
+      "textWidth": "243px"
     },
     {
       "index": 30,
@@ -571,12 +571,19 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "50.242%",
-        "top": "16.2288%"
+        "left": "0%",
+        "top": "45.5281%"
       },
       "step": 29,
       "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח",
-      "textWidth": "210px"
+      "textWidth": "210px",
+      "notes": [
+        {
+          "text": "הערה חדשהפה צריך להיות כנה איתם צריך להגיד להם שוב שילחצו על ווינדוס פלוס סביב המקלדת כי אתה לא יכול להעתיק כמה אחד אחרי השני אתה מעתיק ואתה עושה שוב קונטרול v ואתה מעתיק ואתה עושה שוב קונטרול v ואתה מעתיק ואתה עושה שוב קונטרול",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 31,
@@ -591,12 +598,19 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "49.954%",
-        "top": "16.3427%"
+        "left": "0%",
+        "top": "47.1282%"
       },
       "step": 30,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח",
-      "textWidth": "169px"
+      "textWidth": "169px",
+      "notes": [
+        {
+          "text": "הערה חדשהגם פה צריך להגיד להם שיעשו שוב קונטרול v כי זה חשוב כי הם צריכים לדעת שהם לא יכולים כל פעם ללחוץ ככה הם צריכים לעשות קונטרול v",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 32,
@@ -611,12 +625,19 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "55.2765%",
-        "top": "8.20064%"
+        "left": "0%",
+        "top": "33.2537%"
       },
       "step": 31,
       "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה.<span style=\"color: rgb(246, 166, 126);\"> כן, גם תמונות נשמרות!</span>",
-      "textWidth": "189px"
+      "textWidth": "189px",
+      "notes": [
+        {
+          "text": "הערה חדשהטעיתי ווינדוס פלוס התבלבלתי צריך לעשות בכל הארבעה של השקפים האלה מ-28 עד 31 ווינדוס פלוס להגיד להם שבכל השקפים צריכים לעשות ווינדוס פלוס וי זה חשוב",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 33,
