@@ -2,7 +2,7 @@
   "posts": [
     {
       "id": "clipboard-history-windows",
-      "title": "<p>היסטוריית הלוח של Windows</p><p><br></p><p><br></p><p><br></p><p><br></p><p><br></p><p>העתקה בלי סבל</p>",
+      "title": "<p>היסטוריית הלוח של Windows</p><p><span>העתקה בלי סבל</span></p><p><br></p>",
       "excerpt": "<p>העתקתם מספר טלפון.</p><p>אחרי זה העתקתם משהו אחר.</p><p>והמספר נעלם לתמיד. עד עכשיו.</p>",
       "date": "2026-03-29",
       "image": "https://media.omertai.net/clipboard-history-windows.webp",
