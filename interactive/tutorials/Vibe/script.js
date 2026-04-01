@@ -4,7 +4,7 @@ var slidesData = null;
 
 /* Design width: container width (px) when textPos was calibrated.
    Used by shared/script.js scaleBubbles() to keep bubbles proportional. */
-window.bubbleDesignWidth = 731;
+window.bubbleDesignWidth = 853;
 
 /* ── Personal Name (Vibe-specific) ── */
 function getPersonalName() {
