@@ -2,7 +2,13 @@
 :: איפוס בראנצ' העבודה - מאפס את הבראנצ' שיהיה זהה ל-main
 :: להריץ מתיקיית הפרויקט (omer-taicher-site)
 
-cd /d "%USERPROFILE%\Documents\GitHub\omer-taicher-site"
+cd /d "C:\Users\Demo\Documents\GitHub\omer-taicher-site"
+if not exist ".git" (
+    echo [!] לא מצאתי את תיקיית הפרויקט!
+    echo     תבדוק את הנתיב בשורה 5 של הקובץ הזה
+    pause
+    exit /b
+)
 
 echo.
 echo [*] עובר ל-main ומעדכן...
