@@ -27,8 +27,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "20.7883%",
-        "top": "16.0917%"
+        "left": "21.6237%",
+        "top": "25.4335%"
       },
       "step": 1,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
@@ -47,8 +47,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "43.5429%",
-        "top": "62.2678%"
+        "left": "58.5906%",
+        "top": "63.754%"
       },
       "step": 2,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור למסמך ה-Word",
@@ -67,8 +67,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "17.6584%",
-        "top": "21.9602%"
+        "left": "18.2555%",
+        "top": "18.1385%"
       },
       "step": 3,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
@@ -87,8 +87,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "73.7261%",
-        "top": "60.9342%"
+        "left": "76.8306%",
+        "top": "52.8662%"
       },
       "step": 4,
       "text": "חזרה ל<span style=\"color:#f6a67e;\">שורת המשימות</span> כדי להחליף חלון לאמזון ולהעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
@@ -127,8 +127,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "41.0051%",
-        "top": "62.0278%"
+        "left": "28.8235%",
+        "top": "63.0883%"
       },
       "step": 6,
       "text": "עוד מעבר בין החלונות. <span style=\"color:#f6a67e;\">הלוך חזור</span> שלא נגמר...",
@@ -147,8 +147,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "20.2229%",
-        "top": "27.2437%"
+        "left": "20.3417%",
+        "top": "24.2713%"
       },
       "step": 7,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
@@ -167,8 +167,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "72.7707%",
-        "top": "66.4544%"
+        "left": "76.2341%",
+        "top": "57.7495%"
       },
       "step": 8,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם הרביעית. הקפיצה בין החלונות נמשכת...",
@@ -187,8 +187,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "27.5695%",
-        "top": "42.4673%"
+        "left": "62.4415%",
+        "top": "39.0702%"
       },
       "step": 9,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
@@ -207,8 +207,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "43.6685%",
-        "top": "53.6912%"
+        "left": "27.6647%",
+        "top": "57.5128%"
       },
       "step": 10,
       "text": "עוד קפיצה בין החלונות. כבר ברור שחייב להיות <span style=\"color:#f6a67e;\">פתרון טוב יותר</span><span style=\"color: rgb(246, 166, 126);\">...</span>",
@@ -228,7 +228,7 @@
       "arrow": "arrow-right",
       "textPos": {
         "left": "28.4043%",
-        "top": "33.3344%"
+        "top": "30.3609%"
       },
       "step": 11,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
@@ -247,8 +247,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "61.302%",
-        "top": "66.4544%"
+        "left": "76.7118%",
+        "top": "58.811%"
       },
       "step": 12,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם השישית. <span style=\"color:#f6a67e;\">חייבת להיות דרך חכמה יותר.</span>",
@@ -287,8 +287,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "42.5464%",
-        "top": "55.4616%"
+        "left": "28.8117%",
+        "top": "57.797%"
       },
       "step": 14,
       "text": "לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> ולחזור ל-Word. בפעם האחרונה, <span style=\"color:#f6a67e;\">סוף סוף!</span>",
@@ -340,8 +340,8 @@
       },
       "arrow": "arrow-bottom-right",
       "textPos": {
-        "left": "74.146%",
-        "top": "55.1%"
+        "left": "67.5775%",
+        "top": "58.0724%"
       },
       "step": 17,
       "text": "עכשיו נלמד את הפתרון! לחצו על <span style=\"color:#f6a67e;\">כפתור ההתחלה (Start)</span> בשורת המשימות",
@@ -420,8 +420,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "15.5976%",
-        "top": "17.3689%"
+        "left": "15.2387%",
+        "top": "31.1693%"
       },
       "step": 21,
       "text": "לחצו על המתג <span style=\"color:#f6a67e;\">לא פעיל</span> כדי להפעיל את היסטוריית הלוח"
@@ -432,8 +432,8 @@
       "image": "clipboard-22.png",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "14.3704%",
-        "top": "30.1044%"
+        "left": "16.2812%",
+        "top": "23.098%"
       },
       "step": 22,
       "text": "<div style=\"text-align:center;padding:4px 0;\"><svg width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#4ade80\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:6px;\"><path d=\"M22 11.08V12a10 10 0 11-5.93-9.14\"/><polyline points=\"22 4 12 14.01 9 11.01\"/></svg><div style=\"font-size:18px;font-weight:900;color:white;line-height:1.3;\">היסטוריית הלוח<br><span style=\"color:#4ade80;\">פעילה!</span></div><div style=\"width:40px;height:2px;background:#4ade8044;margin:10px auto;border-radius:1px;\"></div><div style=\"font-size:13px;color:#ffffffbb;line-height:1.6;\">מעכשיו כל מה שתעתיקו נשמר.<br>בואו נראה איך עובדים איתה.</div><a onclick=\"nextSlide()\" style=\"display:inline-block;margin-top:12px;background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:10px 28px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 16px rgba(246,166,126,0.4);\">&#9654; בואו נתחיל</a></div>",
@@ -452,8 +452,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "22.9019%",
-        "top": "18.9081%"
+        "left": "23.1402%",
+        "top": "25.2765%"
       },
       "step": 23,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> תאריך ההזמנה</span>",
@@ -472,8 +472,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "55.6759%",
-        "top": "18.1849%"
+        "left": "54.3622%",
+        "top": "16.4853%"
       },
       "step": 24,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
@@ -492,8 +492,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "27.2784%",
-        "top": "38.4267%"
+        "left": "63.5835%",
+        "top": "36.5158%"
       },
       "step": 25,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
@@ -525,8 +525,8 @@
       "image": "clipboard-27.png",
       "arrow": "none",
       "textPos": {
-        "left": "40.23%",
-        "top": "52.0269%"
+        "left": "21.36%",
+        "top": "52.2382%"
       },
       "step": 27,
       "text": "העתקנו <span style=\"color:#f6a67e;\">4 פריטים ברצף</span> בלי לעבור ל-Word אפילו פעם! עכשיו לחצו על <span style=\"color:#f6a67e;\">שורת המשימות</span> כדי לעבור ל-Word ולהדביק הכל.",
@@ -556,7 +556,7 @@
       },
       "step": 28,
       "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> במקלדת כדי לפתוח את <span style=\"color:#f6a67e;\">היסטוריית הלוח</span> ובחרו את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
-      "textWidth": "214px"
+      "textWidth": "228px"
     },
     {
       "index": 30,
@@ -576,7 +576,7 @@
       },
       "step": 29,
       "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">מספר ההזמנה</span> כדי להדביק אותו.",
-      "textWidth": "211px"
+      "textWidth": "238px"
     },
     {
       "index": 31,
@@ -616,7 +616,7 @@
       },
       "step": 31,
       "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">תמונת המוצר</span> כדי להדביק גם אותה.<span style=\"color:#f6a67e;\">&nbsp;</span><br><span style=\"color:#f6a67e;\">כן, גם תמונות נשמרות!</span>",
-      "textWidth": "219px"
+      "textWidth": "252px"
     },
     {
       "index": 33,
