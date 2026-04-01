@@ -93,32 +93,22 @@ function scaleBubbles() {
       var thPct = (t.offsetHeight || 150) / designH * 100;
       var gap = 1.5;
 
-      /* Get original textPos angle from box center */
+      /* Measure the exact angle AND distance from box center to bubble center.
+         Then reposition at that same angle+distance after scaling. */
       var tL = parseFloat(t.style.left) || 0;
       var tT = parseFloat(t.style.top) || 0;
       var tCX = tL + twPct / 2;
       var tCY = tT + thPct / 2;
-      var angle = Math.atan2(tCY - bCY, tCX - bCX);
+      var dx = tCX - bCX;
+      var dy = tCY - bCY;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var angle = Math.atan2(dy, dx);
 
-      /* Place bubble outside the box at the exact angle, with gap */
-      var cosA = Math.cos(angle);
-      var sinA = Math.sin(angle);
-      var boxW = bRE - bL;
-      var boxH = bBE - bT;
-      /* Distance from center to box edge in the direction of the angle */
-      var edgeDist;
-      if (Math.abs(cosA) * boxH > Math.abs(sinA) * boxW) {
-        edgeDist = (boxW / 2) / Math.abs(cosA);
-      } else {
-        edgeDist = (boxH / 2) / Math.abs(sinA);
-      }
-      /* Anchor = box edge + gap */
-      var anchorX = bCX + cosA * (edgeDist + gap);
-      var anchorY = bCY + sinA * (edgeDist + gap);
-      /* Position bubble so its nearest edge touches the anchor */
-      var newL, newT;
-      if (cosA >= 0) { newL = anchorX; } else { newL = anchorX - twPct; }
-      if (sinA >= 0) { newT = anchorY; } else { newT = anchorY - thPct; }
+      /* Place bubble center at same angle+distance from box center */
+      var newCX = bCX + Math.cos(angle) * dist;
+      var newCY = bCY + Math.sin(angle) * dist;
+      var newL = newCX - twPct / 2;
+      var newT = newCY - thPct / 2;
       /* Clamp to screen bounds */
       newL = Math.max(0.5, Math.min(newL, 99 - twPct));
       newT = Math.max(0.5, Math.min(newT, 98 - thPct));
