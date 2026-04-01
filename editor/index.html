@@ -64,7 +64,10 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="14 16 10 12 14 8"/></svg>
   </button>
   <div class="topbar-sep"></div>
-  <select id="tutorialSelect"><option value="">בחרו הדרכה...</option></select>
+  <div class="tree-dropdown" id="treeDropdown">
+    <div class="tree-selected" id="treeSelected" onclick="toggleTreeDropdown()">בחרו הדרכה... <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg></div>
+    <div class="tree-menu" id="treeMenu"></div>
+  </div>
   <a class="tb-icon open-link" id="btnOpenTutorial" href="#" target="_blank" title="פתח בחלון חדש" style="display:none;text-decoration:none;">
     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
     פתח

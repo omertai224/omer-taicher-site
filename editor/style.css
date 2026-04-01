@@ -8,11 +8,36 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   background:linear-gradient(180deg,#1e2a45,#1a2540); border-bottom:1px solid #ffffff18;
   height:40px; z-index:100;
 }
-.topbar select {
+/* ═══ Tree Dropdown ═══ */
+.tree-dropdown { position:relative; }
+.tree-selected {
   font-family:'Rubik',sans-serif; font-size:12px; border-radius:8px;
   border:1px solid #ffffff22; background:#0f1a2e; color:white;
-  padding:6px 12px; cursor:pointer;
+  padding:6px 12px; cursor:pointer; display:flex; align-items:center; gap:6px;
+  min-width:140px; user-select:none;
 }
+.tree-selected:hover { border-color:#5b8fa8; }
+.tree-menu {
+  display:none; position:absolute; top:100%; right:0; margin-top:4px;
+  background:#1a2540; border:1px solid #ffffff22; border-radius:10px;
+  padding:6px 0; min-width:200px; z-index:999;
+  box-shadow:0 8px 24px #00000066; max-height:400px; overflow-y:auto;
+}
+.tree-menu.open { display:block; }
+.tree-folder {
+  padding:8px 14px; color:#f6a67e; font-size:12px; font-weight:700;
+  cursor:pointer; display:flex; align-items:center; gap:6px; user-select:none;
+}
+.tree-folder:hover { background:#ffffff0a; }
+.tree-folder svg { transition:transform 0.2s; }
+.tree-folder.open svg { transform:rotate(90deg); }
+.tree-items { display:none; }
+.tree-items.open { display:block; }
+.tree-item {
+  padding:6px 14px 6px 32px; color:#ffffffcc; font-size:12px; cursor:pointer;
+  user-select:none;
+}
+.tree-item:hover { background:#1e5f74; color:white; }
 .tb-icon {
   display:flex; align-items:center; gap:5px;
   font-family:'Rubik',sans-serif; font-size:11px; border-radius:8px;

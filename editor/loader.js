@@ -64,9 +64,8 @@ function rememberSlide() {
 function tryRestoreLast() {
   var last = localStorage.getItem('editor_last');
   if (!last) return;
-  var sel = $('tutorialSelect');
-  if (sel) sel.value = last;
-  loadFromServer(last);
+  if (typeof selectTutorial === 'function') selectTutorial(last);
+  else loadFromServer(last);
 }
 
 /* Get image URL (server path or local blob from drag-drop) */
