@@ -78,6 +78,11 @@ function scaleBubbles() {
     var box = highlightEls.length > 0 ? highlightEls[0] : null;
     for (var i = 0; i < texts.length; i++) {
       var t = texts[i];
+      /* Measure bubble size BEFORE scaling */
+      t.style.transform = 'none';
+      var rawW = t.offsetWidth || 300;
+      var rawH = t.offsetHeight || 150;
+      /* Now apply scale */
       t.style.transform = 'scale(' + scale + ')';
       t.style.transformOrigin = 'left top';
       if (!box) continue;
@@ -89,10 +94,9 @@ function scaleBubbles() {
       var bBE = 100 - bB;
       var bCX = (bL + bRE) / 2;
       var bCY = (bT + bBE) / 2;
-      var twPct = (t.offsetWidth || 300) / designW * 100;
-      var thPct = (t.offsetHeight || 150) / designH * 100;
-      var gap = 1.5;
-
+      /* Bubble size in design-width percentages (unscaled) */
+      var twPct = rawW / designW * 100;
+      var thPct = rawH / designH * 100;
       /* Measure the exact angle AND distance from box center to bubble center.
          Then reposition at that same angle+distance after scaling. */
       var tL = parseFloat(t.style.left) || 0;
