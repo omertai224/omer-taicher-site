@@ -163,14 +163,7 @@
         "left": "15.8116%",
         "top": "32.3308%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "הערה חדשהעוד משהו שאני רוצה סתם כתבתי לך את זה בצעד הזה שאיפה שהעיגולים למטה יש את שם העץ אני לא רוצה אותו שם כי זה מפריע לי לעיגולים אפשר שזה יהיה למעלה ליד הכפתור שלה נשמר של הכפתור של השמירה ליד התאריך אפשר לעשות באיזה עץ אני נמצא עכשיו",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 11,
@@ -285,30 +278,23 @@
       "step": 17,
       "type": "view",
       "image": "Stars-17.png",
-      "text": "<br>",
+      "text": "לחצנו על <span style=\"color:#f6a67e;\">מסומן בכוכב</span> בתפריט הצד.&nbsp;<br>עכשיו רואים רק את המיילים שסימנו בכוכב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "18.3525%",
         "top": "50.9952%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "הערה חדשהפה אני רוצה שתכתוב שאנחנו לוחצים על מסומן בכוכב לראות את כל המיילים שסימנו בכוכב משהו כזה",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 18,
-      "type": "click",
-      "image": "chrome_d6YU77zCoz.png",
+      "type": "view",
+      "image": "Stars-18.png",
       "textPos": {
         "left": "19.6021%",
         "top": "48.9031%"
       },
       "step": 18,
-      "text": "הנה! רק המיילים החשובים.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">כוכב צהוב</span>&nbsp;= תקלות.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">V ירוק</span>&nbsp;= המלצות ותודות.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">סימן קריאה אדום</span>&nbsp;= תזכורות.&nbsp;<br>סדר מושלם!",
+      "text": "הנה! רק המיילים החשובים.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">כוכב צהוב</span>&nbsp;= תקלות.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">V ירוק</span>&nbsp;= המלצות ותודות.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">סימן קריאה אדום</span>&nbsp;= תזכורות.&nbsp;<br>סדר מושלם!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textWidth": "250px"
     },
     {
