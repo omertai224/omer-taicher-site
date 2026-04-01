@@ -98,26 +98,11 @@ function scaleBubbles() {
       /* Bubble size in design-width percentages (unscaled) */
       var twPct = rawW / designW * 100;
       var thPct = rawH / designH * 100;
-      /* Preserve the exact relative position of the bubble's top-left corner
-         to the box center. This is resolution-independent because both
-         textPos and box coordinates are in percentages. */
+      /* textPos from editor is already correct — just clamp to screen bounds */
       var tL = parseFloat(t.style.left) || 0;
       var tT = parseFloat(t.style.top) || 0;
-      /* The offset from box center to bubble top-left is constant */
-      var offsetX = tL - bCX;
-      var offsetY = tT - bCY;
-      /* Reapply the same offset */
-      var newL = bCX + offsetX;
-      var newT = bCY + offsetY;
-      /* Compensate for scale growth: scale enlarges from top-left,
-         so center shifts right+down. Shift back by half the growth. */
-      var growX = rawW * (scale - 1) / (2 * w) * 100;
-      var growY = rawH * (scale - 1) / (2 * h) * 100;
-      newL -= growX;
-      newT -= growY;
-      /* Clamp to screen bounds */
-      newL = Math.max(0.5, Math.min(newL, 99 - twPct));
-      newT = Math.max(0.5, Math.min(newT, 98 - thPct));
+      var newL = Math.max(0.5, Math.min(tL, 99 - twPct));
+      var newT = Math.max(0.5, Math.min(tT, 98 - thPct));
       t.style.left = newL + '%';
       t.style.top = newT + '%';
     }
