@@ -24,7 +24,7 @@ function buildPanel() {
     + '</div>'
 
     // ── Box ──
-    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> מסגרת <span class="orange-btn" onclick="addBox()" title="כתומה=לחיצה, כחולה=צפייה">+ הוסף</span> <span class="orange-btn" onclick="removeBox()" title="הסר מסגרת" style="color:#ff6b6b;border-color:#ff6b6b55;">- הסר</span></h3>'
+    + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg> מסגרת לחיצה <span class="orange-btn" onclick="addBox()" title="כתומה=לחיצה, כחולה=צפייה">+ הוסף</span> <span class="orange-btn" onclick="removeBox()" title="הסר מסגרת" style="color:#ff6b6b;border-color:#ff6b6b55;">- הסר</span></h3>'
 
     // ── Bubble ──
     + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg> בועת טקסט <span class="orange-btn" onclick="addBubble()" title="הוסף בועה">+ הוסף</span> <span class="orange-btn" onclick="removeBubble()" title="הסר בועה" style="color:#ff6b6b;border-color:#ff6b6b55;">- הסר</span></h3>'
