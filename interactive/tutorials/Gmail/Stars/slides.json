@@ -272,10 +272,10 @@
       "step": 16,
       "type": "click",
       "image": "Stars-16.png",
-      "text": "לחצנו על <span style=\"color:#f6a67e;\">מסומן בכוכב</span> בתפריט הצד.&nbsp;<br>עכשיו רואים רק את המיילים שסימנו בכוכב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "לחצנו על <span style=\"color:#f6a67e;\">מסומן בכוכב</span> בתפריט הצד.&nbsp;<br>עכשיו רואים רק את המיילים שסימנו בכוכב.",
       "textPos": {
-        "left": "36.9812%",
-        "top": "45.8975%"
+        "left": "36.5029%",
+        "top": "41.0142%"
       },
       "textWidth": "328px",
       "box": {
