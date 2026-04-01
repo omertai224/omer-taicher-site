@@ -27,8 +27,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "76.2011%",
-        "top": "54.3082%"
+        "left": "21.8601%",
+        "top": "16.0894%"
       },
       "step": 1,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
@@ -67,8 +67,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "18.2555%",
-        "top": "18.1385%"
+        "left": "19.0915%",
+        "top": "22.5971%"
       },
       "step": 3,
       "text": "לחצו על <span style=\"color:#f6a67e;\">הדבקה</span> כדי להדביק את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
@@ -87,8 +87,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "76.8306%",
-        "top": "52.8662%"
+        "left": "72.2924%",
+        "top": "53.2898%"
       },
       "step": 4,
       "text": "חזרה ל<span style=\"color:#f6a67e;\">שורת המשימות</span> כדי להחליף חלון לאמזון ולהעתיק את <span style=\"color: rgb(246, 166, 126);\">מספר ההזמנה</span>",
@@ -167,8 +167,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "76.2341%",
-        "top": "57.7495%"
+        "left": "77.1895%",
+        "top": "60.0849%"
       },
       "step": 8,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם הרביעית. הקפיצה בין החלונות נמשכת...",
@@ -187,8 +187,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "62.4415%",
-        "top": "39.0702%"
+        "left": "61.9632%",
+        "top": "38.8568%"
       },
       "step": 9,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
@@ -247,8 +247,8 @@
       },
       "arrow": "arrow-bottom-left",
       "textPos": {
-        "left": "76.7118%",
-        "top": "58.811%"
+        "left": "76.8312%",
+        "top": "57.9607%"
       },
       "step": 12,
       "text": "<span style=\"color:#f6a67e;\">שורת המשימות</span> בפעם השישית. <span style=\"color:#f6a67e;\">חייבת להיות דרך חכמה יותר.</span>",
@@ -545,9 +545,9 @@
       "boxClass": "92",
       "box": {
         "top": "73.343%",
-        "left": "29.0256%",
+        "left": "27.8313%",
         "right": "45.4819%",
-        "bottom": "12.0588%"
+        "bottom": "12.4834%"
       },
       "arrow": "arrow-right",
       "textPos": {
@@ -565,9 +565,9 @@
       "boxClass": "95",
       "box": {
         "top": "56.7469%",
-        "left": "30.6269%",
+        "left": "28.4772%",
         "right": "51.6434%",
-        "bottom": "27.5933%"
+        "bottom": "26.1071%"
       },
       "arrow": "arrow-right",
       "textPos": {
@@ -585,9 +585,9 @@
       "boxClass": "98",
       "box": {
         "top": "58.7746%",
-        "left": "26.9949%",
+        "left": "25.5618%",
         "right": "52.4091%",
-        "bottom": "26.4149%"
+        "bottom": "25.5656%"
       },
       "arrow": "arrow-right",
       "textPos": {
