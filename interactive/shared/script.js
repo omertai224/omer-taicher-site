@@ -82,8 +82,9 @@ function scaleBubbles() {
       t.style.transform = 'none';
       var rawW = t.offsetWidth || 300;
       var rawH = t.offsetHeight || 150;
-      /* No scale — bubble appears at natural CSS size, same as editor */
-      t.style.transform = 'none';
+      /* Apply scale so bubble is proportional to image size */
+      t.style.transform = 'scale(' + scale + ')';
+      t.style.transformOrigin = 'left top';
       if (!box) continue;
       var bL = parseFloat(box.style.left) || 0;
       var bR = parseFloat(box.style.right) || 0;
