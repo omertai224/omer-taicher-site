@@ -105,17 +105,16 @@
       "image": "Schedule-05.png",
       "text": "תוזמן! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span>. המייל יישלח מחר ב-8:00. התחרטתם? לחצו <span style=\"color:#f6a67e;\">ביטול</span>.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "50.6768%",
-        "top": "39.1499%"
+        "left": "51.035%",
+        "top": "31.5065%"
       },
       "textWidth": "354px",
-      "notes": [
-        {
-          "text": "בסרטון לדבר על המסגרת הכתומה הלא לחיצה בשקפי הצפייה",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "box": {
+        "top": "78.4077%",
+        "left": "57.2293%",
+        "right": "3.54302%",
+        "bottom": "6.47556%"
+      }
     },
     {
       "index": 8,
@@ -196,10 +195,16 @@
       "image": "Schedule-07.png",
       "text": "יופי! <span style=\"color:#f6a67e;\">השליחה תתבצע ליום ראשון, 12 באפריל, ב-9:00</span>. הלקוח יקבל את המייל אחרי פסח, ביום עבודה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "46.2094%",
-        "top": "39.6364%"
+        "left": "44.7757%",
+        "top": "32.6289%"
       },
-      "textWidth": "395px"
+      "textWidth": "395px",
+      "box": {
+        "top": "79.4693%",
+        "left": "51.3774%",
+        "right": "4.85668%",
+        "bottom": "7.32484%"
+      }
     },
     {
       "index": 13,
@@ -298,15 +303,15 @@
       "image": "Schedule-14.png",
       "text": "מוכן! התווית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> עברה לרשימת התוויות הכללית. מעכשיו תמיד תראו אותה בתפריט הצד.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "25.836%",
-        "top": "40.019%"
+        "left": "19.5064%",
+        "top": "27.0667%"
       },
       "textWidth": "400px",
       "box": {
-        "top": "80.9948%",
-        "left": "55.9201%",
-        "right": "6.47064%",
-        "bottom": "8.15604%"
+        "top": "79.9333%",
+        "left": "55.5618%",
+        "right": "4.08211%",
+        "bottom": "7.30678%"
       }
     },
     {
