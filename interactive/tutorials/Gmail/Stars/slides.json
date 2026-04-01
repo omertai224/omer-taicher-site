@@ -22,10 +22,16 @@
       "image": "Stars-01.png",
       "text": "סוף יום עבודה.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">9 הודעות חדשות.</span> חלקן דחופות, חלקן יכולות לחכות. איך יודעים מה קודם?<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "9.94974%",
-        "top": "42.4286%"
+        "left": "7.32111%",
+        "top": "35.2099%"
       },
-      "textWidth": "310px"
+      "textWidth": "310px",
+      "box": {
+        "top": "25.3291%",
+        "left": "53.1688%",
+        "right": "25.9952%",
+        "bottom": "20.7007%"
+      }
     },
     {
       "index": 3,
@@ -124,8 +130,8 @@
       "image": "Stars-07.png",
       "text": "<span style=\"color: rgb(246, 166, 126);\">יפה. שלושה כוכבים צהובים.&nbsp;<br></span>אבל מה אם רוצים להבדיל בין תקלה להמלצה?<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "22.1325%",
-        "top": "29.4774%"
+        "left": "15.8023%",
+        "top": "33.0867%"
       },
       "textWidth": "346px"
     },
@@ -280,10 +286,10 @@
       "image": "Stars-17.png",
       "text": "לחצנו על <span style=\"color:#f6a67e;\">מסומן בכוכב</span> בתפריט הצד.&nbsp;<br>עכשיו רואים רק את המיילים שסימנו בכוכב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "41.2818%",
-        "top": "39.1045%"
+        "left": "36.0264%",
+        "top": "39.7404%"
       },
-      "textWidth": "307px",
+      "textWidth": "328px",
       "box": {
         "top": "27.0276%",
         "left": "75.1433%",
@@ -296,12 +302,12 @@
       "type": "view",
       "image": "Stars-18.png",
       "textPos": {
-        "left": "23.3038%",
-        "top": "20.0283%"
+        "left": "21.9901%",
+        "top": "23.4242%"
       },
       "step": 18,
       "text": "הנה! רק המיילים החשובים.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">כוכב צהוב</span>&nbsp;= תקלות.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">V ירוק</span>&nbsp;= המלצות ותודות.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">סימן קריאה אדום</span>&nbsp;= תזכורות.&nbsp;<br>סדר מושלם!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
-      "textWidth": "250px"
+      "textWidth": "305px"
     },
     {
       "index": 19,
