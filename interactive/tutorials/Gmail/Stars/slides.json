@@ -27,10 +27,10 @@
       },
       "textWidth": "310px",
       "box": {
-        "top": "25.3291%",
-        "left": "53.1688%",
-        "right": "25.9952%",
-        "bottom": "20.7007%"
+        "top": "30.4246%",
+        "left": "46.9586%",
+        "right": "29.2197%",
+        "bottom": "9.44809%"
       }
     },
     {
@@ -41,13 +41,13 @@
       "text": "רונית כתבה שהמדפסת לא עובדת. נכנס לראות מה קורה. לחצו על <span style=\"color:#f6a67e;\">בעיה עם המדפסת</span>.",
       "box": {
         "top": "70.5732%",
-        "left": "5.72447%",
-        "right": "24.594%",
-        "bottom": "21.741%"
+        "left": "5.48562%",
+        "right": "29.4905%",
+        "bottom": "22.3779%"
       },
       "textPos": {
-        "left": "60.828%",
-        "top": "34.9998%"
+        "left": "58.5583%",
+        "top": "32.452%"
       },
       "textWidth": "280px"
     },
@@ -56,16 +56,16 @@
       "step": 4,
       "type": "click",
       "image": "Stars-03.png",
-      "text": "קראנו את המייל. זה דחוף, היא צריכה להדפיס חוזה. לחצו על <span style=\"color:#f6a67e;\">הכוכב</span> כדי לסמן.",
+      "text": "קראנו את המייל.&nbsp;<br>זה דחוף, היא צריכה להדפיס חוזה.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">הכוכב</span> כדי לסמן.",
       "box": {
-        "top": "25.3503%",
-        "left": "14.2038%",
-        "right": "80.2468%",
-        "bottom": "64.4162%"
+        "top": "29.8089%",
+        "left": "17.0701%",
+        "right": "77.3805%",
+        "bottom": "59.9576%"
       },
       "textPos": {
-        "left": "21.7749%",
-        "top": "32.8766%"
+        "left": "23.8045%",
+        "top": "35.8479%"
       },
       "textWidth": "280px"
     },
@@ -74,34 +74,34 @@
       "step": 5,
       "type": "click",
       "image": "Stars-04.png",
-      "text": "הכוכב דלוק! עכשיו נחזור לתיבה. לחצו על <span style=\"color:#f6a67e;\">חזרה</span>.",
+      "text": "הכוכב דלוק!&nbsp;<br>עכשיו נחזור לתיבה.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">חזרה</span>.",
       "box": {
-        "top": "11.7622%",
-        "left": "69.4984%",
-        "right": "25.0717%",
-        "bottom": "78.0043%"
+        "top": "13.8853%",
+        "left": "65.5573%",
+        "right": "29.0128%",
+        "bottom": "75.8812%"
       },
       "textPos": {
-        "left": "35.0318%",
-        "top": "9.73439%"
+        "left": "44.2265%",
+        "top": "26.0826%"
       },
-      "textWidth": "280px"
+      "textWidth": "192px"
     },
     {
       "index": 6,
       "step": 6,
       "type": "click",
       "image": "Stars-05.png",
-      "text": "שרה לא מצליחה להיכנס לפייסבוק. גם זה דחוף. לחצו על <span style=\"color:#f6a67e;\">הכוכב</span> שלידה.",
+      "text": "שרה לא מצליחה להיכנס לפייסבוק.&nbsp;<br>גם זה דחוף.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">הכוכב</span> שלידה.",
       "box": {
-        "top": "54.2251%",
-        "left": "67.8264%",
-        "right": "27.1019%",
-        "bottom": "37.4522%"
+        "top": "63.9916%",
+        "left": "63.0493%",
+        "right": "31.879%",
+        "bottom": "27.6857%"
       },
       "textPos": {
-        "left": "32.1656%",
-        "top": "61.9637%"
+        "left": "29.2975%",
+        "top": "29.6919%"
       },
       "textWidth": "280px"
     },
@@ -110,16 +110,16 @@
       "step": 7,
       "type": "click",
       "image": "Stars-06.png",
-      "text": "גם דני עם מחשב איטי. עוד <span style=\"color:#f6a67e;\">כוכב</span>. שלוש תקלות מסומנות!",
+      "text": "גם דני עם מחשב איטי.&nbsp;<br>עוד <span style=\"color:#f6a67e;\">כוכב</span>.&nbsp;<br>שלוש תקלות מסומנות!",
       "box": {
-        "top": "37.8769%",
-        "left": "67.707%",
-        "right": "26.9825%",
-        "bottom": "54.6496%"
+        "top": "44.8833%",
+        "left": "63.0494%",
+        "right": "31.6401%",
+        "bottom": "47.6432%"
       },
       "textPos": {
-        "left": "32.7627%",
-        "top": "46.0401%"
+        "left": "28.2239%",
+        "top": "52.195%"
       },
       "textWidth": "280px"
     },
@@ -130,8 +130,8 @@
       "image": "Stars-07.png",
       "text": "<span style=\"color: rgb(246, 166, 126);\">יפה. שלושה כוכבים צהובים.&nbsp;<br></span>אבל מה אם רוצים להבדיל בין תקלה להמלצה?<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "15.8023%",
-        "top": "33.0867%"
+        "left": "11.1446%",
+        "top": "40.092%"
       },
       "textWidth": "346px"
     },
@@ -140,16 +140,16 @@
       "step": 9,
       "type": "click",
       "image": "Stars-08.png",
-      "text": "נכנס להגדרות. לחצו על <span style=\"color:#f6a67e;\">גלגל השיניים</span> למעלה.",
+      "text": "נכנס להגדרות.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">גלגל השיניים</span> למעלה.",
       "box": {
-        "top": "4.33121%",
-        "left": "19.3392%",
-        "right": "74.7531%",
-        "bottom": "87.7707%"
+        "top": "5.81741%",
+        "left": "22.5637%",
+        "right": "71.5286%",
+        "bottom": "86.2845%"
       },
       "textPos": {
-        "left": "19.1481%",
-        "top": "18.6516%"
+        "left": "31.8067%",
+        "top": "21.624%"
       },
       "textWidth": "280px"
     },
@@ -160,14 +160,14 @@
       "image": "Stars-09.png",
       "text": "לחצו על <span style=\"color:#f6a67e;\">לדף ההגדרות</span> כדי להגיע להגדרות המלאות.",
       "box": {
-        "top": "17.9193%",
-        "left": "4.67565%",
-        "right": "71.4093%",
-        "bottom": "73.2511%"
+        "top": "22.1656%",
+        "left": "6.46705%",
+        "right": "66.7517%",
+        "bottom": "70.0664%"
       },
       "textPos": {
-        "left": "15.8116%",
-        "top": "32.3308%"
+        "left": "25.4845%",
+        "top": "34.0289%"
       },
       "textWidth": "280px"
     },
@@ -178,14 +178,14 @@
       "image": "Stars-10.png",
       "text": "גוללים למטה עד <span style=\"color:#f6a67e;\">כוכבים</span>.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">4 כוכבים</span> כדי לקבל צבעים.",
       "box": {
-        "top": "42.8897%",
-        "left": "39.2776%",
-        "right": "53.167%",
-        "bottom": "51.9213%"
+        "top": "54.3547%",
+        "left": "34.5005%",
+        "right": "57.9441%",
+        "bottom": "40.4563%"
       },
       "textPos": {
-        "left": "46.5819%",
-        "top": "51.8556%"
+        "left": "49.8059%",
+        "top": "52.9171%"
       },
       "textWidth": "280px"
     },
@@ -196,14 +196,14 @@
       "image": "Stars-11.png",
       "text": "<span style=\"color: rgb(246, 166, 126);\">נהדר. יש לנו 4 כוכבים.<br></span>רואים את כל הצבעים שזמינים לנו.&nbsp;<br>עכשיו יורדים למטה ושומרים שינויים.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "box": {
-        "top": "38.5552%",
-        "left": "32.3242%",
-        "right": "47.6758%",
-        "bottom": "41.4448%"
+        "top": "51.0817%",
+        "left": "22.4118%",
+        "right": "51.6169%",
+        "bottom": "28.069%"
       },
       "textPos": {
-        "left": "55.0501%",
-        "top": "29.8655%"
+        "left": "51.825%",
+        "top": "31.3506%"
       },
       "textWidth": "309px"
     },
@@ -214,10 +214,10 @@
       "image": "Stars-12.png",
       "text": "חשוב! כל שינוי בהגדרות ג'ימייל צריך שמירה. גללו למטה ולחצו על <span style=\"color:#f6a67e;\">שמירת שינויים</span>.",
       "box": {
-        "top": "72.1149%",
-        "left": "37.0871%",
-        "right": "52.4255%",
-        "bottom": "19.8393%"
+        "top": "65.7455%",
+        "left": "29.3243%",
+        "right": "58.5163%",
+        "bottom": "26.6333%"
       },
       "textPos": {
         "left": "49.2729%",
@@ -230,34 +230,34 @@
       "step": 14,
       "type": "click",
       "image": "Stars-13.png",
-      "text": "חזרנו לתיבה!&nbsp;<br>שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>. זה דבר חיובי.&nbsp;<br>לחצו על הכוכב <span style=\"color:#f6a67e;\">V ירוק</span>.",
+      "text": "חזרנו לתיבה!&nbsp;<br>שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>.&nbsp;<br>זה דבר חיובי.&nbsp;<br>לחצו על הכוכב <span style=\"color:#f6a67e;\">V ירוק</span>.",
       "box": {
-        "top": "65.4777%",
-        "left": "67.9459%",
-        "right": "27.699%",
-        "bottom": "27.4735%"
+        "top": "76.5181%",
+        "left": "63.4077%",
+        "right": "32.2372%",
+        "bottom": "16.4331%"
       },
       "textPos": {
-        "left": "32.285%",
-        "top": "49.0125%"
+        "left": "25.3564%",
+        "top": "36.4838%"
       },
-      "textWidth": "280px"
+      "textWidth": "301px"
     },
     {
       "index": 15,
       "step": 15,
       "type": "click",
       "image": "Stars-14.png",
-      "text": "גם רונית <span style=\"color:#f6a67e;\">ממליצה עליך לחברה שלה</span>. עוד דבר חיובי! עוד <span style=\"color:#f6a67e;\">V ירוק</span>.",
+      "text": "גם רונית <span style=\"color:#f6a67e;\">ממליצה עליך לחברה שלה</span>.&nbsp;<br>עוד דבר חיובי!&nbsp;<br>עוד <span style=\"color:#f6a67e;\">V ירוק</span>.",
       "box": {
-        "top": "43.397%",
-        "left": "67.8265%",
-        "right": "27.5796%",
-        "bottom": "49.1295%"
+        "top": "50.6157%",
+        "left": "63.4077%",
+        "right": "31.9984%",
+        "bottom": "41.9108%"
       },
       "textPos": {
-        "left": "32.0456%",
-        "top": "40.0953%"
+        "left": "29.4175%",
+        "top": "58.9902%"
       },
       "textWidth": "280px"
     },
@@ -274,8 +274,8 @@
         "bottom": "33.2798%"
       },
       "textPos": {
-        "left": "26.1619%",
-        "top": "35.8015%"
+        "left": "22.9368%",
+        "top": "7.56369%"
       },
       "textWidth": "280px"
     },
