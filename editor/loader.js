@@ -3,8 +3,18 @@
 /* Base path for tutorials on the server */
 var TUTORIALS_BASE = '/interactive/tutorials/';
 
-/* Known tutorials for the dropdown */
-var KNOWN_TUTORIALS = ['Clipboard', 'Everything', 'Vibe', 'Gmail/Schedule', 'Gmail/Stars'];
+/* Known tutorials organized by category */
+var TUTORIAL_CATEGORIES = [
+  { label: 'Gmail', items: ['Gmail/Schedule', 'Gmail/Stars'] },
+  { label: 'Windows', items: ['Clipboard', 'Everything'] },
+  { label: 'Applications', items: ['Vibe'] }
+];
+
+/* Flat list for backwards compatibility */
+var KNOWN_TUTORIALS = [];
+TUTORIAL_CATEGORIES.forEach(function(cat) {
+  cat.items.forEach(function(t) { KNOWN_TUTORIALS.push(t); });
+});
 
 /* Fetch tutorial from server */
 function loadFromServer(name) {
