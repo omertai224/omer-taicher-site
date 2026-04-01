@@ -575,15 +575,8 @@
         "top": "45.5281%"
       },
       "step": 29,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> מהיסטוריית הלוח",
-      "textWidth": "210px",
-      "notes": [
-        {
-          "text": "הערה חדשהפה צריך להיות כנה איתם צריך להגיד להם שוב שילחצו על ווינדוס פלוס סביב המקלדת כי אתה לא יכול להעתיק כמה אחד אחרי השני אתה מעתיק ואתה עושה שוב קונטרול v ואתה מעתיק ואתה עושה שוב קונטרול v ואתה מעתיק ואתה עושה שוב קונטרול",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">מספר ההזמנה</span> כדי להדביק אותו.",
+      "textWidth": "210px"
     },
     {
       "index": 31,
@@ -602,15 +595,8 @@
         "top": "47.1282%"
       },
       "step": 30,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> מהיסטוריית הלוח",
-      "textWidth": "169px",
-      "notes": [
-        {
-          "text": "הערה חדשהגם פה צריך להגיד להם שיעשו שוב קונטרול v כי זה חשוב כי הם צריכים לדעת שהם לא יכולים כל פעם ללחוץ ככה הם צריכים לעשות קונטרול v",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">שם המוצר</span> כדי להדביק אותו.",
+      "textWidth": "169px"
     },
     {
       "index": 32,
@@ -629,15 +615,8 @@
         "top": "33.2537%"
       },
       "step": 31,
-      "text": "לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> מהיסטוריית הלוח כדי להדביק גם אותה.<span style=\"color: rgb(246, 166, 126);\"> כן, גם תמונות נשמרות!</span>",
-      "textWidth": "189px",
-      "notes": [
-        {
-          "text": "הערה חדשהטעיתי ווינדוס פלוס התבלבלתי צריך לעשות בכל הארבעה של השקפים האלה מ-28 עד 31 ווינדוס פלוס להגיד להם שבכל השקפים צריכים לעשות ווינדוס פלוס וי זה חשוב",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #222;box-shadow:0 2px 4px rgba(0,0,0,0.5);margin:0 4px;vertical-align:middle;font-family:Rubik,sans-serif;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" style=\"vertical-align:middle;margin-left:2px;\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><line x1=\"3\" y1=\"12\" x2=\"21\" y2=\"12\"/><line x1=\"12\" y1=\"3\" x2=\"12\" y2=\"21\"/></svg> + V</span> כדי לפתוח את היסטוריית הלוח. לחצו על <span style=\"color:#f6a67e;\">תמונת המוצר</span> כדי להדביק גם אותה.<span style=\"color:#f6a67e;\"> כן, גם תמונות נשמרות!</span>",
+      "textWidth": "189px"
     },
     {
       "index": 33,
