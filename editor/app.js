@@ -97,48 +97,74 @@ window.addEventListener('DOMContentLoaded', function() {
 
   buildPanel();
 
-  // Dropdown change handler
-  $('tutorialSelect').addEventListener('change', function() {
-    if (!this.value) return;
-    loadFromServer(this.value);
-  });
-
-  // Populate dropdown, support URL param
+  // Populate tree dropdown
   populateDropdown();
 
   var p = new URLSearchParams(window.location.search);
   var t = p.get('t');
   if (t) {
     addToDropdown(t);
-    $('tutorialSelect').value = t;
-    loadFromServer(t);
+    selectTutorial(t);
   } else {
-    // Auto-load last tutorial
     tryRestoreLast();
   }
 });
 
-// Add tutorials to dropdown with category groups
+// Build tree dropdown
 function populateDropdown() {
-  var sel = $('tutorialSelect');
-  while (sel.options.length > 1) sel.remove(1);
+  var menu = $('treeMenu');
+  menu.innerHTML = '';
   TUTORIAL_CATEGORIES.forEach(function(cat) {
-    var group = document.createElement('optgroup');
-    group.label = cat.label;
+    var folder = document.createElement('div');
+    folder.className = 'tree-folder';
+    folder.innerHTML = '<svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="9 6 15 12 9 18"/></svg> ' + cat.label;
+    var items = document.createElement('div');
+    items.className = 'tree-items';
     cat.items.forEach(function(name) {
-      var o = document.createElement('option');
-      o.value = name;
-      o.textContent = name.split('/').pop(); // Show only tutorial name, not path
-      group.appendChild(o);
+      var item = document.createElement('div');
+      item.className = 'tree-item';
+      item.textContent = name.split('/').pop();
+      item.onclick = function(e) {
+        e.stopPropagation();
+        selectTutorial(name);
+      };
+      items.appendChild(item);
     });
-    sel.appendChild(group);
+    folder.onclick = function(e) {
+      e.stopPropagation();
+      folder.classList.toggle('open');
+      items.classList.toggle('open');
+    };
+    menu.appendChild(folder);
+    menu.appendChild(items);
   });
 }
 
+function toggleTreeDropdown() {
+  $('treeMenu').classList.toggle('open');
+}
+
+function selectTutorial(name) {
+  $('treeSelected').innerHTML = name.split('/').pop() + ' <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>';
+  $('treeMenu').classList.remove('open');
+  loadFromServer(name);
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.tree-dropdown')) {
+    $('treeMenu').classList.remove('open');
+  }
+});
+
 function addToDropdown(name) {
-  var sel = $('tutorialSelect');
-  if (sel.querySelector('option[value="' + name + '"]')) return;
-  var o = document.createElement('option');
-  o.value = name; o.textContent = name;
-  sel.appendChild(o);
+  // Check if already exists in categories
+  var exists = false;
+  TUTORIAL_CATEGORIES.forEach(function(cat) {
+    if (cat.items.indexOf(name) > -1) exists = true;
+  });
+  if (!exists) {
+    TUTORIAL_CATEGORIES.push({ label: name, items: [name] });
+    populateDropdown();
+  }
 }
