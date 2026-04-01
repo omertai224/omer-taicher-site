@@ -187,8 +187,8 @@
       },
       "arrow": "arrow-left",
       "textPos": {
-        "left": "61.7262%",
-        "top": "47.5639%"
+        "left": "27.5695%",
+        "top": "42.4673%"
       },
       "step": 9,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
@@ -549,14 +549,14 @@
         "right": "45.4819%",
         "bottom": "12.4835%"
       },
-      "arrow": "arrow-left",
+      "arrow": "arrow-right",
       "textPos": {
         "left": "3%",
         "top": "51.505%"
       },
       "step": 28,
       "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> במקלדת כדי לפתוח את <span style=\"color:#f6a67e;\">היסטוריית הלוח</span> ובחרו את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
-      "textWidth": "243px"
+      "textWidth": "200px"
     },
     {
       "index": 30,
@@ -569,14 +569,14 @@
         "right": "51.2851%",
         "bottom": "26.5317%"
       },
-      "arrow": "arrow-left",
+      "arrow": "arrow-right",
       "textPos": {
         "left": "3%",
         "top": "45.5281%"
       },
       "step": 29,
       "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">מספר ההזמנה</span> כדי להדביק אותו.",
-      "textWidth": "239px"
+      "textWidth": "200px"
     },
     {
       "index": 31,
@@ -589,14 +589,14 @@
         "right": "51.0953%",
         "bottom": "25.141%"
       },
-      "arrow": "arrow-left",
+      "arrow": "arrow-right",
       "textPos": {
         "left": "3%",
         "top": "47.1282%"
       },
       "step": 30,
       "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">שם המוצר</span> כדי להדביק אותו.",
-      "textWidth": "216px"
+      "textWidth": "200px"
     },
     {
       "index": 32,
@@ -609,14 +609,14 @@
         "right": "45.6017%",
         "bottom": "27.9755%"
       },
-      "arrow": "arrow-left",
+      "arrow": "arrow-right",
       "textPos": {
         "left": "3%",
         "top": "33.2537%"
       },
       "step": 31,
       "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">תמונת המוצר</span> כדי להדביק גם אותה.<span style=\"color:#f6a67e;\"> כן, גם תמונות נשמרות!</span>",
-      "textWidth": "260px"
+      "textWidth": "200px"
     },
     {
       "index": 33,
