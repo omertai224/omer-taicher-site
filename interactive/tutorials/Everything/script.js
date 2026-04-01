@@ -83,9 +83,9 @@ function buildSlides(slides, totalSteps) {
           html += '<div style="top:' + s.box.top + ';left:' + s.box.left + ';right:' + s.box.right + ';bottom:' + s.box.bottom
             + ';position:absolute;border:3px solid #f6a67e;border-radius:4px;pointer-events:none;opacity:0.8;"></div>';
         } else {
-          html += '<div class="box" style="'
+          html += '<div class="box view-highlight" style="'
             + 'top:' + s.box.top + ';left:' + s.box.left + ';right:' + s.box.right + ';bottom:' + s.box.bottom
-            + ';pointer-events:none;animation:none;"></div>';
+            + ';"></div>';
         }
       }
       var ac = s.arrow && s.arrow !== 'none' ? ' ' + s.arrow : '';

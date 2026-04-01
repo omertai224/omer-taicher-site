@@ -48,6 +48,7 @@ function renderBox(slide) {
   box.style.left = slide.box.left;
   box.style.right = slide.box.right;
   box.style.bottom = slide.box.bottom;
+  if (slide.type === 'view') { box.classList.add('view-box'); } else { box.classList.remove('view-box'); }
 }
 
 function renderBubble(slide) {

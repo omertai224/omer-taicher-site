@@ -44,9 +44,9 @@ function buildSlides(slides, totalSteps) {
       html += '<div class="mySlides fade"><div class="image"><div class="image-center">'
         + '<img src="./images/' + s.image + '" style="max-height:calc(100vh - 80px);width:auto;max-width:100%;">';
       if (s.box) {
-        html += '<div class="box" style="'
+        html += '<div class="box view-highlight" style="'
           + 'top:' + s.box.top + ';left:' + s.box.left + ';right:' + s.box.right + ';bottom:' + s.box.bottom
-          + ';pointer-events:none;animation:none;"></div>';
+          + ';"></div>';
       }
       var ac = s.arrow && s.arrow !== 'none' ? ' ' + s.arrow : '';
       var ps = buildTextPos(s.textPos);
