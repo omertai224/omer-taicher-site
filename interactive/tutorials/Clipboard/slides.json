@@ -492,8 +492,8 @@
       },
       "arrow": "arrow-right",
       "textPos": {
-        "left": "63.7042%",
-        "top": "36.3046%"
+        "left": "27.2784%",
+        "top": "38.4267%"
       },
       "step": 25,
       "text": "לחצו על <span style=\"color:#f6a67e;\">העתקה</span> כדי להעתיק את<span style=\"color: rgb(246, 166, 126);\"> שם המוצר</span>",
@@ -549,9 +549,9 @@
         "right": "45.4819%",
         "bottom": "12.4835%"
       },
-      "arrow": "arrow-right",
+      "arrow": "arrow-left",
       "textPos": {
-        "left": "0%",
+        "left": "3%",
         "top": "51.505%"
       },
       "step": 28,
@@ -569,9 +569,9 @@
         "right": "51.2851%",
         "bottom": "26.5317%"
       },
-      "arrow": "arrow-right",
+      "arrow": "arrow-left",
       "textPos": {
-        "left": "0%",
+        "left": "3%",
         "top": "45.5281%"
       },
       "step": 29,
@@ -589,9 +589,9 @@
         "right": "51.0953%",
         "bottom": "25.141%"
       },
-      "arrow": "arrow-right",
+      "arrow": "arrow-left",
       "textPos": {
-        "left": "0%",
+        "left": "3%",
         "top": "47.1282%"
       },
       "step": 30,
@@ -609,9 +609,9 @@
         "right": "45.6017%",
         "bottom": "27.9755%"
       },
-      "arrow": "arrow-right",
+      "arrow": "arrow-left",
       "textPos": {
-        "left": "0%",
+        "left": "3%",
         "top": "33.2537%"
       },
       "step": 31,
