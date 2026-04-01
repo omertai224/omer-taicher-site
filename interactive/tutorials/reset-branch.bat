@@ -2,7 +2,7 @@
 :: איפוס בראנצ' העבודה - מאפס את הבראנצ' שיהיה זהה ל-main
 :: להריץ מתיקיית הפרויקט (omer-taicher-site)
 
-cd /d D:\omer-taicher-site
+cd /d "%USERPROFILE%\Documents\GitHub\omer-taicher-site"
 
 echo.
 echo [*] עובר ל-main ומעדכן...
