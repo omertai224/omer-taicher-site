@@ -8,7 +8,7 @@ var slidesData = null;
 
 /* Design width: container width (px) when textPos was calibrated.
    Used by shared/script.js scaleBubbles() to keep bubbles proportional. */
-window.bubbleDesignWidth = 823;
+window.bubbleDesignWidth = 1280;
 
 /* slideMap: special slides (0-based) — finish set dynamically */
 var slideMap = {
