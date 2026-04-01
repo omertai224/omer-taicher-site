@@ -104,7 +104,7 @@ window.addEventListener('DOMContentLoaded', function() {
   });
 
   // Populate dropdown, support URL param
-  populateDropdown(KNOWN_TUTORIALS);
+  populateDropdown();
 
   var p = new URLSearchParams(window.location.search);
   var t = p.get('t');
@@ -118,12 +118,21 @@ window.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Add tutorials to dropdown
-function populateDropdown(names) {
+// Add tutorials to dropdown with category groups
+function populateDropdown() {
   var sel = $('tutorialSelect');
-  // Clear existing options except the first placeholder
   while (sel.options.length > 1) sel.remove(1);
-  names.forEach(function(name) { addToDropdown(name); });
+  TUTORIAL_CATEGORIES.forEach(function(cat) {
+    var group = document.createElement('optgroup');
+    group.label = cat.label;
+    cat.items.forEach(function(name) {
+      var o = document.createElement('option');
+      o.value = name;
+      o.textContent = name.split('/').pop(); // Show only tutorial name, not path
+      group.appendChild(o);
+    });
+    sel.appendChild(group);
+  });
 }
 
 function addToDropdown(name) {
