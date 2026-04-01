@@ -202,7 +202,7 @@ function showBranchBadge() {
   if (existing) existing.remove();
   var badge = document.createElement('div');
   badge.id = 'branch-badge';
-  badge.style.cssText = 'position:fixed;bottom:6px;left:6px;z-index:9000;background:#1a2540ee;border:1px solid #ffffff22;border-radius:8px;padding:4px 10px;font-family:Rubik,sans-serif;font-size:11px;color:#ffffffaa;cursor:pointer;display:flex;align-items:center;gap:4px;';
+  badge.style.cssText = 'position:fixed;top:6px;left:6px;z-index:9000;background:#1a2540ee;border:1px solid #ffffff22;border-radius:8px;padding:4px 10px;font-family:Rubik,sans-serif;font-size:11px;color:#ffffffaa;cursor:pointer;display:flex;align-items:center;gap:4px;';
   badge.title = 'לחצו לשנות בראנצ\'';
   badge.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2.5"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 009 9"/></svg> <span style="color:#f6a67e;font-weight:700;direction:ltr;">' + GH.branch + '</span>';
   badge.onclick = changeBranch;
