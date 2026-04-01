@@ -206,7 +206,14 @@
         "bottom": "91.0357%"
       },
       "highlightType": "static",
-      "textWidth": "333px"
+      "textWidth": "333px",
+      "notes": [
+        {
+          "text": "הערה חדשהבשקף הזה בתצוגה החיה של ההדרכה אין מסגרת כחולה",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 14,
