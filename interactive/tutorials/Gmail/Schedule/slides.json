@@ -5,12 +5,6 @@
   "slides": [
     {
       "index": 0,
-      "type": "special",
-      "specialType": "howto",
-      "html": "<style>.howto-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e,#1a2540);text-align:center;padding:40px 20px;}.howto-title{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:20px;}.howto-desc{font-size:0.95rem;color:#ffffffaa;line-height:2;max-width:460px;margin-bottom:30px;}.howto-btn{background:linear-gradient(135deg,#1a2540,#3d5a80);color:white;border:2px solid white;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 12px rgba(26,37,64,0.5);}</style><div class=\"howto-wrap\"><svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"margin-bottom:16px;\"><polygon points=\"5 3 19 12 5 21 5 3\"/></svg><div class=\"howto-title\">איך עובדים עם ההדרכה</div><div class=\"howto-desc\">בכל שקף תראו תמונה אמיתית מהמחשב.<br>לחצו על <span style=\"color:#f6a67e;font-weight:700;\">המסגרת הכתומה</span> כדי להתקדם.<br>בדיוק כמו שהייתם עושים במחשב שלכם.</div><button class=\"howto-btn\" onclick=\"nextSlide()\">הבנתי, קדימה</button></div>"
-    },
-    {
-      "index": 1,
       "step": 1,
       "type": "click",
       "image": "Schedule-16.png",
@@ -28,7 +22,7 @@
       "textWidth": "260px"
     },
     {
-      "index": 2,
+      "index": 1,
       "step": 2,
       "type": "view",
       "image": "Schedule-15.png",
@@ -40,7 +34,7 @@
       "textWidth": "296px"
     },
     {
-      "index": 3,
+      "index": 2,
       "step": 3,
       "type": "click",
       "image": "Schedule-04.png",
@@ -58,7 +52,7 @@
       "textWidth": "260px"
     },
     {
-      "index": 4,
+      "index": 3,
       "step": 4,
       "type": "click",
       "image": "Schedule-02.png",
@@ -76,7 +70,7 @@
       "textWidth": "280px"
     },
     {
-      "index": 5,
+      "index": 4,
       "step": 5,
       "type": "click",
       "image": "Schedule-13.png",
@@ -94,7 +88,7 @@
       "textWidth": "260px"
     },
     {
-      "index": 6,
+      "index": 5,
       "step": 6,
       "type": "view",
       "image": "Schedule-05.png",
@@ -112,7 +106,7 @@
       }
     },
     {
-      "index": 7,
+      "index": 6,
       "step": 7,
       "type": "click",
       "image": "Schedule-11.png",
@@ -130,7 +124,7 @@
       "textWidth": "260px"
     },
     {
-      "index": 8,
+      "index": 7,
       "step": 8,
       "type": "click",
       "image": "Schedule-06.png",
@@ -148,7 +142,7 @@
       "textWidth": "260px"
     },
     {
-      "index": 9,
+      "index": 8,
       "step": 9,
       "type": "click",
       "image": "Schedule-08.png",
@@ -166,7 +160,7 @@
       "textWidth": "260px"
     },
     {
-      "index": 10,
+      "index": 9,
       "step": 10,
       "type": "click",
       "image": "Schedule-12.png",
@@ -184,7 +178,7 @@
       "textWidth": "192px"
     },
     {
-      "index": 11,
+      "index": 10,
       "step": 11,
       "type": "view",
       "image": "Schedule-07.png",
@@ -202,7 +196,7 @@
       }
     },
     {
-      "index": 12,
+      "index": 11,
       "step": 12,
       "type": "click",
       "image": "Schedule-17.png",
@@ -220,7 +214,7 @@
       "textWidth": "224px"
     },
     {
-      "index": 13,
+      "index": 12,
       "step": 13,
       "type": "click",
       "image": "Schedule-03.png",
@@ -238,7 +232,7 @@
       "textWidth": "280px"
     },
     {
-      "index": 14,
+      "index": 13,
       "step": 14,
       "type": "click",
       "image": "Schedule-01.png",
@@ -256,7 +250,7 @@
       "textWidth": "280px"
     },
     {
-      "index": 15,
+      "index": 14,
       "step": 15,
       "type": "click",
       "image": "Schedule-09.png",
@@ -274,7 +268,7 @@
       "textWidth": "260px"
     },
     {
-      "index": 16,
+      "index": 15,
       "step": 16,
       "type": "view",
       "image": "Schedule-10.png",
@@ -292,7 +286,7 @@
       }
     },
     {
-      "index": 17,
+      "index": 16,
       "step": 17,
       "type": "view",
       "image": "Schedule-14.png",
@@ -308,12 +302,6 @@
         "right": "4.08211%",
         "bottom": "7.30678%"
       }
-    },
-    {
-      "index": 18,
-      "type": "special",
-      "specialType": "finish",
-      "html": "<style>.finish-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e,#1a2540);text-align:center;padding:40px 20px;}.finish-title{font-size:1.6rem;font-weight:900;color:#fff;margin-bottom:16px;}.finish-desc{font-size:1rem;color:#ffffffaa;line-height:1.8;max-width:460px;}</style><div class=\"finish-wrap\"><svg width=\"48\" height=\"48\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"1.5\" style=\"margin-bottom:16px;\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg><div class=\"finish-title\">כל הכבוד!</div><div class=\"finish-desc\">עכשיו אתם יודעים לתזמן מיילים לכל שעה שתרצו.<br><br>לא עוד מיילים בשעה 11 בלילה.</div></div>"
     }
   ]
 }
