@@ -190,7 +190,8 @@ body { font-family:'Rubik',sans-serif; background:#0f1a2e; color:white; overflow
   transition:all 0.15s;
 }
 .panel .type-btn:hover { border-color:#5b8fa8; color:white; }
-.panel .type-btn.active { background:#1e5f74; border-color:#5b8fa8; color:white; font-weight:700; }
+.panel .type-btn.active[data-type="click"] { background:#e8834e; border-color:#f6a67e; color:white; font-weight:700; }
+.panel .type-btn.active[data-type="view"] { background:#1e5f74; border-color:#5b8fa8; color:white; font-weight:700; }
 .panel .nudge-btns { display:flex; gap:3px; margin-top:6px; flex-wrap:wrap; }
 .panel .nudge-btn {
   flex:1; min-width:28px; height:28px; display:flex; align-items:center; justify-content:center;

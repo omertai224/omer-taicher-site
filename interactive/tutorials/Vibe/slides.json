@@ -141,8 +141,8 @@
       "boxClass": "9",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "8.56611%",
-        "top": "47.6192%"
+        "left": "12.9648%",
+        "top": "50.1659%"
       },
       "text": "ההתקנה מתבצעת. המתינו עד שסרגל ההתקנה יסתיים. כשסיים,<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>"
     },
@@ -192,11 +192,11 @@
       "boxClass": "12",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "20.2672%",
-        "top": "54.0362%"
+        "left": "57.3284%",
+        "top": "51.4884%"
       },
       "text": "בהפעלה הראשונה, <span style=\"color: rgb(246, 166, 126);\">Vibe </span>מוריד את מודל העברית. המתינו עד שההורדה תסתיים (תלוי במהירות האינטרנט).&nbsp;<br><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
-      "textWidth": "439px"
+      "textWidth": "264px"
     },
     {
       "index": 13,
@@ -294,8 +294,8 @@
       "boxClass": "18",
       "arrow": "arrow-left",
       "textPos": {
-        "left": "4.49587%",
-        "top": "45.9019%"
+        "left": "58.4873%",
+        "top": "37.4093%"
       },
       "text": "הקובץ נטען בהצלחה. שימו לב שהשפה כרגע מוגדרת כ-English, לחצו על תפריט <span style=\" color:#f6a67e;\">Language</span> כדי לשנות לעברית."
     },
@@ -349,7 +349,13 @@
         "top": "11.559%"
       },
       "text": "<span style=\"color: rgb(246, 166, 126);\">התמלול בתהליך.</span> המתינו עד שהתמלול יסתיים, זה עשוי לקחת מספר דקות בהתאם לביצועי המחשב ולאורך הקובץ.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
-      "textWidth": "339px"
+      "textWidth": "339px",
+      "box": {
+        "top": "56.9639%",
+        "left": "21.6012%",
+        "right": "21.7375%",
+        "bottom": "34.5011%"
+      }
     },
     {
       "index": 22,
