@@ -544,19 +544,19 @@
       "image": "clipboard-28.png",
       "boxClass": "92",
       "box": {
-        "top": "73.9799%",
-        "left": "24.1291%",
+        "top": "73.343%",
+        "left": "29.0256%",
         "right": "45.4819%",
-        "bottom": "12.4835%"
+        "bottom": "12.0588%"
       },
       "arrow": "arrow-right",
       "textPos": {
         "left": "0%",
-        "top": "51.505%"
+        "top": "48.3203%"
       },
       "step": 28,
       "text": "לחצו <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> במקלדת כדי לפתוח את <span style=\"color:#f6a67e;\">היסטוריית הלוח</span> ובחרו את <span style=\"color: rgb(246, 166, 126);\">תאריך ההזמנה</span>",
-      "textWidth": "280px"
+      "textWidth": "214px"
     },
     {
       "index": 30,
@@ -564,19 +564,19 @@
       "image": "clipboard-29.png",
       "boxClass": "95",
       "box": {
-        "top": "57.8085%",
-        "left": "18.0871%",
-        "right": "51.2851%",
-        "bottom": "26.5317%"
+        "top": "56.7469%",
+        "left": "30.6269%",
+        "right": "51.6434%",
+        "bottom": "27.5933%"
       },
       "arrow": "arrow-right",
       "textPos": {
         "left": "0%",
-        "top": "45.5281%"
+        "top": "42.3423%"
       },
       "step": 29,
       "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">מספר ההזמנה</span> כדי להדביק אותו.",
-      "textWidth": "280px"
+      "textWidth": "211px"
     },
     {
       "index": 31,
@@ -584,19 +584,19 @@
       "image": "clipboard-30.png",
       "boxClass": "98",
       "box": {
-        "top": "59.1992%",
-        "left": "17.0825%",
-        "right": "51.0953%",
-        "bottom": "25.141%"
+        "top": "58.7746%",
+        "left": "26.9949%",
+        "right": "52.4091%",
+        "bottom": "26.4149%"
       },
       "arrow": "arrow-right",
       "textPos": {
         "left": "0%",
-        "top": "47.1282%"
+        "top": "46.4902%"
       },
       "step": 30,
       "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">שם המוצר</span> כדי להדביק אותו.",
-      "textWidth": "280px"
+      "textWidth": "213px"
     },
     {
       "index": 32,
@@ -605,18 +605,18 @@
       "boxClass": "100",
       "box": {
         "top": "56.1525%",
-        "left": "23.4121%",
-        "right": "45.6017%",
-        "bottom": "27.9755%"
+        "left": "31.8914%",
+        "right": "45.3628%",
+        "bottom": "28.1878%"
       },
       "arrow": "arrow-right",
       "textPos": {
         "left": "0%",
-        "top": "33.2537%"
+        "top": "36.225%"
       },
       "step": 31,
-      "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">תמונת המוצר</span> כדי להדביק גם אותה.<span style=\"color:#f6a67e;\"> כן, גם תמונות נשמרות!</span>",
-      "textWidth": "280px"
+      "text": "לחצו שוב <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">V</span> + <span style=\"display:inline-block;background:linear-gradient(180deg,#3a3a4a,#2a2a3a);color:white;font-weight:700;font-size:15px;padding:6px 12px;border-radius:6px;border:1px solid #555;border-bottom:3px solid #333;box-shadow:0 2px 4px #00000066;font-family:monospace;\">Win</span> ובחרו את <span style=\"color:#f6a67e;\">תמונת המוצר</span> כדי להדביק גם אותה.<span style=\"color:#f6a67e;\">&nbsp;</span><br><span style=\"color:#f6a67e;\">כן, גם תמונות נשמרות!</span>",
+      "textWidth": "219px"
     },
     {
       "index": 33,
