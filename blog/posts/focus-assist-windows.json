@@ -8,5 +8,7 @@
   "image_alt": "מסך Windows עם פאנל ההגדרות המהירות פתוח וכפתור מצב מיקוד מודגש, שולחן עבודה נקי ברקע",
   "seo_title": "מצב מיקוד של Windows. השתיקו התראות בזמן עבודה | עומר טייכר",
   "seo_desc": "מצב מיקוד (Focus Assist) משתיק התראות בזמן עבודה. ההתראות לא נמחקות, רק מחכות בצד עד שתהיו מוכנים.",
-  "status": "published"
+  "status": "published",
+  "tutorialUrl": "/interactive/tutorials/Windows/DoNotDisturb/",
+  "tutorialType": "free"
 }

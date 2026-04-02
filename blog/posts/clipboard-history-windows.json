@@ -8,5 +8,7 @@
   "image_alt": "חלון היסטוריית הלוח של Windows צף מעל שולחן עבודה עם כמה חלונות פתוחים, רשימה מסודרת של פריטים שהועתקו",
   "seo_title": "היסטוריית הלוח של Windows. העתקה בלי סבל | עומר טייכר",
   "seo_desc": "קיצור Windows + V פותח היסטוריית העתקות מלאה. לא רק הדבר האחרון. טיפ קל שחוסך עשרות הלוך-חזור ביום.",
-  "status": "published"
+  "status": "published",
+  "tutorialUrl": "/interactive/tutorials/Windows/Clipboard/",
+  "tutorialType": "free"
 }
