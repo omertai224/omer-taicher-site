@@ -1,14 +1,70 @@
 {
   "title": "תאורת לילה",
   "subtitle": "Windows",
-  "totalSteps": 0,
+  "totalSteps": 7,
   "slides": [
     {
       "index": 0,
-      "type": "click",
       "step": 1,
-      "text": "",
-      "textPos": { "left": "50%", "top": "50%" }
+      "type": "click",
+      "image": "NightLight-02.jpg",
+      "text": "לחצו לחיצה ימנית על <span style=\"color:#f6a67e;\">שולחן העבודה</span> (על מקום ריק).<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "textPos": { "left": "30%", "top": "30%" },
+      "textWidth": "300px"
+    },
+    {
+      "index": 1,
+      "step": 2,
+      "type": "click",
+      "image": "NightLight-03.png",
+      "text": "בתפריט שנפתח, לחצו על <span style=\"color:#f6a67e;\">הגדרות תצוגה</span>.",
+      "textPos": { "left": "35%", "top": "35%" },
+      "textWidth": "280px"
+    },
+    {
+      "index": 2,
+      "step": 3,
+      "type": "click",
+      "image": "NightLight-04.png",
+      "text": "מצאנו את <span style=\"color:#f6a67e;\">תאורת לילה</span>. היא כבויה. לחצו על המתג כדי להפעיל אותה.",
+      "textPos": { "left": "30%", "top": "25%" },
+      "textWidth": "300px"
+    },
+    {
+      "index": 3,
+      "step": 4,
+      "type": "view",
+      "image": "NightLight-05.png",
+      "text": "<span style=\"color:#f6a67e;\">תאורת הלילה פועלת!</span> שימו לב שהמסך נהיה חמים יותר. זה מגן על העיניים, במיוחד בלילה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "textPos": { "left": "30%", "top": "25%" },
+      "textWidth": "310px"
+    },
+    {
+      "index": 4,
+      "step": 5,
+      "type": "click",
+      "image": "NightLight-06.png",
+      "text": "לחצו על השורה <span style=\"color:#f6a67e;\">תאורת לילה</span> כדי לפתוח הגדרות מתקדמות ותזמון.",
+      "textPos": { "left": "30%", "top": "25%" },
+      "textWidth": "300px"
+    },
+    {
+      "index": 5,
+      "step": 6,
+      "type": "click",
+      "image": "NightLight-07.png",
+      "text": "כאן אפשר לתזמן! לחצו על המתג ליד <span style=\"color:#f6a67e;\">תזמון תאורת לילה</span> כדי שזה יפעל אוטומטית.",
+      "textPos": { "left": "30%", "top": "30%" },
+      "textWidth": "300px"
+    },
+    {
+      "index": 6,
+      "step": 7,
+      "type": "view",
+      "image": "NightLight-08.png",
+      "text": "<span style=\"color:#f6a67e;\">התזמון פעיל!</span> תאורת הלילה תופעל ותכבה אוטומטית לפי שעות הזריחה והשקיעה. העיניים שלכם יגידו תודה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "textPos": { "left": "30%", "top": "25%" },
+      "textWidth": "320px"
     }
   ]
 }
