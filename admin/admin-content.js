@@ -548,7 +548,7 @@ function sanitizePastedHtml(html) {
     const attrs = Array.from(node.attributes);
     attrs.forEach(a => {
       if (tag === 'A' && a.name === 'href') return; // keep href
-      if (a.name === 'class' && (node.classList.contains('post-insight') || node.classList.contains('post-tool-card') || node.classList.contains('post-tool-name') || node.classList.contains('post-tool-by') || node.classList.contains('post-tool-link'))) return;
+      if (a.name === 'class' && (node.classList.contains('post-insight') || node.classList.contains('post-tool-card') || node.classList.contains('post-tool-name') || node.classList.contains('post-tool-by') || node.classList.contains('post-tool-link') || node.classList.contains('tutorial-cta') || node.classList.contains('tutorial-cta-badge') || node.classList.contains('tutorial-cta-title') || node.classList.contains('tutorial-cta-desc') || node.classList.contains('tutorial-cta-btn'))) return;
       node.removeAttribute(a.name);
     });
     // Unwrap SPAN (keep children, remove wrapper)
@@ -716,6 +716,12 @@ function showBlogForm(post) {
         #bf-body blockquote::before { content:'ציטוט 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#e8854a; background:#fff3e0; padding:1px 8px; border-radius:8px; pointer-events:none; }
         #bf-body .post-insight { margin:16px 0; padding:30px 18px 14px; background:#1a4a6b; color:#fff; border-radius:10px; font-weight:700; position:relative; }
         #bf-body .post-insight::before { content:'תובנה 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#8ec5fc; background:rgba(255,255,255,0.15); padding:1px 8px; border-radius:8px; pointer-events:none; }
+        #bf-body .tutorial-cta { margin:16px 0; padding:30px 18px 14px; background:linear-gradient(135deg,#0f1a2e,#1a2540); color:#fff; border:2px solid #f6a67e44; border-radius:10px; position:relative; }
+        #bf-body .tutorial-cta::before { content:'הדרכה אינטראקטיבית 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#f6a67e; background:rgba(246,166,126,0.15); padding:1px 8px; border-radius:8px; pointer-events:none; }
+        #bf-body .tutorial-cta-badge { color:#f6a67e; font-size:0.8rem; font-weight:700; margin-bottom:4px; }
+        #bf-body .tutorial-cta-title { color:#fff; font-size:1rem; font-weight:800; margin-bottom:6px; }
+        #bf-body .tutorial-cta-desc { color:#ffffffaa; font-size:0.85rem; line-height:1.6; }
+        #bf-body .tutorial-cta-btn { display:inline-block; margin-top:10px; padding:8px 20px; background:linear-gradient(135deg,#f6a67e,#e8834e); color:#fff; border-radius:50px; font-weight:700; font-size:0.85rem; text-decoration:none; }
         #bf-body .post-tool-card { margin:16px 0; padding:30px 18px 14px; background:#fff; border:1.5px solid #e8e0d6; border-radius:10px; display:flex; flex-direction:column; gap:4px; position:relative; }
         #bf-body .post-tool-card::before { content:'כרטיס כלי 🔒'; position:absolute; top:4px; right:8px; font-size:0.65rem; font-weight:800; color:#1a4a6b; background:#e8f4f8; padding:1px 8px; border-radius:8px; pointer-events:none; }
         #bf-body .post-tool-name { font-weight:800; color:#1a4a6b; }
@@ -734,6 +740,11 @@ function showBlogForm(post) {
         #bf-preview br { line-height:2.4; }
         #bf-preview blockquote { margin:28px 0; padding:20px 24px; border-right:4px solid #e8854a; background:#fdeede; border-radius:0 12px 12px 0; font-size:1.05rem; line-height:1.9; color:#1a4a6b; font-weight:500; }
         #bf-preview .post-insight { margin:32px 0; padding:22px 28px; background:#1a4a6b; color:#fff; border-radius:14px; font-size:1.1rem; font-weight:700; line-height:1.7; letter-spacing:-0.01em; }
+        #bf-preview .tutorial-cta { margin:32px 0; padding:26px 28px; background:linear-gradient(135deg,#0f1a2e,#1a2540); color:#fff; border:2px solid #f6a67e44; border-radius:14px; }
+        #bf-preview .tutorial-cta-badge { color:#f6a67e; font-size:0.85rem; font-weight:700; margin-bottom:8px; }
+        #bf-preview .tutorial-cta-title { color:#fff; font-size:1.2rem; font-weight:800; margin-bottom:10px; }
+        #bf-preview .tutorial-cta-desc { color:#ffffffaa; font-size:0.95rem; line-height:1.8; }
+        #bf-preview .tutorial-cta-btn { display:inline-flex; align-items:center; gap:8px; margin-top:14px; padding:12px 28px; background:linear-gradient(135deg,#f6a67e,#e8834e); color:#fff; border-radius:50px; font-weight:700; font-size:0.95rem; text-decoration:none; }
         #bf-preview .post-tool-card { margin:28px 0; padding:22px 26px; background:#fff; border:1.5px solid #e8e0d6; border-radius:14px; display:flex; flex-direction:column; gap:6px; box-shadow:0 2px 12px rgba(30,30,30,0.06); }
         #bf-preview .post-tool-name { font-size:1rem; font-weight:800; color:#1a4a6b; }
         #bf-preview .post-tool-by { font-size:0.82rem; color:#666; }
@@ -846,7 +857,7 @@ function showBlogForm(post) {
   // Protect special elements from accidental deletion
   const body = document.getElementById('bf-body');
   if (body) {
-    const PROTECTED_SEL = 'blockquote, .post-insight, .post-tool-card';
+    const PROTECTED_SEL = 'blockquote, .post-insight, .post-tool-card, .tutorial-cta';
 
     // --- Snapshot: remember all protected elements to restore if deleted ---
     let protectedSnapshot = [];
