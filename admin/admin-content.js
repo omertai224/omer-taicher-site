@@ -282,6 +282,7 @@ function filterBlogList(query) {
         <div style="flex:1;min-width:0">
           <div style="font-size:0.92rem;font-weight:700;color:var(--navy);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${(p.title||'').replace(/<\/p>\s*<p>/gi,'<br>').replace(/<\/?p>/gi,'')}</div>
           <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${q && !(p.title||"").toLowerCase().includes(q) && !(p.id||"").toLowerCase().includes(q) && !(p.excerpt||"").toLowerCase().includes(q) ? ' · <span style="color:#f6a67e;font-weight:700">נמצא בתוכן</span>' : ""}</div>
+          ${p.tutorialUrl ? '<div style="font-size:0.7rem;margin-top:4px;color:' + (p.tutorialType === 'paid' ? '#f6a67e' : '#4ade80') + ';font-weight:700;">🎯 הדרכה אינטראקטיבית ' + (p.tutorialType === 'paid' ? 'בתשלום' : 'חינמית') + '</div>' : ''}
           ${schedTag}
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
@@ -322,7 +323,8 @@ function renderBlogList() {
         ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
         <div style="flex:1;min-width:0">
           <div style="font-size:0.92rem;font-weight:700;color:var(--navy);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${(p.title||'').replace(/<\/p>\s*<p>/gi,'<br>').replace(/<\/?p>/gi,'')}</div>
-          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${p.tutorialUrl ? ' · <span style="color:' + (p.tutorialType === 'paid' ? '#f6a67e' : '#4ade80') + ';font-weight:700">🎯 הדרכה אינטראקטיבית ' + (p.tutorialType === 'paid' ? 'בתשלום' : 'חינמית') + '</span>' : ''}</div>
+          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}</div>
+          ${p.tutorialUrl ? '<div style="font-size:0.7rem;margin-top:4px;color:' + (p.tutorialType === 'paid' ? '#f6a67e' : '#4ade80') + ';font-weight:700;">🎯 הדרכה אינטראקטיבית ' + (p.tutorialType === 'paid' ? 'בתשלום' : 'חינמית') + '</div>' : ''}
           ${schedTag}
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
