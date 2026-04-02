@@ -21,6 +21,7 @@ const SENDMSG_PASSWORD = process.env.SENDMSG_PASSWORD;
 const PRODUCTS = {
   vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Apps/Vibe/' },
   everything: { name: 'Everything - חיפוש מיידי בכל הקבצים במחשב', url: 'https://omertai.net/interactive/tutorials/Apps/Everything/' },
+  taskmanager: { name: 'מנהל המשימות - השלט רחוק של המחשב', url: 'https://omertai.net/interactive/tutorials/Windows/TaskManager/' },
   security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', url: 'https://omertai.net/interactive/tutorials/Security/' }
 };
 

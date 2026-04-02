@@ -48,6 +48,7 @@ function loadProducts() {
     return {
       vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', price: 47 },
       everything: { name: 'Everything - חיפוש מיידי בכל הקבצים במחשב', price: 47 },
+      taskmanager: { name: 'מנהל המשימות - השלט רחוק של המחשב', price: 47 },
       security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', price: 47 }
     };
   }
@@ -92,6 +93,7 @@ export default async function handler(req, res) {
     const TUTORIAL_URLS = {
       vibe: 'https://omertai.net/interactive/tutorials/Apps/Vibe/',
       everything: 'https://omertai.net/interactive/tutorials/Apps/Everything/',
+      taskmanager: 'https://omertai.net/interactive/tutorials/Windows/TaskManager/',
       security: 'https://omertai.net/interactive/tutorials/Security/'
     };
 
