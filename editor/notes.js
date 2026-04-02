@@ -37,7 +37,11 @@ function renderNotes(slide) {
   var list = $('notesList');
   if (list) list.innerHTML = '';
 
-  if (!slide.notes || slide.notes.length === 0) return;
+  if (!slide.notes || slide.notes.length === 0) {
+    // Auto-create empty note for convenience
+    if (!slide.notes) slide.notes = [];
+    slide.notes.push({ text: '', left: '50%', top: '50%' });
+  }
 
   var container = $('slideContainer');
   var hasImage = container && container.style.display !== 'none';
