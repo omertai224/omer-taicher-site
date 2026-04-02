@@ -72,7 +72,6 @@ function scaleBubbles() {
     var h = img.offsetHeight;
     if (!w || !h) return;
     var scale = w / designW;
-    console.log('[BUBBLE DEBUG] imageWidth=' + w + ' designW=' + designW + ' scale=' + scale.toFixed(3) + ' zoom=' + window.devicePixelRatio + ' viewport=' + window.innerWidth + 'x' + window.innerHeight);
     var designH = designW * h / w;
     var texts = slide.querySelectorAll('.text');
     var highlightEls = slide.querySelectorAll('.image-center > *:not(img):not(.text)');
