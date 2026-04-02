@@ -1055,7 +1055,9 @@ async function blogSendWhatsapp(postId) {
 
   const title = post.title.replace(/<\/p>\s*<p>/gi, '\n').replace(/<[^>]+>/g, '').trim();
   const url = 'https://omertai.net/blog/post.html?id=' + post.id;
-  const caption = 'פוסט חדש עלה ☀️\n\n' + title + '\n\nלקריאה המלאה 👇\n' + url;
+  const hasTutorial = post.body && post.body.includes('tutorial-cta');
+  const tutorialLine = hasTutorial ? '\n\n🎯 מצורפת הדרכה אינטראקטיבית חינמית!\nצעד אחרי צעד, ממש על המחשב שלכם.\nאין תירוצים של \"אני לא יודע איך\".' : '';
+  const caption = 'פוסט חדש עלה ☀️\n\n' + title + tutorialLine + '\n\nלקריאה המלאה 👇\n' + url;
   const chatId = '972526587420@c.us';
 
   try {
