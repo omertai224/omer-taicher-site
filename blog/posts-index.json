@@ -2,21 +2,17 @@
   "posts": [
     {
       "id": "task-manager-windows",
-      "title": "<p>המחשב נתקע.</p><p><span>מה עושים עכשיו?</span></p>",
-      "excerpt": "<p>תוכנה לא מגיבה. המחשב סובב.</p><p>אתם לוחצים על X ושום דבר לא קורה.</p><p>יש כפתור אחד שפותר את זה תוך שנייה.</p>",
+      "title": "<p>המחשב נתקע.</p><p>מה עושים עכשיו?</p>",
+      "excerpt": "<p>תוכנה לא מגיבה. המחשב תקוע.</p><p>אתם לוחצים על X ושום דבר לא קורה.</p><p>יש כפתור אחד שפותר את זה תוך שנייה.</p>",
       "date": "2026-04-05",
-      "image": "",
+      "image": "https://media.omertai.net/task-manager-windows.webp",
       "image_alt": "חלון מנהל המשימות של Windows עם רשימת תהליכים ותרשימי ביצועים",
       "seo_title": "מנהל המשימות של Windows. מה עושים כשהמחשב נתקע | עומר טייכר",
       "seo_desc": "מנהל המשימות מראה מה רץ במחשב ונותן לסגור תוכנות תקועות בקליק. Ctrl+Shift+Esc ויש לכם שליטה.",
-      "tags": [
-        "windows",
-        "מחשב",
-        "ביצועים",
-        "מנהל המשימות"
-      ],
+      "status": "draft",
       "tutorialUrl": "/interactive/tutorials/Windows/TaskManager/",
-      "tutorialType": "paid"
+      "tutorialType": "paid",
+      "tutorialProductKey": "taskmanager"
     },
     {
       "id": "everything-search-windows",
