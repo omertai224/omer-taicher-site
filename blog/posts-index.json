@@ -16,7 +16,8 @@
         "everything"
       ],
       "tutorialUrl": "/interactive/tutorials/Apps/Everything/",
-      "tutorialType": "paid"
+      "tutorialType": "paid",
+      "tutorialProductKey": "everything"
     },
     {
       "id": "focus-assist-windows",
@@ -27,7 +28,9 @@
       "image_alt": "מסך Windows עם פאנל ההגדרות המהירות פתוח וכפתור מצב מיקוד מודגש, שולחן עבודה נקי ברקע",
       "seo_title": "מצב מיקוד של Windows. השתיקו התראות בזמן עבודה | עומר טייכר",
       "seo_desc": "מצב מיקוד (Focus Assist) משתיק התראות בזמן עבודה. ההתראות לא נמחקות, רק מחכות בצד עד שתהיו מוכנים.",
-      "status": "published"
+      "status": "published",
+      "tutorialUrl": "/interactive/tutorials/Windows/DoNotDisturb/",
+      "tutorialType": "free"
     },
     {
       "id": "clipboard-history-windows",
@@ -38,7 +41,9 @@
       "image_alt": "חלון היסטוריית הלוח של Windows צף מעל שולחן עבודה עם כמה חלונות פתוחים, רשימה מסודרת של פריטים שהועתקו",
       "seo_title": "היסטוריית הלוח של Windows. העתקה בלי סבל | עומר טייכר",
       "seo_desc": "קיצור Windows + V פותח היסטוריית העתקות מלאה. לא רק הדבר האחרון. טיפ קל שחוסך עשרות הלוך-חזור ביום.",
-      "status": "published"
+      "status": "published",
+      "tutorialUrl": "/interactive/tutorials/Windows/Clipboard/",
+      "tutorialType": "free"
     },
     {
       "id": "voice-typing-windows",
