@@ -1,59 +1,82 @@
 {
   "discountRules": [
-    { "minItems": 2, "percent": 10 },
-    { "minItems": 3, "percent": 20 }
+    {
+      "minItems": 2,
+      "percent": 10
+    },
+    {
+      "minItems": 3,
+      "percent": 20
+    }
   ],
   "products": [
-  {
-    "key": "clipboard",
-    "title": "העתקה חכמה שחוסכת זמן, עצבים ואנרגיה",
-    "desc": "נעתיק פרטים מאמזון ל-Word. קודם בדרך הרגילה (15 פעולות!), ואז נגלה טריק שמשנה הכל. היסטוריית הלוח של Windows.",
-    "steps": 32,
-    "url": "/interactive/tutorials/Windows/Clipboard/index.html",
-    "price": 0,
-    "category": "Windows · העתקה · חינמי",
-    "status": "active",
-    "label": "חינם",
-    "thumb": "teal",
-    "includes": [
-      "למדו להעתיק כמה דברים ברצף בלי לקפוץ בין חלונות",
-      "היסטוריית לוח של Windows: טקסט ותמונות נשמרים אוטומטית",
-      "מ-15 פעולות ל-9: חסכו זמן בכל יום עבודה"
-    ]
-  },
-  {
-    "key": "everything",
-    "title": "לא מוצאים קובץ במחשב? Everything מוצא הכל תוך שנייה",
-    "desc": "חיפוש מיידי בכל הקבצים במחשב שלכם. במקום לחכות דקות לחיפוש של Windows — Everything מוצא בפחות משנייה. אתם לומדים להתקין, להגדיר ולהשתמש בו.",
-    "steps": 31,
-    "url": "/interactive/tutorials/Everything/index.html",
-    "price": 47,
-    "category": "כלים · חיפוש · Windows",
-    "status": "active",
-    "label": "חדש",
-    "thumb": "teal",
-    "includes": [
-      "מוצא כל קובץ, תיקייה ותמונה בפחות משנייה",
-      "מהיר פי אלף מחיפוש Windows הרגיל",
-      "חינמי לחלוטין, קל להתקנה ולשימוש"
-    ]
-  },
-  {
-    "key": "vibe",
-    "title": "ישיבות, הרצאות, שיעורים. הופכים לטקסט. בעברית. בחינם. על המחשב שלכם.",
-    "desc": "כלי AI שמתמלל כל קובץ שמע ווידאו, בלי לשלוח שום דבר לאינטרנט. אתם לומדים להתקין, להגדיר ולהשתמש בו, עד שזה עובד אצלכם.",
-    "steps": 26,
-    "url": "/interactive/tutorials/Apps/Vibe/index.html",
-    "price": 47,
-    "category": "AI · תמלול · Windows",
-    "status": "active",
-    "label": "חדש",
-    "thumb": "navy",
-    "includes": [
-      "תומך ב-MP4, MKV, MP3, WAV ועוד. גם קישורי יוטיוב ישירות",
-      "הכל על המחשב שלכם. אף קובץ לא יוצא לאינטרנט ולא מגיע לאף שרת",
-      "בונוס: איך לוקחים את התמלול ל-AI ושואלים אותו שאלות על התוכן"
-    ]
-  }
-]
+    {
+      "key": "clipboard",
+      "title": "העתקה חכמה שחוסכת זמן, עצבים ואנרגיה",
+      "desc": "נעתיק פרטים מאמזון ל-Word. קודם בדרך הרגילה (15 פעולות!), ואז נגלה טריק שמשנה הכל. היסטוריית הלוח של Windows.",
+      "steps": 32,
+      "url": "/interactive/tutorials/Windows/Clipboard/index.html",
+      "price": 0,
+      "category": "Windows · העתקה · חינמי",
+      "status": "active",
+      "label": "חינם",
+      "thumb": "teal",
+      "includes": [
+        "למדו להעתיק כמה דברים ברצף בלי לקפוץ בין חלונות",
+        "היסטוריית לוח של Windows: טקסט ותמונות נשמרים אוטומטית",
+        "מ-15 פעולות ל-9: חסכו זמן בכל יום עבודה"
+      ]
+    },
+    {
+      "key": "everything",
+      "title": "לא מוצאים קובץ במחשב? Everything מוצא הכל תוך שנייה",
+      "desc": "חיפוש מיידי בכל הקבצים במחשב שלכם. במקום לחכות דקות לחיפוש של Windows — Everything מוצא בפחות משנייה. אתם לומדים להתקין, להגדיר ולהשתמש בו.",
+      "steps": 31,
+      "url": "/interactive/tutorials/Everything/index.html",
+      "price": 47,
+      "category": "כלים · חיפוש · Windows",
+      "status": "active",
+      "label": "חדש",
+      "thumb": "teal",
+      "includes": [
+        "מוצא כל קובץ, תיקייה ותמונה בפחות משנייה",
+        "מהיר פי אלף מחיפוש Windows הרגיל",
+        "חינמי לחלוטין, קל להתקנה ולשימוש"
+      ]
+    },
+    {
+      "key": "vibe",
+      "title": "ישיבות, הרצאות, שיעורים. הופכים לטקסט. בעברית. בחינם. על המחשב שלכם.",
+      "desc": "כלי AI שמתמלל כל קובץ שמע ווידאו, בלי לשלוח שום דבר לאינטרנט. אתם לומדים להתקין, להגדיר ולהשתמש בו, עד שזה עובד אצלכם.",
+      "steps": 26,
+      "url": "/interactive/tutorials/Apps/Vibe/index.html",
+      "price": 47,
+      "category": "AI · תמלול · Windows",
+      "status": "active",
+      "label": "חדש",
+      "thumb": "navy",
+      "includes": [
+        "תומך ב-MP4, MKV, MP3, WAV ועוד. גם קישורי יוטיוב ישירות",
+        "הכל על המחשב שלכם. אף קובץ לא יוצא לאינטרנט ולא מגיע לאף שרת",
+        "בונוס: איך לוקחים את התמלול ל-AI ושואלים אותו שאלות על התוכן"
+      ]
+    },
+    {
+      "key": "taskmanager",
+      "title": "מנהל המשימות. השלט רחוק של המחשב",
+      "desc": "מה עושים כשתוכנה נתקעת? כשהמחשב איטי? כשמשהו עובד ברקע בלי שביקשתם? מנהל המשימות מראה הכל ונותן לכם לטפל.",
+      "steps": 19,
+      "url": "/interactive/tutorials/Windows/TaskManager/",
+      "price": 47,
+      "category": "Windows · מחשב · ביצועים",
+      "status": "active",
+      "label": "חדש",
+      "thumb": "navy",
+      "includes": [
+        "סגירת תוכנות תקועות",
+        "אבחון מחשב איטי",
+        "ניהול אפליקציות אתחול"
+      ]
+    }
+  ]
 }
