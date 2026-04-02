@@ -1,14 +1,43 @@
 {
   "title": "נא לא להפריע",
   "subtitle": "Windows",
-  "totalSteps": 0,
+  "totalSteps": 4,
   "slides": [
     {
       "index": 0,
-      "type": "click",
       "step": 1,
-      "text": "",
-      "textPos": { "left": "50%", "top": "50%" }
+      "type": "view",
+      "image": "DND-01.jpg",
+      "text": "נמצאים בשולחן העבודה של Windows. מכאן נלמד להפעיל את מצב <span style=\"color:#f6a67e;\">נא לא להפריע</span> שמשתיק את כל ההתראות.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "textPos": { "left": "30%", "top": "30%" },
+      "textWidth": "310px"
+    },
+    {
+      "index": 1,
+      "step": 2,
+      "type": "click",
+      "image": "DND-02.jpg",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">אזור ההתראות</span> (הפעמון בפינה השמאלית התחתונה, ליד השעון).",
+      "textPos": { "left": "30%", "top": "40%" },
+      "textWidth": "300px"
+    },
+    {
+      "index": 2,
+      "step": 3,
+      "type": "click",
+      "image": "DND-03.jpg",
+      "text": "נפתחה חלונית ההתראות. לחצו על <span style=\"color:#f6a67e;\">אל תפריע</span> בראש החלונית כדי להפעיל את המצב.",
+      "textPos": { "left": "30%", "top": "30%" },
+      "textWidth": "300px"
+    },
+    {
+      "index": 3,
+      "step": 4,
+      "type": "view",
+      "image": "DND-04.jpg",
+      "text": "<span style=\"color:#f6a67e;\">מצב 'אל תפריע' פעיל!</span> ההתראות לא ייעלמו. הן פשוט ימתינו בשקט עד שתהיו מוכנים לראות אותן. אפשר לכבות בכל רגע באותו מקום.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "textPos": { "left": "30%", "top": "25%" },
+      "textWidth": "320px"
     }
   ]
 }
