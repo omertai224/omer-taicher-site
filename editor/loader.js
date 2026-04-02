@@ -7,8 +7,8 @@ var TUTORIALS_BASE = '/interactive/tutorials/';
 var TUTORIAL_CATEGORIES = [
   { label: 'Gmail', items: ['Gmail/Schedule', 'Gmail/Stars'] },
   { label: 'Chrome', items: ['Chrome/WebApp'] },
-  { label: 'Windows', items: ['Clipboard', 'Windows/NightLight'] },
-  { label: 'Apps', items: ['Vibe', 'Everything'] }
+  { label: 'Windows', items: ['Windows/Clipboard', 'Windows/NightLight'] },
+  { label: 'Apps', items: ['Apps/Vibe', 'Apps/Everything'] }
 ];
 
 /* Flat list for backwards compatibility */

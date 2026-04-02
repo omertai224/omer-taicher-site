@@ -102,6 +102,6 @@ var lecturesData = [
       { time: "18:35", label: "CCleaner + Speccy (המקרה של דינה)" },
       { time: "42:10", label: "איך עוד אני יכול לעזור לכם?" }
     ],
-    cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Everything/" }
+    cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Apps/Everything/" }
   }
 ];

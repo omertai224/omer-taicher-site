@@ -10,9 +10,9 @@ const SENDMSG_SITE_ID  = process.env.SENDMSG_SITE_ID;
 const SENDMSG_PASSWORD = process.env.SENDMSG_PASSWORD;
 
 const TUTORIALS = {
-  clipboard:  { name: 'העתקה חכמה (היסטוריית לוח)', url: 'https://omertai.net/interactive/tutorials/Clipboard/' },
-  everything: { name: 'Everything - חיפוש מיידי בכל הקבצים', url: 'https://omertai.net/interactive/tutorials/Everything/' },
-  vibe:       { name: 'תמלול שמע ווידאו בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/' },
+  clipboard:  { name: 'העתקה חכמה (היסטוריית לוח)', url: 'https://omertai.net/interactive/tutorials/Windows/Clipboard/' },
+  everything: { name: 'Everything - חיפוש מיידי בכל הקבצים', url: 'https://omertai.net/interactive/tutorials/Apps/Everything/' },
+  vibe:       { name: 'תמלול שמע ווידאו בעברית', url: 'https://omertai.net/interactive/tutorials/Apps/Vibe/' },
   security:   { name: 'סיסמאות ואבטחת חשבונות', url: 'https://omertai.net/interactive/tutorials/Security/' },
   schedule:   { name: 'שליחה מתוזמנת ב-Gmail', url: 'https://omertai.net/interactive/tutorials/Gmail/Schedule/' }
 };

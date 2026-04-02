@@ -19,8 +19,8 @@ const SENDMSG_SITE_ID  = process.env.SENDMSG_SITE_ID;
 const SENDMSG_PASSWORD = process.env.SENDMSG_PASSWORD;
 
 const PRODUCTS = {
-  vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Vibe/' },
-  everything: { name: 'Everything - חיפוש מיידי בכל הקבצים במחשב', url: 'https://omertai.net/interactive/tutorials/Everything/' },
+  vibe:       { name: 'כלי AI שממיר כל סרטון והקלטה לטקסט, בעברית', url: 'https://omertai.net/interactive/tutorials/Apps/Vibe/' },
+  everything: { name: 'Everything - חיפוש מיידי בכל הקבצים במחשב', url: 'https://omertai.net/interactive/tutorials/Apps/Everything/' },
   security:   { name: 'סיסמאות, אימות דו-שלבי ואבטחת חשבונות', url: 'https://omertai.net/interactive/tutorials/Security/' }
 };
 
