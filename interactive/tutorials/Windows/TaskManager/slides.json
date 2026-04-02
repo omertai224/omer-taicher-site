@@ -1,7 +1,7 @@
 {
   "title": "מנהל המשימות",
   "subtitle": "Windows",
-  "totalSteps": 20,
+  "totalSteps": 19,
   "slides": [
     {
       "index": 0,
@@ -152,64 +152,98 @@
       "step": 7,
       "type": "view",
       "image": "TaskMgr-07.png",
-      "text": "<span style=\"color:#f6a67e;\">עמודת דיסק</span><br>כמה הדיסק הקשיח עובד. אם הדיסק ב-100% הכל נהיה איטי. לפעמים עדכון Windows גורם לזה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "<span style=\"color:#f6a67e;\">עמודת דיסק</span><br>כמה הדיסק הקשיח עובד.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">אם הדיסק ב-100% הכל נהיה איטי.&nbsp;<br></span>לפעמים עדכון Windows גורם לזה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך.</div>",
       "textPos": {
         "left": "5%",
         "top": "25%"
       },
-      "textWidth": "310px"
+      "textWidth": "310px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "box": {
+        "top": "14.9257%",
+        "left": "42.6592%",
+        "right": "49.6418%",
+        "bottom": "7.53714%"
+      }
     },
     {
       "index": 7,
       "step": 8,
       "type": "view",
       "image": "TaskMgr-08.png",
-      "text": "<span style=\"color:#f6a67e;\">עמודת רשת</span><br>כמה אינטרנט כל תוכנה צורכת. שימושי לזהות תוכנה שמורידה משהו ברקע.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "<span style=\"color:#f6a67e;\">עמודת רשת</span><br>כמה אינטרנט כל תוכנה צורכת.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">שימושי לזהות תוכנה שמורידה משהו ברקע.<div style=\"text-align:center;margin-top:12px;\"></div></span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך.</div>",
       "textPos": {
-        "left": "5%",
-        "top": "25%"
+        "left": "3.68606%",
+        "top": "28.6082%"
       },
-      "textWidth": "310px"
+      "textWidth": "254px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "box": {
+        "top": "14.2887%",
+        "left": "35.9713%",
+        "right": "55.8519%",
+        "bottom": "7.32489%"
+      }
     },
     {
       "index": 8,
       "step": 9,
-      "type": "view",
-      "image": "TaskMgr-09.png",
-      "text": "<span style=\"color:#f6a67e;\">סיום משימה</span><br>קליק ימני על תוכנה שנתקעה ובוחרים \"סיום משימה\". זה סוגר אותה בכוח. <b>הדרך הכי מהירה לסגור תוכנה תקועה!</b><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "type": "click",
+      "image": "TaskMgr-10.png",
+      "text": "<span style=\"color: rgb(246, 166, 126);\">סיום משימה</span><br>קליק ימני על תוכנה שנתקעה ובוחרים \"סיום משימה\". זה סוגר אותה בכוח.&nbsp;<br><b>הדרך הכי מהירה לסגור תוכנה תקועה!</b>",
       "textPos": {
-        "left": "5%",
-        "top": "25%"
+        "left": "22.1972%",
+        "top": "27.3344%"
       },
-      "textWidth": "320px"
+      "textWidth": "320px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "box": {
+        "top": "28.3015%",
+        "left": "61.0509%",
+        "right": "15.844%",
+        "bottom": "65.7112%"
+      }
     },
     {
       "index": 9,
       "step": 10,
       "type": "view",
-      "image": "TaskMgr-10.png",
-      "text": "<span style=\"color:#f6a67e;\">חיפוש באינטרנט</span><br>לא מכירים תהליך מסוים? קליק ימני ובוחרים \"חיפוש באינטרנט\". Windows יחפש לכם בגוגל מה התהליך הזה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "image": "TaskMgr-11.png",
+      "text": "<span style=\"color:#f6a67e;\">לשונית ביצועים: CPU</span><br>גרף חי שמראה כמה המעבד עובד. אם הקו גבוה כל הזמן, משהו מעמיס על המחשב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
       "textPos": {
-        "left": "5%",
-        "top": "25%"
+        "left": "38.4392%",
+        "top": "26.6985%"
       },
-      "textWidth": "320px"
+      "textWidth": "310px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 10,
       "step": 11,
-      "type": "view",
-      "image": "TaskMgr-11.png",
-      "text": "<span style=\"color:#f6a67e;\">לשונית ביצועים: CPU</span><br>גרף חי שמראה כמה המעבד עובד. אם הקו גבוה כל הזמן, משהו מעמיס על המחשב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
-      "textPos": {
-        "left": "5%",
-        "top": "25%"
-      },
-      "textWidth": "310px"
-    },
-    {
-      "index": 11,
-      "step": 12,
       "type": "view",
       "image": "TaskMgr-12.png",
       "text": "<span style=\"color:#f6a67e;\">לשונית ביצועים: זיכרון</span><br>כמה RAM פנוי וכמה תפוס. אם \"בשימוש\" קרוב ל-\"מותקן\", המחשב צריך יותר זיכרון.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
@@ -220,8 +254,8 @@
       "textWidth": "310px"
     },
     {
-      "index": 12,
-      "step": 13,
+      "index": 11,
+      "step": 12,
       "type": "view",
       "image": "TaskMgr-13.png",
       "text": "<span style=\"color:#f6a67e;\">לשונית ביצועים: דיסק</span><br>מהירות הקריאה והכתיבה של הדיסק. דיסק SSD הרבה יותר מהיר מדיסק ישן (HDD).<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
@@ -232,8 +266,8 @@
       "textWidth": "310px"
     },
     {
-      "index": 13,
-      "step": 14,
+      "index": 12,
+      "step": 13,
       "type": "view",
       "image": "TaskMgr-14.png",
       "text": "<span style=\"color:#f6a67e;\">לשונית ביצועים: רשת</span><br>מהירות האינטרנט בזמן אמת. רואים כמה נתונים נשלחים ומתקבלים.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
@@ -244,8 +278,8 @@
       "textWidth": "310px"
     },
     {
-      "index": 14,
-      "step": 15,
+      "index": 13,
+      "step": 14,
       "type": "view",
       "image": "TaskMgr-15.png",
       "text": "<span style=\"color:#f6a67e;\">אפליקציות אתחול</span><br>כל התוכנות שנדלקות אוטומטית עם המחשב. ככל שיש יותר, ההפעלה איטית יותר.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
@@ -256,8 +290,8 @@
       "textWidth": "320px"
     },
     {
-      "index": 15,
-      "step": 16,
+      "index": 14,
+      "step": 15,
       "type": "view",
       "image": "TaskMgr-16.png",
       "text": "<span style=\"color:#f6a67e;\">הפעלה/כיבוי אפליקציית אתחול</span><br>קליק ימני על תוכנה ובוחרים \"הפוך לזמין\" או \"השבת\". כיבוי תוכנות מיותרות מזרז את הפעלת המחשב!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
@@ -268,8 +302,8 @@
       "textWidth": "320px"
     },
     {
-      "index": 16,
-      "step": 17,
+      "index": 15,
+      "step": 16,
       "type": "view",
       "image": "TaskMgr-17.png",
       "text": "<span style=\"color:#f6a67e;\">מיון לפי סטטוס</span><br>לחיצה על כותרת \"סטטוס\" ממיינת את הרשימה: קודם מופעלות, אחר כך מושבתות.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
@@ -280,8 +314,8 @@
       "textWidth": "310px"
     },
     {
-      "index": 17,
-      "step": 18,
+      "index": 16,
+      "step": 17,
       "type": "view",
       "image": "TaskMgr-18.png",
       "text": "<span style=\"color:#f6a67e;\">מיון לפי סטטוס (הפוך)</span><br>לחיצה נוספת הופכת את הסדר. עכשיו רואים קודם את המושבתות.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
@@ -292,8 +326,8 @@
       "textWidth": "310px"
     },
     {
-      "index": 18,
-      "step": 19,
+      "index": 17,
+      "step": 18,
       "type": "view",
       "image": "TaskMgr-19.png",
       "text": "<span style=\"color:#f6a67e;\">מיון לפי שם</span><br>לחיצה על כותרת \"שם\" ממיינת את הרשימה לפי שם התוכנה. קל למצוא תוכנה ספציפית.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
@@ -304,8 +338,8 @@
       "textWidth": "310px"
     },
     {
-      "index": 19,
-      "step": 20,
+      "index": 18,
+      "step": 19,
       "type": "view",
       "image": "TaskMgr-20.png",
       "text": "<span style=\"color:#f6a67e;\">מיון לפי שם (הפוך)</span><br>לחיצה נוספת הופכת את הסדר מ-א עד ת ובחזרה. עכשיו אתם מכירים את מנהל המשימות!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
