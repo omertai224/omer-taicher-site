@@ -9,8 +9,18 @@
       "type": "view",
       "image": "DND-01.jpg",
       "text": "נמצאים בשולחן העבודה של Windows. מכאן נלמד להפעיל את מצב <span style=\"color:#f6a67e;\">נא לא להפריע</span> שמשתיק את כל ההתראות.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
-      "textPos": { "left": "30%", "top": "30%" },
-      "textWidth": "310px"
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "310px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 1,
@@ -18,8 +28,24 @@
       "type": "click",
       "image": "DND-02.jpg",
       "text": "לחצו על <span style=\"color:#f6a67e;\">אזור ההתראות</span> (הפעמון בפינה השמאלית התחתונה, ליד השעון).",
-      "textPos": { "left": "30%", "top": "40%" },
-      "textWidth": "300px"
+      "textPos": {
+        "left": "10.8915%",
+        "top": "64.2029%"
+      },
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "box": {
+        "top": "90.6157%",
+        "left": "0%",
+        "right": "94.5701%",
+        "bottom": "0%"
+      }
     },
     {
       "index": 2,
@@ -27,17 +53,43 @@
       "type": "click",
       "image": "DND-03.jpg",
       "text": "נפתחה חלונית ההתראות. לחצו על <span style=\"color:#f6a67e;\">אל תפריע</span> בראש החלונית כדי להפעיל את המצב.",
-      "textPos": { "left": "30%", "top": "30%" },
-      "textWidth": "300px"
+      "textPos": {
+        "left": "17.6988%",
+        "top": "3.24774%"
+      },
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "box": {
+        "top": "1.54994%",
+        "left": "8.02544%",
+        "right": "85.3504%",
+        "bottom": "89.2781%"
+      }
     },
     {
       "index": 3,
       "step": 4,
       "type": "view",
       "image": "DND-04.jpg",
-      "text": "<span style=\"color:#f6a67e;\">מצב 'אל תפריע' פעיל!</span> ההתראות לא ייעלמו. הן פשוט ימתינו בשקט עד שתהיו מוכנים לראות אותן. אפשר לכבות בכל רגע באותו מקום.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
-      "textPos": { "left": "30%", "top": "25%" },
-      "textWidth": "320px"
+      "text": "<span style=\"color:#f6a67e;\">מצב 'אל תפריע' פעיל!</span> ההתראות לא ייעלמו. הן פשוט ימתינו בשקט עד שתהיו מוכנים לראות אותן. אפשר לכבות בכל רגע באותו מקום.",
+      "textPos": {
+        "left": "34.4185%",
+        "top": "25%"
+      },
+      "textWidth": "320px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     }
   ]
 }
