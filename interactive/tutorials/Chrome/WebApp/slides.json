@@ -20,7 +20,7 @@
       "step": 2,
       "type": "click",
       "image": "WebApp-02.png",
-      "text": "נכנסים ל-<span style=\"color:#f6a67e;\">Gmail</span>. לחצו על הקישור בסרגל הכלים.",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">Gmail</span> בסרגל הסימניות.",
       "box": {
         "top": "21.4713%",
         "left": "16.9586%",
@@ -38,7 +38,7 @@
       "step": 3,
       "type": "view",
       "image": "WebApp-03.png",
-      "text": "<span style=\"color: rgb(246, 166, 126);\">נכנסנו ל-Gmail. עכשיו נהפוך אותו לאפליקציה.<div style=\"text-align:center;margin-top:12px;\"></div></span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "נכנסנו ל-Gmail. עכשיו נהפוך אותו לאפליקציה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "32.3559%",
         "top": "47.4091%"
@@ -68,7 +68,7 @@
       "step": 5,
       "type": "click",
       "image": "WebApp-05.png",
-      "text": "סמנו את <span style=\"color:#f6a67e;\">פתיחה כחלון</span>. ככה האתר ייפתח כאפליקציה נפרדת, בלי סרגל כתובות.",
+      "text": "בתפריט שנפתח, לחצו על <span style=\"color:#f6a67e;\">שמירה ושיתוף</span>.",
       "box": {
         "top": "63.9915%",
         "left": "0%",
@@ -79,21 +79,14 @@
         "left": "36.0905%",
         "top": "53.0885%"
       },
-      "textWidth": "300px",
-      "notes": [
-        {
-          "text": "הערה חדשהפה פה אני לא רוצה לעשות פה בשקף הזה זה לא צריך להיות שמנו פתיחה כחלון זה קודם כל סמנו את ביחרו בשמירה ושיתוף והפעלת קאסט כי שם נמצא העכבר אם אתה שם לבואני רוצה לעשות עוד משהו אני רוצה שבכל שקף תהיה הערה פתוחה אוטומטית אני לא צריך לעשות תוספי הערה תהיה לי הערה פתוחה אוטומטית כדי שאני אוכל ישר ללחוץ על הקלט ולפתוח את ההערה זה יהיה לי יותר נוח",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "300px"
     },
     {
       "index": 5,
       "step": 6,
       "type": "click",
       "image": "WebApp-06.png",
-      "text": "לחצו על <span style=\"color:#f6a67e;\">יצירה</span> לאישור.",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">התקנת הדף כאפליקציה</span>.",
       "box": {
         "top": "58.9172%",
         "left": "34.4029%",
@@ -104,21 +97,14 @@
         "left": "71.8752%",
         "top": "60.2121%"
       },
-      "textWidth": "240px",
-      "notes": [
-        {
-          "text": "הערה חדשהעדיין לא עשית ניתוח כמו שצריך תסתכל איפה הסמן הסמן נמצא בהתקנת דווקא אפליקציה",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "240px"
     },
     {
       "index": 6,
       "step": 7,
       "type": "click",
       "image": "WebApp-07.png",
-      "text": "Chrome שואל אם לשמור. לחצו על <span style=\"color:#f6a67e;\">שמור</span>.",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">התקנה</span> לאישור.",
       "box": {
         "top": "50%",
         "left": "35%",
@@ -129,21 +115,14 @@
         "left": "35%",
         "top": "60%"
       },
-      "textWidth": "260px",
-      "notes": [
-        {
-          "text": "הערה חדשהאתה צריך לעשות ניתוח מחדש של התמונות של כל התמונות אתה צריך לעשות ניתוח מחדש של כל התמונות בהתאם למיקום הסמן עשית רק דברים מסוימים אתה צריך לעשות ניתוח של כל התמונות",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "260px"
     },
     {
       "index": 7,
       "step": 8,
       "type": "view",
       "image": "WebApp-08.png",
-      "text": "<span style=\"color:#f6a67e;\">מעולה!</span> האפליקציה נוצרה. שימו לב שהאתר נפתח עכשיו בחלון נפרד, בלי סרגל כתובות.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "<span style=\"color:#f6a67e;\">מעולה!</span> Gmail נפתח כאפליקציה עצמאית, בחלון נפרד בלי סרגל כתובות.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "5%",
         "top": "35%"
@@ -155,7 +134,7 @@
       "step": 9,
       "type": "view",
       "image": "WebApp-09.png",
-      "text": "עכשיו רואים את Gmail כאפליקציה נפרדת. נוח הרבה יותר!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">המזעור</span> (הפס הקטן למעלה) כדי למזער את החלון.",
       "textPos": {
         "left": "5%",
         "top": "40%"
@@ -167,7 +146,7 @@
       "step": 10,
       "type": "view",
       "image": "WebApp-10.png",
-      "text": "האפליקציה מופיעה גם <span style=\"color:#f6a67e;\">בשורת המשימות</span> למטה. אפשר להצמיד אותה שם.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "שימו לב שהאפליקציה מופיעה <span style=\"color:#f6a67e;\">בשורת המשימות</span> למטה. קליק ימני עליה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "5%",
         "top": "40%"
@@ -179,7 +158,7 @@
       "step": 11,
       "type": "click",
       "image": "WebApp-11.png",
-      "text": "לחצו על <span style=\"color:#f6a67e;\">הצמד לשורת המשימות</span> כדי שהאפליקציה תהיה תמיד זמינה בקליק אחד.",
+      "text": "לחצו על <span style=\"color:#f6a67e;\">הצמד לשורת המשימות</span>. מעכשיו Gmail זמין בקליק אחד!",
       "box": {
         "top": "40%",
         "left": "30%",
@@ -197,7 +176,7 @@
       "step": 12,
       "type": "view",
       "image": "WebApp-12.png",
-      "text": "<span style=\"color:#f6a67e;\">סיימנו!</span> Gmail יושב עכשיו בשורת המשימות כאפליקציה. קליק אחד ואתם בפנים. אפשר לעשות את זה עם כל אתר!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
+      "text": "<span style=\"color:#f6a67e;\">סיימנו!</span> Gmail מוצמד בשורת המשימות כאפליקציה. קליק אחד ואתם בפנים. אפשר לעשות את זה עם כל אתר!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "5%",
         "top": "35%"
