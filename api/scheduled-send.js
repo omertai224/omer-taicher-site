@@ -66,7 +66,17 @@ export default async function handler(req, res) {
 
       const title = (post.title || '').replace(/<\/p>\s*<p>/gi, '\n').replace(/<[^>]+>/g, '').trim();
       const url = `https://omertai.net/blog/${post.id}`;
-      const caption = 'פוסט חדש עלה ☀️\n\n' + title + '\n\nלקריאה המלאה 👇\n' + url;
+      // Check if post has interactive tutorial
+      let hasTutorial = false;
+      try {
+        const postPath = join(cwd, 'blog', 'posts', item.postId + '.json');
+        if (existsSync(postPath)) {
+          const postData = JSON.parse(readFileSync(postPath, 'utf-8'));
+          hasTutorial = (postData.body || '').includes('tutorial-cta');
+        }
+      } catch(e) {}
+      const tutorialLine = hasTutorial ? '\n\n🎯 מצורפת הדרכה אינטראקטיבית חינמית!\nצעד אחרי צעד, ממש על המחשב שלכם.\nאין תירוצים של \"אני לא יודע איך\".' : '';
+      const caption = 'פוסט חדש עלה ☀️\n\n' + title + tutorialLine + '\n\nלקריאה המלאה 👇\n' + url;
 
       try {
         let apiUrl, body;
