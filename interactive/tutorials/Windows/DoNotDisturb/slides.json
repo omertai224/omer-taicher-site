@@ -1,0 +1,14 @@
+{
+  "title": "נא לא להפריע",
+  "subtitle": "Windows",
+  "totalSteps": 0,
+  "slides": [
+    {
+      "index": 0,
+      "type": "click",
+      "step": 1,
+      "text": "",
+      "textPos": { "left": "50%", "top": "50%" }
+    }
+  ]
+}
