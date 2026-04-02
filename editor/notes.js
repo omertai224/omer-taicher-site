@@ -47,8 +47,8 @@ function renderNotes(slide) {
   var hasImage = container && container.style.display !== 'none';
 
   slide.notes.forEach(function(note, idx) {
-    // Create marker on canvas (only for image slides)
-    if (hasImage) {
+    // Create marker on canvas only if note has text (skip empty auto-notes)
+    if (hasImage && note.text && note.text.trim()) {
       var marker = document.createElement('div');
       marker.className = 'note-marker';
       marker.style.left = note.left;
