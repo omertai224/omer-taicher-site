@@ -830,6 +830,33 @@ tutorials/
 - **tutorial-cta מוגן** בעורך (לא ניתן למחיקה בטעות)
 - **tutorialUrl** חייב להיות גם ב-posts-index.json (לא רק בקובץ הבודד)
 
+#### מבנה תיקיות הדרכות (עדכון אפריל 2026)
+```
+tutorials/
+  Gmail/     → Schedule, Stars, Unsubscribe, QuickMenu
+  Chrome/    → WebApp
+  Windows/   → Clipboard, NightLight, DoNotDisturb, TaskManager
+  Apps/      → Vibe, Everything
+```
+- כל הדרכה חדשה נכנסת לקטגוריה המתאימה
+- `editor/loader.js` → `TUTORIAL_CATEGORIES` — מעודכן עם כל ההדרכות
+
+#### כתוביות עברית אוטומטיות בהרצאות
+- `pages/lectures/lectures.js` → `playerVars: { cc_load_policy: 1, cc_lang_pref: 'iw' }`
+- גם בלינק YouTube: `&cc_load_policy=1&cc_lang_pref=iw`
+- כתוביות מופעלות אוטומטית בדף ההרצאות ובקישור ליוטיוב
+
+#### אפשרויות תשלום נוספות בצ'קאאוט
+- בלוק "לא רוצים לשלם באשראי?" מתחת לכפתור התשלום
+- כפתור WhatsApp + טלפון לתשלום ידני
+- ביט, PayBox, PayPal, העברה בנקאית, קרדיטים בביז
+- `pages/checkout/index.html`
+
+#### שינויים בפאנל ניהול (אפריל 2026)
+- **הוסר** כפתור "עורך הדרכות" מהתפריט העליון
+- **הוסר** כפתור "+ פוסט חדש" מרשימת הפוסטים (עומר יוצר פוסטים דרך Claude)
+- **שמירת טאב** (טיוטות/פורסמו) ב-localStorage — נשאר אחרי refresh
+
 #### זכוכית מגדלת + TTS — המתנה לטעינת תמונה
 - `updateMagnifierVisibility()` ו-`updateTtsVisibility()` מחכים ל-`img.onload`
 - מתקן באג שהכפתורים לא ממורכזים בטעינה ראשונה
