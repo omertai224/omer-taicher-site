@@ -2,5 +2,13 @@
   "title": "אתר כאפליקציה",
   "subtitle": "Chrome",
   "totalSteps": 0,
-  "slides": []
+  "slides": [
+    {
+      "index": 0,
+      "type": "click",
+      "step": 1,
+      "text": "",
+      "textPos": { "left": "50%", "top": "50%" }
+    }
+  ]
 }
