@@ -13,7 +13,14 @@
         "left": "34.4975%",
         "top": "23.014%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 1,
@@ -28,10 +35,17 @@
         "bottom": "71.5287%"
       },
       "textPos": {
-        "left": "35.3341%",
-        "top": "30.2846%"
+        "left": "22.9119%",
+        "top": "29.222%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 2,
@@ -43,7 +57,14 @@
         "left": "32.3559%",
         "top": "47.4091%"
       },
-      "textWidth": "357px"
+      "textWidth": "357px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 3,
@@ -61,7 +82,14 @@
         "left": "5.36612%",
         "top": "13.3437%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 4,
@@ -79,7 +107,14 @@
         "left": "36.0905%",
         "top": "53.0885%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 5,
@@ -97,7 +132,14 @@
         "left": "59.574%",
         "top": "51.5072%"
       },
-      "textWidth": "273px"
+      "textWidth": "273px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 6,
@@ -112,10 +154,17 @@
         "bottom": "51.9851%"
       },
       "textPos": {
-        "left": "35%",
-        "top": "60%"
+        "left": "34.5218%",
+        "top": "51.0826%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 7,
@@ -127,7 +176,14 @@
         "left": "28.8851%",
         "top": "36.0614%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 8,
@@ -145,17 +201,24 @@
         "left": "7.6672%",
         "right": "86.7834%",
         "bottom": "94.0127%"
-      }
+      },
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 9,
       "step": 10,
       "type": "click",
       "image": "WebApp-10.png",
-      "text": "לחצו קליק ימני על <span style=\"color:#f6a67e;\">אייקון Gmail</span> בשורת המשימות.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "text": "לחצו קליק ימני על <span style=\"color:#f6a67e;\">אייקון Gmail</span> בשורת המשימות.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
       "textPos": {
-        "left": "26.137%",
-        "top": "62.7156%"
+        "left": "27.8084%",
+        "top": "53.7973%"
       },
       "textWidth": "300px",
       "box": {
@@ -163,7 +226,14 @@
         "left": "62.4841%",
         "right": "32.3248%",
         "bottom": "0%"
-      }
+      },
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 10,
@@ -181,7 +251,14 @@
         "left": "47.1966%",
         "top": "45.8698%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 11,
@@ -193,7 +270,14 @@
         "left": "39.9918%",
         "top": "36.0614%"
       },
-      "textWidth": "310px"
+      "textWidth": "310px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     }
   ]
 }
