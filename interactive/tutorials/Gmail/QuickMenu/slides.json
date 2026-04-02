@@ -1,14 +1,14 @@
 {
   "title": "תפריט מהיר",
   "subtitle": "Gmail",
-  "totalSteps": 16,
+  "totalSteps": 17,
   "slides": [
     {
       "index": 0,
       "step": 1,
       "type": "view",
       "image": "QuickMenu-01.png",
-      "text": "לחצנו קליק ימני על הודעה בתיבת הדואר. נפתח <span style=\"color:#f6a67e;\">תפריט מהיר</span> עם כל האפשרויות. בואו נכיר כל אחת מהן.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "נמצאים ב-<span style=\"color:#f6a67e;\">Gmail</span> ורואים את תיבת הדואר. יש דרך מהירה לעשות פעולות על כל הודעה בלי לפתוח אותה. פשוט קליק ימני!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
       "textPos": {
         "left": "13.5985%",
         "top": "41.1558%"
@@ -16,12 +16,7 @@
       "textWidth": "310px",
       "notes": [
         {
-          "text": "פה צריך להגיד תמיד אני מתחיל בהדרכות עם שקף פתיחה כשאני מראה את התצוגה הראשית של האפליקציה או או השירות שאני משתמש בו תמיד השקף הראשון יהיה מן שקף פתיחה כזה צריך להוסיף פה שלוחצים כפתורים אולי צריכים",
-          "left": "50%",
-          "top": "50%"
-        },
-        {
-          "text": "הערה חדשהיכול להיות שבשקף הזה צריך לשכפל את השקף לעשות אותו כפול שתיים אותו תמונה כפול שתיים השקף הראשון ידבר הוא יהיה שקף תצוגה שקף הראשון שבו אנחנו מסבירים שאנחנו עכשיו בג'ימייל בלה בלה בלה אנחנו רואים את כל המיילים שלנו נותנים בריף קצה נותנים כאילו רקע כזה על מה אנחנו הולכים לעשות ובשקף השני אתה תכתוב בדיוק מה שכתבת פה לוחצים כפתור ימני על הודעה בתיבת הדואר בלה בלה בלה הבנת את הראש שלי",
+          "text": "",
           "left": "50%",
           "top": "50%"
         }
@@ -30,6 +25,25 @@
     {
       "index": 1,
       "step": 2,
+      "type": "view",
+      "image": "QuickMenu-01.png",
+      "text": "לחצנו <span style=\"color:#f6a67e;\">קליק ימני</span> על הודעה בתיבת הדואר. נפתח תפריט מהיר עם כל האפשרויות. בואו נכיר כל אחת מהן.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "textPos": {
+        "left": "13.5985%",
+        "top": "41.1558%"
+      },
+      "textWidth": "310px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "step": 3,
       "type": "click",
       "image": "QuickMenu-02.png",
       "text": "<span style=\"color:#f6a67e;\">העברה לכרטיסייה</span><br>מעבירים את ההודעה ללשונית אחרת (ראשי, קידומים, רשתות חברתיות). שימושי לסידור התיבה.",
@@ -53,8 +67,8 @@
       }
     },
     {
-      "index": 2,
-      "step": 3,
+      "index": 3,
+      "step": 4,
       "type": "click",
       "image": "QuickMenu-03.png",
       "text": "<span style=\"color:#f6a67e;\">תשובה</span><br>שליחת מענה ישיר לאדם ששלח את ההודעה.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">רק השולח יקבל את התשובה.</span>",
@@ -78,8 +92,8 @@
       }
     },
     {
-      "index": 3,
-      "step": 4,
+      "index": 4,
+      "step": 5,
       "type": "click",
       "image": "QuickMenu-04.png",
       "text": "<span style=\"color:#f6a67e;\">תשובה לכולם</span><br>מענה לשולח + לכל מי שקיבל את ההודעה.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">שימו לב: כולם רואים את התשובה!</span>",
@@ -103,8 +117,8 @@
       }
     },
     {
-      "index": 4,
-      "step": 5,
+      "index": 5,
+      "step": 6,
       "type": "click",
       "image": "QuickMenu-05.png",
       "text": "<span style=\"color:#f6a67e;\">העברה</span><br>שליחת ההודעה הלאה למישהו אחר.&nbsp;<br>כמו להעביר מכתב לחבר.",
@@ -128,8 +142,8 @@
       }
     },
     {
-      "index": 5,
-      "step": 6,
+      "index": 6,
+      "step": 7,
       "type": "click",
       "image": "QuickMenu-06.png",
       "text": "<span style=\"color:#f6a67e;\">העברה כקובץ מצורף</span><br>שליחת ההודעה המקורית כקובץ מצורף בתוך מייל חדש. שימושי כשרוצים לשמור את הפורמט המקורי.",
@@ -153,8 +167,8 @@
       }
     },
     {
-      "index": 6,
-      "step": 7,
+      "index": 7,
+      "step": 8,
       "type": "click",
       "image": "QuickMenu-07.png",
       "text": "<span style=\"color:#f6a67e;\">לארכיון</span><br>מעבירים את ההודעה מהתיבה לארכיון. היא לא נמחקת, פשוט לא מבלגנת את התיבה.",
@@ -178,8 +192,8 @@
       }
     },
     {
-      "index": 7,
-      "step": 8,
+      "index": 8,
+      "step": 9,
       "type": "click",
       "image": "QuickMenu-08.png",
       "text": "<span style=\"color:#f6a67e;\">מחיקה</span><br>מוחקים את ההודעה. היא עוברת לאשפה ותימחק סופית אחרי 30 יום.",
@@ -203,8 +217,8 @@
       }
     },
     {
-      "index": 8,
-      "step": 9,
+      "index": 9,
+      "step": 10,
       "type": "click",
       "image": "QuickMenu-09.png",
       "text": "<span style=\"color:#f6a67e;\">סימון כנקרא / לא נקרא</span><br>החזרת ההודעה למצב \"לא נקרא\" (מודגשת) כדי לטפל בה אחר כך,<br>או סימון שכבר קראתם.",
@@ -228,8 +242,8 @@
       }
     },
     {
-      "index": 9,
-      "step": 10,
+      "index": 10,
+      "step": 11,
       "type": "click",
       "image": "QuickMenu-10.png",
       "text": "<span style=\"color:#f6a67e;\">נודניק (Snooze)</span><br>ההודעה נעלמת ומופיעה שוב בזמן שתבחרו.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">כמו שעון מעורר למייל.</span>",
@@ -253,8 +267,8 @@
       }
     },
     {
-      "index": 10,
-      "step": 11,
+      "index": 11,
+      "step": 12,
       "type": "click",
       "image": "QuickMenu-11.png",
       "text": "<span style=\"color:#f6a67e;\">הוספה ל-Tasks</span><br>הפיכת המייל למשימה ברשימת המשימות של Google.&nbsp;<br>ככה לא שוכחים לטפל.",
@@ -278,8 +292,8 @@
       }
     },
     {
-      "index": 11,
-      "step": 12,
+      "index": 12,
+      "step": 13,
       "type": "click",
       "image": "QuickMenu-12.png",
       "text": "<span style=\"color:#f6a67e;\">העברה לקטגוריה</span><br>מיון ההודעה לקטגוריה: רשתות חברתיות, עדכונים, פורומים, קידומים.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">עוזר ל-Gmail ללמוד איפה לשים הודעות דומות.</span>",
@@ -303,8 +317,8 @@
       }
     },
     {
-      "index": 12,
-      "step": 13,
+      "index": 13,
+      "step": 14,
       "type": "click",
       "image": "QuickMenu-13.png",
       "text": "<span style=\"color:#f6a67e;\">סימון בתוויות</span><br>הוספת תווית (Label) למייל. כמו תיקייה, אבל הודעה אחת יכולה להיות בכמה תוויות בו זמנית.",
@@ -328,8 +342,8 @@
       }
     },
     {
-      "index": 13,
-      "step": 14,
+      "index": 14,
+      "step": 15,
       "type": "click",
       "image": "QuickMenu-14.png",
       "text": "<span style=\"color:#f6a67e;\">השתקה</span><br>עייפתם מהשיחה?&nbsp;<br>השתקה מעבירה את כל התשובות העתידיות ישירות לארכיון.&nbsp;<br>לא תקבלו עוד התראות.",
@@ -353,8 +367,8 @@
       }
     },
     {
-      "index": 14,
-      "step": 15,
+      "index": 15,
+      "step": 16,
       "type": "click",
       "image": "QuickMenu-15.png",
       "text": "<span style=\"color:#f6a67e;\">חיפוש הודעות מאת השולח</span><br>מוצא את <b>כל</b> המיילים שהאדם הזה שלח לכם. מדהים!&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">במקום לחפש ידנית, קליק אחד ויש הכל.</span>",
@@ -378,11 +392,11 @@
       }
     },
     {
-      "index": 15,
-      "step": 16,
+      "index": 16,
+      "step": 17,
       "type": "click",
       "image": "QuickMenu-16.png",
-      "text": "<span style=\"color:#f6a67e;\">סיימנו!</span> עכשיו אתם מכירים את כל האפשרויות בתפריט המהיר של Gmail. קליק ימני על כל הודעה ויש לכם הכל בהישג יד.",
+      "text": "<span style=\"color:#f6a67e;\">פתיחה בחלון חדש</span><br>פותחים את ההודעה בחלון דפדפן נפרד. שימושי כשרוצים לעבוד על מייל אחד בצד בזמן שממשיכים לגלול בתיבה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
       "textPos": {
         "left": "53.2482%",
         "top": "48.4696%"
@@ -390,7 +404,7 @@
       "textWidth": "310px",
       "notes": [
         {
-          "text": "בשקף הזה בשקף הזה צריך לעשות לא זה לא שקף סיימנו צריך יש האצבע מופנית על פתיחה בחלון חדש צריך להסביר מה זה אומר פתיחה בחלון חדש אין צורך לעשות שקף של סיימנו",
+          "text": "",
           "left": "50%",
           "top": "50%"
         }
