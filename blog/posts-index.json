@@ -1,6 +1,24 @@
 {
   "posts": [
     {
+      "id": "everything-search-windows",
+      "title": "<p>לא מוצאים קובץ במחשב?</p><p><span>Everything מוצא הכל תוך שנייה</span></p>",
+      "excerpt": "<p>יש לכם קובץ במחשב. אתם יודעים שהוא שם.</p><p>אבל החיפוש של Windows לוקח דקות.</p><p>ואתם כבר לא בטוחים איפה שמרתם אותו.</p>",
+      "date": "2026-04-05",
+      "image": "",
+      "image_alt": "חלון תוכנת Everything עם תוצאות חיפוש מיידיות על שולחן עבודה של Windows",
+      "seo_title": "Everything. חיפוש מיידי בכל הקבצים במחשב | עומר טייכר",
+      "seo_desc": "Everything מוצא כל קובץ במחשב תוך פחות משנייה. חינמי, קל, מהיר פי אלף מהחיפוש של Windows.",
+      "tags": [
+        "windows",
+        "כלים",
+        "חיפוש",
+        "everything"
+      ],
+      "tutorialUrl": "/interactive/tutorials/Apps/Everything/",
+      "tutorialType": "paid"
+    },
+    {
       "id": "focus-assist-windows",
       "title": "<p>מצב מיקוד.</p><p>השלט 'נא לא להפריע' של Windows</p>",
       "excerpt": "<p>באמצע משהו חשוב.</p><p>התראה קופצת. הריכוז נשבר.</p><p>10 דקות לחזור לעניינים.</p>",
