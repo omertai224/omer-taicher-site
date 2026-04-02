@@ -1,0 +1,29 @@
+<html dir="rtl" style="overflow:hidden;">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>מנהל המשימות - Windows - הדרכה אינטראקטיבית</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../../shared/style.css">
+</head>
+<body onload="initApp()">
+<div id="mobile-block" style="display:none;position:fixed;inset:0;background:#1a1a2e;z-index:9999;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px;font-family:'Rubik',sans-serif;">
+  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:20px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+  <div style="color:white;font-size:24px;font-weight:900;margin-bottom:14px;line-height:1.3;">הדרכה זו מיועדת למחשב בלבד</div>
+  <div style="color:#ffffffcc;font-size:16px;line-height:1.8;margin-bottom:20px;">כדי לתרגל את השלבים תוך כדי,<br>יש לפתוח הדרכה זו במחשב שלכם.</div>
+  <div style="background:#f6a67e22;border:2px solid #f6a67e88;border-radius:14px;padding:14px 20px;max-width:340px;">
+    <div style="color:#f6a67e;font-size:14px;font-weight:700;">איך לפתוח במחשב?</div>
+    <div style="color:#ffffffaa;font-size:14px;margin-top:6px;line-height:1.6;">היכנסו לאתר מהמחשב שלכם:<br><strong style="color:white;">omertai.net/interactive</strong><br>ולחצו על ההדרכה.</div>
+  </div>
+</div>
+<div class="slideshow-container" id="slideshow"></div>
+<img id="logo.png" src="../../../shared/images/logo.png" style="z-index:3;position:fixed;bottom:17px;left:30px;height:46px;">
+<a class="prev" onclick="prevSlide()"><div id="left-arrow" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid #5b8fa8;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(26,37,64,0.5);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></div></a>
+<a class="next" onclick="nextSlide()"><div id="right-arrow" style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid #5b8fa8;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(26,37,64,0.5);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div></a>
+<script>var slideMap = {};</script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="../../../shared/script.js"></script>
+<div class="nav-background"><div class="nav-dots"></div></div>
+</body>
+</html>
