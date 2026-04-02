@@ -321,7 +321,7 @@ function renderBlogList() {
         ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
         <div style="flex:1;min-width:0">
           <div style="font-size:0.92rem;font-weight:700;color:var(--navy);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${(p.title||'').replace(/<\/p>\s*<p>/gi,'<br>').replace(/<\/?p>/gi,'')}</div>
-          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${p.tutorialUrl ? ' · <span style="color:#f6a67e;font-weight:700">🎯 הדרכה</span>' : ''}</div>
+          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${p.tutorialUrl ? ' · <span style="color:' + (p.tutorialType === 'paid' ? '#f6a67e' : '#4ade80') + ';font-weight:700">🎯 ' + (p.tutorialType === 'paid' ? 'הדרכה בתשלום' : 'הדרכה חינמית') + '</span>' : ''}</div>
           ${schedTag}
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
@@ -773,8 +773,20 @@ function showBlogForm(post) {
         <label for="bf-has-tutorial" style="font-size:0.85rem;font-weight:700;color:#f6a67e;cursor:pointer">🎯 יש הדרכה אינטראקטיבית</label>
       </div>
       <div id="bf-tutorial-fields" style="${post.tutorialUrl ? '' : 'display:none'}">
+        <div style="display:flex;gap:12px;margin-bottom:10px;">
+          <label style="display:flex;align-items:center;gap:5px;cursor:pointer;color:#fff;font-size:0.82rem;">
+            <input type="radio" name="bf-tutorial-type" value="free" ${(post.tutorialType || 'free') === 'free' ? 'checked' : ''} style="accent-color:#4ade80"> חינמית
+          </label>
+          <label style="display:flex;align-items:center;gap:5px;cursor:pointer;color:#fff;font-size:0.82rem;">
+            <input type="radio" name="bf-tutorial-type" value="paid" ${post.tutorialType === 'paid' ? 'checked' : ''} style="accent-color:#f6a67e"> בתשלום
+          </label>
+        </div>
         <input id="bf-tutorial-url" type="text" value="${post.tutorialUrl || ''}" placeholder="/interactive/tutorials/Windows/DoNotDisturb/" style="direction:ltr;text-align:left;margin-bottom:8px">
-        <div style="font-size:0.72rem;color:#ffffffaa">נתיב ההדרכה (למשל /interactive/tutorials/Windows/Clipboard/)</div>
+        <div style="font-size:0.72rem;color:#ffffffaa;margin-bottom:8px">נתיב ההדרכה</div>
+        <div id="bf-tutorial-paid-fields" style="${post.tutorialType === 'paid' ? '' : 'display:none'}">
+          <input id="bf-tutorial-product-key" type="text" value="${post.tutorialProductKey || ''}" placeholder="product key (למשל: vibe, everything)" style="direction:ltr;text-align:left;margin-bottom:4px">
+          <div style="font-size:0.72rem;color:#ffffffaa">מפתח מוצר לסליקה (מ-interactive.json)</div>
+        </div>
       </div>
     </div>
 
@@ -1022,11 +1034,40 @@ function clearPostImage() {
   preview.querySelector('img').src = '';
 }
 
+// Generate tutorial CTA HTML for post body
+function buildTutorialCTA(tutorialUrl, tutorialType, tutorialProductKey) {
+  const isFree = tutorialType !== 'paid';
+  const badge = isFree ? 'הדרכה אינטראקטיבית חינמית' : 'הדרכה אינטראקטיבית';
+  const btnText = isFree ? 'עברו להדרכה חינמית' : 'הצטרפו להדרכה';
+  const href = isFree ? tutorialUrl : '/pages/checkout/?product=' + (tutorialProductKey || '');
+
+  return '<div class="tutorial-cta">'
+    + '<div class="tutorial-cta-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> ' + badge + '</div>'
+    + '<div class="tutorial-cta-title">אין יותר תירוצים של "אני לא יודע איך"</div>'
+    + '<div class="tutorial-cta-desc">בניתי הדרכה שמדריכה אתכם צעד אחרי צעד, ממש על המחשב שלכם.<br>לא סרטון. אתם לוחצים, רואים, ומתרגלים בעצמכם.</div>'
+    + '<a class="tutorial-cta-btn" href="' + href + '" target="_blank" rel="noopener">'
+    + btnText
+    + ' <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>'
+    + '</a></div>';
+}
+
 function blogTutorialToggle() {
   const checked = document.getElementById('bf-has-tutorial')?.checked;
   const fields = document.getElementById('bf-tutorial-fields');
   if (fields) fields.style.display = checked ? '' : 'none';
+  blogTutorialTypeToggle();
 }
+
+function blogTutorialTypeToggle() {
+  const type = document.querySelector('input[name="bf-tutorial-type"]:checked')?.value || 'free';
+  const paidFields = document.getElementById('bf-tutorial-paid-fields');
+  if (paidFields) paidFields.style.display = type === 'paid' ? '' : 'none';
+}
+
+// Listen to radio changes
+document.addEventListener('change', function(e) {
+  if (e.target.name === 'bf-tutorial-type') blogTutorialTypeToggle();
+});
 
 function blogAutoSlug() {
   const title = document.getElementById('bf-title')?.innerText || '';
@@ -1072,8 +1113,9 @@ async function blogSendWhatsapp(postId) {
 
   const title = post.title.replace(/<\/p>\s*<p>/gi, '\n').replace(/<[^>]+>/g, '').trim();
   const url = 'https://omertai.net/blog/post.html?id=' + post.id;
-  const hasTutorial = post.body && post.body.includes('tutorial-cta');
-  const tutorialLine = hasTutorial ? '\n\n🎯 מצורפת הדרכה אינטראקטיבית חינמית!\nצעד אחרי צעד, ממש על המחשב שלכם.\nאין תירוצים של \"אני לא יודע איך\".' : '';
+  const hasTutorial = post.tutorialUrl || (post.body && post.body.includes('tutorial-cta'));
+  const isFree = post.tutorialType !== 'paid';
+  const tutorialLine = hasTutorial ? ('\n\n🎯 מצורפת הדרכה אינטראקטיבית' + (isFree ? ' חינמית' : '') + '!\nצעד אחרי צעד, ממש על המחשב שלכם.\nאין תירוצים של \"אני לא יודע איך\".') : '';
   const caption = 'פוסט חדש עלה ☀️\n\n' + title + tutorialLine + '\n\nלקריאה המלאה 👇\n' + url;
   const chatId = '972526587420@c.us';
 
@@ -1240,9 +1282,24 @@ async function blogSavePost() {
 
   try {
     const status = document.getElementById('bf-status')?.value || 'published';
-    const tutorialUrl = document.getElementById('bf-has-tutorial')?.checked ? (document.getElementById('bf-tutorial-url')?.value.trim() || '') : '';
-    const post = { id, title, excerpt, body, date, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc, status };
-    if (tutorialUrl) post.tutorialUrl = tutorialUrl;
+    const hasTutorial = document.getElementById('bf-has-tutorial')?.checked;
+    const tutorialUrl = hasTutorial ? (document.getElementById('bf-tutorial-url')?.value.trim() || '') : '';
+    const tutorialType = hasTutorial ? (document.querySelector('input[name="bf-tutorial-type"]:checked')?.value || 'free') : '';
+    const tutorialProductKey = hasTutorial && tutorialType === 'paid' ? (document.getElementById('bf-tutorial-product-key')?.value.trim() || '') : '';
+    // Auto-append tutorial CTA to body if missing
+    let finalBody = body;
+    if (hasTutorial && tutorialUrl && !body.includes('tutorial-cta')) {
+      finalBody = body + '\n\n' + buildTutorialCTA(tutorialUrl, tutorialType, tutorialProductKey);
+    } else if (hasTutorial && tutorialUrl && body.includes('tutorial-cta')) {
+      // Update existing CTA with current settings
+      finalBody = body.replace(/<div class="tutorial-cta">[\s\S]*?<\/div>\s*<\/div>/, buildTutorialCTA(tutorialUrl, tutorialType, tutorialProductKey));
+    }
+    const post = { id, title, excerpt, body: finalBody, date, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc, status };
+    if (tutorialUrl) {
+      post.tutorialUrl = tutorialUrl;
+      post.tutorialType = tutorialType;
+      if (tutorialProductKey) post.tutorialProductKey = tutorialProductKey;
+    }
     let posts = [...blogPosts];
 
     if (blogEditingId) {
