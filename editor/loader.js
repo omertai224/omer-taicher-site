@@ -7,7 +7,7 @@ var TUTORIALS_BASE = '/interactive/tutorials/';
 var TUTORIAL_CATEGORIES = [
   { label: 'Gmail', items: ['Gmail/Schedule', 'Gmail/Stars', 'Gmail/Unsubscribe'] },
   { label: 'Chrome', items: ['Chrome/WebApp'] },
-  { label: 'Windows', items: ['Windows/Clipboard', 'Windows/NightLight'] },
+  { label: 'Windows', items: ['Windows/Clipboard', 'Windows/NightLight', 'Windows/DoNotDisturb'] },
   { label: 'Apps', items: ['Apps/Vibe', 'Apps/Everything'] }
 ];
 
