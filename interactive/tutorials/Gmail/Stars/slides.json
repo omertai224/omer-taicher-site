@@ -34,8 +34,8 @@
         "bottom": "9.63905%"
       },
       "textPos": {
-        "left": "55.9309%",
-        "top": "47.1006%"
+        "left": "16.28%",
+        "top": "48.7991%"
       },
       "textWidth": "280px"
     },
@@ -88,8 +88,8 @@
         "bottom": "27.6857%"
       },
       "textPos": {
-        "left": "29.1781%",
-        "top": "26.2938%"
+        "left": "29.4169%",
+        "top": "30.5401%"
       },
       "textWidth": "280px"
     },
@@ -118,10 +118,16 @@
       "image": "Stars-07.png",
       "text": "<span style=\"color: rgb(246, 166, 126);\">יפה. שלושה כוכבים צהובים.&nbsp;<br></span>אבל מה אם רוצים להבדיל בין תקלה להמלצה?<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "11.1446%",
-        "top": "40.092%"
+        "left": "7.80006%",
+        "top": "39.454%"
       },
-      "textWidth": "346px"
+      "textWidth": "346px",
+      "box": {
+        "top": "29.7877%",
+        "left": "48.8694%",
+        "right": "29.5781%",
+        "bottom": "9.23565%"
+      }
     },
     {
       "index": 7,
@@ -136,8 +142,8 @@
         "bottom": "86.2845%"
       },
       "textPos": {
-        "left": "31.8067%",
-        "top": "21.624%"
+        "left": "28.9398%",
+        "top": "13.3437%"
       },
       "textWidth": "280px"
     },
@@ -154,8 +160,8 @@
         "bottom": "70.0664%"
       },
       "textPos": {
-        "left": "25.4845%",
-        "top": "34.0289%"
+        "left": "34.5604%",
+        "top": "21.7147%"
       },
       "textWidth": "280px"
     },
@@ -172,8 +178,8 @@
         "bottom": "40.4563%"
       },
       "textPos": {
-        "left": "49.8059%",
-        "top": "52.9171%"
+        "left": "8.84193%",
+        "top": "18.3088%"
       },
       "textWidth": "280px"
     },
@@ -190,8 +196,8 @@
         "bottom": "28.069%"
       },
       "textPos": {
-        "left": "51.825%",
-        "top": "31.3506%"
+        "left": "49.4365%",
+        "top": "27.7402%"
       },
       "textWidth": "309px"
     },
@@ -208,8 +214,8 @@
         "bottom": "26.6333%"
       },
       "textPos": {
-        "left": "49.2729%",
-        "top": "52.6274%"
+        "left": "42.3461%",
+        "top": "65.5786%"
       },
       "textWidth": "280px"
     },
