@@ -766,6 +766,46 @@ cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/scrip
 הקובץ מכיל את כל התקלות שכבר קרו + פתרונות מוכחים + צ'קליסט לפני דחיפה.
 כולל: תמונות חורגות, אייקונים חסרים, מקפים, SmartScreen, git errors ועוד.
 
+### עדכונים קריטיים (אפריל 2026)
+
+#### מסגרות צפייה כחולות (view-highlight)
+- שקפי **click** = מסגרת **כתומה** (box-pulse animation)
+- שקפי **view** = מסגרת **כחולה** (#5b8fa8, בלי אנימציה, pointer-events:none)
+- CSS class: `.box.view-highlight` ב-shared/style.css
+- בעורך: המסגרת משנה צבע אוטומטית לפי סוג השקף (editor/render.js)
+- בעורך: כפתור "לחיצה" = כתום, "צפייה" = כחול (editor/style.css)
+- בעורך: שם השדה: **"מסגרת לחיצה"** (לא "מסגרת כתומה")
+
+#### מערכת Scale של בועות (bubbleDesignWidth = 853)
+- **תיעוד מלא ב-BUBBLE-SCALE.md** — לקרוא אם משהו נשבר!
+- הנוסחה: `scale = containerWidth / 853` — זהה בעורך ובלייב
+- עורך: `editor/render.js` → `var designW = window.bubbleDesignWidth || 853;`
+- הדרכות: כל `script.js` → `window.bubbleDesignWidth = 853;`
+- **אין פיצוי מיקום** — textPos מהעורך = המיקום הסופי בלייב
+- **אסור לשנות designW במקום אחד בלי כל השאר** (6 מקומות!)
+
+#### תפריט עץ בעורך (Tree Dropdown)
+- `editor/loader.js` → `TUTORIAL_CATEGORIES` — מערך של קטגוריות עם תת-פריטים
+- קטגוריות נוכחיות: Gmail, Chrome, Windows, Apps
+- כל הדרכה חדשה צריכה להתווסף לקטגוריה המתאימה
+- `editor/app.js` → `populateDropdown()`, `selectTutorial()`, `toggleTreeDropdown()`
+
+#### הדרכות Gmail/Chrome — בלי שקפים מיוחדים!
+- הדרכות Gmail ו-Chrome הן חלק מחבילות, לא עומדות בפני עצמן
+- **אין שקף פתיחה, אין howto, אין finish** — מתחילות ישר מצעד 1
+- slideMap ריק: `var slideMap = {};`
+- שקפים מיוחדים יהיו ברמת החבילה, לא בהדרכה הבודדת
+
+#### הערות אוטומטיות בעורך
+- כל שקף שנפתח בעורך מקבל הערה ריקה אוטומטית
+- הערות ריקות **לא** מציגות marker צהוב על התמונה
+- רק הערות עם תוכן מציגות את העיגול הצהוב
+- זה מאפשר לעומר ללחוץ מיקרופון ולהתחיל לדבר מיד
+
+#### זכוכית מגדלת + TTS — המתנה לטעינת תמונה
+- `updateMagnifierVisibility()` ו-`updateTtsVisibility()` מחכים ל-`img.onload`
+- מתקן באג שהכפתורים לא ממורכזים בטעינה ראשונה
+
 ### לקחים מהסשן - מה עובד, מה לא (מרץ 2026)
 
 #### מה עבד מעולה:
