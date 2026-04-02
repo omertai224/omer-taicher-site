@@ -27,7 +27,7 @@ function seekTo(lecIndex, seconds) {
       videoId: lec.ytId,
       width: '100%',
       height: '100%',
-      playerVars: { autoplay: 1, rel: 0, start: seconds },
+      playerVars: { autoplay: 1, rel: 0, start: seconds, cc_load_policy: 1, cc_lang_pref: 'iw' },
       events: {
         onReady: function(e) {
           e.target.seekTo(seconds, true);
@@ -59,7 +59,7 @@ function renderLectures() {
 
   lecturesData.forEach(function(lec, i) {
     var thumb = 'https://img.youtube.com/vi/' + lec.ytId + '/maxresdefault.jpg';
-    var ytUrl = 'https://youtu.be/' + lec.ytId;
+    var ytUrl = 'https://www.youtube.com/watch?v=' + lec.ytId + '&cc_load_policy=1&cc_lang_pref=iw';
 
     // Topics chips
     var topicsHTML = lec.topics.map(function(t) {
