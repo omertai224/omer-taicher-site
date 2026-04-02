@@ -347,4 +347,78 @@ color: #f6a67e;
 - [ ] אין מקפים ארוכים
 - [ ] CSS כתום לעיגולים מיוחדים קיים
 - [ ] שקפי SmartScreen עם טקסט מרגיע
+
+---
+
+## 12. הדרכה חדשה בתת-תיקייה (Chrome/X, Gmail/X) לא עובדת
+
+### סימפטום
+הדרכה חדשה בתת-תיקייה (כמו Chrome/WebApp) מציגה שקפים שבורים, בלי עיצוב, בלי ניווט.
+
+### סיבה
+נתיב ל-shared לא נכון. הדרכות בתת-תיקייה (interactive/tutorials/Chrome/WebApp/) צריכות **3 רמות** למעלה, לא 4.
+
+### פתרון
+```html
+<!-- נכון (3 רמות): -->
+<link rel="stylesheet" href="../../../shared/style.css">
+<script src="../../../shared/script.js"></script>
+<img src="../../../shared/images/logo.png">
+
+<!-- לא נכון (4 רמות): -->
+<link rel="stylesheet" href="../../../../shared/style.css">
+```
+
+### מניעה
+בכל יצירת הדרכה חדשה, לבדוק את העומק:
+- `tutorials/Clipboard/` = 2 רמות = `../../shared/`
+- `tutorials/Gmail/Stars/` = 3 רמות = `../../../shared/`
+- `tutorials/Chrome/WebApp/` = 3 רמות = `../../../shared/`
+
+---
+
+## 13. slides.json ריק גורם לשגיאה בעורך
+
+### סימפטום
+`Cannot read properties of undefined (reading 'step')` כשפותחים הדרכה חדשה ריקה בעורך.
+
+### סיבה
+slides.json עם מערך slides ריק (`"slides": []`). העורך מנסה לקרוא step מהשקף הראשון שלא קיים.
+
+### פתרון
+תמיד ליצור הדרכה חדשה עם שקף placeholder אחד לפחות:
+```json
+{
+  "title": "שם ההדרכה",
+  "subtitle": "קטגוריה",
+  "totalSteps": 0,
+  "slides": [
+    {
+      "index": 0,
+      "type": "click",
+      "step": 1,
+      "text": "",
+      "textPos": { "left": "50%", "top": "50%" }
+    }
+  ]
+}
+```
+
+---
+
+## 14. bubbleDesignWidth חייב להיות זהה בכל מקום
+
+### סימפטום
+בועות טקסט בגדלים שונים בין העורך לתצוגה החיה.
+
+### סיבה
+`bubbleDesignWidth` שונה בין script.js של ההדרכה לבין editor/render.js.
+
+### פתרון
+**הערך הנוכחי: 853** (150% scale על 4K@300%).
+חייב להיות זהה ב:
+1. כל script.js של הדרכה: `window.bubbleDesignWidth = 853;`
+2. editor/render.js fallback: `var designW = window.bubbleDesignWidth || 853;`
+
+ראו תיעוד מלא ב-`BUBBLE-SCALE.md`.
 - [ ] שקף מעבר "התקנה" לפני שקפי SmartScreen
