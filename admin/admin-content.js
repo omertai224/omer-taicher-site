@@ -1037,17 +1037,19 @@ function clearPostImage() {
 // Generate tutorial CTA HTML for post body
 function buildTutorialCTA(tutorialUrl, tutorialType, tutorialProductKey) {
   const isFree = tutorialType !== 'paid';
-  const badge = isFree ? 'הדרכה אינטראקטיבית חינמית' : 'הדרכה אינטראקטיבית';
+  const badge = isFree ? 'הדרכה אינטראקטיבית חינמית' : 'הדרכה אינטראקטיבית בתשלום';
   const btnText = isFree ? 'עברו להדרכה חינמית' : 'הצטרפו להדרכה';
   const href = isFree ? tutorialUrl : '/pages/checkout/?product=' + (tutorialProductKey || '');
+  const arrowSvg = isFree
+    ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>'
+    : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 8 12 12 16"></polyline><line x1="16" y1="12" x2="8" y2="12"></line></svg>';
 
   return '<div class="tutorial-cta">'
     + '<div class="tutorial-cta-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> ' + badge + '</div>'
     + '<div class="tutorial-cta-title">אין יותר תירוצים של "אני לא יודע איך"</div>'
     + '<div class="tutorial-cta-desc">בניתי הדרכה שמדריכה אתכם צעד אחרי צעד, ממש על המחשב שלכם.<br>לא סרטון. אתם לוחצים, רואים, ומתרגלים בעצמכם.</div>'
     + '<a class="tutorial-cta-btn" href="' + href + '" target="_blank" rel="noopener">'
-    + btnText
-    + ' <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 16 16 12 12 8"></polyline><line x1="8" y1="12" x2="16" y2="12"></line></svg>'
+    + (isFree ? btnText + ' ' + arrowSvg : arrowSvg + ' ' + btnText)
     + '</a></div>';
 }
 
