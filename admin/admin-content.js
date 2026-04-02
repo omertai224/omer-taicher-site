@@ -321,7 +321,7 @@ function renderBlogList() {
         ${p.image ? `<img src="${p.image}" style="width:44px;height:44px;object-fit:cover;border-radius:8px;flex-shrink:0;">` : `<div style="font-size:1.8rem;flex-shrink:0">${p.emoji || '📝'}</div>`}
         <div style="flex:1;min-width:0">
           <div style="font-size:0.92rem;font-weight:700;color:var(--navy);overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${(p.title||'').replace(/<\/p>\s*<p>/gi,'<br>').replace(/<\/?p>/gi,'')}</div>
-          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}</div>
+          <div style="font-size:0.72rem;color:var(--text-light);margin-top:3px">${formatBlogDate(p.date)} · ${p.id}${p.tutorialUrl ? ' · <span style="color:#f6a67e;font-weight:700">🎯 הדרכה</span>' : ''}</div>
           ${schedTag}
         </div>
         <div style="display:flex;gap:8px;flex-shrink:0;flex-wrap:wrap">
@@ -767,6 +767,17 @@ function showBlogForm(post) {
       <div id="bf-upload-status" style="font-size:0.75rem;color:var(--text-light);margin-top:6px"></div>
     </div>
 
+    <div class="field" style="margin-top:20px;background:linear-gradient(135deg,#0f1a2e,#1a2540);border:2px solid #f6a67e44;border-radius:14px;padding:18px 20px;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+        <input type="checkbox" id="bf-has-tutorial" ${post.tutorialUrl ? 'checked' : ''} onchange="blogTutorialToggle()" style="width:18px;height:18px;accent-color:#f6a67e;cursor:pointer">
+        <label for="bf-has-tutorial" style="font-size:0.85rem;font-weight:700;color:#f6a67e;cursor:pointer">🎯 יש הדרכה אינטראקטיבית</label>
+      </div>
+      <div id="bf-tutorial-fields" style="${post.tutorialUrl ? '' : 'display:none'}">
+        <input id="bf-tutorial-url" type="text" value="${post.tutorialUrl || ''}" placeholder="/interactive/tutorials/Windows/DoNotDisturb/" style="direction:ltr;text-align:left;margin-bottom:8px">
+        <div style="font-size:0.72rem;color:#ffffffaa">נתיב ההדרכה (למשל /interactive/tutorials/Windows/Clipboard/)</div>
+      </div>
+    </div>
+
     <div class="field" style="margin-top:28px;background:#f0f6fb;border:1.5px solid #c3d9ec;border-radius:14px;padding:18px 20px;">
       <div style="font-size:0.82rem;font-weight:800;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:7px;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1011,6 +1022,12 @@ function clearPostImage() {
   preview.querySelector('img').src = '';
 }
 
+function blogTutorialToggle() {
+  const checked = document.getElementById('bf-has-tutorial')?.checked;
+  const fields = document.getElementById('bf-tutorial-fields');
+  if (fields) fields.style.display = checked ? '' : 'none';
+}
+
 function blogAutoSlug() {
   const title = document.getElementById('bf-title')?.innerText || '';
   const slug = titleToSlug(title);
@@ -1223,7 +1240,9 @@ async function blogSavePost() {
 
   try {
     const status = document.getElementById('bf-status')?.value || 'published';
+    const tutorialUrl = document.getElementById('bf-has-tutorial')?.checked ? (document.getElementById('bf-tutorial-url')?.value.trim() || '') : '';
     const post = { id, title, excerpt, body, date, image, image_alt: imageAlt, seo_title: seoTitle, seo_desc: seoDesc, status };
+    if (tutorialUrl) post.tutorialUrl = tutorialUrl;
     let posts = [...blogPosts];
 
     if (blogEditingId) {
