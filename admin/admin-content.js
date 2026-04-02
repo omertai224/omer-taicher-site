@@ -352,7 +352,6 @@ function renderBlogList() {
         טיוטות <span style="font-size:0.75rem;opacity:0.8">(${draftCount})</span>
       </button>
       <div style="flex:1"></div>
-      <button onclick="blogNewPost()" style="background:var(--orange-deep);color:#fff;border:none;padding:9px 20px;border-radius:50px;font-size:0.85rem;font-weight:700;cursor:pointer;font-family:inherit">+ פוסט חדש</button>
     </div>
     <div style="margin-bottom:14px">
       <input
