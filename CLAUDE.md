@@ -776,6 +776,59 @@ cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/scrip
 - בעורך: כפתור "לחיצה" = כתום, "צפייה" = כחול (editor/style.css)
 - בעורך: שם השדה: **"מסגרת לחיצה"** (לא "מסגרת כתומה")
 
+#### מערכת אנימציות פעולה מיוחדות (עדכון אפריל 2026)
+**אנימציות SVG שמראות למשתמש איך לבצע פעולה מיוחדת במחשב שלו.**
+
+**6 סוגי אנימציות:**
+| דגל ב-slides.json | קובץ SVG | פעולה |
+|---|---|---|
+| `rightClickAnim` | `shared/images/right-click.svg` | קליק ימני |
+| `doubleClickAnim` | `shared/images/double-click.svg` | לחיצה כפולה |
+| `scrollDownAnim` | `shared/images/scroll-down.svg` | גלילה למטה |
+| `dragDropAnim` | `shared/images/drag-drop.svg` | גרירה |
+| `typingAnim` | `shared/images/typing.svg` | הקלדה |
+| `keyboardAnim` | `shared/images/keyboard-shortcut.svg` | קיצור מקלדת (כפתור הוסר מהעורך) |
+
+**איפה מוגדרים:**
+- **slides.json** — דגל boolean על כל שקף: `"rightClickAnim": true`
+- **shared/script.js** — `renderSlideAnimations()` מרנדר בלייב
+- **editor/panel.js** — `renderAnimOverlays()` מרנדר בעורך
+- כפתורי הפעלה בעורך: `ANIM_TYPES` object ב-`editor/panel.js`
+- **רק אנימציה אחת פעילה בו-זמנית!** `toggleAnim()` מכבה את האחרות
+
+**איך זה מוצג (לייב + עורך):**
+- ה-SVG מוזרק **לתוך הבועה** (`.text` element) כילד
+- **זזה יחד עם הבועה!** כשמזיזים בועה בעורך או כש-scaleBubbles מזיז בלייב
+- מיקום: פינה שמאלית עליונה של הבועה (`left:6px; top:6px`)
+- ליד ה-SVG מופיעה תווית כתומה **"במחשב"** (badge)
+- העיצוב: `background:#e8834e; color:#fff; font-size:11px; border-radius:10px`
+- כיוון: RTL (תווית מימין, אנימציה משמאל)
+
+**cache busting:**
+- כל שינוי ב-`shared/script.js` = עדכון `?v=N` בכל 12 index.html של ההדרכות
+- **גרסה נוכחית: v=8**
+- חובה לעדכן בכל ההדרכות במקביל (grep + sed)
+
+**מתי להוסיף אנימציה לשקף:**
+- טקסט מכיל "קליק ימני" / "לחיצה ימנית" → `rightClickAnim: true`
+- טקסט מכיל "לחיצה כפולה" / "לחצו פעמיים" → `doubleClickAnim: true`
+- טקסט מכיל "גללו" / "גוללנו" / "scroll" → `scrollDownAnim: true`
+- טקסט מכיל "גררו" / "גרירה" → `dragDropAnim: true`
+- טקסט מכיל "הקלידו" / "כתבו את" → `typingAnim: true`
+- **שקפי special/outro לא מקבלים אנימציה** גם אם הטקסט מזכיר פעולות
+
+**הדרכות עם אנימציות (סטטוס אפריל 2026):**
+- Everything: doubleClick (4,15), typing (13), rightClick (31,34)
+- Vibe: doubleClick (4), dragDrop (14), scrollDown (19)
+- Chrome/WebApp: rightClick (9)
+- Gmail/QuickMenu: rightClick (0,1)
+- Gmail/Stars: scrollDown (9)
+- Gmail/Schedule: scrollDown (15), doubleClick (8)
+- Windows/NightLight: rightClick (0)
+- Windows/TaskManager: rightClick (3,10)
+- Windows/Cursor: scrollDown (7)
+- Windows/Clipboard: scrollDown (24)
+
 #### מערכת Scale של בועות (bubbleDesignWidth = 853)
 - **תיעוד מלא ב-BUBBLE-SCALE.md** — לקרוא אם משהו נשבר!
 - הנוסחה: `scale = containerWidth / 853` — זהה בעורך ובלייב
@@ -802,23 +855,6 @@ cp interactive/tutorials/Everything/script.js interactive/tutorials/[שם]/scrip
 - רק הערות עם תוכן מציגות את העיגול הצהוב
 - זה מאפשר לעומר ללחוץ מיקרופון ולהתחיל לדבר מיד
 
-#### הדרכות Gmail/Chrome — בלי שקפים מיוחדים!
-- הדרכות Gmail ו-Chrome הן חלק מחבילות, לא עומדות בפני עצמן
-- **אין שקף פתיחה, אין howto, אין finish** — מתחילות ישר מצעד 1
-- slideMap ריק: `var slideMap = {};`
-- שקפים מיוחדים יהיו ברמת החבילה, לא בהדרכה הבודדת
-
-#### מבנה תיקיות הדרכות (עדכון אפריל 2026)
-```
-tutorials/
-  Gmail/     → Schedule, Stars, Unsubscribe
-  Chrome/    → WebApp
-  Windows/   → Clipboard, NightLight, DoNotDisturb
-  Apps/      → Vibe, Everything
-```
-- כל הדרכה חדשה נכנסת לקטגוריה המתאימה
-- `editor/loader.js` → `TUTORIAL_CATEGORIES` — מעודכן עם כל ההדרכות
-
 #### מערכת CTA הדרכה אינטראקטיבית בפוסטים
 - **בעורך הבלוג**: צ'קבוקס "יש הדרכה אינטראקטיבית" + חינמית/בתשלום
 - **כשמסמנים ושומרים**: CTA מתווסף אוטומטית לסוף הפוסט
@@ -835,7 +871,7 @@ tutorials/
 tutorials/
   Gmail/     → Schedule, Stars, Unsubscribe, QuickMenu
   Chrome/    → WebApp
-  Windows/   → Clipboard, NightLight, DoNotDisturb, TaskManager
+  Windows/   → Clipboard, NightLight, DoNotDisturb, TaskManager, Cursor
   Apps/      → Vibe, Everything
 ```
 - כל הדרכה חדשה נכנסת לקטגוריה המתאימה
