@@ -87,16 +87,16 @@ function renderSlideAnimations() {
   ];
   animTypes.forEach(function(a) {
     if (s[a.key]) {
-      // Find the text bubble and inject the animation inside it
-      var textEl = slide.querySelector('.text');
-      if (textEl) {
-        var el = document.createElement('img');
-        el.className = 'slide-anim';
-        el.src = sharedPath + '/' + a.file;
-        el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;width:36px;left:6px;top:6px;opacity:0.9;';
-        textEl.style.position = 'absolute'; // ensure positioning context
-        textEl.appendChild(el);
-      }
+      var el = document.createElement('img');
+      el.className = 'slide-anim';
+      el.src = sharedPath + '/' + a.file;
+      // Position relative to textPos from slides.json
+      var tLeft = s.textPos ? parseFloat(s.textPos.left) || 0 : 5;
+      var tTop = s.textPos ? parseFloat(s.textPos.top) || 0 : 5;
+      el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;width:36px;' +
+        'left:' + Math.max(0, tLeft - 4) + '%;' +
+        'top:' + Math.max(0, tTop - 1) + '%;';
+      ic.appendChild(el);
     }
   });
 }
