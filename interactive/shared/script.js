@@ -55,6 +55,46 @@ function showSlides(n) {
   setNavBarColor(slideIndex);
   updateMagnifierVisibility();
   updateTtsVisibility();
+  renderSlideAnimations();
+}
+
+/* ── Render right-click / scroll animations from slides.json ── */
+function renderSlideAnimations() {
+  // Remove old
+  var old = document.querySelectorAll('.slide-anim');
+  for (var i = 0; i < old.length; i++) old[i].remove();
+  if (!slidesData || !slidesData.slides) return;
+  var s = slidesData.slides[slideIndex - 1];
+  if (!s) return;
+  var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
+  if (!slide) return;
+  var ic = slide.querySelector('.image-center');
+  if (!ic) return;
+
+  var sharedPath = (function() {
+    var links = document.querySelectorAll('link[rel="stylesheet"][href*="shared/style.css"]');
+    if (links.length) return links[0].getAttribute('href').replace('style.css', 'images');
+    return '../../shared/images';
+  })();
+
+  if (s.rightClickAnim) {
+    var rc = document.createElement('img');
+    rc.className = 'slide-anim';
+    rc.src = sharedPath + '/right-click.svg';
+    rc.style.cssText = 'position:absolute;z-index:5;width:60px;pointer-events:none;' +
+      'left:' + (s.rightClickPos ? s.rightClickPos.left : '85%') + ';' +
+      'top:' + (s.rightClickPos ? s.rightClickPos.top : '30%') + ';';
+    ic.appendChild(rc);
+  }
+  if (s.scrollDownAnim) {
+    var sd = document.createElement('img');
+    sd.className = 'slide-anim';
+    sd.src = sharedPath + '/scroll-down.svg';
+    sd.style.cssText = 'position:absolute;z-index:5;width:60px;pointer-events:none;' +
+      'left:' + (s.scrollDownPos ? s.scrollDownPos.left : '85%') + ';' +
+      'top:' + (s.scrollDownPos ? s.scrollDownPos.top : '30%') + ';';
+    ic.appendChild(sd);
+  }
 }
 
 /* ── Scale + anchor bubbles to the orange box ── */
