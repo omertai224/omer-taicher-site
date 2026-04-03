@@ -483,8 +483,6 @@ br {
   gap: 1.5vh 1.5vw;
   max-width: 860px;
   width: 100%;
-  flex: 1;
-  align-content: center;
 }
 /* Row 1: 3 cards (content), Row 2: 4 cards (tools) */
 .ht-row { display:flex; gap:1.5vw; justify-content:center; width:100%; }
