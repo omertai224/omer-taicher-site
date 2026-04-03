@@ -32,7 +32,8 @@ function buildPanel() {
     // ── Text ──
     + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> טקסט <span class="orange-btn" onmousedown="event.preventDefault()" onclick="toggleOrange()" title="סמנו מילים ולחצו להדגשה בכתום">&#x25CF; כתום</span> <span class="orange-btn" onmousedown="event.preventDefault()" onclick="toggleWhite()" title="סמנו מילים ולחצו להפיכה ללבן" style="color:#ffffffcc;border-color:#ffffff44;">&#x25CF; לבן</span> <span class="mic-btn" onclick="toggleSpeech(\'text\')" title="הקלטה לטקסט"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg></span></h3>'
     + '<div id="pText" class="text-editor" contenteditable="true" oninput="applyText()"></div>'
-    + '<div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;"><span class="orange-btn" onclick="toggleContinueBtn()" id="btnContinue" title="הוסף/הסר כפתור המשך לשקפי צפייה" style="color:#5b8fa8;border-color:#5b8fa855;">▶ המשך</span><span class="orange-btn" onclick="toggleRightClick()" id="btnRightClick" title="הוסף/הסר אנימציית קליק ימני" style="color:#f6a67e;border-color:#f6a67e55;">🖱 ימני</span><span class="orange-btn" onclick="toggleScrollDown()" id="btnScrollDown" title="הוסף/הסר אנימציית גלילה" style="color:#f6a67e;border-color:#f6a67e55;">⬇ גלילה</span></div>'
+    + '<div style="margin-top:6px;display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;"><span class="orange-btn" onclick="toggleContinueBtn()" id="btnContinue" title="כפתור המשך" style="color:#5b8fa8;border-color:#5b8fa855;">▶ המשך</span><span class="orange-btn" onclick="toggleAnim(\'rightClick\')" id="btnRightClick" title="קליק ימני" style="color:#f6a67e;border-color:#f6a67e55;">🖱 ימני</span><span class="orange-btn" onclick="toggleAnim(\'scrollDown\')" id="btnScrollDown" title="גלילה למטה" style="color:#f6a67e;border-color:#f6a67e55;">⬇ גלילה</span></div>'
+    + '<div style="margin-top:4px;display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;"><span class="orange-btn" onclick="toggleAnim(\'doubleClick\')" id="btnDoubleClick" title="לחיצה כפולה" style="color:#f6a67e;border-color:#f6a67e55;">⏸ כפולה</span><span class="orange-btn" onclick="toggleAnim(\'dragDrop\')" id="btnDragDrop" title="גרירה" style="color:#f6a67e;border-color:#f6a67e55;">↕ גרירה</span><span class="orange-btn" onclick="toggleAnim(\'keyboard\')" id="btnKeyboard" title="קיצור מקלדת" style="color:#f6a67e;border-color:#f6a67e55;">⌨ מקלדת</span><span class="orange-btn" onclick="toggleAnim(\'typing\')" id="btnTyping" title="הקלדה" style="color:#f6a67e;border-color:#f6a67e55;">⌨ הקלדה</span></div>'
 
     // ── Notes ──
     + '<h3><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> הערות <span class="orange-btn" onclick="addNote()" style="color:#fbbf24;border-color:#fbbf2455;">+ הערה</span></h3>'
@@ -70,45 +71,42 @@ function updateContinueBtn(s) {
   btn.textContent = has ? '✓ המשך' : '▶ המשך';
   btn.style.color = has ? '#4ade80' : '#5b8fa8';
   btn.style.borderColor = has ? '#4ade8055' : '#5b8fa855';
-  // Update animation buttons
-  var rcBtn = $('btnRightClick');
-  if (rcBtn) {
-    var hasRC = s.rightClickAnim;
-    rcBtn.textContent = hasRC ? '✓ ימני' : '🖱 ימני';
-    rcBtn.style.color = hasRC ? '#4ade80' : '#f6a67e';
-    rcBtn.style.borderColor = hasRC ? '#4ade8055' : '#f6a67e55';
-  }
-  var sdBtn = $('btnScrollDown');
-  if (sdBtn) {
-    var hasSD = s.scrollDownAnim;
-    sdBtn.textContent = hasSD ? '✓ גלילה' : '⬇ גלילה';
-    sdBtn.style.color = hasSD ? '#4ade80' : '#f6a67e';
-    sdBtn.style.borderColor = hasSD ? '#4ade8055' : '#f6a67e55';
-  }
+  if (typeof updateAnimButtons === 'function') updateAnimButtons(s);
 }
 
-// ── Right-click animation toggle ──
-function toggleRightClick() {
+// ── Animation toggle (generic) ──
+var ANIM_TYPES = {
+  rightClick:  { key: 'rightClickAnim',  posKey: 'rightClickPos',  sizeKey: 'rightClickSize',  src: '/interactive/shared/images/right-click.svg',  label: 'קליק ימני', btnId: 'btnRightClick', icon: '🖱 ימני' },
+  scrollDown:  { key: 'scrollDownAnim',  posKey: 'scrollDownPos',  sizeKey: 'scrollDownSize',  src: '/interactive/shared/images/scroll-down.svg',  label: 'גלילה', btnId: 'btnScrollDown', icon: '⬇ גלילה' },
+  doubleClick: { key: 'doubleClickAnim', posKey: 'doubleClickPos', sizeKey: 'doubleClickSize', src: '/interactive/shared/images/double-click.svg', label: 'לחיצה כפולה', btnId: 'btnDoubleClick', icon: '⏸ כפולה' },
+  dragDrop:    { key: 'dragDropAnim',    posKey: 'dragDropPos',    sizeKey: 'dragDropSize',    src: '/interactive/shared/images/drag-drop.svg',    label: 'גרירה', btnId: 'btnDragDrop', icon: '↕ גרירה' },
+  keyboard:    { key: 'keyboardAnim',    posKey: 'keyboardPos',    sizeKey: 'keyboardSize',    src: '/interactive/shared/images/keyboard-shortcut.svg', label: 'מקלדת', btnId: 'btnKeyboard', icon: '⌨ מקלדת' },
+  typing:      { key: 'typingAnim',      posKey: 'typingPos',      sizeKey: 'typingSize',      src: '/interactive/shared/images/typing.svg',       label: 'הקלדה', btnId: 'btnTyping', icon: '⌨ הקלדה' }
+};
+
+function toggleAnim(type) {
+  var a = ANIM_TYPES[type];
+  if (!a) return;
   var s = E.data.slides[E.idx];
   saveUndo();
-  s.rightClickAnim = !s.rightClickAnim;
-  if (!s.rightClickAnim) delete s.rightClickAnim;
-  updateContinueBtn(s);
+  s[a.key] = !s[a.key];
+  if (!s[a.key]) { delete s[a.key]; delete s[a.posKey]; delete s[a.sizeKey]; }
+  updateAnimButtons(s);
   renderAnimOverlays(s);
   markModified();
-  toast(s.rightClickAnim ? 'אנימציית קליק ימני נוספה' : 'אנימציית קליק ימני הוסרה');
+  toast(s[a.key] ? a.label + ' נוספה' : a.label + ' הוסרה');
 }
 
-// ── Scroll down animation toggle ──
-function toggleScrollDown() {
-  var s = E.data.slides[E.idx];
-  saveUndo();
-  s.scrollDownAnim = !s.scrollDownAnim;
-  if (!s.scrollDownAnim) delete s.scrollDownAnim;
-  updateContinueBtn(s);
-  renderAnimOverlays(s);
-  markModified();
-  toast(s.scrollDownAnim ? 'אנימציית גלילה נוספה' : 'אנימציית גלילה הוסרה');
+function updateAnimButtons(s) {
+  Object.keys(ANIM_TYPES).forEach(function(type) {
+    var a = ANIM_TYPES[type];
+    var btn = $(a.btnId);
+    if (!btn) return;
+    var has = s[a.key];
+    btn.textContent = has ? '✓ ' + a.icon.split(' ')[1] : a.icon;
+    btn.style.color = has ? '#4ade80' : '#f6a67e';
+    btn.style.borderColor = has ? '#4ade8055' : '#f6a67e55';
+  });
 }
 
 // ── Render animation overlays on editor canvas ──
@@ -119,12 +117,12 @@ function renderAnimOverlays(slide) {
   var container = $('slideContainer');
   if (!container || container.style.display === 'none') return;
 
-  if (slide.rightClickAnim) {
-    addAnimOverlay(container, slide, '/interactive/shared/images/right-click.svg', 'rightClickPos', 'rightClickSize', 'קליק ימני');
-  }
-  if (slide.scrollDownAnim) {
-    addAnimOverlay(container, slide, '/interactive/shared/images/scroll-down.svg', 'scrollDownPos', 'scrollDownSize', 'גלילה למטה');
-  }
+  Object.keys(ANIM_TYPES).forEach(function(type) {
+    var a = ANIM_TYPES[type];
+    if (slide[a.key]) {
+      addAnimOverlay(container, slide, a.src, a.posKey, a.sizeKey, a.label);
+    }
+  });
 }
 
 function addAnimOverlay(container, slide, src, posKey, sizeKey, title) {

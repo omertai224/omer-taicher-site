@@ -1,0 +1,36 @@
+<!-- Typing animation SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="100" height="80">
+  <style>
+    @keyframes type-1 { 0%,100%{fill:#1a2540;} 15%,25%{fill:#f6a67e;} }
+    @keyframes type-2 { 0%,100%{fill:#1a2540;} 35%,45%{fill:#f6a67e;} }
+    @keyframes type-3 { 0%,100%{fill:#1a2540;} 55%,65%{fill:#f6a67e;} }
+    @keyframes type-4 { 0%,100%{fill:#1a2540;} 75%,85%{fill:#f6a67e;} }
+    .kb-body { fill: #0f1a2e; stroke: #5b8fa8; stroke-width: 1.5; rx: 8; }
+    .k { stroke: #5b8fa8; stroke-width: 1; rx: 3; }
+    .k1 { animation: type-1 2s ease-in-out infinite; }
+    .k2 { animation: type-2 2s ease-in-out infinite; }
+    .k3 { animation: type-3 2s ease-in-out infinite; }
+    .k4 { animation: type-4 2s ease-in-out infinite; }
+    .k-static { fill: #1a2540; }
+    .type-label { fill: #f6a67e; font-family: Rubik, sans-serif; font-size: 10px; font-weight: 700; text-anchor: middle; }
+  </style>
+  <!-- Keyboard body -->
+  <rect class="kb-body" x="5" y="5" width="90" height="50"/>
+  <!-- Row 1 -->
+  <rect class="k k1" x="10" y="10" width="12" height="12"/>
+  <rect class="k k-static" x="24" y="10" width="12" height="12"/>
+  <rect class="k k2" x="38" y="10" width="12" height="12"/>
+  <rect class="k k-static" x="52" y="10" width="12" height="12"/>
+  <rect class="k k3" x="66" y="10" width="12" height="12"/>
+  <rect class="k k-static" x="80" y="10" width="12" height="12"/>
+  <!-- Row 2 -->
+  <rect class="k k-static" x="13" y="25" width="12" height="12"/>
+  <rect class="k k4" x="27" y="25" width="12" height="12"/>
+  <rect class="k k-static" x="41" y="25" width="12" height="12"/>
+  <rect class="k k-static" x="55" y="25" width="12" height="12"/>
+  <rect class="k k-static" x="69" y="25" width="12" height="12"/>
+  <!-- Spacebar -->
+  <rect class="k k-static" x="20" y="40" width="50" height="10" rx="4"/>
+  <!-- Label -->
+  <text class="type-label" x="50" y="70">הקלדה</text>
+</svg>
