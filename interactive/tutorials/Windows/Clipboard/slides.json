@@ -15,6 +15,11 @@
     },
     {
       "index": 2,
+      "type": "special",
+      "specialType": "howto-shared-2"
+    },
+    {
+      "index": 3,
       "type": "click",
       "image": "clipboard-01.png",
       "boxClass": "16",
@@ -34,7 +39,7 @@
       "textWidth": "242px"
     },
     {
-      "index": 3,
+      "index": 4,
       "type": "click",
       "image": "clipboard-02.png",
       "boxClass": "17",
@@ -54,7 +59,7 @@
       "textWidth": "219px"
     },
     {
-      "index": 4,
+      "index": 5,
       "type": "click",
       "image": "clipboard-03.png",
       "boxClass": "19",
@@ -74,7 +79,7 @@
       "textWidth": "223px"
     },
     {
-      "index": 5,
+      "index": 6,
       "type": "click",
       "image": "clipboard-04.png",
       "boxClass": "20",
@@ -94,7 +99,7 @@
       "textWidth": "191px"
     },
     {
-      "index": 6,
+      "index": 7,
       "type": "click",
       "image": "clipboard-05.png",
       "boxClass": "23",
@@ -114,7 +119,7 @@
       "textWidth": "168px"
     },
     {
-      "index": 7,
+      "index": 8,
       "type": "click",
       "image": "clipboard-06.png",
       "boxClass": "24",
@@ -134,7 +139,7 @@
       "textWidth": "204px"
     },
     {
-      "index": 8,
+      "index": 9,
       "type": "click",
       "image": "clipboard-07.png",
       "boxClass": "27",
@@ -154,7 +159,7 @@
       "textWidth": "222px"
     },
     {
-      "index": 9,
+      "index": 10,
       "type": "click",
       "image": "clipboard-08.png",
       "boxClass": "29",
@@ -174,7 +179,7 @@
       "textWidth": "188px"
     },
     {
-      "index": 10,
+      "index": 11,
       "type": "click",
       "image": "clipboard-09.png",
       "boxClass": "33",
@@ -194,7 +199,7 @@
       "textWidth": "147px"
     },
     {
-      "index": 11,
+      "index": 12,
       "type": "click",
       "image": "clipboard-10.png",
       "boxClass": "34",
@@ -214,7 +219,7 @@
       "textWidth": "220px"
     },
     {
-      "index": 12,
+      "index": 13,
       "type": "click",
       "image": "clipboard-11.png",
       "boxClass": "36",
@@ -234,7 +239,7 @@
       "textWidth": "219px"
     },
     {
-      "index": 13,
+      "index": 14,
       "type": "click",
       "image": "clipboard-12.png",
       "boxClass": "38",
@@ -254,7 +259,7 @@
       "textWidth": "195px"
     },
     {
-      "index": 14,
+      "index": 15,
       "type": "click",
       "image": "clipboard-13.png",
       "boxClass": "41",
@@ -274,7 +279,7 @@
       "textWidth": "227px"
     },
     {
-      "index": 15,
+      "index": 16,
       "type": "click",
       "image": "clipboard-14.png",
       "boxClass": "42",
@@ -294,7 +299,7 @@
       "textWidth": "209px"
     },
     {
-      "index": 16,
+      "index": 17,
       "type": "click",
       "image": "clipboard-15.png",
       "boxClass": "44",
@@ -314,7 +319,7 @@
       "textWidth": "210px"
     },
     {
-      "index": 17,
+      "index": 18,
       "type": "click",
       "image": "clipboard-16.png",
       "arrow": "none",
@@ -327,7 +332,7 @@
       "textWidth": "211px"
     },
     {
-      "index": 18,
+      "index": 19,
       "type": "click",
       "image": "clipboard-17.jpg",
       "boxClass": "45",
@@ -347,7 +352,7 @@
       "textWidth": "216px"
     },
     {
-      "index": 19,
+      "index": 20,
       "type": "click",
       "image": "clipboard-18.png",
       "boxClass": "46",
@@ -367,7 +372,7 @@
       "textWidth": "300px"
     },
     {
-      "index": 20,
+      "index": 21,
       "type": "click",
       "image": "clipboard-19.png",
       "boxClass": "47",
@@ -387,7 +392,7 @@
       "textWidth": "237px"
     },
     {
-      "index": 21,
+      "index": 22,
       "type": "click",
       "image": "clipboard-20.png",
       "boxClass": "48",
@@ -413,7 +418,7 @@
       "scrollDownSize": "55px"
     },
     {
-      "index": 22,
+      "index": 23,
       "type": "click",
       "image": "clipboard-21.png",
       "boxClass": "50",
@@ -432,7 +437,7 @@
       "text": "לחצו על המתג (כרגע <span style=\"color:#f6a67e;\">כבוי</span>) כדי להפעיל את היסטוריית הלוח"
     },
     {
-      "index": 23,
+      "index": 24,
       "type": "click",
       "image": "clipboard-22.png",
       "arrow": "arrow-left",
@@ -445,7 +450,7 @@
       "textWidth": "207px"
     },
     {
-      "index": 24,
+      "index": 25,
       "type": "click",
       "image": "clipboard-23.png",
       "boxClass": "49",
@@ -465,7 +470,7 @@
       "textWidth": "224px"
     },
     {
-      "index": 25,
+      "index": 26,
       "type": "click",
       "image": "clipboard-24.png",
       "boxClass": "49",
@@ -485,7 +490,7 @@
       "textWidth": "218px"
     },
     {
-      "index": 26,
+      "index": 27,
       "type": "click",
       "image": "clipboard-25.png",
       "boxClass": "49",
@@ -505,7 +510,7 @@
       "textWidth": "203px"
     },
     {
-      "index": 27,
+      "index": 28,
       "type": "click",
       "image": "clipboard-26.png",
       "boxClass": "49",
@@ -525,7 +530,7 @@
       "textWidth": "225px"
     },
     {
-      "index": 28,
+      "index": 29,
       "type": "click",
       "image": "clipboard-27.png",
       "arrow": "none",
@@ -544,7 +549,7 @@
       "textWidth": "258px"
     },
     {
-      "index": 29,
+      "index": 30,
       "type": "click",
       "image": "clipboard-28.png",
       "boxClass": "92",
@@ -564,7 +569,7 @@
       "textWidth": "228px"
     },
     {
-      "index": 30,
+      "index": 31,
       "type": "click",
       "image": "clipboard-29.png",
       "boxClass": "95",
@@ -584,7 +589,7 @@
       "textWidth": "238px"
     },
     {
-      "index": 31,
+      "index": 32,
       "type": "click",
       "image": "clipboard-30.png",
       "boxClass": "98",
@@ -604,7 +609,7 @@
       "textWidth": "213px"
     },
     {
-      "index": 32,
+      "index": 33,
       "type": "click",
       "image": "clipboard-31.png",
       "boxClass": "100",
@@ -624,7 +629,7 @@
       "textWidth": "252px"
     },
     {
-      "index": 33,
+      "index": 34,
       "type": "click",
       "image": "clipboard-32.png",
       "step": 32,

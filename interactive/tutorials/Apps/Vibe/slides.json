@@ -29,6 +29,11 @@
     {
       "index": 2,
       "type": "special",
+      "specialType": "howto-shared-2"
+    },
+    {
+      "index": 3,
+      "type": "special",
       "specialType": "download",
       "html": "<style>\n.parta-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:calc(100vh - 80px); background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%); text-align:center; padding:32px; box-sizing:border-box; gap:24px; }\n.parta-badge { background:linear-gradient(135deg,#1a2540,#5b8fa8); color:white; padding:4px 16px; border-radius:50px; font-size:11px; letter-spacing:2px; display:inline-block; }\n.parta-title { font-size:clamp(20px,2.8vw,38px); font-weight:900; color:white; line-height:1.2; }\n.parta-title span { color:#f6a67e; }\n.parta-sub { color:#ffffffaa; font-size:clamp(13px,1.2vw,16px); line-height:1.6; }\n.parta-dl-btn { background:linear-gradient(135deg,#1a2540,#3d5a80); color:white; border:2px solid white; padding:18px 48px; border-radius:50px; font-size:clamp(16px,1.6vw,22px); font-weight:700; cursor:pointer; font-family:Rubik,sans-serif; display:inline-flex; align-items:center; gap:12px; text-decoration:none; transition:transform 0.2s,opacity 0.2s; }\n.parta-dl-btn:hover { opacity:0.9; transform:scale(1.03); }\n.parta-dl-version { color:#ffffff55; font-size:12px; }\n.parta-note { background:#f6a67e18; border:1px solid #f6a67e55; border-radius:12px; padding:12px 24px; max-width:460px; }\n.parta-note p { color:#ffffffcc; font-size:13px; margin:0; line-height:1.6; }\n.parta-note span { color:#f6a67e; font-weight:700; }\n</style>\n<div class=\"parta-wrap\">\n  <div class=\"parta-badge\">חלק א &middot; הורדה והתקנה</div>\n  <div class=\"parta-title\">קודם כל <span>הורידו את Vibe</span></div>\n  <div class=\"parta-sub\">הקובץ יורד ישירות למחשב שלכם.<br>לאחר ההורדה חוזרים להדרכה וממשיכים לשלב הבא.</div>\n  <a href=\"https://github.com/omertai224/omer-taicher-site/releases/download/vibev1/Vibe.exe\" download class=\"parta-dl-btn\">\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>\n    הורידו את Vibe\n  </a>\n  <div class=\"parta-dl-version\">הקובץ יורד ישירות למחשב</div>\n  <div class=\"parta-note\">\n    <p><span>לאחר ההורדה:</span> חוזרים להדרכה ולוחצים על <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1a2540;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם.</p>\n  </div>\n</div>",
       "notes": [
@@ -40,7 +45,7 @@
       ]
     },
     {
-      "index": 3,
+      "index": 4,
       "type": "click",
       "step": 1,
       "image": "Vibe-01.png",
@@ -66,7 +71,7 @@
       ]
     },
     {
-      "index": 4,
+      "index": 5,
       "type": "click",
       "step": 2,
       "image": "Vibe-02.png",
@@ -93,7 +98,7 @@
       ]
     },
     {
-      "index": 5,
+      "index": 6,
       "type": "click",
       "step": 3,
       "image": "Vibe-03.png",
@@ -112,7 +117,7 @@
       "text": "אל תדאגו! זהו מסך ההגנה הרגיל של Windows.&nbsp;התוכנה בטוחה לחלוטין. לחצו על <span style=\" color:#f6a67e;\">מידע נוסף</span> כדי להמשיך."
     },
     {
-      "index": 6,
+      "index": 7,
       "type": "click",
       "step": 4,
       "image": "Vibe-04.png",
@@ -131,7 +136,7 @@
       "text": "מעולה!&nbsp;עכשיו לחצו על <span style=\" color:#f6a67e;\">הפעל בכל מקרה</span> - זה בסדר גמור."
     },
     {
-      "index": 7,
+      "index": 8,
       "type": "click",
       "step": 5,
       "image": "Vibe-05.png",
@@ -150,7 +155,7 @@
       "text": "מסך הפתיחה של אשף ההתקנה של Vibe. לחצו על <span style=\" color:#f6a67e;\">Next ></span> כדי להתחיל בתהליך ההתקנה."
     },
     {
-      "index": 8,
+      "index": 9,
       "type": "click",
       "step": 6,
       "image": "Vibe-06.png",
@@ -169,7 +174,7 @@
       "text": "בחירת תיקיית ההתקנה, ניתן להשאיר את נתיב ברירת המחדל.&nbsp;<br>לחצו על <span style=\" color:#f6a67e;\">Next &gt;</span> כדי להמשיך."
     },
     {
-      "index": 9,
+      "index": 10,
       "type": "view",
       "step": 7,
       "image": "Vibe-07.png",
@@ -182,7 +187,7 @@
       "text": "ההתקנה מתבצעת. המתינו עד שסרגל ההתקנה יסתיים. כשסיים,<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>"
     },
     {
-      "index": 10,
+      "index": 11,
       "type": "click",
       "step": 8,
       "image": "Vibe-08.png",
@@ -201,7 +206,7 @@
       "text": "ההתקנה הושלמה בהצלחה.&nbsp;<br>לחצו על <span style=\" color:#f6a67e;\">Next &gt;</span> כדי להמשיך לשלב האחרון."
     },
     {
-      "index": 11,
+      "index": 12,
       "type": "click",
       "step": 9,
       "image": "Vibe-09.png",
@@ -220,7 +225,7 @@
       "text": "ההתקנה הסתיימה. ניתן להשאיר את <span style=\"color: rgb(246, 166, 126);\">\"Run vibe\"</span> מסומן. לחצו על <span style=\" color:#f6a67e;\">Finish</span> כדי לסגור את אשף ההתקנה ולהפעיל את Vibe."
     },
     {
-      "index": 12,
+      "index": 13,
       "type": "view",
       "step": 10,
       "image": "Vibe-10.png",
@@ -234,13 +239,13 @@
       "textWidth": "264px"
     },
     {
-      "index": 13,
+      "index": 14,
       "type": "special",
       "specialType": "transition",
       "html": "<style>\n.partb-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:calc(100vh - 80px); background:linear-gradient(135deg,#0f2a3a 0%,#1a2540 100%); text-align:center; padding:20px 40px; box-sizing:border-box; gap:10px; }\n.partb-check { width:56px; height:56px; background:linear-gradient(135deg,#1a2540,#5b8fa8); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto; }\n.partb-badge { background:#f6a67e22; border:1px solid #f6a67e55; color:#f6a67e; padding:3px 14px; border-radius:50px; font-size:11px; letter-spacing:2px; display:inline-block; }\n.partb-title { font-size:clamp(18px,2.8vw,36px); font-weight:900; color:white; margin-bottom:0; line-height:1.2; }\n.partb-title span { color:#f6a67e; }\n.partb-sub { color:#ffffffaa; font-size:14px; margin-bottom:0; }\n.partb-steps { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-bottom:0; }\n.partb-step { background:#ffffff0d; border:1px solid #ffffff22; border-radius:14px; padding:10px 16px; min-width:120px; max-width:160px; text-align:right; }\n.partb-step .ps-num { color:#5b8fa8; font-size:10px; font-weight:700; margin-bottom:2px; }\n.partb-step .ps-label { color:white; font-size:12px; font-weight:600; }\n.partb-btn{background:linear-gradient(135deg,#f6a67e,#e8834e);color:white;border:2px solid white;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.4);}\n.partb-btn:hover { transform:scale(1.05); }\n</style>\n<div class=\"partb-wrap\">\n  <div class=\"partb-check\">\n    <svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"20 6 9 17 4 12\"/></svg>\n  </div>\n  <div class=\"partb-badge\">חלק א הושלם</div>\n  <div class=\"partb-title\">עכשיו תורכם<br>הקטינו את החלון<br><span>והתקינו את Vibe בעצמכם</span></div>\n  <div class=\"partb-sub\" style=\"color:#ffffffcc;margin-top:8px;\">כשתסיימו, חזרו להדרכה והמשיכו לחלק ב.</div>\n  <div style=\"margin-top:24px;color:#f6a67ecc;font-size:13px;font-weight:600;letter-spacing:1px;\">חלק ב · עבודה עם התוכנה</div>\n  <button class=\"partb-btn\" onclick=\"nextSlide()\" style=\"margin-top:14px;\">\n    <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"9 18 15 12 9 6\"/></svg>\n    המשיכו לחלק ב\n  </button>\n</div>"
     },
     {
-      "index": 14,
+      "index": 15,
       "type": "click",
       "step": 11,
       "image": "Vibe-11.png",
@@ -260,7 +265,7 @@
       "dragDropAnim": true
     },
     {
-      "index": 15,
+      "index": 16,
       "type": "click",
       "step": 12,
       "image": "Vibe-12.png",
@@ -279,7 +284,7 @@
       "text": "בחלון פתיחת הקובץ, נווטו אל <span style=\" color:#f6a67e;\">סרטי וידאו</span> בסרגל הצד השמאלי כדי לאתר את קבצי הווידאו שלכם."
     },
     {
-      "index": 16,
+      "index": 17,
       "type": "click",
       "step": 13,
       "image": "Vibe-13.png",
@@ -298,7 +303,7 @@
       "text": "בחרו את קובץ הווידאו שברצונכם לתמלל, במקרה זה <span style=\" color:#f6a67e;\">קומה 1 - שף פרטי</span>. לחצו עליו פעם אחת לבחירה."
     },
     {
-      "index": 17,
+      "index": 18,
       "type": "click",
       "step": 14,
       "image": "Vibe-14.png",
@@ -317,7 +322,7 @@
       "text": "לאחר שבחרתם את הקובץ, לחצו על <span style=\" color:#f6a67e;\">Open</span> כדי לטעון אותו ב-Vibe."
     },
     {
-      "index": 18,
+      "index": 19,
       "type": "click",
       "step": 15,
       "image": "Vibe-15.png",
@@ -336,7 +341,7 @@
       "text": "הקובץ נטען בהצלחה. שימו לב שהשפה כרגע מוגדרת כ-English, לחצו על תפריט <span style=\" color:#f6a67e;\">Language</span> כדי לשנות לעברית."
     },
     {
-      "index": 19,
+      "index": 20,
       "type": "click",
       "step": 16,
       "image": "Vibe-16.png",
@@ -356,7 +361,7 @@
       "scrollDownAnim": true
     },
     {
-      "index": 20,
+      "index": 21,
       "type": "click",
       "step": 17,
       "image": "Vibe-17.png",
@@ -375,7 +380,7 @@
       "text": "השפה מוגדרת כעת ל-Hebrew. לחצו על הכפתור הכחול <span style=\" color:#f6a67e;\">Transcribe</span> כדי להתחיל בתמלול."
     },
     {
-      "index": 21,
+      "index": 22,
       "type": "view",
       "step": 18,
       "image": "Vibe-18.png",
@@ -395,7 +400,7 @@
       }
     },
     {
-      "index": 22,
+      "index": 23,
       "type": "click",
       "step": 19,
       "image": "Vibe-19.png",
@@ -414,7 +419,7 @@
       "text": "התמלול הסתיים וניתן לראות את הטקסט בעברית. לחצו על <span style=\" color:#f6a67e;\">Copy</span> כדי להעתיק את כל הטקסט ללוח."
     },
     {
-      "index": 23,
+      "index": 24,
       "type": "click",
       "step": 20,
       "image": "Vibe-20.png",
@@ -433,7 +438,7 @@
       "text": "לחלופין, לחצו על תפריט פורמט הייצוא בצד ימין (כרגע <span style=\" color:#f6a67e;\">pdf</span>) כדי לבחור פורמט שמירה אחר."
     },
     {
-      "index": 24,
+      "index": 25,
       "type": "click",
       "step": 21,
       "image": "Vibe-21.png",
@@ -452,7 +457,7 @@
       "text": "בתפריט הפורמטים, בחרו <span style=\" color:#f6a67e;\">Text</span> כדי לשמור את התמלול <span style=\"color: rgb(246, 166, 126);\">כקובץ טקסט פשוט.</span>"
     },
     {
-      "index": 25,
+      "index": 26,
       "type": "click",
       "step": 22,
       "image": "Vibe-22.png",
@@ -471,7 +476,7 @@
       "text": "הפורמט שונה ל-Text. לחצו על <span style=\" color:#f6a67e;\">Copy</span> כדי להעתיק את הטקסט."
     },
     {
-      "index": 26,
+      "index": 27,
       "type": "click",
       "step": 23,
       "image": "Vibe-23.png",
@@ -490,7 +495,7 @@
       "text": "או לחצו על <span style=\" color:#f6a67e;\">Save Transcript</span> כדי להוריד את קובץ התמלול למחשב."
     },
     {
-      "index": 27,
+      "index": 28,
       "type": "click",
       "step": 24,
       "image": "Vibe-24.png",
@@ -509,7 +514,7 @@
       "text": "בחלון השמירה, נווטו אל התיקייה הרצויה, למשל <span style=\" color:#f6a67e;\">מסמכים</span>, ואז לחצו על <span style=\" color:#f6a67e;\">Save</span> לשמירה."
     },
     {
-      "index": 28,
+      "index": 29,
       "type": "click",
       "step": 25,
       "image": "Vibe-25.png",
@@ -528,7 +533,7 @@
       "text": "בחרו את תיקיית המסמכים ולחצו על <span style=\" color:#f6a67e;\">Save</span> כדי לשמור את קובץ התמלול. הקובץ ישמר בפורמט שבחרתם."
     },
     {
-      "index": 29,
+      "index": 30,
       "type": "outro",
       "html": "<style>\n.outro-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:calc(100vh - 80px); overflow:hidden; padding:16px 20px; box-sizing:border-box; background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%); }\n.outro-title { font-size:clamp(16px,2.5vw,30px); font-weight:900; color:white; margin-bottom:4px; text-align:center; }\n.outro-title span { color:#f6a67e; }\n.outro-sub { color:#ffffffaa; font-size:13px; margin-bottom:12px; text-align:center; }\n.use-cases { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; width:100%; max-width:960px; margin-bottom:12px; }\n.use-card { background:#ffffff0d; border:1px solid #ffffff1a; border-radius:12px; padding:10px 12px; transition:transform 0.2s, background 0.2s; text-align:right; }\n.use-card:hover { transform:translateY(-3px); background:#ffffff18; }\n.use-card .uc-icon { font-size:20px; margin-bottom:4px; }\n.use-card .uc-title { color:#f6a67e; font-size:12px; font-weight:700; margin-bottom:3px; }\n.use-card .uc-desc { color:#ffffffbb; font-size:11px; line-height:1.5; }\n.use-card .uc-tool { color:#a8c5d6; font-size:10px; margin-top:4px; font-weight:600; }\n.outro-tip { background:#ffffff0d; border:1px solid #f6a67e44; border-radius:10px; padding:8px 16px; max-width:960px; width:100%; margin-bottom:10px; text-align:right; }\n.outro-tip span { color:#f6a67e; font-weight:700; font-size:12px; }\n.outro-tip p { color:#ffffffcc; font-size:11px; margin:2px 0 0 0; line-height:1.5; }\n.btn-restart { background:linear-gradient(135deg,#f6a67e,#ff6b6b); color:white; border:none; padding:12px 36px; border-radius:50px; font-size:15px; font-weight:700; cursor:pointer; font-family:Rubik,sans-serif; box-shadow:0 6px 20px rgba(246,166,126,0.35); }\n.btn-restart:hover { transform:scale(1.05); }\n.btn-more{display:inline-block;background:linear-gradient(135deg,#4ade80,#22c55e);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(74,222,128,0.3);text-decoration:none;}\n.btn-more:hover{transform:scale(1.05);}\n</style>\n<div class=\"outro-wrap\">\n  <div class=\"outro-title\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:8px;\"><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/><path d=\"M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z\"/></svg> סיימתם! עכשיו מה עושים עם <span>התמלול?</span></div>\n  <div class=\"outro-sub\">התמלול הגולמי הוא חומר גלם יקר ערך. הנה מה שאפשר לעשות איתו:</div>\n  <div class=\"use-cases\">\n    <div class=\"use-card\">\n      <div class=\"uc-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 3l18 18M8.5 8.5C7 10 6 12 6 14c0 3.3 2.7 6 6 6s6-2.7 6-6c0-2-1-4-2.5-5.5\"/><path d=\"M12 2v4M12 2l3 2M12 2L9 4\"/></svg></div>\n      <div class=\"uc-title\">עיבוד ראשוני</div>\n      <div class=\"uc-desc\">הדביקו את התמלול הגולמי, בקשו תיקון שגיאות, הוספת פיסוק וחלוקה לפסקאות.</div>\n      <div class=\"uc-tool\">Claude / ChatGPT / Gemini</div>\n    </div>\n    <div class=\"use-card\">\n      <div class=\"uc-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"8\" y=\"2\" width=\"8\" height=\"4\" rx=\"1\"/><path d=\"M8 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V4a2 2 0 00-2-2h-2\"/><line x1=\"8\" y1=\"10\" x2=\"16\" y2=\"10\"/><line x1=\"8\" y1=\"14\" x2=\"16\" y2=\"14\"/><line x1=\"8\" y1=\"18\" x2=\"12\" y2=\"18\"/></svg></div>\n      <div class=\"uc-title\">פרוטוקול ומשימות</div>\n      <div class=\"uc-desc\">מישיבה לטבלה. חילוץ החלטות, מי עושה מה ועד מתי.</div>\n      <div class=\"uc-tool\">Gemini</div>\n    </div>\n    <div class=\"use-card\">\n      <div class=\"uc-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z\"/></svg></div>\n      <div class=\"uc-title\">מיחזור תוכן</div>\n      <div class=\"uc-desc\">הפיכת הרצאה לפוסטים, רילס ותסריטים לרשתות חברתיות.</div>\n      <div class=\"uc-tool\">ChatGPT</div>\n    </div>\n    <div class=\"use-card\">\n      <div class=\"uc-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 10v6M2 10l10-5 10 5-10 5z\"/><path d=\"M6 12v5c0 2 2 3 6 3s6-1 6-3v-5\"/></svg></div>\n      <div class=\"uc-title\">כרטיסיות לימוד</div>\n      <div class=\"uc-desc\">שאלות ותשובות על החומר, כרטיסיות זיכרון וסיכום שיעור.</div>\n      <div class=\"uc-tool\">Claude</div>\n    </div>\n    <div class=\"use-card\">\n      <div class=\"uc-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"2\" y1=\"12\" x2=\"22\" y2=\"12\"/><path d=\"M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z\"/></svg></div>\n      <div class=\"uc-title\">מפת מושגים</div>\n      <div class=\"uc-desc\">הפיכת הטקסט למבנה היררכי ויזואלי לפי נושאים.</div>\n      <div class=\"uc-tool\">Claude / Gemini</div>\n    </div>\n    <div class=\"use-card\">\n      <div class=\"uc-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z\"/></svg></div>\n      <div class=\"uc-title\">ארגון ידע</div>\n      <div class=\"uc-desc\">סיכום עם כותרות, תגיות ותקציר מנהלים לשמירה.</div>\n      <div class=\"uc-tool\">Claude / ChatGPT</div>\n    </div>\n    <div class=\"use-card\">\n      <div class=\"uc-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z\"/></svg></div>\n      <div class=\"uc-title\">צ'אט עם הסרטון</div>\n      <div class=\"uc-desc\">שאלו שאלות על התמלול. מה נאמר על נושא X? האם היה קונפליקט?</div>\n      <div class=\"uc-tool\">NotebookLM</div>\n    </div>\n    <div class=\"use-card\">\n      <div class=\"uc-icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z\"/><path d=\"M19 10v2a7 7 0 01-14 0v-2\"/><line x1=\"12\" y1=\"19\" x2=\"12\" y2=\"23\"/><line x1=\"8\" y1=\"23\" x2=\"16\" y2=\"23\"/></svg></div>\n      <div class=\"uc-title\">פודקאסט אוטומטי</div>\n      <div class=\"uc-desc\">יוצר פודקאסט של שני אנשים שמדברים על התמלול שלכם.</div>\n      <div class=\"uc-tool\">NotebookLM</div>\n    </div>\n  </div>\n  <div class=\"outro-tip\">\n    <span><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:4px;\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><line x1=\"12\" y1=\"8\" x2=\"12\" y2=\"12\"/><line x1=\"12\" y1=\"16\" x2=\"12.01\" y2=\"16\"/></svg> טיפ זהב לעברית:</span>\n    <p>תמיד כתבו בתחילת הפרומפט: \"אל תתרגם לאנגלית, שמור על עברית טבעית וקולחת.\"</p>\n  </div>\n  <div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;\"><button class=\"btn-restart\" onclick=\"showSlides(1)\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"1 4 1 10 7 10\"/><path d=\"M3.51 15a9 9 0 102.13-9.36L1 10\"/></svg>חזרו להתחלה</button><a href=\"/interactive/\" target=\"_blank\" class=\"btn-more\">&#9654; להדרכות נוספות</a></div>\n</div>"
     }

@@ -16,6 +16,11 @@
     },
     {
       "index": 2,
+      "type": "special",
+      "specialType": "howto-shared-2"
+    },
+    {
+      "index": 3,
       "step": 1,
       "type": "view",
       "image": "Unsubscribe-01.png",
@@ -34,7 +39,7 @@
       ]
     },
     {
-      "index": 3,
+      "index": 4,
       "step": 2,
       "type": "click",
       "image": "Unsubscribe-02.png",
@@ -59,7 +64,7 @@
       }
     },
     {
-      "index": 4,
+      "index": 5,
       "step": 3,
       "type": "click",
       "image": "Unsubscribe-03.png",
@@ -84,7 +89,7 @@
       }
     },
     {
-      "index": 5,
+      "index": 6,
       "step": 4,
       "type": "click",
       "image": "Unsubscribe-04.png",
@@ -109,7 +114,7 @@
       }
     },
     {
-      "index": 6,
+      "index": 7,
       "step": 5,
       "type": "click",
       "image": "Unsubscribe-05.png",
@@ -134,7 +139,7 @@
       }
     },
     {
-      "index": 7,
+      "index": 8,
       "step": 6,
       "type": "view",
       "image": "Unsubscribe-06.png",

@@ -16,6 +16,11 @@
     },
     {
       "index": 2,
+      "type": "special",
+      "specialType": "howto-shared-2"
+    },
+    {
+      "index": 3,
       "step": 1,
       "type": "view",
       "image": "DND-01.jpg",
@@ -34,7 +39,7 @@
       ]
     },
     {
-      "index": 3,
+      "index": 4,
       "step": 2,
       "type": "click",
       "image": "DND-02.jpg",
@@ -59,7 +64,7 @@
       }
     },
     {
-      "index": 4,
+      "index": 5,
       "step": 3,
       "type": "click",
       "image": "DND-03.jpg",
@@ -84,7 +89,7 @@
       }
     },
     {
-      "index": 5,
+      "index": 6,
       "step": 4,
       "type": "view",
       "image": "DND-04.jpg",

@@ -14,9 +14,10 @@ window.bubbleDesignWidth = 853;
 var slideMap = {
   0:  { icon: 'home',     title: 'פתיחה' },
   1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
-  2:  { icon: 'download', title: 'הורידו את Everything' },
-  5:  { icon: 'warning',  title: 'בקרת חשבון משתמש' },
-  12: { icon: 'usage',    title: 'שימוש בתוכנה' }
+  2:  { icon: 'play',     title: 'כלים שיעזרו לכם' },
+  3:  { icon: 'download', title: 'הורידו את Everything' },
+  6:  { icon: 'warning',  title: 'בקרת חשבון משתמש' },
+  13: { icon: 'usage',    title: 'שימוש בתוכנה' }
 };
 
 /* ── Personal Name (מחובר כ:) ── */
@@ -72,8 +73,10 @@ function buildSlides(slides, totalSteps) {
   for (var i = 0; i < slides.length; i++) {
     var s = slides[i];
 
-    if (s.specialType === 'howto-shared' && typeof buildHowToSlide === 'function') {
-      html += '<div class="mySlides fade">' + buildHowToSlide() + '</div>';
+    if (s.specialType === 'howto-shared' && typeof buildHowToSlide1 === 'function') {
+      html += '<div class="mySlides fade">' + buildHowToSlide1() + '</div>';
+    } else if (s.specialType === 'howto-shared-2' && typeof buildHowToSlide2 === 'function') {
+      html += '<div class="mySlides fade">' + buildHowToSlide2() + '</div>';
     } else if (s.type === 'special') {
       html += '<div class="mySlides fade">' + s.html + '</div>';
 

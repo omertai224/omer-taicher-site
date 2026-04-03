@@ -549,8 +549,17 @@ function sendMobileLink(tutorialKey) {
   });
 }
 
-/* ── HowTo Slide Builder ── */
+/* ── HowTo Slide Builder (2 slides) ── */
+function buildHowToSlides() {
+  return [buildHowToSlide1(), buildHowToSlide2()];
+}
+
 function buildHowToSlide() {
+  // Legacy: returns slide 1 only (for tutorials using single howto-shared)
+  return buildHowToSlide1();
+}
+
+function buildHowToSlide1() {
   // Mini nav arrow — fixed size circle (not ellipse!)
   var navSize = '32px';
   var navArrow = function(dir) {
@@ -571,7 +580,7 @@ function buildHowToSlide() {
     + '<div class="ht-sub">כל מה שצריך לדעת לפני שמתחילים</div>'
     + '<div class="ht-grid">'
 
-    // ─── Row 1: Content (3 cards) ───
+    // ─── 3 content cards ───
     + '<div class="ht-row ht-row-3">'
 
     + '<div class="ht-card">'
@@ -598,9 +607,30 @@ function buildHowToSlide() {
     + '<div class="ht-card-desc">בכל שקף יש הוראה.<br style="margin:0;">לפעמים תראו אנימציה של הפעולה.</div>'
     + '</div>'
 
-    + '</div>' // end row 1
+    + '</div>' // end row
+    + '</div>' // end grid
 
-    // ─── Row 2: Tools (4 cards) ───
+    + '<button class="ht-btn" onclick="nextSlide()">'
+    + 'המשך'
+    + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
+    + '</button>'
+
+    + '</div>';
+}
+
+function buildHowToSlide2() {
+  var navSize = '32px';
+  var navArrow = function(dir) {
+    var pts = dir === 'right' ? '9 18 15 12 9 6' : '15 18 9 12 15 6';
+    return '<div style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid #5b8fa8;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(26,37,64,0.5);flex-shrink:0;">'
+      + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="' + pts + '"/></svg></div>';
+  };
+
+  return '<div class="ht-wrap">'
+    + '<div class="ht-title">כלים שיעזרו לכם</div>'
+    + '<div class="ht-sub">נגישות וניווט</div>'
+    + '<div class="ht-grid">'
+
     + '<div class="ht-row ht-row-4">'
 
     + '<div class="ht-card">'
@@ -638,10 +668,9 @@ function buildHowToSlide() {
     + '<div class="ht-card-desc">עיגולים למטה.<br style="margin:0;">לחצו על כל עיגול כדי לקפוץ לצעד.</div>'
     + '</div>'
 
-    + '</div>' // end row 2
+    + '</div>' // end row
     + '</div>' // end grid
 
-    // Start button
     + '<button class="ht-btn" onclick="nextSlide()">'
     + 'הבנתי, קדימה'
     + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'

@@ -60,8 +60,10 @@ function buildSlides(slides, totalSteps) {
   for (var i = 0; i < slides.length; i++) {
     var s = slides[i];
 
-    if (s.specialType === 'howto-shared' && typeof buildHowToSlide === 'function') {
-      html += '<div class="mySlides fade">' + buildHowToSlide() + '</div>';
+    if (s.specialType === 'howto-shared' && typeof buildHowToSlide1 === 'function') {
+      html += '<div class="mySlides fade">' + buildHowToSlide1() + '</div>';
+    } else if (s.specialType === 'howto-shared-2' && typeof buildHowToSlide2 === 'function') {
+      html += '<div class="mySlides fade">' + buildHowToSlide2() + '</div>';
     } else if (s.html) {
       // Special slides with raw HTML (intro, howto, download, transition, outro)
       html += '<div class="mySlides fade">' + s.html + '</div>';
