@@ -195,7 +195,13 @@
           "left": "50%",
           "top": "50%"
         }
-      ]
+      ],
+      "scrollDownAnim": true,
+      "scrollDownPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "scrollDownSize": "55px"
     },
     {
       "index": 10,

@@ -26,7 +26,13 @@
         "left": "47.1975%",
         "right": "43.3121%",
         "bottom": "34.7134%"
-      }
+      },
+      "rightClickAnim": true,
+      "rightClickPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "rightClickSize": "55px"
     },
     {
       "index": 1,

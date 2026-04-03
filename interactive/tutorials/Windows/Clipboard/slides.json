@@ -405,7 +405,13 @@
       },
       "step": 20,
       "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">לוח</span>",
-      "textWidth": "239px"
+      "textWidth": "239px",
+      "scrollDownAnim": true,
+      "scrollDownPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "scrollDownSize": "55px"
     },
     {
       "index": 22,

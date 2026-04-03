@@ -283,7 +283,13 @@
         "left": "73.4713%",
         "right": "15.008%",
         "bottom": "47.8768%"
-      }
+      },
+      "scrollDownAnim": true,
+      "scrollDownPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "scrollDownSize": "55px"
     },
     {
       "index": 16,

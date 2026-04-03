@@ -20,7 +20,13 @@
           "left": "50%",
           "top": "50%"
         }
-      ]
+      ],
+      "rightClickAnim": true,
+      "rightClickPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "rightClickSize": "55px"
     },
     {
       "index": 1,
@@ -45,7 +51,13 @@
         "left": "5.39809%",
         "right": "33.0414%",
         "bottom": "61.2527%"
-      }
+      },
+      "rightClickAnim": true,
+      "rightClickPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "rightClickSize": "55px"
     },
     {
       "index": 2,
