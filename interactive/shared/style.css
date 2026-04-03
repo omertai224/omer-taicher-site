@@ -477,8 +477,9 @@ br {
   flex-shrink: 0;
 }
 .ht-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1.5vh 1.2vw;
   max-width: 860px;
   width: 100%;
@@ -486,6 +487,8 @@ br {
   align-content: center;
 }
 .ht-card {
+  width: calc(33.333% - 1vw);
+  min-width: 200px;
   background: rgba(26, 37, 64, 0.85);
   border: 1.5px solid #5b8fa844;
   border-radius: 12px;

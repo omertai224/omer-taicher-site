@@ -588,11 +588,11 @@ function buildHowToSlide() {
     + '<div class="ht-card-desc">לחצו על העיגול הכחול כדי להמשיך.</div>'
     + '</div>'
 
-    // Card 3: Text bubble (looks like real bubble) + animation outside
+    // Card 3: Text bubble (looks like real bubble) + animation outside (left corner)
     + '<div class="ht-card">'
     + '<div style="position:relative;">'
     + '<div class="ht-mini-bubble ht-anim-float" style="text-align:right;"><span style="color:#f6a67e;font-weight:700;">3</span><span style="color:#ffffff88;">/17</span><br style="margin:0;display:block;content:none;">לחצו על <span style="color:#f6a67e;">הגדרות</span></div>'
-    + '<img src="' + sharedPath + '/right-click.svg" class="ht-anim-pulse" style="position:absolute;top:-6px;right:-6px;width:20px;height:20px;">'
+    + '<img src="' + sharedPath + '/right-click.svg" class="ht-anim-pulse" style="position:absolute;top:-6px;left:-6px;width:20px;height:20px;">'
     + '</div>'
     + '<div class="ht-card-title">בועת הוראה</div>'
     + '<div class="ht-card-desc">בכל שקף יש הוראה. לפעמים תראו אנימציה של הפעולה.</div>'
@@ -616,14 +616,26 @@ function buildHowToSlide() {
     + '<div class="ht-card-desc">מעדיפים לשמוע? הכפתור הכתום בימין יקריא את ההוראה בקול.</div>'
     + '</div>'
 
-    // Card 6: Navigation (arrows nudge left/right)
+    // Card 6: Navigation arrows (nudge left/right)
     + '<div class="ht-card">'
     + '<div class="ht-icon navy" style="background:none;gap:6px;">'
     + '<div class="ht-anim-right">' + navArrow('right') + '</div>'
     + '<div class="ht-anim-left">' + navArrow('left') + '</div>'
     + '</div>'
-    + '<div class="ht-card-title">ניווט</div>'
-    + '<div class="ht-card-desc">חיצים למטה, עיגולים בפס התחתון, או חצים במקלדת.</div>'
+    + '<div class="ht-card-title">חיצי ניווט</div>'
+    + '<div class="ht-card-desc">לחצו על החיצים למטה כדי לעבור שקף קדימה או אחורה.</div>'
+    + '</div>'
+
+    // Card 7: Nav dots (jump between steps)
+    + '<div class="ht-card">'
+    + '<div class="ht-icon navy" style="background:none;gap:3px;flex-wrap:wrap;">'
+    + '<div style="width:14px;height:14px;border-radius:50%;background:#1a2540;display:flex;align-items:center;justify-content:center;"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>'
+    + '<div class="ht-anim-pulse" style="width:14px;height:14px;border-radius:50%;background:#1a2540;font-size:7px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;">1</div>'
+    + '<div style="width:14px;height:14px;border-radius:50%;background:#a8c5d6;font-size:7px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;">2</div>'
+    + '<div style="width:14px;height:14px;border-radius:50%;background:#a8c5d6;font-size:7px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;">3</div>'
+    + '</div>'
+    + '<div class="ht-card-title">פס ניווט</div>'
+    + '<div class="ht-card-desc">עיגולים למטה. לחצו על כל עיגול כדי לקפוץ לצעד.</div>'
     + '</div>'
 
     + '</div>' // end grid
