@@ -19,14 +19,7 @@
         "left": "46.9586%",
         "right": "29.2197%",
         "bottom": "9.44809%"
-      },
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      }
     },
     {
       "index": 1,
@@ -44,14 +37,7 @@
         "left": "16.28%",
         "top": "48.7991%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 2,
@@ -69,14 +55,7 @@
         "left": "23.8045%",
         "top": "35.8479%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 3,
@@ -94,14 +73,7 @@
         "left": "44.2265%",
         "top": "26.0826%"
       },
-      "textWidth": "192px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "192px"
     },
     {
       "index": 4,
@@ -119,14 +91,7 @@
         "left": "29.4169%",
         "top": "30.5401%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 5,
@@ -144,14 +109,7 @@
         "left": "28.2239%",
         "top": "52.195%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 6,
@@ -169,14 +127,7 @@
         "left": "48.8694%",
         "right": "29.5781%",
         "bottom": "9.23565%"
-      },
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      }
     },
     {
       "index": 7,
@@ -194,14 +145,7 @@
         "left": "28.9398%",
         "top": "13.3437%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 8,
@@ -219,14 +163,7 @@
         "left": "34.5604%",
         "top": "21.7147%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 9,
@@ -245,13 +182,6 @@
         "top": "23.4043%"
       },
       "textWidth": "309px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ],
       "scrollDownAnim": true,
       "scrollDownPos": {
         "left": "3%",
@@ -275,14 +205,7 @@
         "left": "49.4365%",
         "top": "27.7402%"
       },
-      "textWidth": "309px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "309px"
     },
     {
       "index": 11,
@@ -300,21 +223,14 @@
         "left": "42.3461%",
         "top": "65.5786%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 12,
       "step": 13,
       "type": "click",
       "image": "Stars-13.png",
-      "text": "חזרנו לתיבה!&nbsp;<br>שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>.&nbsp;<br>זה דבר חיובי.&nbsp;<br>לחצו על הכוכב <span style=\"color:#f6a67e;\">V ירוק</span>.<br><span style=\"font-size:13px;color:#ffffffaa;\">לחצו על הכוכב כ-3 פעמים עד שמגיעים לסימן הנכון.</span>",
+      "text": "חזרנו לתיבה!&nbsp;<br>שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>.&nbsp;<br>זה דבר חיובי.&nbsp;<br>לחצו על הכוכב <span style=\"color:#f6a67e;\">V ירוק</span>.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> לחצו על הכוכב כ-3 פעמים עד שמגיעים לסימן הנכון. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו פעם אחת על הסימון הכתום.</span>",
       "box": {
         "top": "76.5181%",
         "left": "63.4077%",
@@ -325,21 +241,14 @@
         "left": "24.4619%",
         "top": "26.7659%"
       },
-      "textWidth": "301px",
-      "notes": [
-        {
-          "text": "פה צריך להבהיר שלוחצים במחשב כשלוש פעמים לא בהדרכה בהדרכה זה רק פעם אחת שלא ילחצו לי בסימולציה כמה פעמים",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "301px"
     },
     {
       "index": 13,
       "step": 14,
       "type": "click",
       "image": "Stars-14.png",
-      "text": "גם רונית <span style=\"color:#f6a67e;\">ממליצה עליך לחברה שלה</span>.&nbsp;<br>עוד דבר חיובי!&nbsp;<br>עוד <span style=\"color:#f6a67e;\">V ירוק</span>.<br><span style=\"font-size:13px;color:#ffffffaa;\">לחצו על הכוכב כ-3 פעמים עד שמגיעים לסימן הנכון.</span>",
+      "text": "גם רונית <span style=\"color:#f6a67e;\">ממליצה עליך לחברה שלה</span>.&nbsp;<br>עוד דבר חיובי!&nbsp;<br>עוד <span style=\"color:#f6a67e;\">V ירוק</span>.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> לחצו על הכוכב כ-3 פעמים עד שמגיעים לסימן הנכון. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו פעם אחת על הסימון הכתום.</span>",
       "box": {
         "top": "50.6157%",
         "left": "63.4077%",
@@ -350,21 +259,14 @@
         "left": "27.0314%",
         "top": "56.4508%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "גם פה צריך להעביר להם שרק במחשב לוחצים כמה פעמים לא בסימולציה",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 14,
       "step": 15,
       "type": "click",
       "image": "Stars-15.png",
-      "text": "מחר פגישה חשובה עם רונית ב-10:00.&nbsp;<br>סימנו אותה עם <span style=\"color:#f6a67e;\">סימן קריאה אדום</span>.&nbsp;<br><span style=\"font-size:13px;color:#ffffffaa;\">לחצו על הכוכב כמה פעמים עד שמגיעים לסימן הנכון.</span><br>",
+      "text": "מחר פגישה חשובה עם רונית ב-10:00.&nbsp;<br>סימנו אותה עם <span style=\"color:#f6a67e;\">סימן קריאה אדום</span>.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> לחצו על הכוכב כמה פעמים עד שמגיעים לסימן הנכון. <span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו פעם אחת על הסימון הכתום.</span>",
       "box": {
         "top": "70.7025%",
         "left": "63.0961%",
@@ -375,14 +277,7 @@
         "left": "19.7981%",
         "top": "37.2081%"
       },
-      "textWidth": "410px",
-      "notes": [
-        {
-          "text": "גם פה צריך להבהיר להם שלוחצים כמה פעמים רק רק במחשב בסימולציה זה קליק אחד",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "410px"
     },
     {
       "index": 15,
@@ -400,14 +295,7 @@
         "left": "71.4411%",
         "right": "6.88695%",
         "bottom": "60.6157%"
-      },
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      }
     },
     {
       "index": 16,
@@ -419,14 +307,7 @@
       },
       "step": 17,
       "text": "הנה! רק המיילים החשובים.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">כוכב צהוב</span>&nbsp;= תקלות.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">V ירוק</span>&nbsp;= המלצות ותודות.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">סימן קריאה אדום</span>&nbsp;= תזכורות.&nbsp;<br>סדר מושלם!<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
-      "textWidth": "305px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "305px"
     }
   ]
 }
