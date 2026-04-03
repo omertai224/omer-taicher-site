@@ -1,4 +1,3 @@
-<!-- Right-click mouse animation SVG -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 120" width="80" height="120">
   <style>
     @keyframes right-click-pulse {
@@ -10,18 +9,12 @@
     .mouse-right { animation: right-click-pulse 2s ease-in-out infinite; stroke: #f6a67e; stroke-width: 1.5; }
     .mouse-divider { stroke: #5b8fa8; stroke-width: 1; }
     .mouse-wheel { fill: #5b8fa8; }
-    .click-label { fill: #f6a67e; font-family: Rubik, sans-serif; font-size: 11px; font-weight: 700; text-anchor: middle; }
   </style>
-  <!-- Mouse body -->
-  <rect class="mouse-body" x="10" y="20" width="60" height="80" rx="30"/>
-  <!-- Left button -->
-  <path class="mouse-left" d="M10,50 L10,35 Q10,20 40,20 L40,50 Z"/>
-  <!-- Right button (animated) -->
-  <path class="mouse-right" d="M40,50 L40,20 Q70,20 70,35 L70,50 Z"/>
-  <!-- Divider line -->
-  <line class="mouse-divider" x1="40" y1="20" x2="40" y2="50"/>
-  <!-- Scroll wheel -->
-  <rect class="mouse-wheel" x="36" y="30" width="8" height="14" rx="4"/>
-  <!-- Label -->
-  <text class="click-label" x="40" y="115">קליק ימני</text>
+  <rect class="mouse-body" x="10" y="15" width="60" height="75" rx="30"/>
+  <path class="mouse-left" d="M10,45 L10,30 Q10,15 40,15 L40,45 Z"/>
+  <path class="mouse-right" d="M40,45 L40,15 Q70,15 70,30 L70,45 Z"/>
+  <line class="mouse-divider" x1="40" y1="15" x2="40" y2="45"/>
+  <rect class="mouse-wheel" x="36" y="25" width="8" height="14" rx="4"/>
+  <rect rx="10" x="5" y="98" width="70" height="20" fill="#1a2540" stroke="#5b8fa8" stroke-width="1"/>
+  <text x="40" y="112" fill="#f6a67e" font-family="Rubik,sans-serif" font-size="10" font-weight="700" text-anchor="middle">קליק ימני</text>
 </svg>
