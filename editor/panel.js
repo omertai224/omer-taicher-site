@@ -122,13 +122,13 @@ function updateAnimButtons(s) {
   });
 }
 
-// ── Render animation overlays on editor canvas ──
+// ── Render animation overlays inside bubble ──
 function renderAnimOverlays(slide) {
   // Remove old overlays
   var old = document.querySelectorAll('.anim-overlay');
   for (var i = 0; i < old.length; i++) old[i].remove();
-  var container = $('slideContainer');
-  if (!container || container.style.display === 'none') return;
+  var bubble = $('editorBubble');
+  if (!bubble || bubble.style.display === 'none') return;
 
   Object.keys(ANIM_TYPES).forEach(function(type) {
     var a = ANIM_TYPES[type];
@@ -136,36 +136,9 @@ function renderAnimOverlays(slide) {
       var el = document.createElement('img');
       el.className = 'anim-overlay';
       el.src = a.src;
-      // Default position: top-left of text bubble (near step counter)
-      var defaultLeft = slide.textPos ? parseFloat(slide.textPos.left) || 2 : 2;
-      var defaultTop = slide.textPos ? (parseFloat(slide.textPos.top) || 3) - 1 : 3;
-      var pos = slide[a.posKey] || { left: defaultLeft + '%', top: defaultTop + '%' };
-      el.style.cssText = 'position:absolute;z-index:100;width:40px;cursor:move;left:' + pos.left + ';top:' + pos.top + ';';
-      el.title = a.label + ' — גררו למיקום';
-      container.appendChild(el);
-
-      // Drag
-      el.addEventListener('mousedown', function(e) {
-        e.preventDefault();
-        var rect = container.getBoundingClientRect();
-        var startX = e.clientX, startY = e.clientY;
-        var startL = el.offsetLeft / rect.width * 100;
-        var startT = el.offsetTop / rect.height * 100;
-        function onMove(e2) {
-          el.style.left = (startL + (e2.clientX - startX) / rect.width * 100) + '%';
-          el.style.top = (startT + (e2.clientY - startY) / rect.height * 100) + '%';
-        }
-        function onUp() {
-          document.removeEventListener('mousemove', onMove);
-          document.removeEventListener('mouseup', onUp);
-          if (!slide[a.posKey]) slide[a.posKey] = {};
-          slide[a.posKey].left = el.style.left;
-          slide[a.posKey].top = el.style.top;
-          markModified();
-        }
-        document.addEventListener('mousemove', onMove);
-        document.addEventListener('mouseup', onUp);
-      });
+      // Inside bubble — moves with it automatically
+      el.style.cssText = 'position:absolute;z-index:100;width:36px;pointer-events:none;left:6px;top:6px;';
+      bubble.appendChild(el);
     }
   });
 }
