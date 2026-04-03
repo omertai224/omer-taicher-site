@@ -10,7 +10,10 @@ var slidesData = null;
    Used by shared/script.js scaleBubbles() to keep bubbles proportional. */
 window.bubbleDesignWidth = 853;
 
-var slideMap = {};
+var slideMap = {
+  0: { icon: 'home', title: 'פתיחה' },
+  1: { icon: 'play', title: 'איך עובדים עם ההדרכה' }
+};
 
 /* ── App Init ── */
 function initApp() {

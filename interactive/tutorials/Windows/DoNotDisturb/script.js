@@ -4,6 +4,11 @@ var slidesData = null;
 
 window.bubbleDesignWidth = 853;
 
+var slideMap = {
+  0: { icon: 'home', title: 'פתיחה' },
+  1: { icon: 'play', title: 'איך עובדים עם ההדרכה' }
+};
+
 function initApp() {
   var ua = navigator.userAgent || navigator.vendor || window.opera;
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua)) {

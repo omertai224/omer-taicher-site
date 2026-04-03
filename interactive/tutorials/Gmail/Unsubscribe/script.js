@@ -5,7 +5,10 @@ var slidesData = null;
 /* Design width for bubble scale */
 window.bubbleDesignWidth = 853;
 
-var slideMap = {};
+var slideMap = {
+  0: { icon: 'home', title: 'פתיחה' },
+  1: { icon: 'play', title: 'איך עובדים עם ההדרכה' }
+};
 
 /* ── App Init ── */
 function initApp() {

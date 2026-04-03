@@ -18,8 +18,7 @@
     {
       "index": 1,
       "type": "special",
-      "specialType": "howto",
-      "html": "<style>.howto-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#0f1a2e,#1a2540);text-align:center;padding:40px 20px;}.howto-title{font-size:1.4rem;font-weight:900;color:#fff;margin-bottom:20px;}.howto-desc{font-size:0.95rem;color:#ffffffaa;line-height:2;max-width:460px;margin-bottom:30px;}.howto-btn{background:linear-gradient(135deg,#1a2540,#3d5a80);color:white;border:2px solid white;padding:14px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 4px 12px rgba(26,37,64,0.5);}</style><div class=\"howto-wrap\"><svg width=\"40\" height=\"40\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" style=\"margin-bottom:16px;\"><polygon points=\"5 3 19 12 5 21 5 3\"/></svg><div class=\"howto-title\">איך עובדים עם ההדרכה</div><div class=\"howto-desc\">בכל שקף תראו תמונה אמיתית מהמחשב.<br>לחצו על <span style=\"color:#f6a67e;font-weight:700;\">המסגרת הכתומה</span> כדי להתקדם.<br>בדיוק כמו שהייתם עושים במחשב שלכם.</div><button class=\"howto-btn\" onclick=\"nextSlide()\">הבנתי, קדימה</button></div>",
+      "specialType": "howto-shared",
       "notes": [
         {
           "text": "",
