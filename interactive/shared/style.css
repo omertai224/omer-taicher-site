@@ -488,7 +488,7 @@ br {
 }
 .ht-card {
   width: calc(25% - 1.2vw);
-  aspect-ratio: 1;
+  aspect-ratio: 1.15;
   background: rgba(26, 37, 64, 0.85);
   border: 1.5px solid #5b8fa844;
   border-radius: 12px;
