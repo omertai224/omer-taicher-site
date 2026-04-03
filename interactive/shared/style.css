@@ -480,8 +480,8 @@ br {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.2vh 1vw;
-  max-width: 900px;
+  gap: 1.5vh 1.5vw;
+  max-width: 96%;
   width: 100%;
   flex: 1;
   align-content: center;
@@ -491,7 +491,7 @@ br {
 .ht-row-3 .ht-card { width:calc(33.333% - 2vw); }
 .ht-row-4 .ht-card { width:calc(25% - 2vw); }
 .ht-card {
-  aspect-ratio: 1.35;
+  aspect-ratio: 1.15;
   background: rgba(26, 37, 64, 0.85);
   border: 1.5px solid #5b8fa844;
   border-radius: 12px;
@@ -510,8 +510,8 @@ br {
   transform: translateY(-2px);
 }
 .ht-icon {
-  width: clamp(40px, 6.5vh, 56px);
-  height: clamp(40px, 6.5vh, 56px);
+  width: clamp(44px, 7.5vh, 64px);
+  height: clamp(44px, 7.5vh, 64px);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -519,21 +519,21 @@ br {
   flex-shrink: 0;
 }
 .ht-icon svg {
-  width: clamp(20px, 3.5vh, 28px);
-  height: clamp(20px, 3.5vh, 28px);
+  width: clamp(22px, 4vh, 32px);
+  height: clamp(22px, 4vh, 32px);
 }
 .ht-icon.orange { background: linear-gradient(135deg, #e8834e, #f6a67e); }
 .ht-icon.blue { background: linear-gradient(135deg, #3d6a8e, #5b8fa8); }
 .ht-icon.navy { background: linear-gradient(135deg, #1a2540, #3d5a80); }
 .ht-card-title {
   color: #fff;
-  font-size: clamp(12px, 1.8vh, 15px);
+  font-size: clamp(14px, 2.2vh, 18px);
   font-weight: 800;
   line-height: 1.3;
 }
 .ht-card-desc {
   color: #ffffff;
-  font-size: clamp(10px, 1.5vh, 13px);
+  font-size: clamp(12px, 1.8vh, 15px);
   line-height: 1.5;
 }
 .ht-card-desc br { margin: 0; display: inline; content: none; }
