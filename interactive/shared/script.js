@@ -626,13 +626,12 @@ function buildHowToSlide() {
     + '<div class="ht-card-desc">לחצו על החיצים למטה כדי לעבור שקף קדימה או אחורה.</div>'
     + '</div>'
 
-    // Card 7: Nav dots (jump between steps)
+    // Card 7: Nav dots (jump between steps) — big circles like real nav
     + '<div class="ht-card">'
-    + '<div class="ht-icon navy" style="background:none;gap:3px;flex-wrap:wrap;">'
-    + '<div style="width:14px;height:14px;border-radius:50%;background:#1a2540;display:flex;align-items:center;justify-content:center;"><svg width="7" height="7" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div>'
-    + '<div class="ht-anim-pulse" style="width:14px;height:14px;border-radius:50%;background:#1a2540;font-size:7px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;">1</div>'
-    + '<div style="width:14px;height:14px;border-radius:50%;background:#a8c5d6;font-size:7px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;">2</div>'
-    + '<div style="width:14px;height:14px;border-radius:50%;background:#a8c5d6;font-size:7px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;">3</div>'
+    + '<div class="ht-icon navy" style="background:none;gap:5px;direction:ltr;">'
+    + '<div class="ht-anim-pulse" style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#1a2540;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">1</div>'
+    + '<div style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#a8c5d6;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">2</div>'
+    + '<div style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#a8c5d6;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</div>'
     + '</div>'
     + '<div class="ht-card-title">פס ניווט</div>'
     + '<div class="ht-card-desc">עיגולים למטה. לחצו על כל עיגול כדי לקפוץ לצעד.</div>'

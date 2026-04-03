@@ -529,7 +529,7 @@ br {
   line-height: 1.3;
 }
 .ht-card-desc {
-  color: #ffffffaa;
+  color: #ffffff;
   font-size: clamp(10px, 1.5vh, 13px);
   line-height: 1.5;
 }
