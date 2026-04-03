@@ -1,12 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 120" width="80" height="120">
   <style>
     @keyframes dbl-click {
-      0%, 100% { fill: #1a2540; }
-      2%, 4% { fill: #f6a67e; }
-      6%, 8% { fill: #f6a67e; }
+      0% { fill: #1a2540; }
+      3% { fill: #f6a67e; }
+      6% { fill: #1a2540; }
+      9% { fill: #f6a67e; }
+      12% { fill: #1a2540; }
+      100% { fill: #1a2540; }
     }
     .mouse-body { fill: #1a2540; stroke: #5b8fa8; stroke-width: 2; }
-    .mouse-left { animation: dbl-click 3s ease-in-out infinite; stroke: #f6a67e; stroke-width: 1.5; }
+    .mouse-left { animation: dbl-click 2.5s step-end infinite; stroke: #f6a67e; stroke-width: 1.5; }
     .mouse-right { fill: #1a2540; stroke: #5b8fa8; stroke-width: 1.5; }
     .mouse-divider { stroke: #5b8fa8; stroke-width: 1; }
     .mouse-wheel { fill: #5b8fa8; }
