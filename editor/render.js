@@ -20,6 +20,7 @@ function showSlide(idx) {
     img.onload = function() {
       renderBox(s);
       renderBubble(s);
+      if (typeof renderAnimOverlays === 'function') renderAnimOverlays(s);
     };
   } else if (s.html || s.type === 'special') {
     // Special slide - render in iframe
