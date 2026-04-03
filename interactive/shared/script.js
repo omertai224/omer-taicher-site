@@ -90,12 +90,7 @@ function renderSlideAnimations() {
       var el = document.createElement('img');
       el.className = 'slide-anim';
       el.src = sharedPath + '/' + a.file;
-      // Position relative to textPos from slides.json
-      var tLeft = s.textPos ? parseFloat(s.textPos.left) || 0 : 5;
-      var tTop = s.textPos ? parseFloat(s.textPos.top) || 0 : 5;
-      el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;width:36px;' +
-        'left:' + Math.max(0, tLeft - 4) + '%;' +
-        'top:' + Math.max(0, tTop - 1) + '%;';
+      el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;width:40px;left:2%;top:3%;';
       ic.appendChild(el);
     }
   });
