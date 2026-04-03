@@ -571,54 +571,56 @@ function buildHowToSlide() {
     + '<div class="ht-sub">כל מה שצריך לדעת לפני שמתחילים</div>'
     + '<div class="ht-grid">'
 
-    // Card 1: Orange box (click) — white border inside orange bg
+    // Card 1: Orange box (click) — white pulsing border inside orange
     + '<div class="ht-card">'
     + '<div class="ht-icon orange"><div style="width:60%;height:55%;border:3px solid white;border-radius:6px;animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
     + '<div class="ht-card-title">מסגרת כתומה</div>'
     + '<div class="ht-card-desc">רואים מסגרת כתומה מהבהבת? לחצו עליה כדי להתקדם.</div>'
     + '</div>'
 
-    // Card 2: View slide (continue button)
+    // Card 2: View slide (continue button with pulse)
     + '<div class="ht-card">'
     + '<div class="ht-icon navy">'
-    + '<div style="width:clamp(24px,3.5vh,36px);height:clamp(24px,3.5vh,36px);border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;display:flex;align-items:center;justify-content:center;">'
+    + '<div class="ht-anim-pulse" style="width:clamp(24px,3.5vh,36px);height:clamp(24px,3.5vh,36px);border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;display:flex;align-items:center;justify-content:center;">'
     + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
     + '</div>'
     + '<div class="ht-card-title">שקף צפייה</div>'
-    + '<div class="ht-card-desc">לפעמים רק צופים. לחצו על העיגול הכחול כדי להמשיך.</div>'
+    + '<div class="ht-card-desc">לחצו על העיגול הכחול כדי להמשיך.</div>'
     + '</div>'
 
-    // Card 3: Text bubble + animation hint
+    // Card 3: Text bubble (looks like real bubble) + animation outside
     + '<div class="ht-card">'
-    + '<div class="ht-icon navy" style="position:relative;"><div class="ht-mini-bubble">3/17 לחצו על...</div>'
-    + '<img src="' + sharedPath + '/right-click.svg" style="position:absolute;top:2px;left:2px;width:16px;height:16px;opacity:0.9;">'
+    + '<div style="position:relative;">'
+    + '<div class="ht-mini-bubble ht-anim-float" style="text-align:right;"><span style="color:#f6a67e;font-weight:700;">3</span><span style="color:#ffffff88;">/17</span><br style="margin:0;display:block;content:none;">לחצו על <span style="color:#f6a67e;">הגדרות</span></div>'
+    + '<img src="' + sharedPath + '/right-click.svg" class="ht-anim-pulse" style="position:absolute;top:-6px;right:-6px;width:20px;height:20px;">'
     + '</div>'
     + '<div class="ht-card-title">בועת הוראה</div>'
-    + '<div class="ht-card-desc">בכל שקף יש הוראה. לפעמים תראו אנימציה של הפעולה במחשב.</div>'
+    + '<div class="ht-card-desc">בכל שקף יש הוראה. לפעמים תראו אנימציה של הפעולה.</div>'
     + '</div>'
 
-    // Card 4: Magnifier
+    // Card 4: Magnifier (pulse animation)
     + '<div class="ht-card">'
-    + '<div class="ht-icon orange">'
+    + '<div class="ht-icon orange ht-anim-pulse">'
     + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">זכוכית מגדלת</div>'
     + '<div class="ht-card-desc">קשה לראות? לחצו על הכפתור הכתום בשמאל להגדלת המסך.</div>'
     + '</div>'
 
-    // Card 5: TTS
+    // Card 5: TTS (pulse animation)
     + '<div class="ht-card">'
-    + '<div class="ht-icon orange">'
+    + '<div class="ht-icon orange ht-anim-pulse">'
     + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">הקראה בקול</div>'
     + '<div class="ht-card-desc">מעדיפים לשמוע? הכפתור הכתום בימין יקריא את ההוראה בקול.</div>'
     + '</div>'
 
-    // Card 6: Navigation (two real round arrows)
+    // Card 6: Navigation (arrows nudge left/right)
     + '<div class="ht-card">'
     + '<div class="ht-icon navy" style="background:none;gap:6px;">'
-    + navArrow('right') + navArrow('left')
+    + '<div class="ht-anim-right">' + navArrow('right') + '</div>'
+    + '<div class="ht-anim-left">' + navArrow('left') + '</div>'
     + '</div>'
     + '<div class="ht-card-title">ניווט</div>'
     + '<div class="ht-card-desc">חיצים למטה, עיגולים בפס התחתון, או חצים במקלדת.</div>'
