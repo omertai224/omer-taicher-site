@@ -571,11 +571,11 @@ function buildHowToSlide() {
     + '<div class="ht-sub">כל מה שצריך לדעת לפני שמתחילים</div>'
     + '<div class="ht-grid">'
 
-    // Card 1: Orange box (click) — white pulsing border inside orange
+    // Card 1: Orange box (click)
     + '<div class="ht-card">'
     + '<div class="ht-icon orange"><div style="width:60%;height:55%;border:3px solid white;border-radius:6px;animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
     + '<div class="ht-card-title">מסגרת כתומה</div>'
-    + '<div class="ht-card-desc">רואים מסגרת כתומה מהבהבת? לחצו עליה כדי להתקדם.</div>'
+    + '<div class="ht-card-desc">רואים מסגרת כתומה מהבהבת!<br style="margin:0;">לחצו עליה כדי להתקדם.</div>'
     + '</div>'
 
     // Card 2: View slide (continue button with pulse)
@@ -585,56 +585,56 @@ function buildHowToSlide() {
     + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
     + '</div>'
     + '<div class="ht-card-title">שקף צפייה</div>'
-    + '<div class="ht-card-desc">לחצו על העיגול הכחול כדי להמשיך.</div>'
+    + '<div class="ht-card-desc">לפעמים רק צופים.<br style="margin:0;">לחצו על העיגול הכחול להמשך.</div>'
     + '</div>'
 
-    // Card 3: Text bubble (looks like real bubble) + animation outside (left corner)
+    // Card 3: Text bubble (looks like real bubble) + animation outside
     + '<div class="ht-card">'
     + '<div style="position:relative;">'
-    + '<div class="ht-mini-bubble ht-anim-float" style="text-align:right;"><span style="color:#f6a67e;font-weight:700;">3</span><span style="color:#ffffff88;">/17</span><br style="margin:0;display:block;content:none;">לחצו על <span style="color:#f6a67e;">הגדרות</span></div>'
-    + '<img src="' + sharedPath + '/right-click.svg" class="ht-anim-pulse" style="position:absolute;top:-6px;left:-6px;width:20px;height:20px;">'
+    + '<div class="ht-mini-bubble ht-anim-float" style="text-align:right;font-size:clamp(10px,1.5vh,12px);padding:6px 12px;"><span style="color:#f6a67e;font-weight:700;">3</span><span style="color:#ffffff88;">/17</span><br style="margin:0;display:block;content:none;">לחצו על <span style="color:#f6a67e;">הגדרות</span></div>'
+    + '<img src="' + sharedPath + '/right-click.svg" class="ht-anim-pulse" style="position:absolute;top:-8px;left:-8px;width:22px;height:22px;">'
     + '</div>'
     + '<div class="ht-card-title">בועת הוראה</div>'
-    + '<div class="ht-card-desc">בכל שקף יש הוראה. לפעמים תראו אנימציה של הפעולה.</div>'
+    + '<div class="ht-card-desc">בכל שקף יש הוראה.<br style="margin:0;">לפעמים תראו אנימציה של הפעולה.</div>'
     + '</div>'
 
-    // Card 4: Magnifier (pulse animation)
+    // Card 4: Magnifier
     + '<div class="ht-card">'
     + '<div class="ht-icon orange ht-anim-pulse">'
     + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">זכוכית מגדלת</div>'
-    + '<div class="ht-card-desc">קשה לראות? לחצו על הכפתור הכתום בשמאל להגדלת המסך.</div>'
+    + '<div class="ht-card-desc">קשה לראות?<br style="margin:0;">הכפתור הכתום בשמאל מגדיל את המסך.</div>'
     + '</div>'
 
-    // Card 5: TTS (pulse animation)
+    // Card 5: TTS
     + '<div class="ht-card">'
     + '<div class="ht-icon orange ht-anim-pulse">'
     + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">הקראה בקול</div>'
-    + '<div class="ht-card-desc">מעדיפים לשמוע? הכפתור הכתום בימין יקריא את ההוראה בקול.</div>'
+    + '<div class="ht-card-desc">מעדיפים לשמוע?<br style="margin:0;">הכפתור הכתום בימין יקריא בקול.</div>'
     + '</div>'
 
-    // Card 6: Navigation arrows (nudge left/right)
+    // Card 6: Navigation arrows
     + '<div class="ht-card">'
     + '<div class="ht-icon navy" style="background:none;gap:6px;">'
     + '<div class="ht-anim-right">' + navArrow('right') + '</div>'
     + '<div class="ht-anim-left">' + navArrow('left') + '</div>'
     + '</div>'
     + '<div class="ht-card-title">חיצי ניווט</div>'
-    + '<div class="ht-card-desc">לחצו על החיצים למטה כדי לעבור שקף קדימה או אחורה.</div>'
+    + '<div class="ht-card-desc">לחצו על החיצים למטה<br style="margin:0;">כדי לעבור שקף קדימה או אחורה.</div>'
     + '</div>'
 
-    // Card 7: Nav dots (jump between steps) — big circles like real nav
+    // Card 7: Nav dots — big circles with white border
     + '<div class="ht-card">'
     + '<div class="ht-icon navy" style="background:none;gap:5px;direction:ltr;">'
-    + '<div class="ht-anim-pulse" style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#1a2540;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">1</div>'
-    + '<div style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#a8c5d6;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">2</div>'
-    + '<div style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#a8c5d6;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</div>'
+    + '<div class="ht-anim-pulse" style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#1a2540;border:2px solid white;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">1</div>'
+    + '<div style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#a8c5d6;border:2px solid white;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">2</div>'
+    + '<div style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#a8c5d6;border:2px solid white;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</div>'
     + '</div>'
     + '<div class="ht-card-title">פס ניווט</div>'
-    + '<div class="ht-card-desc">עיגולים למטה. לחצו על כל עיגול כדי לקפוץ לצעד.</div>'
+    + '<div class="ht-card-desc">עיגולים למטה.<br style="margin:0;">לחצו על כל עיגול כדי לקפוץ לצעד.</div>'
     + '</div>'
 
     + '</div>' // end grid
