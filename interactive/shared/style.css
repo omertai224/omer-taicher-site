@@ -487,8 +487,10 @@ br {
   align-content: center;
 }
 /* Row 1: 3 cards (content), Row 2: 4 cards (tools) */
-.ht-row { display:flex; gap:1vw; width:100%; justify-content:center; }
+.ht-row { display:flex; gap:1vw; justify-content:center; }
+.ht-row-3 { max-width:680px; }
 .ht-row-3 .ht-card { width:calc(33.333% - 1vw); }
+.ht-row-4 { width:100%; }
 .ht-row-4 .ht-card { width:calc(25% - 1vw); }
 .ht-card {
   aspect-ratio: 1.35;
