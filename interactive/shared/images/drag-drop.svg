@@ -5,12 +5,8 @@
       0%, 100% { transform: translate(0, 0); }
       50% { transform: translate(-8px, 12px); }
     }
-    @keyframes drag-press {
-      0%, 100% { fill: #1a2540; }
-      20%, 80% { fill: #f6a67e; }
-    }
-    .mouse-body { fill: #1a2540; stroke: #5b8fa8; stroke-width: 2; animation: drag-move 2s ease-in-out infinite; }
-    .mouse-left { animation: drag-press 2s ease-in-out infinite; stroke: #f6a67e; stroke-width: 1.5; }
+    .mouse-body { fill: #1a2540; stroke: #5b8fa8; stroke-width: 2; }
+    .mouse-left { fill: #f6a67e; stroke: #f6a67e; stroke-width: 1.5; }
     .mouse-right { fill: #1a2540; stroke: #5b8fa8; stroke-width: 1.5; }
     .mouse-divider { stroke: #5b8fa8; stroke-width: 1; }
     .mouse-wheel { fill: #5b8fa8; }
