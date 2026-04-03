@@ -90,10 +90,16 @@ function renderSlideAnimations() {
       var el = document.createElement('img');
       el.className = 'slide-anim';
       el.src = sharedPath + '/' + a.file;
-      el.style.cssText = 'position:absolute;z-index:5;pointer-events:none;' +
-        'width:' + (s[a.sizeKey] || '60px') + ';' +
-        'left:' + (s[a.posKey] ? s[a.posKey].left : '85%') + ';' +
-        'top:' + (s[a.posKey] ? s[a.posKey].top : '30%') + ';';
+      // Position at top-left of the text bubble, small size
+      var textEl = slide.querySelector('.text');
+      if (textEl) {
+        var tLeft = parseFloat(textEl.style.left) || 0;
+        var tTop = parseFloat(textEl.style.top) || 0;
+        el.style.cssText = 'position:absolute;z-index:5;pointer-events:none;width:40px;' +
+          'left:' + (tLeft - 5) + '%;top:' + (tTop - 8) + '%;';
+      } else {
+        el.style.cssText = 'position:absolute;z-index:5;pointer-events:none;width:40px;left:3%;top:5%;';
+      }
       ic.appendChild(el);
     }
   });
