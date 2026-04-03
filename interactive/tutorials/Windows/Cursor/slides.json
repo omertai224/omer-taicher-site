@@ -190,12 +190,12 @@
         "right": "73.6465%",
         "bottom": "13.6943%"
       },
-      "scrollDownAnim": true,
       "scrollDownPos": {
         "left": "3%",
         "top": "5%"
       },
-      "scrollDownSize": "55px"
+      "scrollDownSize": "55px",
+      "dragDropAnim": true
     },
     {
       "index": 8,
