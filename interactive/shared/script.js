@@ -551,26 +551,34 @@ function sendMobileLink(tutorialKey) {
 
 /* ── HowTo Slide Builder ── */
 function buildHowToSlide() {
-  // Mini nav arrow (matches real nav arrows: navy circle + white chevron)
+  // Mini nav arrow — fixed size circle (not ellipse!)
+  var navSize = '32px';
   var navArrow = function(dir) {
     var pts = dir === 'right' ? '9 18 15 12 9 6' : '15 18 9 12 15 6';
-    return '<div style="width:clamp(28px,4vh,40px);height:clamp(28px,4vh,40px);border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid #5b8fa8;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(26,37,64,0.5);">'
+    return '<div style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid #5b8fa8;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(26,37,64,0.5);flex-shrink:0;">'
       + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="' + pts + '"/></svg></div>';
   };
+
+  // Right-click animation SVG (mini version for howto card)
+  var sharedPath = (function() {
+    var links = document.querySelectorAll('link[rel="stylesheet"][href*="shared/style.css"]');
+    if (links.length) return links[0].getAttribute('href').replace('style.css', 'images');
+    return '../../shared/images';
+  })();
 
   return '<div class="ht-wrap">'
     + '<div class="ht-title">איך עובדים עם ההדרכה?</div>'
     + '<div class="ht-sub">כל מה שצריך לדעת לפני שמתחילים</div>'
     + '<div class="ht-grid">'
 
-    // Card 1: Orange box (click)
+    // Card 1: Orange box (click) — white border inside orange bg
     + '<div class="ht-card">'
-    + '<div class="ht-icon orange"><div class="ht-mini-box"></div></div>'
+    + '<div class="ht-icon orange"><div style="width:60%;height:55%;border:3px solid white;border-radius:6px;animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
     + '<div class="ht-card-title">מסגרת כתומה</div>'
     + '<div class="ht-card-desc">רואים מסגרת כתומה מהבהבת? לחצו עליה כדי להתקדם.</div>'
     + '</div>'
 
-    // Card 2: View slide (continue button, no blue frame)
+    // Card 2: View slide (continue button)
     + '<div class="ht-card">'
     + '<div class="ht-icon navy">'
     + '<div style="width:clamp(24px,3.5vh,36px);height:clamp(24px,3.5vh,36px);border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;display:flex;align-items:center;justify-content:center;">'
@@ -580,11 +588,13 @@ function buildHowToSlide() {
     + '<div class="ht-card-desc">לפעמים רק צופים. לחצו על העיגול הכחול כדי להמשיך.</div>'
     + '</div>'
 
-    // Card 3: Text bubble
+    // Card 3: Text bubble + animation hint
     + '<div class="ht-card">'
-    + '<div class="ht-icon navy"><div class="ht-mini-bubble">3/17 לחצו על...</div></div>'
+    + '<div class="ht-icon navy" style="position:relative;"><div class="ht-mini-bubble">3/17 לחצו על...</div>'
+    + '<img src="' + sharedPath + '/right-click.svg" style="position:absolute;top:2px;left:2px;width:16px;height:16px;opacity:0.9;">'
+    + '</div>'
     + '<div class="ht-card-title">בועת הוראה</div>'
-    + '<div class="ht-card-desc">בכל שקף יש הוראה קצרה. קראו ועשו לפי ההנחיות.</div>'
+    + '<div class="ht-card-desc">בכל שקף יש הוראה. לפעמים תראו אנימציה של הפעולה במחשב.</div>'
     + '</div>'
 
     // Card 4: Magnifier
@@ -605,9 +615,9 @@ function buildHowToSlide() {
     + '<div class="ht-card-desc">מעדיפים לשמוע? הכפתור הכתום בימין יקריא את ההוראה בקול.</div>'
     + '</div>'
 
-    // Card 6: Navigation (two real arrows)
+    // Card 6: Navigation (two real round arrows)
     + '<div class="ht-card">'
-    + '<div class="ht-icon navy" style="background:none;gap:clamp(4px,0.5vw,8px);">'
+    + '<div class="ht-icon navy" style="background:none;gap:6px;">'
     + navArrow('right') + navArrow('left')
     + '</div>'
     + '<div class="ht-card-title">ניווט</div>'
