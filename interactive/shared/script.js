@@ -68,8 +68,10 @@ function renderSlideAnimations() {
   if (!s) return;
   var slide = document.getElementsByClassName('mySlides')[slideIndex - 1];
   if (!slide) return;
-  var ic = slide.querySelector('.image-center');
-  if (!ic) return;
+
+  // Find the .text bubble — inject SVG INTO it so it moves with the bubble
+  var bubble = slide.querySelector('.text');
+  if (!bubble) return;
 
   var sharedPath = (function() {
     var links = document.querySelectorAll('link[rel="stylesheet"][href*="shared/style.css"]');
@@ -90,11 +92,18 @@ function renderSlideAnimations() {
       var el = document.createElement('img');
       el.className = 'slide-anim';
       el.src = sharedPath + '/' + a.file;
-      var defaultLeft = s.textPos ? parseFloat(s.textPos.left) || 2 : 2;
-      var defaultTop = s.textPos ? (parseFloat(s.textPos.top) || 3) - 1 : 3;
-      var pos = s[a.posKey] || { left: defaultLeft + '%', top: defaultTop + '%' };
-      el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;width:40px;left:' + pos.left + ';top:' + pos.top + ';';
-      ic.appendChild(el);
+      // Default: top-left corner of bubble. Custom pos offsets within bubble.
+      var pos = s[a.posKey] || { left: '6px', top: '6px' };
+      var size = s[a.sizeKey] || { width: '36px' };
+      el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;' +
+        'width:' + (size.width || '36px') + ';' +
+        'left:' + (pos.left || '6px') + ';' +
+        'top:' + (pos.top || '6px') + ';';
+      // Ensure bubble has position:relative so absolute child works
+      if (getComputedStyle(bubble).position === 'static') {
+        bubble.style.position = 'relative';
+      }
+      bubble.appendChild(el);
     }
   });
 }
