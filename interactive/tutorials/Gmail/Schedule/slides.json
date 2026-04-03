@@ -154,10 +154,18 @@
         "bottom": "32.4313%"
       },
       "textPos": {
-        "left": "63.7813%",
-        "top": "39.5535%"
+        "left": "64.7361%",
+        "top": "44.4367%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "doubleClickAnim": true
     },
     {
       "index": 9,
