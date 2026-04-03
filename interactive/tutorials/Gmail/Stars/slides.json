@@ -177,7 +177,7 @@
       "step": 10,
       "type": "click",
       "image": "Stars-10.png",
-      "text": "גוללים למטה עד <span style=\"color:#f6a67e;\">כוכבים</span>.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">4 כוכבים</span> כדי לקבל צבעים.",
+      "text": "בתמונה: גוללנו עד האזור <span style=\"color:#f6a67e;\">כוכבים</span>.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">4 כוכבים</span> כדי לקבל צבעים.",
       "box": {
         "top": "54.3547%",
         "left": "34.5005%",
@@ -220,7 +220,7 @@
       "step": 12,
       "type": "click",
       "image": "Stars-12.png",
-      "text": "חשוב! כל שינוי בהגדרות ג'ימייל צריך שמירה. גללו למטה ולחצו על <span style=\"color:#f6a67e;\">שמירת שינויים</span>.",
+      "text": "חשוב! כל שינוי בהגדרות ג'ימייל צריך שמירה. לחצו על <span style=\"color:#f6a67e;\">שמירת שינויים</span>.",
       "box": {
         "top": "65.7455%",
         "left": "29.3243%",
@@ -238,7 +238,7 @@
       "step": 13,
       "type": "click",
       "image": "Stars-13.png",
-      "text": "חזרנו לתיבה!&nbsp;<br>שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>.&nbsp;<br>זה דבר חיובי.&nbsp;<br>לחצו על הכוכב <span style=\"color:#f6a67e;\">V ירוק</span>.<br><span style=\"font-size:13px;color:#ffffffaa;\">לחצו על הכוכב כמה פעמים עד שמגיעים לסימן הנכון.</span>",
+      "text": "חזרנו לתיבה!&nbsp;<br>שרה כתבה <span style=\"color:#f6a67e;\">תודה על ההדרכה אתמול</span>.&nbsp;<br>זה דבר חיובי.&nbsp;<br>לחצו על הכוכב <span style=\"color:#f6a67e;\">V ירוק</span>.<br><span style=\"font-size:13px;color:#ffffffaa;\">לחצו על הכוכב כ-3 פעמים עד שמגיעים לסימן הנכון.</span>",
       "box": {
         "top": "76.5181%",
         "left": "63.4077%",
@@ -256,7 +256,7 @@
       "step": 14,
       "type": "click",
       "image": "Stars-14.png",
-      "text": "גם רונית <span style=\"color:#f6a67e;\">ממליצה עליך לחברה שלה</span>.&nbsp;<br>עוד דבר חיובי!&nbsp;<br>עוד <span style=\"color:#f6a67e;\">V ירוק</span>.<br><span style=\"font-size:13px;color:#ffffffaa;\">לחצו על הכוכב כמה פעמים עד שמגיעים לסימן הנכון.</span>",
+      "text": "גם רונית <span style=\"color:#f6a67e;\">ממליצה עליך לחברה שלה</span>.&nbsp;<br>עוד דבר חיובי!&nbsp;<br>עוד <span style=\"color:#f6a67e;\">V ירוק</span>.<br><span style=\"font-size:13px;color:#ffffffaa;\">לחצו על הכוכב כ-3 פעמים עד שמגיעים לסימן הנכון.</span>",
       "box": {
         "top": "50.6157%",
         "left": "63.4077%",
