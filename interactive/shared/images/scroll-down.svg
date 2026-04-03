@@ -21,5 +21,5 @@
   <rect class="mouse-wheel" x="36" y="15" width="8" height="14" rx="4"/>
   <polygon class="scroll-arrow" points="40,93 30,83 35,83 35,73 45,73 45,83 50,83"/>
   <rect rx="10" x="5" y="95" width="70" height="30" fill="#1a2540" stroke="#5b8fa8" stroke-width="1"/>
-  <text x="40" y="105" fill="#f6a67e" font-family="Rubik,sans-serif" font-size="9" font-weight="600" text-anchor="middle" direction="rtl" dominant-baseline="central">במחשב:</text><text x="40" y="117" fill="#f6a67e" font-family="Rubik,sans-serif" font-size="10" font-weight="700" text-anchor="middle">גלילה למטה</text>
+  <text x="40" y="105" fill="#f6a67e" font-family="Rubik,sans-serif" font-size="9" font-weight="600" text-anchor="middle">:במחשב</text><text x="40" y="117" fill="#f6a67e" font-family="Rubik,sans-serif" font-size="10" font-weight="700" text-anchor="middle">גלילה למטה</text>
 </svg>
