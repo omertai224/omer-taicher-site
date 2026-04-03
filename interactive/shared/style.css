@@ -498,7 +498,6 @@ br {
   text-align: center;
   backdrop-filter: blur(8px);
   transition: border-color 0.3s, transform 0.2s;
-  aspect-ratio: 1;
 }
 .ht-card:hover {
   border-color: #5b8fa8;
