@@ -600,7 +600,9 @@
       "image": "https://media.omertai.net/custom-cursor-presentation.webp",
       "image_alt": "סמן עכבר גדול צבעוני ובולט על מסך מחשב במהלך מצגת בחדר ישיבות, קהל עוקב אחריו בקלות",
       "seo_title": "איך בקשה קטנה מחברה הפכה את העבודה שלי לנעימה יותר | עומר טייכר",
-      "seo_desc": "איך להגדיל ולצבוע את סמן העכבר ב-Windows כדי לעבוד בנוחות גם במסכים גדולים ובהרצאות."
+      "seo_desc": "איך להגדיל ולצבוע את סמן העכבר ב-Windows כדי לעבוד בנוחות גם במסכים גדולים ובהרצאות.",
+      "tutorialUrl": "/interactive/tutorials/Windows/Cursor/",
+      "tutorialType": "free"
     },
     {
       "id": "find-email-with-attachment",
