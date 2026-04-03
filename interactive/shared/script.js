@@ -77,26 +77,26 @@ function renderSlideAnimations() {
     return '../../shared/images';
   })();
 
-  if (s.rightClickAnim) {
-    var rc = document.createElement('img');
-    rc.className = 'slide-anim';
-    rc.src = sharedPath + '/right-click.svg';
-    rc.style.cssText = 'position:absolute;z-index:5;pointer-events:none;' +
-      'width:' + (s.rightClickSize || '60px') + ';' +
-      'left:' + (s.rightClickPos ? s.rightClickPos.left : '85%') + ';' +
-      'top:' + (s.rightClickPos ? s.rightClickPos.top : '30%') + ';';
-    ic.appendChild(rc);
-  }
-  if (s.scrollDownAnim) {
-    var sd = document.createElement('img');
-    sd.className = 'slide-anim';
-    sd.src = sharedPath + '/scroll-down.svg';
-    sd.style.cssText = 'position:absolute;z-index:5;pointer-events:none;' +
-      'width:' + (s.scrollDownSize || '60px') + ';' +
-      'left:' + (s.scrollDownPos ? s.scrollDownPos.left : '85%') + ';' +
-      'top:' + (s.scrollDownPos ? s.scrollDownPos.top : '30%') + ';';
-    ic.appendChild(sd);
-  }
+  var animTypes = [
+    { key: 'rightClickAnim', posKey: 'rightClickPos', sizeKey: 'rightClickSize', file: 'right-click.svg' },
+    { key: 'scrollDownAnim', posKey: 'scrollDownPos', sizeKey: 'scrollDownSize', file: 'scroll-down.svg' },
+    { key: 'doubleClickAnim', posKey: 'doubleClickPos', sizeKey: 'doubleClickSize', file: 'double-click.svg' },
+    { key: 'dragDropAnim', posKey: 'dragDropPos', sizeKey: 'dragDropSize', file: 'drag-drop.svg' },
+    { key: 'keyboardAnim', posKey: 'keyboardPos', sizeKey: 'keyboardSize', file: 'keyboard-shortcut.svg' },
+    { key: 'typingAnim', posKey: 'typingPos', sizeKey: 'typingSize', file: 'typing.svg' }
+  ];
+  animTypes.forEach(function(a) {
+    if (s[a.key]) {
+      var el = document.createElement('img');
+      el.className = 'slide-anim';
+      el.src = sharedPath + '/' + a.file;
+      el.style.cssText = 'position:absolute;z-index:5;pointer-events:none;' +
+        'width:' + (s[a.sizeKey] || '60px') + ';' +
+        'left:' + (s[a.posKey] ? s[a.posKey].left : '85%') + ';' +
+        'top:' + (s[a.posKey] ? s[a.posKey].top : '30%') + ';';
+      ic.appendChild(el);
+    }
+  });
 }
 
 /* ── Scale + anchor bubbles to the orange box ── */

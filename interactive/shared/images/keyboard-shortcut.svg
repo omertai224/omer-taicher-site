@@ -1,0 +1,29 @@
+<!-- Keyboard shortcut animation SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="100" height="80">
+  <style>
+    @keyframes key-press-1 {
+      0%, 100% { fill: #1a2540; transform: translateY(0); }
+      30%, 60% { fill: #f6a67e; transform: translateY(2px); }
+    }
+    @keyframes key-press-2 {
+      0%, 100% { fill: #1a2540; transform: translateY(0); }
+      35%, 65% { fill: #f6a67e; transform: translateY(2px); }
+    }
+    .key { stroke: #5b8fa8; stroke-width: 1.5; rx: 6; }
+    .key1 { animation: key-press-1 2s ease-in-out infinite; }
+    .key2 { animation: key-press-2 2s ease-in-out infinite; }
+    .key-text { fill: white; font-family: Rubik, sans-serif; font-size: 11px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+    .plus { fill: #5b8fa8; font-family: Rubik, sans-serif; font-size: 16px; font-weight: 900; text-anchor: middle; dominant-baseline: central; }
+    .shortcut-label { fill: #f6a67e; font-family: Rubik, sans-serif; font-size: 10px; font-weight: 700; text-anchor: middle; }
+  </style>
+  <!-- Key 1 -->
+  <rect class="key key1" x="5" y="10" width="38" height="34"/>
+  <text class="key-text" x="24" y="27">Ctrl</text>
+  <!-- Plus sign -->
+  <text class="plus" x="50" y="27">+</text>
+  <!-- Key 2 -->
+  <rect class="key key2" x="57" y="10" width="38" height="34"/>
+  <text class="key-text" x="76" y="27">V</text>
+  <!-- Label -->
+  <text class="shortcut-label" x="50" y="65">קיצור מקלדת</text>
+</svg>
