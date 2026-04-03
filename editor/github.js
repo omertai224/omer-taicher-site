@@ -4,7 +4,7 @@ var GH = {
   token: '',
   user: 'omertai224',
   repo: 'omer-taicher-site',
-  branch: 'claude/work-in-progress-418DV',
+  branch: 'claude/interactive-tutorials-dfbfN',
   mainBranch: 'main'
 };
 
