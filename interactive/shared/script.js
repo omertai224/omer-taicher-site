@@ -87,20 +87,16 @@ function renderSlideAnimations() {
   ];
   animTypes.forEach(function(a) {
     if (s[a.key]) {
-      var el = document.createElement('img');
-      el.className = 'slide-anim';
-      el.src = sharedPath + '/' + a.file;
-      // Position at top-left of the text bubble, small size
+      // Find the text bubble and inject the animation inside it
       var textEl = slide.querySelector('.text');
       if (textEl) {
-        var tLeft = parseFloat(textEl.style.left) || 0;
-        var tTop = parseFloat(textEl.style.top) || 0;
-        el.style.cssText = 'position:absolute;z-index:5;pointer-events:none;width:40px;' +
-          'left:' + (tLeft - 5) + '%;top:' + (tTop - 8) + '%;';
-      } else {
-        el.style.cssText = 'position:absolute;z-index:5;pointer-events:none;width:40px;left:3%;top:5%;';
+        var el = document.createElement('img');
+        el.className = 'slide-anim';
+        el.src = sharedPath + '/' + a.file;
+        el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;width:36px;left:6px;top:6px;opacity:0.9;';
+        textEl.style.position = 'absolute'; // ensure positioning context
+        textEl.appendChild(el);
       }
-      ic.appendChild(el);
     }
   });
 }
