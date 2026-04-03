@@ -133,12 +133,22 @@ function renderAnimOverlays(slide) {
   Object.keys(ANIM_TYPES).forEach(function(type) {
     var a = ANIM_TYPES[type];
     if (slide[a.key]) {
+      // Wrapper: SVG + "במחשב" label together
+      var wrap = document.createElement('div');
+      wrap.className = 'anim-overlay';
+      wrap.style.cssText = 'position:absolute;z-index:100;pointer-events:none;left:6px;top:6px;display:flex;align-items:center;gap:6px;direction:rtl;';
+
       var el = document.createElement('img');
-      el.className = 'anim-overlay';
       el.src = a.src;
-      // Inside bubble — moves with it automatically
-      el.style.cssText = 'position:absolute;z-index:100;width:36px;pointer-events:none;left:6px;top:6px;';
-      bubble.appendChild(el);
+      el.style.cssText = 'width:32px;height:32px;flex-shrink:0;';
+      wrap.appendChild(el);
+
+      var label = document.createElement('span');
+      label.textContent = '\u05D1\u05DE\u05D7\u05E9\u05D1';
+      label.style.cssText = 'font-family:Rubik,sans-serif;font-size:11px;font-weight:700;color:#fff;background:#e8834e;padding:3px 8px;border-radius:10px;white-space:nowrap;letter-spacing:0.5px;';
+      wrap.appendChild(label);
+
+      bubble.appendChild(wrap);
     }
   });
 }

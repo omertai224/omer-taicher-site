@@ -89,21 +89,25 @@ function renderSlideAnimations() {
   ];
   animTypes.forEach(function(a) {
     if (s[a.key]) {
+      // Wrapper: SVG + "במחשב" label together
+      var wrap = document.createElement('div');
+      wrap.className = 'slide-anim';
+      wrap.style.cssText = 'position:absolute;z-index:10;pointer-events:none;left:6px;top:6px;display:flex;align-items:center;gap:6px;direction:rtl;';
+
       var el = document.createElement('img');
-      el.className = 'slide-anim';
       el.src = sharedPath + '/' + a.file;
-      // Default: top-left corner of bubble. Custom pos offsets within bubble.
-      var pos = s[a.posKey] || { left: '6px', top: '6px' };
-      var size = s[a.sizeKey] || { width: '36px' };
-      el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;' +
-        'width:' + (size.width || '36px') + ';' +
-        'left:' + (pos.left || '6px') + ';' +
-        'top:' + (pos.top || '6px') + ';';
-      // Ensure bubble has position:relative so absolute child works
+      el.style.cssText = 'width:32px;height:32px;flex-shrink:0;';
+      wrap.appendChild(el);
+
+      var label = document.createElement('span');
+      label.textContent = '\u05D1\u05DE\u05D7\u05E9\u05D1';
+      label.style.cssText = 'font-family:Rubik,sans-serif;font-size:11px;font-weight:700;color:#fff;background:#e8834e;padding:3px 8px;border-radius:10px;white-space:nowrap;letter-spacing:0.5px;';
+      wrap.appendChild(label);
+
       if (getComputedStyle(bubble).position === 'static') {
         bubble.style.position = 'relative';
       }
-      bubble.appendChild(el);
+      bubble.appendChild(wrap);
     }
   });
 }
