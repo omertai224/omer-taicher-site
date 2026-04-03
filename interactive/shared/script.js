@@ -90,7 +90,8 @@ function renderSlideAnimations() {
       var el = document.createElement('img');
       el.className = 'slide-anim';
       el.src = sharedPath + '/' + a.file;
-      el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;width:40px;left:2%;top:3%;';
+      var pos = s[a.posKey] || { left: '2%', top: '3%' };
+      el.style.cssText = 'position:absolute;z-index:10;pointer-events:none;width:40px;left:' + pos.left + ';top:' + pos.top + ';';
       ic.appendChild(el);
     }
   });
