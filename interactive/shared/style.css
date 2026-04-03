@@ -486,8 +486,11 @@ br {
   flex: 1;
   align-content: center;
 }
+/* Row 1: 3 cards (content), Row 2: 4 cards (tools) */
+.ht-row { display:flex; gap:1vw; width:100%; justify-content:center; }
+.ht-row-3 .ht-card { width:calc(33.333% - 1vw); }
+.ht-row-4 .ht-card { width:calc(25% - 1vw); }
 .ht-card {
-  width: calc(25% - 1.2vw);
   aspect-ratio: 1.35;
   background: rgba(26, 37, 64, 0.85);
   border: 1.5px solid #5b8fa844;
@@ -550,10 +553,20 @@ br {
 @keyframes ht-nudge-left { 0%,100%{transform:translateX(0);} 50%{transform:translateX(-4px);} }
 @keyframes ht-float { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-3px);} }
 @keyframes ht-pulse-scale { 0%,100%{transform:scale(1);} 50%{transform:scale(1.12);} }
+@keyframes ht-zoom { 0%,100%{transform:scale(1);} 50%{transform:scale(1.25);} }
+@keyframes ht-wave1 { 0%,100%{transform:translateY(0);} 30%{transform:translateY(-5px);} }
+@keyframes ht-wave2 { 0%,100%{transform:translateY(0);} 40%{transform:translateY(-5px);} }
+@keyframes ht-wave3 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-5px);} }
+@keyframes ht-speaker { 0%,100%{transform:scale(1);} 25%{transform:scale(1.1);} 50%{transform:scale(0.95);} 75%{transform:scale(1.1);} }
 .ht-anim-float { animation: ht-float 2s ease-in-out infinite; }
 .ht-anim-pulse { animation: ht-pulse-scale 2s ease-in-out infinite; }
+.ht-anim-zoom { animation: ht-zoom 2.5s ease-in-out infinite; }
+.ht-anim-speaker { animation: ht-speaker 1.5s ease-in-out infinite; }
 .ht-anim-right { animation: ht-nudge-right 1.5s ease-in-out infinite; }
 .ht-anim-left { animation: ht-nudge-left 1.5s ease-in-out infinite; }
+.ht-anim-wave1 { animation: ht-wave1 1.8s ease-in-out infinite; }
+.ht-anim-wave2 { animation: ht-wave2 1.8s ease-in-out 0.15s infinite; }
+.ht-anim-wave3 { animation: ht-wave3 1.8s ease-in-out 0.3s infinite; }
 .ht-btn {
   margin-top: 1.5vh;
   padding: clamp(10px, 1.5vh, 14px) clamp(32px, 4vw, 48px);
