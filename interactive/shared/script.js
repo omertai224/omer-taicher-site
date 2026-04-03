@@ -549,6 +549,79 @@ function sendMobileLink(tutorialKey) {
   });
 }
 
+/* ── HowTo Slide Builder ── */
+function buildHowToSlide() {
+  return '<div class="ht-wrap">'
+    + '<div class="ht-title">איך עובדים עם ההדרכה?</div>'
+    + '<div class="ht-sub">כל מה שצריך לדעת לפני שמתחילים</div>'
+    + '<div class="ht-grid">'
+
+    // Card 1: Orange box (click)
+    + '<div class="ht-card">'
+    + '<div class="ht-icon orange"><div class="ht-mini-box"></div></div>'
+    + '<div class="ht-card-title">מסגרת כתומה</div>'
+    + '<div class="ht-card-desc">רואים מסגרת כתומה מהבהבת? לחצו עליה כדי להתקדם.</div>'
+    + '</div>'
+
+    // Card 2: Blue box (view)
+    + '<div class="ht-card">'
+    + '<div class="ht-icon blue"><div class="ht-mini-view"></div></div>'
+    + '<div class="ht-card-title">מסגרת כחולה</div>'
+    + '<div class="ht-card-desc">מסגרת כחולה = רק צפייה. לחצו על העיגול הכחול להמשך.</div>'
+    + '</div>'
+
+    // Card 3: Text bubble
+    + '<div class="ht-card">'
+    + '<div class="ht-icon navy"><div class="ht-mini-bubble">3/17 לחצו על...</div></div>'
+    + '<div class="ht-card-title">בועת הוראה</div>'
+    + '<div class="ht-card-desc">בכל שקף יש הוראה קצרה. קראו ועשו לפי ההנחיות.</div>'
+    + '</div>'
+
+    // Card 4: Magnifier
+    + '<div class="ht-card">'
+    + '<div class="ht-icon orange">'
+    + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>'
+    + '</div>'
+    + '<div class="ht-card-title">זכוכית מגדלת</div>'
+    + '<div class="ht-card-desc">קשה לראות? לחצו על הכפתור הכתום בשמאל להגדלת המסך.</div>'
+    + '</div>'
+
+    // Card 5: TTS
+    + '<div class="ht-card">'
+    + '<div class="ht-icon orange">'
+    + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>'
+    + '</div>'
+    + '<div class="ht-card-title">הקראה בקול</div>'
+    + '<div class="ht-card-desc">מעדיפים לשמוע? הכפתור הכתום בימין יקריא את ההוראה בקול.</div>'
+    + '</div>'
+
+    // Card 6: Navigation
+    + '<div class="ht-card">'
+    + '<div class="ht-icon navy">'
+    + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
+    + '</div>'
+    + '<div class="ht-card-title">ניווט</div>'
+    + '<div class="ht-card-desc">חיצים למטה, עיגולים בפס התחתון, או חצים במקלדת.</div>'
+    + '</div>'
+
+    + '</div>' // end grid
+
+    // Special actions note
+    + '<div class="ht-tip">'
+    + '<span style="color:#f6a67e;font-weight:700;">טיפ:</span> '
+    + 'לפעמים תראו אנימציה קטנה ליד ההוראה (למשל קליק ימני או גלילה). '
+    + 'זה מראה מה לעשות <span style="color:#f6a67e;">במחשב שלכם</span>. בהדרכה תמיד לוחצים רגיל.'
+    + '</div>'
+
+    // Start button
+    + '<button class="ht-btn" onclick="nextSlide()">'
+    + 'הבנתי, קדימה'
+    + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
+    + '</button>'
+
+    + '</div>';
+}
+
 /* ── Keyboard + Resize ── */
 document.addEventListener('keydown', function(event) {
   if (event.key === 'ArrowRight') { nextSlide(); }
