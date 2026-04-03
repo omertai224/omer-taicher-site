@@ -481,7 +481,7 @@ br {
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.5vh 1.5vw;
-  max-width: 96%;
+  max-width: 860px;
   width: 100%;
   flex: 1;
   align-content: center;
@@ -491,7 +491,7 @@ br {
 .ht-row-3 .ht-card { width:calc(33.333% - 2vw); }
 .ht-row-4 .ht-card { width:calc(25% - 2vw); }
 .ht-card {
-  aspect-ratio: 1.15;
+  aspect-ratio: 1.35;
   background: rgba(26, 37, 64, 0.85);
   border: 1.5px solid #5b8fa844;
   border-radius: 12px;
