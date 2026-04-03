@@ -233,7 +233,7 @@
       "step": 10,
       "type": "click",
       "image": "Stars-10.png",
-      "text": "גללו עם העכבר עד האזור <span style=\"color:#f6a67e;\">כוכבים</span>.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">4 כוכבים</span> כדי לקבל צבעים.",
+      "text": "גללו למטה עם העכבר עד האזור <span style=\"color:#f6a67e;\">כוכבים</span>.&nbsp;<br>לחצו על <span style=\"color:#f6a67e;\">4 כוכבים</span> כדי לקבל צבעים.",
       "box": {
         "top": "54.3547%",
         "left": "34.5005%",
@@ -241,10 +241,10 @@
         "bottom": "40.4563%"
       },
       "textPos": {
-        "left": "8.84193%",
-        "top": "18.3088%"
+        "left": "9.19959%",
+        "top": "23.4043%"
       },
-      "textWidth": "280px",
+      "textWidth": "309px",
       "notes": [
         {
           "text": "",
