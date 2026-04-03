@@ -233,7 +233,13 @@
           "left": "50%",
           "top": "50%"
         }
-      ]
+      ],
+      "rightClickAnim": true,
+      "rightClickPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "rightClickSize": "55px"
     },
     {
       "index": 10,

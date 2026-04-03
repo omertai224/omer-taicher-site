@@ -56,7 +56,13 @@
         "left": "42.5398%",
         "right": "48.9252%",
         "bottom": "0%"
-      }
+      },
+      "rightClickAnim": true,
+      "rightClickPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "rightClickSize": "55px"
     },
     {
       "index": 4,
@@ -231,7 +237,13 @@
         "left": "61.0509%",
         "right": "15.844%",
         "bottom": "65.7112%"
-      }
+      },
+      "rightClickAnim": true,
+      "rightClickPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "rightClickSize": "55px"
     },
     {
       "index": 11,
@@ -363,7 +375,13 @@
         "left": "67.7389%",
         "right": "13.0971%",
         "bottom": "62.3142%"
-      }
+      },
+      "rightClickAnim": true,
+      "rightClickPos": {
+        "left": "3%",
+        "top": "5%"
+      },
+      "rightClickSize": "55px"
     },
     {
       "index": 17,
