@@ -27,7 +27,7 @@
       "step": 2,
       "type": "click",
       "image": "QuickMenu-01.png",
-      "text": "לחצנו <span style=\"color:#f6a67e;\">קליק ימני</span> על הודעה בתיבת הדואר. נפתח תפריט מהיר עם כל האפשרויות.&nbsp;<br>בואו נכיר כל אחת מהן.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני על ההודעה.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני</span> על הודעה בתיבת הדואר. נפתח תפריט מהיר עם כל האפשרויות.&nbsp;<br>בואו נכיר כל אחת מהן.<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני על ההודעה.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
       "textPos": {
         "left": "67.4587%",
         "top": "32.0241%"
@@ -252,7 +252,7 @@
       "step": 11,
       "type": "click",
       "image": "QuickMenu-10.png",
-      "text": "<span style=\"color:#f6a67e;\">נודניק (Snooze)</span><br>ההודעה נעלמת ומופיעה שוב בזמן שתבחרו.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">כמו שעון מעורר למייל.</span>",
+      "text": "<span style=\"color:#f6a67e;\">דחיית הודעה (Snooze)</span><br>ההודעה נעלמת ומופיעה שוב בזמן שתבחרו.&nbsp;<br><span style=\"color: rgb(246, 166, 126);\">כמו שעון מעורר למייל.</span>",
       "textPos": {
         "left": "53.3676%",
         "top": "41.0397%"
