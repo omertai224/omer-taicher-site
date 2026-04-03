@@ -2,11 +2,11 @@
   <style>
     @keyframes dbl-click {
       0%, 100% { fill: #1a2540; }
-      4%, 8% { fill: #f6a67e; }
-      12%, 16% { fill: #f6a67e; }
+      2%, 4% { fill: #f6a67e; }
+      6%, 8% { fill: #f6a67e; }
     }
     .mouse-body { fill: #1a2540; stroke: #5b8fa8; stroke-width: 2; }
-    .mouse-left { animation: dbl-click 1.2s ease-in-out infinite; stroke: #f6a67e; stroke-width: 1.5; }
+    .mouse-left { animation: dbl-click 3s ease-in-out infinite; stroke: #f6a67e; stroke-width: 1.5; }
     .mouse-right { fill: #1a2540; stroke: #5b8fa8; stroke-width: 1.5; }
     .mouse-divider { stroke: #5b8fa8; stroke-width: 1; }
     .mouse-wheel { fill: #5b8fa8; }
