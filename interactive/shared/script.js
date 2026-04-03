@@ -81,7 +81,8 @@ function renderSlideAnimations() {
     var rc = document.createElement('img');
     rc.className = 'slide-anim';
     rc.src = sharedPath + '/right-click.svg';
-    rc.style.cssText = 'position:absolute;z-index:5;width:60px;pointer-events:none;' +
+    rc.style.cssText = 'position:absolute;z-index:5;pointer-events:none;' +
+      'width:' + (s.rightClickSize || '60px') + ';' +
       'left:' + (s.rightClickPos ? s.rightClickPos.left : '85%') + ';' +
       'top:' + (s.rightClickPos ? s.rightClickPos.top : '30%') + ';';
     ic.appendChild(rc);
@@ -90,7 +91,8 @@ function renderSlideAnimations() {
     var sd = document.createElement('img');
     sd.className = 'slide-anim';
     sd.src = sharedPath + '/scroll-down.svg';
-    sd.style.cssText = 'position:absolute;z-index:5;width:60px;pointer-events:none;' +
+    sd.style.cssText = 'position:absolute;z-index:5;pointer-events:none;' +
+      'width:' + (s.scrollDownSize || '60px') + ';' +
       'left:' + (s.scrollDownPos ? s.scrollDownPos.left : '85%') + ';' +
       'top:' + (s.scrollDownPos ? s.scrollDownPos.top : '30%') + ';';
     ic.appendChild(sd);

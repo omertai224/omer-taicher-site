@@ -120,27 +120,57 @@ function renderAnimOverlays(slide) {
   if (!container || container.style.display === 'none') return;
 
   if (slide.rightClickAnim) {
-    var rc = document.createElement('img');
-    rc.className = 'anim-overlay';
-    rc.src = '/interactive/shared/images/right-click.svg';
-    rc.style.cssText = 'position:absolute;z-index:15;width:60px;cursor:move;' +
-      'left:' + (slide.rightClickPos ? slide.rightClickPos.left : '85%') + ';' +
-      'top:' + (slide.rightClickPos ? slide.rightClickPos.top : '30%') + ';';
-    rc.title = 'קליק ימני — גררו למיקום';
-    container.appendChild(rc);
-    initAnimDrag(rc, slide, 'rightClickPos');
+    addAnimOverlay(container, slide, '/interactive/shared/images/right-click.svg', 'rightClickPos', 'rightClickSize', 'קליק ימני');
   }
   if (slide.scrollDownAnim) {
-    var sd = document.createElement('img');
-    sd.className = 'anim-overlay';
-    sd.src = '/interactive/shared/images/scroll-down.svg';
-    sd.style.cssText = 'position:absolute;z-index:15;width:60px;cursor:move;' +
-      'left:' + (slide.scrollDownPos ? slide.scrollDownPos.left : '85%') + ';' +
-      'top:' + (slide.scrollDownPos ? slide.scrollDownPos.top : '30%') + ';';
-    sd.title = 'גלילה למטה — גררו למיקום';
-    container.appendChild(sd);
-    initAnimDrag(sd, slide, 'scrollDownPos');
+    addAnimOverlay(container, slide, '/interactive/shared/images/scroll-down.svg', 'scrollDownPos', 'scrollDownSize', 'גלילה למטה');
   }
+}
+
+function addAnimOverlay(container, slide, src, posKey, sizeKey, title) {
+  var wrap = document.createElement('div');
+  wrap.className = 'anim-overlay';
+  var size = slide[sizeKey] || '60px';
+  wrap.style.cssText = 'position:absolute;z-index:15;cursor:move;width:' + size + ';' +
+    'left:' + (slide[posKey] ? slide[posKey].left : '85%') + ';' +
+    'top:' + (slide[posKey] ? slide[posKey].top : '30%') + ';';
+  wrap.title = title + ' — גררו למיקום, פינה לשינוי גודל';
+
+  var img = document.createElement('img');
+  img.src = src;
+  img.style.cssText = 'width:100%;height:auto;pointer-events:none;';
+  wrap.appendChild(img);
+
+  // Resize handle (bottom-right corner)
+  var handle = document.createElement('div');
+  handle.style.cssText = 'position:absolute;bottom:-4px;left:-4px;width:10px;height:10px;background:#f6a67e;border-radius:50%;cursor:se-resize;z-index:16;box-shadow:0 0 4px #00000066;';
+  wrap.appendChild(handle);
+
+  container.appendChild(wrap);
+
+  // Drag to move
+  initAnimDrag(wrap, slide, posKey);
+
+  // Resize from handle
+  handle.addEventListener('mousedown', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var startX = e.clientX;
+    var startW = wrap.offsetWidth;
+    function onMove(e2) {
+      var dw = startX - e2.clientX; // RTL: dragging left = bigger
+      var newW = Math.max(30, startW + dw);
+      wrap.style.width = newW + 'px';
+    }
+    function onUp() {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('mouseup', onUp);
+      slide[sizeKey] = wrap.style.width;
+      markModified();
+    }
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onUp);
+  });
 }
 
 function initAnimDrag(el, slide, posKey) {
