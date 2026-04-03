@@ -89,12 +89,25 @@ function toggleAnim(type) {
   if (!a) return;
   var s = E.data.slides[E.idx];
   saveUndo();
-  s[a.key] = !s[a.key];
-  if (!s[a.key]) { delete s[a.key]; delete s[a.posKey]; delete s[a.sizeKey]; }
+
+  if (s[a.key]) {
+    // Turn off this animation
+    delete s[a.key];
+    toast(a.label + ' הוסרה');
+  } else {
+    // Turn off all other animations first
+    Object.keys(ANIM_TYPES).forEach(function(otherType) {
+      var other = ANIM_TYPES[otherType];
+      if (s[other.key]) delete s[other.key];
+    });
+    // Turn on this one
+    s[a.key] = true;
+    toast(a.label + ' נוספה');
+  }
+
   updateAnimButtons(s);
   renderAnimOverlays(s);
   markModified();
-  toast(s[a.key] ? a.label + ' נוספה' : a.label + ' הוסרה');
 }
 
 function updateAnimButtons(s) {
@@ -120,84 +133,16 @@ function renderAnimOverlays(slide) {
   Object.keys(ANIM_TYPES).forEach(function(type) {
     var a = ANIM_TYPES[type];
     if (slide[a.key]) {
-      addAnimOverlay(container, slide, a.src, a.posKey, a.sizeKey, a.label);
+      var img = document.createElement('img');
+      img.className = 'anim-overlay';
+      img.src = a.src;
+      img.style.cssText = 'position:absolute;z-index:15;width:40px;left:2%;top:3%;pointer-events:none;';
+      img.title = a.label;
+      container.appendChild(img);
     }
   });
 }
 
-function addAnimOverlay(container, slide, src, posKey, sizeKey, title) {
-  var wrap = document.createElement('div');
-  wrap.className = 'anim-overlay';
-  var size = slide[sizeKey] || '60px';
-  wrap.style.cssText = 'position:absolute;z-index:15;cursor:move;width:' + size + ';' +
-    'left:' + (slide[posKey] ? slide[posKey].left : '85%') + ';' +
-    'top:' + (slide[posKey] ? slide[posKey].top : '30%') + ';';
-  wrap.title = title + ' — גררו למיקום, פינה לשינוי גודל';
-
-  var img = document.createElement('img');
-  img.src = src;
-  img.style.cssText = 'width:100%;height:auto;pointer-events:none;';
-  wrap.appendChild(img);
-
-  // Resize handle (bottom-right corner)
-  var handle = document.createElement('div');
-  handle.style.cssText = 'position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:#f6a67e;border-radius:50%;cursor:nw-resize;z-index:16;box-shadow:0 0 4px #00000066;';
-  wrap.appendChild(handle);
-
-  container.appendChild(wrap);
-
-  // Drag to move
-  initAnimDrag(wrap, slide, posKey);
-
-  // Resize from handle
-  handle.addEventListener('mousedown', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    var startX = e.clientX;
-    var startW = wrap.offsetWidth;
-    function onMove(e2) {
-      var dw = e2.clientX - startX; // dragging right = bigger
-      var newW = Math.max(30, startW + dw);
-      wrap.style.width = newW + 'px';
-    }
-    function onUp() {
-      document.removeEventListener('mousemove', onMove);
-      document.removeEventListener('mouseup', onUp);
-      slide[sizeKey] = wrap.style.width;
-      markModified();
-    }
-    document.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseup', onUp);
-  });
-}
-
-function initAnimDrag(el, slide, posKey) {
-  var startX, startY, startL, startT;
-  el.addEventListener('mousedown', function(e) {
-    e.preventDefault();
-    var container = $('slideContainer');
-    var rect = container.getBoundingClientRect();
-    startX = e.clientX; startY = e.clientY;
-    startL = el.offsetLeft / rect.width * 100;
-    startT = el.offsetTop / rect.height * 100;
-    function onMove(e2) {
-      var dx = (e2.clientX - startX) / rect.width * 100;
-      var dy = (e2.clientY - startY) / rect.height * 100;
-      el.style.left = (startL + dx) + '%';
-      el.style.top = (startT + dy) + '%';
-    }
-    function onUp() {
-      document.removeEventListener('mousemove', onMove);
-      document.removeEventListener('mouseup', onUp);
-      if (!slide[posKey]) slide[posKey] = {};
-      slide[posKey].left = el.style.left;
-      slide[posKey].top = el.style.top;
-      markModified();
-    }
-    document.addEventListener('mousemove', onMove);
-    document.addEventListener('mouseup', onUp);
-  });
-}
 
 var CONTINUE_MARKER = 'כדי להמשיך בהדרכה.';
 var CONTINUE_HTML = '<div style="text-align:center;margin-top:12px;">לחצו על <span onclick="nextSlide()" style="display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span> כדי להמשיך בהדרכה.</div>';
