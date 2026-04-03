@@ -584,7 +584,7 @@ function buildHowToSlide1() {
     + '<div class="ht-row ht-row-3">'
 
     + '<div class="ht-card">'
-    + '<div class="ht-icon" style="background:transparent;"><div style="width:70%;height:45%;border:4px solid #ff7c2a;border-radius:10px;box-shadow:0 0 0 2px rgba(255,124,42,0.4),0 0 16px rgba(255,124,42,0.6);animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
+    + '<div class="ht-icon" style="background:transparent;"><div style="width:80%;height:40%;border:4px solid #ff7c2a;border-radius:10px;box-shadow:0 0 0 2px rgba(255,124,42,0.4),0 0 16px rgba(255,124,42,0.6);animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
     + '<div class="ht-card-title">מסגרת כתומה</div>'
     + '<div class="ht-card-desc">רואים מסגרת כתומה מהבהבת!<br style="margin:0;">לחצו עליה כדי להתקדם.</div>'
     + '</div>'

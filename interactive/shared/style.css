@@ -465,14 +465,14 @@ br {
   color: #fff;
   font-size: clamp(20px, 3.5vh, 32px);
   font-weight: 900;
-  margin-bottom: 0.8vh;
+  margin-bottom: 0;
   text-align: center;
   flex-shrink: 0;
 }
 .ht-sub {
   color: #a8c5d6;
   font-size: clamp(12px, 2vh, 16px);
-  margin-bottom: 0.5vh;
+  margin-bottom: 0;
   text-align: center;
   flex-shrink: 0;
 }
@@ -510,8 +510,8 @@ br {
   transform: translateY(-2px);
 }
 .ht-icon {
-  width: clamp(48px, 8.5vh, 72px);
-  height: clamp(48px, 8.5vh, 72px);
+  width: clamp(52px, 10vh, 80px);
+  height: clamp(52px, 10vh, 80px);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -519,21 +519,21 @@ br {
   flex-shrink: 0;
 }
 .ht-icon svg {
-  width: clamp(24px, 4.5vh, 36px);
-  height: clamp(24px, 4.5vh, 36px);
+  width: clamp(26px, 5vh, 40px);
+  height: clamp(26px, 5vh, 40px);
 }
 .ht-icon.orange { background: linear-gradient(135deg, #e8834e, #f6a67e); }
 .ht-icon.blue { background: linear-gradient(135deg, #3d6a8e, #5b8fa8); }
 .ht-icon.navy { background: linear-gradient(135deg, #1a2540, #3d5a80); }
 .ht-card-title {
   color: #fff;
-  font-size: clamp(15px, 2.5vh, 20px);
+  font-size: clamp(16px, 2.8vh, 22px);
   font-weight: 800;
   line-height: 1.3;
 }
 .ht-card-desc {
   color: #ffffff;
-  font-size: clamp(13px, 2vh, 16px);
+  font-size: clamp(14px, 2.2vh, 17px);
   line-height: 1.5;
 }
 .ht-card-desc br { margin: 0; display: inline; content: none; }
@@ -568,7 +568,7 @@ br {
 .ht-anim-wave2 { animation: ht-wave2 1.8s ease-in-out 0.15s infinite; }
 .ht-anim-wave3 { animation: ht-wave3 1.8s ease-in-out 0.3s infinite; }
 .ht-btn {
-  margin-top: 0.5vh;
+  margin-top: 0;
   padding: clamp(10px, 1.5vh, 14px) clamp(32px, 4vw, 48px);
   border-radius: 50px;
   border: none;
