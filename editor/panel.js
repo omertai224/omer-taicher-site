@@ -136,7 +136,10 @@ function renderAnimOverlays(slide) {
       var el = document.createElement('img');
       el.className = 'anim-overlay';
       el.src = a.src;
-      var pos = slide[a.posKey] || { left: '2%', top: '3%' };
+      // Default position: top-left of text bubble (near step counter)
+      var defaultLeft = slide.textPos ? parseFloat(slide.textPos.left) || 2 : 2;
+      var defaultTop = slide.textPos ? (parseFloat(slide.textPos.top) || 3) - 1 : 3;
+      var pos = slide[a.posKey] || { left: defaultLeft + '%', top: defaultTop + '%' };
       el.style.cssText = 'position:absolute;z-index:100;width:40px;cursor:move;left:' + pos.left + ';top:' + pos.top + ';';
       el.title = a.label + ' — גררו למיקום';
       container.appendChild(el);
