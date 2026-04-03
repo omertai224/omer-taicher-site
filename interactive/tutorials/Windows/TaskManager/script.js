@@ -22,7 +22,9 @@ function buildSlides(slides, totalSteps) {
   var html = '';
   for (var i = 0; i < slides.length; i++) {
     var s = slides[i];
-    if (s.html) { html += '<div class="mySlides fade">' + s.html + '</div>'; }
+    if (s.specialType === 'howto-shared' && typeof buildHowToSlide === 'function') {
+      html += '<div class="mySlides fade">' + buildHowToSlide() + '</div>';
+    } else if (s.html) { html += '<div class="mySlides fade">' + s.html + '</div>'; }
     else if (s.type === 'view') {
       html += '<div class="mySlides fade"><div class="image"><div class="image-center">'
         + '<img src="./images/' + s.image + '" style="max-height:calc(100vh - 80px);width:auto;max-width:100%;">';

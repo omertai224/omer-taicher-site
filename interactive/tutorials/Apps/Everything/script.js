@@ -72,7 +72,9 @@ function buildSlides(slides, totalSteps) {
   for (var i = 0; i < slides.length; i++) {
     var s = slides[i];
 
-    if (s.type === 'special') {
+    if (s.specialType === 'howto-shared' && typeof buildHowToSlide === 'function') {
+      html += '<div class="mySlides fade">' + buildHowToSlide() + '</div>';
+    } else if (s.type === 'special') {
       html += '<div class="mySlides fade">' + s.html + '</div>';
 
     } else if (s.type === 'view') {

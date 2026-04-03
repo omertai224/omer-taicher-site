@@ -9,6 +9,8 @@ var slidesData = null;
 /* Design width: container width (px) when textPos was calibrated. */
 window.bubbleDesignWidth = 853;
 
+var slideMap = {};
+
 /* ── App Init ── */
 function initApp() {
   var ua = navigator.userAgent || navigator.vendor || window.opera;
@@ -37,7 +39,9 @@ function buildSlides(slides, totalSteps) {
   for (var i = 0; i < slides.length; i++) {
     var s = slides[i];
 
-    if (s.html) {
+    if (s.specialType === 'howto-shared' && typeof buildHowToSlide === 'function') {
+      html += '<div class="mySlides fade">' + buildHowToSlide() + '</div>';
+    } else if (s.html) {
       html += '<div class="mySlides fade">' + s.html + '</div>';
 
     } else if (s.type === 'view') {
