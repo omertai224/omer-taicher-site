@@ -143,7 +143,7 @@ function addAnimOverlay(container, slide, src, posKey, sizeKey, title) {
 
   // Resize handle (bottom-right corner)
   var handle = document.createElement('div');
-  handle.style.cssText = 'position:absolute;bottom:-4px;left:-4px;width:10px;height:10px;background:#f6a67e;border-radius:50%;cursor:se-resize;z-index:16;box-shadow:0 0 4px #00000066;';
+  handle.style.cssText = 'position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:#f6a67e;border-radius:50%;cursor:nw-resize;z-index:16;box-shadow:0 0 4px #00000066;';
   wrap.appendChild(handle);
 
   container.appendChild(wrap);
@@ -158,7 +158,7 @@ function addAnimOverlay(container, slide, src, posKey, sizeKey, title) {
     var startX = e.clientX;
     var startW = wrap.offsetWidth;
     function onMove(e2) {
-      var dw = startX - e2.clientX; // RTL: dragging left = bigger
+      var dw = e2.clientX - startX; // dragging right = bigger
       var newW = Math.max(30, startW + dw);
       wrap.style.width = newW + 'px';
     }
