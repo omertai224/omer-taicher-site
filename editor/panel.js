@@ -137,7 +137,7 @@ function renderAnimOverlays(slide) {
       el.className = 'anim-overlay';
       el.src = a.src;
       var pos = slide[a.posKey] || { left: '2%', top: '3%' };
-      el.style.cssText = 'position:absolute;z-index:15;width:40px;cursor:move;left:' + pos.left + ';top:' + pos.top + ';';
+      el.style.cssText = 'position:absolute;z-index:100;width:40px;cursor:move;left:' + pos.left + ';top:' + pos.top + ';';
       el.title = a.label + ' — גררו למיקום';
       container.appendChild(el);
 
