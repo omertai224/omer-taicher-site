@@ -1,0 +1,33 @@
+<!-- Scroll down mouse animation SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 120" width="80" height="120">
+  <style>
+    @keyframes scroll-pulse {
+      0%, 100% { fill: #5b8fa8; transform: translateY(0); }
+      50% { fill: #f6a67e; transform: translateY(4px); }
+    }
+    @keyframes arrow-bounce {
+      0%, 100% { opacity: 0.4; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(6px); }
+    }
+    .mouse-body { fill: #1a2540; stroke: #5b8fa8; stroke-width: 2; }
+    .mouse-btn { fill: #1a2540; stroke: #5b8fa8; stroke-width: 1.5; }
+    .mouse-divider { stroke: #5b8fa8; stroke-width: 1; }
+    .mouse-wheel { animation: scroll-pulse 1.5s ease-in-out infinite; }
+    .scroll-arrow { animation: arrow-bounce 1.5s ease-in-out infinite; fill: #f6a67e; }
+    .scroll-label { fill: #f6a67e; font-family: Rubik, sans-serif; font-size: 11px; font-weight: 700; text-anchor: middle; }
+  </style>
+  <!-- Mouse body -->
+  <rect class="mouse-body" x="10" y="10" width="60" height="80" rx="30"/>
+  <!-- Left button -->
+  <path class="mouse-btn" d="M10,40 L10,25 Q10,10 40,10 L40,40 Z"/>
+  <!-- Right button -->
+  <path class="mouse-btn" d="M40,40 L40,10 Q70,10 70,25 L70,40 Z"/>
+  <!-- Divider -->
+  <line class="mouse-divider" x1="40" y1="10" x2="40" y2="40"/>
+  <!-- Scroll wheel (animated) -->
+  <rect class="mouse-wheel" x="36" y="20" width="8" height="14" rx="4"/>
+  <!-- Down arrow (animated) -->
+  <polygon class="scroll-arrow" points="40,98 30,88 35,88 35,78 45,78 45,88 50,88"/>
+  <!-- Label -->
+  <text class="scroll-label" x="40" y="115">גלילה למטה</text>
+</svg>
