@@ -76,12 +76,12 @@ function updateContinueBtn(s) {
 
 // ── Animation toggle (generic) ──
 var ANIM_TYPES = {
-  rightClick:  { key: 'rightClickAnim',  posKey: 'rightClickPos',  sizeKey: 'rightClickSize',  src: '/interactive/shared/images/right-click.svg',  label: 'קליק ימני', btnId: 'btnRightClick', icon: '🖱 ימני' },
-  scrollDown:  { key: 'scrollDownAnim',  posKey: 'scrollDownPos',  sizeKey: 'scrollDownSize',  src: '/interactive/shared/images/scroll-down.svg',  label: 'גלילה', btnId: 'btnScrollDown', icon: '⬇ גלילה' },
-  doubleClick: { key: 'doubleClickAnim', posKey: 'doubleClickPos', sizeKey: 'doubleClickSize', src: '/interactive/shared/images/double-click.svg', label: 'לחיצה כפולה', btnId: 'btnDoubleClick', icon: '⏸ כפולה' },
-  dragDrop:    { key: 'dragDropAnim',    posKey: 'dragDropPos',    sizeKey: 'dragDropSize',    src: '/interactive/shared/images/drag-drop.svg',    label: 'גרירה', btnId: 'btnDragDrop', icon: '↕ גרירה' },
-  keyboard:    { key: 'keyboardAnim',    posKey: 'keyboardPos',    sizeKey: 'keyboardSize',    src: '/interactive/shared/images/keyboard-shortcut.svg', label: 'מקלדת', btnId: 'btnKeyboard', icon: '⌨ מקלדת' },
-  typing:      { key: 'typingAnim',      posKey: 'typingPos',      sizeKey: 'typingSize',      src: '/interactive/shared/images/typing.svg',       label: 'הקלדה', btnId: 'btnTyping', icon: '⌨ הקלדה' }
+  rightClick:  { key: 'rightClickAnim',  posKey: 'rightClickPos',  sizeKey: 'rightClickSize',  src: '/interactive/shared/images/right-click.svg',  label: 'קליק ימני', badge: 'קליק ימני במחשב', btnId: 'btnRightClick', icon: '🖱 ימני' },
+  scrollDown:  { key: 'scrollDownAnim',  posKey: 'scrollDownPos',  sizeKey: 'scrollDownSize',  src: '/interactive/shared/images/scroll-down.svg',  label: 'גלילה', badge: 'גלילה במחשב', btnId: 'btnScrollDown', icon: '⬇ גלילה' },
+  doubleClick: { key: 'doubleClickAnim', posKey: 'doubleClickPos', sizeKey: 'doubleClickSize', src: '/interactive/shared/images/double-click.svg', label: 'לחיצה כפולה', badge: 'לחיצה כפולה במחשב', btnId: 'btnDoubleClick', icon: '⏸ כפולה' },
+  dragDrop:    { key: 'dragDropAnim',    posKey: 'dragDropPos',    sizeKey: 'dragDropSize',    src: '/interactive/shared/images/drag-drop.svg',    label: 'גרירה', badge: 'גרירה במחשב', btnId: 'btnDragDrop', icon: '↕ גרירה' },
+  keyboard:    { key: 'keyboardAnim',    posKey: 'keyboardPos',    sizeKey: 'keyboardSize',    src: '/interactive/shared/images/keyboard-shortcut.svg', label: 'מקלדת', badge: 'קיצור מקלדת במחשב', btnId: 'btnKeyboard', icon: '⌨ מקלדת' },
+  typing:      { key: 'typingAnim',      posKey: 'typingPos',      sizeKey: 'typingSize',      src: '/interactive/shared/images/typing.svg',       label: 'הקלדה', badge: 'הקלדה במחשב', btnId: 'btnTyping', icon: '⌨ הקלדה' }
 };
 
 function toggleAnim(type) {
@@ -143,10 +143,10 @@ function renderAnimOverlays(slide) {
       el.style.cssText = 'width:32px;height:32px;flex-shrink:0;';
       wrap.appendChild(el);
 
-      var label = document.createElement('span');
-      label.textContent = '\u05D1\u05DE\u05D7\u05E9\u05D1';
-      label.style.cssText = 'font-family:Rubik,sans-serif;font-size:11px;font-weight:700;color:#fff;background:#e8834e;padding:3px 8px;border-radius:10px;white-space:nowrap;letter-spacing:0.5px;';
-      wrap.appendChild(label);
+      var lbl = document.createElement('span');
+      lbl.textContent = a.badge;
+      lbl.style.cssText = 'font-family:Rubik,sans-serif;font-size:11px;font-weight:700;color:#fff;background:#e8834e;padding:3px 8px;border-radius:10px;white-space:nowrap;letter-spacing:0.5px;';
+      wrap.appendChild(lbl);
 
       bubble.appendChild(wrap);
     }

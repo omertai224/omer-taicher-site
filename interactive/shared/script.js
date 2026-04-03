@@ -80,16 +80,16 @@ function renderSlideAnimations() {
   })();
 
   var animTypes = [
-    { key: 'rightClickAnim', posKey: 'rightClickPos', sizeKey: 'rightClickSize', file: 'right-click.svg' },
-    { key: 'scrollDownAnim', posKey: 'scrollDownPos', sizeKey: 'scrollDownSize', file: 'scroll-down.svg' },
-    { key: 'doubleClickAnim', posKey: 'doubleClickPos', sizeKey: 'doubleClickSize', file: 'double-click.svg' },
-    { key: 'dragDropAnim', posKey: 'dragDropPos', sizeKey: 'dragDropSize', file: 'drag-drop.svg' },
-    { key: 'keyboardAnim', posKey: 'keyboardPos', sizeKey: 'keyboardSize', file: 'keyboard-shortcut.svg' },
-    { key: 'typingAnim', posKey: 'typingPos', sizeKey: 'typingSize', file: 'typing.svg' }
+    { key: 'rightClickAnim', posKey: 'rightClickPos', sizeKey: 'rightClickSize', file: 'right-click.svg', label: '\u05E7\u05DC\u05D9\u05E7 \u05D9\u05DE\u05E0\u05D9 \u05D1\u05DE\u05D7\u05E9\u05D1' },
+    { key: 'scrollDownAnim', posKey: 'scrollDownPos', sizeKey: 'scrollDownSize', file: 'scroll-down.svg', label: '\u05D2\u05DC\u05D9\u05DC\u05D4 \u05D1\u05DE\u05D7\u05E9\u05D1' },
+    { key: 'doubleClickAnim', posKey: 'doubleClickPos', sizeKey: 'doubleClickSize', file: 'double-click.svg', label: '\u05DC\u05D7\u05D9\u05E6\u05D4 \u05DB\u05E4\u05D5\u05DC\u05D4 \u05D1\u05DE\u05D7\u05E9\u05D1' },
+    { key: 'dragDropAnim', posKey: 'dragDropPos', sizeKey: 'dragDropSize', file: 'drag-drop.svg', label: '\u05D2\u05E8\u05D9\u05E8\u05D4 \u05D1\u05DE\u05D7\u05E9\u05D1' },
+    { key: 'keyboardAnim', posKey: 'keyboardPos', sizeKey: 'keyboardSize', file: 'keyboard-shortcut.svg', label: '\u05E7\u05D9\u05E6\u05D5\u05E8 \u05DE\u05E7\u05DC\u05D3\u05EA \u05D1\u05DE\u05D7\u05E9\u05D1' },
+    { key: 'typingAnim', posKey: 'typingPos', sizeKey: 'typingSize', file: 'typing.svg', label: '\u05D4\u05E7\u05DC\u05D3\u05D4 \u05D1\u05DE\u05D7\u05E9\u05D1' }
   ];
   animTypes.forEach(function(a) {
     if (s[a.key]) {
-      // Wrapper: SVG + "במחשב" label together
+      // Wrapper: SVG + action label together
       var wrap = document.createElement('div');
       wrap.className = 'slide-anim';
       wrap.style.cssText = 'position:absolute;z-index:10;pointer-events:none;left:6px;top:6px;display:flex;align-items:center;gap:6px;direction:rtl;';
@@ -99,10 +99,10 @@ function renderSlideAnimations() {
       el.style.cssText = 'width:32px;height:32px;flex-shrink:0;';
       wrap.appendChild(el);
 
-      var label = document.createElement('span');
-      label.textContent = '\u05D1\u05DE\u05D7\u05E9\u05D1';
-      label.style.cssText = 'font-family:Rubik,sans-serif;font-size:11px;font-weight:700;color:#fff;background:#e8834e;padding:3px 8px;border-radius:10px;white-space:nowrap;letter-spacing:0.5px;';
-      wrap.appendChild(label);
+      var lbl = document.createElement('span');
+      lbl.textContent = a.label;
+      lbl.style.cssText = 'font-family:Rubik,sans-serif;font-size:11px;font-weight:700;color:#fff;background:#e8834e;padding:3px 8px;border-radius:10px;white-space:nowrap;letter-spacing:0.5px;';
+      wrap.appendChild(lbl);
 
       if (getComputedStyle(bubble).position === 'static') {
         bubble.style.position = 'relative';
