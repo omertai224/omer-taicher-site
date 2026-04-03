@@ -19,7 +19,14 @@
         "left": "48.1047%",
         "top": "10.9873%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 1,
@@ -31,7 +38,14 @@
         "left": "48.287%",
         "top": "46.1009%"
       },
-      "textWidth": "296px"
+      "textWidth": "296px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 2,
@@ -49,7 +63,14 @@
         "left": "46.2573%",
         "top": "57.9927%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 3,
@@ -67,7 +88,14 @@
         "left": "45.8997%",
         "top": "58.842%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 4,
@@ -85,7 +113,14 @@
         "left": "62.4677%",
         "top": "34.7665%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 5,
@@ -94,8 +129,8 @@
       "image": "Schedule-05.png",
       "text": "תוזמן! למטה מופיעה <span style=\"color:#f6a67e;\">הודעת אישור</span>. המייל יישלח מחר ב-8:00. התחרטתם? לחצו <span style=\"color:#f6a67e;\">ביטול</span>.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "51.035%",
-        "top": "31.5065%"
+        "left": "54.3784%",
+        "top": "39.7857%"
       },
       "textWidth": "354px",
       "box": {
@@ -103,7 +138,14 @@
         "left": "57.2293%",
         "right": "3.54302%",
         "bottom": "6.47556%"
-      }
+      },
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 6,
@@ -121,7 +163,14 @@
         "left": "45.8997%",
         "top": "58.8409%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 7,
@@ -139,7 +188,14 @@
         "left": "45.8997%",
         "top": "57.3558%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 8,
@@ -164,15 +220,14 @@
           "left": "50%",
           "top": "50%"
         }
-      ],
-      "doubleClickAnim": true
+      ]
     },
     {
       "index": 9,
       "step": 10,
       "type": "click",
       "image": "Schedule-12.png",
-      "text": "בחרנו <span style=\"color:#f6a67e;\">יום ראשון, 12 באפריל, 9:00</span>. לוח השנה פתוח, התאריך מסומן, ולחצו על <span style=\"color:#f6a67e;\">תזמון שליחה</span>.",
+      "text": "בחרנו <span style=\"color:#f6a67e;\">יום ראשון, 12 באפריל, 9:00</span>.&nbsp;<br>לוח השנה פתוח, התאריך מסומן, ולחצו על <span style=\"color:#f6a67e;\">תזמון שליחה</span>.",
       "box": {
         "top": "68.6887%",
         "left": "28.7965%",
@@ -180,10 +235,17 @@
         "bottom": "21.6324%"
       },
       "textPos": {
-        "left": "72.1568%",
-        "top": "45.4983%"
+        "left": "43.6138%",
+        "top": "52.08%"
       },
-      "textWidth": "192px"
+      "textWidth": "192px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 10,
@@ -192,8 +254,8 @@
       "image": "Schedule-07.png",
       "text": "יופי! <span style=\"color:#f6a67e;\">השליחה תתבצע ליום ראשון, 12 באפריל, ב-9:00</span>. הלקוח יקבל את המייל אחרי פסח, ביום עבודה.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "44.7757%",
-        "top": "32.6289%"
+        "left": "48.7162%",
+        "top": "39.8465%"
       },
       "textWidth": "395px",
       "box": {
@@ -201,7 +263,14 @@
         "left": "51.3774%",
         "right": "4.85668%",
         "bottom": "7.32484%"
-      }
+      },
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 11,
@@ -216,10 +285,17 @@
         "bottom": "38.2573%"
       },
       "textPos": {
-        "left": "45.6285%",
-        "top": "49.8618%"
+        "left": "47.4199%",
+        "top": "51.1357%"
       },
-      "textWidth": "224px"
+      "textWidth": "224px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 12,
@@ -237,7 +313,14 @@
         "left": "24.5223%",
         "top": "44.4577%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 13,
@@ -255,7 +338,14 @@
         "left": "13.2962%",
         "top": "43.917%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 14,
@@ -273,7 +363,14 @@
         "left": "41.7913%",
         "top": "46.7722%"
       },
-      "textWidth": "260px"
+      "textWidth": "260px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 15,
@@ -292,12 +389,19 @@
         "right": "15.008%",
         "bottom": "47.8768%"
       },
-      "scrollDownAnim": true,
       "scrollDownPos": {
         "left": "3%",
         "top": "5%"
       },
-      "scrollDownSize": "55px"
+      "scrollDownSize": "55px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "dragDropAnim": true
     },
     {
       "index": 16,
@@ -306,8 +410,8 @@
       "image": "Schedule-14.png",
       "text": "מוכן! התווית <span style=\"color:#f6a67e;\">הודעות מתוזמנות</span> עברה לרשימת התוויות הכללית. מעכשיו תמיד תראו אותה בתפריט הצד.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "19.5064%",
-        "top": "27.0667%"
+        "left": "27.6274%",
+        "top": "41.2907%"
       },
       "textWidth": "400px",
       "box": {
@@ -315,7 +419,14 @@
         "left": "55.5618%",
         "right": "4.08211%",
         "bottom": "7.30678%"
-      }
+      },
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     }
   ]
 }
