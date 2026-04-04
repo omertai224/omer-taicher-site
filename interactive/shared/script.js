@@ -75,7 +75,7 @@ function renderSlideAnimations() {
 
   var sharedPath = (function() {
     var links = document.querySelectorAll('link[rel="stylesheet"][href*="shared/style.css"]');
-    if (links.length) return links[0].getAttribute('href').replace('style.css', 'images');
+    if (links.length) return links[0].getAttribute('href').replace(/style\.css.*$/, 'images');
     return '../../shared/images';
   })();
 
@@ -571,7 +571,7 @@ function buildHowToSlide1() {
   // Right-click animation SVG (mini version for howto card)
   var sharedPath = (function() {
     var links = document.querySelectorAll('link[rel="stylesheet"][href*="shared/style.css"]');
-    if (links.length) return links[0].getAttribute('href').replace('style.css', 'images');
+    if (links.length) return links[0].getAttribute('href').replace(/style\.css.*$/, 'images');
     return '../../shared/images';
   })();
 
