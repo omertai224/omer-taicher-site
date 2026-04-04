@@ -222,13 +222,6 @@
         "top": "27.7402%"
       },
       "textWidth": "309px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ],
       "scrollDownAnim": true
     },
     {
@@ -247,14 +240,7 @@
         "left": "42.3461%",
         "top": "65.5786%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 15,
