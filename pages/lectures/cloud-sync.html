@@ -8,7 +8,7 @@
 <script>(function(){var m=location.pathname.match(/^(\/omer-taicher-site)\b/);if(!m)return;var B=m[1];function r(root){(root||document).querySelectorAll('a[href^="/"]').forEach(function(a){var h=a.getAttribute('href');if(h&&h.charAt(0)==='/'&&!h.startsWith(B))a.setAttribute('href',B+h)});}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){r()});else r();if(typeof MutationObserver!=='undefined')new MutationObserver(function(muts){muts.forEach(function(mu){mu.addedNodes.forEach(function(n){if(n.nodeType===1)r(n.parentElement||n)})})}).observe(document.documentElement,{childList:true,subtree:true});var _f=window.fetch;window.fetch=function(u,o){if(typeof u==='string'&&u.charAt(0)==='/'&&!u.startsWith(B))u=B+u;return _f.call(this,u,o)}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>מיומנו של טכנאי מחשבים: סנכרון לענן · עומר טייכר</title>
-<meta name="description" content="לישון בשקט עם סנכרון אוטומטי לענן. Google Drive, גיבוי אוטומטי, בלי לזכור כלום.">
+<meta name="description" content="לישון בשקט עם סנכרון אוטומטי לענן. Google Drive, סנכרון אוטומטי, בלי לזכור כלום.">
 <meta property="og:title" content="מיומנו של טכנאי מחשבים: סנכרון לענן">
 <meta property="og:description" content="אם המחשב שלכם נדלק מחר, האם הקבצים שלכם בטוחים? סנכרון אוטומטי לענן שעובד בלי שתצטרכו לזכור.">
 <meta property="og:type" content="website">
@@ -24,8 +24,8 @@
 <section class="hero">
   <div class="hero-content" style="position:relative;z-index:2;">
     <div class="hero-series">מיומנו של טכנאי מחשבים</div>
-    <h1 class="hero-title">לישון בשקט עם <em>סנכרון לענן</em></h1>
-    <div class="hero-subtitle">גיבוי אוטומטי שעובד בלי שתצטרכו לזכור כלום</div>
+    <h1 class="hero-title">לישון בשקט<br><em>עם סנכרון לענן</em></h1>
+    <div class="hero-subtitle">סנכרון אוטומטי שעובד בלי שתצטרכו לזכור כלום</div>
     <div class="hero-meta">
       <div class="meta-chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~55 דקות</div>
       <div class="meta-chip free"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> ההרצאה התקיימה</div>
@@ -39,9 +39,9 @@
     <h2 class="section-title">אם יש לכם קבצים שאתם לא יכולים להרשות לעצמכם לאבד</h2>
     <div class="forwho-grid">
       <div class="forwho-card"><div class="forwho-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div><div class="forwho-title">עצמאים ובעלי עסקים</div><div class="forwho-desc">חשבוניות, חוזים, עיצובים.<br>אם המחשב קורס, הכל בענן.</div></div></div>
-      <div class="forwho-card"><div class="forwho-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><div class="forwho-title">מי שמגבה לדיסק חיצוני</div><div class="forwho-desc">ומגלה שהגיבוי מלפני חודשים.<br>או שהדיסק בכלל לא עובד.</div></div></div>
+      <div class="forwho-card"><div class="forwho-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><div class="forwho-title">מי שסומך על דיסק חיצוני</div><div class="forwho-desc">ומגלה שהדיסק לא עודכן חודשים.<br>או שהדיסק בכלל לא עובד.</div></div></div>
       <div class="forwho-card"><div class="forwho-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="forwho-title">הורים וסבים</div><div class="forwho-desc">תמונות משפחתיות, מסמכים חשובים.<br>דברים שאי אפשר להחליף.</div></div></div>
-      <div class="forwho-card"><div class="forwho-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><div class="forwho-title">כל מי שאין לו גיבוי</div><div class="forwho-desc">או שיש לו אבל הוא לא בטוח<br>שזה באמת עובד.</div></div></div>
+      <div class="forwho-card"><div class="forwho-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><div class="forwho-title">כל מי שאין לו סנכרון</div><div class="forwho-desc">או שיש לו אבל הוא לא בטוח<br>שזה באמת עובד.</div></div></div>
     </div>
   </div>
 </section>
@@ -51,9 +51,9 @@
     <span class="section-eyebrow">מה בהרצאה</span>
     <h2 class="section-title">3 חלקים. מתיאוריה להדגמה חיה</h2>
     <div class="cases-grid">
-      <div class="case-card"><div class="case-num">חלק 1</div><div><div class="case-title">מה זה ענן ולמה לשמור שם</div><div class="case-desc">ענן זה כמו חשבון בנק לקבצים.<br>למה גיבוי אוטומטי מנצח דיסק חיצוני כל פעם.</div></div></div>
+      <div class="case-card"><div class="case-num">חלק 1</div><div><div class="case-title">מה זה ענן ולמה לשמור שם</div><div class="case-desc">ענן זה כמו חשבון בנק לקבצים.<br>למה סנכרון אוטומטי מנצח דיסק חיצוני כל פעם.</div></div></div>
       <div class="case-card"><div class="case-num">חלק 2</div><div><div class="case-title">הדגמה חיה. Google Drive</div><div class="case-desc">הגדרת סנכרון צעד אחר צעד.<br>איך שומרים קבצים ואיך עובדים נכון בלי להסתבך.</div></div></div>
-      <div class="case-card"><div class="case-num">המקרה של מיכל</div><div><div class="case-title">מעצבת גרפית שהמחשב קרס</div><div class="case-desc">גיבוי בדיסק חיצוני מלפני 5 חודשים.<br>עשרות פרויקטים נעלמו. מאז עברה לענן אוטומטי.</div></div></div>
+      <div class="case-card"><div class="case-num">המקרה של מיכל</div><div><div class="case-title">מעצבת גרפית שהמחשב קרס</div><div class="case-desc">דיסק חיצוני שלא עודכן 5 חודשים.<br>עשרות פרויקטים נעלמו. מאז עברה לענן אוטומטי.</div></div></div>
     </div>
   </div>
 </section>
