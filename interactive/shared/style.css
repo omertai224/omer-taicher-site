@@ -507,7 +507,7 @@ br {
 .ht-sub {
   color: #a8c5d6;
   font-size: clamp(12px, 2vh, 16px);
-  margin-bottom: 1.5vh;
+  margin-bottom: 3vh;
   text-align: center;
   flex-shrink: 0;
   animation: ht-fadeUp 0.6s ease 0.1s both;
@@ -619,7 +619,7 @@ br {
 }
 
 .ht-btn {
-  margin-top: 1.5vh;
+  margin-top: 3vh;
   padding: clamp(12px, 1.8vh, 16px) clamp(36px, 5vw, 56px);
   border-radius: 50px;
   border: none;
