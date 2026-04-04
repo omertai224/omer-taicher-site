@@ -77,7 +77,8 @@
     transition: background 0.2s, color 0.2s;
   }
   .nav-back:hover { background: var(--orange-light); color: var(--orange-deep); }
-  .pain-section { background: var(--cream); padding: 100px 20px 64px; }
+  .pain-section { background: var(--cream); padding: 100px 20px 64px; position: relative; }
+  .pain-hero-bg { position:absolute; inset:0; background-image:url('https://media.omertai.net/1775343539866_0_interactive-tutorials-hero.webp'); background-size:cover; background-position:center; opacity:0.12; pointer-events:none; }
   .pain-inner { max-width: 800px; margin: 0 auto; }
   .pain-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
@@ -438,7 +439,8 @@
 
 <!-- PAIN -->
 <section class="pain-section">
-  <div class="pain-inner">
+  <div class="pain-hero-bg"></div>
+  <div class="pain-inner" style="position:relative;z-index:1;">
     <div class="pain-eyebrow">לעצמאים שעובדים עם מחשב</div>
     <h1 class="pain-title"><span class="pain-title-1">כשהמחשב תקוע –</span><br><span class="pain-title-2">העבודה נתקעת.</span><br><em class="pain-title-em">ואתם לא יודעים מה לעשות.</em></h1>
     <p class="pain-sub">עורכי דין, מטפלים, יועצים, רואי חשבון.<br><strong>ובכלל, אנשים שהמחשב הוא כלי העבודה שלהם.</strong><br>כשמשהו משתבש, זה לא מרגיש כמו תקלה טכנית.<br><strong>זה מרגיש כאילו לקחו לכם את הידיים.</strong></p>
