@@ -13,8 +13,8 @@ window.bubbleDesignWidth = 853;
 /* slideMap: special slides (0-based) — finish set dynamically */
 var slideMap = {
   0:  { icon: 'home',     title: 'פתיחה' },
-  1:  { icon: 'play',     title: 'איך עובדים עם ההדרכה' },
-  2:  { icon: 'play',     title: 'כלים שיעזרו לכם' },
+  1:  { icon: 'book',     title: 'איך עובדים עם ההדרכה' },
+  2:  { icon: 'book',     title: 'כלים שיעזרו לכם' },
   3:  { icon: 'download', title: 'הורידו את Everything' },
   6:  { icon: 'warning',  title: 'בקרת חשבון משתמש' },
   13: { icon: 'usage',    title: 'שימוש בתוכנה' }
