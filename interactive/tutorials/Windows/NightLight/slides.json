@@ -24,7 +24,7 @@
       "step": 1,
       "type": "click",
       "image": "NightLight-02.jpg",
-      "text": "לחיצה ימנית על שולחן העבודה (מקום ריק) תפתח תפריט. <span style="color:#f6a67e;font-weight:700;">כאן</span> לחצו על הסימון הכתום.",
+      "text": "לחיצה ימנית על שולחן העבודה (מקום ריק) תפתח תפריט. <span style=\"color:#f6a67e;font-weight:700;\">כאן</span> לחצו על הסימון הכתום.",
       "textPos": {
         "left": "60.3323%",
         "top": "36.7912%"
