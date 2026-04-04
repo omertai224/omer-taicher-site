@@ -13,14 +13,7 @@
         "left": "32.2284%",
         "top": "27.1209%"
       },
-      "textWidth": "320px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "320px"
     },
     {
       "index": 1,
@@ -32,14 +25,7 @@
         "left": "53.2245%",
         "top": "29.766%"
       },
-      "textWidth": "320px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "320px"
     },
     {
       "index": 2,
@@ -57,14 +43,7 @@
         "left": "53.1045%",
         "top": "57.2397%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 3,
@@ -82,14 +61,7 @@
         "left": "59.4984%",
         "right": "7.1258%",
         "bottom": "9.66029%"
-      },
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      }
     },
     {
       "index": 4,
@@ -107,14 +79,7 @@
         "left": "59.379%",
         "right": "7.24522%",
         "bottom": "9.44798%"
-      },
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      }
     },
     {
       "index": 5,
@@ -132,14 +97,7 @@
         "left": "22.715%",
         "right": "71.8551%",
         "bottom": "84.8196%"
-      },
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      }
     },
     {
       "index": 6,
@@ -157,14 +115,7 @@
         "left": "35.3105%",
         "top": "24.0545%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 7,
@@ -182,14 +133,7 @@
         "left": "27.9054%",
         "top": "18.4802%"
       },
-      "textWidth": "300px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "300px"
     },
     {
       "index": 8,
@@ -207,14 +151,7 @@
         "left": "52.985%",
         "top": "42.2926%"
       },
-      "textWidth": "300px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "300px"
     },
     {
       "index": 9,
@@ -233,14 +170,7 @@
         "top": "46.7191%"
       },
       "textWidth": "280px",
-      "scrollDownAnim": true,
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "scrollDownAnim": true
     },
     {
       "index": 10,
@@ -252,14 +182,7 @@
         "left": "54.2994%",
         "top": "46.1142%"
       },
-      "textWidth": "320px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "320px"
     },
     {
       "index": 11,
@@ -277,14 +200,7 @@
         "left": "55.4936%",
         "top": "68.4924%"
       },
-      "textWidth": "250px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "250px"
     },
     {
       "index": 12,
@@ -302,14 +218,7 @@
         "left": "56.2338%",
         "top": "45.8698%"
       },
-      "textWidth": "320px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "320px"
     },
     {
       "index": 13,
@@ -322,13 +231,6 @@
         "top": "38.0463%"
       },
       "textWidth": "340px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ],
       "box": {
         "top": "78.1953%",
         "left": "75.0238%",
@@ -347,13 +249,6 @@
         "top": "39.0127%"
       },
       "textWidth": "300px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ],
       "typingAnim": true
     },
     {
@@ -372,14 +267,7 @@
         "left": "53.7016%",
         "top": "64.7658%"
       },
-      "textWidth": "300px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "300px"
     }
   ]
 }
