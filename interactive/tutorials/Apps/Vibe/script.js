@@ -30,6 +30,15 @@ function showPersonalBadge() {
 }
 
 /* ── App Init ── */
+var slideMap = {
+  0:  { icon: 'home',     title: 'פתיחה' },
+  1:  { icon: 'book',     title: 'איך עובדים עם ההדרכה' },
+  2:  { icon: 'book',     title: 'כלים שיעזרו לכם' },
+  3:  { icon: 'download', title: 'הורידו את Vibe' },
+  14: { icon: 'monitor',  title: 'השתמשו ב-Vibe' }
+};
+// finish set dynamically in initApp
+
 function initApp() {
   getPersonalName();
   var ua = navigator.userAgent || navigator.vendor || window.opera;
