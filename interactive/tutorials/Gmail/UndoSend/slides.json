@@ -13,7 +13,14 @@
         "left": "32.2284%",
         "top": "27.1209%"
       },
-      "textWidth": "320px"
+      "textWidth": "320px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 1,
@@ -25,7 +32,14 @@
         "left": "53.2245%",
         "top": "29.766%"
       },
-      "textWidth": "320px"
+      "textWidth": "320px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 2,
@@ -43,7 +57,14 @@
         "left": "53.1045%",
         "top": "57.2397%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 3,
@@ -61,7 +82,14 @@
         "left": "59.4984%",
         "right": "7.1258%",
         "bottom": "9.66029%"
-      }
+      },
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 4,
@@ -79,7 +107,14 @@
         "left": "59.379%",
         "right": "7.24522%",
         "bottom": "9.44798%"
-      }
+      },
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 5,
@@ -97,7 +132,14 @@
         "left": "22.715%",
         "right": "71.8551%",
         "bottom": "84.8196%"
-      }
+      },
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 6,
@@ -115,7 +157,14 @@
         "left": "35.3105%",
         "top": "24.0545%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 7,
@@ -133,7 +182,14 @@
         "left": "27.9054%",
         "top": "18.4802%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 8,
@@ -151,7 +207,14 @@
         "left": "52.985%",
         "top": "42.2926%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 9,
@@ -170,19 +233,33 @@
         "top": "46.7191%"
       },
       "textWidth": "280px",
-      "scrollDownAnim": true
+      "scrollDownAnim": true,
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 10,
       "step": 11,
       "type": "view",
       "image": "2026-04-04_21-03-08.png",
-      "text": "חזרנו למייל. עדיין כתוב <span style=\"color:#f6a67e;\">5,000 ש\"ח</span>. הפעם נשלח אותו שוב, אבל עכשיו יש לנו 30 שניות לביטול.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "חזרנו למייל. עדיין כתוב <span style=\"color:#f6a67e;\">5,000 ש\"ח</span>. הפעם נשלח אותו שוב, אבל עכשיו יש לנו 30 שניות לביטול.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "50%",
-        "top": "20%"
+        "left": "54.2994%",
+        "top": "46.1142%"
       },
-      "textWidth": "320px"
+      "textWidth": "320px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 11,
@@ -191,34 +268,48 @@
       "image": "2026-04-04_21-03-56.png",
       "text": "לוחצים על <span style=\"color:#f6a67e;\">שליחה</span>.",
       "box": {
-        "top": "91%",
-        "left": "22%",
-        "right": "65%",
-        "bottom": "2%"
+        "top": "83.9936%",
+        "left": "43.1385%",
+        "right": "47.5637%",
+        "bottom": "9.00637%"
       },
       "textPos": {
-        "left": "50%",
-        "top": "60%"
+        "left": "55.4936%",
+        "top": "68.4924%"
       },
-      "textWidth": "250px"
+      "textWidth": "250px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 12,
       "step": 13,
       "type": "click",
       "image": "2026-04-04_21-04-07.png",
-      "text": "נשלח! אבל רגע. 5,000?! הפעם <span style=\"color:#f6a67e;\">יש לנו 30 שניות</span>. בשקט, בלי לחץ. לוחצים על <span style=\"color:#f6a67e;\">ביטול</span>.",
+      "text": "נשלח! אבל רגע. 5,000?!&nbsp;<br>הפעם <span style=\"color:#f6a67e;\">יש לנו 30 שניות</span>.&nbsp;<br>בשקט, בלי לחץ. לוחצים על <span style=\"color:#f6a67e;\">ביטול</span>.",
       "box": {
-        "top": "92%",
-        "left": "35%",
-        "right": "53%",
-        "bottom": "2%"
+        "top": "81.172%",
+        "left": "73.0971%",
+        "right": "19.4411%",
+        "bottom": "12.4034%"
       },
       "textPos": {
-        "left": "5%",
-        "top": "55%"
+        "left": "56.2338%",
+        "top": "45.8698%"
       },
-      "textWidth": "320px"
+      "textWidth": "320px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 13,
@@ -227,22 +318,43 @@
       "image": "2026-04-04_21-04-18.png",
       "text": "<span style=\"color:#f6a67e;\">השליחה בוטלה.</span> המייל חזר לעריכה. הפעם הספקנו בקלות. 30 שניות זה עולם אחר.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
       "textPos": {
-        "left": "5%",
-        "top": "20%"
+        "left": "53.8453%",
+        "top": "38.0463%"
       },
-      "textWidth": "340px"
+      "textWidth": "340px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "box": {
+        "top": "78.1953%",
+        "left": "75.0238%",
+        "right": "7.36465%",
+        "bottom": "8.81104%"
+      }
     },
     {
       "index": 14,
       "step": 15,
       "type": "view",
       "image": "2026-04-04_21-05-28.png",
-      "text": "רואים? <span style=\"color:#f6a67e;\">5,000 ש\"ח מסומן.</span> פי עשר מהמחיר. עכשיו נתקן ל-500.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "רואים? <span style=\"color:#f6a67e;\">5,000 ש\"ח מסומן.</span>&nbsp;<br>עכשיו נתקן ל-500.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך.</div>",
       "textPos": {
-        "left": "50%",
-        "top": "25%"
+        "left": "53.8217%",
+        "top": "39.0127%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "typingAnim": true
     },
     {
       "index": 15,
@@ -251,16 +363,23 @@
       "image": "2026-04-04_21-05-42.png",
       "text": "<span style=\"color:#f6a67e;\">500 ש\"ח.</span> המחיר הנכון. לוחצים על <span style=\"color:#f6a67e;\">שליחה</span> בראש שקט.",
       "box": {
-        "top": "91%",
-        "left": "22%",
-        "right": "65%",
-        "bottom": "2%"
+        "top": "83.3567%",
+        "left": "43.8551%",
+        "right": "47.6831%",
+        "bottom": "8.58174%"
       },
       "textPos": {
-        "left": "50%",
-        "top": "55%"
+        "left": "53.7016%",
+        "top": "64.7658%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     }
   ]
 }
