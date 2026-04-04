@@ -118,9 +118,8 @@ function showTutorial() { showPersonalBadge(); setNavBarColor(1); showSlides(1);
     overlay.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99999;background:linear-gradient(145deg,#1a2540ee,#0f1a2eee);border:2px solid #f6a67e;border-radius:20px;padding:28px 40px;text-align:center;font-family:Rubik,sans-serif;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(16px);animation:ht-fadeUp 0.3s ease;direction:rtl;max-width:400px;';
 
     overlay.innerHTML = ''
-      + '<div style="margin-bottom:12px;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg></div>'
-      + '<div style="color:white;font-size:18px;font-weight:800;margin-bottom:8px;">בהדרכה לוחצים רק לחיצה רגילה</div>'
-      + '<div style="color:#ffffffbb;font-size:14px;line-height:1.6;">קליק ימני יפתח תפריט מהיר <span style="color:#f6a67e;">במחשב שלכם</span>.<br>כאן בהדרכה, לחצו לחיצה רגילה על הסימון הכתום.</div>';
+      + '<div style="margin-bottom:16px;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg></div>'
+      + '<div style="color:white;font-size:20px;font-weight:800;">בהדרכה לוחצים רק לחיצה רגילה</div>';
 
     document.body.appendChild(overlay);
 
