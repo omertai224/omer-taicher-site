@@ -69,7 +69,7 @@ var lecturesData = [
       { time: "38:49", label: "רק לדעת (אישורי קריאה)" },
       { time: "47:02", label: "איך עוד אני יכול לעזור לכם?" }
     ],
-    cta: { text: "להדרכת Gmail האינטראקטיבית", url: "/interactive/tutorials/Gmail/Schedule/" }
+    cta: null
   },
   {
     id: "things-you-didnt-know",
