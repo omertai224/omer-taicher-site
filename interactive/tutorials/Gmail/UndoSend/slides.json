@@ -1,7 +1,7 @@
 {
   "title": "ביטול שליחה",
   "subtitle": "Gmail",
-  "totalSteps": 14,
+  "totalSteps": 10,
   "slides": [
     {
       "index": 0,
@@ -13,14 +13,7 @@
         "left": "36.5284%",
         "top": "28.6082%"
       },
-      "textWidth": "320px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "320px"
     },
     {
       "index": 1,
@@ -32,14 +25,7 @@
         "left": "53.2245%",
         "top": "29.766%"
       },
-      "textWidth": "320px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "320px"
     },
     {
       "index": 2,
@@ -57,14 +43,7 @@
         "left": "53.1045%",
         "top": "57.2397%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 3,
@@ -77,13 +56,6 @@
         "top": "16.3891%"
       },
       "textWidth": "360px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ],
       "box": {
         "top": "78.6199%",
         "left": "59.4984%",
@@ -94,40 +66,26 @@
     {
       "index": 4,
       "step": 5,
-      "type": "click",
+      "type": "view",
       "image": "2026-04-04_18-24-52.png",
-      "text": "מהר! לחצו על <span style=\"color:#f6a67e;\">ביטול</span> בפס השחור למטה.",
+      "text": "<span style=\"color:#f6a67e;\">פיספסנו!</span> לא הספקנו ללחוץ על ביטול. חמש שניות זה כלום. המייל עם 5,000 ש\"ח כבר אצל ד\"ר שרה כהן. אבל אנחנו לא ניתן לזה לקרות שוב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
       "textPos": {
         "left": "58.0812%",
         "top": "49.1718%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "בשקף הזה צריך איי איי איי פיספסנו פספסנו לא לא הספקנו ללחוץ על הכפתור היו לנו רק חמש שניות יא אללה כי אתה מבין את הנקודה כאילו אנחנו מציגים את הבעיה עכשיו היה לנו רק חמש שניות איזה באסה עכשיו אנחנו נלמד איך להפוך את זה ליותר זמן הבנת את הקונספט",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 5,
       "step": 6,
       "type": "view",
       "image": "2026-04-04_18-25-01.png",
-      "text": "<span style=\"color:#f6a67e;\">הצלתם את עצמכם.</span> המייל בוטל. ד\"ר שרה כהן לא קיבלה הצעת מחיר של 5,000 ש\"ח. אבל היו לכם רק 5 שניות. בואו נגדיל ל-30.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "בואו נדאג שזה לא יקרה שוב. נכנס להגדרות של ג'ימייל ונגדיל את הזמן לביטול שליחה מ-5 שניות ל-<span style=\"color:#f6a67e;\">30 שניות</span>. חצי דקה שיכולה להציל אתכם.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
       "textPos": {
         "left": "25%",
         "top": "25%"
       },
-      "textWidth": "340px",
-      "notes": [
-        {
-          "text": "לא לא פה אני מראה איך אנחנו נכנסים להגדרות איך אנחנו עושים להגדרות להציל באמת את המייל להגדיר את זה ל-30 שניות שזה יציל את המי",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "340px"
     },
     {
       "index": 6,
@@ -145,21 +103,14 @@
         "left": "35.3105%",
         "top": "24.0545%"
       },
-      "textWidth": "280px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "280px"
     },
     {
       "index": 7,
       "step": 8,
       "type": "click",
       "image": "2026-04-04_18-25-15.png",
-      "text": "רואים <span style=\"color:#f6a67e;\">זמן לביטול שליחה: 5 שניות</span>? רק 5 שניות! לחצו על הרשימה.",
+      "text": "רואים? <span style=\"color:#f6a67e;\">זמן לביטול שליחה: 5 שניות.</span> בגלל זה לא הספקתם לבטל את המייל. רק 5 שניות. לחצו על הרשימה כדי לשנות.",
       "box": {
         "top": "58.7728%",
         "left": "40.8391%",
@@ -170,21 +121,14 @@
         "left": "55.7325%",
         "top": "28.4601%"
       },
-      "textWidth": "300px",
-      "notes": [
-        {
-          "text": "צריכים להגיד רואים את הזמן חמש שניות רק חמש שניות בגלל זה לא הצלחתם להספיק רק בגלל זה לא הצלחתם להספיק לבטל את האימייל כי gmail בברת מחדל נתנו לכם רק חמש שניות וואי זה נורא",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "300px"
     },
     {
       "index": 8,
       "step": 9,
       "type": "click",
       "image": "2026-04-04_18-25-19.png",
-      "text": "בחרו <span style=\"color:#f6a67e;\">30 שניות</span>. חצי דקה לחשוב שוב. מספיק זמן לשים לב לכל טעות.",
+      "text": "בחרו <span style=\"color:#f6a67e;\">30 שניות</span>. חצי דקה. מספיק זמן לקרוא שוב, לבדוק מספרים, לשים לב לטעויות. עכשיו אפשר לשלוח מיילים בשקט.",
       "box": {
         "top": "73.7113%",
         "left": "45.258%",
@@ -195,14 +139,7 @@
         "left": "52.7468%",
         "top": "40.8064%"
       },
-      "textWidth": "300px",
-      "notes": [
-        {
-          "text": "צריך לעשות פה איזה דרמה נבחר 30 שניות עכשיו אפשר לשלוח אימיילים בשקט לעשות את זה דרמה כאילו לפתח את זה כאילו עכשיו יהיה לנו 30 שניות וואו איזה יופי",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "textWidth": "300px"
     },
     {
       "index": 9,
@@ -221,103 +158,7 @@
         "top": "46.7191%"
       },
       "textWidth": "280px",
-      "scrollDownAnim": true,
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
-    },
-    {
-      "index": 10,
-      "step": 11,
-      "type": "view",
-      "image": "2026-04-04_18-27-24.png",
-      "text": "חזרנו למייל. <span style=\"color:#f6a67e;\">רואים את הטעות?</span>&nbsp;<br>5,000 ש\"ח מסומן בכתום.&nbsp;<br>פי עשר מהמחיר האמיתי.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך.</div>",
-      "textPos": {
-        "left": "54.4188%",
-        "top": "36.2527%"
-      },
-      "textWidth": "320px",
-      "notes": [
-        {
-          "text": "שקפים צעדים 11 עד 14 אפשר למחוק גם את התמונות אני צריך לעשות אותם מחדש לא עשיתי את זה טוב",
-          "left": "50%",
-          "top": "50%"
-        }
-      ],
-      "typingAnim": true
-    },
-    {
-      "index": 11,
-      "step": 12,
-      "type": "click",
-      "image": "2026-04-04_18-27-37.png",
-      "text": "תיקנו ל-<span style=\"color:#f6a67e;\">500 ש\"ח</span>. המחיר הנכון. עכשיו נשלח שוב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
-      "textPos": {
-        "left": "54.5382%",
-        "top": "53.6624%"
-      },
-      "textWidth": "300px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ],
-      "box": {
-        "top": "82.8663%",
-        "left": "43.6147%",
-        "right": "47.9697%",
-        "bottom": "8.81104%"
-      }
-    },
-    {
-      "index": 12,
-      "step": 13,
-      "type": "click",
-      "image": "2026-04-04_18-26-49.png",
-      "text": "הפעם בביטחון. לחצו על <span style=\"color:#f6a67e;\">שליחה</span>.",
-      "box": {
-        "top": "91%",
-        "left": "22%",
-        "right": "65%",
-        "bottom": "2%"
-      },
-      "textPos": {
-        "left": "58.3599%",
-        "top": "63.8214%"
-      },
-      "textWidth": "260px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
-    },
-    {
-      "index": 13,
-      "step": 14,
-      "type": "view",
-      "image": "2026-04-04_18-27-02.png",
-      "text": "<span style=\"color:#f6a67e;\">נשלח! והפעם יש 30 שניות לביטול.</span> ד\"ר שרה כהן מקבלת הצעת מחיר של 500 ש\"ח. המחיר הנכון. שינוי של דקה אחת בהגדרות ששומר עליכם מטעויות מביכות.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי לסיים.</div>",
-      "textPos": {
-        "left": "5%",
-        "top": "15%"
-      },
-      "textWidth": "380px",
-      "notes": [
-        {
-          "text": "",
-          "left": "50%",
-          "top": "50%"
-        }
-      ]
+      "scrollDownAnim": true
     }
   ]
 }
