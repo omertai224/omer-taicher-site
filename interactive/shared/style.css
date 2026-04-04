@@ -525,7 +525,7 @@ br {
 }
 .ht-row { display:flex; gap:1.5vw; justify-content:center; width:100%; }
 .ht-row-3 .ht-card { width:calc(33.333% - 2vw); }
-.ht-row-4 .ht-card { width:calc(25% - 2vw); aspect-ratio: 0.95; }
+.ht-row-4 .ht-card { width:calc(25% - 1.2vw); aspect-ratio: 1.15; }
 
 .ht-card {
   aspect-ratio: 1.3;

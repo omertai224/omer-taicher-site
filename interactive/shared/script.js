@@ -585,7 +585,7 @@ function buildHowToSlide1() {
 
     + '<div class="ht-card">'
     + '<div class="ht-icon" style="background:transparent;"><div style="width:92%;height:42%;border:4px solid #ff7c2a;border-radius:10px;box-shadow:0 0 0 2px rgba(255,124,42,0.4),0 0 16px rgba(255,124,42,0.6);animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
-    + '<div class="ht-card-title">לחצו על הכתום</div>'
+    + '<div class="ht-card-title">שקף לחיצה</div>'
     + '<div class="ht-card-desc">רואים סימון כתום מהבהב?<br style="margin:0;"><span style="color:#f6a67e;">לוחצים עליו ועוברים הלאה.</span></div>'
     + '</div>'
 
@@ -594,7 +594,7 @@ function buildHowToSlide1() {
     + '<div class="ht-anim-pulse" style="width:clamp(24px,3.5vh,36px);height:clamp(24px,3.5vh,36px);border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;display:flex;align-items:center;justify-content:center;">'
     + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
     + '</div>'
-    + '<div class="ht-card-title">קראו והמשיכו</div>'
+    + '<div class="ht-card-title">שקף צפייה</div>'
     + '<div class="ht-card-desc">לפעמים אין מה ללחוץ.<br style="margin:0;"><span style="color:#f6a67e;">לוחצים על העיגול כדי להמשיך.</span></div>'
     + '</div>'
 
@@ -603,7 +603,7 @@ function buildHowToSlide1() {
     + '<div class="ht-mini-bubble ht-anim-float" style="text-align:right;font-size:clamp(13px,2.2vh,16px);padding:10px 18px;"><span style="color:#f6a67e;font-weight:700;">3</span><span style="color:#ffffff88;">/17</span><br style="margin:0;display:block;content:none;">לחצו על <span style="color:#f6a67e;">הגדרות</span></div>'
     + '<img src="' + sharedPath + '/right-click.svg" class="ht-anim-pulse" style="position:absolute;top:-10px;left:-10px;width:28px;height:28px;">'
     + '</div>'
-    + '<div class="ht-card-title">ההוראה שלכם</div>'
+    + '<div class="ht-card-title">בועת טקסט</div>'
     + '<div class="ht-card-desc">בכל שלב כתוב מה לעשות.<br style="margin:0;"><span style="color:#f6a67e;">קראו ועשו לפי ההנחיות.</span></div>'
     + '</div>'
 
@@ -638,7 +638,7 @@ function buildHowToSlide2() {
     + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">זכוכית מגדלת</div>'
-    + '<div class="ht-card-desc">קשה לראות?<br style="margin:0;"><span style="color:#f6a67e;">הכפתור הכתום בשמאל מגדיל את המסך.</span></div>'
+    + '<div class="ht-card-desc">קשה לראות? <span style="color:#f6a67e;">הכפתור הכתום בשמאל מגדיל את המסך.</span></div>'
     + '</div>'
 
     + '<div class="ht-card">'
@@ -648,7 +648,7 @@ function buildHowToSlide2() {
     + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">הקראה בקול</div>'
-    + '<div class="ht-card-desc">מעדיפים לשמוע?<br style="margin:0;"><span style="color:#f6a67e;">הכפתור הכתום בימין יקריא בקול.</span></div>'
+    + '<div class="ht-card-desc">מעדיפים לשמוע? <span style="color:#f6a67e;">הכפתור הכתום בימין יקריא בקול.</span></div>'
     + '</div>'
 
     + '<div class="ht-card">'
@@ -657,7 +657,7 @@ function buildHowToSlide2() {
     + '<div class="ht-anim-left">' + navArrow('left') + '</div>'
     + '</div>'
     + '<div class="ht-card-title">חיצי ניווט</div>'
-    + '<div class="ht-card-desc">לחצו על החיצים למטה<br style="margin:0;"><span style="color:#f6a67e;">כדי לעבור שקף קדימה או אחורה.</span></div>'
+    + '<div class="ht-card-desc">לחצו על החיצים למטה <span style="color:#f6a67e;">כדי לעבור שקף קדימה או אחורה.</span></div>'
     + '</div>'
 
     + '<div class="ht-card">'
@@ -667,7 +667,7 @@ function buildHowToSlide2() {
     + '<div class="ht-anim-wave3" style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#a8c5d6;border:2px solid white;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</div>'
     + '</div>'
     + '<div class="ht-card-title">פס ניווט</div>'
-    + '<div class="ht-card-desc">עיגולים למטה.<br style="margin:0;"><span style="color:#f6a67e;">לחצו על כל עיגול כדי לקפוץ לצעד.</span></div>'
+    + '<div class="ht-card-desc">עיגולים למטה. <span style="color:#f6a67e;">לחצו על כל עיגול כדי לקפוץ לצעד.</span></div>'
     + '</div>'
 
     + '</div>' // end row
