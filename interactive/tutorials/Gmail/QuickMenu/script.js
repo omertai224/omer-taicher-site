@@ -101,3 +101,42 @@ function showPersonalBadge() {
 }
 
 function showTutorial() { showPersonalBadge(); setNavBarColor(1); showSlides(1); }
+
+/* ── Right-click blocker: show friendly message ── */
+(function() {
+  var overlay = null;
+  var timeout = null;
+
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+
+    // Remove existing overlay
+    if (overlay) { overlay.remove(); overlay = null; }
+    if (timeout) { clearTimeout(timeout); }
+
+    overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99999;background:linear-gradient(145deg,#1a2540ee,#0f1a2eee);border:2px solid #f6a67e;border-radius:20px;padding:28px 40px;text-align:center;font-family:Rubik,sans-serif;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(16px);animation:ht-fadeUp 0.3s ease;direction:rtl;max-width:400px;';
+
+    overlay.innerHTML = ''
+      + '<div style="margin-bottom:12px;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg></div>'
+      + '<div style="color:white;font-size:18px;font-weight:800;margin-bottom:8px;">בהדרכה לוחצים רק לחיצה רגילה</div>'
+      + '<div style="color:#ffffffbb;font-size:14px;line-height:1.6;">קליק ימני יפתח תפריט מהיר <span style="color:#f6a67e;">במחשב שלכם</span>.<br>כאן בהדרכה, לחצו לחיצה רגילה על הסימון הכתום.</div>';
+
+    document.body.appendChild(overlay);
+
+    // Auto-dismiss after 4 seconds
+    timeout = setTimeout(function() {
+      if (overlay) {
+        overlay.style.opacity = '0';
+        overlay.style.transition = 'opacity 0.3s';
+        setTimeout(function() { if (overlay) { overlay.remove(); overlay = null; } }, 300);
+      }
+    }, 4000);
+
+    // Click anywhere to dismiss
+    overlay.addEventListener('click', function() {
+      overlay.remove();
+      overlay = null;
+    });
+  });
+})();
