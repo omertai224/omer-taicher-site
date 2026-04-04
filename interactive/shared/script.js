@@ -584,7 +584,7 @@ function buildHowToSlide1() {
     + '<div class="ht-row ht-row-3">'
 
     + '<div class="ht-card">'
-    + '<div class="ht-icon" style="background:transparent;"><div style="width:85%;height:42%;border:4px solid #ff7c2a;border-radius:10px;box-shadow:0 0 0 2px rgba(255,124,42,0.4),0 0 16px rgba(255,124,42,0.6);animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
+    + '<div class="ht-icon" style="background:transparent;"><div style="width:92%;height:42%;border:4px solid #ff7c2a;border-radius:10px;box-shadow:0 0 0 2px rgba(255,124,42,0.4),0 0 16px rgba(255,124,42,0.6);animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
     + '<div class="ht-card-title">מסגרת כתומה</div>'
     + '<div class="ht-card-desc">רואים מסגרת כתומה מהבהבת?<br style="margin:0;"><span style="color:#f6a67e;">לוחצים עליה כדי להתקדם.</span></div>'
     + '</div>'
@@ -600,7 +600,7 @@ function buildHowToSlide1() {
 
     + '<div class="ht-card">'
     + '<div style="position:relative;">'
-    + '<div class="ht-mini-bubble ht-anim-float" style="text-align:right;font-size:clamp(12px,2vh,15px);padding:8px 14px;"><span style="color:#f6a67e;font-weight:700;">3</span><span style="color:#ffffff88;">/17</span><br style="margin:0;display:block;content:none;">לחצו על <span style="color:#f6a67e;">הגדרות</span></div>'
+    + '<div class="ht-mini-bubble ht-anim-float" style="text-align:right;font-size:clamp(13px,2.2vh,16px);padding:10px 18px;"><span style="color:#f6a67e;font-weight:700;">3</span><span style="color:#ffffff88;">/17</span><br style="margin:0;display:block;content:none;">לחצו על <span style="color:#f6a67e;">הגדרות</span></div>'
     + '<img src="' + sharedPath + '/right-click.svg" class="ht-anim-pulse" style="position:absolute;top:-10px;left:-10px;width:28px;height:28px;">'
     + '</div>'
     + '<div class="ht-card-title">בועת הוראה</div>'
@@ -611,8 +611,8 @@ function buildHowToSlide1() {
     + '</div>' // end grid
 
     + '<button class="ht-btn" onclick="nextSlide()">'
+    + '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;border:2px solid white;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></span>'
     + 'המשך'
-    + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
     + '</button>'
 
     + '</div>';
@@ -672,8 +672,8 @@ function buildHowToSlide2() {
     + '</div>' // end grid
 
     + '<button class="ht-btn" onclick="nextSlide()">'
+    + '<span style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;border:2px solid white;flex-shrink:0;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></span>'
     + 'הבנתי, קדימה'
-    + '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>'
     + '</button>'
 
     + '</div>';
