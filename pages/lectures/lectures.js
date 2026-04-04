@@ -118,7 +118,7 @@ function renderLectures() {
         '<div class="lec-actions">' +
           '<a class="lec-yt-btn" href="' + ytUrl + '" target="_blank" rel="noopener">' +
             '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C16.8 2.5 12 2.5 12 2.5s-4.8 0-8.1.3c-.5 0-1.5 0-2.4 1-.7.7-1 2.4-1 2.4S.2 8.2.2 10.1v1.8c0 2 .3 3.9.3 3.9s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.8 0 8.1-.3c.5 0 1.5 0 2.4-1 .7-.7 1-2.4 1-2.4s.3-2 .3-3.9v-1.8c0-2-.3-3.9-.3-3.9zM9.5 15.1V8.4l6.5 3.4-6.5 3.4z"/></svg>' +
-            'צפה ביוטיוב' +
+            'צפו ביוטיוב' +
           '</a>' +
           ctaHTML +
         '</div>' +
