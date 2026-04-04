@@ -459,6 +459,7 @@ br {
 @keyframes ht-wave2 { 0%,100%{transform:translateY(0);} 40%{transform:translateY(-6px);} }
 @keyframes ht-wave3 { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-6px);} }
 @keyframes ht-speaker { 0%,100%{transform:scale(1);} 25%{transform:scale(1.12);} 50%{transform:scale(0.93);} 75%{transform:scale(1.12);} }
+@keyframes ht-soundwave { 0%{transform:scale(1);opacity:0.6;} 100%{transform:scale(1.8);opacity:0;} }
 .ht-anim-float { animation: ht-float 2s ease-in-out infinite; }
 .ht-anim-pulse { animation: ht-pulse-scale 2s ease-in-out infinite; }
 .ht-anim-zoom { animation: ht-zoom 2.5s ease-in-out infinite; }
@@ -524,7 +525,7 @@ br {
 }
 .ht-row { display:flex; gap:1.5vw; justify-content:center; width:100%; }
 .ht-row-3 .ht-card { width:calc(33.333% - 2vw); }
-.ht-row-4 .ht-card { width:calc(25% - 2vw); aspect-ratio: 1.05; }
+.ht-row-4 .ht-card { width:calc(25% - 2vw); aspect-ratio: 0.95; }
 
 .ht-card {
   aspect-ratio: 1.3;
