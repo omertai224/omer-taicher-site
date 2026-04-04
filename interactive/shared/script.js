@@ -585,8 +585,8 @@ function buildHowToSlide1() {
 
     + '<div class="ht-card">'
     + '<div class="ht-icon" style="background:transparent;"><div style="width:92%;height:42%;border:4px solid #ff7c2a;border-radius:10px;box-shadow:0 0 0 2px rgba(255,124,42,0.4),0 0 16px rgba(255,124,42,0.6);animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
-    + '<div class="ht-card-title">מסגרת כתומה</div>'
-    + '<div class="ht-card-desc">רואים מסגרת כתומה מהבהבת?<br style="margin:0;"><span style="color:#f6a67e;">לוחצים עליה כדי להתקדם.</span></div>'
+    + '<div class="ht-card-title">לחצו על הכתום</div>'
+    + '<div class="ht-card-desc">רואים סימון כתום מהבהב?<br style="margin:0;"><span style="color:#f6a67e;">לוחצים עליו ועוברים הלאה.</span></div>'
     + '</div>'
 
     + '<div class="ht-card">'
@@ -594,8 +594,8 @@ function buildHowToSlide1() {
     + '<div class="ht-anim-pulse" style="width:clamp(24px,3.5vh,36px);height:clamp(24px,3.5vh,36px);border-radius:50%;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;display:flex;align-items:center;justify-content:center;">'
     + '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>'
     + '</div>'
-    + '<div class="ht-card-title">שקף צפייה</div>'
-    + '<div class="ht-card-desc">לפעמים רק צופים.<br style="margin:0;"><span style="color:#f6a67e;">לוחצים על העיגול כדי להמשיך.</span></div>'
+    + '<div class="ht-card-title">קראו והמשיכו</div>'
+    + '<div class="ht-card-desc">לפעמים אין מה ללחוץ.<br style="margin:0;"><span style="color:#f6a67e;">לוחצים על העיגול כדי להמשיך.</span></div>'
     + '</div>'
 
     + '<div class="ht-card">'
@@ -603,8 +603,8 @@ function buildHowToSlide1() {
     + '<div class="ht-mini-bubble ht-anim-float" style="text-align:right;font-size:clamp(13px,2.2vh,16px);padding:10px 18px;"><span style="color:#f6a67e;font-weight:700;">3</span><span style="color:#ffffff88;">/17</span><br style="margin:0;display:block;content:none;">לחצו על <span style="color:#f6a67e;">הגדרות</span></div>'
     + '<img src="' + sharedPath + '/right-click.svg" class="ht-anim-pulse" style="position:absolute;top:-10px;left:-10px;width:28px;height:28px;">'
     + '</div>'
-    + '<div class="ht-card-title">בועת הוראה</div>'
-    + '<div class="ht-card-desc">בכל שקף יש הוראה.<br style="margin:0;"><span style="color:#f6a67e;">לפעמים תראו אנימציה של הפעולה.</span></div>'
+    + '<div class="ht-card-title">ההוראה שלכם</div>'
+    + '<div class="ht-card-desc">בכל שלב כתוב מה לעשות.<br style="margin:0;"><span style="color:#f6a67e;">קראו ועשו לפי ההנחיות.</span></div>'
     + '</div>'
 
     + '</div>' // end row
@@ -642,8 +642,10 @@ function buildHowToSlide2() {
     + '</div>'
 
     + '<div class="ht-card">'
-    + '<div class="ht-icon orange">'
-    + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>'
+    + '<div class="ht-icon orange" style="position:relative;overflow:visible;">'
+    + '<div style="position:absolute;inset:-4px;border-radius:16px;border:2px solid #f6a67e;animation:ht-soundwave 2s ease-out infinite;"></div>'
+    + '<div style="position:absolute;inset:-4px;border-radius:16px;border:2px solid #f6a67e;animation:ht-soundwave 2s ease-out 0.6s infinite;"></div>'
+    + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:relative;z-index:1;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">הקראה בקול</div>'
     + '<div class="ht-card-desc">מעדיפים לשמוע?<br style="margin:0;"><span style="color:#f6a67e;">הכפתור הכתום בימין יקריא בקול.</span></div>'
