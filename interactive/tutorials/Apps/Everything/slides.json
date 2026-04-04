@@ -48,7 +48,7 @@
       "type": "click",
       "image": "Everything-02.png",
       "step": 2,
-      "text": "לחצו לחיצה כפולה על קובץ ההתקנה <span style=\"color:#f6a67e;\">Everything</span> כדי להתחיל את ההתקנה",
+      "text": "לחיצה כפולה על קובץ ההתקנה <span style=\"color:#f6a67e;\">Everything</span> תתחיל את ההתקנה. כאן לחצו על הסימון הכתום.",
       "arrow": "arrow-right",
       "textPos": {
         "left": "44.1019%",
@@ -521,7 +521,7 @@
       "type": "click",
       "image": "Everything-27.png",
       "step": 27,
-      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על קובץ בתוצאות כדי לפתוח תפריט עם אפשרויות נוספות",
+      "text": "קליק ימני על קובץ בתוצאות יפתח תפריט עם אפשרויות נוספות. כאן לחצו על הסימון הכתום.",
       "arrow": "arrow-right",
       "textPos": {
         "left": "29.6623%",
@@ -573,7 +573,7 @@
       "type": "click",
       "image": "Everything-30.png",
       "step": 30,
-      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על סמל Everything בשורת המשימות למטה",
+      "text": "קליק ימני על סמל Everything בשורת המשימות יפתח תפריט. כאן לחצו על הסימון הכתום.",
       "arrow": "arrow-bottom-left",
       "textPos": {
         "left": "32.3245%",
