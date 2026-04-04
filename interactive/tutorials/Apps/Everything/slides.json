@@ -48,7 +48,7 @@
       "type": "click",
       "image": "Everything-02.png",
       "step": 2,
-      "text": "לחצו לחיצה כפולה על קובץ ההתקנה <span style=\"color:#f6a67e;\">Everything</span> כדי להתחיל את ההתקנה<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> לחיצה כפולה.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום.</span>",
+      "text": "לחצו לחיצה כפולה על קובץ ההתקנה <span style=\"color:#f6a67e;\">Everything</span> כדי להתחיל את ההתקנה<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> לחיצה כפולה.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן:</span> לחצו רגיל על הסימון הכתום.</span>",
       "arrow": "arrow-right",
       "textPos": {
         "left": "44.1019%",
@@ -521,7 +521,7 @@
       "type": "click",
       "image": "Everything-27.png",
       "step": 27,
-      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על קובץ בתוצאות כדי לפתוח תפריט עם אפשרויות נוספות<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על קובץ בתוצאות כדי לפתוח תפריט עם אפשרויות נוספות<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן:</span> לחצו רגיל על הסימון הכתום</span>",
       "arrow": "arrow-right",
       "textPos": {
         "left": "29.6623%",
@@ -573,7 +573,7 @@
       "type": "click",
       "image": "Everything-30.png",
       "step": 30,
-      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על סמל Everything בשורת המשימות למטה<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום.</span>",
+      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני עם העכבר</span> על סמל Everything בשורת המשימות למטה<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן:</span> לחצו רגיל על הסימון הכתום.</span>",
       "arrow": "arrow-bottom-left",
       "textPos": {
         "left": "32.3245%",

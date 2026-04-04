@@ -57,7 +57,7 @@
       "step": 2,
       "type": "click",
       "image": "TaskMgr-02.jpg",
-      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני על שורת המשימות</span> (הפס התחתון).<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "text": "לחצו <span style=\"color:#f6a67e;\">קליק ימני על שורת המשימות</span> (הפס התחתון).<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן:</span> לחצו רגיל על הסימון הכתום</span>",
       "textPos": {
         "left": "50.915%",
         "top": "58.6828%"
@@ -238,7 +238,7 @@
       "step": 9,
       "type": "click",
       "image": "TaskMgr-10.png",
-      "text": "<span style=\"color:#f6a67e;\">סיום משימה</span><br>תוכנה נתקעה?&nbsp;<br>לחצו קליק ימני עליה ובחרו \"סיום משימה\".&nbsp;<br><b>הדרך הכי מהירה לסגור תוכנה תקועה!</b><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "text": "<span style=\"color:#f6a67e;\">סיום משימה</span><br>תוכנה נתקעה?&nbsp;<br>לחצו קליק ימני עליה ובחרו \"סיום משימה\".&nbsp;<br><b>הדרך הכי מהירה לסגור תוכנה תקועה!</b><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן:</span> לחצו רגיל על הסימון הכתום</span>",
       "textPos": {
         "left": "22.1972%",
         "top": "27.3344%"
@@ -376,7 +376,7 @@
       "step": 15,
       "type": "click",
       "image": "TaskMgr-16.png",
-      "text": "<span style=\"color:#f6a67e;\">הפעלה/כיבוי אפליקציית אתחול</span><br>לחצו קליק ימני על תוכנה ובחרו \"הפוך לזמין\" או \"השבת\". כיבוי תוכנות מיותרות מזרז את הפעלת המחשב!<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן בהדרכה:</span> לחצו רגיל על הסימון הכתום</span>",
+      "text": "<span style=\"color:#f6a67e;\">הפעלה/כיבוי אפליקציית אתחול</span><br>לחצו קליק ימני על תוכנה ובחרו \"הפוך לזמין\" או \"השבת\". כיבוי תוכנות מיותרות מזרז את הפעלת המחשב!<br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">במחשב שלכם:</span> קליק ימני.&nbsp;</span><br><span style=\"font-size:13px;\"><span style=\"color:#f6a67e;font-weight:700;\">כאן:</span> לחצו רגיל על הסימון הכתום</span>",
       "textPos": {
         "left": "29.3622%",
         "top": "29.4586%"

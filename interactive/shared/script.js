@@ -724,6 +724,6 @@ window.addEventListener('resize', function() {
     overlay.addEventListener('click', function() { overlay.remove(); overlay = null; });
   }
 
-  document.addEventListener('contextmenu', function(e) { e.preventDefault(); showClickMessage(e, 'בהדרכה לוחצים רק לחיצה רגילה'); });
+  document.addEventListener('contextmenu', function(e) { e.preventDefault(); showClickMessage(e, 'כאן לוחצים רק לחיצה רגילה'); });
   document.addEventListener('dblclick', function(e) { e.preventDefault(); showClickMessage(e, 'מספיק לחיצה אחת'); });
 })();
