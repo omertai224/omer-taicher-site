@@ -612,7 +612,7 @@ function buildHowToSlide1() {
 
     + '<button class="ht-btn" onclick="nextSlide()">'
     + '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>'
-    + 'המשך'
+    + 'המשיכו'
     + '</button>'
 
     + '</div>';
@@ -638,15 +638,15 @@ function buildHowToSlide2() {
     + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">זכוכית מגדלת</div>'
-    + '<div class="ht-card-desc">קשה לראות?<br style="margin:0;">הכפתור הכתום בשמאל מגדיל את המסך.</div>'
+    + '<div class="ht-card-desc">קשה לראות?<br style="margin:0;"><span style="color:#f6a67e;">הכפתור הכתום בשמאל מגדיל את המסך.</span></div>'
     + '</div>'
 
     + '<div class="ht-card">'
-    + '<div class="ht-icon orange ht-anim-speaker">'
+    + '<div class="ht-icon orange">'
     + '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>'
     + '</div>'
     + '<div class="ht-card-title">הקראה בקול</div>'
-    + '<div class="ht-card-desc">מעדיפים לשמוע?<br style="margin:0;">הכפתור הכתום בימין יקריא בקול.</div>'
+    + '<div class="ht-card-desc">מעדיפים לשמוע?<br style="margin:0;"><span style="color:#f6a67e;">הכפתור הכתום בימין יקריא בקול.</span></div>'
     + '</div>'
 
     + '<div class="ht-card">'
@@ -655,7 +655,7 @@ function buildHowToSlide2() {
     + '<div class="ht-anim-left">' + navArrow('left') + '</div>'
     + '</div>'
     + '<div class="ht-card-title">חיצי ניווט</div>'
-    + '<div class="ht-card-desc">לחצו על החיצים למטה<br style="margin:0;">כדי לעבור שקף קדימה או אחורה.</div>'
+    + '<div class="ht-card-desc">לחצו על החיצים למטה<br style="margin:0;"><span style="color:#f6a67e;">כדי לעבור שקף קדימה או אחורה.</span></div>'
     + '</div>'
 
     + '<div class="ht-card">'
@@ -665,7 +665,7 @@ function buildHowToSlide2() {
     + '<div class="ht-anim-wave3" style="width:' + navSize + ';height:' + navSize + ';border-radius:50%;background:#a8c5d6;border:2px solid white;font-size:12px;color:white;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;">3</div>'
     + '</div>'
     + '<div class="ht-card-title">פס ניווט</div>'
-    + '<div class="ht-card-desc">עיגולים למטה.<br style="margin:0;">לחצו על כל עיגול כדי לקפוץ לצעד.</div>'
+    + '<div class="ht-card-desc">עיגולים למטה.<br style="margin:0;"><span style="color:#f6a67e;">לחצו על כל עיגול כדי לקפוץ לצעד.</span></div>'
     + '</div>'
 
     + '</div>' // end row
