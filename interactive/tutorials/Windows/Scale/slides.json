@@ -8,7 +8,7 @@
       "step": 1,
       "type": "view",
       "image": "2026-04-04_16-14-58.jpg",
-      "text": "תסתכלו על המסך הזה. <span style=\"color:#f6a67e;\">הכל קטן.</span>&nbsp;<br>אייקונים קטנטנים,&nbsp;<br>טקסט שצריך להצמיד את העיניים כדי לקרוא. ככה רוב האנשים עובדים, כי ככה Windows הגדיר להם. אבל לא חייבים.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך.</div>",
+      "text": "תסתכלו על המסך הזה. <span style=\"color:#f6a67e;\">הכל קטן.</span>&nbsp;<br>אייקונים קטנטנים,&nbsp;<br>טקסט שצריך להצמיד את העיניים כדי לקרוא. ככה רוב האנשים עובדים, כי ככה Windows הגדיר להם. אבל לא חייבים.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
         "left": "31.7507%",
         "top": "22.8758%"
@@ -29,16 +29,23 @@
       "image": "2026-04-04_16-15-06.jpg",
       "text": "נתחיל. לחצו על <span style=\"color:#f6a67e;\">חיפוש</span> בשורת המשימות למטה.",
       "box": {
-        "top": "90%",
-        "left": "42%",
-        "right": "52%",
-        "bottom": "2%"
+        "top": "93.9108%",
+        "left": "95.7914%",
+        "right": "0%",
+        "bottom": "0%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "60%"
+        "left": "59.6176%",
+        "top": "58.089%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "פה כנראה לא שמת לב לסמן הוא לא בולט לוחצים בו על כפתור ההתחל",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 2,
@@ -47,16 +54,23 @@
       "image": "2026-04-04_16-15-15.png",
       "text": "לחצו על <span style=\"color:#f6a67e;\">הגדרות</span> (גלגל השיניים).",
       "box": {
-        "top": "10%",
-        "left": "43%",
-        "right": "47%",
-        "bottom": "80%"
+        "top": "25.4989%",
+        "left": "77.2755%",
+        "right": "17.3821%",
+        "bottom": "66.1996%"
       },
       "textPos": {
-        "left": "10%",
-        "top": "40%"
+        "left": "60.2775%",
+        "top": "40.4237%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 3,
@@ -65,16 +79,23 @@
       "image": "2026-04-04_16-15-25.png",
       "text": "נכנסנו להגדרות. לחצו על <span style=\"color:#f6a67e;\">מערכת</span> בצד ימין.",
       "box": {
-        "top": "10%",
-        "left": "78%",
-        "right": "5%",
-        "bottom": "80%"
+        "top": "15.0955%",
+        "left": "83.4777%",
+        "right": "0%",
+        "bottom": "78.3015%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "41.1064%",
+        "top": "21.7191%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 4,
@@ -83,16 +104,23 @@
       "image": "2026-04-04_16-15-29.png",
       "text": "עכשיו לחצו על <span style=\"color:#f6a67e;\">צג</span>.",
       "box": {
-        "top": "15%",
-        "left": "20%",
-        "right": "50%",
-        "bottom": "75%"
+        "top": "20.5202%",
+        "left": "16.8949%",
+        "right": "31.6083%",
+        "bottom": "71.6029%"
       },
       "textPos": {
-        "left": "55%",
-        "top": "20%"
+        "left": "39.116%",
+        "top": "30.1906%"
       },
-      "textWidth": "250px"
+      "textWidth": "250px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 5,
@@ -101,16 +129,23 @@
       "image": "2026-04-04_16-16-07.png",
       "text": "פה הקסם קורה. רואים <span style=\"color:#f6a67e;\">קנה מידה</span> עם 100%? לחצו על הרשימה כדי לשנות.",
       "box": {
-        "top": "48%",
-        "left": "5%",
-        "right": "75%",
-        "bottom": "42%"
+        "top": "38.4459%",
+        "left": "16.1067%",
+        "right": "73.4474%",
+        "bottom": "55.1634%"
       },
       "textPos": {
         "left": "30%",
         "top": "55%"
       },
-      "textWidth": "300px"
+      "textWidth": "300px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 6,
@@ -119,16 +154,23 @@
       "image": "2026-04-04_16-16-13.png",
       "text": "בחרו <span style=\"color:#f6a67e;\">150%</span>. ברגע שתבחרו, הכל על המסך יגדל מיד. אייקונים, טקסט, תפריטים. הכל.",
       "box": {
-        "top": "53%",
-        "left": "3%",
-        "right": "82%",
-        "bottom": "38%"
+        "top": "46.2059%",
+        "left": "17.809%",
+        "right": "74.1178%",
+        "bottom": "49.465%"
       },
       "textPos": {
         "left": "30%",
         "top": "60%"
       },
-      "textWidth": "310px"
+      "textWidth": "310px",
+      "notes": [
+        {
+          "text": "אפשר להגיד להם שהם יכולים לבחור גם 125 אם נוח להם מהניסיון האישי שלי אני פחות ממליץ על 175 כי זה זה פוגע בכל מיני חלונות של תוכנות הם נחתכים",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 7,
@@ -137,10 +179,17 @@
       "image": "2026-04-04_16-16-18.png",
       "text": "<span style=\"color:#f6a67e;\">150% מוגדר.</span> שימו לב כמה ההגדרות עצמן כבר נראות יותר גדולות וברורות. הטקסט קריא, הכפתורים ברורים.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי לראות את התוצאה.</div>",
       "textPos": {
-        "left": "40%",
-        "top": "25%"
+        "left": "23.2801%",
+        "top": "33.7049%"
       },
-      "textWidth": "340px"
+      "textWidth": "340px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 8,
@@ -149,10 +198,17 @@
       "image": "2026-04-04_16-16-23.jpg",
       "text": "<span style=\"color:#f6a67e;\">זהו!</span> תסתכלו על ההבדל. האייקונים גדולים, הטקסט ברור, הכל נעים לעין. שינוי של 30 שניות שמשדרג את כל החוויה מול המחשב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי לסיים.</div>",
       "textPos": {
-        "left": "5%",
-        "top": "20%"
+        "left": "25.8988%",
+        "top": "25.732%"
       },
-      "textWidth": "360px"
+      "textWidth": "360px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     }
   ]
 }
