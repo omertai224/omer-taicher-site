@@ -581,8 +581,8 @@ function buildHowToSlide1() {
     + '<div class="ht-sub">כל מה שצריך לדעת לפני שמתחילים</div>'
     + '<div class="ht-grid">'
 
-    // ─── 3 content cards ───
-    + '<div class="ht-row ht-row-3">'
+    // ─── 4 content cards ───
+    + '<div class="ht-row ht-row-4">'
 
     + '<div class="ht-card">'
     + '<div class="ht-icon" style="background:transparent;"><div style="width:92%;height:42%;border:4px solid #ff7c2a;border-radius:10px;box-shadow:0 0 0 2px rgba(255,124,42,0.4),0 0 16px rgba(255,124,42,0.6);animation:box-pulse 1.8s ease-in-out infinite;"></div></div>'
@@ -608,19 +608,13 @@ function buildHowToSlide1() {
     + '<div class="ht-card-desc">בכל שלב כתוב מה לעשות.<br style="margin:0;"><span style="color:#f6a67e;">קראו ועשו לפי ההנחיות.</span></div>'
     + '</div>'
 
+    + '<div class="ht-card">'
+    + '<div class="ht-icon navy"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg></div>'
+    + '<div class="ht-card-title">רק לחיצה רגילה</div>'
+    + '<div class="ht-card-desc">לחיצה אחת על הכתום.<br style="margin:0;"><span style="color:#f6a67e;">בלי כפולה, בלי ימנית.</span></div>'
+    + '</div>'
+
     + '</div>' // end row
-
-    // Left-click only card
-    + '<div class="ht-row" style="justify-content:center;margin-top:1vh;">'
-    + '<div class="ht-card" style="width:auto;max-width:500px;aspect-ratio:auto;flex-direction:row;gap:1.5vw;padding:2vh 2.5vw;">'
-    + '<div class="ht-icon navy" style="flex-shrink:0;"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg></div>'
-    + '<div style="text-align:right;">'
-    + '<div class="ht-card-title" style="margin-bottom:4px;">בהדרכה לוחצים רק לחיצה רגילה</div>'
-    + '<div class="ht-card-desc">לחיצה אחת פשוטה על הסימון הכתום.<br style="margin:0;"><span style="color:#f6a67e;">בלי לחיצה כפולה, בלי לחיצה ימנית.</span></div>'
-    + '</div>'
-    + '</div>'
-    + '</div>'
-
     + '</div>' // end grid
 
     + '<button class="ht-btn" onclick="nextSlide()">'
