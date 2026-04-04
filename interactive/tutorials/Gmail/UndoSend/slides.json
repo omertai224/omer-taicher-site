@@ -46,30 +46,50 @@
       "step": 3,
       "type": "click",
       "image": "2026-04-04_18-24-13.png",
-      "text": "לוחצים על <span style=\"color:#f6a67e;\">שליחה</span>. בלי לחשוב פעמיים.",
+      "text": "לוחצים על <span style=\"color:#f6a67e;\">שליח</span><span style=\"color: rgb(246, 166, 126);\"><span style=\"color:#f6a67e;\">ה</span>.&nbsp;</span><br>בלי לחשוב פעמיים.",
       "box": {
-        "top": "91%",
-        "left": "22%",
-        "right": "65%",
-        "bottom": "2%"
+        "top": "83.9936%",
+        "left": "44.3328%",
+        "right": "47.922%",
+        "bottom": "8.79406%"
       },
       "textPos": {
-        "left": "50%",
-        "top": "60%"
+        "left": "53.1045%",
+        "top": "57.2397%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 3,
       "step": 4,
       "type": "view",
       "image": "2026-04-04_18-24-23.png",
-      "text": "<span style=\"color:#f6a67e;\">נשלח.</span> ואז הלב קופץ. 5,000?! רגע, זה היה אמור להיות 500! אבל תסתכלו למטה. רואים את הפס השחור? <span style=\"color:#f6a67e;\">יש לכם כמה שניות לבטל.</span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "<span style=\"color:#f6a67e;\">נשלח.</span> ואז הלב קופץ.&nbsp;<br>5,000?!&nbsp;<br>רגע, זה היה אמור להיות 500!&nbsp;<br>אבל תסתכלו למטה.&nbsp;<br>רואים את הפס השחור?&nbsp;<br><span style=\"color:#f6a67e;\">יש לכם 5 שניות לבטל.</span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך.</div>",
       "textPos": {
-        "left": "5%",
-        "top": "20%"
+        "left": "49.6654%",
+        "top": "16.3891%"
       },
-      "textWidth": "360px"
+      "textWidth": "360px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "box": {
+        "top": "78.6199%",
+        "left": "59.4984%",
+        "right": "7.1258%",
+        "bottom": "9.66029%"
+      }
     },
     {
       "index": 4,
@@ -77,17 +97,18 @@
       "type": "click",
       "image": "2026-04-04_18-24-52.png",
       "text": "מהר! לחצו על <span style=\"color:#f6a67e;\">ביטול</span> בפס השחור למטה.",
-      "box": {
-        "top": "92%",
-        "left": "35%",
-        "right": "53%",
-        "bottom": "2%"
-      },
       "textPos": {
-        "left": "25%",
-        "top": "60%"
+        "left": "58.0812%",
+        "top": "49.1718%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "בשקף הזה צריך איי איי איי פיספסנו פספסנו לא לא הספקנו ללחוץ על הכפתור היו לנו רק חמש שניות יא אללה כי אתה מבין את הנקודה כאילו אנחנו מציגים את הבעיה עכשיו היה לנו רק חמש שניות איזה באסה עכשיו אנחנו נלמד איך להפוך את זה ליותר זמן הבנת את הקונספט",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 5,
