@@ -519,7 +519,7 @@ br {
   flex-wrap: wrap;
   justify-content: center;
   gap: 2vh 1.5vw;
-  max-width: 900px;
+  max-width: 95vw;
   width: 100%;
   position: relative;
 }
