@@ -611,6 +611,9 @@ function buildHowToSlide1() {
     + '</div>' // end row
     + '</div>' // end grid
 
+    // Left-click only note
+    + '<div style="text-align:center;color:#ffffffbb;font-size:clamp(11px,1.3vw,14px);margin-top:1.5vh;direction:rtl;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" style="vertical-align:middle;margin-left:6px;"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg>בכל ההדרכה לוחצים רק <span style="color:#f6a67e;font-weight:700;">קליק שמאלי רגיל</span>. בלי קליק ימני, בלי לחיצה כפולה.</div>'
+
     + '<button class="ht-btn" onclick="nextSlide()">'
     + '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 16 16 12 12 8"/><line x1="8" y1="12" x2="16" y2="12"/></svg>'
     + 'המשיכו'
