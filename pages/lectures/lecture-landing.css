@@ -634,11 +634,6 @@ body {
   border-color: var(--orange-deep);
   color: var(--orange-deep);
 }
-@media (max-width: 600px) {
-  .promo-grid { grid-template-columns: 1fr; gap: 12px; }
-  .promo-card { padding: 22px 18px; }
-  .promo-more a { font-size: 0.82rem; padding: 10px 20px; }
-}
 
 /* ===== FOOTER ===== */
 footer {
@@ -696,6 +691,7 @@ footer {
   .quote-card { padding: 28px 20px; }
   .promo-grid { grid-template-columns: 1fr; gap: 12px; }
   .promo-card { padding: 22px 18px; }
+  .promo-more a { font-size: 0.82rem; padding: 10px 20px; }
   .btn-register { padding: 14px 32px; font-size: 0.95rem; }
   .countdown-wrap { gap: 4px; }
   .cd-num { font-size: clamp(1.5rem, 8vw, 2.5rem); }
