@@ -115,11 +115,20 @@ function showTutorial() { showPersonalBadge(); setNavBarColor(1); showSlides(1);
     if (timeout) { clearTimeout(timeout); }
 
     overlay = document.createElement('div');
-    overlay.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:99999;background:linear-gradient(145deg,#1a2540ee,#0f1a2eee);border:2px solid #f6a67e;border-radius:20px;padding:28px 40px;text-align:center;font-family:Rubik,sans-serif;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(16px);animation:ht-fadeUp 0.3s ease;direction:rtl;max-width:400px;';
+    overlay.style.cssText = 'position:fixed;z-index:99999;background:linear-gradient(145deg,#1a2540ee,#0f1a2eee);border:2px solid #f6a67e;border-radius:16px;padding:20px 32px;text-align:center;font-family:Rubik,sans-serif;box-shadow:0 12px 48px rgba(0,0,0,0.6);backdrop-filter:blur(16px);animation:ht-fadeUp 0.3s ease;direction:rtl;white-space:nowrap;';
+
+    // Position near cursor
+    var x = e.clientX;
+    var y = e.clientY;
+    overlay.style.left = x + 'px';
+    overlay.style.top = y + 'px';
+    overlay.style.transform = 'translate(-50%, -120%)';
 
     overlay.innerHTML = ''
-      + '<div style="margin-bottom:16px;"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg></div>'
-      + '<div style="color:white;font-size:20px;font-weight:800;">בהדרכה לוחצים רק לחיצה רגילה</div>';
+      + '<div style="display:flex;align-items:center;gap:10px;justify-content:center;">'
+      + '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f6a67e" stroke-width="2"><path d="M4 4l7.07 17 2.51-7.39L21 11.07z"/></svg>'
+      + '<span style="color:white;font-size:17px;font-weight:800;">בהדרכה לוחצים רק לחיצה רגילה</span>'
+      + '</div>';
 
     document.body.appendChild(overlay);
 
