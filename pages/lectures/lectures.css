@@ -140,7 +140,7 @@ body {
   padding:12px 16px;
   background:var(--cream);
   border-bottom:1px solid var(--border);
-  direction:ltr;
+  direction:rtl;
 }
 .lec-chapter-tag {
   display:inline-flex; align-items:center; gap:6px;
