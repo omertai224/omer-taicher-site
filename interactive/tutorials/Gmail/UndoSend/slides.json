@@ -10,8 +10,8 @@
       "image": "2026-04-04_18-23-50.png",
       "text": "תיבת הדואר שלכם.&nbsp;<br>הצעת מחיר לד\"ר שרה כהן מחכה לשליחה. הכל נראה מוכן.&nbsp;<br><span style=\"color:#f6a67e;\">אבל יש טעות שעוד לא שמתם לב אליה.</span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "36.5284%",
-        "top": "28.6082%"
+        "left": "32.2284%",
+        "top": "27.1209%"
       },
       "textWidth": "320px"
     },
@@ -68,31 +68,43 @@
       "step": 5,
       "type": "view",
       "image": "2026-04-04_18-24-52.png",
-      "text": "<span style=\"color:#f6a67e;\">פיספסנו!</span> לא הספקנו ללחוץ על ביטול. חמש שניות זה כלום. המייל עם 5,000 ש\"ח כבר אצל ד\"ר שרה כהן. אבל אנחנו לא ניתן לזה לקרות שוב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "<span style=\"color:#f6a67e;\">פיספסנו!</span> לא הספקנו ללחוץ על ביטול. חמש שניות זה כלום.&nbsp;<br>המייל עם 5,000 ש\"ח כבר אצל ד\"ר שרה כהן.&nbsp;<br>אבל אנחנו לא ניתן לזה לקרות שוב.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"></polyline></svg></span> כדי להמשיך.</div>",
       "textPos": {
-        "left": "58.0812%",
-        "top": "49.1718%"
+        "left": "58.3188%",
+        "top": "22.6314%"
       },
-      "textWidth": "280px"
+      "textWidth": "280px",
+      "box": {
+        "top": "78.1953%",
+        "left": "59.379%",
+        "right": "7.24522%",
+        "bottom": "9.44798%"
+      }
     },
     {
       "index": 5,
       "step": 6,
-      "type": "view",
+      "type": "click",
       "image": "2026-04-04_18-25-01.png",
-      "text": "בואו נדאג שזה לא יקרה שוב. נכנס להגדרות של ג'ימייל ונגדיל את הזמן לביטול שליחה מ-5 שניות ל-<span style=\"color:#f6a67e;\">30 שניות</span>. חצי דקה שיכולה להציל אתכם.<div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך.</div>",
+      "text": "בואו נדאג שזה לא יקרה שוב. נכנס להגדרות של ג'ימייל ונגדיל את הזמן לביטול שליחה מ-5 שניות ל-<span style=\"color:#f6a67e;\">30 שניות</span>. חצי דקה שיכולה להציל אתכם.",
       "textPos": {
-        "left": "25%",
-        "top": "25%"
+        "left": "28.4628%",
+        "top": "15.0201%"
       },
-      "textWidth": "340px"
+      "textWidth": "340px",
+      "box": {
+        "top": "5.37155%",
+        "left": "22.715%",
+        "right": "71.8551%",
+        "bottom": "84.8196%"
+      }
     },
     {
       "index": 6,
       "step": 7,
       "type": "click",
       "image": "2026-04-04_18-25-06.png",
-      "text": "נכנס להגדרות. לחצו על <span style=\"color:#f6a67e;\">לדף ההגדרות</span>.",
+      "text": "בתפריט ההגדרות שנפתח, לחצו על <span style=\"color:#f6a67e;\">לדף ההגדרות</span> כדי להגיע להגדרות המלאות.",
       "box": {
         "top": "21.3906%",
         "left": "5.25317%",
@@ -118,8 +130,8 @@
         "bottom": "34.4119%"
       },
       "textPos": {
-        "left": "55.7325%",
-        "top": "28.4601%"
+        "left": "27.9054%",
+        "top": "18.4802%"
       },
       "textWidth": "300px"
     },
@@ -128,7 +140,7 @@
       "step": 9,
       "type": "click",
       "image": "2026-04-04_18-25-19.png",
-      "text": "בחרו <span style=\"color:#f6a67e;\">30 שניות</span>. חצי דקה. מספיק זמן לקרוא שוב, לבדוק מספרים, לשים לב לטעויות. עכשיו אפשר לשלוח מיילים בשקט.",
+      "text": "בחרו <span style=\"color:#f6a67e;\">30 שניות</span>. חצי דקה שבה אתם יכולים פתאום לשים לב שעשיתם טעות. מספיק זמן לתפוס את עצמכם לפני שהמייל מגיע.",
       "box": {
         "top": "73.7113%",
         "left": "45.258%",
@@ -136,8 +148,8 @@
         "bottom": "18.2887%"
       },
       "textPos": {
-        "left": "52.7468%",
-        "top": "40.8064%"
+        "left": "52.985%",
+        "top": "42.2926%"
       },
       "textWidth": "300px"
     },
@@ -146,7 +158,7 @@
       "step": 10,
       "type": "click",
       "image": "2026-04-04_18-25-35.png",
-      "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">שמירת השינויים</span>.",
+      "text": "גללו למטה ולחצו על <span style=\"color:#f6a67e;\">שמירת השינויים</span>.<br><span style=\"font-size:13px;color:#ffffffaa;\">בכל שינוי הגדרות בג'ימייל, חייבים ללחוץ על שמירת שינויים.</span>",
       "box": {
         "top": "65.6794%",
         "left": "28.2723%",
