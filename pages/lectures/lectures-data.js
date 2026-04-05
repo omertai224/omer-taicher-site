@@ -10,6 +10,7 @@ var lecturesData = [
     chapters: [
       { time: "0:00", label: "פתיחה" },
       { time: "2:44", label: "חקירה 1: המחשב לא נדלק", sub: [
+        { time: "2:44", label: "הקדמה" },
         { time: "4:01", label: "ספק הכוח" },
         { time: "5:08", label: "המסך" },
         { time: "6:45", label: "זיכרון RAM" },
@@ -17,6 +18,7 @@ var lecturesData = [
       ]},
       { time: "10:30", label: "טיפ: לפטופ שלא מתעורר משינה עמוקה" },
       { time: "11:31", label: "חקירה 2: המחשב איטי", sub: [
+        { time: "11:31", label: "הקדמה" },
         { time: "12:45", label: "דיסק קשיח: HDD לעומת SSD" },
         { time: "17:13", label: "טמפרטורה וניקוי אבק" },
         { time: "19:49", label: "תוכנות ברקע והפעלה אוטומטית" },
