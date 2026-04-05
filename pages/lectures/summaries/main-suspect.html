@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סיכום: החשוד העיקרי | מיומנו של טכנאי מחשבים</title>
+<meta name="description" content="סיכום אינטראקטיבי של ההרצאה החשוד העיקרי. איך מאבחנים מחשב שלא נדלק או עובד לאט, כלים חינמיים ושאלות מהקהל.">
+<link rel="preload" href="/assets/fonts/rubik-hebrew-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/rubik-hebrew-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-hebrew-400-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-hebrew-700-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:800;src:url(/assets/fonts/rubik-hebrew-800-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:800;src:url(/assets/fonts/rubik-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+</style>
+<link rel="stylesheet" href="summary.css">
+</head>
+<body>
+
+<!-- NAV -->
+<div id="nav-root"></div>
+<script src="/assets/js/nav-loader.js"></script>
+
+<!-- HERO -->
+<header class="sum-hero">
+  <div class="sum-hero-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+    סיכום הרצאה
+  </div>
+  <h1>החשוד העיקרי</h1>
+  <p class="sum-hero-sub">המחשב לא נדלק? המחשב איטי? בואו נגלה את האשם.<br>כמו חקירה אמיתית, כשמשהו לא עובד במחשב, צריך לחשוד בחשודים הנכונים.</p>
+  <div class="sum-hero-meta">
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 29.3.26</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~53 דקות</span>
+    <span>פרק 6 בסדרה</span>
+  </div>
+  <a class="btn-yt" href="https://www.youtube.com/watch?v=w39nfdWapGI&cc_load_policy=1&cc_lang_pref=iw" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+    צפו ביוטיוב
+  </a>
+</header>
+
+<!-- KEY TAKEAWAYS -->
+<section class="sum-section">
+  <div class="sum-section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+    מה למדנו?
+  </div>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h3>חקירה 1: המחשב לא נדלק</h3>
+      <p>בדקו לפי הסדר: ספק כוח, מסך, RAM, לוח האם. לא קופצים ישר ללוח האם!</p>
+    </div>
+    <div class="card">
+      <div class="card-icon navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3>חקירה 2: המחשב איטי</h3>
+      <p>ארבעה חשודים: דיסק קשיח ישן, תוכנות ברקע, וירוסים, ואינטרנט חלש.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>טיפ הזהב: לפטופ שלא נדלק</h3>
+      <p>לחיצה ארוכה 30-40 שניות על כפתור ההפעלה. זה מחזיר לפטופ משינה עמוקה.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg></div>
+      <h3>CCleaner מת, יש תחליף</h3>
+      <p>Patch My PC מחליף את CCleaner. חינמי, בלי פרסומות, מעדכן תוכנות אוטומטית.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIGATION FLOW 1 -->
+<section class="sum-section" style="background:var(--white);max-width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="sum-section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4a6b" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      חקירה 1: המחשב לא נדלק
+    </div>
+    <div class="flow-wrap">
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <h4>ספק הכוח</h4>
+        <p>הלב. מזרים חשמל</p>
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <h4>המסך</h4>
+        <p>העיניים. חלון לעולם</p>
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 8h6M9 12h6M9 16h2"/></svg>
+        <h4>זיכרון RAM</h4>
+        <p>המוח. זיכרון קצר</p>
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+        <h4>לוח האם</h4>
+        <p>מערכת העצבים</p>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--text-mid);font-size:0.85rem;">בודקים לפי הסדר. רק אם כל השלושה יצאו נקיים, מצביעים על לוח האם.</p>
+  </div>
+</section>
+
+<!-- INVESTIGATION FLOW 2 -->
+<section class="sum-section">
+  <div class="sum-section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4a6b" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    חקירה 2: המחשב איטי
+  </div>
+  <div class="flow-wrap">
+    <div class="flow-item">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      <h4>דיסק קשיח</h4>
+      <p>HDD ישן או SSD מלא</p>
+    </div>
+    <div class="flow-arrow">←</div>
+    <div class="flow-item">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></svg>
+      <h4>טמפרטורה</h4>
+      <p>אבק על גוף הקירור</p>
+    </div>
+    <div class="flow-arrow">←</div>
+    <div class="flow-item">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/></svg>
+      <h4>תוכנות ברקע</h4>
+      <p>הפעלה אוטומטית</p>
+    </div>
+    <div class="flow-arrow">←</div>
+    <div class="flow-item">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h4>וירוסים</h4>
+      <p>תוכנות זדוניות</p>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD TIP -->
+<section class="sum-section" style="padding-top:0;">
+  <div class="gold-tip">
+    <h3>💡 טיפ הזהב של ההרצאה</h3>
+    <p>הלפטופ לא נדלק? לפני שנבהלים: לחיצה ארוכה של <strong>30-40 שניות</strong> על כפתור ההפעלה, מחכים שכל האורות יכבו, ואז לוחצים שוב. במקרים רבים זה מחזיר את המחשב לחיים מיד.</p>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="sum-section" style="background:var(--white);max-width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="sum-section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      כלים שהוזכרו
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+      <div class="tool-info">
+        <h4>Patch My PC</h4>
+        <p>המחליף של CCleaner. מעדכן תוכנות אוטומטית, מסיר תוכנות לעומק, מנהל הפעלה אוטומטית. חינמי לחלוטין, בלי פרסומות.</p>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:var(--orange-deep);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="tool-info">
+        <h4>Speccy</h4>
+        <p>מראה את כל המפרט של המחשב: מעבד, זיכרון, דיסק, טמפרטורה. מייצא לקובץ שאפשר לתת לבינה מלאכותית לנתח.</p>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div class="tool-info">
+        <h4>ADW Cleaner</h4>
+        <p>סורק סוסים טרויאניים ותוכנות זדוניות שמסתתרות ברקע. חינמי ומהיר.</p>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:var(--orange-deep);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="tool-info">
+        <h4>Speed Test (Ookla)</h4>
+        <p>בדיקת מהירות אינטרנט. מתחת ל-30 מגה? יש בעיה. בדקו אם אתם מקבלים את המהירות שאתם משלמים עליה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sum-section">
+  <div class="sum-section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4a6b" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    שאלות מהקהל
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">האם Windows Defender מספיק? <span class="chevron">▼</span></div>
+    <div class="faq-a"><p>תלוי מה אתם עושים. לגלישה בסיסית ואופיס, כן. אם פותחים קבצים ממיילים ונכנסים לאתרים עם קבצים, לא. אנטיוירוס בתשלום (כמו ESET) עולה בערך 150 שקל לשנה ונותן לכם שקט.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">יש אנטיוירוס שעובד אונליין? <span class="chevron">▼</span></div>
+    <div class="faq-a"><p>אין דבר כזה. אנטיוירוס חייב לשבת על המחשב כדי לסרוק את המערכת מבפנים. אין חיה כזאת אנטיוירוס אונליין.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">מה עושים עם McAfee? <span class="chevron">▼</span></div>
+    <div class="faq-a"><p>מסירים אותו. McAfee מגיע מותקן על מחשבים חדשים, אחרי שבועיים הוא הופך ללא פעיל ודופק את האינטרנט. אם יש לכם McAfee, תתחילו ממחיקה.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">האם Patch My PC חינמי? <span class="chevron">▼</span></div>
+    <div class="faq-a"><p>כן, לחלוטין. הגרסה הביתית (Home Updater) חינמית. יש גרסה עסקית בתשלום, אבל לשימוש ביתי זה חינם חינם חינם.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">מה עושים אם מצאו וירוס? <span class="chevron">▼</span></div>
+    <div class="faq-a"><p>אנטיוירוס בתשלום מטפל בזה לבד. הוא או מנקה את הקובץ או מוחק אותו. לא צריכים לעשות שום דבר מיוחד עם הממצאים. אתם לא הולכים להיות חוקרי סייבר.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">כמה אנטיוירוסים צריך במחשב? <span class="chevron">▼</span></div>
+    <div class="faq-a"><p>אחד בלבד! כמה אנטיוירוסים במקביל מאטים את המחשב ופוגעים באינטרנט. אם יש לכם שניים או יותר, השאירו רק את מה ששילמתם עליו ומסירים את השאר.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sum-cta">
+  <h2>רוצים ללמוד עוד?</h2>
+  <p>יש עוד 5 הרצאות בסדרה + הדרכות אינטראקטיביות שעומר בנה במיוחד</p>
+  <div class="sum-cta-btns">
+    <a class="btn-cta primary" href="/interactive/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      הדרכות אינטראקטיביות
+    </a>
+    <a class="btn-cta secondary" href="/pages/lectures/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      כל ההרצאות
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer-root"></div>
+<script src="/assets/js/footer-loader.js"></script>
+<script src="summary.js"></script>
+</body>
+</html>
