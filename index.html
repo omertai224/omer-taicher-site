@@ -698,22 +698,8 @@ nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,248,242,0.97
 </main>
 
 <!-- FOOTER -->
-<footer>
-  <a class="footer-logo" href="./">עומר <span>טייכר</span></a>
-  <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:16px 0 12px;">
-    <a href="/pages/lectures/" style="color:#f6a67e;text-decoration:none;font-size:0.85rem;font-weight:600;">הרצאות מוקלטות</a>
-    <a href="/interactive/" style="color:#f6a67e;text-decoration:none;font-size:0.85rem;font-weight:600;">הדרכות אינטראקטיביות</a>
-    <a href="/blog" style="color:#f6a67e;text-decoration:none;font-size:0.85rem;font-weight:600;">טיפים חינם</a>
-    <a href="https://chat.whatsapp.com/KcQuPcjxrSzKHjCqCJrP7r?mode=gi_t" target="_blank" rel="noopener" style="color:#25d366;text-decoration:none;font-size:0.85rem;font-weight:600;">קבוצת WhatsApp</a>
-  </div>
-  <div class="footer-copy">© 2026 כל הזכויות שמורות</div>
-  <div class="footer-links">
-    <a href="pages/legal/privacy.html">מדיניות פרטיות</a>
-    <a href="pages/legal/terms.html">תקנון ותנאי שימוש</a>
-    <a href="pages/legal/refund.html">מדיניות החזרים</a>
-    <a href="pages/legal/accessibility.html">הצהרת נגישות</a>
-  </div>
-</footer>
+<div id="footer-root"></div>
+<script src="/assets/js/footer-loader.js"></script>
 
 <script>
   if (window.location.hash) { history.replaceState(null, '', window.location.pathname); window.scrollTo(0, 0); }
