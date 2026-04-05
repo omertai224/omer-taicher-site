@@ -1,6 +1,6 @@
 {
   "tutorial": "Everything",
-  "totalSteps": 0,
+  "totalSteps": 22,
   "slides": [
     {
       "index": 0,
@@ -26,6 +26,883 @@
     },
     {
       "index": 4,
+      "type": "click",
+      "image": "2026-04-05_21-59-46.png",
+      "text": "אנחנו בתיקיית ההורדות. מחפשים את קובץ ההתקנה של Everything. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 1
+    },
+    {
+      "index": 5,
+      "type": "click",
+      "image": "2026-04-05_22-00-23.png",
+      "text": "לחיצה כפולה על קובץ ההתקנה תפתח את תהליך ההתקנה. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 2,
+      "doubleClickAnim": true
+    },
+    {
+      "index": 6,
+      "type": "click",
+      "image": "2026-04-05_22-00-32.png",
+      "text": "הופיע חלון אבטחה. זה בסדר גמור. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 3
+    },
+    {
+      "index": 7,
+      "type": "click",
+      "image": "2026-04-05_22-00-39.png",
+      "text": "מופיע חלון עם התנאים של Everything. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום כדי להסכים.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 4
+    },
+    {
+      "index": 8,
+      "type": "click",
+      "image": "2026-04-05_22-03-07.png",
+      "text": "אפשרויות ההתקנה. לא צריך לשנות כלום. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 5
+    },
+    {
+      "index": 9,
+      "type": "click",
+      "image": "2026-04-05_22-03-12.png",
+      "text": "עוד אפשרויות. גם כאן לא צריך לשנות. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 6
+    },
+    {
+      "index": 10,
+      "type": "click",
+      "image": "2026-04-05_22-03-16.png",
+      "text": "הכל מוכן להתקנה. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום כדי להתקין.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 7
+    },
+    {
+      "index": 11,
+      "type": "click",
+      "image": "2026-04-05_22-03-49.png",
+      "text": "ההתקנה הושלמה בהצלחה! <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום לסגירה.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 8
+    },
+    {
+      "index": 12,
+      "type": "view",
+      "image": "2026-04-05_22-04-06.png",
+      "text": "Everything נפתח לראשונה. זה חלון הפתיחה. סוגרים אותו.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "type": "view",
+      "image": "2026-04-05_22-05-50.png",
+      "text": "ברוכים הבאים ל-Everything! זו שורת החיפוש. כאן כותבים את שם הקובץ שמחפשים.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "type": "click",
+      "image": "2026-04-05_22-19-44.png",
+      "text": "כותבים את המילה <span style='color:#f6a67e;'>מתכון</span> בשורת החיפוש. Everything מוצא מיד את כל הקבצים. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 9,
+      "typingAnim": true
+    },
+    {
+      "index": 15,
+      "type": "click",
+      "image": "2026-04-05_22-20-11.png",
+      "text": "עכשיו נלמד לסנן תוצאות לפי סוג קובץ. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 10
+    },
+    {
+      "index": 16,
+      "type": "click",
+      "image": "2026-04-05_22-20-27.png",
+      "text": "נפתח תפריט המסננים. בוחרים <span style='color:#f6a67e;'>וידאו</span> כדי לראות רק סרטונים. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 11
+    },
+    {
+      "index": 17,
+      "type": "view",
+      "image": "2026-04-05_22-20-34.png",
+      "text": "Everything מראה רק סרטונים שמכילים את המילה מתכון. סינון חכם!",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "type": "click",
+      "image": "2026-04-05_22-20-40.png",
+      "text": "עכשיו נסנן לפי <span style='color:#f6a67e;'>תמונות</span>. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 12
+    },
+    {
+      "index": 19,
+      "type": "click",
+      "image": "2026-04-05_22-20-44.png",
+      "text": "בוחרים תמונות מתפריט המסננים. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 13
+    },
+    {
+      "index": 20,
+      "type": "view",
+      "image": "2026-04-05_22-20-58.png",
+      "text": "עכשיו רואים רק תמונות. כל תמונה שיש בה את המילה מתכון.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "type": "click",
+      "image": "2026-04-05_22-21-11.png",
+      "text": "נסנן עכשיו לפי <span style='color:#f6a67e;'>מסמכים</span>. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 14
+    },
+    {
+      "index": 22,
+      "type": "click",
+      "image": "2026-04-05_22-21-14.png",
+      "text": "בוחרים מסמכים מהתפריט. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 15
+    },
+    {
+      "index": 23,
+      "type": "view",
+      "image": "2026-04-05_22-21-58.png",
+      "text": "עכשיו רואים רק מסמכים. PDF, וורד, טקסט.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "type": "click",
+      "image": "2026-04-05_22-22-02.png",
+      "text": "חוזרים לראות את <span style='color:#f6a67e;'>כל הקבצים</span>. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 16
+    },
+    {
+      "index": 25,
+      "type": "click",
+      "image": "2026-04-05_22-22-07.png",
+      "text": "בוחרים <span style='color:#f6a67e;'>הכל</span> מהתפריט כדי לחזור לכל התוצאות. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 17
+    },
+    {
+      "index": 26,
+      "type": "view",
+      "image": "2026-04-05_22-22-11.png",
+      "text": "עכשיו נפעיל <span style='color:#f6a67e;'>תצוגה מקדימה</span>. ככה רואים מה בתוך הקובץ בלי לפתוח אותו.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "type": "click",
+      "image": "2026-04-05_22-23-40.png",
+      "text": "מפעילים תצוגה מקדימה. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 18
+    },
+    {
+      "index": 28,
+      "type": "click",
+      "image": "2026-04-05_22-23-46.png",
+      "text": "לוחצים על קובץ כדי לראות תצוגה מקדימה שלו. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 19
+    },
+    {
+      "index": 29,
+      "type": "view",
+      "image": "2026-04-05_22-23-53.png",
+      "text": "רואים תצוגה מקדימה של הקבצים. בלי לפתוח כל קובץ בנפרד!",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "type": "view",
+      "image": "2026-04-05_22-24-00.png",
+      "text": "אפשר לעבור בין קבצים ולראות מה בפנים. תמונות, מסמכים, סרטונים.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "type": "view",
+      "image": "2026-04-05_22-24-04.png",
+      "text": "תצוגה מקדימה של תמונה. רואים אותה בלי לפתוח תוכנת תמונות.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "type": "view",
+      "image": "2026-04-05_22-24-16.png",
+      "text": "תצוגה מקדימה של קובץ טקסט. רואים מה כתוב בפנים מיד.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "type": "view",
+      "image": "2026-04-05_22-24-23.jpg",
+      "text": "זו תמונה של מתכון חדש. Everything מצא אותה בשנייה.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "type": "view",
+      "image": "2026-04-05_22-24-28.jpg",
+      "text": "עוד תמונה שנמצאה. כל מה שקשור למילה מתכון.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "type": "view",
+      "image": "2026-04-05_22-24-37.png",
+      "text": "תצוגה מקדימה של סרטון! אפשר לראות את הסרטון ישירות מ-Everything.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "type": "view",
+      "image": "2026-04-05_22-24-42.jpg",
+      "text": "עוד תמונה מתוך תיקיית המתכונים.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "type": "view",
+      "image": "2026-04-05_22-24-47.png",
+      "text": "תצוגה מקדימה של מסמך טקסט. רואים את התוכן בלי לפתוח.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "type": "click",
+      "image": "2026-04-05_22-25-24.png",
+      "text": "רוצים לדעת איפה הקובץ נמצא במחשב? כפתור ימני ובוחרים <span style='color:#f6a67e;'>פתח מיקום</span>. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 20,
+      "rightClickAnim": true
+    },
+    {
+      "index": 39,
+      "type": "view",
+      "image": "2026-04-05_22-25-37.png",
+      "text": "הנה הקובץ בתיקייה שלו ב-Windows! עכשיו אתם יודעים בדיוק איפה הוא נמצא.",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "type": "click",
+      "image": "2026-04-05_22-25-56.png",
+      "text": "בשורת המשימות למטה, לוחצים כפתור ימני על Everything. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 21,
+      "rightClickAnim": true
+    },
+    {
+      "index": 41,
+      "type": "click",
+      "image": "2026-04-05_22-26-03.png",
+      "text": "בוחרים <span style='color:#f6a67e;'>הצמד לשורת המשימות</span> כדי ש-Everything יהיה תמיד זמין. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "box": {
+        "top": "50%",
+        "left": "50%",
+        "right": "40%",
+        "bottom": "40%"
+      },
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ],
+      "step": 22
+    },
+    {
+      "index": 42,
+      "type": "view",
+      "image": "2026-04-05_22-26-18.png",
+      "text": "Everything מוצמד לשורת המשימות ליד תיקיית הקבצים. מעכשיו חיפוש קבצים בקליק אחד!",
+      "box": {},
+      "textPos": {
+        "left": "30%",
+        "top": "30%"
+      },
+      "textWidth": "280px",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
+    },
+    {
+      "index": 43,
       "type": "special",
       "specialType": "outro",
       "html": "<style>\n.outro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);padding:16px 20px;box-sizing:border-box;background:linear-gradient(135deg,#1a1a2e,#16213e 50%,#0f3460);}\n.outro-title{font-size:clamp(16px,2.5vw,30px);font-weight:900;color:white;margin-bottom:4px;text-align:center;}\n.outro-title span{color:#f6a67e;}\n.outro-sub{color:#ffffffaa;font-size:13px;margin-bottom:12px;text-align:center;}\n.use-cases{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;width:100%;max-width:960px;margin-bottom:12px;}\n.use-card{background:#ffffff0d;border:1px solid #ffffff1a;border-radius:12px;padding:10px 12px;text-align:right;}\n.use-card:hover{transform:translateY(-3px);background:#ffffff18;}\n.use-card .uc-title{color:#f6a67e;font-size:12px;font-weight:700;margin-bottom:3px;}\n.use-card .uc-desc{color:#ffffffbb;font-size:11px;line-height:1.5;}\n.outro-tip{background:#ffffff0d;border:1px solid #f6a67e44;border-radius:10px;padding:8px 16px;max-width:960px;width:100%;margin-bottom:10px;text-align:right;}\n.outro-tip span{color:#f6a67e;font-weight:700;font-size:12px;}\n.outro-tip p{color:#ffffffcc;font-size:11px;margin:2px 0 0 0;line-height:1.5;}\n.btn-restart{background:linear-gradient(135deg,#f6a67e,#ff6b6b);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.35);}\n.btn-more{display:inline-block;background:linear-gradient(135deg,#4ade80,#22c55e);color:white;border:none;padding:12px 36px;border-radius:50px;font-size:15px;font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(74,222,128,0.3);text-decoration:none;}\n.btn-more:hover{transform:scale(1.05);}\n</style>\n<div class=\"outro-wrap\">\n<div class=\"outro-title\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:8px;\"><path d=\"M9 18h6\"/><path d=\"M10 22h4\"/><path d=\"M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z\"/></svg> סיימתם! עכשיו מה עושים עם <span>Everything?</span></div>\n<div class=\"outro-sub\">Everything מותקן ומוכן לשימוש. הנה מה שאפשר לעשות:</div>\n<div class=\"use-cases\">\n<div class=\"use-card\"><div class=\"uc-title\">חיפוש מיידי</div><div class=\"uc-desc\">הקלידו כל מילה ומצאו כל קובץ במחשב תוך שנייה.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">ניווט ישיר</div><div class=\"uc-desc\">קליק ימני על קובץ ופתיחת התיקייה שלו ישירות.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">תצוגה מקדימה</div><div class=\"uc-desc\">צפו בתוכן קבצים בלי לפתוח אותם.</div></div>\n<div class=\"use-card\"><div class=\"uc-title\">הצמדה לשורת המשימות</div><div class=\"uc-desc\">הצמידו Everything לשורת המשימות לגישה מהירה.</div></div>\n</div>\n<div class=\"outro-tip\"><span>טיפ זהב</span><p>לחצו פעמיים על סמל Everything בשורת המשימות בכל פעם שאתם מחפשים קובץ. תוך שנייה תמצאו הכל.</p></div>\n<div style=\"display:flex;gap:10px;justify-content:center;flex-wrap:wrap;\"><button class=\"btn-restart\" onclick=\"showSlides(1)\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" style=\"vertical-align:middle;margin-left:6px;\"><polyline points=\"1 4 1 10 7 10\"/><path d=\"M3.51 15a9 9 0 102.13-9.36L1 10\"/></svg>חזרו להתחלה</button><a href=\"/interactive/\" target=\"_blank\" class=\"btn-more\">&#9654; להדרכות נוספות</a></div>\n</div>"
