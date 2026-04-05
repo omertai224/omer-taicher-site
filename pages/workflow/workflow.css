@@ -373,6 +373,13 @@ nav {
 .badge-ready { background: #e8f5e9; color: #2e7d32; }
 .badge-idea { background: #e3f2fd; color: #1565c0; }
 .badge-priority { background: var(--orange-light); color: var(--orange-deep); }
+.badge-proven { background: #fce4ec; color: #c62828; }
+.idea-delete-btn {
+  flex-shrink: 0; background: none; border: 1px solid #e8e0d6; border-radius: 8px;
+  padding: 4px 10px; font-size: 0.7rem; font-weight: 600; color: #999;
+  cursor: pointer; font-family: inherit; transition: all 0.2s; margin-right: auto;
+}
+.idea-delete-btn:hover { background: #fce4ec; color: #c62828; border-color: #c62828; }
 .idea-card-source {
   flex-shrink: 0; font-size: 0.75rem; color: var(--text-mid);
   font-weight: 500;

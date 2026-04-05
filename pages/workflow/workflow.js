@@ -88,6 +88,23 @@ function toggleIdea(header) {
   card.classList.toggle('open');
 }
 
+function deleteIdea(btn, event) {
+  event.stopPropagation();
+  var card = btn.closest('.idea-card');
+  if (confirm('למחוק את הרעיון הזה?')) {
+    card.style.transition = 'opacity 0.3s, max-height 0.3s';
+    card.style.opacity = '0';
+    card.style.maxHeight = card.offsetHeight + 'px';
+    setTimeout(function() {
+      card.style.maxHeight = '0';
+      card.style.overflow = 'hidden';
+      card.style.padding = '0';
+      card.style.margin = '0';
+    }, 100);
+    setTimeout(function() { card.remove(); }, 400);
+  }
+}
+
 function filterIdeas() {
   var input = document.getElementById('ideas-search');
   if (!input) return;
