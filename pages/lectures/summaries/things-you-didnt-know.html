@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סיכום: דברים שלא ידעתם על המחשב שלכם | מיומנו של טכנאי מחשבים</title>
+<meta name="description" content="סיכום אינטראקטיבי של ההרצאה דברים שלא ידעתם על המחשב שלכם. מפרט מחשב, בעיות WiFi, מדפסות וחיי סוללה.">
+<link rel="preload" href="/assets/fonts/rubik-hebrew-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/rubik-hebrew-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-hebrew-400-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-hebrew-700-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:800;src:url(/assets/fonts/rubik-hebrew-800-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:800;src:url(/assets/fonts/rubik-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+</style>
+<link rel="stylesheet" href="summary.css">
+</head>
+<body>
+
+<!-- NAV -->
+<div id="nav-root"></div>
+<script src="/assets/js/nav-loader.js"></script>
+
+<!-- HERO -->
+<header class="sum-hero">
+  <div class="sum-hero-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+    סיכום הרצאה
+  </div>
+  <h1>דברים שלא ידעתם על המחשב שלכם</h1>
+  <p class="sum-hero-sub">מה באמת קורה בתוך המחשב? בעיות אינטרנט, מדפסת שלא מדפיסה, וסוללה שנגמרת.<br>ארבעה מקרים אמיתיים שמלמדים איך להבין את המחשב ולפתור בעיות לבד.</p>
+  <div class="sum-hero-meta">
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 23.11.25</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~51 דקות</span>
+    <span>פרק 2 בסדרה</span>
+  </div>
+  <a class="btn-yt" href="https://www.youtube.com/watch?v=Np0XbJ2L1B4&cc_load_policy=1&cc_lang_pref=iw" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+    צפו ביוטיוב
+  </a>
+</header>
+
+<!-- KEY TAKEAWAYS -->
+<section class="sum-section">
+  <div class="sum-section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+    מה למדנו?
+  </div>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <h3>המקרה של רוני: מפרט מחשב</h3>
+      <p>איך לבדוק מה יש במחשב עם Speccy ומתי שווה לשדרג. דור מעבד 8 ומעלה = אפשר וינדוס 11.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg></div>
+      <h3>המקרה של נועה: WiFi</h3>
+      <p>למה הויפיי לא עובד טוב ואיך נתבי Mesh פותרים את זה. מגדיל טווח? לא עובד.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg></div>
+      <h3>המקרה של דורית: מדפסת</h3>
+      <p>5 שאלות שצריך לשאול כשהמדפסת לא עובדת. לפני שקוראים לטכנאי, בודקים את הבסיס.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg></div>
+      <h3>המקרה של טל: סוללה</h3>
+      <p>איך להאריך חיי סוללה במחשב נייד. המסך שותה הכי הרבה חשמל, ואחרי שנתיים הסוללה נגמרת.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTIGATION FLOW -->
+<section class="sum-section" style="background:var(--white);max-width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="sum-section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4a6b" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      מסע החקירה
+    </div>
+    <div class="flow-wrap">
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <h4>רוני</h4>
+        <p>מפרט מחשב</p>
+      </div>
+      <div class="flow-arrow">&#8592;</div>
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+        <h4>נועה</h4>
+        <p>אינטרנט / WiFi</p>
+      </div>
+      <div class="flow-arrow">&#8592;</div>
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        <h4>דורית</h4>
+        <p>מדפסת</p>
+      </div>
+      <div class="flow-arrow">&#8592;</div>
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="13" x2="23" y2="11"/></svg>
+        <h4>טל</h4>
+        <p>סוללה</p>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--text-mid);font-size:0.85rem;">ארבעה מקרים אמיתיים, ארבעה נושאים שכל אחד פוגש בבית.</p>
+  </div>
+</section>
+
+<!-- GOLD TIP -->
+<section class="sum-section" style="padding-top:0;">
+  <div class="gold-tip">
+    <h3>&#128161; טיפ הזהב של ההרצאה</h3>
+    <p>ניקוי אבק מגוף הקירור של המעבד עם פן ומכחול. המחשב מתחמם? לא עובד טוב? <strong>ניקוי אבק יכול לשנות את המהירות בצורה דרמטית.</strong> זה דבר פשוט שכל אחד יכול לעשות בבית.</p>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="sum-section" style="background:var(--white);max-width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="sum-section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+      כלים שהוזכרו
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+      <div class="tool-info">
+        <h4>Speccy</h4>
+        <p>מראה את כל המפרט של המחשב: מעבד, זיכרון, דיסק, טמפרטורה. רוצים לדעת אם המחשב תואם לוינדוס 11? Speccy יגיד לכם.</p>
+      </div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon" style="background:var(--orange-deep);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="tool-info">
+        <h4>Speed Test (Ookla)</h4>
+        <p>בדיקת מהירות אינטרנט. בדקו אם אתם מקבלים את המהירות שאתם משלמים עליה. אם לא, הבעיה אצל הספק או בראוטר.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sum-section">
+  <div class="sum-section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4a6b" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    שאלות מהקהל
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q">איך יודעים אם המחשב תואם לוינדוס 11? <span class="chevron">&#9660;</span></div>
+    <div class="faq-a"><p>ב-Speccy, אם דור המעבד הוא 8 ומעלה, אפשר להתקין. מתחת לדור 8, לא שווה להשקיע.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">מה זה נתבי Mesh? <span class="chevron">&#9660;</span></div>
+    <div class="faq-a"><p>2-3 יחידות שממקמים כמו משולש בבית. הם יוצרים רשת WiFi חזקה שמכסה כל חדר, כולל הממד. הפתרון המושלם לאינטרנט בבית.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">למה מגדיל טווח לא עובד? <span class="chevron">&#9660;</span></div>
+    <div class="faq-a"><p>כי הוא מתקשר עם הראוטר החולה. אם הראוטר לא מפיץ אינטרנט טוב, גם המגדיל יקבל אינטרנט גרוע.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">מה הדבר שהכי שותה חשמל בלפטופ? <span class="chevron">&#9660;</span></div>
+    <div class="faq-a"><p>המסך! להוריד בהירות למינימום ולהפעיל מצב חיסכון באנרגיה לפני שיוצאים מהבית.</p></div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">מתי להחליף סוללה? <span class="chevron">&#9660;</span></div>
+    <div class="faq-a"><p>אחרי שנתיים של שימוש. לסוללות יש מחזורי טעינה שנגמרים. סוללה ישנה מקצרת את זמן העבודה.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sum-cta">
+  <h2>רוצים ללמוד עוד?</h2>
+  <p>יש עוד 5 הרצאות בסדרה + הדרכות אינטראקטיביות שעומר בנה במיוחד</p>
+  <div class="sum-cta-btns">
+    <a class="btn-cta primary" href="/interactive/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      הדרכות אינטראקטיביות
+    </a>
+    <a class="btn-cta secondary" href="/pages/lectures/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      כל ההרצאות
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer-root"></div>
+<script src="/assets/js/footer-loader.js"></script>
+<script src="summary.js"></script>
+</body>
+</html>
