@@ -6,23 +6,51 @@
       "index": 0,
       "type": "special",
       "specialType": "intro",
-      "html": "<style>\n@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes shimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}\n.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);background:#1a1a2e;text-align:center;padding:clamp(12px,2vh,20px) clamp(16px,3vw,40px) clamp(12px,2vh,20px);box-sizing:border-box;overflow-y:auto;}\n.intro-badge{background:linear-gradient(135deg,#3d5a80,#1e3050);color:white;padding:clamp(3px,0.5vh,5px) clamp(10px,1.5vw,16px);border-radius:50px;font-size:clamp(10px,1.2vw,12px);letter-spacing:2px;animation:fadeInDown .8s ease both;margin-bottom:clamp(6px,1vh,12px);}\n.intro-title{font-size:clamp(18px,3.5vw,46px);font-weight:900;color:white;line-height:1.15;animation:fadeInDown .9s ease .2s both;margin-bottom:clamp(4px,0.8vh,8px);}\n.intro-title span{background:linear-gradient(90deg,#f6a67e,#ff6b6b,#f6a67e);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}\n.intro-subtitle{font-size:clamp(11px,1.5vw,18px);color:#ffffffaa;animation:fadeInDown 1s ease .4s both;margin-bottom:clamp(2px,0.5vh,4px);line-height:1.5;}\n.intro-author{font-size:clamp(10px,1.1vw,13px);color:#ffffff66;animation:fadeInDown 1s ease .5s both;margin-bottom:clamp(10px,1.5vh,20px);}\n.intro-cards{display:flex;gap:clamp(8px,1vw,12px);flex-wrap:wrap;justify-content:center;animation:fadeInUp 1s ease .6s both;margin-bottom:clamp(10px,1.5vh,20px);}\n.intro-card{background:#ffffff12;border:1px solid #ffffff22;border-radius:clamp(10px,1vw,14px);padding:clamp(8px,1vh,12px) clamp(12px,1.5vw,18px);min-width:clamp(100px,12vw,130px);max-width:170px;}\n.intro-card .icon{font-size:24px;margin-bottom:clamp(2px,0.5vh,6px);}\n.intro-card .icon svg{width:clamp(20px,2.5vw,28px);height:clamp(20px,2.5vw,28px);}\n.intro-card .label{color:#ffffffcc;font-size:clamp(10px,1.1vw,12px);line-height:1.3;}\n.intro-btn{background:linear-gradient(135deg,#f6a67e,#e8834e);color:white;border:2px solid white;padding:clamp(8px,1.2vh,14px) clamp(24px,3vw,36px);border-radius:50px;font-size:clamp(12px,1.3vw,15px);font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.4);animation:fadeInUp 1s ease .8s both;}\n</style>\n<div class=\"intro-wrap\">\n<div class=\"intro-badge\">חינמי. מהיר. חיוני.</div>\n<div class=\"intro-title\">לא מוצאים קובץ במחשב?<br><span>Everything מוצא הכל תוך שנייה</span></div>\n<div class=\"intro-subtitle\">חיפוש מיידי בכל הקבצים במחשב שלכם.<br>במקום לחכות דקות לחיפוש של Windows -<br>Everything מוצא בפחות משנייה.</div>\n<div class=\"intro-author\">עומר טייכר · מדריך וטכנאי מחשבים</div>\n<div class=\"intro-cards\">\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></div><div class=\"label\">חיפוש מיידי בכל הקבצים</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><path d=\"M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z\"/><polyline points=\"13 2 13 9 20 9\"/></svg></div><div class=\"label\">מוצא כל קובץ, תיקייה, תמונה</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"13 17 18 12 13 7\"/><polyline points=\"6 17 11 12 6 7\"/></svg></div><div class=\"label\">מהיר פי אלף מחיפוש Windows</div></div>\n</div>\n<button class=\"intro-btn\" onclick=\"nextSlide(1)\">&#9654;&nbsp;&nbsp;בואו נתחיל</button>\n</div>"
+      "html": "<style>\n@keyframes fadeInDown{from{opacity:0;transform:translateY(-30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes fadeInUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}\n@keyframes shimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}\n.intro-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:calc(100vh - 80px);background:#1a1a2e;text-align:center;padding:clamp(12px,2vh,20px) clamp(16px,3vw,40px) clamp(12px,2vh,20px);box-sizing:border-box;overflow-y:auto;}\n.intro-badge{background:linear-gradient(135deg,#3d5a80,#1e3050);color:white;padding:clamp(3px,0.5vh,5px) clamp(10px,1.5vw,16px);border-radius:50px;font-size:clamp(10px,1.2vw,12px);letter-spacing:2px;animation:fadeInDown .8s ease both;margin-bottom:clamp(6px,1vh,12px);}\n.intro-title{font-size:clamp(18px,3.5vw,46px);font-weight:900;color:white;line-height:1.15;animation:fadeInDown .9s ease .2s both;margin-bottom:clamp(4px,0.8vh,8px);}\n.intro-title span{background:linear-gradient(90deg,#f6a67e,#ff6b6b,#f6a67e);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite;}\n.intro-subtitle{font-size:clamp(11px,1.5vw,18px);color:#ffffffaa;animation:fadeInDown 1s ease .4s both;margin-bottom:clamp(2px,0.5vh,4px);line-height:1.5;}\n.intro-author{font-size:clamp(10px,1.1vw,13px);color:#ffffff66;animation:fadeInDown 1s ease .5s both;margin-bottom:clamp(10px,1.5vh,20px);}\n.intro-cards{display:flex;gap:clamp(8px,1vw,12px);flex-wrap:wrap;justify-content:center;animation:fadeInUp 1s ease .6s both;margin-bottom:clamp(10px,1.5vh,20px);}\n.intro-card{background:#ffffff12;border:1px solid #ffffff22;border-radius:clamp(10px,1vw,14px);padding:clamp(8px,1vh,12px) clamp(12px,1.5vw,18px);min-width:clamp(100px,12vw,130px);max-width:170px;}\n.intro-card .icon{font-size:24px;margin-bottom:clamp(2px,0.5vh,6px);}\n.intro-card .icon svg{width:clamp(20px,2.5vw,28px);height:clamp(20px,2.5vw,28px);}\n.intro-card .label{color:#ffffffcc;font-size:clamp(10px,1.1vw,12px);line-height:1.3;}\n.intro-btn{background:linear-gradient(135deg,#f6a67e,#e8834e);color:white;border:2px solid white;padding:clamp(8px,1.2vh,14px) clamp(24px,3vw,36px);border-radius:50px;font-size:clamp(12px,1.3vw,15px);font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;box-shadow:0 6px 20px rgba(246,166,126,0.4);animation:fadeInUp 1s ease .8s both;}\n</style>\n<div class=\"intro-wrap\">\n<div class=\"intro-badge\">חינמי. מהיר. חיוני.</div>\n<div class=\"intro-title\">לא מוצאים קובץ במחשב?<br><span>Everything מוצא הכל תוך שנייה</span></div>\n<div class=\"intro-subtitle\">חיפוש מיידי בכל הקבצים במחשב שלכם.<br>במקום לחכות דקות לחיפוש של Windows -<br>Everything מוצא בפחות משנייה.</div>\n<div class=\"intro-author\">עומר טייכר · מדריך וטכנאי מחשבים</div>\n<div class=\"intro-cards\">\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"/></svg></div><div class=\"label\">חיפוש מיידי בכל הקבצים</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><path d=\"M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z\"/><polyline points=\"13 2 13 9 20 9\"/></svg></div><div class=\"label\">מוצא כל קובץ, תיקייה, תמונה</div></div>\n<div class=\"intro-card\"><div class=\"icon\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#f6a67e\" stroke-width=\"2\"><polyline points=\"13 17 18 12 13 7\"/><polyline points=\"6 17 11 12 6 7\"/></svg></div><div class=\"label\">מהיר פי אלף מחיפוש Windows</div></div>\n</div>\n<button class=\"intro-btn\" onclick=\"nextSlide(1)\">&#9654;&nbsp;&nbsp;בואו נתחיל</button>\n</div>",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 1,
       "type": "special",
-      "specialType": "howto-shared"
+      "specialType": "howto-shared",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 2,
       "type": "special",
-      "specialType": "howto-shared-2"
+      "specialType": "howto-shared-2",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 3,
       "type": "special",
       "specialType": "download",
-      "html": "<style>\n.parta-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);text-align:center;padding:32px;box-sizing:border-box;gap:24px;}\n.parta-badge{background:linear-gradient(135deg,#1a2540,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}\n.parta-title{font-size:clamp(20px,2.8vw,38px);font-weight:900;color:white;line-height:1.2;}\n.parta-title span{color:#f6a67e;}\n.parta-sub{color:#ffffffaa;font-size:clamp(13px,1.2vw,16px);line-height:1.6;}\n.parta-dl-btn{background:linear-gradient(135deg,#1a2540,#3d5a80);color:white;border:2px solid white;padding:18px 48px;border-radius:50px;font-size:clamp(16px,1.6vw,22px);font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:transform 0.2s,opacity 0.2s;}\n.parta-dl-btn:hover{opacity:0.9;transform:scale(1.03);}\n.parta-dl-version{color:#ffffff55;font-size:12px;}\n.parta-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:460px;}\n.parta-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}\n.parta-note span{color:#f6a67e;font-weight:700;}\n</style>\n<div class=\"parta-wrap\">\n  <div class=\"parta-badge\">חלק א &middot; הורדה והתקנה</div>\n  <div class=\"parta-title\">קודם כל <span>הורידו את Everything</span></div>\n  <div class=\"parta-sub\">הקובץ יורד ישירות למחשב שלכם.<br>לאחר ההורדה חוזרים להדרכה וממשיכים לשלב הבא.</div>\n  <a class=\"parta-dl-btn\" href=\"https://github.com/omertai224/omer-taicher-site/releases/download/everythingv1/Everything.exe\" download>\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>\n    הורידו את Everything\n  </a>\n  <div class=\"parta-dl-version\">הקובץ יורד ישירות למחשב</div>\n  <div class=\"parta-note\">\n    <p><span>לאחר ההורדה:</span> חוזרים להדרכה ולוחצים על <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1a2540;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם.</p>\n  </div>\n</div>"
+      "html": "<style>\n.parta-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;height:calc(100vh - 80px);background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);text-align:center;padding:32px;box-sizing:border-box;gap:24px;}\n.parta-badge{background:linear-gradient(135deg,#1a2540,#5b8fa8);color:white;padding:4px 16px;border-radius:50px;font-size:11px;letter-spacing:2px;display:inline-block;}\n.parta-title{font-size:clamp(20px,2.8vw,38px);font-weight:900;color:white;line-height:1.2;}\n.parta-title span{color:#f6a67e;}\n.parta-sub{color:#ffffffaa;font-size:clamp(13px,1.2vw,16px);line-height:1.6;}\n.parta-dl-btn{background:linear-gradient(135deg,#1a2540,#3d5a80);color:white;border:2px solid white;padding:18px 48px;border-radius:50px;font-size:clamp(16px,1.6vw,22px);font-weight:700;cursor:pointer;font-family:Rubik,sans-serif;display:inline-flex;align-items:center;gap:12px;text-decoration:none;transition:transform 0.2s,opacity 0.2s;}\n.parta-dl-btn:hover{opacity:0.9;transform:scale(1.03);}\n.parta-dl-version{color:#ffffff55;font-size:12px;}\n.parta-note{background:#f6a67e18;border:1px solid #f6a67e55;border-radius:12px;padding:12px 24px;max-width:460px;}\n.parta-note p{color:#ffffffcc;font-size:13px;margin:0;line-height:1.6;}\n.parta-note span{color:#f6a67e;font-weight:700;}\n</style>\n<div class=\"parta-wrap\">\n  <div class=\"parta-badge\">חלק א &middot; הורדה והתקנה</div>\n  <div class=\"parta-title\">קודם כל <span>הורידו את Everything</span></div>\n  <div class=\"parta-sub\">הקובץ יורד ישירות למחשב שלכם.<br>לאחר ההורדה חוזרים להדרכה וממשיכים לשלב הבא.</div>\n  <a class=\"parta-dl-btn\" href=\"https://github.com/omertai224/omer-taicher-site/releases/download/everythingv1/Everything.exe\" download>\n    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4\"/><polyline points=\"7 10 12 15 17 10\"/><line x1=\"12\" y1=\"15\" x2=\"12\" y2=\"3\"/></svg>\n    הורידו את Everything\n  </a>\n  <div class=\"parta-dl-version\">הקובץ יורד ישירות למחשב</div>\n  <div class=\"parta-note\">\n    <p><span>לאחר ההורדה:</span> חוזרים להדרכה ולוחצים על <span onclick=\"nextSlide()\" style=\"display:inline-block;width:38px;height:38px;background:#1a2540;border-radius:50%;vertical-align:middle;margin:0 4px;box-shadow:0 2px 8px #00000055;position:relative;top:-2px;border:2.5px solid white;cursor:pointer;\" title=\"לחצו להתקדמות\"><svg style=\"position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להתקדם.</p>\n  </div>\n</div>",
+      "notes": [
+        {
+          "text": "",
+          "left": "50%",
+          "top": "50%"
+        }
+      ]
     },
     {
       "index": 4,
@@ -30,19 +58,19 @@
       "image": "2026-04-05_21-59-46.png",
       "text": "אנחנו בתיקיית ההורדות. מחפשים את קובץ ההתקנה של Everything. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "36.6242%",
+        "left": "82.2373%",
+        "right": "0%",
+        "bottom": "55.7113%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "47.3166%",
+        "top": "43.3751%"
       },
       "textWidth": "280px",
       "notes": [
         {
-          "text": "",
+          "text": "לאחר שהורדנו את התוכנה everything נמצא אותה בתיקיית ההורדות",
           "left": "50%",
           "top": "50%"
         }
@@ -55,14 +83,14 @@
       "image": "2026-04-05_22-00-23.png",
       "text": "לחיצה כפולה על קובץ ההתקנה תפתח את תהליך ההתקנה. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "28.3439%",
+        "left": "69.9443%",
+        "right": "17.6672%",
+        "bottom": "62.5054%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "35.0151%",
+        "top": "39.3412%"
       },
       "textWidth": "280px",
       "notes": [
@@ -81,19 +109,19 @@
       "image": "2026-04-05_22-00-32.png",
       "text": "הופיע חלון אבטחה. זה בסדר גמור. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "51.4862%",
+        "left": "46.1783%",
+        "right": "44.7771%",
+        "bottom": "40.8493%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "43.8526%",
+        "top": "61.6342%"
       },
       "textWidth": "280px",
       "notes": [
         {
-          "text": "",
+          "text": "כאן זה לא חלון כאן זה לא חלון האבטחה כאן זה סתם חלון שקופץ שלוחצים על עברית ואוקיי",
           "left": "50%",
           "top": "50%"
         }
@@ -106,19 +134,19 @@
       "image": "2026-04-05_22-00-39.png",
       "text": "מופיע חלון עם התנאים של Everything. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום כדי להסכים.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "69.7452%",
+        "left": "35.5494%",
+        "right": "56.0031%",
+        "bottom": "22.3779%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "48.0332%",
+        "top": "58.6618%"
       },
       "textWidth": "280px",
       "notes": [
         {
-          "text": "",
+          "text": "אתה כותב כאן לחצו על הסימון הכתום רק בשקפים מיוחדים שצריך לחיצה כפולה או גרירה או הקלדה או כפתור ימני או גלילה בשקפים רגילים אתה רושם פשוט לחצו על הסימון הכתום כדי להסכים משהו כזה",
           "left": "50%",
           "top": "50%"
         }
@@ -131,14 +159,14 @@
       "image": "2026-04-05_22-03-07.png",
       "text": "אפשרויות ההתקנה. לא צריך לשנות כלום. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "69.5329%",
+        "left": "35.6688%",
+        "right": "55.7643%",
+        "bottom": "21.5287%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "5.06575%",
+        "top": "39.9613%"
       },
       "textWidth": "280px",
       "notes": [
@@ -156,14 +184,14 @@
       "image": "2026-04-05_22-03-12.png",
       "text": "עוד אפשרויות. גם כאן לא צריך לשנות. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "69.907%",
+        "left": "35.732%",
+        "right": "56.2547%",
+        "bottom": "22.5011%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "6.97229%",
+        "top": "39.7923%"
       },
       "textWidth": "280px",
       "notes": [
@@ -181,14 +209,14 @@
       "image": "2026-04-05_22-03-16.png",
       "text": "הכל מוכן להתקנה. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום כדי להתקין.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "70.228%",
+        "left": "35.3708%",
+        "right": "55.5322%",
+        "bottom": "22.5012%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "5.25651%",
+        "top": "40.1134%"
       },
       "textWidth": "280px",
       "notes": [
@@ -206,19 +234,19 @@
       "image": "2026-04-05_22-03-49.png",
       "text": "ההתקנה הושלמה בהצלחה! <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום לסגירה.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "71.6729%",
+        "left": "49.5485%",
+        "right": "29.615%",
+        "bottom": "19.4509%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "10.1329%",
+        "top": "40.1134%"
       },
       "textWidth": "280px",
       "notes": [
         {
-          "text": "",
+          "text": "פה יש את חלון ההתראה פה זה השקף שיש פה חלון את ההתראה ופה צריך להרגיע אותם לגבי החלון ההתראה זה השקף שיש פה את החלון ההתראהשצריך ללחוץ בו כן",
           "left": "50%",
           "top": "50%"
         }
@@ -227,32 +255,42 @@
     },
     {
       "index": 12,
-      "type": "view",
+      "type": "click",
       "image": "2026-04-05_22-04-06.png",
       "text": "Everything נפתח לראשונה. זה חלון הפתיחה. סוגרים אותו.",
-      "box": {},
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "22.053%",
+        "top": "47.6587%"
       },
       "textWidth": "280px",
       "notes": [
         {
-          "text": "",
+          "text": "זה שקף לחיצה צריך ללחוץ על סיום כדי לסיים את ההתקנה",
           "left": "50%",
           "top": "50%"
         }
-      ]
+      ],
+      "box": {
+        "top": "69.6534%",
+        "left": "35.3279%",
+        "right": "54.9667%",
+        "bottom": "21.7449%"
+      }
     },
     {
       "index": 13,
       "type": "view",
       "image": "2026-04-05_22-05-50.png",
       "text": "ברוכים הבאים ל-Everything! זו שורת החיפוש. כאן כותבים את שם הקובץ שמחפשים.",
-      "box": {},
+      "box": {
+        "top": "4.95579%",
+        "bottom": "88.096%",
+        "left": "0%",
+        "right": "0%"
+      },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "61.0643%",
+        "top": "25.6648%"
       },
       "textWidth": "280px",
       "notes": [
@@ -267,21 +305,21 @@
       "index": 14,
       "type": "click",
       "image": "2026-04-05_22-19-44.png",
-      "text": "כותבים את המילה <span style='color:#f6a67e;'>מתכון</span> בשורת החיפוש. Everything מוצא מיד את כל הקבצים. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
+      "text": "כותבים את המילה <span style='color:#f6a67e;'>מתכון</span> בשורת החיפוש. Everything מוצא מיד את כל הקבצים. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "4.76784%",
+        "left": "80.342%",
+        "right": "0%",
+        "bottom": "86.5244%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "10.2775%",
+        "top": "42.266%"
       },
-      "textWidth": "280px",
+      "textWidth": "307px",
       "notes": [
         {
-          "text": "",
+          "text": "זה שכיף שפה בעצם אני מתלבט איזה שקף לעשות אותו צפייה או לחיצה כאילו לא באמת צריכים ללחוץ על על השורת חיפוש איפה שהמתכון הם פשוט צריכים להקליד טוב נראה",
           "left": "50%",
           "top": "50%"
         }
@@ -291,23 +329,17 @@
     },
     {
       "index": 15,
-      "type": "click",
+      "type": "view",
       "image": "2026-04-05_22-20-11.png",
-      "text": "עכשיו נלמד לסנן תוצאות לפי סוג קובץ. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
-      "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
-      },
+      "text": "עכשיו נלמד לסנן תוצאות לפי סוג קובץ. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span><div style=\"text-align:center;margin-top:12px;\">לחצו על <span onclick=\"nextSlide()\" style=\"display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;background:linear-gradient(135deg,#1a2540,#3d5a80);border:2px solid white;border-radius:50%;cursor:pointer;vertical-align:middle;margin:0 6px;box-shadow:0 4px 12px rgba(26,37,64,0.5);\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"3\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"9 18 15 12 9 6\"/></svg></span> כדי להמשיך בהדרכה.</div>",
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "42.5383%",
+        "top": "41.0386%"
       },
-      "textWidth": "280px",
+      "textWidth": "293px",
       "notes": [
         {
-          "text": "",
+          "text": "זה שקף שפשוט צריך להגיד להם שהם זה שקף צפייה שצריך פשוט להגיד להם שהם רואים את כל הקבצים שנמצאו אין סימון כתום פה צריך להגיד להם שפשוט רואים את כל הקבצים שנמצאו משהו כזה",
           "left": "50%",
           "top": "50%"
         }
@@ -320,19 +352,19 @@
       "image": "2026-04-05_22-20-27.png",
       "text": "נפתח תפריט המסננים. בוחרים <span style='color:#f6a67e;'>וידאו</span> כדי לראות רק סרטונים. <span style='color:#f6a67e;font-weight:700;'>כאן לחצו על הסימון הכתום.</span>",
       "box": {
-        "top": "50%",
-        "left": "50%",
-        "right": "40%",
-        "bottom": "40%"
+        "top": "2.44161%",
+        "left": "86.664%",
+        "right": "7.27707%",
+        "bottom": "90.7431%"
       },
       "textPos": {
-        "left": "30%",
-        "top": "30%"
+        "left": "57.7068%",
+        "top": "54.6278%"
       },
       "textWidth": "280px",
       "notes": [
         {
-          "text": "",
+          "text": "אתה צריך לעבור שוב על השקפים ולראות איפה אתה צריך לראות איפה הסמן של העכבר אתה צריך לנתח את אתה צריך לנתח את התמונות לפי הסמן של העכבר לא עשית פה עבודה טובה אתה אתה אומר דברים לא נכונים בבועות אתה צריך לנתח מחדש את התמונות ולשים לב איפה הסימן של העכבר",
           "left": "50%",
           "top": "50%"
         }
