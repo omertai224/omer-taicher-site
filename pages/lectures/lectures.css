@@ -245,6 +245,14 @@ body {
 .lec-footer a { color:var(--navy); text-decoration:none; font-weight:600; }
 
 /* ===== RESPONSIVE ===== */
+@media(max-width:700px) {
+  .lec-chapter-tags { flex-direction:column; gap:6px; }
+  .lec-chapter-tag { width:100%; justify-content:center; }
+  .lec-chapter-dropdown { width:100%; }
+  .lec-chapter-dropdown .lec-chapter-tag { width:100%; }
+  .lec-actions { flex-direction:column; align-items:stretch; }
+  .lec-actions a { text-align:center; justify-content:center; }
+}
 @media (min-width:960px) {
   .lec-nav { padding:0 60px; }
   .lec-hero { padding:80px 60px 60px; }
