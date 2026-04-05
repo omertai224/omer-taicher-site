@@ -120,6 +120,10 @@ function renderLectures() {
             '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2s-.2-1.7-1-2.4c-.9-1-1.9-1-2.4-1C16.8 2.5 12 2.5 12 2.5s-4.8 0-8.1.3c-.5 0-1.5 0-2.4 1-.7.7-1 2.4-1 2.4S.2 8.2.2 10.1v1.8c0 2 .3 3.9.3 3.9s.2 1.7 1 2.4c.9 1 2.1.9 2.6 1 1.9.2 8 .3 8 .3s4.8 0 8.1-.3c.5 0 1.5 0 2.4-1 .7-.7 1-2.4 1-2.4s.3-2 .3-3.9v-1.8c0-2-.3-3.9-.3-3.9zM9.5 15.1V8.4l6.5 3.4-6.5 3.4z"/></svg>' +
             'צפו ביוטיוב' +
           '</a>' +
+          (lec.summaryUrl ? '<a class="lec-cta" href="' + lec.summaryUrl + '" target="_blank" rel="noopener">' +
+            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>' +
+            'סיכום ההרצאה' +
+          '</a>' : '') +
           ctaHTML +
         '</div>' +
       '</div>';

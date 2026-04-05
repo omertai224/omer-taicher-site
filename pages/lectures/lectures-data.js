@@ -29,7 +29,8 @@ var lecturesData = [
       { time: "43:56", label: "האינטרנט: בדיקת מהירות" },
       { time: "51:37", label: "איך עוד אני יכול לעזור לכם?" }
     ],
-    cta: null
+    cta: null,
+    summaryUrl: "/pages/lectures/summaries/main-suspect.html"
   },
   {
     id: "ai-listening",
@@ -51,7 +52,8 @@ var lecturesData = [
       { time: "30:32", label: "לשמור את הקול (חן באתרים)" },
       { time: "36:23", label: "הנחיות לבינה" }
     ],
-    cta: null
+    cta: null,
+    summaryUrl: "/pages/lectures/summaries/ai-listening.html"
   },
   {
     id: "cloud-sync",
@@ -71,9 +73,11 @@ var lecturesData = [
       { time: "45:01", label: "Google Photos – סנכרון תמונות מהטלפון" },
       { time: "56:06", label: "טיפים: שיתוף קבצים ואפליקציית הטלפון" }
     ],
-    cta: null
+    cta: null,
+    summaryUrl: "/pages/lectures/summaries/cloud-sync.html"
   },
   {
+    id: "surprise-box",
     title: "תיבת ההפתעות",
     date: "28.12.25",
     ytId: "saQvLXKEtw0",
@@ -90,7 +94,8 @@ var lecturesData = [
       { time: "38:50", label: "רק לדעת (אישורי קריאה)" },
       { time: "47:02", label: "איך עוד אני יכול לעזור לכם?" }
     ],
-    cta: null
+    cta: null,
+    summaryUrl: "/pages/lectures/summaries/surprise-box.html"
   },
   {
     id: "things-you-didnt-know",
@@ -108,7 +113,8 @@ var lecturesData = [
       { time: "40:25", label: "סוללה במחשב נייד (המקרה של טל)" },
       { time: "49:12", label: "איך עוד אני יכול לעזור לכם?" }
     ],
-    cta: null
+    cta: null,
+    summaryUrl: "/pages/lectures/summaries/things-you-didnt-know.html"
   },
   {
     id: "useful-tools",
@@ -124,6 +130,7 @@ var lecturesData = [
       { time: "18:40", label: "CCleaner + Speccy (המקרה של דינה)" },
       { time: "42:10", label: "איך עוד אני יכול לעזור לכם?" }
     ],
-    cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Apps/Everything/" }
+    cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Apps/Everything/" },
+    summaryUrl: "/pages/lectures/summaries/useful-tools.html"
   }
 ];
