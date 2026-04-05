@@ -13,4 +13,13 @@
       });
     })
     .catch(function() {});
+
+  // Mobile: remove target="_blank" so links open in same tab
+  if (window.innerWidth <= 768) {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('a[target="_blank"]').forEach(function(a) {
+        a.removeAttribute('target');
+      });
+    });
+  }
 })();
