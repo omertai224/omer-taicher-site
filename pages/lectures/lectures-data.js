@@ -10,7 +10,7 @@ var lecturesData = [
     chapters: [
       { time: "0:00", label: "פתיחה" },
       { time: "2:44", label: "חקירה 1: המחשב לא נדלק", sub: [
-        { time: "2:44", label: "ספק הכוח" },
+        { time: "4:01", label: "ספק הכוח" },
         { time: "5:08", label: "המסך" },
         { time: "6:45", label: "זיכרון RAM" },
         { time: "9:26", label: "לוח האם" }
