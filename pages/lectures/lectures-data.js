@@ -119,7 +119,10 @@ var lecturesData = [
     chapters: [
       { time: "0:15", label: "Everything (המקרה של מרים)" },
       { time: "8:48", label: "TreeSize (המקרה של שירה)" },
-      { time: "18:35", label: "CCleaner + Speccy (המקרה של דינה)" },
+      { time: "18:35", label: "CCleaner + Speccy (המקרה של דינה)", sub: [
+        { time: "18:35", label: "CCleaner" },
+        { time: "28:30", label: "Speccy" }
+      ]},
       { time: "42:10", label: "איך עוד אני יכול לעזור לכם?" }
     ],
     cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Apps/Everything/" }
