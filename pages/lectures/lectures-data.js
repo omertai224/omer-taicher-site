@@ -101,7 +101,7 @@ var lecturesData = [
     chapters: [
       { time: "0:00", label: "פתיחה" },
       { time: "2:55", label: "מה יש בתוך המחשב (המקרה של רוני)" },
-      { time: "24:35", label: "רשת ביתית ואינטרנט (המקרה של נועה)" },
+      { time: "24:38", label: "רשת ביתית ואינטרנט (המקרה של נועה)" },
       { time: "33:21", label: "בעיות מדפסת (המקרה של דורית)" },
       { time: "40:25", label: "סוללה במחשב נייד (המקרה של טל)" },
       { time: "49:12", label: "איך עוד אני יכול לעזור לכם?" }
@@ -119,7 +119,10 @@ var lecturesData = [
     chapters: [
       { time: "0:15", label: "Everything (המקרה של מרים)" },
       { time: "8:48", label: "TreeSize (המקרה של שירה)" },
-      { time: "18:35", label: "CCleaner + Speccy (המקרה של דינה)" },
+      { time: "18:39", label: "CCleaner + Speccy (המקרה של דינה)", sub: [
+        { time: "18:39", label: "CCleaner" },
+        { time: "28:30", label: "Speccy" }
+      ]},
       { time: "42:10", label: "איך עוד אני יכול לעזור לכם?" }
     ],
     cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Apps/Everything/" }
