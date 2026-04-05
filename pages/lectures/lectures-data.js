@@ -117,11 +117,11 @@ var lecturesData = [
     ytId: "vPiOp20vNco",
     duration: "~60 דקות",
     desc: "5 כלים חינמיים שכל מחשב צריך. נמאס לך לחפש קבצים דקות ארוכות? המחשב איטי ומלא בזבל? הדגמות חיות של כלים שמשנים את הדרך שעובדים עם המחשב.",
-    topics: ["Everything", "TreeSize", "CCleaner", "Speccy", "ניהול RAM", "כרטיסיות כרום", "פינוי שטח בדיסק"],
+    topics: ["Everything", "TreeSize", "CCleaner", "Speccy", "ניהול RAM", "כרטיסיות כרום", "פינוי שטח בדיסק", "אנטיוירוסים", "תוכנות הפעלה", "HDD vs SSD"],
     chapters: [
-      { time: "0:15", label: "Everything (המקרה של מרים)" },
-      { time: "8:48", label: "TreeSize (המקרה של שירה)" },
-      { time: "18:39", label: "CCleaner + Speccy (המקרה של דינה)" },
+      { time: "0:09", label: "Everything (המקרה של מרים)" },
+      { time: "8:47", label: "TreeSize (המקרה של שירה)" },
+      { time: "18:40", label: "CCleaner + Speccy (המקרה של דינה)" },
       { time: "42:10", label: "איך עוד אני יכול לעזור לכם?" }
     ],
     cta: { text: "להדרכת Everything האינטראקטיבית", url: "/interactive/tutorials/Apps/Everything/" }
