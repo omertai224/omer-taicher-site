@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iIzFhNGE2YiIvPjx0ZXh0IHg9IjE2IiB5PSIyMyIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjIwIiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iI2Y2YTY3ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+16I8L3RleHQ+PC9zdmc+">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>סיכום: לישון בשקט עם סנכרון אוטומטי לענן | מיומנו של טכנאי מחשבים</title>
+<meta name="description" content="סיכום אינטראקטיבי של ההרצאה לישון בשקט עם סנכרון אוטומטי לענן. גיבוי לענן, Google Drive, סנכרון תמונות ושאלות מהקהל.">
+<link rel="preload" href="/assets/fonts/rubik-hebrew-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/rubik-hebrew-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-hebrew-400-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-hebrew-700-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:800;src:url(/assets/fonts/rubik-hebrew-800-normal.woff2) format('woff2');unicode-range:U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:400;src:url(/assets/fonts/rubik-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:700;src:url(/assets/fonts/rubik-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+@font-face{font-family:'Rubik';font-style:normal;font-display:swap;font-weight:800;src:url(/assets/fonts/rubik-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF}
+</style>
+<link rel="stylesheet" href="summary.css">
+</head>
+<body>
+
+<!-- NAV -->
+<div id="nav-root"></div>
+<script src="/assets/js/nav-loader.js"></script>
+
+<!-- HERO -->
+<header class="sum-hero">
+  <div class="sum-hero-badge">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+    סיכום הרצאה
+  </div>
+  <h1>לישון בשקט עם סנכרון אוטומטי לענן</h1>
+  <p class="sum-hero-sub">גיבוי לענן, Google Drive, וסנכרון תמונות.<br>איך לוודא שהקבצים שלכם שמורים במקום בטוח ונגישים מכל מקום, בלי לחשוב על זה.</p>
+  <div class="sum-hero-meta">
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 25.1.26</span>
+    <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> ~68 דקות</span>
+    <span>פרק 4 בסדרה</span>
+  </div>
+  <a class="btn-yt" href="https://www.youtube.com/watch?v=Rfnjo_r0IE8&cc_load_policy=1&cc_lang_pref=iw" target="_blank" rel="noopener">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.4 31.4 0 000 12a31.4 31.4 0 00.5 5.8 3 3 0 002.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 002.1-2.1A31.4 31.4 0 0024 12a31.4 31.4 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+    צפו ביוטיוב
+  </a>
+</header>
+
+<!-- KEY TAKEAWAYS -->
+<section class="sum-section">
+  <div class="sum-section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg>
+    מה למדנו?
+  </div>
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div>
+      <h3>מחשוב ענן = חשבון בנק</h3>
+      <p>הקבצים לא חייבים להיות על המחשב. הם שמורים במקום בטוח ונגישים מכל מקום.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon navy"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+      <h3>דיסק חיצוני לא מספיק</h3>
+      <p>עובד כמו פטיפון, נשחק עם הזמן, רגיש לזעזועים, וגיבוי ידני פשוט לא קורה.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg></div>
+      <h3>סנכרון = מראה, גיבוי = כספת</h3>
+      <p>בסנכרון, מחיקה מהמחשב = מחיקה מהענן (אבל יש 30 יום לשחזר). גיבוי הוא עותק נפרד.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon orange"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></div>
+      <h3>אזהרה: אשפה תופסת מקום!</h3>
+      <p>קבצים שמוחקים עוברים לאשפה ועדיין תופסים נפח. צריך לרוקן את האשפה בכל שירות.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW: מה כלול באחסון גוגל -->
+<section class="sum-section" style="background:var(--white);max-width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="sum-section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4a6b" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      מה כלול באחסון גוגל?
+    </div>
+    <div class="flow-wrap">
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        <h4>Google Drive</h4>
+        <p>קבצים ומסמכים</p>
+      </div>
+      <div class="flow-arrow">&larr;</div>
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+        <h4>Gmail</h4>
+        <p>מיילים + קבצים מצורפים</p>
+      </div>
+      <div class="flow-arrow">&larr;</div>
+      <div class="flow-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <h4>Google Photos</h4>
+        <p>תמונות מהטלפון</p>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--text-mid);font-size:0.85rem;">שלושת השירותים חולקים את אותם 15 גיגה חינמיים. תמונות מהטלפון תופסות הכי הרבה מקום.</p>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="sum-section">
+  <div class="sum-section-title">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e8854a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+    כלים שהוזכרו
+  </div>
+  <div class="tool-card">
+    <div class="tool-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+    <div class="tool-info">
+      <h4>Google One</h4>
+      <p>ניהול אחסון, פינוי מקום חכם, ושדרוג נפח. מראה בדיוק מה תופס מקום ומאפשר למחוק בקליק.</p>
+    </div>
+  </div>
+  <div class="tool-card">
+    <div class="tool-icon" style="background:var(--orange-deep);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+    <div class="tool-info">
+      <h4>Drive for Desktop</h4>
+      <p>התוכנה שמסנכרנת את המחשב לענן אוטומטית. מתקינים פעם אחת והכל עובד ברקע.</p>
+    </div>
+  </div>
+  <div class="tool-card">
+    <div class="tool-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+    <div class="tool-info">
+      <h4>Google Photos</h4>
+      <p>סנכרון תמונות מהטלפון לענן. זהירות: תופס נפח מהאחסון המשותף! כדאי לכבות אם לא צריכים.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD TIP -->
+<section class="sum-section" style="padding-top:0;">
+  <div class="gold-tip">
+    <h3>💡 טיפ הזהב של ההרצאה</h3>
+    <p>המקרה של מיכל: מעצבת גרפית שאיבדה חצי שנה של עבודה כי הגיבוי בדיסק חיצוני היה מלפני 5 חודשים. שילמה אלפי שקלים על שחזור ורוב המידע נעלם. <strong>מאז היא עברה לענן אוטומטי</strong> ולא צריכה לזכור לגבות אף פעם.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sum-section" style="background:var(--white);max-width:100%;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="sum-section-title">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a4a6b" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      שאלות מהקהל
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">כמה עולה אחסון בגוגל? <span class="chevron">&#x25BC;</span></div>
+      <div class="faq-a"><p>15 גיגה חינם. 100 גיגה כ-80 שקל לשנה. 200 גיגה קצת יותר. 2 טרה 390 שקל לשנה. לרוב האנשים 100-200 גיגה מספיק.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">מה קורה אם מוחקים קובץ מהמחשב? <span class="chevron">&#x25BC;</span></div>
+      <div class="faq-a"><p>בסנכרון הוא נמחק גם מהענן, אבל נשאר באשפה 30 יום. אפשר לשחזר.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">WhatsApp נשמר בענן של גוגל? <span class="chevron">&#x25BC;</span></div>
+      <div class="faq-a"><p>כן! הוא חלק מנפח האחסון. התמונות והסרטונים של WhatsApp תופסים מקום. SMS כמעט לא תופס.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">מה אם ייכנס וירוס לענן? <span class="chevron">&#x25BC;</span></div>
+      <div class="faq-a"><p>גוגל דרייב סורק וירוסים. עם אנטיוירוס טוב + האבטחה של גוגל, הסיכוי אפסי. ב-15 שנה לא ראיתי מקרה כזה.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">איך מבטלים העלאת תמונות אוטומטית? <span class="chevron">&#x25BC;</span></div>
+      <div class="faq-a"><p>בטלפון, בהגדרות של אפליקציית "תמונות", מכבים את הסנכרון. חשוב לעשות את זה מההתחלה כי גוגל מקשה על מחיקת תמונות בכמות.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="sum-cta">
+  <h2>רוצים ללמוד עוד?</h2>
+  <p>יש עוד 5 הרצאות בסדרה + הדרכות אינטראקטיביות שעומר בנה במיוחד</p>
+  <div class="sum-cta-btns">
+    <a class="btn-cta primary" href="/interactive/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      הדרכות אינטראקטיביות
+    </a>
+    <a class="btn-cta secondary" href="/pages/lectures/">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      כל ההרצאות
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer-root"></div>
+<script src="/assets/js/footer-loader.js"></script>
+<script src="summary.js"></script>
+</body>
+</html>
