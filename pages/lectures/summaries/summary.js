@@ -1,5 +1,18 @@
 /* ===== LECTURE SUMMARY - Shared JS ===== */
 
+// Change mobile nav CTA to "כל ההרצאות" instead of "חזרה לאתר"
+(function(){
+  var check = setInterval(function(){
+    var cta = document.querySelector('.nav-mobile-cta');
+    if(cta){
+      cta.href = '/pages/lectures/';
+      cta.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg> כל ההרצאות';
+      clearInterval(check);
+    }
+  }, 100);
+  setTimeout(function(){ clearInterval(check); }, 3000);
+})();
+
 // Scroll animations
 (function(){
   var observer = new IntersectionObserver(function(entries){
