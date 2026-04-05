@@ -112,7 +112,7 @@ body { font-family:'Rubik',sans-serif; background:var(--cream); color:var(--text
 @media(max-width:700px) {
   .flow-wrap { flex-direction:column; align-items:stretch; }
   .flow-item { max-width:100%; }
-  .flow-arrow { transform:rotate(90deg); text-align:center; }
+  .flow-arrow { transform:rotate(-90deg); margin:0 auto; }
   .sum-hero { padding:40px 16px 36px; }
   .sum-hero h1 { font-size:1.4rem; }
   .sum-hero-sub { font-size:0.88rem; }
